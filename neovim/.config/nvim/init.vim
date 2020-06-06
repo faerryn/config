@@ -3,18 +3,18 @@ augroup SourceInitVim
 	execute "autocmd BufWritePost $MYVIMRC source $MYVIMRC"
 augroup END
 
-let g:mapleader = ' '
+let g:mapleader=' '
 set foldmethod=syntax foldlevelstart=20
 set hidden
-set ignorecase smartcase
+set ignorecase        smartcase
 set lazyredraw
 set mouse=ar
 set nowrap
-set number relativenumber
+set number            relativenumber
 set omnifunc=syntaxcomplete#Complete
 set signcolumn=yes
 set smartindent
-set splitbelow splitright
+set splitbelow        splitright
 set termguicolors
 set timeoutlen=250
 set undofile
@@ -70,7 +70,6 @@ Plug 'ziglang/zig.vim'    , { 'for': ['zig',  'vimwiki'] }
 Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
-Plug 'norcalli/nvim-colorizer.lua'
 
 call plug#end()
 
@@ -80,7 +79,6 @@ if s:vim_plug_ready
 	let g:highlightedyank_highlight_duration = 250
 	let g:rustfmt_autosave = 1
 	let g:zig_fmt_autosave = 1
-	lua require'colorizer'.setup()
 	runtime macros/sandwich/keymap/surround.vim
 
 	if executable("clang-format")
@@ -98,8 +96,6 @@ if s:vim_plug_ready
 	let g:undotree_HelpLine           = 0
 	let g:undotree_SetFocusWhenToggle = 1
 	let g:undotree_WindowLayout       = 3
-
-	let g:loaded_netrw       = 1
 	let g:loaded_netrwPlugin = 1
 	command! -nargs=? -complete=dir Explore Dirvish <args>
 	command! -nargs=? -complete=dir Sexplore rightbelow split | Dirvish <args>
