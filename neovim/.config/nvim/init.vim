@@ -1,10 +1,9 @@
+let s:vim_plug_ready = v:true
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | let s:plugged = 1 | source $MYVIMRC
-	let s:plugged = 0
-else
-	let s:plugged = 1
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	let s:vim_plug_ready = v:false
 endif
 
 call plug#begin(stdpath('data') . '/plugged')
@@ -51,11 +50,11 @@ Plug 'norcalli/nvim-colorizer.lua'
 
 call plug#end()
 
-if s:plugged
+if s:vim_plug_ready
 
 	augroup SourceInitVim
 		autocmd!
-		autocmd BufWritePost ~/.config/nvim/init.vim source ~/.config/nvim/init.vim
+		execute "autocmd BufWritePost $MYVIMRC source $MYVIMRC"
 	augroup END
 
 	let g:mapleader = ' '
