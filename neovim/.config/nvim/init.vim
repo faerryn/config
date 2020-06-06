@@ -1,8 +1,32 @@
+augroup SourceInitVim
+	autocmd!
+	execute "autocmd BufWritePost $MYVIMRC source $MYVIMRC"
+augroup END
+
+let g:mapleader = ' '
+set foldmethod=syntax foldlevelstart=20
+set hidden
+set ignorecase smartcase
+set lazyredraw
+set mouse=ar
+set nowrap
+set number relativenumber
+set omnifunc=syntaxcomplete#Complete
+set signcolumn=yes
+set smartindent
+set splitbelow splitright
+set termguicolors
+set timeoutlen=250
+set undofile
+set updatetime=250
+
 let s:vim_plug_ready = v:true
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	augroup VimPlugInstall
+		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	augroup END
 	let s:vim_plug_ready = v:false
 endif
 
@@ -52,30 +76,7 @@ call plug#end()
 
 if s:vim_plug_ready
 
-	augroup SourceInitVim
-		autocmd!
-		execute "autocmd BufWritePost $MYVIMRC source $MYVIMRC"
-	augroup END
-
-	let g:mapleader = ' '
 	colorscheme nord
-
-	set foldmethod=syntax foldlevelstart=20
-	set hidden
-	set ignorecase smartcase
-	set lazyredraw
-	set mouse=ar
-	set nowrap
-	set number relativenumber
-	set omnifunc=syntaxcomplete#Complete
-	set signcolumn=yes
-	set smartindent
-	set splitbelow splitright
-	set termguicolors
-	set timeoutlen=250
-	set undofile
-	set updatetime=250
-
 	let g:highlightedyank_highlight_duration = 250
 	let g:rustfmt_autosave = 1
 	let g:zig_fmt_autosave = 1
