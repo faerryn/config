@@ -21,9 +21,9 @@ set undofile
 set updatetime=250
 
 let s:vim_plug_ready = v:true
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-	!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
+	execute "!curl -fLo " . stdpath('data') . "/site/autoload/plug.vim --create-dirs"
+				\ . " https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 	augroup VimPlugInstall
 		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 	augroup END
@@ -96,6 +96,8 @@ if s:vim_plug_ready
 	let g:undotree_HelpLine           = 0
 	let g:undotree_SetFocusWhenToggle = 1
 	let g:undotree_WindowLayout       = 3
+
+	let g:loaded_netrw       = 1
 	let g:loaded_netrwPlugin = 1
 	command! -nargs=? -complete=dir Explore Dirvish <args>
 	command! -nargs=? -complete=dir Sexplore rightbelow split | Dirvish <args>
@@ -137,34 +139,6 @@ if s:vim_plug_ready
 		autocmd!
 		autocmd ColorScheme * call s:update_lightline()
 	augroup END
-
-	let g:fzf_preview_window = ''
-	let g:fzf_layout = { 'window': 'call FZF_LAYOUT_WINDOW(0.75, 0.25, 0.125)' }
-	function! FZF_LAYOUT_WINDOW(width, height, row) abort
-		call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, {
-					\ 'relative': 'editor',
-					\ 'row'     : float2nr(&lines   * a:row),
-					\ 'col'     : float2nr(&columns * (0.5 - a:width / 2)),
-					\ 'width'   : float2nr(&columns * a:width),
-					\ 'height'  : float2nr(&lines   * a:height),
-					\ 'style'   : 'minimal',
-					\ })
-	endfunction
-	let g:fzf_colors = {
-				\ 'fg'     : ['fg', 'Normal'],
-				\ 'bg'     : ['bg', 'Normal'],
-				\ 'hl'     : ['fg', 'Comment'],
-				\ 'fg+'    : ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-				\ 'bg+'    : ['bg', 'CursorLine', 'CursorColumn'],
-				\ 'hl+'    : ['fg', 'Statement'],
-				\ 'info'   : ['fg', 'PreProc'],
-				\ 'border' : ['fg', 'Ignore'],
-				\ 'prompt' : ['fg', 'Conditional'],
-				\ 'pointer': ['fg', 'Exception'],
-				\ 'marker' : ['fg', 'Keyword'],
-				\ 'spinner': ['fg', 'Label'],
-				\ 'header' : ['fg', 'Comment']
-				\ }
 
 	nnoremap <leader>b :Buffers<cr>
 	nnoremap <leader>f :Files<cr>
