@@ -84,7 +84,7 @@ if s:vim_plug_ready
 	if executable("clang-format")
 		augroup AutoClangFormat
 			autocmd!
-			autocmd BufwritePre *.cpp %!clang-format
+			autocmd BufwritePre *.c,*.cpp %!clang-format
 		augroup END
 	endif
 
