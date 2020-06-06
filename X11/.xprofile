@@ -1,0 +1,5 @@
+#!/bin/sh
+xrdb -load ~/.config/X11/Xresources &
+setxkbmap -option caps:escape_shifted_capslock,ctrl:menu_rctrl &
+hsetroot -cover /usr/share/backgrounds/gnome/Icetwigs.jpg &
+picom &
