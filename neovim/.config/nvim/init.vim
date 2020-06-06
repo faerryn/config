@@ -105,7 +105,6 @@ if s:vim_plug_ready
 	command! -nargs=? -complete=dir Sexplore rightbelow split | Dirvish <args>
 	command! -nargs=? -complete=dir Vexplore leftabove vsplit | Dirvish <args>
 
-	let g:vimwiki_list = [ { 'path': '~/Documents/vimwiki' } ]
 	function! s:VimwikiSettings()
 		setlocal wrap linebreak spell
 		nnoremap <silent> <buffer> j gj
