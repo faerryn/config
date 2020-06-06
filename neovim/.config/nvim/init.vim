@@ -177,6 +177,5 @@ if s:vim_plug_ready
 	nnoremap <leader>q :quit<cr>
 	nnoremap <leader>u :UndotreeToggle<cr>
 	nnoremap <leader>w :write<cr>
-	nnoremap <leader>x :exit<cr>
 
 endif
