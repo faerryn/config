@@ -95,7 +95,8 @@ if s:vim_plug_ready
 
 	let g:undotree_HelpLine           = 0
 	let g:undotree_SetFocusWhenToggle = 1
-	let g:undotree_WindowLayout       = 3
+	let g:undotree_CustomUndotreeCmd  = 'belowright vertical 40 new'
+	let g:undotree_CustomDiffpanelCmd = 'belowright 10 new'
 
 	let g:loaded_netrw       = 1
 	let g:loaded_netrwPlugin = 1
@@ -118,6 +119,23 @@ if s:vim_plug_ready
 		autocmd!
 		autocmd FileType vimwiki call s:vimwiki_settings()
 	augroup END
+	
+	let g:fzf_layout = { 'right': '40' }
+	let g:fzf_colors = { 
+				\ 'fg':      ['fg', 'Normal'],
+				\ 'bg':      ['bg', 'Normal'],
+				\ 'hl':      ['fg', 'Comment'],
+				\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+				\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+				\ 'hl+':     ['fg', 'Statement'],
+				\ 'info':    ['fg', 'PreProc'],
+				\ 'border':  ['fg', 'Ignore'],
+				\ 'prompt':  ['fg', 'Conditional'],
+				\ 'pointer': ['fg', 'Exception'],
+				\ 'marker':  ['fg', 'Keyword'],
+				\ 'spinner': ['fg', 'Label'],
+				\ 'header':  ['fg', 'Comment'],
+				\ }
 
 	let g:lightline = { 
 				\ 'active': {
@@ -140,10 +158,8 @@ if s:vim_plug_ready
 		autocmd ColorScheme * call s:update_lightline()
 	augroup END
 
-	nnoremap <leader>b :Buffers<cr>
 	nnoremap <leader>f :Files<cr>
 	nnoremap <leader>g :Git<cr>
-	nnoremap <leader>q :quit<cr>
 	nnoremap <leader>u :UndotreeToggle<cr>
 	nnoremap <leader>w :write<cr>
 
