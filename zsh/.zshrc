@@ -51,7 +51,8 @@ alias la="exa -la"
 alias ll="exa -l"
 alias s="sudo"
 alias se="sudoedit"
-alias v="nvim"
+alias t="tmux"
+alias v="$VISUAL"
 
 # Fast and useful fzf
 FD_FLAGS="-HL -E '**/.git/'"
