@@ -103,7 +103,7 @@ if s:vim_plug_ready
 	command! -nargs=? -complete=dir Sexplore rightbelow split | Dirvish <args>
 	command! -nargs=? -complete=dir Vexplore leftabove vsplit | Dirvish <args>
 
-	function! s:VimwikiSettings()
+	function! s:vimwiki_settings()
 		setlocal wrap linebreak spell
 		nnoremap <silent> <buffer> j gj
 		vnoremap <silent> <buffer> j gj
@@ -116,7 +116,7 @@ if s:vim_plug_ready
 	endfunction
 	augroup Vimwiki
 		autocmd!
-		autocmd FileType vimwiki call s:VimwikiSettings()
+		autocmd FileType vimwiki call s:vimwiki_settings()
 	augroup END
 
 	let g:lightline = { 
