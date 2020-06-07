@@ -134,8 +134,10 @@ if s:vim_plug_ready
 				\ 'pointer': ['fg', 'Exception'],
 				\ 'marker':  ['fg', 'Keyword'],
 				\ 'spinner': ['fg', 'Label'],
-				\ 'header':  ['fg', 'Comment'],
+				\ 'header':  ['fg', 'Comment']
 				\ }
+
+
 
 	let g:lightline = { 
 				\ 'active': {
@@ -159,7 +161,7 @@ if s:vim_plug_ready
 	augroup END
 
 	nnoremap <leader>f :Files<cr>
-	nnoremap <leader>g :Git<cr>
+	nnoremap <leader>g :Git<cr><c-w>L:vertical resize 40<cr>
 	nnoremap <leader>u :UndotreeToggle<cr>
 	nnoremap <leader>w :write<cr>
 
