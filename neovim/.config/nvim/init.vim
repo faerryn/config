@@ -4,6 +4,7 @@ augroup SourceInitVim
 augroup END
 
 let g:mapleader=' '
+set cindent
 set cursorline cursorcolumn
 set foldmethod=syntax foldlevelstart=20
 set hidden
@@ -14,7 +15,6 @@ set nowrap
 set number relativenumber
 set omnifunc=syntaxcomplete#Complete
 set signcolumn=yes
-set cindent
 set splitbelow splitright
 set tabstop=4 softtabstop=4 shiftwidth=4
 set termguicolors
