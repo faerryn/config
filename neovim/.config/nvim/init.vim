@@ -23,9 +23,6 @@ set undofile
 set updatetime=250
 set wildmode=list:longest,full
 
-nnoremap <leader>f :Files<cr>
-nnoremap <leader>g :Git<cr>
-nnoremap <leader>u :UndotreeToggle<cr>
 nnoremap <leader>w :write<cr>
 
 let s:vim_plug_ready = v:true
@@ -67,6 +64,7 @@ Plug 'ziglang/zig.vim'    , { 'for': ['zig',  'vimwiki'] }
 Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
+Plug 'morhetz/gruvbox'
 
 " UI with FZF
 Plug 'junegunn/fzf.vim'
@@ -85,7 +83,18 @@ call plug#end()
 
 if s:vim_plug_ready
 
-	colorscheme nord
+	nnoremap <leader>f :Files<cr>
+	nnoremap <leader>g :Git<cr>
+	nnoremap <leader>u :UndotreeToggle<cr>
+
+	let s:colorschemes = ['nord', 'gruvbox']
+	let g:gruvbox_italic = 1
+	if !exists('g:colors_name')
+		execute "colorscheme " . s:colorschemes[
+					\ system("echo $RANDOM") % len(s:colorschemes)
+					\ ]
+	endif
+
 	let g:highlightedyank_highlight_duration = 250
 	runtime macros/sandwich/keymap/surround.vim
 
