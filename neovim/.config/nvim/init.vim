@@ -118,7 +118,7 @@ if s:vim_plug_ready
     let g:undotree_CustomDiffpanelCmd = 'belowright 5 new'
 	augroup UndoTreeShortcut
 		autocmd!
-		autocmd Filetype undotree nnoremap <buffer> <esc> <c-w>q
+		autocmd Filetype undotree nnoremap <silent> <buffer> <esc> :UndotreeToggle<cr>
 	augroup END
 
 	function s:fugitive_settings()
@@ -169,6 +169,8 @@ if s:vim_plug_ready
 				\ 'spinner': ['fg', 'Label'],
 				\ 'header':  ['fg', 'Comment']
 				\ }
+	command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, <bang>0)
+	command! -bang Buffers call fzf#vim#buffers(<bang>0)
 
 	let g:lightline = { 
 				\ 'active': {
