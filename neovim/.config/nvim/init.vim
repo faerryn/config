@@ -7,6 +7,7 @@ let g:mapleader=' '
 set cindent
 set cursorline cursorcolumn
 set foldmethod=syntax foldlevelstart=20
+set formatoptions-=cro
 set hidden
 set lazyredraw
 set mouse=ar
@@ -86,10 +87,10 @@ if s:vim_plug_ready
 
 	colorscheme nord
 	let g:highlightedyank_highlight_duration = 250
-	let g:rustfmt_autosave = 1
-	let g:zig_fmt_autosave = 1
 	runtime macros/sandwich/keymap/surround.vim
 
+	let g:rustfmt_autosave = 1
+	let g:zig_fmt_autosave = 1
 	if executable("clang-format")
 		augroup AutoClangFormat
 			autocmd!
