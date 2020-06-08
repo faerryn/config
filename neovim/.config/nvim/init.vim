@@ -92,14 +92,16 @@ if s:vim_plug_ready
 	nnoremap <silent> <leader>g :Git<cr>
 	nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
+	let s:rightbar_width = float2nr(&columns * 0.4)
+	let s:random_colorschemes = ['gruvbox', 'nord', 'onehalfdark']
+
 	let g:highlightedyank_highlight_duration = 250
 	runtime macros/sandwich/keymap/surround.vim
 
-	let s:colorschemes = ['gruvbox', 'nord', 'onehalfdark']
 	let g:gruvbox_italic = 1
 	if !exists('g:colors_name')
-		execute "colorscheme " . s:colorschemes[
-					\ system("echo $RANDOM") % len(s:colorschemes)
+		execute "colorscheme " . s:random_colorschemes[
+					\ system("echo $RANDOM") % len(s:random_colorschemes)
 					\ ]
 	endif
 
@@ -114,8 +116,8 @@ if s:vim_plug_ready
 
 	let g:undotree_HelpLine           = 0
 	let g:undotree_SetFocusWhenToggle = 1
-    let g:undotree_CustomUndotreeCmd  = 'belowright vertical 35 new'
-    let g:undotree_CustomDiffpanelCmd = 'belowright 5 new'
+    let g:undotree_CustomUndotreeCmd  = 'belowright vertical ' . s:rightbar_width . ' new'
+    let g:undotree_CustomDiffpanelCmd = 'belowright 8 new'
 	augroup UndoTreeShortcut
 		autocmd!
 		autocmd Filetype undotree nnoremap <silent> <buffer> <esc> :UndotreeToggle<cr>
@@ -123,7 +125,7 @@ if s:vim_plug_ready
 
 	function s:fugitive_settings()
 		execute "normal \<c-w>L"
-		vertical resize 35
+		execute "vertical resize " . s:rightbar_width
 		nnoremap <silent> <buffer> <esc> <c-w>q
 	endfunction
 	augroup FugitiveSettings
@@ -153,7 +155,7 @@ if s:vim_plug_ready
 		autocmd FileType vimwiki call s:vimwiki_settings()
 	augroup END
 	
-	let g:fzf_layout = { 'right': '35' }
+	let g:fzf_layout = { 'right': s:rightbar_width }
 	let g:fzf_colors = { 
 				\ 'fg':      ['fg', 'Normal'],
 				\ 'bg':      ['bg', 'Normal'],
