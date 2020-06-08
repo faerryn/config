@@ -23,9 +23,16 @@ set undofile
 set updatetime=250
 set wildmode=longest,list,full
 
+nnoremap <silent> <leader>c :copen<cr>
 nnoremap <silent> <leader>d :bdelete<cr>
+nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> <leader>t :tabedit<cr>
 nnoremap <silent> <leader>w :write<cr>
+
+augroup QuickfixSettings
+	autocmd!
+	autocmd Filetype qf nnoremap <silent> <buffer> <esc> <c-w>q
+augroup END
 
 function! s:colorscheme_settings()
 	highlight Comment cterm=italic gui=italic
@@ -100,7 +107,6 @@ if s:vim_plug_ready
 	let s:random_colorschemes = ['gruvbox', 'nord', 'onehalfdark']
 
 	execute "nnoremap <silent> <leader>g :Git<cr><c-w>L<cr>:vertical resize " . s:rightbar_width . "<cr>"
-	nnoremap <silent> <leader>c :Colors<cr>
 	nnoremap <silent> <leader>f :Files<cr>
 	nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
@@ -132,11 +138,11 @@ if s:vim_plug_ready
 	augroup END
 
 	function s:fugitive_settings()
-		nnoremap <silent> <buffer> <esc> <c-w>q
+		
 	endfunction
 	augroup FugitiveSettings
 		autocmd!
-		autocmd Filetype fugitive call s:fugitive_settings()
+		autocmd Filetype fugitive nnoremap <silent> <buffer> <esc> <c-w>q
 	augroup END
 
 	let g:loaded_netrw       = 1
@@ -225,7 +231,6 @@ if s:vim_plug_ready
 	else
 
 		let g:syntastic_always_populate_loc_list = 1
-		let g:syntastic_auto_loc_list            = 1
 		let g:syntastic_check_on_open            = 1
 
 	endif
