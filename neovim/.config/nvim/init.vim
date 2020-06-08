@@ -8,6 +8,7 @@ set cindent
 set cursorline cursorcolumn
 set foldmethod=syntax foldlevelstart=20
 set hidden
+set ignorecase smartcase
 set lazyredraw
 set mouse=ar
 set nowrap
@@ -91,6 +92,9 @@ if s:vim_plug_ready
 	nnoremap <silent> <leader>g :Git<cr>
 	nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
+	let g:highlightedyank_highlight_duration = 250
+	runtime macros/sandwich/keymap/surround.vim
+
 	let s:colorschemes = ['gruvbox', 'nord', 'onehalfdark']
 	let g:gruvbox_italic = 1
 	if !exists('g:colors_name')
@@ -98,9 +102,6 @@ if s:vim_plug_ready
 					\ system("echo $RANDOM") % len(s:colorschemes)
 					\ ]
 	endif
-
-	let g:highlightedyank_highlight_duration = 250
-	runtime macros/sandwich/keymap/surround.vim
 
 	let g:rustfmt_autosave = 1
 	let g:zig_fmt_autosave = 1
