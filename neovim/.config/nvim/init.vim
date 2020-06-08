@@ -4,21 +4,24 @@ augroup SourceInitVim
 augroup END
 
 let g:mapleader=' '
+set cursorline cursorcolumn
 set foldmethod=syntax foldlevelstart=20
 set hidden
-set ignorecase        smartcase
+set ignorecase smartcase
 set lazyredraw
 set mouse=ar
 set nowrap
-set number            relativenumber
+set number relativenumber
 set omnifunc=syntaxcomplete#Complete
 set signcolumn=yes
-set smartindent
-set splitbelow        splitright
+set cindent
+set splitbelow splitright
+set tabstop=4 softtabstop=4 shiftwidth=4
 set termguicolors
 set timeoutlen=250
 set undofile
 set updatetime=250
+set wildmode=longest,list,full
 
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>g :Git<cr>
@@ -77,12 +80,6 @@ if has('nvim-0.5.0')
 else
 	" IDE features
 	Plug 'vim-syntastic/syntastic'
-
-	" Snippets with snipmate
-	Plug 'MarcWeber/vim-addon-mw-utils'
-	Plug 'garbas/vim-snipmate'
-	Plug 'honza/vim-snippets'
-	Plug 'tomtom/tlib_vim'
 endif
 
 call plug#end()
@@ -123,7 +120,7 @@ if s:vim_plug_ready
 		nnoremap <silent> <buffer> $ g$
 		vnoremap <silent> <buffer> $ g$
 	endfunction
-	augroup Vimwiki
+	augroup VimwikiSettings
 		autocmd!
 		autocmd FileType vimwiki call s:vimwiki_settings()
 	augroup END
@@ -166,17 +163,13 @@ if s:vim_plug_ready
 	augroup END
 
 	if has('nvim-0.5.0')
-
 		lua require'nvim_lsp'.clangd.setup{}
 		lua require'nvim_lsp'.rls.setup{}
-
 	else
-
 		let g:syntastic_always_populate_loc_list = 1
 		let g:syntastic_auto_loc_list            = 1
 		let g:syntastic_check_on_open            = 1
 		let g:syntastic_check_on_wq              = 1
-
 	endif
 
 endif
