@@ -73,11 +73,10 @@ if !isdirectory('~/.fzf')
 	Plug '~/.fzf'
 endif
 
-" LSP
+" Better language support
 if has('nvim-0.5.0')
 	Plug 'neovim/nvim-lsp'
 else
-	" IDE features
 	Plug 'vim-syntastic/syntastic'
 endif
 
