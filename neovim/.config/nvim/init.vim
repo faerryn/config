@@ -40,10 +40,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 
-" UI with FZF
-Plug 'junegunn/fzf.vim'
-if !isdirectory('~/.fzf') | Plug '~/.fzf' | endif
-
 " Excellent additional features
 Plug 'justinmk/vim-dirvish'
 Plug 'mbbill/undotree'
@@ -55,12 +51,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-syntastic/syntastic'
 Plug 'vimwiki/vimwiki'
 
-" Snippets with snipmate
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
-Plug 'tomtom/tlib_vim'
-
 " Language support
 Plug 'bfrg/vim-cpp-modern', { 'for': ['cpp',  'vimwiki'] }
 Plug 'rust-lang/rust.vim' , { 'for': ['rust', 'vimwiki'] }
@@ -70,6 +60,19 @@ Plug 'ziglang/zig.vim'    , { 'for': ['zig',  'vimwiki'] }
 Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
+
+" UI with FZF
+Plug 'junegunn/fzf.vim'
+if !isdirectory('~/.fzf') | Plug '~/.fzf' | endif
+
+" LSP
+Plug 'neovim/nvim-lsp'
+
+" Snippets with snipmate
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+Plug 'tomtom/tlib_vim'
 
 call plug#end()
 
@@ -134,8 +137,6 @@ if s:vim_plug_ready
 				\ 'spinner': ['fg', 'Label'],
 				\ 'header':  ['fg', 'Comment']
 				\ }
-
-
 
 	let g:lightline = { 
 				\ 'active': {
