@@ -192,12 +192,32 @@ if s:vim_plug_ready
 	augroup END
 
 	if has('nvim-0.5.0')
+
 		lua require'nvim_lsp'.clangd.setup{}
 		lua require'nvim_lsp'.rls.setup{}
+		function s:lsp_settings()
+			nnoremap <silent> <buffer> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+			nnoremap <silent> <buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+			nnoremap <silent> <buffer> K     <cmd>lua vim.lsp.buf.hover()<CR>
+			nnoremap <silent> <buffer> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+			nnoremap <silent> <buffer> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+			nnoremap <silent> <buffer> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+			nnoremap <silent> <buffer> gr    <cmd>lua vim.lsp.buf.references()<CR>
+			nnoremap <silent> <buffer> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+			nnoremap <silent> <buffer> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+			setlocal omnifunc=v:lua.vim.lsp.omnifunc
+		endfunction
+		augroup LspSettings
+			autocmd!
+			autocmd Filetype cpp,rust call s:lsp_settings()
+		augroup END
+
 	else
+
 		let g:syntastic_always_populate_loc_list = 1
 		let g:syntastic_auto_loc_list            = 1
 		let g:syntastic_check_on_open            = 1
+
 	endif
 
 endif
