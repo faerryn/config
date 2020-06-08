@@ -20,6 +20,11 @@ set timeoutlen=250
 set undofile
 set updatetime=250
 
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>g :Git<cr>
+nnoremap <leader>u :UndotreeToggle<cr>
+nnoremap <leader>w :write<cr>
+
 let s:vim_plug_ready = v:true
 if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
 	execute "!curl -fLo " . stdpath('data') . "/site/autoload/plug.vim --create-dirs"
@@ -63,10 +68,14 @@ Plug 'machakann/vim-highlightedyank'
 
 " UI with FZF
 Plug 'junegunn/fzf.vim'
-if !isdirectory('~/.fzf') | Plug '~/.fzf' | endif
+if !isdirectory('~/.fzf')
+	Plug '~/.fzf'
+endif
 
 " LSP
-Plug 'neovim/nvim-lsp'
+if has('nvim-0.5.0')
+	Plug 'neovim/nvim-lsp'
+endif
 
 " Snippets with snipmate
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -159,9 +168,12 @@ if s:vim_plug_ready
 		autocmd ColorScheme * call s:update_lightline()
 	augroup END
 
-	nnoremap <leader>f :Files<cr>
-	nnoremap <leader>g :Git<cr>
-	nnoremap <leader>u :UndotreeToggle<cr>
-	nnoremap <leader>w :write<cr>
+	if has('nvim-0.5.0')
+lua << EOF
+nvim_lsp = require'nvim_lsp'
+nvim_lsp.clangd.setup{}
+nvim_lsp.rls.setup{}
+EOF
+	endif
 
 endif
