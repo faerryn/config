@@ -167,11 +167,8 @@ if s:vim_plug_ready
 
 	if has('nvim-0.5.0')
 
-lua << EOF
-nvim_lsp = require'nvim_lsp'
-nvim_lsp.clangd.setup{}
-nvim_lsp.rls.setup{}
-EOF
+		lua require'nvim_lsp'.clangd.setup{}
+		lua require'nvim_lsp'.rls.setup{}
 
 	else
 
