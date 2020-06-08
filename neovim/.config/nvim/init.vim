@@ -7,7 +7,6 @@ let g:mapleader=' '
 set cindent
 set cursorline cursorcolumn
 set foldmethod=syntax foldlevelstart=20
-set formatoptions-=cro
 set hidden
 set lazyredraw
 set mouse=ar
