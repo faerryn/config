@@ -1,8 +1,10 @@
+" Autosourcing
 augroup SourceInitVim
 	autocmd!
 	execute "autocmd BufWritePost $MYVIMRC source $MYVIMRC"
 augroup END
 
+" Settings
 let g:mapleader=' '
 set cindent
 set cursorline cursorcolumn
@@ -21,8 +23,9 @@ set termguicolors
 set timeoutlen=250
 set undofile
 set updatetime=250
-set wildmode=longest,list,full
+set wildmode=list:longest,full
 
+" Some mappings
 nnoremap <silent> <leader>c :copen<cr>
 nnoremap <silent> <leader>d :bdelete<cr>
 nnoremap <silent> <leader>l :lopen<cr>
@@ -34,100 +37,105 @@ augroup QuickfixSettings
 	autocmd Filetype qf nnoremap <silent> <buffer> <esc> <c-w>q
 augroup END
 
+" Randomly pick a colorscheme form a list
+let s:random_colorschemes = ['default', 'desert', 'slate']
 function! s:colorscheme_settings()
 	highlight Comment cterm=italic gui=italic
 endfunction
 augroup ColorschemeSettings
 	autocmd!
 	autocmd ColorScheme * call s:colorscheme_settings()
+	autocmd VimEnter * execute "colorscheme " . s:random_colorschemes[system("echo $RANDOM") % len(s:random_colorschemes)]
 augroup END
 
-let s:vim_plug_ready = v:true
-if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
-	execute "!curl -fLo " . stdpath('data') . "/site/autoload/plug.vim --create-dirs"
-				\ . " https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-	augroup VimPlugInstall
-		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-	augroup END
-	let s:vim_plug_ready = v:false
+" Ask to install vim-plug on startup
+if !exists('s:vim_plug_install_answer')
+	let s:want_plugins = v:false
+	let s:plugins_ready = v:false
+	if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
+		echo 'Install plugins? [y/N]: '
+		let s:vim_plug_install_answer = nr2char(getchar())
+		if s:vim_plug_install_answer ==? 'y'
+			execute "!curl -fLo " . stdpath('data') . "/site/autoload/plug.vim --create-dirs
+						\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+			augroup VimPlugInstall
+				autocmd!
+				autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+			augroup END
+			let s:want_plugins = v:true
+		endif
+	else
+		let s:want_plugins = v:true
+		let s:plugins_ready = v:true
+	endif
 endif
 
-call plug#begin(stdpath('data') . '/plugged')
+" Install plugins
+if s:want_plugins
+	call plug#begin(stdpath('data') . '/plugged')
 
-" Essential editing improvements
-Plug 'machakann/vim-sandwich'
-Plug 'tommcdo/vim-lion'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-unimpaired'
-Plug 'wellle/targets.vim'
+	" Essential editing improvements
+	Plug 'machakann/vim-sandwich'
+	Plug 'tommcdo/vim-lion'
+	Plug 'tomtom/tcomment_vim'
+	Plug 'tpope/vim-repeat'
+	Plug 'tpope/vim-unimpaired'
+	Plug 'wellle/targets.vim'
 
-" Excellent additional features
-Plug 'justinmk/vim-dirvish'
-Plug 'mbbill/undotree'
-Plug 'mhinz/vim-signify'
-Plug 'pbrisbin/vim-mkdir'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'vimwiki/vimwiki'
+	" Excellent additional features
+	Plug 'justinmk/vim-dirvish'
+	Plug 'mbbill/undotree'
+	Plug 'mhinz/vim-signify'
+	Plug 'pbrisbin/vim-mkdir'
+	Plug 'tpope/vim-dispatch'
+	Plug 'tpope/vim-eunuch'
+	Plug 'tpope/vim-fugitive'
+	Plug 'vimwiki/vimwiki'
 
-" Language support
-Plug 'bfrg/vim-cpp-modern', { 'for': ['cpp',  'vimwiki'] }
-Plug 'rust-lang/rust.vim' , { 'for': ['rust', 'vimwiki'] }
-Plug 'ziglang/zig.vim'    , { 'for': ['zig',  'vimwiki'] }
+	" Language support
+	Plug 'bfrg/vim-cpp-modern', { 'for': ['cpp',  'vimwiki'] }
+	Plug 'rust-lang/rust.vim' , { 'for': ['rust', 'vimwiki'] }
+	Plug 'ziglang/zig.vim'    , { 'for': ['zig',  'vimwiki'] }
 
-" Aesthetics
-Plug 'machakann/vim-highlightedyank'
-Plug 'itchyny/lightline.vim'
+	" Aesthetics
+	Plug 'machakann/vim-highlightedyank'
+	Plug 'itchyny/lightline.vim'
 
-" Colorschemes
-Plug 'arcticicestudio/nord-vim'
-Plug 'morhetz/gruvbox'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
+	" Colorschemes
+	Plug 'arcticicestudio/nord-vim'
+	Plug 'morhetz/gruvbox'
+	Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
-" UI with FZF
-Plug 'junegunn/fzf.vim'
-if !isdirectory('~/.fzf')
-	Plug '~/.fzf'
+	" UI with FZF
+	Plug 'junegunn/fzf.vim'
+	if !isdirectory('~/.fzf')
+		Plug '~/.fzf'
+	endif
+
+	" Better language support
+	if has('nvim-0.5.0')
+		Plug 'neovim/nvim-lsp'
+	else
+		Plug 'vim-syntastic/syntastic'
+	endif
+
+	call plug#end()
 endif
 
-" Better language support
-if has('nvim-0.5.0')
-	Plug 'neovim/nvim-lsp'
-else
-	Plug 'vim-syntastic/syntastic'
-endif
+" Setup plugins
+if s:plugins_ready
 
-call plug#end()
-
-if s:vim_plug_ready
-
+	" Master control settings for plugins
 	let s:random_colorschemes = ['gruvbox', 'nord', 'onehalfdark']
+	let s:rightbar_width = 'float2nr(10 + &columns * 0.3)'
 
+	" Mappings
 	nnoremap <silent> <leader>f :Files<cr>
 	nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
-	function s:resize_settings()
-		let s:rightbar_width = float2nr(&columns * 0.4)
-		execute "nnoremap <silent> <leader>g :Git<cr><c-w>L<cr>:vertical resize " . s:rightbar_width . "<cr>"
-		let g:undotree_CustomUndotreeCmd  = 'belowright vertical ' . s:rightbar_width . ' new'
-		let g:fzf_layout = { 'right': s:rightbar_width }
-	endfunction
-	augroup ResizeSettings
-		autocmd!
-		autocmd VimResized * call s:resize_settings()
-	augroup END
-	call s:resize_settings()
-
+	" Miscellaneous plugin settings
 	let g:highlightedyank_highlight_duration = 250
 	runtime macros/sandwich/keymap/surround.vim
-
-	if !exists('g:colors_name')
-		execute "colorscheme " . s:random_colorschemes[
-					\ system("echo $RANDOM") % len(s:random_colorschemes)
-					\ ]
-	endif
 
 	let g:rustfmt_autosave = 1
 	let g:zig_fmt_autosave = 1
@@ -141,9 +149,10 @@ if s:vim_plug_ready
 	let g:undotree_HelpLine           = 0
 	let g:undotree_SetFocusWhenToggle = 1
     let g:undotree_CustomDiffpanelCmd = 'new'
-	augroup UndoTreeShortcut
+	augroup UndotreeSettings
 		autocmd!
 		autocmd Filetype undotree nnoremap <silent> <buffer> <esc> :UndotreeToggle<cr>
+		autocmd VimEnter,VimResized * let g:undotree_CustomUndotreeCmd  = 'belowright vertical ' . eval(s:rightbar_width) . ' new'
 	augroup END
 
 	function s:fugitive_settings()
@@ -152,6 +161,8 @@ if s:vim_plug_ready
 	augroup FugitiveSettings
 		autocmd!
 		autocmd Filetype fugitive nnoremap <silent> <buffer> <esc> <c-w>q
+		autocmd VimEnter,VimResized * execute 'nnoremap <silent> <leader>g 
+					\ :Git<cr><c-w>L<cr>:vertical resize ' . eval(s:rightbar_width) . '<cr>'
 	augroup END
 
 	let g:loaded_netrw       = 1
@@ -193,6 +204,10 @@ if s:vim_plug_ready
 				\ }
 	command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, <bang>0)
 	command! -bang Buffers call fzf#vim#buffers(<bang>0)
+	augroup FzfSettings
+		autocmd!
+		autocmd VimEnter,VimResized * let g:fzf_layout = { 'right': eval(s:rightbar_width) }
+	augroup END
 
 	let g:lightline = { 
 				\ 'active': {
@@ -211,9 +226,8 @@ if s:vim_plug_ready
 	endfunction
 	augroup LightlineSettings
 		autocmd!
-		autocmd ColorScheme * call s:lightline_settings()
+		autocmd VimEnter,ColorScheme * call s:lightline_settings()
 	augroup END
-	call s:lightline_settings()
 
 	if has('nvim-0.5.0')
 
