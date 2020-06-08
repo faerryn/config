@@ -20,9 +20,11 @@ set termguicolors
 set timeoutlen=250
 set undofile
 set updatetime=250
-set wildmode=list:longest,full
+set wildmode=longest,list,full
 
-nnoremap <leader>w :write<cr>
+nnoremap <silent> <leader>d :bdelete<cr>
+nnoremap <silent> <leader>t :tabedit<cr>
+nnoremap <silent> <leader>w :write<cr>
 
 let s:vim_plug_ready = v:true
 if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
@@ -60,10 +62,13 @@ Plug 'rust-lang/rust.vim' , { 'for': ['rust', 'vimwiki'] }
 Plug 'ziglang/zig.vim'    , { 'for': ['zig',  'vimwiki'] }
 
 " Aesthetics
-Plug 'arcticicestudio/nord-vim'
-Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
+Plug 'itchyny/lightline.vim'
+
+" Colorschemes
+Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 " UI with FZF
 Plug 'junegunn/fzf.vim'
@@ -82,11 +87,11 @@ call plug#end()
 
 if s:vim_plug_ready
 
-	nnoremap <leader>f :Files<cr>
-	nnoremap <leader>g :Git<cr>
-	nnoremap <leader>u :UndotreeToggle<cr>
+	nnoremap <silent> <leader>f :Files<cr>
+	nnoremap <silent> <leader>g :Git<cr>
+	nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
-	let s:colorschemes = ['nord', 'gruvbox']
+	let s:colorschemes = ['gruvbox', 'nord', 'onehalfdark']
 	let g:gruvbox_italic = 1
 	if !exists('g:colors_name')
 		execute "colorscheme " . s:colorschemes[
@@ -108,7 +113,22 @@ if s:vim_plug_ready
 
 	let g:undotree_HelpLine           = 0
 	let g:undotree_SetFocusWhenToggle = 1
-	let g:undotree_WindowLayout       = 3
+    let g:undotree_CustomUndotreeCmd  = 'belowright vertical 35 new'
+    let g:undotree_CustomDiffpanelCmd = 'belowright 5 new'
+	augroup UndoTreeShortcut
+		autocmd!
+		autocmd Filetype undotree nnoremap <buffer> <esc> <c-w>q
+	augroup END
+
+	function s:fugitive_settings()
+		execute "normal \<c-w>L"
+		vertical resize 35
+		nnoremap <silent> <buffer> <esc> <c-w>q
+	endfunction
+	augroup FugitiveSettings
+		autocmd!
+		autocmd Filetype fugitive call s:fugitive_settings()
+	augroup END
 
 	let g:loaded_netrw       = 1
 	let g:loaded_netrwPlugin = 1
@@ -132,6 +152,7 @@ if s:vim_plug_ready
 		autocmd FileType vimwiki call s:vimwiki_settings()
 	augroup END
 	
+	let g:fzf_layout = { 'right': '35' }
 	let g:fzf_colors = { 
 				\ 'fg':      ['fg', 'Normal'],
 				\ 'bg':      ['bg', 'Normal'],
