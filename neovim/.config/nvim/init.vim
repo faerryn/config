@@ -53,7 +53,6 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-syntastic/syntastic'
 Plug 'vimwiki/vimwiki'
 
 " Language support
@@ -75,13 +74,16 @@ endif
 " LSP
 if has('nvim-0.5.0')
 	Plug 'neovim/nvim-lsp'
-endif
+else
+	" IDE features
+	Plug 'vim-syntastic/syntastic'
 
-" Snippets with snipmate
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
-Plug 'tomtom/tlib_vim'
+	" Snippets with snipmate
+	Plug 'MarcWeber/vim-addon-mw-utils'
+	Plug 'garbas/vim-snipmate'
+	Plug 'honza/vim-snippets'
+	Plug 'tomtom/tlib_vim'
+endif
 
 call plug#end()
 
@@ -99,11 +101,6 @@ if s:vim_plug_ready
 			autocmd BufwritePre *.c,*.cpp %!clang-format
 		augroup END
 	endif
-
-	let g:syntastic_always_populate_loc_list = 1
-	let g:syntastic_auto_loc_list            = 1
-	let g:syntastic_check_on_open            = 1
-	let g:syntastic_check_on_wq              = 1
 
 	let g:undotree_HelpLine           = 0
 	let g:undotree_SetFocusWhenToggle = 1
@@ -169,11 +166,20 @@ if s:vim_plug_ready
 	augroup END
 
 	if has('nvim-0.5.0')
+
 lua << EOF
 nvim_lsp = require'nvim_lsp'
 nvim_lsp.clangd.setup{}
 nvim_lsp.rls.setup{}
 EOF
+
+	else
+
+		let g:syntastic_always_populate_loc_list = 1
+		let g:syntastic_auto_loc_list            = 1
+		let g:syntastic_check_on_open            = 1
+		let g:syntastic_check_on_wq              = 1
+
 	endif
 
 endif
