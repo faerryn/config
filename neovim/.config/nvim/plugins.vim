@@ -1,3 +1,9 @@
+" Autosourcing
+augroup SourceVimConfig
+	execute 'autocmd! BufWritePost ' . expand('<sfile>')
+				\ . ' source ' . expand('<sfile>')
+augroup END
+
 call plug#begin(stdpath('data') . '/plugged')
 
 " Essential editing improvements

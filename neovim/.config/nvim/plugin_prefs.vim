@@ -1,7 +1,6 @@
 " Autosourcing
-augroup SourcePluginsVim
-	autocmd!
-	execute 'autocmd BufWritePost ' . expand('<sfile>')
+augroup SourceVimConfig
+	execute 'autocmd! BufWritePost ' . expand('<sfile>')
 				\ . ' source ' . expand('<sfile>')
 augroup END
 
