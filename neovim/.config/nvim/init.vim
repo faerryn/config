@@ -21,7 +21,7 @@ set termguicolors
 set timeoutlen=250
 set undofile
 set updatetime=250
-set wildmode=longest,list,full
+set wildmode=list:longest,full
 
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>g :Git<cr>
@@ -169,7 +169,6 @@ if s:vim_plug_ready
 		let g:syntastic_always_populate_loc_list = 1
 		let g:syntastic_auto_loc_list            = 1
 		let g:syntastic_check_on_open            = 1
-		let g:syntastic_check_on_wq              = 1
 	endif
 
 endif
