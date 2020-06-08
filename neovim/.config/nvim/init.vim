@@ -27,6 +27,14 @@ nnoremap <silent> <leader>d :bdelete<cr>
 nnoremap <silent> <leader>t :tabedit<cr>
 nnoremap <silent> <leader>w :write<cr>
 
+function! s:colorscheme_settings()
+	highlight Comment cterm=italic gui=italic
+endfunction
+augroup ColorschemeSettings
+	autocmd!
+	autocmd ColorScheme * call s:colorscheme_settings()
+augroup END
+
 let s:vim_plug_ready = v:true
 if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
 	execute "!curl -fLo " . stdpath('data') . "/site/autoload/plug.vim --create-dirs"
@@ -92,13 +100,13 @@ if s:vim_plug_ready
 	let s:random_colorschemes = ['gruvbox', 'nord', 'onehalfdark']
 
 	execute "nnoremap <silent> <leader>g :Git<cr><c-w>L<cr>:vertical resize " . s:rightbar_width . "<cr>"
+	nnoremap <silent> <leader>c :Colors<cr>
 	nnoremap <silent> <leader>f :Files<cr>
 	nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
 	let g:highlightedyank_highlight_duration = 250
 	runtime macros/sandwich/keymap/surround.vim
 
-	let g:gruvbox_italic = 1
 	if !exists('g:colors_name')
 		execute "colorscheme " . s:random_colorschemes[
 					\ system("echo $RANDOM") % len(s:random_colorschemes)
@@ -183,15 +191,15 @@ if s:vim_plug_ready
 				\ 'separator': { 'left': '', 'right': '' },
 				\ 'subseparator': { 'left': '', 'right': '' },
 				\ }
-	function! s:update_lightline()
+	function! s:lightline_settings()
 		let g:lightline.colorscheme = g:colors_name
 		call g:lightline#enable()
 	endfunction
-	call s:update_lightline()
-	augroup UpdateLightline
+	augroup LightlineSettings
 		autocmd!
-		autocmd ColorScheme * call s:update_lightline()
+		autocmd ColorScheme * call s:lightline_settings()
 	augroup END
+	call s:lightline_settings()
 
 	if has('nvim-0.5.0')
 
