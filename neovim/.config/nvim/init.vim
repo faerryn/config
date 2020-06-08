@@ -8,7 +8,6 @@ set cindent
 set cursorline cursorcolumn
 set foldmethod=syntax foldlevelstart=20
 set hidden
-set ignorecase smartcase
 set lazyredraw
 set mouse=ar
 set nowrap
