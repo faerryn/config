@@ -1,7 +1,8 @@
 " Autosourcing
 augroup SourceInitVim
 	autocmd!
-	execute "autocmd BufWritePost $MYVIMRC source $MYVIMRC"
+	execute 'autocmd BufWritePost ' . expand('<sfile>')
+				\ . ' source ' . expand('<sfile>')
 augroup END
 
 " Settings
@@ -37,224 +38,27 @@ augroup QuickfixSettings
 	autocmd Filetype qf nnoremap <silent> <buffer> <esc> <c-w>q
 augroup END
 
-" Randomly pick a colorscheme form a list
-let s:random_colorschemes = ['default', 'desert', 'slate']
-function! s:colorscheme_settings()
-	highlight Comment cterm=italic gui=italic
-endfunction
-augroup ColorschemeSettings
-	autocmd!
-	autocmd ColorScheme * call s:colorscheme_settings()
-	autocmd VimEnter * execute "colorscheme " . s:random_colorschemes[system("echo $RANDOM") % len(s:random_colorschemes)]
-augroup END
-
 " Ask to install vim-plug on startup
 if !exists('s:vim_plug_install_answer')
-	let s:want_plugins = v:false
-	let s:plugins_ready = v:false
 	if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
 		echo 'Install plugins? [y/N]: '
 		let s:vim_plug_install_answer = nr2char(getchar())
 		if s:vim_plug_install_answer ==? 'y'
-			execute "!curl -fLo " . stdpath('data') . "/site/autoload/plug.vim --create-dirs
-						\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-			augroup VimPlugInstall
-				autocmd!
-				autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-			augroup END
 			let s:want_plugins = v:true
+			execute "!curl -fLo " . stdpath('data')
+						\ . '/site/autoload/plug.vim --create-dirs
+						\ https://raw.githubusercontent.com/
+						\junegunn/vim-plug/master/plug.vim'
+			augroup VimplugAutoinstall
+				autocmd!
+				autocmd VimEnter * 
+							\ | execute 'source ' . stdpath('config') . '/plugins.vim'
+							\ | PlugInstall --sync
+							\ | execute 'source ' . stdpath('config') . '/plugin_prefs.vim'
+			augroup END
 		endif
 	else
-		let s:want_plugins = v:true
-		let s:plugins_ready = v:true
+		execute 'source ' . stdpath('config') . '/plugins.vim'
+		execute 'source ' . stdpath('config') . '/plugin_prefs.vim'
 	endif
-endif
-
-" Install plugins
-if s:want_plugins
-	call plug#begin(stdpath('data') . '/plugged')
-
-	" Essential editing improvements
-	Plug 'machakann/vim-sandwich'
-	Plug 'tommcdo/vim-lion'
-	Plug 'tomtom/tcomment_vim'
-	Plug 'tpope/vim-repeat'
-	Plug 'tpope/vim-unimpaired'
-	Plug 'wellle/targets.vim'
-
-	" Excellent additional features
-	Plug 'justinmk/vim-dirvish'
-	Plug 'mbbill/undotree'
-	Plug 'mhinz/vim-signify'
-	Plug 'pbrisbin/vim-mkdir'
-	Plug 'tpope/vim-dispatch'
-	Plug 'tpope/vim-eunuch'
-	Plug 'tpope/vim-fugitive'
-	Plug 'vimwiki/vimwiki'
-
-	" Language support
-	Plug 'bfrg/vim-cpp-modern', { 'for': ['cpp',  'vimwiki'] }
-	Plug 'rust-lang/rust.vim' , { 'for': ['rust', 'vimwiki'] }
-	Plug 'ziglang/zig.vim'    , { 'for': ['zig',  'vimwiki'] }
-
-	" Aesthetics
-	Plug 'machakann/vim-highlightedyank'
-	Plug 'itchyny/lightline.vim'
-
-	" Colorschemes
-	Plug 'arcticicestudio/nord-vim'
-	Plug 'morhetz/gruvbox'
-	Plug 'sonph/onehalf', { 'rtp': 'vim' }
-
-	" UI with FZF
-	Plug 'junegunn/fzf.vim'
-	if !isdirectory('~/.fzf')
-		Plug '~/.fzf'
-	endif
-
-	" Better language support
-	if has('nvim-0.5.0')
-		Plug 'neovim/nvim-lsp'
-	else
-		Plug 'vim-syntastic/syntastic'
-	endif
-
-	call plug#end()
-endif
-
-" Setup plugins
-if s:plugins_ready
-
-	" Master control settings for plugins
-	let s:random_colorschemes = ['gruvbox', 'nord', 'onehalfdark']
-	let s:rightbar_width = 'float2nr(10 + &columns * 0.3)'
-
-	" Mappings
-	nnoremap <silent> <leader>f :Files<cr>
-	nnoremap <silent> <leader>u :UndotreeToggle<cr>
-
-	" Miscellaneous plugin settings
-	let g:highlightedyank_highlight_duration = 250
-	runtime macros/sandwich/keymap/surround.vim
-
-	let g:rustfmt_autosave = 1
-	let g:zig_fmt_autosave = 1
-	if executable("clang-format")
-		augroup AutoClangFormat
-			autocmd!
-			autocmd BufwritePre *.c,*.cpp %!clang-format
-		augroup END
-	endif
-
-	let g:undotree_HelpLine           = 0
-	let g:undotree_SetFocusWhenToggle = 1
-    let g:undotree_CustomDiffpanelCmd = 'new'
-	augroup UndotreeSettings
-		autocmd!
-		autocmd Filetype undotree nnoremap <silent> <buffer> <esc> :UndotreeToggle<cr>
-		autocmd VimEnter,VimResized * let g:undotree_CustomUndotreeCmd  = 'belowright vertical ' . eval(s:rightbar_width) . ' new'
-	augroup END
-
-	function s:fugitive_settings()
-		
-	endfunction
-	augroup FugitiveSettings
-		autocmd!
-		autocmd Filetype fugitive nnoremap <silent> <buffer> <esc> <c-w>q
-		autocmd VimEnter,VimResized * execute 'nnoremap <silent> <leader>g 
-					\ :Git<cr><c-w>L<cr>:vertical resize ' . eval(s:rightbar_width) . '<cr>'
-	augroup END
-
-	let g:loaded_netrw       = 1
-	let g:loaded_netrwPlugin = 1
-	command! -nargs=? -complete=dir Explore Dirvish <args>
-	command! -nargs=? -complete=dir Sexplore rightbelow split | Dirvish <args>
-	command! -nargs=? -complete=dir Vexplore leftabove vsplit | Dirvish <args>
-
-	function! s:vimwiki_settings()
-		setlocal wrap linebreak spell
-		nnoremap <silent> <buffer> j gj
-		vnoremap <silent> <buffer> j gj
-		nnoremap <silent> <buffer> k gk
-		vnoremap <silent> <buffer> k gk
-		nnoremap <silent> <buffer> 0 g0
-		vnoremap <silent> <buffer> 0 g0
-		nnoremap <silent> <buffer> $ g$
-		vnoremap <silent> <buffer> $ g$
-	endfunction
-	augroup VimwikiSettings
-		autocmd!
-		autocmd FileType vimwiki call s:vimwiki_settings()
-	augroup END
-	
-	let g:fzf_colors = { 
-				\ 'fg':      ['fg', 'Normal'],
-				\ 'bg':      ['bg', 'Normal'],
-				\ 'hl':      ['fg', 'Comment'],
-				\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-				\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-				\ 'hl+':     ['fg', 'Statement'],
-				\ 'info':    ['fg', 'PreProc'],
-				\ 'border':  ['fg', 'Ignore'],
-				\ 'prompt':  ['fg', 'Conditional'],
-				\ 'pointer': ['fg', 'Exception'],
-				\ 'marker':  ['fg', 'Keyword'],
-				\ 'spinner': ['fg', 'Label'],
-				\ 'header':  ['fg', 'Comment']
-				\ }
-	command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, <bang>0)
-	command! -bang Buffers call fzf#vim#buffers(<bang>0)
-	augroup FzfSettings
-		autocmd!
-		autocmd VimEnter,VimResized * let g:fzf_layout = { 'right': eval(s:rightbar_width) }
-	augroup END
-
-	let g:lightline = { 
-				\ 'active': {
-				\	'left': [
-				\ 		[ 'mode', 'paste' ],
-				\ 		[ 'gitbranch', 'readonly', 'filename', 'modified' ]
-				\ 	]
-				\ },
-				\ 'component_function': { 'gitbranch': 'FugitiveHead' },
-				\ 'separator': { 'left': '', 'right': '' },
-				\ 'subseparator': { 'left': '', 'right': '' },
-				\ }
-	function! s:lightline_settings()
-		let g:lightline.colorscheme = g:colors_name
-		call g:lightline#enable()
-	endfunction
-	augroup LightlineSettings
-		autocmd!
-		autocmd VimEnter,ColorScheme * call s:lightline_settings()
-	augroup END
-
-	if has('nvim-0.5.0')
-
-		lua require'nvim_lsp'.clangd.setup{}
-		lua require'nvim_lsp'.rls.setup{}
-		function s:lsp_settings()
-			nnoremap <silent> <buffer> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-			nnoremap <silent> <buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-			nnoremap <silent> <buffer> K     <cmd>lua vim.lsp.buf.hover()<CR>
-			nnoremap <silent> <buffer> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-			nnoremap <silent> <buffer> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-			nnoremap <silent> <buffer> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-			nnoremap <silent> <buffer> gr    <cmd>lua vim.lsp.buf.references()<CR>
-			nnoremap <silent> <buffer> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-			nnoremap <silent> <buffer> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-			setlocal omnifunc=v:lua.vim.lsp.omnifunc
-		endfunction
-		augroup LspSettings
-			autocmd!
-			autocmd Filetype cpp,rust call s:lsp_settings()
-		augroup END
-
-	else
-
-		let g:syntastic_always_populate_loc_list = 1
-		let g:syntastic_check_on_open            = 1
-
-	endif
-
 endif
