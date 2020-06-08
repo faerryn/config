@@ -103,12 +103,22 @@ call plug#end()
 
 if s:vim_plug_ready
 
-	let s:rightbar_width = float2nr(&columns * 0.4)
 	let s:random_colorschemes = ['gruvbox', 'nord', 'onehalfdark']
 
-	execute "nnoremap <silent> <leader>g :Git<cr><c-w>L<cr>:vertical resize " . s:rightbar_width . "<cr>"
 	nnoremap <silent> <leader>f :Files<cr>
 	nnoremap <silent> <leader>u :UndotreeToggle<cr>
+
+	function s:resize_settings()
+		let s:rightbar_width = float2nr(&columns * 0.4)
+		execute "nnoremap <silent> <leader>g :Git<cr><c-w>L<cr>:vertical resize " . s:rightbar_width . "<cr>"
+		let g:undotree_CustomUndotreeCmd  = 'belowright vertical ' . s:rightbar_width . ' new'
+		let g:fzf_layout = { 'right': s:rightbar_width }
+	endfunction
+	augroup ResizeSettings
+		autocmd!
+		autocmd VimResized * call s:resize_settings()
+	augroup END
+	call s:resize_settings()
 
 	let g:highlightedyank_highlight_duration = 250
 	runtime macros/sandwich/keymap/surround.vim
@@ -130,7 +140,6 @@ if s:vim_plug_ready
 
 	let g:undotree_HelpLine           = 0
 	let g:undotree_SetFocusWhenToggle = 1
-    let g:undotree_CustomUndotreeCmd  = 'belowright vertical ' . s:rightbar_width . ' new'
     let g:undotree_CustomDiffpanelCmd = 'new'
 	augroup UndoTreeShortcut
 		autocmd!
@@ -167,7 +176,6 @@ if s:vim_plug_ready
 		autocmd FileType vimwiki call s:vimwiki_settings()
 	augroup END
 	
-	let g:fzf_layout = { 'right': s:rightbar_width }
 	let g:fzf_colors = { 
 				\ 'fg':      ['fg', 'Normal'],
 				\ 'bg':      ['bg', 'Normal'],
