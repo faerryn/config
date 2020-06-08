@@ -88,12 +88,12 @@ call plug#end()
 
 if s:vim_plug_ready
 
-	nnoremap <silent> <leader>f :Files<cr>
-	nnoremap <silent> <leader>g :Git<cr>
-	nnoremap <silent> <leader>u :UndotreeToggle<cr>
-
 	let s:rightbar_width = float2nr(&columns * 0.4)
 	let s:random_colorschemes = ['gruvbox', 'nord', 'onehalfdark']
+
+	nnoremap <silent> <leader>f :Files<cr>
+	execute "nnoremap <silent> <leader>g :Git<cr><c-w>L<cr>:vertical resize " . s:rightbar_width . "<cr>"
+	nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
 	let g:highlightedyank_highlight_duration = 250
 	runtime macros/sandwich/keymap/surround.vim
@@ -124,8 +124,6 @@ if s:vim_plug_ready
 	augroup END
 
 	function s:fugitive_settings()
-		execute "normal \<c-w>L"
-		execute "vertical resize " . s:rightbar_width
 		nnoremap <silent> <buffer> <esc> <c-w>q
 	endfunction
 	augroup FugitiveSettings
