@@ -24,7 +24,7 @@ set timeoutlen=250
 set undofile
 set updatetime=250
 
-nnoremap <silent> <leader>c :copen<cr>
+nnoremap <silent> <leader>q :copen<cr>
 nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> [b :bprevious<cr>
 nnoremap <silent> ]b :bnext<cr>

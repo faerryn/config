@@ -8,15 +8,16 @@ augroup END
 let s:random_colorschemes = ['gruvbox', 'nord', 'onehalfdark']
 let s:rightbar_width = 'float2nr(10 + &columns * 0.3)'
 
+" Mappings
+nnoremap <silent> <leader>f :Files<cr>
+nnoremap <silent> <leader>u :UndotreeToggle<cr>
+nnoremap <silent> <leader>c :Calendar<cr>
+
 " Random colorschemes
 if !exists('g:colors_name')
 	execute "colorscheme " . s:random_colorschemes[
 					\ system("echo $RANDOM") % len(s:random_colorschemes)]
 endif
-
-" Mappings
-nnoremap <silent> <leader>f :Files<cr>
-nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
 " Miscellaneous plugin settings
 let g:highlightedyank_highlight_duration = 250
