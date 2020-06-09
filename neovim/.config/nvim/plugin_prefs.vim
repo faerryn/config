@@ -24,6 +24,10 @@ let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 runtime macros/sandwich/keymap/surround.vim
 
+function! s:calendar_settings()
+	nnoremap <silent> <buffer> <esc> <c-w>q
+	nnoremap <silent> <buffer> <leader>c <c-w>q
+endfunction
 function! s:calendar_rightbar()
 	execute 'nnoremap <silent> <leader>c
 				\ :Calendar -split=vertical -position=right
@@ -31,8 +35,7 @@ function! s:calendar_rightbar()
 endfunction
 augroup CalendarSettings
 	autocmd!
-	autocmd FileType calendar nnoremap <silent> <buffer> <esc>
-				\ <c-w>q
+	autocmd FileType calendar call s:calendar_settings()
 	autocmd VimResized * call s:calendar_rightbar()
 augroup END
 call s:calendar_rightbar()
