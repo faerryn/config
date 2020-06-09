@@ -20,16 +20,8 @@ nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
 " Miscellaneous plugin settings
 let g:highlightedyank_highlight_duration = 250
-runtime macros/sandwich/keymap/surround.vim
-
-let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
-if executable("clang-format")
-	augroup AutoClangFormat
-		autocmd!
-		autocmd BufwritePre *.c,*.cpp %!clang-format
-	augroup END
-endif
+runtime macros/sandwich/keymap/surround.vim
 
 let g:undotree_HelpLine           = 0
 let g:undotree_SetFocusWhenToggle = 1

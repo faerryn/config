@@ -36,3 +36,13 @@ augroup QuickfixSettings
 	autocmd!
 	autocmd Filetype qf nnoremap <silent> <buffer> <esc> <c-w>q
 augroup END
+
+augroup AutoClangFormat
+	autocmd!
+	if executable("clang-format")
+		autocmd BufwritePre *.c,*.cpp %!clang-format
+	endif
+	if executable("rustfmt")
+		autocmd BufwritePre *.rs %!rustfmt
+	endif
+augroup END
