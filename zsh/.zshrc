@@ -28,8 +28,6 @@ zstyle ':vcs_info:git:*' formats '(%b)'
 PROMPT="[%F{green}%c%f]\$vcs_info_msg_0_%(!.#.$) "
 RPROMPT="%(0?..%F{red}%?%f)"
 
-export FPATH="$HOME/.local/share/zsh/functions:$FPATH"
-
 # Editing
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -61,4 +59,5 @@ export FZF_CTRL_T_COMMAND="fd $FD_FLAGS -tf . \$dir"
 export FZF_DEFAULT_COMMAND="fd $FD_FLAGS -tf"
 
 # Nicer ls/exa output
-[ -e "$XDG_CONFIG_HOME/dircolors/dir_colors" ] && eval `dircolors "$XDG_CONFIG_HOME/dircolors/dir_colors"`
+[ -e "$XDG_CONFIG_HOME/dircolors/dir_colors" ]\
+	&& eval `dircolors "$XDG_CONFIG_HOME/dircolors/dir_colors"`
