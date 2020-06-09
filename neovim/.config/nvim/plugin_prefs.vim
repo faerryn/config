@@ -58,7 +58,7 @@ command! -nargs=? -complete=dir Sexplore rightbelow split | Dirvish <args>
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | Dirvish <args>
 
 function! s:vimwiki_settings()
-	setlocal wrap linebreak spell
+	setlocal wrap linebreak
 	nnoremap <silent> <buffer> j gj
 	vnoremap <silent> <buffer> j gj
 	nnoremap <silent> <buffer> k gk
