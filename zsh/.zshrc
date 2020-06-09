@@ -49,7 +49,6 @@ alias la="exa -la"
 alias ll="exa -l"
 alias s="sudo"
 alias se="sudoedit"
-alias t="tmux"
 alias v="nvim"
 
 # Fast and useful fzf
