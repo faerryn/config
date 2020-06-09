@@ -11,7 +11,6 @@ let s:rightbar_width = 'float2nr(10 + &columns * 0.3)'
 " Mappings
 nnoremap <silent> <leader>f :Files<cr>
 nnoremap <silent> <leader>u :UndotreeToggle<cr>
-nnoremap <silent> <leader>c :Calendar<cr>
 
 " Random colorschemes
 if !exists('g:colors_name')
@@ -25,11 +24,18 @@ let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 runtime macros/sandwich/keymap/surround.vim
 
+function! s:calendar_rightbar()
+	execute 'nnoremap <silent> <leader>c
+				\ :Calendar -split=vertical -position=right
+				\ -width=' . eval(s:rightbar_width) . '<cr>'
+endfunction
 augroup CalendarSettings
 	autocmd!
 	autocmd FileType calendar nnoremap <silent> <buffer> <esc>
 				\ <c-w>q
+	autocmd VimResized * call s:calendar_rightbar()
 augroup END
+call s:calendar_rightbar()
 
 let g:undotree_HelpLine           = 0
 let g:undotree_SetFocusWhenToggle = 1
@@ -105,6 +111,7 @@ function! s:fzf_rightbar()
 endfunction
 augroup FzfSettings
 	autocmd!
+	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
 	autocmd VimResized * call s:fzf_rightbar()
 augroup END
 call s:fzf_rightbar()
