@@ -6,6 +6,7 @@ augroup END
 
 let g:mapleader=' '
 set cindent
+set colorcolumn=80
 set cursorline cursorcolumn
 set foldmethod=syntax foldlevelstart=20
 set hidden
