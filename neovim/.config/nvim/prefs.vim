@@ -23,7 +23,6 @@ set termguicolors
 set timeoutlen=250
 set undofile
 set updatetime=250
-set wildmode=list:longest,full
 
 nnoremap <silent> <leader>c :copen<cr>
 nnoremap <silent> <leader>d :bdelete<cr>
