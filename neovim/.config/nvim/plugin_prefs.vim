@@ -25,6 +25,12 @@ let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 runtime macros/sandwich/keymap/surround.vim
 
+augroup CalendarSettings
+	autocmd!
+	autocmd FileType calendar nnoremap <silent> <buffer> <esc>
+				\ <c-w>q
+augroup END
+
 let g:undotree_HelpLine           = 0
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_CustomDiffpanelCmd = 'new'
@@ -35,6 +41,8 @@ endfunction
 augroup UndotreeSettings
 	autocmd!
 	autocmd FileType undotree nnoremap <silent> <buffer> <esc>
+				\ :UndotreeToggle<cr>
+	autocmd FileType undotree nnoremap <silent> <buffer> <c-w>q
 				\ :UndotreeToggle<cr>
 	autocmd VimResized * call s:undotree_rightbar()
 augroup END
