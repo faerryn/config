@@ -15,6 +15,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 
 " Excellent additional features
+Plug 'itchyny/calendar.vim'
 Plug 'justinmk/vim-dirvish'
 Plug 'mbbill/undotree'
 Plug 'mhinz/vim-signify'

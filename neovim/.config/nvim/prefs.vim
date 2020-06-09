@@ -25,10 +25,7 @@ set undofile
 set updatetime=250
 
 nnoremap <silent> <leader>c :copen<cr>
-nnoremap <silent> <leader>d :bdelete<cr>
 nnoremap <silent> <leader>l :lopen<cr>
-nnoremap <silent> <leader>t :tabedit<cr>
-nnoremap <silent> <leader>w :write<cr>
 nnoremap <silent> [b :bprevious<cr>
 nnoremap <silent> ]b :bnext<cr>
 
