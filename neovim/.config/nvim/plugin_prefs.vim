@@ -20,6 +20,7 @@ nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
 " Miscellaneous plugin settings
 let g:highlightedyank_highlight_duration = 250
+let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 runtime macros/sandwich/keymap/surround.vim
 
@@ -32,7 +33,7 @@ function! s:undotree_rightbar()
 endfunction
 augroup UndotreeSettings
 	autocmd!
-	autocmd Filetype undotree nnoremap <silent> <buffer> <esc>
+	autocmd FileType undotree nnoremap <silent> <buffer> <esc>
 				\ :UndotreeToggle<cr>
 	autocmd VimResized * call s:undotree_rightbar()
 augroup END
@@ -45,7 +46,7 @@ function! s:fugitive_rightbar()
 endfunction
 augroup FugitiveSettings
 	autocmd!
-	autocmd Filetype fugitive nnoremap <silent> <buffer> <esc> <c-w>q
+	autocmd FileType fugitive nnoremap <silent> <buffer> <esc> <c-w>q
 	autocmd VimResized * call s:fugitive_rightbar()
 augroup END
 call s:fugitive_rightbar()
@@ -87,7 +88,8 @@ let g:fzf_colors = {
 			\ 'spinner': ['fg', 'Label'],
 			\ 'header':  ['fg', 'Comment']
 			\ }
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, <bang>0)
+command! -bang -nargs=? -complete=dir Files
+			\ call fzf#vim#files(<q-args>, <bang>0)
 command! -bang Buffers call fzf#vim#buffers(<bang>0)
 function! s:fzf_rightbar()
 	let g:fzf_layout = { 'right': eval(s:rightbar_width) }
@@ -124,20 +126,29 @@ if has('nvim-0.5.0')
 	lua require'nvim_lsp'.clangd.setup{}
 	lua require'nvim_lsp'.rls.setup{}
 	function s:lsp_settings()
-		nnoremap <silent> <buffer> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-		nnoremap <silent> <buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-		nnoremap <silent> <buffer> K     <cmd>lua vim.lsp.buf.hover()<CR>
-		nnoremap <silent> <buffer> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-		nnoremap <silent> <buffer> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-		nnoremap <silent> <buffer> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-		nnoremap <silent> <buffer> gr    <cmd>lua vim.lsp.buf.references()<CR>
-		nnoremap <silent> <buffer> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-		nnoremap <silent> <buffer> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+		nnoremap <silent> <buffer> gd
+					\ <cmd>lua vim.lsp.buf.declaration()<CR>
+		nnoremap <silent> <buffer> <c-]>
+					\ <cmd>lua vim.lsp.buf.definition()<CR>
+		nnoremap <silent> <buffer> K
+					\ <cmd>lua vim.lsp.buf.hover()<CR>
+		nnoremap <silent> <buffer> gD
+					\ <cmd>lua vim.lsp.buf.implementation()<CR>
+		nnoremap <silent> <buffer> <c-k>
+					\ <cmd>lua vim.lsp.buf.signature_help()<CR>
+		nnoremap <silent> <buffer> 1gD
+					\ <cmd>lua vim.lsp.buf.type_definition()<CR>
+		nnoremap <silent> <buffer> gr
+					\ <cmd>lua vim.lsp.buf.references()<CR>
+		nnoremap <silent> <buffer> g0
+					\ <cmd>lua vim.lsp.buf.document_symbol()<CR>
+		nnoremap <silent> <buffer> gW
+					\ <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 		setlocal omnifunc=v:lua.vim.lsp.omnifunc
 	endfunction
 	augroup LspSettings
 		autocmd!
-		autocmd Filetype cpp,rust call s:lsp_settings()
+		autocmd FileType cpp,rust call s:lsp_settings()
 	augroup END
 
 else

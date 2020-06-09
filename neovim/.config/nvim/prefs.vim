@@ -34,15 +34,20 @@ nnoremap <silent> ]b :bnext<cr>
 
 augroup QuickfixSettings
 	autocmd!
-	autocmd Filetype qf nnoremap <silent> <buffer> <esc> <c-w>q
+	autocmd FileType qf nnoremap <silent> <buffer> <esc> <c-w>q
 augroup END
 
-augroup AutoClangFormat
+function! s:rustfmt_fallback()
+	if !exists('g:rustfmt_autosave')
+		%!rustfmt
+	endif
+endfunction
+augroup FormatOnWrite
 	autocmd!
 	if executable("clang-format")
-		autocmd BufwritePre *.c,*.cpp %!clang-format
+		autocmd BufWritePre *.c,*.cpp %!clang-format
 	endif
 	if executable("rustfmt")
-		autocmd BufwritePre *.rs %!rustfmt
+		autocmd BufWritePre *.rs call s:rustfmt_fallback()
 	endif
 augroup END

@@ -30,8 +30,8 @@ Plug 'rust-lang/rust.vim' , { 'for': ['rust', 'vimwiki'] }
 Plug 'ziglang/zig.vim'    , { 'for': ['zig',  'vimwiki'] }
 
 " Aesthetics
-Plug 'machakann/vim-highlightedyank'
 Plug 'itchyny/lightline.vim'
+Plug 'machakann/vim-highlightedyank'
 
 " Colorschemes
 Plug 'arcticicestudio/nord-vim'

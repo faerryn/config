@@ -19,9 +19,11 @@ if !exists('s:should_install_vim_plug')
 			augroup VimplugAutoinstall
 				autocmd!
 				autocmd VimEnter * 
-							\ | execute 'source ' . stdpath('config') . '/plugins.vim'
+							\ | execute 'source '
+							\ . stdpath('config') . '/plugins.vim'
 							\ | PlugInstall --sync
-							\ | execute 'source ' . stdpath('config') . '/plugin_prefs.vim'
+							\ | execute 'source '
+							\ . stdpath('config') . '/plugin_prefs.vim'
 			augroup END
 		endif
 	else
