@@ -22,7 +22,6 @@ set updatetime=250
 colorscheme onehalfdark
 
 nnoremap <silent> <leader>f :Files<cr>
-nnoremap <silent> <leader>d :vsplit<cr>:Dirvish<cr>
 nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> <leader>q :copen<cr>
 nnoremap <silent> <leader>u :UndotreeToggle<cr>
@@ -59,6 +58,20 @@ let g:zig_fmt_autosave = 1
 packadd vim-sandwich
 runtime macros/sandwich/keymap/surround.vim
 
+" Dirvish
+function! s:dirvish_settings()
+	nnoremap <silent> <buffer> <esc> :bdelete<cr>
+endfunction
+augroup DirvishSettings
+	autocmd!
+	autocmd FileType dirvish call s:dirvish_settings()
+augroup END
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
+command! -nargs=? -complete=dir Explore Dirvish <args>
+command! -nargs=? -complete=dir Sexplore rightbelow split | Dirvish <args>
+command! -nargs=? -complete=dir Vexplore leftabove vsplit | Dirvish <args>
+
 " Undotree
 let g:undotree_HelpLine           = 0
 let g:undotree_SetFocusWhenToggle = 1
@@ -77,6 +90,9 @@ augroup UndotreeSettings
 augroup END
 
 " Fugitive
+function! s:fugitive_settings()
+	nnoremap <silent> <buffer> <esc> :bdelete<cr>
+endfunction
 function! s:fugitive_rightbar()
 	execute 'nnoremap <silent> <leader>g 
 				\ :Git<cr><c-w>L<cr>:vertical resize '
@@ -84,16 +100,9 @@ function! s:fugitive_rightbar()
 endfunction
 augroup FugitiveSettings
 	autocmd!
-	autocmd FileType fugitive nnoremap <silent> <buffer> <esc> <c-w>q
+	autocmd FileType fugitive call s:fugitive_settings()
 	autocmd VimEnter,VimResized * call s:fugitive_rightbar()
 augroup END
-
-" Dirvish
-let g:loaded_netrw       = 1
-let g:loaded_netrwPlugin = 1
-command! -nargs=? -complete=dir Explore Dirvish <args>
-command! -nargs=? -complete=dir Sexplore rightbelow split | Dirvish <args>
-command! -nargs=? -complete=dir Vexplore leftabove vsplit | Dirvish <args>
 
 " Vimwiki
 function! s:vimwiki_settings()
