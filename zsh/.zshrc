@@ -25,7 +25,7 @@ precmd_functions+=( precmd_vcs_info )
 zstyle ':vcs_info:git:*' formats '(%b)'
 
 # Prompt
-PROMPT="[%F{green}%c%f]\$vcs_info_msg_0_%(!.#.$) "
+PROMPT="[%F{yellow}%c%f]\$vcs_info_msg_0_%(!.#.$) "
 RPROMPT="%(0?..%F{red}%?%f)"
 
 # Editing
