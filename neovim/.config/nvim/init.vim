@@ -4,7 +4,6 @@ augroup AutoSourceInitVim
 				\ . ' source $MYVIMRC'
 augroup END
 
-let g:highlightedyank_highlight_duration = 250
 let g:mapleader=' '
 set colorcolumn=80
 set cursorline cursorcolumn
@@ -155,10 +154,19 @@ if has('nvim-0.5.0')
 		autocmd FileType cpp,rust call s:lsp_settings()
 	augroup END
 
+	augroup TextYankHighlight
+		autocmd!
+		autocmd TextYankPost * silent!
+					\ lua require'vim.highlight'.on_yank('Substitute', 250)
+	augroup END
+
 else
 
 	packadd syntastic
 	let g:syntastic_always_populate_loc_list = 1
 	let g:syntastic_check_on_open            = 1
+
+	packadd vim-highlightedyank
+	let g:highlightedyank_highlight_duration = 250
 
 endif

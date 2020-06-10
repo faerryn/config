@@ -53,7 +53,7 @@
 	path = neovim/.config/nvim/pack/bundle/start/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
 [submodule "vim-highlightedyank"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-highlightedyank
+	path = neovim/.config/nvim/pack/bundle/opt/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank
 [submodule "fzf.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/fzf.vim
