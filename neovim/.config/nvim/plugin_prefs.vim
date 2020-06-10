@@ -4,19 +4,13 @@ augroup SourceVimConfig
 				\ . ' source ' . expand('<sfile>')
 augroup END
 
-" Master control settings for plugins
-let s:random_colorschemes = ['gruvbox', 'nord', 'onehalfdark']
+" Plugin Settings
 let s:rightbar_width = 'float2nr(10 + &columns * 0.3)'
+colorscheme onehalfdark
 
 " Mappings
 nnoremap <silent> <leader>f :Files<cr>
 nnoremap <silent> <leader>u :UndotreeToggle<cr>
-
-" Random colorschemes
-if !exists('g:colors_name')
-	execute "colorscheme " . s:random_colorschemes[
-					\ system("echo $RANDOM") % len(s:random_colorschemes)]
-endif
 
 " Miscellaneous plugin settings
 let g:highlightedyank_highlight_duration = 250
