@@ -70,3 +70,21 @@
 [submodule "nvim-lsp"]
 	path = neovim/.config/nvim/pack/bundle/opt/nvim-lsp
 	url = https://github.com/neovim/nvim-lsp
+[submodule "tmux-sensible"]
+	path = tmux/.config/tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible
+[submodule "tmux-copycat"]
+	path = tmux/.config/tmux/plugins/tmux-copycat
+	url = https://github.com/tmux-plugins/tmux-copycat
+[submodule "tmux-yank"]
+	path = tmux/.config/tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank
+[submodule "tmux-open"]
+	path = tmux/.config/tmux/plugins/tmux-open
+	url = https://github.com/tmux-plugins/tmux-open
+[submodule "tmux-pain-control"]
+	path = tmux/.config/tmux/plugins/tmux-pain-control
+	url = https://github.com/tmux-plugins/tmux-pain-control
+[submodule "tmux-sessionist"]
+	path = tmux/.config/tmux/plugins/tmux-sessionist
+	url = https://github.com/tmux-plugins/tmux-sessionist
