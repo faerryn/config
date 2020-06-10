@@ -1,3 +1,4 @@
+" My neovim configuration
 let g:mapleader=' '
 set colorcolumn=80
 set cursorline cursorcolumn
@@ -18,12 +19,21 @@ set timeoutlen=250
 set undofile
 set updatetime=250
 
+colorscheme onehalfdark
+
 nnoremap <silent> <leader>f :Files<cr>
+nnoremap <silent> <leader>d :vsplit<cr>:Dirvish<cr>
 nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> <leader>q :copen<cr>
 nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
-colorscheme onehalfdark
+" Messier configurations
+augroup AutoSourceInitVim
+	autocmd!
+	execute 'autocmd BufWritePost $MYVIMRC,'
+				\ . resolve($MYVIMRC)
+				\ . ' source $MYVIMRC'
+augroup END
 
 augroup QuickfixSettings
 	autocmd!
@@ -157,6 +167,7 @@ augroup LightlineSettings
 	autocmd!
 	autocmd VimEnter,ColorScheme * call s:lightline_settings()
 augroup END
+call s:lightline_settings()
 
 if has('nvim-0.5.0')
 
