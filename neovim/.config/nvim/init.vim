@@ -45,6 +45,9 @@ let s:rightbar_width = 'float2nr(10 + &columns * 0.3)'
 let g:highlightedyank_highlight_duration = 250
 let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
+
+" sandwitch
+packadd vim-sandwich
 runtime macros/sandwich/keymap/surround.vim
 
 " Undotree

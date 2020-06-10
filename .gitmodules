@@ -1,5 +1,5 @@
 [submodule "vim-sandwich"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-sandwich
+	path = neovim/.config/nvim/pack/bundle/opt/vim-sandwich
 	url = https://github.com/machakann/vim-sandwich
 [submodule "vim-lion"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-lion
