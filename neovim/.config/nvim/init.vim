@@ -1,4 +1,4 @@
-" My neovim configuration
+" settings
 let g:mapleader=' '
 set colorcolumn=80
 set cursorline cursorcolumn
@@ -19,24 +19,29 @@ set timeoutlen=250
 set undofile
 set updatetime=250
 
-colorscheme onehalfdark
-
-nnoremap <silent> <leader>f :Files<cr>
+" mappings
 nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> <leader>q :copen<cr>
+
+nnoremap / /\v
+nnoremap ? ?\v
+
 nnoremap <silent> <leader>u :UndotreeToggle<cr>
+nnoremap <silent> <leader>f :Files<cr>
+
+" colorscheme
+colorscheme onehalfdark
 
 " Messier configurations
 augroup AutoSourceInitVim
 	autocmd!
-	execute 'autocmd BufWritePost $MYVIMRC,'
-				\ . resolve($MYVIMRC)
+	execute 'autocmd BufWritePost $MYVIMRC,' . resolve($MYVIMRC)
 				\ . ' source $MYVIMRC'
 augroup END
 
 augroup QuickfixSettings
 	autocmd!
-	autocmd FileType qf nnoremap <silent> <buffer> <esc> <c-w>q
+	autocmd FileType qf nnoremap <silent> <buffer> <esc> :bdelete<cr>
 augroup END
 
 augroup FormatOnWrite
@@ -181,7 +186,6 @@ call s:lightline_settings()
 if has('nvim-0.5.0')
 
 	packadd nvim-lsp
-
 	lua require'nvim_lsp'.clangd.setup{}
 	lua require'nvim_lsp'.rls.setup{}
 	function s:lsp_settings()
@@ -213,7 +217,6 @@ if has('nvim-0.5.0')
 else
 
 	packadd syntastic
-
 	let g:syntastic_always_populate_loc_list = 1
 	let g:syntastic_check_on_open            = 1
 
