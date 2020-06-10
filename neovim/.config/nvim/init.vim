@@ -1,3 +1,10 @@
+augroup AutoSourceInitVim
+	autocmd!
+	execute 'autocmd BufWritePost $MYVIMRC,' . resolve($MYVIMRC)
+				\ . ' source $MYVIMRC'
+augroup END
+
+let g:highlightedyank_highlight_duration = 250
 let g:mapleader=' '
 set colorcolumn=80
 set cursorline cursorcolumn
@@ -18,35 +25,22 @@ set timeoutlen=250
 set undofile
 set updatetime=250
 
-nnoremap <silent> <leader>l :lopen<cr>
-nnoremap <silent> <leader>q :copen<cr>
+nnoremap <silent> <leader>l <cmd>lopen<cr>
+nnoremap <silent> <leader>q <cmd>copen<cr>
 
 nnoremap / /\v
 nnoremap ? ?\v
 
+nnoremap <silent> <leader>g <cmd>G<cr>
+nnoremap <silent> <leader>f <cmd>Files<cr>
+
 colorscheme onehalfdark
 
-augroup AutoSourceInitVim
+augroup EscapeToQuit
 	autocmd!
-	execute 'autocmd BufWritePost $MYVIMRC,' . resolve($MYVIMRC)
-				\ . ' source $MYVIMRC'
-augroup END
-
-augroup QuickfixSettings
-	autocmd!
-	autocmd FileType qf nnoremap <silent> <buffer> <esc> :bdelete<cr>
-augroup END
-
-augroup HelpSettings
-	autocmd!
-	autocmd FileType help nnoremap <silent> <buffer> <esc> :bdelete<cr>
-augroup END
-
-augroup FormatOnWrite
-	autocmd!
-	if executable('clang-format')
-		autocmd BufWritePre *.c,*.cpp %!clang-format
-	endif
+	autocmd FileType qf,help,dirvish,fugitive,gitcommit
+				\ nnoremap <silent> <buffer> <esc> <cmd>bdelete<cr>
+	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
 augroup END
 
 function s:wrap_settings()
@@ -60,34 +54,28 @@ function s:wrap_settings()
 	nnoremap <silent> <buffer> $ g$
 	vnoremap <silent> <buffer> $ g$
 endfunction
+augroup WrapSettings
+	autocmd!
+	autocmd FileType vimwiki call s:wrap_settings()
+augroup END
 
-let g:highlightedyank_highlight_duration = 250
+augroup FormatOnWrite
+	autocmd!
+	if executable('clang-format')
+		autocmd BufWritePre *.c,*.cpp %!clang-format
+	endif
+augroup END
 let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 
 packadd vim-sandwich
 runtime macros/sandwich/keymap/surround.vim
 
-augroup DirvishSettings
-	autocmd!
-	autocmd FileType dirvish nnoremap <silent> <buffer> <esc> :bdelete<cr>
-augroup END
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
 command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore rightbelow split | Dirvish <args>
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | Dirvish <args>
-
-augroup FugitiveSettings
-	autocmd!
-	autocmd FileType fugitive,gitcommit nnoremap <silent> <buffer> <esc> :bdelete<cr>
-augroup END
-nnoremap <silent> <leader>g :G<cr>
-
-augroup VimwikiSettings
-	autocmd!
-	autocmd FileType vimwiki call s:wrap_settings()
-augroup END
 
 if isdirectory(glob('~/.fzf'))
 	set rtp^=~/.fzf
@@ -110,11 +98,6 @@ let g:fzf_colors = {
 command! -bang -nargs=? -complete=dir Files
 			\ call fzf#vim#files(<q-args>, <bang>0)
 command! -bang Buffers call fzf#vim#buffers(<bang>0)
-augroup FzfSettings
-	autocmd!
-	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
-augroup END
-nnoremap <silent> <leader>f :Files<cr>
 
 let g:lightline = { 
 			\ 'active': {
