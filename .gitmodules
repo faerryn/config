@@ -1,0 +1,60 @@
+[submodule "neovim/.config/nvim/pack/bundle/opt/vim-sandwich"]
+	path = neovim/.config/nvim/pack/bundle/opt/vim-sandwich
+	url = https://github.com/machakann/vim-sandwich
+[submodule "neovim/.config/nvim/pack/bundle/opt/vim-lion"]
+	path = neovim/.config/nvim/pack/bundle/opt/vim-lion
+	url = https://github.com/tommcdo/vim-lion
+[submodule "neovim/.config/nvim/pack/bundle/opt/tcomment_vim"]
+	path = neovim/.config/nvim/pack/bundle/opt/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim
+[submodule "neovim/.config/nvim/pack/bundle/opt/vim-repeat"]
+	path = neovim/.config/nvim/pack/bundle/opt/vim-repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule "neovim/.config/nvim/pack/bundle/opt/vim-unimpaired"]
+	path = neovim/.config/nvim/pack/bundle/opt/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired
+[submodule "neovim/.config/nvim/pack/bundle/opt/targets.vim"]
+	path = neovim/.config/nvim/pack/bundle/opt/targets.vim
+	url = https://github.com/wellle/targets.vim
+[submodule "neovim/.config/nvim/pack/bundle/opt/vim-dirvish"]
+	path = neovim/.config/nvim/pack/bundle/opt/vim-dirvish
+	url = https://github.com/justinmk/vim-dirvish
+[submodule "neovim/.config/nvim/pack/bundle/opt/undotree"]
+	path = neovim/.config/nvim/pack/bundle/opt/undotree
+	url = https://github.com/mbbill/undotree
+[submodule "neovim/.config/nvim/pack/bundle/opt/vim-signify"]
+	path = neovim/.config/nvim/pack/bundle/opt/vim-signify
+	url = https://github.com/mhinz/vim-signify
+[submodule "neovim/.config/nvim/pack/bundle/opt/vim-mkdir"]
+	path = neovim/.config/nvim/pack/bundle/opt/vim-mkdir
+	url = https://github.com/pbrisbin/vim-mkdir
+[submodule "neovim/.config/nvim/pack/bundle/opt/vim-dispatch"]
+	path = neovim/.config/nvim/pack/bundle/opt/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch
+[submodule "neovim/.config/nvim/pack/bundle/opt/vim-eunuch"]
+	path = neovim/.config/nvim/pack/bundle/opt/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch
+[submodule "neovim/.config/nvim/pack/bundle/opt/vim-fugitive"]
+	path = neovim/.config/nvim/pack/bundle/opt/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "neovim/.config/nvim/pack/bundle/opt/vimwiki"]
+	path = neovim/.config/nvim/pack/bundle/opt/vimwiki
+	url = https://github.com/vimwiki/vimwiki
+[submodule "neovim/.config/nvim/pack/bundle/opt/vim-cpp-modern"]
+	path = neovim/.config/nvim/pack/bundle/opt/vim-cpp-modern
+	url = https://github.com/bfrg/vim-cpp-modern
+[submodule "neovim/.config/nvim/pack/bundle/opt/rust.vim"]
+	path = neovim/.config/nvim/pack/bundle/opt/rust.vim
+	url = https://github.com/rust-lang/rust.vim
+[submodule "neovim/.config/nvim/pack/bundle/opt/zig.vim"]
+	path = neovim/.config/nvim/pack/bundle/opt/zig.vim
+	url = https://github.com/ziglang/zig.vim
+[submodule "neovim/.config/nvim/pack/bundle/opt/lightline.vim"]
+	path = neovim/.config/nvim/pack/bundle/opt/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "neovim/.config/nvim/pack/bundle/opt/vim-highlightedyank"]
+	path = neovim/.config/nvim/pack/bundle/opt/vim-highlightedyank
+	url = https://github.com/machakann/vim-highlightedyank
+[submodule "neovim/.config/nvim/pack/bundle/opt/fzf.vim"]
+	path = neovim/.config/nvim/pack/bundle/opt/fzf.vim
+	url = https://github.com/junegunn/fzf.vim

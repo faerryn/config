@@ -1,34 +1,56 @@
-" Autosourcing
-augroup SourceVimConfig
-	execute 'autocmd! BufWritePost ' . expand('<sfile>')
-				\ . ' source ' . expand('<sfile>')
+let g:mapleader=' '
+set cindent
+set colorcolumn=80
+set cursorline cursorcolumn
+set foldmethod=syntax foldlevelstart=20
+set hidden
+set ignorecase smartcase
+set lazyredraw
+set mouse=ar
+set nowrap
+set number relativenumber
+set omnifunc=syntaxcomplete#Complete
+set signcolumn=yes
+set spell
+set splitbelow splitright
+set tabstop=4 softtabstop=4 shiftwidth=4
+set termguicolors
+set timeoutlen=250
+set undofile
+set updatetime=250
+
+nnoremap <silent> <leader>l :lopen<cr>
+nnoremap <silent> <leader>q :copen<cr>
+
+augroup QuickfixSettings
+	autocmd!
+	autocmd FileType qf nnoremap <silent> <buffer> <esc> <c-w>q
 augroup END
 
-" Ask to install vim-plug on startup
-if !exists('s:should_install_vim_plug')
-	execute 'source ' . stdpath('config') . '/prefs.vim'
-	if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
-		echo 'Install plugins? [y/N]: '
-		let s:should_install_vim_plug = nr2char(getchar())
-		if s:should_install_vim_plug ==? 'y'
-			let s:want_plugins = v:true
-			execute "!curl -fLo " . stdpath('data')
-						\ . '/site/autoload/plug.vim --create-dirs
-						\ https://raw.githubusercontent.com/
-						\junegunn/vim-plug/master/plug.vim'
-			augroup VimplugAutoinstall
-				autocmd!
-				autocmd VimEnter * 
-							\ | execute 'source '
-							\ . stdpath('config') . '/plugins.vim'
-							\ | PlugInstall --sync
-							\ | execute 'source '
-							\ . stdpath('config') . '/plugin_prefs.vim'
-			augroup END
-		endif
-	else
-		let s:should_install_vim_plug = 'n'
-		execute 'source ' . stdpath('config') . '/plugins.vim'
-		execute 'source ' . stdpath('config') . '/plugin_prefs.vim'
+augroup FormatOnWrite
+	autocmd!
+	if executable("clang-format")
+		autocmd BufWritePre *.c,*.cpp %!clang-format
 	endif
-endif
+augroup END
+
+packadd fzf.vim
+packadd lightline.vim
+packadd rust.vim
+packadd targets.vim
+packadd tcomment_vim
+packadd undotree
+packadd vim-cpp-modern
+packadd vim-dirvish
+packadd vim-dispatch
+packadd vim-eunuch
+packadd vim-fugitive
+packadd vim-highlightedyank
+packadd vim-lion
+packadd vim-mkdir
+packadd vim-repeat
+packadd vim-sandwich
+packadd vim-signify
+packadd vim-unimpaired
+packadd vimwiki
+packadd zig.vim
