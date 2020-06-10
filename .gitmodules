@@ -61,3 +61,6 @@
 [submodule "neovim/.config/nvim/pack/bundle/start/gruvbox"]
 	path = neovim/.config/nvim/pack/bundle/start/gruvbox
 	url = https://github.com/morhetz/gruvbox
+[submodule "neovim/.config/nvim/pack/bundle/manual/onehalf"]
+	path = neovim/.config/nvim/pack/bundle/manual/onehalf
+	url = https://github.com/sonph/onehalf

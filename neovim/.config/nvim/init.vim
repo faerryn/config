@@ -19,8 +19,12 @@ set timeoutlen=250
 set undofile
 set updatetime=250
 
+nnoremap <silent> <leader>f :Files<cr>
 nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> <leader>q :copen<cr>
+nnoremap <silent> <leader>u :UndotreeToggle<cr>
+
+colorscheme onehalfdark
 
 augroup QuickfixSettings
 	autocmd!
@@ -36,10 +40,6 @@ augroup END
 
 " Plugin Settings
 let s:rightbar_width = 'float2nr(10 + &columns * 0.3)'
-
-" Mappings
-nnoremap <silent> <leader>f :Files<cr>
-nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
 " Miscellaneous plugin settings
 let g:highlightedyank_highlight_duration = 250
@@ -147,7 +147,9 @@ function! s:lightline_settings()
 	if exists('g:colors_name')
 		let g:lightline.colorscheme = g:colors_name
 	endif
-	call g:lightline#enable()
+	if exists('*lightline#enable()')
+		call lightline#enable()
+	endif
 endfunction
 augroup LightlineSettings
 	autocmd!
