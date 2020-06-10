@@ -64,3 +64,9 @@
 [submodule "neovim/.config/nvim/pack/bundle/manual/onehalf"]
 	path = neovim/.config/nvim/pack/bundle/manual/onehalf
 	url = https://github.com/sonph/onehalf
+[submodule "neovim/.config/nvim/pack/bundle/opt/syntastic"]
+	path = neovim/.config/nvim/pack/bundle/opt/syntastic
+	url = https://github.com/vim-syntastic/syntastic
+[submodule "neovim/.config/nvim/pack/bundle/opt/nvim-lsp"]
+	path = neovim/.config/nvim/pack/bundle/opt/nvim-lsp
+	url = https://github.com/neovim/nvim-lsp
