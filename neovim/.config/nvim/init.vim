@@ -120,7 +120,7 @@ function! s:lightline_settings()
 endfunction
 augroup LightlineSettings
 	autocmd!
-	autocmd VimEnter,ColorScheme * call s:lightline_settings()
+	autocmd ColorScheme * call s:lightline_settings()
 augroup END
 call s:lightline_settings()
 
