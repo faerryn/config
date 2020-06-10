@@ -33,7 +33,7 @@ augroup END
 
 augroup FormatOnWrite
 	autocmd!
-	if executable("clang-format")
+	if executable('clang-format')
 		autocmd BufWritePre *.c,*.cpp %!clang-format
 	endif
 augroup END
