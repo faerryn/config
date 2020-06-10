@@ -1,4 +1,3 @@
-" settings
 let g:mapleader=' '
 set colorcolumn=80
 set cursorline cursorcolumn
@@ -19,20 +18,14 @@ set timeoutlen=250
 set undofile
 set updatetime=250
 
-" mappings
 nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> <leader>q :copen<cr>
 
 nnoremap / /\v
 nnoremap ? ?\v
 
-nnoremap <silent> <leader>u :UndotreeToggle<cr>
-nnoremap <silent> <leader>f :Files<cr>
-
-" colorscheme
 colorscheme onehalfdark
 
-" Messier configurations
 augroup AutoSourceInitVim
 	autocmd!
 	execute 'autocmd BufWritePost $MYVIMRC,' . resolve($MYVIMRC)
@@ -51,19 +44,27 @@ augroup FormatOnWrite
 	endif
 augroup END
 
-" Plugin Settings
+function s:wrap_settings()
+	setlocal wrap linebreak
+	nnoremap <silent> <buffer> j gj
+	vnoremap <silent> <buffer> j gj
+	nnoremap <silent> <buffer> k gk
+	vnoremap <silent> <buffer> k gk
+	nnoremap <silent> <buffer> 0 g0
+	vnoremap <silent> <buffer> 0 g0
+	nnoremap <silent> <buffer> $ g$
+	vnoremap <silent> <buffer> $ g$
+endfunction
+
 let s:rightbar_width = 'float2nr(10 + &columns * 0.3)'
 
-" Miscellaneous plugin settings
 let g:highlightedyank_highlight_duration = 250
 let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 
-" sandwitch
 packadd vim-sandwich
 runtime macros/sandwich/keymap/surround.vim
 
-" Dirvish
 function! s:dirvish_settings()
 	nnoremap <silent> <buffer> <esc> :bdelete<cr>
 endfunction
@@ -77,7 +78,6 @@ command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore rightbelow split | Dirvish <args>
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | Dirvish <args>
 
-" Undotree
 let g:undotree_HelpLine           = 0
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_CustomDiffpanelCmd = 'new'
@@ -93,40 +93,31 @@ augroup UndotreeSettings
 				\ :UndotreeToggle<cr>
 	autocmd VimEnter,VimResized * call s:undotree_rightbar()
 augroup END
+nnoremap <silent> <leader>u :UndotreeToggle<cr>
 
-" Fugitive
 function! s:fugitive_settings()
 	nnoremap <silent> <buffer> <esc> :bdelete<cr>
+	call s:wrap_settings()
 endfunction
 function! s:fugitive_rightbar()
-	execute 'nnoremap <silent> <leader>g 
-				\ :Git<cr><c-w>L<cr>:vertical resize '
+	execute 'nnoremap <silent> <leader>g :Git<cr><c-w>L<cr>:vertical resize '
 				\ . eval(s:rightbar_width) . '<cr>'
 endfunction
 augroup FugitiveSettings
 	autocmd!
-	autocmd FileType fugitive call s:fugitive_settings()
+	autocmd FileType fugitive,gitcommit call s:fugitive_settings()
 	autocmd VimEnter,VimResized * call s:fugitive_rightbar()
 augroup END
 
-" Vimwiki
 function! s:vimwiki_settings()
 	setlocal wrap linebreak
-	nnoremap <silent> <buffer> j gj
-	vnoremap <silent> <buffer> j gj
-	nnoremap <silent> <buffer> k gk
-	vnoremap <silent> <buffer> k gk
-	nnoremap <silent> <buffer> 0 g0
-	vnoremap <silent> <buffer> 0 g0
-	nnoremap <silent> <buffer> $ g$
-	vnoremap <silent> <buffer> $ g$
+	call s:wrap_settings()
 endfunction
 augroup VimwikiSettings
 	autocmd!
 	autocmd FileType vimwiki call s:vimwiki_settings()
 augroup END
 
-" Fzf
 if isdirectory(glob('~/.fzf'))
 	set rtp^=~/.fzf
 endif
@@ -156,8 +147,8 @@ augroup FzfSettings
 	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
 	autocmd VimEnter,VimResized * call s:fzf_rightbar()
 augroup END
+nnoremap <silent> <leader>f :Files<cr>
 
-" Lightline
 let g:lightline = { 
 			\ 'active': {
 			\	'left': [
