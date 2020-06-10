@@ -32,7 +32,12 @@ nnoremap ? ?\v
 nnoremap <silent> <leader>g <cmd>G<cr>
 nnoremap <silent> <leader>f <cmd>Files<cr>
 
-colorscheme onehalfdark
+if !exists('g:colors_name')
+	let g:gruvbox_italic = 1
+	let g:gruvbox_italicize_strings = 1
+	let g:gruvbox_contrast_dark = 'soft'
+	colorscheme gruvbox
+endif
 
 augroup EscapeToQuit
 	autocmd!
@@ -84,19 +89,19 @@ if isdirectory(glob('~/.fzf'))
 	set rtp^=~/.fzf
 endif
 let g:fzf_colors = { 
-			\ 'fg':      ['fg', 'Normal'],
-			\ 'bg':      ['bg', 'Normal'],
-			\ 'hl':      ['fg', 'Comment'],
-			\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-			\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-			\ 'hl+':     ['fg', 'Statement'],
-			\ 'info':    ['fg', 'PreProc'],
-			\ 'border':  ['fg', 'Ignore'],
-			\ 'prompt':  ['fg', 'Conditional'],
+			\ 'fg'     : ['fg', 'Normal'],
+			\ 'bg'     : ['bg', 'Normal'],
+			\ 'hl'     : ['fg', 'Comment'],
+			\ 'fg+'    : ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+			\ 'bg+'    : ['bg', 'CursorLine', 'CursorColumn'],
+			\ 'hl+'    : ['fg', 'Statement'],
+			\ 'info'   : ['fg', 'PreProc'],
+			\ 'border' : ['fg', 'Ignore'],
+			\ 'prompt' : ['fg', 'Conditional'],
 			\ 'pointer': ['fg', 'Exception'],
-			\ 'marker':  ['fg', 'Keyword'],
+			\ 'marker' : ['fg', 'Keyword'],
 			\ 'spinner': ['fg', 'Label'],
-			\ 'header':  ['fg', 'Comment']
+			\ 'header' : ['fg', 'Comment']
 			\ }
 command! -bang -nargs=? -complete=dir Files
 			\ call fzf#vim#files(<q-args>, <bang>0)
@@ -110,8 +115,8 @@ let g:lightline = {
 			\ 	]
 			\ },
 			\ 'component_function': { 'gitbranch': 'FugitiveHead' },
-			\ 'separator': { 'left': '', 'right': '' },
-			\ 'subseparator': { 'left': '', 'right': '' },
+			\ 'separator'         : { 'left'     : '', 'right': '' },
+			\ 'subseparator'      : { 'left'     : '', 'right': '' },
 			\ }
 function! s:lightline_settings()
 	if exists('g:colors_name')
