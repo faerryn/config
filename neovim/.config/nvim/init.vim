@@ -16,7 +16,6 @@ set nowrap
 set number relativenumber
 set omnifunc=syntaxcomplete#Complete
 set signcolumn=yes
-set spell
 set splitbelow splitright
 set tabstop=4 softtabstop=4 shiftwidth=4
 set termguicolors
@@ -56,6 +55,11 @@ endfunction
 augroup WrapSettings
 	autocmd!
 	autocmd FileType vimwiki call s:wrap_settings()
+augroup END
+
+augroup SpellSettings
+	autocmd!
+	autocmd FileType vimwiki,gitcommit setlocal spell
 augroup END
 
 augroup FormatOnWrite
