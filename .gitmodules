@@ -1,3 +1,4 @@
+# (Neo)Vim plugins
 [submodule "vim-sandwich"]
 	path = neovim/.config/nvim/pack/bundle/opt/vim-sandwich
 	url = https://github.com/machakann/vim-sandwich
@@ -52,9 +53,6 @@
 [submodule "lightline.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
-[submodule "vim-highlightedyank"]
-	path = neovim/.config/nvim/pack/bundle/opt/vim-highlightedyank
-	url = https://github.com/machakann/vim-highlightedyank
 [submodule "fzf.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
@@ -70,6 +68,10 @@
 [submodule "nvim-lsp"]
 	path = neovim/.config/nvim/pack/bundle/opt/nvim-lsp
 	url = https://github.com/neovim/nvim-lsp
+[submodule "vim-highlightedyank"]
+	path = neovim/.config/nvim/pack/bundle/opt/vim-highlightedyank
+	url = https://github.com/machakann/vim-highlightedyank
+# Tmux plugins
 [submodule "tmux-sensible"]
 	path = tmux/.config/tmux/plugins/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible
