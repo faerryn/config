@@ -29,7 +29,7 @@ nnoremap <silent> <leader>f <cmd>Files<cr>
 
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_strings = 1
-let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_contrast_dark = 'medium'
 colorscheme gruvbox
 
 augroup AutoSourceInitVim
@@ -49,15 +49,15 @@ augroup ProseSettings
 	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak spell
 augroup END
 
+let g:rustfmt_autosave = 1
+let g:zig_fmt_autosave = 1
+
 " check out https://github.com/neovim/neovim/pull/12279
 let g:highlightedyank_highlight_duration = 250
 
 " check out https://github.com/neovim/nvim-lsp
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open            = 1
-
-let g:rustfmt_autosave = 1
-let g:zig_fmt_autosave = 1
 
 let g:textobj_sandwich_no_default_key_mappings = 1
 augroup VimSandwichKeymap
