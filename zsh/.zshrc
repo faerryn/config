@@ -22,19 +22,20 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:git:*' formats '%b' '%c%u'
 precmd() {
+
+	local VCS_INFO=""
 	vcs_info
-	PROMPT="[%F{yellow}%c%f]"
-	RPROMPT="%(0?..%F{red}%?%f)"
 	if [[ -n ${vcs_info_msg_0_} ]]; then
-		PROMPT="${PROMPT}("
 		if [[ -n ${vcs_info_msg_1_} ]]; then
-			PROMPT="${PROMPT}%F{red}"
+			VCS_INFO="(%F{red}"
 		else
-			PROMPT="${PROMPT}%F{green}"
+			VCS_INFO="(%F{green}"
 		fi
-		PROMPT="${PROMPT}${vcs_info_msg_0_}%f)"
+		VCS_INFO="${VCS_INFO}${vcs_info_msg_0_}%f)"
 	fi
-	PROMPT="${PROMPT}%(!.#.$) "
+
+	PROMPT="[%F{yellow}%c%f]${VCS_INFO}%(!.#.$) "
+	RPROMPT="%(0?..%F{red}%?%f)"
 }
 
 # Editing
