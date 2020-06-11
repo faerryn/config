@@ -54,6 +54,7 @@ augroup END
 
 let g:rustfmt_autosave = 1
 let g:textobj_sandwich_no_default_key_mappings = 1
+let g:undotree_HelpLine = 0
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_WindowLayout = 3
 let g:zig_fmt_autosave = 1
