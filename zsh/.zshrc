@@ -54,8 +54,7 @@ function precmd() {
     else
       local REMOTE="$(git remote)"
       if [[ -n ${REMOTE} ]]; then
-	if [[ "$(git rev-list HEAD --not ${REMOTE}\
-	  ${REMOTE} --not HEAD --count)" > 0 ]]; then
+	if [[ "$(git rev-list HEAD --not ${REMOTE} ${REMOTE} --not HEAD --count)" > 0 ]]; then
 	  VCS_INFO_COMP="%F{yellow}"
 	else
 	  VCS_INFO_COMP="%F{green}"
