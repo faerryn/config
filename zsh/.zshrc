@@ -48,6 +48,7 @@ function zle-keymap-select() {
 	fi
 }
 function zle-line-init() { echo -ne "\e[5 q" }
+echo -ne "\e[5 q"
 
 # Edit line in vim with alt-e:
 autoload edit-command-line
