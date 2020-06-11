@@ -67,6 +67,4 @@ let g:lightline = {
 			\ 'component_function': { 'gitbranch': 'FugitiveHead' },
 			\ 'colorscheme': g:colors_name,
 			\ }
-if exists('*lightline#enable')
-	call lightline#enable()
-endif
+silent! call lightline#enable()
