@@ -19,7 +19,7 @@ set undofile
 set updatetime=250
 
 nnoremap <silent> <leader>l <cmd>lopen<cr>
-nnoremap <silent> <leader>q <cmd>copen<cr>
+nnoremap <silent> <leader>c <cmd>copen<cr>
 
 nnoremap / /\v
 nnoremap ? ?\v
@@ -27,12 +27,10 @@ nnoremap ? ?\v
 nnoremap <silent> <leader>g <cmd>G<cr>
 nnoremap <silent> <leader>f <cmd>Files<cr>
 
-if !exists('g:colors_name')
-	let g:gruvbox_italic = 1
-	let g:gruvbox_italicize_strings = 1
-	let g:gruvbox_contrast_dark = 'soft'
-	colorscheme gruvbox
-endif
+let g:gruvbox_italic = 1
+let g:gruvbox_italicize_strings = 1
+let g:gruvbox_contrast_dark = 'soft'
+colorscheme gruvbox
 
 augroup AutoSourceInitVim
 	autocmd!
