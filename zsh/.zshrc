@@ -76,6 +76,11 @@ function zle-keymap-select() {
 }
 function zle-line-init() { echo -ne "\e[5 q" }
 
+# Edit line in vim with alt-e:
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^[e' edit-command-line
+
 # fzf
 for FZF_ZSH_DIR in "/usr/share/fzf" "$HOME/.fzf/shell"; do
   if [ -d "$FZF_ZSH_DIR" ]; then
