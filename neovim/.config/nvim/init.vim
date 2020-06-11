@@ -50,9 +50,7 @@ let g:syntastic_check_on_open = 1
 let g:textobj_sandwich_no_default_key_mappings = 1
 let g:zig_fmt_autosave = 1
 
-if isdirectory(glob('~/.fzf'))
-	set runtimepath^=~/.fzf
-endif
+if isdirectory(glob('~/.fzf')) | set runtimepath^=~/.fzf | endif
 command! -bang -nargs=? -complete=dir Files
 			\ call fzf#vim#files(<q-args>, <bang>0)
 command! -bang Buffers call fzf#vim#buffers(<bang>0)

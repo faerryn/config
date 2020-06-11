@@ -17,35 +17,35 @@ setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
 setopt EXTENDED_GLOB
 
 # Editing
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR='nvim'
+export VISUAL='nvim'
 export MANPAGER="nvim -c 'set ft=man' -"
-alias v="nvim"
+alias v='nvim'
 
 # ls(exa) aliases
-alias l="exa --git"
-alias la="exa -la --git"
-alias ll="exa -l --git"
+alias l='exa --git'
+alias la='exa -la --git'
+alias ll='exa -l --git'
 
 # misc aliases
-alias g="git"
-alias s="sudo"
-alias se="sudoedit"
+alias g='git'
+alias s='sudo'
+alias se='sudoedit'
 
 # Prompt
-PROMPT="[%F{blue}%c%f]%(!.#.$) "
-RPROMPT="%(0?..%F{red}%?%f)"
+PROMPT='[%F{blue}%c%f]%(!.#.$) '
+RPROMPT='%(0?..%F{red}%?%f)'
 
 # Change cursor shape for different vi modes.
 export KEYTIMEOUT=1
 zle -N zle-keymap-select
 function zle-keymap-select() {
-  if [[ ${KEYMAP} = vicmd ]] || [[ $1 = "block" ]]; then
-      echo -ne "\e[1 q"
-    elif [[ ${KEYMAP} = main ]] || [[ ${KEYMAP} = viins ]]\
-      || [[ ${KEYMAP} = "" ]] || [[ $1 = "beam" ]]; then
-	  echo -ne "\e[5 q"
-  fi
+	if [[ ${KEYMAP} = vicmd ]] || [[ $1 = 'block' ]]; then
+		echo -ne '\e[1 q'
+	elif [[ ${KEYMAP} = main ]] || [[ ${KEYMAP} = viins ]]\
+		|| [[ -z ${KEYMAP} ]] || [[ $1 = 'beam' ]]; then
+		echo -ne '\e[5 q'
+	fi
 }
 function zle-line-init() { echo -ne "\e[5 q" }
 
@@ -56,11 +56,11 @@ bindkey '^[e' edit-command-line
 
 # fzf
 for FZF_ZSH_DIR in "/usr/share/fzf" "$HOME/.fzf/shell"; do
-  if [ -d "$FZF_ZSH_DIR" ]; then
-    . "$FZF_ZSH_DIR/completion.zsh"
-    . "$FZF_ZSH_DIR/key-bindings.zsh"
-    break
-  fi
+	if [ -d "$FZF_ZSH_DIR" ]; then
+		. "$FZF_ZSH_DIR/completion.zsh"
+		. "$FZF_ZSH_DIR/key-bindings.zsh"
+		break
+	fi
 done
 export FZF_ALT_C_COMMAND="fd -HL -E '**/.git/' -td . \$dir"
 export FZF_CTRL_T_COMMAND="fd -HL -E '**/.git/' -tf . \$dir"
