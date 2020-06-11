@@ -17,15 +17,24 @@ setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
 setopt EXTENDED_GLOB
 setopt PROMPT_SUBST
 
-# VCS
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-zstyle ':vcs_info:git:*' formats '(%b)'
-
 # Prompt
-PROMPT="[%F{yellow}%c%f]\$vcs_info_msg_0_%(!.#.$) "
-RPROMPT="%(0?..%F{red}%?%f)"
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' formats '%b' '%c%u'
+precmd() {
+	vcs_info
+	PROMPT="[%F{yellow}%c%f]"
+	RPROMPT="%(0?..%F{red}%?%f)"
+	if [[ -n ${vcs_info_msg_0_} ]]; then
+		PROMPT="${PROMPT}("
+		if [[ -n ${vcs_info_msg_1_} ]]; then
+			PROMPT="${PROMPT}%F{red}"
+		else
+			PROMPT="${PROMPT}%F{green}"
+		fi
+		PROMPT="${PROMPT}${vcs_info_msg_0_}%f)"
+	fi
+	PROMPT="${PROMPT}%(!.#.$) "
+}
 
 # Editing
 export EDITOR="nvim"
