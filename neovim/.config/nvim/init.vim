@@ -50,6 +50,7 @@ let g:highlightedyank_highlight_duration = 250
 let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 
+let g:textobj_sandwich_no_default_key_mappings = 1
 augroup VimSandwichKeymap
 	autocmd!
 	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
