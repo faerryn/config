@@ -41,13 +41,6 @@ augroup AutoSourceInitVim
 augroup END
 command! Resource source $MYVIMRC
 
-augroup EscapeToQuit
-	autocmd!
-	autocmd FileType qf,help,dirvish,fugitive,gitcommit
-				\ nnoremap <silent> <buffer> <esc> <cmd>bdelete<cr>
-	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
-augroup END
-
 augroup ProseSettings
 	autocmd!
 	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak spell
@@ -57,8 +50,10 @@ let g:highlightedyank_highlight_duration = 250
 let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 
-packadd vim-sandwich 
-runtime macros/sandwich/keymap/surround.vim
+augroup VimSandwichKeymap
+	autocmd!
+	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
+augroup END
 
 if isdirectory(glob('~/.fzf'))
 	set runtimepath^=~/.fzf
@@ -81,6 +76,11 @@ let g:fzf_colors = {
 command! -bang -nargs=? -complete=dir Files
 			\ call fzf#vim#files(<q-args>, <bang>0)
 command! -bang Buffers call fzf#vim#buffers(<bang>0)
+augroup FzfStandardQuit
+	autocmd!
+	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
+	autocmd FileType fzf tnoremap <silent> <buffer> <esc> <nop>
+augroup END
 
 let g:lightline = { 
 			\ 'active': {
