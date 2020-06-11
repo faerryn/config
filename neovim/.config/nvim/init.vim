@@ -39,6 +39,11 @@ augroup AutoSourceInitVim
 augroup END
 command! Resource source $MYVIMRC
 
+augroup GenerateHelpTags
+	autocmd!
+	autocmd VimEnter * silent! helptags ALL
+augroup END
+
 augroup ProseSettings
 	autocmd!
 	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak spell
@@ -109,6 +114,3 @@ augroup LightlineSettings
 	autocmd ColorScheme * call s:lightline_settings()
 augroup END
 call s:lightline_settings()
-
-" Allow vim to find help pages for plugins
-silent! helptags ALL
