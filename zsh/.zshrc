@@ -21,11 +21,13 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim -c 'set ft=man' -"
 
-# Aliases
+# ls(exa) aliases
+alias l="exa --git"
+alias la="exa -la --git"
+alias ll="exa -l --git"
+
+# misc aliases
 alias g="git"
-alias l="exa"
-alias la="exa -la"
-alias ll="exa -l"
 alias s="sudo"
 alias se="sudoedit"
 alias v="nvim"
@@ -33,58 +35,65 @@ alias v="nvim"
 # Prompt
 setopt PROMPT_SUBST
 autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' enable git
+
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats '%b' '%c%u'
-precmd() {
-	local VCS_INFO=""
-	vcs_info
-	if [[ -n ${vcs_info_msg_0_} ]]; then
-		if [[ -n ${vcs_info_msg_1_} ]]; then
-			VCS_INFO="(%F{red}"
-		else
-			VCS_INFO="(%F{green}"
-		fi
-		VCS_INFO="${VCS_INFO}${vcs_info_msg_0_}%f)"
-	fi
-	PROMPT="[%F{yellow}%c%f]${VCS_INFO}%(!.#.$) "
-	RPROMPT="%(0?..%F{red}%?%f)"
+zstyle ':vcs_info:*' max-exports 4
+
+zstyle ':vcs_info:*' formats '%s' '%b' '%u' '%c'
+zstyle ':vcs_info:*' actionformats '%s' '%b|%a' '%u' '%c'
+
+function precmd() {
+  vcs_info
+  if [[ -n ${vcs_info_msg_0_} ]]; then
+    if [[ -n ${vcs_info_msg_2_} ]]; then
+      VCS_INFO_COMP="(%F{red}"
+    else
+      if [[ -n ${vcs_info_msg_3_} ]]; then
+	VCS_INFO_COMP="(%F{yellow}"
+      else
+	VCS_INFO_COMP="(%F{green}"
+      fi
+    fi
+    VCS_INFO_COMP="${VCS_INFO_COMP}${vcs_info_msg_1_}%f)"
+  fi
+  PROMPT="[%F{blue}%c%f]${VCS_INFO_COMP}%(!.#.$) "
+  RPROMPT="%(0?..%F{red}%?%f)"
 }
 
 # Change cursor shape for different vi modes.
 export KEYTIMEOUT=1
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
+zle -N zle-keymap-select
+function zle-keymap-select() {
+  if [[ ${KEYMAP} = vicmd ]] ||
+    [[ $1 = "block" ]]; then
+      echo -ne "\e[1 q"
+    elif [[ ${KEYMAP} = main ]] ||
+      [[ ${KEYMAP} = viins ]] ||
+      [[ ${KEYMAP} = "" ]] ||
+      [[ $1 = "beam" ]]; then
+	  echo -ne "\e[5 q"
   fi
 }
-zle -N zle-keymap-select
-zle-line-init() {
-    echo -ne "\e[5 q"
-}
-zle -N zle-line-init
-echo -ne
-preexec() { echo -ne '\e[5 q' ;}
+function zle-line-init() { echo -ne "\e[5 q" }
 
 # Edit line in vim with alt-e:
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^[e' edit-command-line
 
+# Zsh move
+autoload -U zmv
+
 # fzf
 for FZF_ZSH_DIR in "/usr/share/fzf" "$HOME/.fzf/shell"; do
-	if [ -d "$FZF_ZSH_DIR" ]; then
-		. "$FZF_ZSH_DIR/completion.zsh"
-		. "$FZF_ZSH_DIR/key-bindings.zsh"
-		break
-	fi
+  if [ -d "$FZF_ZSH_DIR" ]; then
+    . "$FZF_ZSH_DIR/completion.zsh"
+    . "$FZF_ZSH_DIR/key-bindings.zsh"
+    break
+  fi
 done
-FD_FLAGS="-HL -E '**/.git/'"
-export FZF_ALT_C_COMMAND="fd $FD_FLAGS -td . \$dir"
-export FZF_CTRL_T_COMMAND="fd $FD_FLAGS -tf . \$dir"
-export FZF_DEFAULT_COMMAND="fd $FD_FLAGS -tf"
+export FZF_ALT_C_COMMAND="fd -HL -E '**/.git/' -td . \$dir"
+export FZF_CTRL_T_COMMAND="fd -HL -E '**/.git/' -tf . \$dir"
+export FZF_DEFAULT_COMMAND="fd -HL -E '**/.git/' -tf"
