@@ -14,9 +14,9 @@ set signcolumn=yes
 set splitbelow splitright
 set tabstop=4 shiftwidth=4
 set termguicolors
-set timeoutlen=250
+set timeoutlen=300
 set undofile
-set updatetime=250
+set updatetime=300
 
 nnoremap <silent> <leader>l <cmd>lopen<cr>
 nnoremap <silent> <leader>c <cmd>copen<cr>
@@ -53,7 +53,7 @@ let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 
 " check out https://github.com/neovim/neovim/pull/12279
-let g:highlightedyank_highlight_duration = 250
+let g:highlightedyank_highlight_duration = 300
 
 " check out https://github.com/neovim/nvim-lsp
 let g:syntastic_always_populate_loc_list = 1
