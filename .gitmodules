@@ -69,11 +69,8 @@
 	path = neovim/.config/nvim/pack/bundle/start/vim-symlink
 	url = https://github.com/faerryn/vim-symlink
 [submodule "syntastic"]
-	path = neovim/.config/nvim/pack/bundle/opt/syntastic
+	path = neovim/.config/nvim/pack/bundle/start/syntastic
 	url = https://github.com/vim-syntastic/syntastic
-[submodule "nvim-lsp"]
-	path = neovim/.config/nvim/pack/bundle/opt/nvim-lsp
-	url = https://github.com/neovim/nvim-lsp
 [submodule "vim-highlightedyank"]
 	path = neovim/.config/nvim/pack/bundle/opt/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank
