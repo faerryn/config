@@ -62,6 +62,12 @@
 [submodule "vim-sleuth"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth
+[submodule "vim-bbye"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-bbye
+	url = https://github.com/moll/vim-bbye
+[submodule "vim-symlink"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-symlink
+	url = https://github.com/aymericbeaumet/vim-symlink
 [submodule "syntastic"]
 	path = neovim/.config/nvim/pack/bundle/opt/syntastic
 	url = https://github.com/vim-syntastic/syntastic

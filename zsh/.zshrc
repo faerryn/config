@@ -14,6 +14,7 @@ compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 
 # Zsh options
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
+setopt EXTENDED_GLOB
 setopt PROMPT_SUBST
 
 # VCS
