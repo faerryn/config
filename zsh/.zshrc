@@ -15,14 +15,27 @@ compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 # Zsh options
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
 setopt EXTENDED_GLOB
-setopt PROMPT_SUBST
+
+# Editing
+export EDITOR="nvim"
+export VISUAL="nvim"
+export MANPAGER="nvim -c 'set ft=man' -"
+
+# Aliases
+alias g="git"
+alias l="exa"
+alias la="exa -la"
+alias ll="exa -l"
+alias s="sudo"
+alias se="sudoedit"
+alias v="nvim"
 
 # Prompt
+setopt PROMPT_SUBST
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:git:*' formats '%b' '%c%u'
 precmd() {
-
 	local VCS_INFO=""
 	vcs_info
 	if [[ -n ${vcs_info_msg_0_} ]]; then
@@ -33,7 +46,6 @@ precmd() {
 		fi
 		VCS_INFO="${VCS_INFO}${vcs_info_msg_0_}%f)"
 	fi
-
 	PROMPT="[%F{yellow}%c%f]${VCS_INFO}%(!.#.$) "
 	RPROMPT="%(0?..%F{red}%?%f)"
 }
@@ -59,19 +71,10 @@ zle -N zle-line-init
 echo -ne
 preexec() { echo -ne '\e[5 q' ;}
 
-# Editing
-export EDITOR="nvim"
-export VISUAL="nvim"
-export MANPAGER="nvim -c 'set ft=man' -"
-
-# Aliases
-alias g="git"
-alias l="exa"
-alias la="exa -la"
-alias ll="exa -l"
-alias s="sudo"
-alias se="sudoedit"
-alias v="nvim"
+# Edit line in vim with alt-e:
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^[e' edit-command-line
 
 # fzf
 for FZF_ZSH_DIR in "/usr/share/fzf" "$HOME/.fzf/shell"; do
