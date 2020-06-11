@@ -100,17 +100,8 @@ let g:lightline = {
 			\ 	]
 			\ },
 			\ 'component_function': { 'gitbranch': 'FugitiveHead' },
+			\ 'colorscheme': g:colors_name,
 			\ }
-function! s:lightline_settings()
-	if exists('g:colors_name')
-		let g:lightline.colorscheme = g:colors_name
-	endif
-	if exists('*lightline#enable()')
-		call lightline#enable()
-	endif
-endfunction
-augroup LightlineSettings
-	autocmd!
-	autocmd ColorScheme * call s:lightline_settings()
-augroup END
-call s:lightline_settings()
+if exists('*lightline#enable')
+	call lightline#enable()
+endif
