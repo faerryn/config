@@ -17,6 +17,7 @@ set number relativenumber
 set omnifunc=syntaxcomplete#Complete
 set signcolumn=yes
 set splitbelow splitright
+set tabstop=4 shiftwidth=4
 set termguicolors
 set timeoutlen=250
 set undofile
