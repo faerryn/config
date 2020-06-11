@@ -19,11 +19,11 @@ set timeoutlen=300
 set undofile
 set updatetime=300
 
-nnoremap <silent> <leader>l <cmd>lopen<cr>
-nnoremap <silent> <leader>c <cmd>copen<cr>
-
 nnoremap / /\v
 nnoremap ? ?\v
+
+nnoremap <silent> <leader>l <cmd>lopen<cr>
+nnoremap <silent> <leader>c <cmd>copen<cr>
 
 nnoremap <silent> <leader>g <cmd>G<cr>
 nnoremap <silent> <leader>f <cmd>Files<cr>
