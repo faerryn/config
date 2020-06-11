@@ -19,6 +19,7 @@ setopt PROMPT_SUBST
 
 # Prompt
 autoload -Uz vcs_info
+zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:git:*' formats '%b' '%c%u'
 precmd() {
 	vcs_info
