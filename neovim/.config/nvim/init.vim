@@ -5,7 +5,7 @@ set foldmethod=syntax foldlevelstart=20
 set hidden
 set ignorecase smartcase
 set lazyredraw
-set list listchars=tab:\|\ ,trail:-,nbsp:+
+set list listchars=tab:\ \ ,trail:-,nbsp:+
 set mouse=ar
 set nowrap
 set number relativenumber
