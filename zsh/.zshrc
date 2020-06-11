@@ -20,6 +20,7 @@ setopt EXTENDED_GLOB
 export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim -c 'set ft=man' -"
+alias v="nvim"
 
 # ls(exa) aliases
 alias l="exa --git"
@@ -30,7 +31,6 @@ alias ll="exa -l --git"
 alias g="git"
 alias s="sudo"
 alias se="sudoedit"
-alias v="nvim"
 
 # Prompt
 setopt PROMPT_SUBST
@@ -67,13 +67,10 @@ function precmd() {
 export KEYTIMEOUT=1
 zle -N zle-keymap-select
 function zle-keymap-select() {
-  if [[ ${KEYMAP} = vicmd ]] ||
-    [[ $1 = "block" ]]; then
+  if [[ ${KEYMAP} = vicmd ]] || [[ $1 = "block" ]]; then
       echo -ne "\e[1 q"
-    elif [[ ${KEYMAP} = main ]] ||
-      [[ ${KEYMAP} = viins ]] ||
-      [[ ${KEYMAP} = "" ]] ||
-      [[ $1 = "beam" ]]; then
+    elif [[ ${KEYMAP} = main ]] || [[ ${KEYMAP} = viins ]]\
+      || [[ ${KEYMAP} = "" ]] || [[ $1 = "beam" ]]; then
 	  echo -ne "\e[5 q"
   fi
 }
