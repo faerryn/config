@@ -11,6 +11,7 @@ set foldmethod=syntax foldlevelstart=20
 set hidden
 set ignorecase smartcase
 set lazyredraw
+set list listchars=tab:\|\ ,trail:-,nbsp:+
 set mouse=ar
 set nowrap
 set number relativenumber
@@ -46,20 +47,9 @@ augroup EscapeToQuit
 	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
 augroup END
 
-function s:wrap_settings()
-	setlocal wrap linebreak
-	nnoremap <silent> <buffer> j gj
-	vnoremap <silent> <buffer> j gj
-	nnoremap <silent> <buffer> k gk
-	vnoremap <silent> <buffer> k gk
-	nnoremap <silent> <buffer> 0 g0
-	vnoremap <silent> <buffer> 0 g0
-	nnoremap <silent> <buffer> $ g$
-	vnoremap <silent> <buffer> $ g$
-endfunction
 augroup WrapSettings
 	autocmd!
-	autocmd FileType vimwiki call s:wrap_settings()
+	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak
 augroup END
 
 augroup SpellSettings
@@ -67,12 +57,6 @@ augroup SpellSettings
 	autocmd FileType vimwiki,gitcommit setlocal spell
 augroup END
 
-augroup FormatOnWrite
-	autocmd!
-	if executable('clang-format')
-		autocmd BufWritePre *.c,*.cpp %!clang-format
-	endif
-augroup END
 let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 
