@@ -33,42 +33,8 @@ alias s="sudo"
 alias se="sudoedit"
 
 # Prompt
-setopt PROMPT_SUBST
-autoload -Uz vcs_info
-
-zstyle ':vcs_info:*' enable git
-
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' max-exports 2
-
-zstyle ':vcs_info:*' formats '%b' '%u%c'
-zstyle ':vcs_info:*' actionformats '%b|%a' '%u%c'
-
-function precmd() {
-  vcs_info
-  local VCS_INFO_COMP=""
-  if [[ -n ${vcs_info_msg_0_} ]]; then
-    local STAGE_COLOR=""
-    if [[ -n ${vcs_info_msg_1_} ]]; then
-      STAGE_COLOR="%F{red}"
-    else
-      local REMOTE="$(git remote)"
-      if [[ -n ${REMOTE} ]]; then
-	if [[ "$(git rev-list HEAD --not ${REMOTE}\
-	  ${REMOTE} --not HEAD --count)" > 0 ]]; then
-	  STAGE_COLOR="%F{yellow}"
-	else
-	  STAGE_COLOR="%F{green}"
-	fi
-      else
-	VCS_INFO_COMP="%F{green}"
-      fi
-    fi
-    local VCS_INFO_COMP="(${STAGE_COLOR}${vcs_info_msg_0_}%f)"
-  fi
-  PROMPT="[%F{blue}%c%f]${VCS_INFO_COMP}%(!.#.$) "
-  RPROMPT="%(0?..%F{red}%?%f)"
-}
+PROMPT="[%F{blue}%c%f]%(!.#.$) "
+RPROMPT="%(0?..%F{red}%?%f)"
 
 # Change cursor shape for different vi modes.
 export KEYTIMEOUT=1
