@@ -49,14 +49,9 @@ augroup EscapeToQuit
 	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
 augroup END
 
-augroup WrapSettings
+augroup ProseSettings
 	autocmd!
-	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak
-augroup END
-
-augroup SpellSettings
-	autocmd!
-	autocmd FileType vimwiki,gitcommit setlocal spell
+	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak spell
 augroup END
 
 let g:rustfmt_autosave = 1
@@ -95,8 +90,6 @@ let g:lightline = {
 			\ 	]
 			\ },
 			\ 'component_function': { 'gitbranch': 'FugitiveHead' },
-			\ 'separator'         : { 'left'     : '', 'right': '' },
-			\ 'subseparator'      : { 'left'     : '', 'right': '' },
 			\ }
 function! s:lightline_settings()
 	if exists('g:colors_name')
