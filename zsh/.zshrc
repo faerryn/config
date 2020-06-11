@@ -39,24 +39,24 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' max-exports 4
+zstyle ':vcs_info:*' max-exports 3
 
-zstyle ':vcs_info:*' formats '%s' '%b' '%u' '%c'
-zstyle ':vcs_info:*' actionformats '%s' '%b|%a' '%u' '%c'
+zstyle ':vcs_info:*' formats '%b' '%u' '%c'
+zstyle ':vcs_info:*' actionformats '%b|%a' '%u' '%c'
 
 function precmd() {
   vcs_info
   if [[ -n ${vcs_info_msg_0_} ]]; then
-    if [[ -n ${vcs_info_msg_2_} ]]; then
+    if [[ -n ${vcs_info_msg_1_} ]]; then
       VCS_INFO_COMP="(%F{red}"
     else
-      if [[ -n ${vcs_info_msg_3_} ]]; then
+      if [[ -n ${vcs_info_msg_2_} ]]; then
 	VCS_INFO_COMP="(%F{yellow}"
       else
 	VCS_INFO_COMP="(%F{green}"
       fi
     fi
-    VCS_INFO_COMP="${VCS_INFO_COMP}${vcs_info_msg_1_}%f)"
+    VCS_INFO_COMP="${VCS_INFO_COMP}${vcs_info_msg_0_}%f)"
   fi
   PROMPT="[%F{blue}%c%f]${VCS_INFO_COMP}%(!.#.$) "
   RPROMPT="%(0?..%F{red}%?%f)"
