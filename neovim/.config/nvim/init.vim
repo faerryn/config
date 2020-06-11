@@ -1,9 +1,3 @@
-augroup AutoSourceInitVim
-	autocmd!
-	execute 'autocmd BufWritePost $MYVIMRC,' . resolve($MYVIMRC)
-				\ . ' source $MYVIMRC'
-augroup END
-
 let g:mapleader=' '
 set colorcolumn=80
 set cursorline cursorcolumn
@@ -40,6 +34,14 @@ if !exists('g:colors_name')
 	colorscheme gruvbox
 endif
 
+augroup AutoSourceInitVim
+	autocmd!
+	execute 'autocmd BufWritePost $MYVIMRC,' . resolve($MYVIMRC)
+				\ . ' source $MYVIMRC'
+augroup END
+
+command! Resource source $MYVIMRC
+
 augroup EscapeToQuit
 	autocmd!
 	autocmd FileType qf,help,dirvish,fugitive,gitcommit
@@ -63,14 +65,8 @@ let g:zig_fmt_autosave = 1
 packadd vim-sandwich
 runtime macros/sandwich/keymap/surround.vim
 
-let g:loaded_netrw       = 1
-let g:loaded_netrwPlugin = 1
-command! -nargs=? -complete=dir Explore Dirvish <args>
-command! -nargs=? -complete=dir Sexplore rightbelow split | Dirvish <args>
-command! -nargs=? -complete=dir Vexplore leftabove vsplit | Dirvish <args>
-
 if isdirectory(glob('~/.fzf'))
-	set rtp^=~/.fzf
+	set runtimepath^=~/.fzf
 endif
 let g:fzf_colors = { 
 			\ 'fg'     : ['fg', 'Normal'],
@@ -163,3 +159,6 @@ else
 	let g:highlightedyank_highlight_duration = 250
 
 endif
+
+" Allow vim to find help pages for plugins
+silent! helptags ALL

@@ -59,6 +59,9 @@
 [submodule "gruvbox"]
 	path = neovim/.config/nvim/pack/bundle/start/gruvbox
 	url = https://github.com/morhetz/gruvbox
+[submodule "vim-sleuth"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-sleuth
+	url = https://github.com/tpope/vim-sleuth
 [submodule "syntastic"]
 	path = neovim/.config/nvim/pack/bundle/opt/syntastic
 	url = https://github.com/vim-syntastic/syntastic
@@ -68,9 +71,6 @@
 [submodule "vim-highlightedyank"]
 	path = neovim/.config/nvim/pack/bundle/opt/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank
-[submodule "vim-sleuth"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-sleuth
-	url = https://github.com/tpope/vim-sleuth
 # Tmux plugins
 [submodule "tmux-sensible"]
 	path = tmux/.config/tmux/plugins/tmux-sensible
