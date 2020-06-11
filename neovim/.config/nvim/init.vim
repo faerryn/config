@@ -27,6 +27,7 @@ nnoremap <silent> <leader>c <cmd>copen<cr>
 
 nnoremap <silent> <leader>g <cmd>G<cr>
 nnoremap <silent> <leader>f <cmd>Files<cr>
+nnoremap <silent> <leader>u <cmd>UndotreeShow<cr>
 
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_strings = 1
@@ -41,6 +42,7 @@ augroup AutoCommands
 	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
 	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak spell
 	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
+	autocmd FileType undotree nnoremap <silent> <buffer> <c-w>q <cmd>UndotreeHide<cr>
 augroup END
 
 let g:highlightedyank_highlight_duration = 300
@@ -48,6 +50,8 @@ let g:rustfmt_autosave = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:textobj_sandwich_no_default_key_mappings = 1
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_WindowLayout = 3
 let g:zig_fmt_autosave = 1
 
 if isdirectory(glob('~/.fzf')) | set runtimepath^=~/.fzf | endif
