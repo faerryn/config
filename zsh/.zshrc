@@ -46,30 +46,22 @@ zstyle ':vcs_info:*' actionformats '%b|%a' '%u' '%c'
 
 function precmd() {
   vcs_info
+  local VCS_INFO_COMP=""
   if [[ -n ${vcs_info_msg_0_} ]]; then
-    local VCS_INFO_COMP="("
+    local STAGE_COLOR=""
     if [[ -n ${vcs_info_msg_1_} ]]; then
-      VCS_INFO_COMP="${VCS_INFO_COMP}%F{red}"
+      STAGE_COLOR="%F{red}"
     else
       if [[ -n ${vcs_info_msg_2_} ]]; then
-	VCS_INFO_COMP="${VCS_INFO_COMP}%F{yellow}"
+	VCS_INFO_COMP="%F{yellow}"
       else
-	VCS_INFO_COMP="${VCS_INFO_COMP}%F{green}"
+	VCS_INFO_COMP="%F{green}"
       fi
     fi
-    local REMOTE="$(git remote)"
-    VCS_INFO_COMP="${VCS_INFO_COMP}${REMOTE}/${vcs_info_msg_0_}%f)"
-    local AHEAD="$(git rev-list HEAD --not ${REMOTE} --count)"
-    if [[ ${AHEAD} > 0 ]]; then
-      VCS_INFO_COMP="${VCS_INFO_COMP}{%F{cyan}${AHEAD}↑%f}"
-    fi
-    local BEHIND="$(git rev-list ${REMOTE} --not HEAD --count)"
-    if [[ ${BEHIND} > 0 ]]; then
-      VCS_INFO_COMP="${VCS_INFO_COMP}{%F{magenta}${BEHIND}↓%f}"
-    fi
+    local VCS_INFO_COMP="(${STAGE_COLOR}${vcs_info_msg_0_}%f)"
   fi
-  PROMPT="[%F{blue}%c%f]%(0?..%F{red})%(!.#.$)%f "
-  RPROMPT="${VCS_INFO_COMP}"
+  PROMPT="[%F{blue}%c%f]${VCS_INFO_COMP}%(!.#.$) "
+  RPROMPT="%(0?..%F{red}%?%f)"
 }
 
 # Change cursor shape for different vi modes.
