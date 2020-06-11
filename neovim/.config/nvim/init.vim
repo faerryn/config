@@ -36,15 +36,20 @@ colorscheme gruvbox
 
 augroup AutoCommands
 	autocmd!
+
 	execute 'autocmd BufWritePost $MYVIMRC,' . resolve($MYVIMRC)
 				\ . ' source $MYVIMRC'
+
 	autocmd VimEnter * silent! helptags ALL
 	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
+
 	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak spell
+
 	autocmd FileType fugitive nnoremap <esc> <cmd>bdelete<cr>
 	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
 	autocmd FileType undotree nnoremap <silent> <buffer> <c-w>q <cmd>UndotreeHide<cr>
 	autocmd FileType undotree nnoremap <silent> <buffer> <esc> <cmd>UndotreeHide<cr>
+
 augroup END
 
 let g:highlightedyank_highlight_duration = 300
