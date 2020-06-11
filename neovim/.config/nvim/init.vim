@@ -13,7 +13,7 @@ set number relativenumber
 set omnifunc=syntaxcomplete#Complete
 set signcolumn=yes
 set splitbelow splitright
-set tabstop=4 shiftwidth=4
+set tabstop=8 shiftwidth=8
 set termguicolors
 set timeoutlen=300
 set undofile
@@ -55,11 +55,12 @@ command! -bang -nargs=? -complete=dir Files
 			\ call fzf#vim#files(<q-args>, <bang>0)
 command! -bang Buffers call fzf#vim#buffers(<bang>0)
 
-let g:lightline = { 
+let g:lightline = {
 			\ 'active': {
 			\	'left': [
 			\ 		[ 'mode', 'paste' ],
-			\ 		[ 'gitbranch', 'readonly', 'filename', 'modified' ]
+			\ 		[ 'gitbranch', 'readonly',
+			\ 			'filename', 'modified' ]
 			\ 	]
 			\ },
 			\ 'component_function': { 'gitbranch': 'FugitiveHead' },
