@@ -67,7 +67,7 @@
 	url = https://github.com/moll/vim-bbye
 [submodule "vim-symlink"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-symlink
-	url = https://github.com/aymericbeaumet/vim-symlink
+	url = https://github.com/faerryn/vim-symlink
 [submodule "syntastic"]
 	path = neovim/.config/nvim/pack/bundle/opt/syntastic
 	url = https://github.com/vim-syntastic/syntastic
