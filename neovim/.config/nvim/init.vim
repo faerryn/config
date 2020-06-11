@@ -39,7 +39,6 @@ augroup AutoSourceInitVim
 	execute 'autocmd BufWritePost $MYVIMRC,' . resolve($MYVIMRC)
 				\ . ' source $MYVIMRC'
 augroup END
-
 command! Resource source $MYVIMRC
 
 augroup EscapeToQuit
