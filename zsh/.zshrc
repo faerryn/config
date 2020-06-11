@@ -39,10 +39,10 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' max-exports 3
+zstyle ':vcs_info:*' max-exports 2
 
-zstyle ':vcs_info:*' formats '%b' '%u' '%c'
-zstyle ':vcs_info:*' actionformats '%b|%a' '%u' '%c'
+zstyle ':vcs_info:*' formats '%b' '%u%c'
+zstyle ':vcs_info:*' actionformats '%b|%a' '%u%c'
 
 function precmd() {
   vcs_info
@@ -52,8 +52,14 @@ function precmd() {
     if [[ -n ${vcs_info_msg_1_} ]]; then
       STAGE_COLOR="%F{red}"
     else
-      if [[ -n ${vcs_info_msg_2_} ]]; then
-	VCS_INFO_COMP="%F{yellow}"
+      local REMOTE="$(git remote)"
+      if [[ -n ${REMOTE} ]]; then
+	if [[ "$(git rev-list HEAD --not ${REMOTE}\
+	  ${REMOTE} --not HEAD --count)" > 0 ]]; then
+	  VCS_INFO_COMP="%F{yellow}"
+	else
+	  VCS_INFO_COMP="%F{green}"
+	fi
       else
 	VCS_INFO_COMP="%F{green}"
       fi
