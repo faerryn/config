@@ -46,6 +46,7 @@ zstyle ':vcs_info:*' actionformats '%b|%a' '%u' '%c'
 
 function precmd() {
   vcs_info
+  local VCS_INFO_COMP=""
   if [[ -n ${vcs_info_msg_0_} ]]; then
     if [[ -n ${vcs_info_msg_1_} ]]; then
       VCS_INFO_COMP="(%F{red}"
