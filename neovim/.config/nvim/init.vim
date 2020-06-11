@@ -52,14 +52,16 @@ augroup AutoCommands
 
 augroup END
 
-let g:highlightedyank_highlight_duration = 300
 let g:rustfmt_autosave = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
 let g:textobj_sandwich_no_default_key_mappings = 1
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_WindowLayout = 3
 let g:zig_fmt_autosave = 1
+
+" May be obseleted
+let g:highlightedyank_highlight_duration = 300
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
 
 if isdirectory(glob('~/.fzf')) | set runtimepath^=~/.fzf | endif
 command! -bang -nargs=? -complete=dir Files
