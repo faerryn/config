@@ -54,7 +54,8 @@ function precmd() {
     else
       local REMOTE="$(git remote)"
       if [[ -n ${REMOTE} ]]; then
-	if [[ "$(git rev-list HEAD --not ${REMOTE} ${REMOTE} --not HEAD --count)" > 0 ]]; then
+	if [[ "$(git rev-list HEAD --not ${REMOTE}\
+	  ${REMOTE} --not HEAD --count)" > 0 ]]; then
 	  STAGE_COLOR="%F{yellow}"
 	else
 	  STAGE_COLOR="%F{green}"
