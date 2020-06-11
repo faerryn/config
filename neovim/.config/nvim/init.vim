@@ -46,7 +46,13 @@ augroup ProseSettings
 	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak spell
 augroup END
 
+" check out https://github.com/neovim/neovim/pull/12279
 let g:highlightedyank_highlight_duration = 250
+
+" check out https://github.com/neovim/nvim-lsp
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open            = 1
+
 let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 
@@ -105,9 +111,6 @@ augroup LightlineSettings
 	autocmd ColorScheme * call s:lightline_settings()
 augroup END
 call s:lightline_settings()
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open            = 1
 
 " Allow vim to find help pages for plugins
 silent! helptags ALL
