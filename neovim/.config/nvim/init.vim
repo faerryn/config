@@ -57,7 +57,7 @@ command! -bang Buffers call fzf#vim#buffers(<bang>0)
 
 let g:lightline = {
 			\ 'active': {
-			\	'left': [
+			\ 	'left': [
 			\ 		[ 'mode', 'paste' ],
 			\ 		[ 'gitbranch', 'readonly',
 			\ 			'filename', 'modified' ]
