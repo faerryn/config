@@ -72,7 +72,7 @@
 	path = neovim/.config/nvim/pack/bundle/start/syntastic
 	url = https://github.com/vim-syntastic/syntastic
 [submodule "vim-highlightedyank"]
-	path = neovim/.config/nvim/pack/bundle/opt/vim-highlightedyank
+	path = neovim/.config/nvim/pack/bundle/start/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank
 # Tmux plugins
 [submodule "tmux-sensible"]

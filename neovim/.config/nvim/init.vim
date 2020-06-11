@@ -53,10 +53,11 @@ augroup ProseSettings
 	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak spell
 augroup END
 
+let g:highlightedyank_highlight_duration = 250
 let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 
-packadd vim-sandwich
+packadd vim-sandwich 
 runtime macros/sandwich/keymap/surround.vim
 
 if isdirectory(glob('~/.fzf'))
@@ -106,21 +107,6 @@ call s:lightline_settings()
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open            = 1
-
-if has('nvim-0.5.0')
-
-	augroup TextYankHighlight
-		autocmd!
-		autocmd TextYankPost * silent!
-					\ lua require'vim.highlight'.on_yank('Substitute', 250)
-	augroup END
-
-else
-
-	packadd vim-highlightedyank
-	let g:highlightedyank_highlight_duration = 250
-
-endif
 
 " Allow vim to find help pages for plugins
 silent! helptags ALL
