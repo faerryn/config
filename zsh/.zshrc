@@ -38,19 +38,31 @@ precmd() {
 	RPROMPT="%(0?..%F{red}%?%f)"
 }
 
+# Change cursor shape for different vi modes.
+export KEYTIMEOUT=1
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne
+preexec() { echo -ne '\e[5 q' ;}
+
 # Editing
 export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim -c 'set ft=man' -"
-
-# fzf
-for FZF_ZSH_DIR in "/usr/share/fzf" "$HOME/.fzf/shell"; do
-	if [ -d "$FZF_ZSH_DIR" ]; then
-		. "$FZF_ZSH_DIR/completion.zsh"
-		. "$FZF_ZSH_DIR/key-bindings.zsh"
-		break
-	fi
-done
 
 # Aliases
 alias g="git"
@@ -61,12 +73,15 @@ alias s="sudo"
 alias se="sudoedit"
 alias v="nvim"
 
-# Fast and useful fzf
+# fzf
+for FZF_ZSH_DIR in "/usr/share/fzf" "$HOME/.fzf/shell"; do
+	if [ -d "$FZF_ZSH_DIR" ]; then
+		. "$FZF_ZSH_DIR/completion.zsh"
+		. "$FZF_ZSH_DIR/key-bindings.zsh"
+		break
+	fi
+done
 FD_FLAGS="-HL -E '**/.git/'"
 export FZF_ALT_C_COMMAND="fd $FD_FLAGS -td . \$dir"
 export FZF_CTRL_T_COMMAND="fd $FD_FLAGS -tf . \$dir"
 export FZF_DEFAULT_COMMAND="fd $FD_FLAGS -tf"
-
-# Nicer ls/exa output
-[ -e "$XDG_CONFIG_HOME/dircolors/dir_colors" ]\
-	&& eval `dircolors "$XDG_CONFIG_HOME/dircolors/dir_colors"`
