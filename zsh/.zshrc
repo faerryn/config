@@ -51,7 +51,7 @@ function precmd() {
 	RPROMPT="${vcs_info_msg_0_}"
 }
 
-PROMPT=' %F{blue}%c%f %(0?..%F{red}%?) %(!.#.$)%f '
+PROMPT=' %F{blue}%c%f %(0?..%F{red}%? )%(!.#.$)%f '
 
 # Change cursor shape for different vi modes.
 export KEYTIMEOUT=1
