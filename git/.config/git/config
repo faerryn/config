@@ -3,5 +3,3 @@
 	email = alexandre.liao@gmail.com
 [pull]
 	rebase = false
-[core]
-	pager = "sed 's/\\x1b\\[[0-9;]*m//g' | view -c 'nnoremap <silent> <buffer> q <c-w>q | set nonu nornu scl=no ft=git' -"
