@@ -1,5 +1,5 @@
 let g:mapleader=' '
-set clipboard=unnamed,unnamedplus
+set clipboard+=unnamedplus
 set colorcolumn=80
 set cursorline cursorcolumn
 set foldmethod=syntax foldlevelstart=20
