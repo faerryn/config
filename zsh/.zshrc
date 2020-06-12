@@ -41,15 +41,14 @@ zstyle ':vcs_info:*' check-for-changes true
 
 zstyle ':vcs_info:*' stagedstr '•'
 zstyle ':vcs_info:*' unstagedstr '•'
-zstyle ':vcs_info:*' formats '%F{green}%c%f%F{red}%u%F{blue}%b%f'
-zstyle ':vcs_info:*' actionformats '%F{green}%c%f%F{red}%u%F{blue}%b|%a%f'
+zstyle ':vcs_info:*' formats '%F{magenta}%r%f/' '%F{green}%c%f%F{red}%u%F{blue}%b%f'
+zstyle ':vcs_info:*' actionformats '%F{magenta}%r%f/' '%F{green}%c%f%F{red}%u%F{blue}%b|%a%f'
 
 function precmd() {
 	vcs_info
-	RPROMPT="${vcs_info_msg_0_}"
+	PROMPT=" ${vcs_info_msg_0_}%F{blue}%c%f %(0?..%F{red}%? )%(!.#.$)%f "
+	RPROMPT="${vcs_info_msg_1_}"
 }
-
-PROMPT=' %F{blue}%c%f %(0?..%F{red}%? )%(!.#.$)%f '
 
 # Change cursor shape for different vi modes.
 export KEYTIMEOUT=1
