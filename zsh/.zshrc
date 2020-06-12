@@ -39,12 +39,10 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 
-zstyle ':vcs_info:*' unstagedstr '•'
 zstyle ':vcs_info:*' stagedstr '•'
-zstyle ':vcs_info:*' formats\
-	'%F{green}%c%f%F{red}%u%F{blue}%b%f'
-zstyle ':vcs_info:*' actionformats\
-	'%F{green}%c%f%F{red}%u%F{blue}%b|%a%f'
+zstyle ':vcs_info:*' unstagedstr '•'
+zstyle ':vcs_info:*' formats '%F{green}%c%f%F{red}%u%F{blue}%b%f'
+zstyle ':vcs_info:*' actionformats '%F{green}%c%f%F{red}%u%F{blue}%b|%a%f'
 
 function precmd() {
 	vcs_info
