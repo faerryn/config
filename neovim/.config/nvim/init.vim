@@ -15,8 +15,8 @@ augroup AutoCommands
 	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak
 
 	" Setting up <esc> and <c-w>q
-	autocmd FileType qf,help,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
 	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
+	autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
 	autocmd FileType undotree nnoremap <silent> <buffer> <c-w>q <cmd>UndotreeHide<cr>
 	autocmd FileType undotree nnoremap <silent> <buffer> <esc> <cmd>UndotreeHide<cr>
 
