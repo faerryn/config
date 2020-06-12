@@ -4,4 +4,4 @@
 [pull]
 	rebase = false
 [core]
-	pager = view -c 'set ft=man | set ft=git' -
+	pager = "sed 's/\\x1b\\[[0-9;]*m//g' | view -c 'set ft=git' -"
