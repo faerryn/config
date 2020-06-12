@@ -1,7 +1,6 @@
 let g:mapleader=' '
 set clipboard=unnamed,unnamedplus
-set colorcolumn=80
-set cursorline cursorcolumn
+set cursorline cursorcolumn colorcolumn=80
 set foldmethod=syntax foldlevelstart=20
 set hidden
 set ignorecase smartcase
@@ -39,14 +38,14 @@ augroup AutoCommands
 	autocmd!
 
 	execute 'autocmd BufWritePost $MYVIMRC,' . resolve($MYVIMRC)
-				\ . ' source $MYVIMRC'
+				\ 'source $MYVIMRC'
 
 	autocmd VimEnter * silent! helptags ALL
 	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
 
 	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak
 
-	autocmd FileType qf,help,fugitive nnoremap <esc> <c-w>q
+	autocmd FileType qf,help,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
 	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
 	autocmd FileType undotree nnoremap <silent> <buffer> <c-w>q <cmd>UndotreeHide<cr>
 	autocmd FileType undotree nnoremap <silent> <buffer> <esc> <cmd>UndotreeHide<cr>
@@ -70,13 +69,5 @@ command! -bang -nargs=? -complete=dir Files
 			\ call fzf#vim#files(<q-args>, <bang>0)
 command! -bang Buffers call fzf#vim#buffers(<bang>0)
 
-let g:lightline = {
-			\ 'active': {
-			\ 	'left': [
-			\ 		[ 'mode', 'paste' ],
-			\ 		[ 'readonly', 'filename', 'modified' ]
-			\ 	]
-			\ },
-			\ 'colorscheme': g:colors_name,
-			\ }
+let g:lightline = { 'colorscheme': 'gruvbox' }
 silent! call lightline#enable()
