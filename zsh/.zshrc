@@ -19,8 +19,8 @@ setopt EXTENDED_GLOB
 # Editing
 export EDITOR='nvim'
 export VISUAL='nvim'
-export MANPAGER="nvim -c 'set ft=man' -"
-alias v='nvim'
+export MANPAGER="view -c 'set ft=man' -"
+alias v="${EDITOR}"
 
 # ls(exa) aliases
 alias l='exa --git'

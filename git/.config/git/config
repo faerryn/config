@@ -3,3 +3,5 @@
 	email = alexandre.liao@gmail.com
 [pull]
 	rebase = false
+[core]
+	pager = view -c 'set ft=man | set ft=git' -
