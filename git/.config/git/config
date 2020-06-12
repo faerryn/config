@@ -4,4 +4,4 @@
 [pull]
 	rebase = false
 [core]
-	pager = view -c 'syntax off | set ft=man | set ft=git | syntax on' -
+	pager = "sed 's/\\x1b\\[[0-9;]*m//g' | view -c 'nnoremap <silent> <buffer> q <c-w>q | set nonu nornu scl=no ft=git' -"
