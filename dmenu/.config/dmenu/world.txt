@@ -1,8 +1,5 @@
 dm-tool lock
 st nmtui #NetworkManager
-systemctl hibernate
-systemctl hybrid-sleep
-systemctl suspend
-xdg-open "$HOME/Documents"
-xdg-open "$HOME/Downloads"
-xdg-open https://www.suckless.org
+xdg-open https://dwm.suckless.org
+xdg-open https://st.suckless.org
+xdg-open https://st.suckless.org
