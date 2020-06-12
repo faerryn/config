@@ -79,6 +79,6 @@ export FZF_DEFAULT_COMMAND="fd -HL -E '**/.git/' -tf"
 if [[ -f ~/.fzf.zsh ]]; then
 	source ~/.fzf.zsh
 elif [[ -d /usr/share/fzf ]]; then
-	source /usr/share/fzf/completion.bash
-	source /usr/share/fzf/key-bindings.bash
+	source /usr/share/fzf/completion.zsh
+	source /usr/share/fzf/key-bindings.zsh
 fi
