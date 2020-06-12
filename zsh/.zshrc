@@ -19,7 +19,7 @@ setopt EXTENDED_GLOB
 # Editing
 export EDITOR='nvim'
 export VISUAL='nvim'
-export MANPAGER="view -c 'set scl=no ft=man' -"
+export MANPAGER="view -c 'set signcolumn=no ft=man' -"
 alias v="${EDITOR}"
 
 # ls(exa) aliases
@@ -57,8 +57,7 @@ zle -N zle-keymap-select
 function zle-keymap-select() {
 	if [[ ${KEYMAP} = vicmd ]] || [[ $1 = 'block' ]]; then
 		echo -ne '\e[1 q'
-	elif [[ ${KEYMAP} = main ]] || [[ ${KEYMAP} = viins ]]\
-		|| [[ -z ${KEYMAP} ]] || [[ $1 = 'beam' ]]; then
+	elif [[ ${KEYMAP} = main ]] || [[ ${KEYMAP} = viins ]] || [[ -z ${KEYMAP} ]] || [[ $1 = 'beam' ]]; then
 		echo -ne '\e[5 q'
 	fi
 }
