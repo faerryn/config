@@ -73,13 +73,12 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
 # fzf
-for FZF_ZSH_DIR in "/usr/share/fzf" "$HOME/.fzf/shell"; do
-	if [ -d "$FZF_ZSH_DIR" ]; then
-		. "$FZF_ZSH_DIR/completion.zsh"
-		. "$FZF_ZSH_DIR/key-bindings.zsh"
-		break
-	fi
-done
 export FZF_ALT_C_COMMAND="fd -HL -E '**/.git/' -td . \$dir"
 export FZF_CTRL_T_COMMAND="fd -HL -E '**/.git/' -tf . \$dir"
 export FZF_DEFAULT_COMMAND="fd -HL -E '**/.git/' -tf"
+if [[ -f ~/.fzf.zsh ]]; then
+	source ~/.fzf.zsh
+elif [[ -d /usr/share/fzf ]]; then
+	source /usr/share/fzf/completion.bash
+	source /usr/share/fzf/key-bindings.bash
+fi
