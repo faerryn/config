@@ -12,6 +12,7 @@ set nowrap
 set number relativenumber
 set omnifunc=syntaxcomplete#Complete
 set signcolumn=yes
+set spell
 set splitbelow splitright
 set tabstop=8 shiftwidth=8
 set termguicolors
@@ -43,9 +44,9 @@ augroup AutoCommands
 	autocmd VimEnter * silent! helptags ALL
 	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
 
-	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak spell
+	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak
 
-	autocmd FileType fugitive,qf nnoremap <esc> <cmd>bdelete<cr>
+	autocmd FileType qf,help,fugitive nnoremap <esc> <c-w>q
 	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
 	autocmd FileType undotree nnoremap <silent> <buffer> <c-w>q <cmd>UndotreeHide<cr>
 	autocmd FileType undotree nnoremap <silent> <buffer> <esc> <cmd>UndotreeHide<cr>
@@ -59,7 +60,7 @@ let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_WindowLayout = 3
 let g:zig_fmt_autosave = 1
 
-" May be obseleted
+" May be obsoleted
 let g:highlightedyank_highlight_duration = 300
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
