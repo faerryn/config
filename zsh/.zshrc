@@ -33,8 +33,25 @@ alias s='sudo'
 alias se='sudoedit'
 
 # Prompt
-PROMPT='[%F{blue}%c%f]%(!.#.$) '
-RPROMPT='%(0?..%F{red}%?%f)'
+setopt PROMPT_SUBST
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+
+zstyle ':vcs_info:*' unstagedstr '•'
+zstyle ':vcs_info:*' stagedstr '•'
+zstyle ':vcs_info:*' formats\
+	'%F{green}%c%f%F{red}%u%F{blue}%b%f'
+zstyle ':vcs_info:*' actionformats\
+	'%F{green}%c%f%F{red}%u%F{blue}%b|%a%f'
+
+function precmd() {
+	vcs_info
+	RPROMPT="${vcs_info_msg_0_}"
+}
+
+PROMPT='%F{blue}%c%f %(0?..%F{red}%?)%(!.#.$)%f '
 
 # Change cursor shape for different vi modes.
 export KEYTIMEOUT=1
@@ -57,7 +74,7 @@ echo -ne "\e[5 q"
 # Edit line in vim with alt-e:
 autoload edit-command-line
 zle -N edit-command-line
-bindkey '^[e' edit-command-line
+bindkey -M vicmd v edit-command-line
 
 # fzf
 for FZF_ZSH_DIR in "/usr/share/fzf" "$HOME/.fzf/shell"; do
