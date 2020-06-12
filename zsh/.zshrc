@@ -38,6 +38,7 @@ RPROMPT='%(0?..%F{red}%?%f)'
 
 # Change cursor shape for different vi modes.
 export KEYTIMEOUT=1
+
 zle -N zle-keymap-select
 function zle-keymap-select() {
 	if [[ ${KEYMAP} = vicmd ]] || [[ $1 = 'block' ]]; then
@@ -47,7 +48,10 @@ function zle-keymap-select() {
 		echo -ne '\e[5 q'
 	fi
 }
+
+zle -N zle-line-init
 function zle-line-init() { echo -ne "\e[5 q" }
+
 echo -ne "\e[5 q"
 
 # Edit line in vim with alt-e:
