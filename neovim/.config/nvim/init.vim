@@ -19,6 +19,7 @@ set timeoutlen=300
 set undofile
 set updatetime=300
 
+" Turn on very-magic for searches
 nnoremap / /\v
 nnoremap ? ?\v
 
@@ -37,6 +38,7 @@ colorscheme gruvbox
 augroup AutoCommands
 	autocmd!
 
+	" Automatic sourcing of $MYVIMRC
 	execute 'autocmd BufWritePost $MYVIMRC,' . resolve($MYVIMRC)
 				\ 'source $MYVIMRC'
 
@@ -45,7 +47,9 @@ augroup AutoCommands
 
 	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak
 
-	autocmd FileType qf,help,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
+	" Setting up <esc> and <c-w>q in 'temporary' windows for ease of exiting
+	autocmd FileType qf,help,fugitive
+				\ nnoremap <silent> <buffer> <esc> <c-w>q
 	autocmd FileType fzf tnoremap <silent> <buffer> <c-w>q <esc>
 	autocmd FileType undotree nnoremap <silent> <buffer> <c-w>q
 				\ <cmd>UndotreeHide<cr>
