@@ -34,17 +34,19 @@ let g:gruvbox_italic = 1
 let g:gruvbox_italicize_strings = 1
 let g:gruvbox_contrast_dark = 'medium'
 colorscheme gruvbox
+let g:lightline = { 'colorscheme': 'gruvbox' }
+silent! call lightline#enable()
 
 augroup AutoCommands
 	autocmd!
 
 	" Automatic sourcing of $MYVIMRC
-	execute 'autocmd BufWritePost $MYVIMRC,' . resolve($MYVIMRC)
-				\ 'source $MYVIMRC'
+	execute 'autocmd BufWritePost $MYVIMRC source $MYVIMRC'
 
 	autocmd VimEnter * silent! helptags ALL
 	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
 
+	" Prose
 	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak
 
 	" Setting up <esc> and <c-w>q in 'temporary' windows for ease of exiting
@@ -74,6 +76,3 @@ if isdirectory(glob('~/.fzf')) | set runtimepath^=~/.fzf | endif
 command! -bang -nargs=? -complete=dir Files
 			\ call fzf#vim#files(<q-args>, <bang>0)
 command! -bang Buffers call fzf#vim#buffers(<bang>0)
-
-let g:lightline = { 'colorscheme': 'gruvbox' }
-silent! call lightline#enable()
