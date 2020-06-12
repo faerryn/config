@@ -35,7 +35,7 @@ set nowrap
 set number relativenumber
 set omnifunc=syntaxcomplete#Complete
 set signcolumn=yes
-set spell
+set spell spellfile=~/.config/nvim/spell/en_us.utf-8.add
 set splitbelow splitright
 set tabstop=8 shiftwidth=8
 set termguicolors
