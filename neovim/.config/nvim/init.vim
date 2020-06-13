@@ -27,7 +27,6 @@ set clipboard=unnamed,unnamedplus
 set cursorline cursorcolumn
 set foldmethod=syntax foldlevelstart=20
 set hidden
-set ignorecase smartcase
 set lazyredraw
 set list listchars=tab:\ \ ,trail:-,nbsp:+
 set mouse=ar
@@ -62,9 +61,9 @@ let g:highlightedyank_highlight_duration = 300
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 
-" Turn on very-magic for searches
-nnoremap / /\v
-nnoremap ? ?\v
+" Turn on very-magic and case-insensitive for searches
+nnoremap / /\v\c
+nnoremap ? ?\v\c
 
 nnoremap <silent> <leader>l <cmd>lopen<cr>
 nnoremap <silent> <leader>c <cmd>copen<cr>
