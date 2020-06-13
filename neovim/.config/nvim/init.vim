@@ -42,9 +42,10 @@ set timeoutlen=300
 set undofile
 set updatetime=300
 
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_invert_signs = 1
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_strings = 1
-let g:gruvbox_contrast_dark = 'medium'
 colorscheme gruvbox
 let g:lightline = { 'colorscheme': 'gruvbox' }
 silent! call lightline#enable()

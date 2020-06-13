@@ -53,9 +53,6 @@
 [submodule "lightline.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
-[submodule "gruvbox"]
-	path = neovim/.config/nvim/pack/bundle/start/gruvbox
-	url = https://github.com/morhetz/gruvbox
 [submodule "vim-bbye"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-bbye
 	url = https://github.com/moll/vim-bbye
@@ -90,3 +87,6 @@
 [submodule "tmux-sessionist"]
 	path = tmux/.config/tmux/plugins/tmux-sessionist
 	url = https://github.com/tmux-plugins/tmux-sessionist
+[submodule "neovim/.config/nvim/pack/bundle/start/gruvbox"]
+	path = neovim/.config/nvim/pack/bundle/start/gruvbox
+	url = https://github.com/gruvbox-community/gruvbox
