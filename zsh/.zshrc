@@ -19,7 +19,7 @@ setopt EXTENDED_GLOB
 # Editing
 export EDITOR='nvim'
 export VISUAL='nvim'
-export MANPAGER="view -c 'set signcolumn=no ft=man' -"
+export MANPAGER="view +'set signcolumn=no ft=man' -"
 alias v="${EDITOR}"
 
 # ls(exa) aliases
