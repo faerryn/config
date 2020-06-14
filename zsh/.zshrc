@@ -39,12 +39,12 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 
+function precmd() { vcs_info }
+
 zstyle ':vcs_info:*' stagedstr '•'
 zstyle ':vcs_info:*' unstagedstr '•'
 zstyle ':vcs_info:*' formats '%F{green}%c%f%F{red}%u%F{magenta}%r%f(%F{blue}%b%f)'
 zstyle ':vcs_info:*' actionformats '%F{green}%c%f%F{red}%u%F{yellow}%a-%F{magenta}%r%f(%F{blue}%b%f)'
-
-function precmd() { vcs_info }
 
 PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red}%? )%(!.#.$)%f "
 RPROMPT="\${vcs_info_msg_0_}"
