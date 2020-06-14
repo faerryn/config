@@ -20,7 +20,7 @@ setopt EXTENDED_GLOB
 export EDITOR='nvim'
 export VISUAL='nvim'
 export MANPAGER="view +'set signcolumn=no ft=man' -"
-alias v="${EDITOR}"
+alias v="$EDITOR"
 
 # ls(exa) aliases
 alias l='exa --git'
@@ -62,16 +62,16 @@ zstyle ':vcs_info:*' formats '%m%c%u%F{magenta}%r%f(%F{blue}%b%f)'
 zstyle ':vcs_info:*' actionformats '%m%F{green}%c%f%F{red}%u%F{yellow}%a-%F{magenta}%r%f(%F{blue}%b%f)'
 
 PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red}%? )%(!.#.$)%f "
-RPROMPT="\${vcs_info_msg_0_}"
+RPROMPT=\$vcs_info_msg_0_
 
 # Change cursor shape for different vi modes.
 export KEYTIMEOUT=1
 
 zle -N zle-keymap-select
 function zle-keymap-select() {
-	if [[ ${KEYMAP} = vicmd ]] || [[ $1 = 'block' ]]; then
+	if [[ $KEYMAP = vicmd ]] || [[ $1 = 'block' ]]; then
 		echo -ne '\e[1 q'
-	elif [[ ${KEYMAP} = main ]] || [[ ${KEYMAP} = viins ]] || [[ -z ${KEYMAP} ]] || [[ $1 = 'beam' ]]; then
+	elif [[ $KEYMAP = main ]] || [[ $KEYMAP = viins ]] || [[ -z $KEYMAP ]] || [[ $1 = 'beam' ]]; then
 		echo -ne '\e[5 q'
 	fi
 }
