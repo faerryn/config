@@ -41,10 +41,7 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:git*+set-message:*' hooks git-extras
 
 function +vi-git-extras() {
-	if [[ -n $(git ls-files --exclude-standard --others 2> /dev/null) ]]; then
-		hook_com[unstaged]+="%F{yellow}•%f"
-	fi
-	if [[ -n `git remote` ]]; then
+	if [[ -n `git remote show` ]]; then
 		if [[ `git rev-list @{u}..HEAD --count` > 0 ]]; then
 			hook_com[misc]+="%F{green}↑%f"
 		fi
