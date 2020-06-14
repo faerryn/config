@@ -46,7 +46,7 @@ zstyle ':vcs_info:*' actionformats '%F{magenta}%r%f/' '%F{green}%c%f%F{red}%u%F{
 
 function precmd() {
 	vcs_info
-	PROMPT=" ${vcs_info_msg_0_}%F{blue}%c%f %(0?..%F{red}%? )%(!.#.$)%f "
+	PROMPT=" ${vcs_info_msg_0_}%F{blue}%c%f %(1j.%F{yellow}• .)%(0?..%F{red}%? )%(!.#.$)%f "
 	RPROMPT="${vcs_info_msg_1_}"
 }
 
