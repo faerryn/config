@@ -38,13 +38,23 @@ autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:git*+set-message:*' hooks git-remote
+
+function +vi-git-remote() {
+	if [[ `git rev-list @{u}..HEAD --count` > 0 ]]; then
+		hook_com[misc]+="%F{green}↑%f"
+	fi
+	if [[ `git rev-list HEAD..@{u} --count` > 0 ]]; then
+		hook_com[misc]+="%F{red}↓%f"
+	fi
+}
 
 function precmd() { vcs_info }
 
 zstyle ':vcs_info:*' stagedstr '•'
 zstyle ':vcs_info:*' unstagedstr '•'
-zstyle ':vcs_info:*' formats '%F{green}%c%f%F{red}%u%F{magenta}%r%f(%F{blue}%b%f)'
-zstyle ':vcs_info:*' actionformats '%F{green}%c%f%F{red}%u%F{yellow}%a-%F{magenta}%r%f(%F{blue}%b%f)'
+zstyle ':vcs_info:*' formats '%m%F{green}%c%f%F{red}%u%F{magenta}%r%f(%F{blue}%b%f)'
+zstyle ':vcs_info:*' actionformats '%m%F{green}%c%f%F{red}%u%F{yellow}%a-%F{magenta}%r%f(%F{blue}%b%f)'
 
 PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red}%? )%(!.#.$)%f "
 RPROMPT="\${vcs_info_msg_0_}"
