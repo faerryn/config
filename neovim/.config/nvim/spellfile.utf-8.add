@@ -5,3 +5,4 @@ plugins
 autocommand
 autocommands
 tmux
+Zsh
