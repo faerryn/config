@@ -1,5 +1,5 @@
-st nmtui #Network Internet Web
-st pulsemixer #Sound Mixer
+st nmtui #Network
+st pulsemixer #Sound
 xdg-open https://dwm.suckless.org
 xdg-open https://st.suckless.org
-xdg-open https://st.suckless.org
+xdg-open https://www.suckless.org
