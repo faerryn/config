@@ -1,4 +1,4 @@
-st nmtui #Network
+st nmtui #Network WiFi
 st pulsemixer #Sound
 xdg-open https://dwm.suckless.org
 xdg-open https://st.suckless.org
