@@ -1,5 +1,5 @@
-dm-tool lock
-st nmtui #NetworkManager
+st nmtui #Network Internet Web
+st pulsemixer #Sound Mixer
 xdg-open https://dwm.suckless.org
 xdg-open https://st.suckless.org
 xdg-open https://st.suckless.org
