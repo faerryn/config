@@ -1,72 +1,72 @@
 # (Neo)Vim plugins
 [submodule "gruvbox"]
-	path = neovim/.config/nvim/pack/bundle/start/gruvbox
+	path = neovim/.config/nvim/pack/bundle/opt/gruvbox
 	url = https://github.com/gruvbox-community/gruvbox
 [submodule "vim-sandwich"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-sandwich
+	path = neovim/.config/nvim/pack/bundle/opt/vim-sandwich
 	url = https://github.com/machakann/vim-sandwich
 [submodule "vim-lion"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-lion
+	path = neovim/.config/nvim/pack/bundle/opt/vim-lion
 	url = https://github.com/tommcdo/vim-lion
 [submodule "tcomment_vim"]
-	path = neovim/.config/nvim/pack/bundle/start/tcomment_vim
+	path = neovim/.config/nvim/pack/bundle/opt/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim
 [submodule "vim-repeat"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-repeat
+	path = neovim/.config/nvim/pack/bundle/opt/vim-repeat
 	url = https://github.com/tpope/vim-repeat
 [submodule "vim-unimpaired"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-unimpaired
+	path = neovim/.config/nvim/pack/bundle/opt/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired
 [submodule "targets.vim"]
-	path = neovim/.config/nvim/pack/bundle/start/targets.vim
+	path = neovim/.config/nvim/pack/bundle/opt/targets.vim
 	url = https://github.com/wellle/targets.vim
 [submodule "vim-dirvish"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-dirvish
+	path = neovim/.config/nvim/pack/bundle/opt/vim-dirvish
 	url = https://github.com/justinmk/vim-dirvish
 [submodule "undotree"]
-	path = neovim/.config/nvim/pack/bundle/start/undotree
+	path = neovim/.config/nvim/pack/bundle/opt/undotree
 	url = https://github.com/mbbill/undotree
 [submodule "vim-signify"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-signify
+	path = neovim/.config/nvim/pack/bundle/opt/vim-signify
 	url = https://github.com/mhinz/vim-signify
 [submodule "vim-mkdir"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-mkdir
+	path = neovim/.config/nvim/pack/bundle/opt/vim-mkdir
 	url = https://github.com/pbrisbin/vim-mkdir
 [submodule "vim-dispatch"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-dispatch
+	path = neovim/.config/nvim/pack/bundle/opt/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch
 [submodule "vim-eunuch"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-eunuch
+	path = neovim/.config/nvim/pack/bundle/opt/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch
 [submodule "vim-fugitive"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-fugitive
+	path = neovim/.config/nvim/pack/bundle/opt/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "vimwiki"]
-	path = neovim/.config/nvim/pack/bundle/start/vimwiki
+	path = neovim/.config/nvim/pack/bundle/opt/vimwiki
 	url = https://github.com/vimwiki/vimwiki
 [submodule "vim-cpp-modern"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-cpp-modern
+	path = neovim/.config/nvim/pack/bundle/opt/vim-cpp-modern
 	url = https://github.com/bfrg/vim-cpp-modern
 [submodule "rust.vim"]
-	path = neovim/.config/nvim/pack/bundle/start/rust.vim
+	path = neovim/.config/nvim/pack/bundle/opt/rust.vim
 	url = https://github.com/rust-lang/rust.vim
 [submodule "zig.vim"]
-	path = neovim/.config/nvim/pack/bundle/start/zig.vim
+	path = neovim/.config/nvim/pack/bundle/opt/zig.vim
 	url = https://github.com/ziglang/zig.vim
 [submodule "lightline.vim"]
-	path = neovim/.config/nvim/pack/bundle/start/lightline.vim
+	path = neovim/.config/nvim/pack/bundle/opt/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
 [submodule "vim-bbye"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-bbye
+	path = neovim/.config/nvim/pack/bundle/opt/vim-bbye
 	url = https://github.com/moll/vim-bbye
 [submodule "vim-symlink"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-symlink
+	path = neovim/.config/nvim/pack/bundle/opt/vim-symlink
 	url = https://github.com/faerryn/vim-symlink
 [submodule "syntastic"]
-	path = neovim/.config/nvim/pack/bundle/start/syntastic
+	path = neovim/.config/nvim/pack/bundle/opt/syntastic
 	url = https://github.com/vim-syntastic/syntastic
 [submodule "vim-highlightedyank"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-highlightedyank
+	path = neovim/.config/nvim/pack/bundle/opt/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank
 # tmux plugins
 [submodule "tmux-sensible"]
