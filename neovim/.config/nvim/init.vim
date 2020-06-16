@@ -32,6 +32,7 @@ set clipboard=unnamed,unnamedplus
 set cursorline cursorcolumn
 set foldmethod=syntax foldlevelstart=20
 set hidden
+set inccommand=nosplit
 set lazyredraw
 set list listchars=tab:\ \ ,trail:-,nbsp:+
 set mouse=ar
