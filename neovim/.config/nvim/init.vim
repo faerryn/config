@@ -4,29 +4,6 @@ if isdirectory(glob('~/.fzf'))
 endif
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
-packadd gruvbox
-packadd lightline.vim
-packadd rust.vim
-packadd syntastic
-packadd targets.vim
-packadd tcomment_vim
-packadd undotree
-packadd vim-bbye
-packadd vim-cpp-modern
-packadd vim-dirvish
-packadd vim-dispatch
-packadd vim-eunuch
-packadd vim-fugitive
-packadd vim-highlightedyank
-packadd vim-lion
-packadd vim-mkdir
-packadd vim-repeat
-packadd vim-sandwich
-packadd vim-signify
-packadd vim-symlink
-packadd vim-unimpaired
-packadd vimwiki
-packadd zig.vim
 
 " AUTOCOMMANDS
 augroup AutoCommands
