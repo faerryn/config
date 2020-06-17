@@ -44,9 +44,6 @@
 [submodule "vimwiki"]
 	path = neovim/.config/nvim/pack/bundle/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki
-[submodule "vim-cpp-modern"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-cpp-modern
-	url = https://github.com/bfrg/vim-cpp-modern
 [submodule "rust.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim
