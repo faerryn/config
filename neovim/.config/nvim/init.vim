@@ -40,17 +40,6 @@ set updatetime=300
 set omnifunc=syntaxcomplete#Complete
 set spell spellfile=~/.config/nvim/spellfile.utf-8.add
 
-set cursorline cursorcolumn
-set foldmethod=syntax foldlevelstart=20
-set inccommand=split
-set lazyredraw
-set list listchars=tab:\ \ ,trail:-,nbsp:+
-set nowrap
-set number relativenumber
-set signcolumn=yes
-set splitbelow splitright
-set termguicolors
-
 let g:rustfmt_autosave = 1
 
 let g:zig_fmt_autosave = 1
@@ -67,6 +56,17 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 
 " AESTHETICS
+set cursorline cursorcolumn
+set foldmethod=syntax foldlevelstart=20
+set inccommand=split
+set lazyredraw
+set list listchars=tab:\ \ ,trail:-,nbsp:+
+set nowrap
+set number relativenumber
+set signcolumn=yes
+set splitbelow splitright
+set termguicolors
+
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_invert_signs = 1
 let g:gruvbox_italic = 1
