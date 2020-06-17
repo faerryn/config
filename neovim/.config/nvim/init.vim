@@ -27,28 +27,32 @@ augroup AutoCommands
 augroup END
 
 " FLAGS
+set hidden
+
 let g:mapleader=' '
 set clipboard=unnamed,unnamedplus
-set cursorline cursorcolumn
-set foldmethod=syntax foldlevelstart=20
-set hidden
-set inccommand=split
-set lazyredraw
-set list listchars=tab:\ \ ,trail:-,nbsp:+
 set mouse=ar
-set nowrap
-set number relativenumber
-set omnifunc=syntaxcomplete#Complete
-set signcolumn=yes
-set spell spellfile=~/.config/nvim/spellfile.utf-8.add
-set splitbelow splitright
-set tabstop=8 shiftwidth=8
-set termguicolors
+
 set timeoutlen=300
 set undofile
 set updatetime=300
 
+set omnifunc=syntaxcomplete#Complete
+set spell spellfile=~/.config/nvim/spellfile.utf-8.add
+
+set cursorline cursorcolumn
+set foldmethod=syntax foldlevelstart=20
+set inccommand=split
+set lazyredraw
+set list listchars=tab:\ \ ,trail:-,nbsp:+
+set nowrap
+set number relativenumber
+set signcolumn=yes
+set splitbelow splitright
+set termguicolors
+
 let g:rustfmt_autosave = 1
+
 let g:zig_fmt_autosave = 1
 
 let g:textobj_sandwich_no_default_key_mappings = 1
@@ -76,7 +80,7 @@ nnoremap / /\v\c
 nnoremap ? ?\v\c
 
 nnoremap <silent> <leader>l <cmd>lopen<cr>
-nnoremap <silent> <leader>c <cmd>copen<cr>
+nnoremap <silent> <leader>q <cmd>copen<cr>
 
 nnoremap <silent> <leader>g <cmd>G<cr>
 nnoremap <silent> <leader>f <cmd>FZF<cr>
