@@ -12,7 +12,10 @@ augroup AutoCommands
 	" Automatic sourcing of $MYVIMRC
 	execute 'autocmd BufWritePost $MYVIMRC source $MYVIMRC'
 
+	" Helptags
 	autocmd VimEnter * silent! helptags ALL
+
+	" vim-sandwich with vim-surround mappings
 	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
 
 	" Prose
