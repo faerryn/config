@@ -2,8 +2,26 @@
 if isdirectory(glob('~/.fzf'))
 	set runtimepath^=~/.fzf
 endif
+
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
+
+if has("nvim-0.5.0")
+	packadd nvim-lsp
+
+	function s:lsp_settings() 
+		nnoremap <silent> <buffer> K <cmd>lua vim.lsp.buf.hover()<cr>
+	endfunction
+
+	lua require'nvim_lsp'.clangd.setup{}
+	lua require'nvim_lsp'.rust_analyzer.setup{}
+
+	augroup LspAutoCommands
+		autocmd FileType rust,cpp call s:lsp_settings()
+	augroup END
+else
+	packadd syntastic
+endif
 
 " AUTOCOMMANDS
 augroup AutoCommands

@@ -60,7 +60,7 @@
 	path = neovim/.config/nvim/pack/bundle/start/vim-symlink
 	url = https://github.com/faerryn/vim-symlink
 [submodule "syntastic"]
-	path = neovim/.config/nvim/pack/bundle/start/syntastic
+	path = neovim/.config/nvim/pack/bundle/opt/syntastic
 	url = https://github.com/vim-syntastic/syntastic
 [submodule "vim-highlightedyank"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-highlightedyank
@@ -84,3 +84,6 @@
 [submodule "tmux-sessionist"]
 	path = tmux/.config/tmux/plugins/tmux-sessionist
 	url = https://github.com/tmux-plugins/tmux-sessionist
+[submodule "neovim/.config/nvim/pack/bundle/start/nvim-lsp"]
+	path = neovim/.config/nvim/pack/bundle/opt/nvim-lsp
+	url = https://github.com/neovim/nvim-lsp.git
