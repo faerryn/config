@@ -10,6 +10,7 @@ if has("nvim-0.5.0")
 	packadd nvim-lsp
 
 	function s:lsp_settings() 
+		setlocal omnifunc=v:lua.vim.lsp.omnifunc
 		nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 		nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 		nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
