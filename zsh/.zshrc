@@ -29,6 +29,7 @@ alias ll='exa -l --git'
 
 # misc aliases
 alias g='git'
+alias n='nnn -e'
 alias s='sudo'
 alias se='sudoedit'
 alias t='tmux'
