@@ -58,23 +58,14 @@ augroup END
 
 " FLAGS
 let g:mapleader=' '
-
-set hidden
-
 set clipboard=unnamed,unnamedplus
-
+set hidden
 set mouse=ar
-
 set nrformats+=alpha,octal
-
 set omnifunc=syntaxcomplete#Complete
-
 set spell spellfile=~/.config/nvim/spellfile.utf-8.add
-
 set timeoutlen=300
-
 set undofile
-
 set updatetime=300
 
 let g:rustfmt_autosave = 1
