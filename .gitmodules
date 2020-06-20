@@ -50,9 +50,6 @@
 [submodule "zig.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/zig.vim
 	url = https://github.com/ziglang/zig.vim
-[submodule "lightline.vim"]
-	path = neovim/.config/nvim/pack/bundle/start/lightline.vim
-	url = https://github.com/itchyny/lightline.vim
 [submodule "vim-bbye"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-bbye
 	url = https://github.com/moll/vim-bbye
