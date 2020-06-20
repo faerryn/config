@@ -31,6 +31,7 @@ alias ll='exa -l --git'
 alias g='git'
 alias s='sudo'
 alias se='sudoedit'
+alias t='tmux'
 
 # Prompt
 PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red}%? )%(!.#.$)%f "
