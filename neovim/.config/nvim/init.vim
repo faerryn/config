@@ -57,18 +57,25 @@ augroup AutoCommands
 augroup END
 
 " FLAGS
+let g:mapleader=' '
+
 set hidden
 
-let g:mapleader=' '
 set clipboard=unnamed,unnamedplus
+
 set mouse=ar
 
-set timeoutlen=300
-set undofile
-set updatetime=300
+set nrformats+=alpha,octal
 
 set omnifunc=syntaxcomplete#Complete
+
 set spell spellfile=~/.config/nvim/spellfile.utf-8.add
+
+set timeoutlen=300
+
+set undofile
+
+set updatetime=300
 
 let g:rustfmt_autosave = 1
 
