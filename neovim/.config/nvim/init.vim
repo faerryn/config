@@ -98,6 +98,7 @@ set foldmethod=syntax foldlevelstart=20
 set inccommand=split
 set lazyredraw
 set list listchars=tab:\ \ ,trail:-,nbsp:+
+set noshowmode
 set nowrap
 set number relativenumber
 set signcolumn=yes
