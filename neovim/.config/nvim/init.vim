@@ -9,7 +9,7 @@ let g:loaded_netrwPlugin = 1
 if has("nvim-0.5.0")
 	packadd nvim-lsp
 
-	function s:lsp_settings() 
+	function s:lsp_settings()
 		setlocal omnifunc=v:lua.vim.lsp.omnifunc
 		nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<cr>
 		nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<cr>
