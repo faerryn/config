@@ -1,11 +1,3 @@
-" PLUGINS
-if isdirectory(glob('~/.local/share/fzf'))
-	set runtimepath^=~/.local/share/fzf
-endif
-
-let g:loaded_netrw       = 1
-let g:loaded_netrwPlugin = 1
-
 " AUTOCOMMANDS
 augroup AutoCommands
 	autocmd!
@@ -29,6 +21,14 @@ augroup AutoCommands
 	autocmd FileType undotree nnoremap <silent> <buffer> <esc> <cmd>UndotreeHide<cr>
 
 augroup END
+
+" PLUGINS
+if isdirectory(glob('~/.local/share/fzf'))
+	set runtimepath^=~/.local/share/fzf
+endif
+
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
 
 " FLAGS
 let g:mapleader=' '
