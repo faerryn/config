@@ -1,6 +1,6 @@
 " PLUGINS
-if isdirectory(glob('~/.fzf'))
-	set runtimepath^=~/.fzf
+if isdirectory(glob('~/.local/share/fzf'))
+	set runtimepath^=~/.local/share/fzf
 endif
 
 let g:loaded_netrw       = 1
