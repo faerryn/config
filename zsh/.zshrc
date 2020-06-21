@@ -80,7 +80,8 @@ export FZF_ALT_C_COMMAND="fd -HL -E '**/.git/' -td . \$dir"
 export FZF_CTRL_T_COMMAND="fd -HL -E '**/.git/' -tf . \$dir"
 export FZF_DEFAULT_COMMAND="fd -HL -E '**/.git/' -tf"
 if [[ -f ~/.fzf.zsh ]]; then
-	source ~/.fzf.zsh
+	source ~/.local/share/fzf/shell/completion.zsh
+	source ~/.local/share/fzf/shell/key-bindings.zsh
 elif [[ -d /usr/share/fzf ]]; then
 	source /usr/share/fzf/completion.zsh
 	source /usr/share/fzf/key-bindings.zsh
