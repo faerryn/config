@@ -54,8 +54,6 @@ let g:undotree_WindowLayout = 3
 
 " may be obsoleted
 let g:highlightedyank_highlight_duration = 300
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
 
 " AESTHETICS
 set cursorline cursorcolumn
