@@ -22,8 +22,8 @@ augroup AutoCommands
 augroup END
 
 " PLUGINS
-if isdirectory(glob('~/.local/share/fzf'))
-	set runtimepath^=~/.local/share/fzf
+if isdirectory(glob('~/.fzf'))
+	set runtimepath^=~/.fzf
 endif
 
 let g:loaded_netrw       = 1
