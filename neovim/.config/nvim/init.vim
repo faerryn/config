@@ -73,10 +73,6 @@ let g:gruvbox_italic = 1
 let g:gruvbox_italicize_strings = 1
 colorscheme gruvbox
 
-" MAPPINGS
-nnoremap / /\v\c
-nnoremap ? ?\v\c
-
 nnoremap <silent> <leader>l <cmd>lopen<cr>
 nnoremap <silent> <leader>q <cmd>copen<cr>
 
