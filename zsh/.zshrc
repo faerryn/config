@@ -70,11 +70,6 @@ function zle-line-init() { echo -ne "\e[5 q" }
 
 echo -ne "\e[5 q"
 
-# Edit line in vim with alt-e:
-autoload edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
-
 # fzf
 export FZF_ALT_C_COMMAND="fd -HL -E '**/.git/' -td . \$dir"
 export FZF_CTRL_T_COMMAND="fd -HL -E '**/.git/' -tf . \$dir"
