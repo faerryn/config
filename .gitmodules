@@ -78,3 +78,6 @@
 [submodule "tmux-sessionist"]
 	path = tmux/.config/tmux/plugins/tmux-sessionist
 	url = https://github.com/tmux-plugins/tmux-sessionist
+[submodule "tmux-gruvbox"]
+	path = tmux/.config/tmux/plugins/tmux-gruvbox
+	url = https://github.com/egel/tmux-gruvbox
