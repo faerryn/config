@@ -72,6 +72,8 @@ let g:gruvbox_invert_signs = 1
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_strings = 1
 colorscheme gruvbox
+let g:lightline = { 'colorscheme': 'gruvbox', 'separator': { 'left': '', 'right': '' }, 'subseparator': { 'left': '', 'right': '' }, 'tabline': { 'right': [] } }
+silent! call lightline#enable()
 
 nnoremap <silent> <leader>l <cmd>lopen<cr>
 nnoremap <silent> <leader>q <cmd>copen<cr>
