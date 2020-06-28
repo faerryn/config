@@ -63,9 +63,9 @@ function zle-keymap-select() {
 }
 
 zle -N zle-line-init
-function zle-line-init() { echo -ne "\e[5 q" }
+function zle-line-init() { echo -ne '\e[5 q' }
 
-echo -ne "\e[5 q"
+echo -ne '\e[5 q'
 
 # fzf
 export FZF_ALT_C_COMMAND="fd -HL -E '**/.git/' -td . \$dir"
