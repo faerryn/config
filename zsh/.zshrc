@@ -71,6 +71,7 @@ echo -ne "\e[5 q"
 export FZF_ALT_C_COMMAND="fd -HL -E '**/.git/' -td . \$dir"
 export FZF_CTRL_T_COMMAND="fd -HL -E '**/.git/' -tf . \$dir"
 export FZF_DEFAULT_COMMAND="fd -HL -E '**/.git/' -tf"
+
 if [[ -d ~/.fzf ]]; then
 	source ~/.fzf/shell/completion.zsh
 	source ~/.fzf/shell/key-bindings.zsh
