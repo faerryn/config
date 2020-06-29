@@ -44,9 +44,6 @@
 [submodule "vim-fugitive"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "vimwiki"]
-	path = neovim/.config/nvim/pack/bundle/start/vimwiki
-	url = https://github.com/vimwiki/vimwiki
 [submodule "rust.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim

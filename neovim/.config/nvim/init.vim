@@ -12,7 +12,7 @@ augroup AutoCommands
 	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
 
 	" Prose
-	autocmd FileType vimwiki,gitcommit setlocal wrap linebreak
+	autocmd FileType gitcommit setlocal wrap linebreak
 
 	" Setting up <esc> and <c-w>q
 	autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
@@ -74,6 +74,8 @@ let g:gruvbox_italicize_strings = 1
 colorscheme gruvbox
 let g:lightline = { 'colorscheme': 'gruvbox', 'separator': { 'left': '', 'right': '' }, 'subseparator': { 'left': '', 'right': '' }, 'tabline': { 'right': [] } }
 silent! call lightline#enable()
+
+" MAPPINGS
 
 nnoremap <silent> <leader>l <cmd>lopen<cr>
 nnoremap <silent> <leader>q <cmd>copen<cr>
