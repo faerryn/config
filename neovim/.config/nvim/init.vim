@@ -36,7 +36,7 @@ set hidden
 set mouse=ar
 set nrformats+=alpha,octal
 set omnifunc=syntaxcomplete#Complete
-set spell spellfile=~/.config/nvim/spellfile.utf-8.add
+set spell
 set timeoutlen=300
 set undofile
 set updatetime=300
@@ -76,7 +76,6 @@ let g:lightline = { 'colorscheme': 'gruvbox', 'separator': { 'left': '', 'rig
 silent! call lightline#enable()
 
 " MAPPINGS
-
 nnoremap <silent> <leader>l <cmd>lopen<cr>
 nnoremap <silent> <leader>q <cmd>copen<cr>
 
