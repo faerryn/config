@@ -1,19 +1,19 @@
-# Lines configured by zsh-newuser-install
+# History
+SAVEHIST=1000
 HISTFILE="$XDG_DATA_HOME/zsh/history"
 HISTSIZE=1000
-SAVEHIST=1000
-setopt autocd
-bindkey -v
-# End of lines configured by zsh-newuser-install
-
-# Zsh options
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
+
+# Globbing
 setopt EXTENDED_GLOB
+
+# Vi-mode
+bindkey -v
 
 # Editing
 export EDITOR='nvim'
 export VISUAL='nvim'
-export MANPAGER="view +'set signcolumn=no ft=man' -"
+export MANPAGER="nvim -R +'set signcolumn=no ft=man' -"
 alias v="$EDITOR"
 
 # ls(exa) aliases
