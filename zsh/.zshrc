@@ -42,7 +42,7 @@ function n() {
 }
 
 # Prompt
-PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red}%? )%(!.#.$)%f "
+PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
 
 # Change cursor shape for different vi modes.
 export KEYTIMEOUT=1
