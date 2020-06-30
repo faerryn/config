@@ -2,21 +2,12 @@
 augroup AutoCommands
 	autocmd!
 
-	" Automatic sourcing of $MYVIMRC
 	execute 'autocmd BufWritePost $MYVIMRC source $MYVIMRC'
-
-	" Helptags
 	autocmd VimEnter * silent! helptags ALL
-
-	" vim-sandwich with vim-surround mappings
 	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
-
-	" Prose
-	autocmd FileType gitcommit setlocal wrap linebreak
 
 	" Setting up <esc> and <c-w>q
 	autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
-	autocmd FileType undotree nnoremap <silent> <buffer> <c-w>q <cmd>UndotreeHide<cr>
 	autocmd FileType undotree nnoremap <silent> <buffer> <esc> <cmd>UndotreeHide<cr>
 
 augroup END
