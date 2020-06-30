@@ -13,8 +13,8 @@ augroup AutoCommands
 augroup END
 
 " PLUGINS
-if isdirectory(glob('~/.fzf'))
-	set runtimepath^=~/.fzf
+if isdirectory(glob('~/.local/lib/fzf'))
+	set runtimepath^=~/.local/lib/fzf
 endif
 
 let g:loaded_netrw       = 1
