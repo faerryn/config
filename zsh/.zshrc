@@ -61,7 +61,6 @@ elif [[ -d /usr/share/fzf ]]; then
 fi
 
 # plugins
-for plugin in `ls ~/.config/zsh/plugins`; do
-	source ~/.config/zsh/plugins/$plugin/$plugin.zsh
-done
+source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
