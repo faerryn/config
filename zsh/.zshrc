@@ -14,7 +14,7 @@ export MANPAGER="nvim -R +'set signcolumn=no ft=man' -"
 alias v="$EDITOR"
 
 # ls(exa) aliases
-alias l='exa --git'
+alias ls='exa --git'
 alias la='exa -la --git'
 alias ll='exa -l --git'
 
