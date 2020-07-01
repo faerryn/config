@@ -1,5 +1,5 @@
 # Misc
-setopt EXTENDED_GLOB AUTO_CD
+setopt EXTENDED_GLOB
 
 # History
 SAVEHIST=1000
