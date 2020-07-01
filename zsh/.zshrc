@@ -59,3 +59,9 @@ elif [[ -d /usr/share/fzf ]]; then
 	source /usr/share/fzf/completion.zsh
 	source /usr/share/fzf/key-bindings.zsh
 fi
+
+# plugins
+for plugin in `ls ~/.config/zsh/plugins`; do
+	source ~/.config/zsh/plugins/$plugin/$plugin.zsh
+done
+source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

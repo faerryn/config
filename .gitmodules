@@ -81,3 +81,12 @@
 [submodule "tmux-gruvbox"]
 	path = tmux/.config/tmux/plugins/tmux-gruvbox
 	url = https://github.com/egel/tmux-gruvbox
+[submodule "zsh/.config/zsh/plugins/zsh-autosuggestions"]
+	path = zsh/.config/zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "zsh/.config/zsh/plugins/zsh-syntax-highlighting"]
+	path = zsh/.config/zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "zsh/.config/zsh/plugins/zsh-history-substring-search"]
+	path = zsh/.config/zsh/plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search
