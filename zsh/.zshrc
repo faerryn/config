@@ -45,7 +45,7 @@ function n() {
 PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
 
 # Change cursor shape for different vi modes.
-export KEYTIMEOUT=1
+KEYTIMEOUT=1
 
 zle -N zle-keymap-select
 function zle-keymap-select() {
