@@ -1,14 +1,11 @@
+# Misc
+setopt EXTENDED_GLOB AUTO_CD
+
 # History
 SAVEHIST=1000
 HISTFILE="$XDG_DATA_HOME/zsh/history"
 HISTSIZE=1000
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
-
-# Globbing
-setopt EXTENDED_GLOB
-
-# Vi-mode
-bindkey -v
 
 # Editing
 export EDITOR='nvim'
@@ -27,22 +24,11 @@ alias s='sudo'
 alias se='sudoedit'
 alias t='tmux'
 
-function n() {
-	# Block nesting of nnn in subshells
-	if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
-		echo "nnn is already running"
-		return
-	fi
-	export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-	nnn -e "$@"
-	if [ -f "$NNN_TMPFILE" ]; then
-		. "$NNN_TMPFILE"
-		rm -f "$NNN_TMPFILE" > /dev/null
-	fi
-}
-
 # Prompt
 PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
+
+# Vi-mode
+bindkey -v
 
 # Change cursor shape for different vi modes.
 KEYTIMEOUT=1
