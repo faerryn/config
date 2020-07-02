@@ -13,6 +13,13 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export MANPAGER="nvim -R +'set signcolumn=no ft=man' -"
 
+# (Neo)vim
+alias ex='nvim -e'
+alias vi='vim'
+alias view='nvim -R'
+alias vim='nvim'
+alias vimdiff='nvim -d'
+
 # ls(exa) aliases
 alias ls='exa --git'
 alias la='exa -la --git'
