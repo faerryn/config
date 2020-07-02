@@ -11,7 +11,6 @@ setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
 export EDITOR='nvim'
 export VISUAL='nvim'
 export MANPAGER="nvim -R +'set signcolumn=no ft=man' -"
-alias v="$EDITOR"
 
 # ls(exa) aliases
 alias ls='exa --git'
@@ -19,10 +18,9 @@ alias la='exa -la --git'
 alias ll='exa -l --git'
 
 # misc aliases
+alias ..='cd ..'
 alias g='git'
-alias s='sudo'
 alias se='sudoedit'
-alias t='tmux'
 
 # Prompt
 PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
