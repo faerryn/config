@@ -76,10 +76,8 @@ setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-
 bindkey '^f' forward-char
 bindkey '^b' backward-char
-
 bindkey '^[[A'       history-substring-search-up
 bindkey '^[[B'       history-substring-search-down
 bindkey '^p'         history-substring-search-up
