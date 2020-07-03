@@ -15,11 +15,6 @@ alias ls='exa --git'
 alias la='exa --git -la'
 alias ll='exa --git -l'
 
-# misc aliases
-alias ..='cd ..'
-alias g='git'
-alias se='sudoedit'
-
 # Prompt
 PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
 
