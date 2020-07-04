@@ -32,3 +32,15 @@ fi
 if command -v wget >/dev/null; then
 	alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
 fi
+
+if command -v nvim >/dev/null; then
+	alias ex="nvim -e"
+	alias vi="nvim"
+	alias view="nvim -R"
+	alias vim="nvim"
+	alias vimdiff="nvim -d"
+fi
+
+if command -v exa >/dev/null; then
+	alias ls="exa --git"
+fi

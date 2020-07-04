@@ -3,20 +3,12 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim -R +\"set signcolumn=no ft=man\" -"
 
-# (Neo)vim
-alias ex="nvim -e"
-alias vi="nvim"
-alias view="nvim -R"
-alias vim="nvim"
-alias vimdiff="nvim -d"
-
-# ls(exa) aliases
-alias ls="exa --git"
-alias la="exa --git -la"
-alias ll="exa --git -l"
-
 # Prompt
 PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
+
+# Aliases
+alias la="ls -la"
+alias ll="ls -l"
 
 # Vi-mode
 bindkey -v
