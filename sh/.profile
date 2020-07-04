@@ -19,4 +19,6 @@ export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
 export TERMINFO="$XDG_DATA_HOME/terminfo"
 export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo"
 
+alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
+
 export PATH="$HOME/.local/bin:$PATH"
