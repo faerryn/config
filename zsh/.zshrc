@@ -52,7 +52,7 @@ elif [[ -d /usr/share/fzf ]]; then
 fi
 
 # Completion
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
