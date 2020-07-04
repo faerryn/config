@@ -5,7 +5,7 @@ export MANPAGER="nvim -R +'set signcolumn=no ft=man' -"
 
 # (Neo)vim
 alias ex='nvim -e'
-alias vi='vim'
+alias vi='nvim'
 alias view='nvim -R'
 alias vim='nvim'
 alias vimdiff='nvim -d'
