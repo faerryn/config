@@ -24,11 +24,11 @@ if command -v gpg >/dev/null; then
 	mkdir -p $GNUPGHOME
 fi
 
-if command -v wine; then
+if command -v wine >/dev/null; then
 	export WINEPREFIX="$HOME/Wine"
 	mkdir -p $WINEPREFIX
 fi
 
-if command -v wget; then
+if command -v wget >/dev/null; then
 	alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
 fi
