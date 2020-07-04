@@ -11,6 +11,7 @@ export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/ccache.config"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+mkdir -p $GNUPGHOME
 
 export LESSHISTFILE="-"
 export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
