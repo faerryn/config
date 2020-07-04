@@ -53,6 +53,7 @@ fi
 
 # Completion
 autoload -Uz compinit && mkdir -p ~/.cache/zsh && compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
+fpath=(~/.config/zsh/plugins/zsh-completions/src $fpath)
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
