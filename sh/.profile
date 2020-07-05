@@ -25,7 +25,7 @@ if command -v gpg >/dev/null; then
 fi
 
 if command -v wine >/dev/null; then
-	export WINEPREFIX="$HOME/Wine"
+	export WINEPREFIX="$HOME/wine"
 	mkdir -p $WINEPREFIX
 fi
 
