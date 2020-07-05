@@ -40,8 +40,6 @@ let g:loaded_netrwPlugin = 1
 
 let g:vimwiki_list = [{"path": "~/vimwiki/", "syntax": "markdown", "ext": ".md"}]
 
-let $FZF_ALT_C_COMMAND="fd -HL -E \"**/.git\" -td . \$dir"
-let $FZF_CTRL_T_COMMAND="fd -HL -E \"**/.git\" -tf . \$dir"
 let $FZF_DEFAULT_COMMAND="fd -HL -E \"**/.git\" -tf"
 
 " may be obsoleted
