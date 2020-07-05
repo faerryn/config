@@ -46,7 +46,7 @@ let $FZF_DEFAULT_COMMAND="fd -HL -E \"**/.git\" -tf"
 let g:highlightedyank_highlight_duration = 300
 
 " AESTHETICS
-set cursorline cursorcolumn
+set cursorline cursorcolumn colorcolumn=80
 set foldmethod=syntax foldlevelstart=20
 set inccommand=split
 set lazyredraw
