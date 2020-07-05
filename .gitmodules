@@ -91,9 +91,6 @@
 [submodule "zsh-history-substring-search"]
 	path = zsh/.config/zsh/plugins/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
-[submodule "zsh/.config/zsh/plugins/zsh-completions"]
-	path = zsh/.config/zsh/plugins/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions
 [submodule "neovim/.config/nvim/pack/bundle/start/vimwiki"]
 	path = neovim/.config/nvim/pack/bundle/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki
