@@ -10,24 +10,11 @@ PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
 alias la="ls -la"
 alias ll="ls -l"
 
-# Vi-mode
-bindkey -v
-
-# Change cursor shape for different vi modes.
-KEYTIMEOUT=1
-
-zle -N zle-keymap-select
-function zle-keymap-select() {
-	if [[ $KEYMAP = vicmd ]] || [[ $1 = "block" ]]; then
-		echo -ne "\e[1 q"
-	elif [[ $KEYMAP = main ]] || [[ $KEYMAP = viins ]] || [[ -z $KEYMAP ]] || [[ $1 = "beam" ]]; then
-		echo -ne "\e[5 q"
-	fi
-}
+# Emacs-mode
+bindkey -e
 
 zle -N zle-line-init
 function zle-line-init() { echo -ne "\e[5 q" }
-
 echo -ne "\e[5 q"
 
 # Completion
@@ -49,7 +36,5 @@ HISTSIZE=1000
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey "^[[A"       history-substring-search-up
-bindkey "^[[B"       history-substring-search-down
-bindkey -M vicmd "k" history-substring-search-up
-bindkey -M vicmd "j" history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
