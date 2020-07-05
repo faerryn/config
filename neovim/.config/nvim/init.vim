@@ -2,7 +2,6 @@
 augroup AutoCommands
 	autocmd!
 
-	execute 'autocmd BufWritePost $MYVIMRC source $MYVIMRC'
 	autocmd VimEnter * silent! helptags ALL
 	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
 
