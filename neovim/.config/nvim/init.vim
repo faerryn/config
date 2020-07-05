@@ -42,6 +42,8 @@ let g:undotree_HelpLine = 0
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_WindowLayout = 3
 
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
 " may be obsoleted
 let g:highlightedyank_highlight_duration = 300
 
