@@ -14,7 +14,7 @@ augroup END
 " PLUGINS
 
 " FLAGS
-let g:mapleader=' '
+let g:mapleader="\<space>"
 set clipboard=unnamed,unnamedplus
 set hidden
 set mouse=ar
@@ -38,7 +38,7 @@ let g:undotree_WindowLayout = 3
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
 
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{"path": "~/vimwiki/", "syntax": "markdown", "ext": ".md"}]
 
 let $FZF_ALT_C_COMMAND="fd -HL -E \"**/.git\" -td . \$dir"
 let $FZF_CTRL_T_COMMAND="fd -HL -E \"**/.git\" -tf . \$dir"
@@ -60,13 +60,13 @@ set signcolumn=yes
 set splitbelow splitright
 set termguicolors
 
-let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_contrast_dark = "medium"
 let g:gruvbox_invert_signs = 1
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_strings = 1
 colorscheme gruvbox
 
-let g:lightline = { 'colorscheme': 'gruvbox', 'separator': { 'left': '', 'right': '' }, 'subseparator': { 'left': '', 'right': '' }, 'tabline': { 'right': [] } }
+let g:lightline = { "colorscheme": "gruvbox", "separator": { "left": "", "right": "" }, "subseparator": { "left": "", "right": "" }, "tabline": { "right": [] } }
 silent! call lightline#enable()
 
 " MAPPINGS
