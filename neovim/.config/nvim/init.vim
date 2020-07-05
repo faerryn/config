@@ -12,12 +12,6 @@ augroup AutoCommands
 augroup END
 
 " PLUGINS
-if isdirectory(glob('~/.local/lib/fzf'))
-	set runtimepath^=~/.local/lib/fzf
-endif
-
-let g:loaded_netrw       = 1
-let g:loaded_netrwPlugin = 1
 
 " FLAGS
 let g:mapleader=' '
@@ -40,6 +34,9 @@ let g:textobj_sandwich_no_default_key_mappings = 1
 let g:undotree_HelpLine = 0
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_WindowLayout = 3
+
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
