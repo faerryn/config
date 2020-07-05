@@ -56,6 +56,12 @@
 [submodule "vim-highlightedyank"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank
+[submodule "vimwiki"]
+	path = neovim/.config/nvim/pack/bundle/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki
+[submodule "fzf"]
+	path = neovim/.config/nvim/pack/bundle/start/fzf
+	url = https://github.com/junegunn/fzf
 # Tmux plugins
 [submodule "tmux-sensible"]
 	path = tmux/.config/tmux/plugins/tmux-sensible
@@ -88,6 +94,3 @@
 [submodule "zsh-history-substring-search"]
 	path = zsh/.config/zsh/plugins/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
-[submodule "neovim/.config/nvim/pack/bundle/start/vimwiki"]
-	path = neovim/.config/nvim/pack/bundle/start/vimwiki
-	url = https://github.com/vimwiki/vimwiki

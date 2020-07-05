@@ -30,19 +30,6 @@ function zle-line-init() { echo -ne "\e[5 q" }
 
 echo -ne "\e[5 q"
 
-# fzf
-export FZF_ALT_C_COMMAND="fd -HL -E \"**/.git\" -td . \$dir"
-export FZF_CTRL_T_COMMAND="fd -HL -E \"**/.git\" -tf . \$dir"
-export FZF_DEFAULT_COMMAND="fd -HL -E \"**/.git\" -tf"
-
-if [[ -d ~/.local/lib/fzf ]]; then
-	source ~/.local/lib/fzf/shell/completion.zsh
-	source ~/.local/lib/fzf/shell/key-bindings.zsh
-elif [[ -d /usr/share/fzf ]]; then
-	source /usr/share/fzf/completion.zsh
-	source /usr/share/fzf/key-bindings.zsh
-fi
-
 # Completion
 autoload -Uz compinit && mkdir -p ~/.cache/zsh && compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
