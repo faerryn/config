@@ -1,4 +1,4 @@
-# (Neo)Vim plugins
+# (Neo)Vim packages
 [submodule "lightline.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
