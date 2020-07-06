@@ -1,6 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-for plugin in ~/.config/tmux/plugins/*; do
-	cd $plugin;
-	source *.tmux;
+for plugin in ~/.config/tmux/plugins/*/*.tmux; do
+	$plugin
 done
