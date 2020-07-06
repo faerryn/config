@@ -94,3 +94,7 @@
 [submodule "zsh-history-substring-search"]
 	path = zsh/.config/zsh/plugins/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
+# Emacs plugins
+[submodule "evil"]
+	path = emacs/.emacs.d/packages/evil
+	url = https://github.com/emacs-evil/evil.git

@@ -1,0 +1,5 @@
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(add-to-list 'load-path "~/.emacs.d/packages/evil")
+(require 'evil)
+(evil-mode 1)
