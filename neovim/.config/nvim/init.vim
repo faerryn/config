@@ -7,6 +7,7 @@ augroup AutoCommands
 
 	" Setting up <esc> and <c-w>q
 	autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
+	autocmd FileType Mundo,MundoDiff nnoremap <silent> <buffer> <esc> <cmd>MundoHide<cr>
 
 augroup END
 
@@ -45,6 +46,7 @@ let g:highlightedyank_highlight_duration = 300
 " AESTHETICS
 set cursorline cursorcolumn colorcolumn=80
 set foldmethod=syntax foldlevelstart=20
+set inccommand=split
 set lazyredraw
 set list listchars=tab:\ \ ,trail:-,nbsp:+
 set noshowmode
@@ -63,30 +65,15 @@ colorscheme gruvbox
 let g:lightline = { "colorscheme": "gruvbox", "separator": { "left": "", "right": "" }, "subseparator": { "left": "", "right": "" }, "tabline": { "right": [] } }
 silent! call lightline#enable()
 
+" MAPPINGS
+nnoremap <silent> <leader>l <cmd>lopen<cr>
+nnoremap <silent> <leader>q <cmd>copen<cr>
+
+nnoremap <silent> <leader>g <cmd>G<cr>
+nnoremap <silent> <leader>f <cmd>FZF<cr>
+nnoremap <silent> <leader>u <cmd>MundoToggle<cr><cmd>MundoShow<cr>
+
 " COMMANDS
 command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
-
-" Vim and neovim differences
-if has("nvim")
-	set inccommand=split
-	augroup AutoCommands
-		autocmd FileType Mundo,MundoDiff nnoremap <silent> <buffer> <esc> <cmd>MundoHide<cr>
-	augroup END
-	nnoremap <silent> <leader>l <cmd>lopen<cr>
-	nnoremap <silent> <leader>q <cmd>copen<cr>
-	nnoremap <silent> <leader>g <cmd>G<cr>
-	nnoremap <silent> <leader>f <cmd>FZF<cr>
-	nnoremap <silent> <leader>u <cmd>MundoToggle<cr><cmd>MundoShow<cr>
-else
-	set background=dark
-	augroup AutoCommands
-		autocmd FileType Mundo,MundoDiff nnoremap <silent> <buffer> <esc> :MundoHide<cr>
-	augroup END
-	nnoremap <silent> <leader>l :lopen<cr>
-	nnoremap <silent> <leader>q :copen<cr>
-	nnoremap <silent> <leader>g :G<cr>
-	nnoremap <silent> <leader>f :FZF<cr>
-	nnoremap <silent> <leader>u :MundoToggle<cr>:MundoShow<cr>
-endif
