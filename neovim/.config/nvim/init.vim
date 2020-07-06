@@ -71,7 +71,7 @@ nnoremap <silent> <leader>q <cmd>copen<cr>
 
 nnoremap <silent> <leader>g <cmd>G<cr>
 nnoremap <silent> <leader>f <cmd>FZF<cr>
-nnoremap <silent> <leader>u <cmd>MundoHide<cr><cmd>MundoShow<cr>
+nnoremap <silent> <leader>u <cmd>MundoToggle<cr><cmd>MundoShow<cr>
 
 " COMMANDS
 command! -nargs=? -complete=dir Explore Dirvish <args>
