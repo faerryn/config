@@ -3,16 +3,16 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim -R +\"set signcolumn=no ft=man\" -"
 
-# Prompt
-PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
-
 # Aliases
 alias la="ls -la"
 alias ll="ls -l"
 
-# Emacs-mode
+# Prompt, autocd, and emacs mode
+PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
+setopt AUTO_CD
 bindkey -e
 
+# Beam-shaped cursor
 zle -N zle-line-init
 function zle-line-init() { echo -ne "\e[5 q" }
 echo -ne "\e[5 q"
