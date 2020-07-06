@@ -7,10 +7,9 @@ augroup AutoCommands
 
 	" Setting up <esc> and <c-w>q
 	autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
+	autocmd FileType Mundo,MundoDiff nnoremap <silent> <buffer> <esc> <cmd>MundoHide<cr>
 
 augroup END
-
-" PLUGINS
 
 " FLAGS
 let g:mapleader="\<space>"
@@ -32,6 +31,10 @@ let g:textobj_sandwich_no_default_key_mappings = 1
 
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
+
+let g:mundo_right = 1
+let g:mundo_return_on_revert = 0
+let g:mundo_auto_preview_delay = 300
 
 let g:vimwiki_list = [{"path": "~/vimwiki/", "syntax": "markdown", "ext": ".md"}]
 
@@ -68,7 +71,7 @@ nnoremap <silent> <leader>q <cmd>copen<cr>
 
 nnoremap <silent> <leader>g <cmd>G<cr>
 nnoremap <silent> <leader>f <cmd>FZF<cr>
-nnoremap <silent> <leader>u <cmd>UndotreeShow<cr>
+nnoremap <silent> <leader>u <cmd>MundoHide<cr><cmd>MundoShow<cr>
 
 " COMMANDS
 command! -nargs=? -complete=dir Explore Dirvish <args>
