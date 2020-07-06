@@ -98,3 +98,12 @@
 [submodule "evil"]
 	path = emacs/.emacs.d/packages/evil
 	url = https://github.com/emacs-evil/evil.git
+[submodule "emacs-theme-gruvbox"]
+	path = emacs/.emacs.d/packages/emacs-theme-gruvbox
+	url = https://github.com/Greduan/emacs-theme-gruvbox
+[submodule "autothemer"]
+	path = emacs/.emacs.d/packages/autothemer
+	url = https://github.com/jasonm23/autothemer
+[submodule "dash.el"]
+	path = emacs/.emacs.d/packages/dash.el
+	url = https://github.com/magnars/dash.el
