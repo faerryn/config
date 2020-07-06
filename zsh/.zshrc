@@ -7,8 +7,36 @@ export MANPAGER="nvim -R +\"set signcolumn=no ft=man\" -"
 alias la="ls -la"
 alias ll="ls -l"
 
-# Prompt, autocd, and emacs mode
+# Prompt
+ZSH_THEME_GIT_PROMPT_PREFIX=""
+ZSH_THEME_GIT_PROMPT_SUFFIX=""
+ZSH_THEME_GIT_PROMPT_SEPARATOR=""
+
+ZSH_THEME_GIT_PROMPT_DETACHED="%B%F{yellow}:"
+ZSH_THEME_GIT_PROMPT_BRANCH="%B%F{blue}"
+
+ZSH_THEME_GIT_PROMPT_UPSTREAM_SYMBOL=""
+ZSH_THEME_GIT_PROMPT_UPSTREAM_PREFIX="%F{yellow}("
+ZSH_THEME_GIT_PROMPT_UPSTREAM_SUFFIX=")"
+
+ZSH_THEME_GIT_PROMPT_BEHIND="↓"
+ZSH_THEME_GIT_PROMPT_AHEAD="↑"
+
+ZSH_THEME_GIT_PROMPT_UNMERGED=""
+ZSH_THEME_GIT_PROMPT_STAGED=" %F{green}+"
+ZSH_THEME_GIT_PROMPT_UNSTAGED=" %F{red}-"
+ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{yellow}?"
+ZSH_THEME_GIT_PROMPT_STASHED=""
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+ZSH_GIT_PROMPT_SHOW_UPSTREAM="full"
+
+source ~/.config/zsh/plugins/git-prompt.zsh/git-prompt.zsh
+
 PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
+RPROMPT="\$(gitprompt)"
+
+# autocd, and emacs mode
 setopt AUTO_CD
 bindkey -e
 
