@@ -7,7 +7,6 @@ augroup AutoCommands
 
 	" Setting up <esc> and <c-w>q
 	autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
-	autocmd FileType undotree nnoremap <silent> <buffer> <esc> <cmd>UndotreeHide<cr>
 
 augroup END
 
@@ -30,10 +29,6 @@ let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 
 let g:textobj_sandwich_no_default_key_mappings = 1
-
-let g:undotree_HelpLine = 0
-let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_WindowLayout = 3
 
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1

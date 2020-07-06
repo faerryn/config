@@ -26,9 +26,6 @@
 [submodule "vim-dirvish"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-dirvish
 	url = https://github.com/justinmk/vim-dirvish
-[submodule "undotree"]
-	path = neovim/.config/nvim/pack/bundle/start/undotree
-	url = https://github.com/mbbill/undotree
 [submodule "vim-signify"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-signify
 	url = https://github.com/mhinz/vim-signify
@@ -62,6 +59,9 @@
 [submodule "fzf"]
 	path = neovim/.config/nvim/pack/bundle/start/fzf
 	url = https://github.com/junegunn/fzf
+[submodule "vim-mundo"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-mundo
+	url = https://github.com/simnalamburt/vim-mundo
 # Tmux plugins
 [submodule "tmux-sensible"]
 	path = tmux/.config/tmux/plugins/tmux-sensible
