@@ -2,6 +2,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
+(setq inhibit-splash-screen t)
 
 ;; Load packages
 (let ((default-directory  "~/.emacs.d/lisp/"))
@@ -40,6 +41,10 @@
                "~/.emacs.d/lisp/magit/magit/Documentation/"))
 
 (require 'evil-magit)
+
+;; Org
+(require 'org)
+(require 'org-evil)
 
 ;; Aesthetics
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
