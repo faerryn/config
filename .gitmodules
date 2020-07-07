@@ -134,3 +134,9 @@
 [submodule "evil-matchit"]
 	path = emacs/.emacs.d/lisp/evil/evil-matchit
 	url = https://github.com/redguardtoo/evil-matchit
+[submodule "emacs/.emacs.d/lisp/evil/evil-exchange"]
+	path = emacs/.emacs.d/lisp/evil/evil-exchange
+	url = https://github.com/Dewdrops/evil-exchange
+[submodule "emacs/.emacs.d/lisp/evil/evil-numbers"]
+	path = emacs/.emacs.d/lisp/evil/evil-numbers
+	url = https://github.com/cofi/evil-numbers

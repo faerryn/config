@@ -14,11 +14,18 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
+(require 'evil-numbers)
+(define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
+(define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt)
+
 (require 'evil-commentary)
 (evil-commentary-mode)
 
 (require 'evil-matchit)
 (global-evil-matchit-mode 1)
+
+(require 'evil-exchange)
+(evil-exchange-install)
 
 ;; Aesthetics
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
