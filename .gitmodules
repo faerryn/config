@@ -116,9 +116,6 @@
 [submodule "evil"]
 	path = emacs/.emacs.d/lisp/evil/evil
 	url = https://github.com/emacs-evil/evil
-[submodule "undo-tree"]
-	path = emacs/.emacs.d/lisp/evil/undo-tree
-	url = http://www.dr-qubit.org/git/undo-tree.git
 [submodule "goto-chg"]
 	path = emacs/.emacs.d/lisp/evil/goto-chg
 	url = https://github.com/emacs-evil/goto-chg.git
@@ -158,9 +155,9 @@
 [submodule "evil-magit"]
 	path = emacs/.emacs.d/lisp/magit/evil-magit
 	url = https://github.com/emacs-evil/evil-magit
-[submodule "emacs/.emacs.d/lisp/org/org-evil"]
+[submodule "org-evil"]
 	path = emacs/.emacs.d/lisp/org/org-evil
 	url = https://github.com/GuiltyDolphin/org-evil
-[submodule "emacs/.emacs.d/lisp/lib/monitor"]
+[submodule "monitor"]
 	path = emacs/.emacs.d/lisp/lib/monitor
 	url = https://github.com/GuiltyDolphin/monitor

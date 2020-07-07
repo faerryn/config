@@ -44,8 +44,6 @@ let g:mundo_right = 1
 let g:mundo_return_on_revert = 0
 let g:mundo_auto_preview_delay = 300
 
-let g:vimwiki_list = [{"path": "~/vimwiki/", "syntax": "markdown", "ext": ".md"}]
-
 let $FZF_DEFAULT_COMMAND="fd -HL -E \"**/.git\" -tf"
 
 " may be obsoleted
