@@ -119,3 +119,9 @@
 [submodule "evil-surround"]
 	path = emacs/.emacs.d/lisp/evil/evil-surround
 	url = https://github.com/emacs-evil/evil-surround
+[submodule "evil-commentary"]
+	path = emacs/.emacs.d/lisp/evil/evil-commentary
+	url = https://github.com/linktohack/evil-commentary
+[submodule "evil-surround"]
+	path = emacs/.emacs.d/lisp/evil/evil-surround
+	url = https://github.com/emacs-evil/evil-surround
