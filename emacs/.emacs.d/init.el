@@ -10,6 +10,9 @@
 (setq auto-save-default nil)
 (setq backup-inhibited t)
 
+;; Mouse scroll speed
+(setq mouse-wheel-scroll-amount '(1))
+
 ;; Load packages
 (setq load-prefer-newer t)
 (let ((default-directory "~/.emacs.d/lisp/"))
