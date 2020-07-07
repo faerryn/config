@@ -17,6 +17,9 @@
 (require 'evil-commentary)
 (evil-commentary-mode)
 
+(require 'evil-matchit)
+(global-evil-matchit-mode 1)
+
 ;; Aesthetics
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'gruvbox t)

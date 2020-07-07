@@ -125,3 +125,6 @@
 [submodule "evil-surround"]
 	path = emacs/.emacs.d/lisp/evil/evil-surround
 	url = https://github.com/emacs-evil/evil-surround
+[submodule "evil-matchit"]
+	path = emacs/.emacs.d/lisp/evil/evil-matchit
+	url = https://github.com/redguardtoo/evil-matchit
