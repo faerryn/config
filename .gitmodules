@@ -165,5 +165,5 @@
 	path = emacs/.emacs.d/lisp/lib/monitor
 	url = https://github.com/GuiltyDolphin/monitor
 [submodule "swiper"]
-	path = emacs/.emacs.d/lisp/ivy/swiper
+	path = emacs/.emacs.d/lisp/ivy
 	url = https://github.com/abo-abo/swiper
