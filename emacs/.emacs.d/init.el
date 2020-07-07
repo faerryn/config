@@ -93,14 +93,13 @@
 (defun compile-packages ()
   (interactive)
   (dolist (path load-path)
-    (if (and (file-directory-p path)
-	  (file-writable-p path))
-    (dolist (file (directory-files path t "\.el$" t))
-      (byte-recompile-file file nil 0)))))
+    (when (and (file-directory-p path) (file-writable-p path))
+      (dolist (file (directory-files path t "\.el$" t))
+	(byte-recompile-file file nil 0)))))
 
 
 ;; Mouse scroll speed
 (setq mouse-wheel-scroll-amount '(1))
 
 ;; Daemon
-(if (daemonp) (server-start))
+(when (daemonp) (server-start))
