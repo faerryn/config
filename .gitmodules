@@ -167,6 +167,3 @@
 [submodule "swiper"]
 	path = emacs/.emacs.d/lisp/ivy/swiper
 	url = https://github.com/abo-abo/swiper
-[submodule "hydra"]
-	path = emacs/.emacs.d/lisp/ivy/hydra
-	url = https://github.com/abo-abo/hydra
