@@ -62,6 +62,9 @@
 [submodule "vim-mundo"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-mundo
 	url = https://github.com/simnalamburt/vim-mundo
+[submodule "matchit"]
+	path = neovim/.config/nvim/pack/bundle/start/matchit
+	url = https://github.com/chrisbra/matchit
 # Tmux plugins
 [submodule "tmux-sensible"]
 	path = tmux/.config/tmux/plugins/tmux-sensible
