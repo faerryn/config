@@ -77,5 +77,9 @@
 
 (global-set-key "\C-s" 'swiper)
 
+;; Aesthetics
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'gruvbox t)
+
 ;; Daemon
 (server-start) 
