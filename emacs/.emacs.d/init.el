@@ -96,4 +96,4 @@
 (setq mouse-wheel-scroll-amount '(1))
 
 ;; Daemon
-(if (daemonp) (server-start) ())
+(if (daemonp) (server-start))
