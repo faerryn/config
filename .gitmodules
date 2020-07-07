@@ -97,3 +97,21 @@
 [submodule "git-prompt.zsh"]
 	path = zsh/.config/zsh/plugins/git-prompt.zsh
 	url = https://github.com/woefe/git-prompt.zsh
+[submodule "emacs/.emacs.d/lisp/evil"]
+	path = emacs/.emacs.d/lisp/evil
+	url = https://github.com/emacs-evil/evil
+[submodule "emacs/.emacs.d/lisp/undo-tree"]
+	path = emacs/.emacs.d/lisp/undo-tree
+	url = http://www.dr-qubit.org/git/undo-tree.git
+[submodule "emacs/.emacs.d/lisp/goto-chg"]
+	path = emacs/.emacs.d/lisp/goto-chg
+	url = https://github.com/emacs-evil/goto-chg.git
+[submodule "emacs/.emacs.d/lisp/dash"]
+	path = emacs/.emacs.d/lisp/dash
+	url = https://github.com/magnars/dash.el
+[submodule "emacs/.emacs.d/lisp/autothemer"]
+	path = emacs/.emacs.d/lisp/autothemer
+	url = https://github.com/jasonm23/autothemer
+[submodule "emacs/.emacs.d/lisp/emacs-theme-gruvbox"]
+	path = emacs/.emacs.d/lisp/emacs-theme-gruvbox
+	url = https://github.com/Greduan/emacs-theme-gruvbox
