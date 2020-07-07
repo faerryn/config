@@ -1,4 +1,3 @@
-" AUTOCOMMANDS
 augroup AutoCommands
 	autocmd!
 
@@ -11,14 +10,24 @@ augroup AutoCommands
 
 augroup END
 
-" FLAGS
 let g:mapleader="\<space>"
 set clipboard=unnamed,unnamedplus
+set cursorline cursorcolumn colorcolumn=80
+set foldmethod=syntax foldlevelstart=20
 set hidden
+set inccommand=split
+set lazyredraw
+set list listchars=tab:\ \ ,trail:-,nbsp:+
 set mouse=ar
+set noshowmode
+set nowrap
 set nrformats+=alpha,octal
+set number relativenumber
 set omnifunc=syntaxcomplete#Complete
+set signcolumn=yes
 set spell
+set splitbelow splitright
+set termguicolors
 set timeoutlen=300
 set undofile
 set updatetime=300
@@ -42,19 +51,6 @@ let $FZF_DEFAULT_COMMAND="fd -HL -E \"**/.git\" -tf"
 
 " may be obsoleted
 let g:highlightedyank_highlight_duration = 300
-
-" AESTHETICS
-set cursorline cursorcolumn colorcolumn=80
-set foldmethod=syntax foldlevelstart=20
-set inccommand=split
-set lazyredraw
-set list listchars=tab:\ \ ,trail:-,nbsp:+
-set noshowmode
-set nowrap
-set number relativenumber
-set signcolumn=yes
-set splitbelow splitright
-set termguicolors
 
 let g:gruvbox_contrast_dark = "medium"
 let g:gruvbox_invert_signs = 1
