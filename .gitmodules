@@ -68,6 +68,9 @@
 [submodule "textobj-word-column.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/textobj-word-column.vim
 	url = https://github.com/coderifous/textobj-word-column.vim
+[submodule "undotree"]
+	path = neovim/.config/nvim/pack/bundle/start/undotree
+	url = https://github.com/mbbill/undotree
 # Tmux plugins
 [submodule "tmux-sensible"]
 	path = tmux/.config/tmux/plugins/tmux-sensible

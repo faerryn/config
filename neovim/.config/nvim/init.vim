@@ -6,6 +6,7 @@ augroup AutoCommands
 
 	" Setting up <esc> and <c-w>q
 	autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
+	autocmd FileType undotree nnoremap <silent> <buffer> <esc> <cmd>UndotreeHide<cr>
 
 augroup END
 
@@ -40,9 +41,10 @@ let g:textobj_sandwich_no_default_key_mappings = 1
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
 
-let g:mundo_right = 1
-let g:mundo_return_on_revert = 0
-let g:mundo_auto_preview_delay = 300
+let g:undotree_HelpLine = 0
+let g:undotree_WindowLayout = 3
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_ShortIndicators = 1
 
 let $FZF_DEFAULT_COMMAND="fd -HL -E \"**/.git\" -tf"
 
@@ -64,6 +66,7 @@ nnoremap <silent> <leader>q <cmd>copen<cr>
 
 nnoremap <silent> <leader>g <cmd>G<cr>
 nnoremap <silent> <leader>f <cmd>FZF<cr>
+nnoremap <silent> <leader>u <cmd>UndotreeShow<cr>
 
 " COMMANDS
 command! -nargs=? -complete=dir Explore Dirvish <args>
