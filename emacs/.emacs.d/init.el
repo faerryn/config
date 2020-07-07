@@ -12,6 +12,10 @@
 (evil-mode 1)
 
 (require 'evil-surround)
+(global-evil-surround-mode 1)
+
+(require 'evil-commentary)
+(evil-commentary-mode)
 
 ; Aesthetics
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
