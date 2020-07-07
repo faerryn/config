@@ -149,3 +149,15 @@
 [submodule "names"]
 	path = emacs/.emacs.d/lisp/lib/names
 	url = https://github.com/Malabarba/names
+[submodule "magit"]
+	path = emacs/.emacs.d/lisp/magit/magit
+	url = https://github.com/magit/magit
+[submodule "transient"]
+	path = emacs/.emacs.d/lisp/magit/transient
+	url = https://github.com/magit/transient
+[submodule "with-editor"]
+	path = emacs/.emacs.d/lisp/magit/with-editor
+	url = https://github.com/magit/with-editor
+[submodule "evil-magit"]
+	path = emacs/.emacs.d/lisp/magit/evil-magit
+	url = https://github.com/emacs-evil/evil-magit

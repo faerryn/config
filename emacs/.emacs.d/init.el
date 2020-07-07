@@ -32,6 +32,15 @@
 (define-key evil-inner-text-objects-map "c" 'evil-textobj-column-word)
 (define-key evil-inner-text-objects-map "C" 'evil-textobj-column-WORD)
 
+;; Magit
+(require 'magit)
+(with-eval-after-load 'info
+  (info-initialize)
+  (add-to-list 'Info-directory-list
+               "~/.emacs.d/lisp/magit/magit/Documentation/"))
+
+(require 'evil-magit)
+
 ;; Aesthetics
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'gruvbox t)
