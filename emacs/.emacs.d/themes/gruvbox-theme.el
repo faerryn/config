@@ -1,1 +1,1 @@
-../lisp/emacs-theme-gruvbox/gruvbox-theme.el
+../lisp/gruvbox/emacs-theme-gruvbox/gruvbox-theme.el

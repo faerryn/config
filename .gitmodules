@@ -116,3 +116,6 @@
 [submodule "emacs-theme-gruvbox"]
 	path = emacs-theme-gruvbox
 	url = https://github.com/Greduan/emacs-theme-gruvbox
+[submodule "evil-surround"]
+	path = emacs/.emacs.d/lisp/evil-surround
+	url = https://github.com/emacs-evil/evil-surround
