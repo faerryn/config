@@ -4,14 +4,19 @@
 (tool-bar-mode -1)
 (tooltip-mode -1)
 (setq inhibit-splash-screen t)
+(setq use-dialog-box nil)
 
 ;; Clean FS
 (setq auto-save-default nil)
 (setq backup-inhibited t)
 
 ;; Load packages
-(let ((default-directory  "~/.emacs.d/lisp/"))
+(setq load-prefer-newer t)
+(let ((default-directory "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
+
+;; Recompile packages
+(byte-recompile-directory user-emacs-directory 0)
 
 ;; Evil
 (require 'evil)
@@ -52,7 +57,11 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
-(require 'org-evil)
+(require 'evil-org)
+(add-hook 'org-mode-hook 'evil-org-mode)
+(evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+(require 'evil-org-agenda)
+(evil-org-agenda-set-keys)
 
 ;; Ivy
 (require 'ivy)

@@ -158,12 +158,9 @@
 [submodule "evil-magit"]
 	path = emacs/.emacs.d/lisp/magit/evil-magit
 	url = https://github.com/emacs-evil/evil-magit
-[submodule "org-evil"]
-	path = emacs/.emacs.d/lisp/org/org-evil
-	url = https://github.com/GuiltyDolphin/org-evil
-[submodule "monitor"]
-	path = emacs/.emacs.d/lisp/lib/monitor
-	url = https://github.com/GuiltyDolphin/monitor
 [submodule "swiper"]
 	path = emacs/.emacs.d/lisp/ivy
 	url = https://github.com/abo-abo/swiper
+[submodule "evil-org-mode"]
+	path = emacs/.emacs.d/lisp/org/evil-org-mode
+	url = https://github.com/Somelauw/evil-org-mode
