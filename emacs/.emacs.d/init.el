@@ -90,10 +90,14 @@
 (global-set-key "\C-s" 'swiper)
 
 ;; Package compilation
-(byte-recompile-directory (concat user-emacs-directory "lisp"))
 (defun compile-packages ()
   (interactive)
-  (byte-recompile-directory (concat user-emacs-directory "lisp") 0))
+  (dolist (path load-path)
+    (if (and (file-directory-p path)
+	  (file-writable-p path))
+    (dolist (file (directory-files path t "\.el$" t))
+      (byte-recompile-file file nil 0)))))
+
 
 ;; Mouse scroll speed
 (setq mouse-wheel-scroll-amount '(1))

@@ -170,3 +170,6 @@
 [submodule "annalist"]
 	path = emacs/.emacs.d/lisp/lib/annalist
 	url = https://github.com/noctuid/annalist.el
+[submodule "magit"]
+	path = emacs/.emacs.d/lisp/magit
+	url = https://github.com/magit/magit
