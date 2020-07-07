@@ -6,7 +6,6 @@ augroup AutoCommands
 
 	" Setting up <esc> and <c-w>q
 	autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
-	autocmd FileType Mundo,MundoDiff nnoremap <silent> <buffer> <esc> <cmd>MundoHide<cr>
 
 augroup END
 
@@ -64,10 +63,6 @@ silent! call lightline#enable()
 " MAPPINGS
 nnoremap <silent> <leader>l <cmd>lopen<cr>
 nnoremap <silent> <leader>q <cmd>copen<cr>
-
-nnoremap <silent> <leader>g <cmd>G<cr>
-nnoremap <silent> <leader>f <cmd>FZF<cr>
-nnoremap <silent> <leader>u <cmd>MundoToggle<cr><cmd>MundoShow<cr>
 
 " COMMANDS
 command! -nargs=? -complete=dir Explore Dirvish <args>
