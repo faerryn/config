@@ -97,21 +97,22 @@
 [submodule "git-prompt.zsh"]
 	path = zsh/.config/zsh/plugins/git-prompt.zsh
 	url = https://github.com/woefe/git-prompt.zsh
-[submodule "emacs/.emacs.d/lisp/evil"]
-	path = emacs/.emacs.d/lisp/evil
+# Emacs packages
+[submodule "evil"]
+	path = evil
 	url = https://github.com/emacs-evil/evil
-[submodule "emacs/.emacs.d/lisp/undo-tree"]
-	path = emacs/.emacs.d/lisp/undo-tree
+[submodule "undo-tree"]
+	path = undo-tree
 	url = http://www.dr-qubit.org/git/undo-tree.git
-[submodule "emacs/.emacs.d/lisp/goto-chg"]
-	path = emacs/.emacs.d/lisp/goto-chg
+[submodule "goto-chg"]
+	path = goto-chg
 	url = https://github.com/emacs-evil/goto-chg.git
-[submodule "emacs/.emacs.d/lisp/dash"]
-	path = emacs/.emacs.d/lisp/dash
+[submodule "dash"]
+	path = dash
 	url = https://github.com/magnars/dash.el
-[submodule "emacs/.emacs.d/lisp/autothemer"]
-	path = emacs/.emacs.d/lisp/autothemer
+[submodule "autothemer"]
+	path = autothemer
 	url = https://github.com/jasonm23/autothemer
-[submodule "emacs/.emacs.d/lisp/emacs-theme-gruvbox"]
-	path = emacs/.emacs.d/lisp/emacs-theme-gruvbox
+[submodule "emacs-theme-gruvbox"]
+	path = emacs-theme-gruvbox
 	url = https://github.com/Greduan/emacs-theme-gruvbox
