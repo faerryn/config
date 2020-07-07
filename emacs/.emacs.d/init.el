@@ -14,7 +14,6 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 ;; Evil
-(setq evil-want-C-u-scroll t)
 (require 'evil)
 (evil-mode 1)
 
