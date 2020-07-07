@@ -48,6 +48,11 @@
 (define-key evil-inner-text-objects-map "c" 'evil-textobj-column-word)
 (define-key evil-inner-text-objects-map "C" 'evil-textobj-column-WORD)
 
+(setq undo-tree-auto-save-history t)
+(setq undo-tree-history-directory-alist
+      `(("." . ,(concat user-emacs-directory "undo-tree"))))
+(require 'undo-tree)
+
 ;; Magit
 (require 'magit)
 (with-eval-after-load 'info
