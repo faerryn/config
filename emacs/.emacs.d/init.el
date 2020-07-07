@@ -1,7 +1,23 @@
+;; Clean UI
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(tooltip-mode -1)
+(setq inhibit-splash-screen t)
+(setq use-dialog-box nil)
+
+;; Clean FS
+(setq auto-save-default nil)
+(setq backup-inhibited t)
+
 ;; Load packages
 (setq load-prefer-newer t)
 (let ((default-directory "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
+
+;; Gruvbox
+(add-to-list 'custom-theme-load-path "~/.emacs.d/lisp/gruvbox")
+(load-theme 'gruvbox t)
 
 ;; Evil
 (setq evil-want-integration t)
@@ -67,27 +83,13 @@
 
 (global-set-key "\C-s" 'swiper)
 
-;; Aesthetics
-(add-to-list 'custom-theme-load-path "~/.emacs.d/lisp/gruvbox")
-(load-theme 'gruvbox t)
-
 ;; Recompile packages
 (byte-recompile-directory (expand-file-name "~/.emacs.d/lisp/") 0)
-
-;; Clean UI
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(tooltip-mode -1)
-(setq inhibit-splash-screen t)
-(setq use-dialog-box nil)
-
-;; Clean FS
-(setq auto-save-default nil)
-(setq backup-inhibited t)
 
 ;; Mouse scroll speed
 (setq mouse-wheel-scroll-amount '(1))
 
 ;; Daemon
-(server-start) 
+(if (daemonp)
+    (server-start) 
+  ())
