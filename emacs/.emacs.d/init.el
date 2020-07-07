@@ -12,11 +12,12 @@
 
 ;; Load packages
 (setq load-prefer-newer t)
-(let ((default-directory "~/.emacs.d/lisp/"))
+(let ((default-directory (concat user-emacs-directory "lisp")))
   (normal-top-level-add-subdirs-to-load-path))
 
 ;; Gruvbox
-(add-to-list 'custom-theme-load-path "~/.emacs.d/lisp/gruvbox")
+(add-to-list 'custom-theme-load-path
+	     (concat user-emacs-directory "lisp/gruvbox"))
 (load-theme 'gruvbox t)
 
 ;; Evil
@@ -58,7 +59,7 @@
 (with-eval-after-load 'info
   (info-initialize)
   (add-to-list 'Info-directory-list
-               "~/.emacs.d/lisp/magit/magit/Documentation/"))
+	       (concat user-emacs-directory "lisp/magit/magit/Documentation")))
 
 (require 'evil-magit)
 
@@ -89,12 +90,10 @@
 (global-set-key "\C-s" 'swiper)
 
 ;; Recompile packages
-(byte-recompile-directory (expand-file-name "~/.emacs.d/lisp/") 0)
+(byte-recompile-directory (concat user-emacs-directory "lisp") 0)
 
 ;; Mouse scroll speed
 (setq mouse-wheel-scroll-amount '(1))
 
 ;; Daemon
-(if (daemonp)
-    (server-start) 
-  ())
+(if (daemonp) (server-start) ())
