@@ -3,6 +3,10 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (setq inhibit-splash-screen t)
+(setq tooltip-use-echo-area t)
+
+;; Daemon
+(server-start) 
 
 ;; Load packages
 (let ((default-directory  "~/.emacs.d/lisp/"))
@@ -44,6 +48,10 @@
 
 ;; Org
 (require 'org)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+
 (require 'org-evil)
 
 ;; Aesthetics
