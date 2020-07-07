@@ -68,6 +68,9 @@
 [submodule "matchit"]
 	path = neovim/.config/nvim/pack/bundle/start/matchit
 	url = https://github.com/chrisbra/matchit
+[submodule "textobj-word-column.vim"]
+	path = neovim/.config/nvim/pack/bundle/start/textobj-word-column.vim
+	url = https://github.com/coderifous/textobj-word-column.vim
 # Tmux plugins
 [submodule "tmux-sensible"]
 	path = tmux/.config/tmux/plugins/tmux-sensible
@@ -134,9 +137,12 @@
 [submodule "evil-matchit"]
 	path = emacs/.emacs.d/lisp/evil/evil-matchit
 	url = https://github.com/redguardtoo/evil-matchit
-[submodule "emacs/.emacs.d/lisp/evil/evil-exchange"]
+[submodule "evil-exchange"]
 	path = emacs/.emacs.d/lisp/evil/evil-exchange
 	url = https://github.com/Dewdrops/evil-exchange
-[submodule "emacs/.emacs.d/lisp/evil/evil-numbers"]
+[submodule "evil-numbers"]
 	path = emacs/.emacs.d/lisp/evil/evil-numbers
 	url = https://github.com/cofi/evil-numbers
+[submodule "evil-textobj-column"]
+	path = emacs/.emacs.d/lisp/evil/evil-textobj-column
+	url = https://github.com/noctuid/evil-textobj-column
