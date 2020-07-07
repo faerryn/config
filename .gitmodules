@@ -120,7 +120,7 @@
 	path = emacs/.emacs.d/lisp/evil/evil
 	url = https://github.com/emacs-evil/evil
 [submodule "goto-chg"]
-	path = emacs/.emacs.d/lisp/evil/goto-chg
+	path = emacs/.emacs.d/lisp/lib/goto-chg
 	url = https://github.com/emacs-evil/goto-chg.git
 [submodule "evil-surround"]
 	path = emacs/.emacs.d/lisp/evil/evil-surround
@@ -164,3 +164,9 @@
 [submodule "evil-org-mode"]
 	path = emacs/.emacs.d/lisp/org/evil-org-mode
 	url = https://github.com/Somelauw/evil-org-mode
+[submodule "evil-collection"]
+	path = emacs/.emacs.d/lisp/evil/evil-collection
+	url = https://github.com/emacs-evil/evil-collection
+[submodule "annalist"]
+	path = emacs/.emacs.d/lisp/lib/annalist
+	url = https://github.com/noctuid/annalist.el
