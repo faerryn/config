@@ -19,11 +19,6 @@ if command -v ccache >/dev/null; then
 	export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 fi
 
-if command -v gpg >/dev/null; then
-	export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-	mkdir -p $GNUPGHOME
-fi
-
 if command -v wine >/dev/null; then
 	export WINEPREFIX="$HOME/wine"
 	mkdir -p $WINEPREFIX
