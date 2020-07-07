@@ -6,10 +6,8 @@
 (setq tooltip-use-echo-area t)
 
 ;; Clean FS
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+(setq backup-directory-alist nil)
+(setq auto-save-file-name-transforms nil)
 
 ;; Load packages
 (let ((default-directory  "~/.emacs.d/lisp/"))
@@ -69,10 +67,11 @@
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
-(global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 
 (counsel-mode 1)
+
+(global-set-key "\C-s" 'swiper)
 
 ;; Aesthetics
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
