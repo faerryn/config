@@ -146,3 +146,6 @@
 [submodule "evil-textobj-column"]
 	path = emacs/.emacs.d/lisp/evil/evil-textobj-column
 	url = https://github.com/noctuid/evil-textobj-column
+[submodule "names"]
+	path = emacs/.emacs.d/lisp/lib/names
+	url = https://github.com/Malabarba/names
