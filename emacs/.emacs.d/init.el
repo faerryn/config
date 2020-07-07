@@ -89,8 +89,11 @@
 
 (global-set-key "\C-s" 'swiper)
 
-;; Recompile packages
-(byte-recompile-directory (concat user-emacs-directory "lisp") 0)
+;; Package compilation
+(byte-recompile-directory (concat user-emacs-directory "lisp"))
+(defun compile-packages ()
+  (interactive)
+  (byte-recompile-directory (concat user-emacs-directory "lisp") 0))
 
 ;; Mouse scroll speed
 (setq mouse-wheel-scroll-amount '(1))
