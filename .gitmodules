@@ -147,22 +147,22 @@
 	path = emacs/.emacs.d/lisp/lib/names
 	url = https://github.com/Malabarba/names
 [submodule "magit"]
-	path = emacs/.emacs.d/lisp/magit/magit
+	path = emacs/.emacs.d/lisp/magit.backup/magit
 	url = https://github.com/magit/magit
 [submodule "transient"]
-	path = emacs/.emacs.d/lisp/magit/transient
+	path = emacs/.emacs.d/lisp/lib/transient
 	url = https://github.com/magit/transient
 [submodule "with-editor"]
-	path = emacs/.emacs.d/lisp/magit/with-editor
+	path = emacs/.emacs.d/lisp/lib/with-editor
 	url = https://github.com/magit/with-editor
 [submodule "evil-magit"]
-	path = emacs/.emacs.d/lisp/magit/evil-magit
+	path = emacs/.emacs.d/lisp/evil/evil-magit
 	url = https://github.com/emacs-evil/evil-magit
 [submodule "swiper"]
 	path = emacs/.emacs.d/lisp/ivy
 	url = https://github.com/abo-abo/swiper
 [submodule "evil-org-mode"]
-	path = emacs/.emacs.d/lisp/org/evil-org-mode
+	path = emacs/.emacs.d/lisp/evil/evil-org-mode
 	url = https://github.com/Somelauw/evil-org-mode
 [submodule "evil-collection"]
 	path = emacs/.emacs.d/lisp/evil/evil-collection
