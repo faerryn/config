@@ -1,1 +1,0 @@
-../lisp/gruvbox/emacs-theme-gruvbox/gruvbox-dark-soft-theme.el
