@@ -27,6 +27,10 @@
 (require 'evil-exchange)
 (evil-exchange-install)
 
+(require 'evil-textobj-column)
+(define-key evil-inner-text-objects-map "c" 'evil-textobj-column-word)
+(define-key evil-inner-text-objects-map "C" 'evil-textobj-column-WORD)
+
 ;; Aesthetics
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'gruvbox t)
