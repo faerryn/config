@@ -5,18 +5,19 @@
 (setq inhibit-splash-screen t)
 (setq tooltip-use-echo-area t)
 
-;; Clean filesystem
+;; Clean FS
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-;; Daemon
-(server-start) 
-
 ;; Load packages
 (let ((default-directory  "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
+
+;; Undohist
+(require 'undohist)
+(undohist-initialize)
 
 ;; Evil
 (setq evil-want-C-u-scroll t)
@@ -76,3 +77,6 @@
 ;; Aesthetics
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'gruvbox t)
+
+;; Daemon
+(server-start) 
