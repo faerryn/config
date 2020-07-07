@@ -78,7 +78,7 @@
 (global-set-key "\C-s" 'swiper)
 
 ;; Aesthetics
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/lisp/gruvbox")
 (load-theme 'gruvbox t)
 
 ;; Daemon
