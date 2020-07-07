@@ -64,6 +64,9 @@ silent! call lightline#enable()
 nnoremap <silent> <leader>l <cmd>lopen<cr>
 nnoremap <silent> <leader>q <cmd>copen<cr>
 
+nnoremap <silent> <leader>g <cmd>G<cr>
+nnoremap <silent> <leader>f <cmd>FZF<cr>
+
 " COMMANDS
 command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
