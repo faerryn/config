@@ -6,16 +6,12 @@
 (setq tooltip-use-echo-area t)
 
 ;; Clean FS
-(setq backup-directory-alist nil)
-(setq auto-save-file-name-transforms nil)
+(setq auto-save-default nil)
+(setq backup-inhibited t)
 
 ;; Load packages
 (let ((default-directory  "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
-
-;; Undohist
-(require 'undohist)
-(undohist-initialize)
 
 ;; Evil
 (setq evil-want-C-u-scroll t)
