@@ -161,9 +161,6 @@
 [submodule "swiper"]
 	path = emacs/.emacs.d/lisp/ivy
 	url = https://github.com/abo-abo/swiper
-[submodule "evil-org-mode"]
-	path = emacs/.emacs.d/lisp/evil/evil-org-mode
-	url = https://github.com/Somelauw/evil-org-mode
 [submodule "evil-collection"]
 	path = emacs/.emacs.d/lisp/evil/evil-collection
 	url = https://github.com/emacs-evil/evil-collection
@@ -179,3 +176,6 @@
 [submodule "projectile"]
 	path = emacs/.emacs.d/lisp/projectile
 	url = https://github.com/bbatsov/projectile
+[submodule "org-evil"]
+	path = emacs/.emacs.d/lisp/evil/org-evil
+	url = https://github.com/GuiltyDolphin/org-evil
