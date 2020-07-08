@@ -200,3 +200,9 @@
 [submodule "gruvbox"]
 	path = emacs/.emacs.d/lisp/gruvbox
 	url = https://github.com/Greduan/emacs-theme-gruvbox
+[submodule "emacs/.emacs.d/lisp/lib/autothemer"]
+	path = emacs/.emacs.d/lisp/lib/autothemer
+	url = https://github.com/jasonm23/autothemer
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-exchange"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-exchange
+	url = https://github.com/tommcdo/vim-exchange
