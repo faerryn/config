@@ -71,6 +71,9 @@
 [submodule "vim-polyglot"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
+[submodule "neomake"]
+	path = neovim/.config/nvim/pack/bundle/start/neomake
+	url = https://github.com/neomake/neomake
 # Tmux plugins
 [submodule "tmux-sensible"]
 	path = tmux/.config/tmux/plugins/tmux-sensible
@@ -106,6 +109,9 @@
 [submodule "git-prompt.zsh"]
 	path = zsh/.config/zsh/plugins/git-prompt.zsh
 	url = https://github.com/woefe/git-prompt.zsh
+[submodule "zsh-system-clipboard"]
+	path = zsh/.config/zsh/plugins/zsh-system-clipboard
+	url = https://github.com/kutsan/zsh-system-clipboard
 # Emacs packages
 [submodule "emacs-theme-gruvbox"]
 	path = emacs/.emacs.d/lisp/gruvbox/emacs-theme-gruvbox
@@ -188,9 +194,9 @@
 [submodule "moody"]
 	path = emacs/.emacs.d/lisp/moody
 	url = https://github.com/tarsius/moody
-[submodule "neomake"]
-	path = neovim/.config/nvim/pack/bundle/start/neomake
-	url = https://github.com/neomake/neomake
-[submodule "zsh/.config/zsh/plugins/zsh-system-clipboard"]
-	path = zsh/.config/zsh/plugins/zsh-system-clipboard
-	url = https://github.com/kutsan/zsh-system-clipboard
+[submodule "dash"]
+	path = emacs/.emacs.d/lisp/lib/dash
+	url = https://github.com/magnars/dash.el
+[submodule "gruvbox"]
+	path = emacs/.emacs.d/lisp/gruvbox
+	url = https://github.com/Greduan/emacs-theme-gruvbox

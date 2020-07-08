@@ -3,6 +3,9 @@ augroup AutoCommands
 
 	autocmd VimEnter * silent! helptags ALL
 	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
+	
+	" may be obsoleted
+	autocmd VimEnter * call neomake#configure#automake('nirw', 500)
 
 	" Setting up <esc> and <c-w>q
 	autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
@@ -48,9 +51,6 @@ let g:undotree_ShortIndicators = 1
 
 let $FZF_DEFAULT_COMMAND="fd -HL -E \"**/.git\" -tf"
 
-" may be obsoleted
-let g:highlightedyank_highlight_duration = 300
-
 let g:gruvbox_contrast_dark = "medium"
 let g:gruvbox_invert_signs = 1
 let g:gruvbox_italic = 1
@@ -58,7 +58,9 @@ let g:gruvbox_italicize_strings = 1
 colorscheme gruvbox
 
 let g:lightline = { "colorscheme": "gruvbox", "separator": { "left": "", "right": "" }, "subseparator": { "left": "", "right": "" }, "tabline": { "right": [] } }
-silent! call lightline#enable()
+
+" may be obsoleted
+let g:highlightedyank_highlight_duration = 300
 
 " MAPPINGS
 nnoremap <silent> <leader>l <cmd>lopen<cr>
