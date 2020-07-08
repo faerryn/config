@@ -1,0 +1,72 @@
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-symlink"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-symlink
+	url = https://github.com/aymericbeaumet/vim-symlink
+[submodule "neovim/.config/nvim/pack/bundle/start/matchit"]
+	path = neovim/.config/nvim/pack/bundle/start/matchit
+	url = https://github.com/chrisbra/matchit
+[submodule "neovim/.config/nvim/pack/bundle/start/textobj-word-column.vim"]
+	path = neovim/.config/nvim/pack/bundle/start/textobj-word-column.vim
+	url = https://github.com/coderifous/textobj-word-column.vim
+[submodule "neovim/.config/nvim/pack/bundle/start/gruvbox"]
+	path = neovim/.config/nvim/pack/bundle/start/gruvbox
+	url = https://github.com/gruvbox-community/gruvbox
+[submodule "neovim/.config/nvim/pack/bundle/start/lightline.vim"]
+	path = neovim/.config/nvim/pack/bundle/start/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "neovim/.config/nvim/pack/bundle/start/fzf"]
+	path = neovim/.config/nvim/pack/bundle/start/fzf
+	url = https://github.com/junegunn/fzf
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-dirvish"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-dirvish
+	url = https://github.com/justinmk/vim-dirvish
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-highlightedyank"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-highlightedyank
+	url = https://github.com/machakann/vim-highlightedyank
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-sandwich"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-sandwich
+	url = https://github.com/machakann/vim-sandwich
+[submodule "neovim/.config/nvim/pack/bundle/start/undotree"]
+	path = neovim/.config/nvim/pack/bundle/start/undotree
+	url = https://github.com/mbbill/undotree
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-signify"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-signify
+	url = https://github.com/mhinz/vim-signify
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-bbye"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-bbye
+	url = https://github.com/moll/vim-bbye
+[submodule "neovim/.config/nvim/pack/bundle/start/neomake"]
+	path = neovim/.config/nvim/pack/bundle/start/neomake
+	url = https://github.com/neomake/neomake
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-mkdir"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-mkdir
+	url = https://github.com/pbrisbin/vim-mkdir
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-exchange"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-exchange
+	url = https://github.com/tommcdo/vim-exchange
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-lion"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-lion
+	url = https://github.com/tommcdo/vim-lion
+[submodule "neovim/.config/nvim/pack/bundle/start/tcomment_vim"]
+	path = neovim/.config/nvim/pack/bundle/start/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-dispatch"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-eunuch"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-fugitive"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-repeat"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule "neovim/.config/nvim/pack/bundle/start/vim-unimpaired"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired
+[submodule "neovim/.config/nvim/pack/bundle/start/vimwiki"]
+	path = neovim/.config/nvim/pack/bundle/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki
+[submodule "neovim/.config/nvim/pack/bundle/start/targets.vim"]
+	path = neovim/.config/nvim/pack/bundle/start/targets.vim
+	url = https://github.com/wellle/targets.vim
