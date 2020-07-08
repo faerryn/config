@@ -41,9 +41,6 @@
 [submodule "vim-fugitive"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "zig.vim"]
-	path = neovim/.config/nvim/pack/bundle/start/zig.vim
-	url = https://github.com/ziglang/zig.vim
 [submodule "vim-bbye"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-bbye
 	url = https://github.com/moll/vim-bbye
@@ -71,6 +68,9 @@
 [submodule "undotree"]
 	path = neovim/.config/nvim/pack/bundle/start/undotree
 	url = https://github.com/mbbill/undotree
+[submodule "vim-polyglot"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
 # Tmux plugins
 [submodule "tmux-sensible"]
 	path = tmux/.config/tmux/plugins/tmux-sensible
