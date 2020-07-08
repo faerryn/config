@@ -39,3 +39,7 @@ fi
 if command -v exa >/dev/null; then
 	alias ls="exa --git"
 fi
+
+if command -v emacs >/dev/null; then
+	alias emacs="emacsclient --create-frame --alternate-editor \"emacs\""
+fi
