@@ -16,12 +16,6 @@
      (tooltip-mode -1)
      (setq inhibit-splash-screen t)
    #+end_src
-** Line numbers
-   Relative line numbers and highlighted current line
-   #+begin_src emacs-lisp
-     (setq-default display-line-numbers 'relative)
-     (global-hl-line-mode +1)
-   #+end_src
 ** Gruvbox
    Noicest theme of them all...
    #+begin_src emacs-lisp
@@ -45,6 +39,12 @@
       (moody-replace-mode-line-buffer-identification)
       (moody-replace-vc-mode)
     #+end_src
+** Line numbers
+   Relative line numbers and highlighted current line
+   #+begin_src emacs-lisp
+     (setq-default display-line-numbers 'relative)
+     (global-hl-line-mode +1)
+   #+end_src
 * Navigation
 ** Mouse wheel
    Slow down, wheel!
