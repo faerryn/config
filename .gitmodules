@@ -173,3 +173,6 @@
 [submodule "magit"]
 	path = emacs/.emacs.d/lisp/magit
 	url = https://github.com/magit/magit
+[submodule "flycheck"]
+	path = emacs/.emacs.d/lisp/flycheck
+	url = https://github.com/flycheck/flycheck

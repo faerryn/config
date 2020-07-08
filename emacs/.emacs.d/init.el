@@ -1,3 +1,5 @@
+;;; init.el --- handrolled Emacs configuration
+
 ;; Clean UI
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -6,14 +8,18 @@
 (setq inhibit-splash-screen t)
 (setq use-dialog-box nil)
 
-;; Clean FS
-(setq auto-save-default nil)
-(setq backup-inhibited t)
-
 ;; Load packages
 (setq load-prefer-newer t)
 (let ((default-directory (concat user-emacs-directory "lisp")))
   (normal-top-level-add-subdirs-to-load-path))
+
+;; Undo-tree
+(setq auto-save-default nil)
+(setq backup-inhibited t)
+(setq undo-tree-auto-save-history t)
+(setq undo-tree-history-directory-alist
+      `(("." . ,(concat user-emacs-directory "undo-tree"))))
+(require 'undo-tree)
 
 ;; Gruvbox
 (add-to-list 'custom-theme-load-path
@@ -49,11 +55,6 @@
 (define-key evil-inner-text-objects-map "c" 'evil-textobj-column-word)
 (define-key evil-inner-text-objects-map "C" 'evil-textobj-column-WORD)
 
-(setq undo-tree-auto-save-history t)
-(setq undo-tree-history-directory-alist
-      `(("." . ,(concat user-emacs-directory "undo-tree"))))
-(require 'undo-tree)
-
 ;; Magit
 (require 'magit)
 (with-eval-after-load 'info
@@ -88,6 +89,10 @@
 (counsel-mode 1)
 
 (global-set-key "\C-s" 'swiper)
+
+;; Flycheck
+(require 'flycheck)
+(global-flycheck-mode)
 
 ;; Package compilation
 (defun compile-packages ()
