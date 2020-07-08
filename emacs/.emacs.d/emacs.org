@@ -26,7 +26,7 @@
    Noicest theme of them all...
    #+begin_src emacs-lisp
      (add-to-list 'custom-theme-load-path
-		  (concat user-emacs-directory "lisp/gruvbox"))
+		  (expand-file-name "lisp/gruvbox" user-emacs-directory))
      (load-theme 'gruvbox t)
    #+end_src
 ** Modeline
@@ -96,7 +96,7 @@
 	   backup-inhibited t)
      (setq undo-tree-auto-save-history t
 	   undo-tree-history-directory-alist
-	   `(("." . ,(concat user-emacs-directory "undo-tree"))))
+	   `(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
      (require 'undo-tree)
    #+end_src
 * Projects
