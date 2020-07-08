@@ -4,12 +4,12 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 ;; Load (and recompile) `emacs.org'
-(let ((emacs_loadfile (expand-file-name "emacs" user-emacs-directory))
-      (emacs_org (expand-file-name "emacs.org" user-emacs-directory)))
-  (if (file-newer-than-file-p emacs_org
-			      (emacs_elc (concat emacs_loadfile ".elc")))
+(let ((emacs_org (expand-file-name "emacs.org" user-emacs-directory)))
+  (if (file-newer-than-file-p
+       emacs_org
+       (expand-file-name "emacs.elc" user-emacs-directory))
       (org-babel-load-file emacs_org t)
-    (load emacs_loadfile))))
+    (load (expand-file-name "emacs" user-emacs-directory))))
 
 ;; Recompile `init.el'
 (byte-recompile-file
