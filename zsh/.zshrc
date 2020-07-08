@@ -36,14 +36,30 @@ source ~/.config/zsh/plugins/git-prompt.zsh/git-prompt.zsh
 PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
 RPROMPT="\$(gitprompt)"
 
-# autocd, and emacs mode
+# Auto-cd
 setopt AUTO_CD
-bindkey -e
 
-# Beam-shaped cursor
+# Vi-mode
+bindkey -v
+
+KEYTIMEOUT=1
+
+function cursor_beam() { echo -ne "\e[5 q" }
+
+function zle-line-init() { cursor_beam }
 zle -N zle-line-init
-function zle-line-init() { echo -ne "\e[5 q" }
-echo -ne "\e[5 q"
+
+function zle-keymap-select {
+	if [[ ${KEYMAP} == vicmd ]] || [[ $1 = "block" ]]; then
+		echo -ne "\e[1 q"
+	elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = "" ]] || [[ $1 = "beam" ]]; then
+		cursor_beam
+	fi
+}
+zle -N zle-keymap-select
+
+precmd_functions+=(cursor_beam)
+cursor_beam
 
 # Completion
 autoload -Uz compinit && mkdir -p ~/.cache/zsh && compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
@@ -64,5 +80,5 @@ HISTSIZE=1000
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey -M emacs "^p" history-substring-search-up
-bindkey -M emacs "^n" history-substring-search-down
+bindkey -M vicmd "k" history-substring-search-up
+bindkey -M vicmd "j" history-substring-search-down
