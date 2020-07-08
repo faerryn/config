@@ -1,10 +1,3 @@
-* Packages
-  I need to put them in load-path
-  #+begin_src emacs-lisp
-    (setq load-prefer-newer t)
-    (let ((default-directory (expand-file-name "lisp" user-emacs-directory)))
-      (normal-top-level-add-subdirs-to-load-path))
-  #+end_src
 * Aesthetics
   Pretty colors and nice views!
 ** No frills
@@ -93,7 +86,8 @@
    Replaces auto-save and backups, acts like a pseudo-vcs
    #+begin_src emacs-lisp
      (setq auto-save-default nil
-	   backup-inhibited t)
+	   backup-inhibited t
+	   create-lockfiles nil)
      (setq undo-tree-auto-save-history t
 	   undo-tree-history-directory-alist
 	   `(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
@@ -158,8 +152,8 @@
   #+begin_src emacs-lisp
     (when (daemonp) (server-start))
   #+end_src
-* Custom
-  My custom commands and stuff
+* Compilation
+  For packages
   #+begin_src emacs-lisp
     (defun compile-packages ()
       "This command recompiles every `.el' file in each directory in `load-path' (but not their subdirectories) that needs recompilation.  A file needs recompilation if a `.elc' file exists but is older than the `.el' file.  When a `.el' file has no corresponding `.elc' file, it compiles them.  The returned value is unpredictable."
