@@ -1,25 +1,21 @@
-;;; init.el --- handrolled Emacs configuration
-
-;; Clean UI
+;; No frills
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
-(setq inhibit-splash-screen t
-      use-dialog-box nil)
+(setq auto-save-default nil
+      backup-inhibited t
+      inhibit-splash-screen t)
+
+;; Aesthetics
+(setq display-line-numbers 'relative)
+(global-display-line-numbers-mode +1)
+(global-hl-line-mode +1)
 
 ;; Load packages
 (setq load-prefer-newer t)
 (let ((default-directory (concat user-emacs-directory "lisp")))
   (normal-top-level-add-subdirs-to-load-path))
-
-;; Undo-tree
-(setq auto-save-default nil
-      backup-inhibited t
-      undo-tree-auto-save-history t
-      undo-tree-history-directory-alist
-      `(("." . ,(concat user-emacs-directory "undo-tree"))))
-(require 'undo-tree)
 
 ;; Gruvbox
 (add-to-list 'custom-theme-load-path
@@ -29,6 +25,12 @@
 ;; Minions
 (require 'minions)
 (minions-mode +1)
+
+;; Undo-tree
+(setq undo-tree-auto-save-history t
+      undo-tree-history-directory-alist
+      `(("." . ,(concat user-emacs-directory "undo-tree"))))
+(require 'undo-tree)
 
 ;; Evil
 (setq evil-want-integration t
@@ -92,8 +94,6 @@
 
 ;; Flycheck
 (require 'flycheck)
-(global-flycheck-mode)
-
 ;; Projectile
 (require 'projectile)
 (projectile-mode +1)
@@ -108,7 +108,6 @@
     (when (and (file-directory-p path) (file-writable-p path))
       (dolist (file (directory-files path t "\.el$" t))
 	(byte-recompile-file file nil 0)))))
-
 
 ;; Mouse scroll speed
 (setq mouse-wheel-scroll-amount '(1))
