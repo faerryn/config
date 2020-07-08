@@ -185,3 +185,6 @@
 [submodule "minions"]
 	path = emacs/.emacs.d/lisp/minions
 	url = https://github.com/tarsius/minions
+[submodule "moody"]
+	path = emacs/.emacs.d/lisp/moody
+	url = https://github.com/tarsius/moody

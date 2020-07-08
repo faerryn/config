@@ -1,6 +1,3 @@
-#+title: Faerryn's Emacs configuration
-#+property: results silent
-
 * Aesthetics
   Pretty colors and nice views!
 ** No frills
@@ -25,12 +22,22 @@
 		  (concat user-emacs-directory "lisp/gruvbox"))
      (load-theme 'gruvbox t)
    #+end_src
-** Minions
-   Begone, lighters!
-   #+begin_src emacs-lisp
-     (require 'minions)
-     (minions-mode +1)
-   #+end_src
+** Modeline
+*** Minions
+    Begone, lighters!
+    #+begin_src emacs-lisp
+      (require 'minions)
+      (minions-mode +1)
+    #+end_src
+*** Moody
+    I'm mad!
+    #+begin_src emacs-lisp
+      (setq x-underline-at-descent-line t)
+      (setq moody-mode-line-height (line-pixel-height))
+      (require 'moody)
+      (moody-replace-mode-line-buffer-identification)
+      (moody-replace-vc-mode)
+    #+end_src
 * Navigation
 ** Mouse wheel
    Slow down, wheel!
@@ -115,8 +122,12 @@
    Worms worms worms!
    #+begin_src emacs-lisp
      (require 'magit)
-     (with-eval-after-load 'info (info-initialize)
-			   (add-to-list 'Info-directory-list (concat user-emacs-directory "lisp/magit/magit/Documentation")))
+     (with-eval-after-load 'info
+       (info-initialize)
+       (add-to-list 'Info-directory-list
+		    (expand-file-name
+		     "lisp/magit/magit/Documentation"
+		     user-emacs-directory)))
    #+end_src
    Don't forget evil integration
    #+begin_src emacs-lisp
