@@ -1,3 +1,5 @@
+;;; init.el --- handrolled Emacs configuration
+
 ;; Clean UI
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -11,11 +13,6 @@
 (let ((default-directory (concat user-emacs-directory "lisp")))
   (normal-top-level-add-subdirs-to-load-path))
 
-;; Gruvbox
-(add-to-list 'custom-theme-load-path
-	     (concat user-emacs-directory "lisp/gruvbox"))
-(load-theme 'gruvbox t)
-
 ;; Undo-tree
 (setq auto-save-default nil)
 (setq backup-inhibited t)
@@ -23,6 +20,11 @@
 (setq undo-tree-history-directory-alist
       `(("." . ,(concat user-emacs-directory "undo-tree"))))
 (require 'undo-tree)
+
+;; Gruvbox
+(add-to-list 'custom-theme-load-path
+	     (concat user-emacs-directory "lisp/gruvbox"))
+(load-theme 'gruvbox t)
 
 ;; Evil
 (setq evil-want-integration t)
@@ -86,7 +88,7 @@
 
 ;; Flycheck
 (require 'flycheck)
-(global-flycheck-mode +1)
+(global-flycheck-mode)
 
 ;; Projectile
 (require 'projectile)
@@ -96,7 +98,6 @@
 
 ;; Package compilation
 (defun compile-packages ()
-  "This command byte-compiles every ‘.el’ file in directories in 'load-path' (but not their subdirectories).  A file needs recompilation if a ‘.elc’ file exists but is older than the ‘.el’ file.  When a ‘.el’ file has no corresponding ‘.elc’ file, it compiles them."
   (interactive)
   (dolist (path load-path)
     (when (and (file-directory-p path) (file-writable-p path))
