@@ -82,3 +82,5 @@ zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey -M vicmd "k" history-substring-search-up
 bindkey -M vicmd "j" history-substring-search-down
+bindkey -M vicmd "^p" history-substring-search-up
+bindkey -M vicmd "^n" history-substring-search-down
