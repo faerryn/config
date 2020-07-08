@@ -179,3 +179,6 @@
 [submodule "org-evil"]
 	path = emacs/.emacs.d/lisp/evil/org-evil
 	url = https://github.com/GuiltyDolphin/org-evil
+[submodule "monitor"]
+	path = emacs/.emacs.d/lisp/lib/monitor
+	url = https://github.com/GuiltyDolphin/monitor
