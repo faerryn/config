@@ -176,3 +176,6 @@
 [submodule "flycheck"]
 	path = emacs/.emacs.d/lisp/flycheck
 	url = https://github.com/flycheck/flycheck
+[submodule "projectile"]
+	path = emacs/.emacs.d/lisp/projectile
+	url = https://github.com/bbatsov/projectile

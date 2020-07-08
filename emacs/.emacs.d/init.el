@@ -30,13 +30,13 @@
 (setq evil-want-integration t)
 (setq evil-want-keybinding nil)
 (require 'evil)
-(evil-mode 1)
+(evil-mode +1)
 
 (require 'evil-collection)
 (evil-collection-init)
 
 (require 'evil-surround)
-(global-evil-surround-mode 1)
+(global-evil-surround-mode +1)
 
 (require 'evil-numbers)
 (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
@@ -46,7 +46,7 @@
 (evil-commentary-mode)
 
 (require 'evil-matchit)
-(global-evil-matchit-mode 1)
+(global-evil-matchit-mode +1)
 
 (require 'evil-exchange)
 (evil-exchange-install)
@@ -81,18 +81,24 @@
 (require 'counsel)
 (require 'swiper)
 
-(ivy-mode 1)
+(ivy-mode +1)
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 
-(counsel-mode 1)
+(counsel-mode +1)
 
 (global-set-key "\C-s" 'swiper)
 
 ;; Flycheck
 (require 'flycheck)
 (global-flycheck-mode)
+
+;; Projectile
+(require 'projectile)
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 ;; Package compilation
 (defun compile-packages ()
