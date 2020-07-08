@@ -26,6 +26,10 @@
 	     (concat user-emacs-directory "lisp/gruvbox"))
 (load-theme 'gruvbox t)
 
+;; Minions
+(require 'minions)
+(minions-mode +1)
+
 ;; Evil
 (setq evil-want-integration t
       evil-want-keybinding nil)

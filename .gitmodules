@@ -182,3 +182,6 @@
 [submodule "monitor"]
 	path = emacs/.emacs.d/lisp/lib/monitor
 	url = https://github.com/GuiltyDolphin/monitor
+[submodule "minions"]
+	path = emacs/.emacs.d/lisp/minions
+	url = https://github.com/tarsius/minions
