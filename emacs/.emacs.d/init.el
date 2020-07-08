@@ -8,8 +8,7 @@
       inhibit-splash-screen t)
 
 ;; Aesthetics
-(setq display-line-numbers 'relative)
-(global-display-line-numbers-mode +1)
+(setq-default display-line-numbers 'relative)
 (global-hl-line-mode +1)
 
 ;; Load packages
