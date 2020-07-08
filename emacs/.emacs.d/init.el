@@ -5,8 +5,8 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
-(setq inhibit-splash-screen t)
-(setq use-dialog-box nil)
+(setq inhibit-splash-screen t
+      use-dialog-box nil)
 
 ;; Load packages
 (setq load-prefer-newer t)
@@ -14,10 +14,10 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 ;; Undo-tree
-(setq auto-save-default nil)
-(setq backup-inhibited t)
-(setq undo-tree-auto-save-history t)
-(setq undo-tree-history-directory-alist
+(setq auto-save-default nil
+      backup-inhibited t
+      undo-tree-auto-save-history t
+      undo-tree-history-directory-alist
       `(("." . ,(concat user-emacs-directory "undo-tree"))))
 (require 'undo-tree)
 
@@ -27,8 +27,8 @@
 (load-theme 'gruvbox t)
 
 ;; Evil
-(setq evil-want-integration t)
-(setq evil-want-keybinding nil)
+(setq evil-want-integration t
+      evil-want-keybinding nil)
 (require 'evil)
 (evil-mode +1)
 
@@ -78,8 +78,8 @@
 (require 'swiper)
 
 (ivy-mode +1)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
+(setq ivy-use-virtual-buffers t
+      enable-recursive-minibuffers t)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 
 (counsel-mode +1)
