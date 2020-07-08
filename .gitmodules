@@ -188,3 +188,9 @@
 [submodule "moody"]
 	path = emacs/.emacs.d/lisp/moody
 	url = https://github.com/tarsius/moody
+[submodule "neomake"]
+	path = neovim/.config/nvim/pack/bundle/start/neomake
+	url = https://github.com/neomake/neomake
+[submodule "zsh/.config/zsh/plugins/zsh-system-clipboard"]
+	path = zsh/.config/zsh/plugins/zsh-system-clipboard
+	url = https://github.com/kutsan/zsh-system-clipboard

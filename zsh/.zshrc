@@ -84,3 +84,6 @@ bindkey -M vicmd "k" history-substring-search-up
 bindkey -M vicmd "j" history-substring-search-down
 bindkey -M vicmd "^p" history-substring-search-up
 bindkey -M vicmd "^n" history-substring-search-down
+
+# Vi-mode yank and paste
+source ~/.config/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
