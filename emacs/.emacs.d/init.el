@@ -102,6 +102,7 @@
 
 ;; Package compilation
 (defun compile-packages ()
+  "This command recompiles every `.el' file in each directory in `load-path' (but not their subdirectories) that needs recompilation.  A file needs recompilation if a `.elc' file exists but is older than the `.el' file.  When a `.el' file has no corresponding `.elc' file, it compiles them.  The returned value is unpredictable."
   (interactive)
   (dolist (path load-path)
     (when (and (file-directory-p path) (file-writable-p path))
