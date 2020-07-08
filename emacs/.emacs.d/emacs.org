@@ -17,20 +17,24 @@
      (load-theme 'gruvbox t)
    #+end_src
 ** Modeline
+*** Moody
+    I'm mad!
+    #+begin_src emacs-lisp
+      (defun my--moody-init (frame)
+	(with-selected-frame frame
+	  (progn
+	    (setq moody-mode-line-height (line-pixel-height))
+	    (require 'moody)
+	    (moody-replace-mode-line-buffer-identification)
+	    (moody-replace-vc-mode))))
+      (my--moody-init (selected-frame))
+      (add-hook 'after-make-frame-functions 'my--moody-init)
+    #+end_src
 *** Minions
     Begone, lighters!
     #+begin_src emacs-lisp
       (require 'minions)
       (minions-mode +1)
-    #+end_src
-*** Moody
-    I'm mad!
-    #+begin_src emacs-lisp
-      (setq x-underline-at-descent-line t)
-      (setq moody-mode-line-height (line-pixel-height))
-      (require 'moody)
-      (moody-replace-mode-line-buffer-identification)
-      (moody-replace-vc-mode)
     #+end_src
 ** Line numbers
    Relative line numbers and highlighted current line
