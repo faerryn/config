@@ -1,6 +1,6 @@
 *.elc
 .emacs.d/auto-save-list/
-.emacs.d/emacs.el
+.emacs.d/personal.el
 .emacs.d/eshell/
 .emacs.d/games/
 .emacs.d/projectile-bookmarks.eld

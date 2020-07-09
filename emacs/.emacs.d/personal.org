@@ -1,0 +1,172 @@
+* Aesthetics
+  Pretty colors and nice views!
+** No frills
+   Remove cluky GUI elements for a smoother Emacs
+   #+begin_src emacs-lisp
+     (menu-bar-mode -1)
+     (scroll-bar-mode -1)
+     (tool-bar-mode -1)
+     (tooltip-mode -1)
+     (setq inhibit-splash-screen t)
+   #+end_src
+** Gruvbox
+   Noicest theme of them all...
+   #+begin_src emacs-lisp
+     (add-to-list 'custom-theme-load-path
+		  (expand-file-name "lisp/theme/gruvbox" user-emacs-directory))
+     (load-theme 'gruvbox t)
+   #+end_src
+** Modeline
+*** Moody
+    I'm mad!
+    #+begin_src emacs-lisp
+      (require 'moody)
+      (moody-replace-mode-line-buffer-identification)
+      (moody-replace-vc-mode)
+    #+end_src
+    Hooks and hoops to make the modeline nice and lean
+    #+begin_src emacs-lisp
+      (if (daemonp)
+	  (progn
+	    (defun personal-fix-daemon-moody-height (frame) 
+	      (progn
+		(with-selected-frame frame
+		  (setq moody-mode-line-height (line-pixel-height))
+		  (remove-hook 'after-make-frame-functions
+			       'personal-fix-daemon-moody-height))
+		(fmakunbound 'personal-fix-daemon-moody-height)))
+	    (add-hook 'after-make-frame-functions
+		      'personal-fix-daemon-moody-height))
+	(setq moody-mode-line-height (line-pixel-height)))
+    #+end_src
+*** Minions
+    Begone, lighters!
+    #+begin_src emacs-lisp
+      (require 'minions)
+      (minions-mode +1)
+    #+end_src
+** Line numbers
+   Relative line numbers and highlighted current line
+   #+begin_src emacs-lisp
+     (setq-default display-line-numbers 'relative)
+     (global-hl-line-mode +1)
+   #+end_src
+* Evil
+  Worship the VI-VI-VI
+  #+begin_src emacs-lisp
+    (setq evil-want-integration t
+	  evil-want-keybinding nil)
+    (require 'evil)
+    (evil-mode +1)
+    (evil-select-search-module 'evil-search-module 'evil-search)
+    (require 'evil-collection)
+    (evil-collection-init)
+    (require 'evil-surround)
+    (global-evil-surround-mode +1)
+    (require 'evil-numbers)
+    (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
+    (define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt)
+    (require 'evil-commentary)
+    (evil-commentary-mode)
+    (require 'evil-matchit)
+    (global-evil-matchit-mode +1)
+    (require 'evil-exchange)
+    (evil-exchange-install)
+    (require 'evil-textobj-column)
+    (define-key evil-inner-text-objects-map "c" 'evil-textobj-column-word)
+    (define-key evil-inner-text-objects-map "C" 'evil-textobj-column-WORD)
+  #+end_src
+** Undo-tree
+   Replaces auto-save and backups, acts like a pseudo-vcs
+   #+begin_src emacs-lisp
+     (setq auto-save-default nil
+	   backup-inhibited t
+	   create-lockfiles nil)
+     (setq undo-tree-auto-save-history t
+	   undo-tree-history-directory-alist
+	   `(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
+     (require 'undo-tree)
+   #+end_src
+* Org-mode
+  Wait, this whole file runs on org-mode...how is the setup here?
+  #+begin_src emacs-lisp
+    (setq org-src-tab-acts-natively t)
+    (global-set-key (kbd "C-c l") 'org-store-link)
+    (global-set-key (kbd "C-c a") 'org-agenda)
+    (global-set-key (kbd "C-c c") 'org-capture)
+  #+end_src
+  Evil integration
+  #+begin_src emacs-lisp
+    (require 'org-evil)
+  #+end_src
+* Ivy
+  The plant
+** Ivy
+   Poison ivy
+   #+begin_src emacs-lisp
+     (require 'ivy)
+     (setq ivy-use-virtual-buffers t)
+     (setq ivy-count-format "(%d/%d) ")
+     (global-set-key (kbd "C-c C-r") 'ivy-resume)
+     (ivy-mode +1)
+   #+end_src
+** Counsel
+   Counselors
+   #+begin_src emacs-lisp
+     (ivy-mode +1)
+     (require 'counsel)
+     (counsel-mode +1)
+   #+end_src
+** Swiper
+   Steal the things
+   #+begin_src emacs-lisp
+     (require 'swiper)
+     (global-set-key "\C-s" 'swiper)
+   #+end_src
+* Magit
+  Worms worms worms!
+  #+begin_src emacs-lisp
+    (require 'magit)
+    (with-eval-after-load 'info
+      (info-initialize)
+      (add-to-list 'Info-directory-list
+		   (expand-file-name
+		    "lisp/magit/magit/Documentation"
+		    user-emacs-directory)))
+  #+end_src
+  Don't forget evil integration
+  #+begin_src emacs-lisp
+    (require 'evil-magit)
+  #+end_src
+* Flycheck
+  In the sky...
+  #+begin_src emacs-lisp
+    (require 'flycheck)
+  #+end_src
+* Projectile
+  Like a cannonball!
+  #+begin_src emacs-lisp
+    (require 'projectile)
+    (projectile-mode +1)
+    (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  #+end_src
+* Misc
+  Daemon
+  #+begin_src emacs-lisp
+    (when (daemonp) (server-start))
+  #+end_src
+  Compile my packages
+  #+begin_src emacs-lisp
+    (defun compile-packages ()
+      "This command recompiles every `.el' file in each directory in `load-path' (but not their subdirectories) that needs recompilation.  A file needs recompilation if a `.elc' file exists but is older than the `.el' file.  When a `.el' file has no corresponding `.elc' file, it compiles them.  The returned value is unpredictable."
+      (interactive)
+      (dolist (path load-path)
+	(when (and (file-directory-p path) (file-writable-p path))
+	  (dolist (file (directory-files path t "\.el$" t))
+	    (byte-recompile-file file nil 0)))))
+  #+end_src
+  Slow down, wheel!
+  #+begin_src emacs-lisp
+    (setq mouse-wheel-scroll-amount '(1))
+  #+end_src
