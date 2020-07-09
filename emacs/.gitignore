@@ -7,6 +7,6 @@
 .emacs.d/undo-tree/
 
 *.elc
-.emacs.d/personal.el
 
+.emacs.d/personal.el
 !.emacs.d/themes/*

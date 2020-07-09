@@ -37,5 +37,5 @@ if command -v nvim >/dev/null; then
 fi
 
 if command -v exa >/dev/null; then
-	alias ls="exa --git"
+	alias ls="exa"
 fi
