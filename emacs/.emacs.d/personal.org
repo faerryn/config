@@ -9,12 +9,12 @@
      (tooltip-mode -1)
      (setq inhibit-splash-screen t)
    #+end_src
-** Gruvbox
+** Theme
    Noicest theme of them all...
    #+begin_src emacs-lisp
      (add-to-list 'custom-theme-load-path
-		  (expand-file-name "lisp/theme/gruvbox" user-emacs-directory))
-     (load-theme 'gruvbox t)
+		  (expand-file-name "lisp/theme/zenburn" user-emacs-directory))
+     (load-theme 'zenburn t)
    #+end_src
 ** Modeline
 *** Moody

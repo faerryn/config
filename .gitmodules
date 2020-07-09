@@ -133,9 +133,6 @@
 [submodule "evil"]
 	path = emacs/.emacs.d/lisp/evil/evil
 	url = https://github.com/emacs-evil/evil
-[submodule "emacs-theme-gruvbox"]
-	path = emacs/.emacs.d/lisp/theme/gruvbox
-	url = https://github.com/Greduan/emacs-theme-gruvbox
 [submodule "minions"]
 	path = emacs/.emacs.d/lisp/theme/minions
 	url = https://github.com/tarsius/minions
@@ -157,13 +154,10 @@
 [submodule "undo-tree"]
 	path = emacs/.emacs.d/lisp/evil/undo-tree
 	url = http://www.dr-qubit.org/git/undo-tree.git
-[submodule "autothemer"]
-	path = emacs/.emacs.d/lisp/lib/autothemer
-	url = https://github.com/jasonm23/autothemer
-[submodule "dash"]
+[submodule "dash.el"]
 	path = emacs/.emacs.d/lisp/lib/dash
 	url = https://github.com/magnars/dash.el
-[submodule "annalist"]
+[submodule "annalist.el"]
 	path = emacs/.emacs.d/lisp/lib/annalist
 	url = https://github.com/noctuid/annalist.el
 [submodule "names"]
@@ -181,3 +175,6 @@
 [submodule "evil-goggles"]
 	path = emacs/.emacs.d/lisp/evil/evil-goggles
 	url = https://github.com/edkolev/evil-goggles
+[submodule "zenburn-emacs"]
+	path = emacs/.emacs.d/lisp/theme/zenburn
+	url = https://github.com/bbatsov/zenburn-emacs
