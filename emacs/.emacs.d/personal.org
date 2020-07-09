@@ -97,7 +97,7 @@
 	undo-tree-history-directory-alist
 	`(("." . ,(expand-file-name "undo-tree" user-emacs-directory)))))
    #+end_src
-* Org-mode
+* Org
   Wait, this whole file runs on org-mode...how is the setup here?
   #+begin_src emacs-lisp
     (use-package org
