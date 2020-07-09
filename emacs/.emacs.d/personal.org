@@ -113,11 +113,8 @@
       (setq org-src-tab-acts-natively t)
       (global-set-key (kbd "C-c l") 'org-store-link)
       (global-set-key (kbd "C-c a") 'org-agenda)
-      (global-set-key (kbd "C-c c") 'org-capture))
-  #+end_src
-  Evil integration
-  #+begin_src emacs-lisp
-    (use-package org-evil)
+      (global-set-key (kbd "C-c c") 'org-capture)
+      (use-package org-evil))
   #+end_src
 * Ivy
   The plant
@@ -143,39 +140,14 @@
   #+begin_src emacs-lisp
     (use-package magit
       :config
-      (global-set-key (kbd "C-x g") 'magit-status))
-  #+end_src
-  Don't forget evil integration
-  #+begin_src emacs-lisp
-    (use-package evil-magit)
-  #+end_src
-* Projectile
-  Like a cannonball!
-  #+begin_src emacs-lisp
-    (use-package projectile
-      :config
-      (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-      (projectile-mode +1))
+      (global-set-key (kbd "C-x g") 'magit-status)
+      (use-package evil-magit))
   #+end_src
 * Programming
 ** Langauges
    #+begin_src emacs-lisp
      (use-package rust-mode)
      (use-package zig-mode)
-   #+end_src
-** Lsp-mode
-   Lovely super-powers!
-   #+begin_src emacs-lisp
-     (use-package lsp-mode
-       :init
-       (setq lsp-keymap-prefix "C-c l")
-       (setq lsp-rust-server 'rust-analyzer)
-       (setq company-minimum-prefix-length 1)
-       (setq company-idle-delay 0.0)
-       :hook ((rust-mode . lsp))
-       :commands lsp)
-     (use-package lsp-ui :commands lsp-ui-mode)
-     (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
    #+end_src
 * Misc
   Daemon

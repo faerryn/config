@@ -139,9 +139,6 @@
 [submodule "swiper"]
 	path = emacs/.emacs.d/lisp/ivy
 	url = https://github.com/abo-abo/swiper
-[submodule "projectile"]
-	path = emacs/.emacs.d/lisp/projectile
-	url = https://github.com/bbatsov/projectile
 [submodule "magit"]
 	path = emacs/.emacs.d/lisp/magit
 	url = https://github.com/magit/magit
@@ -175,42 +172,12 @@
 [submodule "nvim-lsp"]
 	path = neovim/.config/nvim/pack/bundle/start/nvim-lsp
 	url = https://github.com/neovim/nvim-lsp
-[submodule "lsp-mode"]
-	path = emacs/.emacs.d/lisp/lsp/lsp-mode
-	url = https://github.com/emacs-lsp/lsp-mode/
 [submodule "use-package"]
 	path = emacs/.emacs.d/lisp/use-package
 	url = https://github.com/jwiegley/use-package
-[submodule "lsp-ui"]
-	path = emacs/.emacs.d/lisp/lsp/lsp-ui
-	url = https://github.com/emacs-lsp/lsp-ui
-[submodule "lsp-ivy"]
-	path = emacs/.emacs.d/lisp/lsp/lsp-ivy
-	url = https://github.com/emacs-lsp/lsp-ivy
-[submodule "f.el"]
-	path = emacs/.emacs.d/lisp/lib/f.el
-	url = https://github.com/rejeep/f.el
-[submodule "s.el"]
-	path = emacs/.emacs.d/lisp/lib/s.el
-	url = https://github.com/magnars/s.el
-[submodule "ht.el"]
-	path = emacs/.emacs.d/lisp/lib/ht.el
-	url = https://github.com/Wilfred/ht.el
-[submodule "hydra"]
-	path = emacs/.emacs.d/lisp/lib/hydra
-	url = https://github.com/abo-abo/hydra
-[submodule "markdown-mode"]
-	path = emacs/.emacs.d/lisp/lib/markdown-mode
-	url = https://github.com/jrblevin/markdown-mode
-[submodule "spinner.el"]
-	path = emacs/.emacs.d/lisp/lib/spinner.el
-	url = https://github.com/Malabarba/spinner.el
-[submodule "company-mode"]
-	path = emacs/.emacs.d/lisp/lib/company-mode
-	url = https://github.com/company-mode/company-mode
 [submodule "rust-mode"]
-	path = emacs/.emacs.d/lisp/lang/rust-mode
+	path = emacs/.emacs.d/lisp/langs/rust-mode
 	url = https://github.com/rust-lang/rust-mode
 [submodule "zig-mode"]
-	path = emacs/.emacs.d/lisp/lang/zig-mode
+	path = emacs/.emacs.d/lisp/langs/zig-mode
 	url = https://github.com/ziglang/zig-mode
