@@ -1,48 +1,39 @@
-* Use-package
-  #+begin_src emacs-lisp
-    (require 'use-package)
-  #+end_src
 * Aesthetics
   Pretty colors and nice views!
 ** Theme
    Noicest theme of them all...
    #+begin_src emacs-lisp
-     (add-to-list 'custom-theme-load-path
-		  (expand-file-name "themes" user-emacs-directory))
-     (load-theme 'zenburn t)
+     (use-package zenburn-theme
+       :ensure t
+       :config (load-theme 'zenburn t))
    #+end_src
 ** Modeline
 *** Moody
     I'm mad!
     #+begin_src emacs-lisp
       (use-package moody
+	:ensure t
 	:config
 	(setq x-underline-at-descent-line t)
-	(setq moody-mode-line-height (line-pixel-height))
 	(moody-replace-mode-line-buffer-identification)
-	(moody-replace-vc-mode))
-    #+end_src
-    Hooks and hoops to make the modeline nice and lean
-    #+begin_src emacs-lisp
-      (if (daemonp)
-	  (progn
-	    (defun personal-fix-daemon-moody-height (frame) 
-	      (progn
+	(moody-replace-vc-mode)
+	(if (daemonp)
+	    (progn
+	      (defun personal-fix-daemon-moody-height (frame) 
 		(with-selected-frame frame
-		  (setq moody-mode-line-height (line-pixel-height))
-		  (remove-hook 'after-make-frame-functions
-			       'personal-fix-daemon-moody-height))
-		(fmakunbound 'personal-fix-daemon-moody-height)))
-	    (add-hook 'after-make-frame-functions
-		      'personal-fix-daemon-moody-height))
-	(setq moody-mode-line-height (line-pixel-height)))
+		  (setq moody-mode-line-height (line-pixel-height)))
+		(remove-hook 'after-make-frame-functions
+			     #'personal-fix-daemon-moody-height))
+	      (add-hook 'after-make-frame-functions
+			#'personal-fix-daemon-moody-height))
+	  (setq moody-mode-line-height (line-pixel-height))))
     #+end_src
 *** Minions
     Begone, lighters!
     #+begin_src emacs-lisp
       (use-package minions
-	:config
-	(minions-mode +1))
+	:ensure t
+	:config (minions-mode +1))
     #+end_src
 ** Line numbers
    Relative line numbers and highlighted current line
@@ -55,66 +46,68 @@
    Worship the VI-VI-VI
    #+begin_src emacs-lisp
      (use-package evil
+       :ensure t
        :init
        (setq evil-want-integration t)
        (setq evil-want-keybinding nil)
        :config
-       (evil-select-search-module 'evil-search-module 'evil-search))
-     (evil-mode +1)
-     (use-package evil-collection
-       :config
-       (evil-collection-init))
-     (use-package evil-numbers
-       :config
-       (define-key 
-	 evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
-       (define-key
-	 evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt))
-     (use-package evil-goggles
-       :config
-       (evil-goggles-mode +1))
+       (evil-select-search-module 'evil-search-module 'evil-search)
+       (evil-mode +1)
+       (use-package evil-collection
+	 :ensure t
+	 :config (evil-collection-init))
+       (use-package evil-numbers
+	 :ensure t
+	 :config
+	 (define-key 
+	   evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
+	 (define-key
+	   evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt))
+       (use-package evil-goggles
+	 :ensure t
+	 :config (evil-goggles-mode +1))
+       (use-package evil-surround
+	 :ensure t
+	 :config (global-evil-surround-mode +1))
+       (use-package evil-commentary
+	 :ensure t
+	 :config (evil-commentary-mode +1))
+       (use-package evil-matchit
+	 :ensure t
+	 :config (global-evil-matchit-mode +1))
+       (use-package evil-exchange
+	 :ensure t
+	 :config (evil-exchange-install))
+       (use-package evil-textobj-column
+	 :ensure t
+	 :config
+	 (define-key 
+	   evil-inner-text-objects-map "c" 'evil-textobj-column-word)
+	 (define-key
+	   evil-inner-text-objects-map "C" 'evil-textobj-column-WORD)))
    #+end_src
-*** Undo-tree
-    Replaces auto-save and backups, acts like a pseudo-vcs
-    #+begin_src emacs-lisp
-      (use-package undo-tree
-	:init
-	:config
-	(setq undo-tree-auto-save-history t)
-	(setq
-	 undo-tree-history-directory-alist
-	 `(("." . ,(expand-file-name "undo-tree" user-emacs-directory)))))
-    #+end_src
-** Evil-plugins
-   Emulate Vim's plugins!
+** Undo-tree
+   Replaces auto-save and backups, acts like a pseudo-vcs
    #+begin_src emacs-lisp
-     (use-package evil-surround
+     (use-package undo-tree
+       :ensure t
        :config
-       (global-evil-surround-mode +1))
-     (use-package evil-commentary
-       :config
-       (evil-commentary-mode +1))
-     (use-package evil-matchit
-       :config
-       (global-evil-matchit-mode +1))
-     (use-package evil-exchange
-       :config
-       (evil-exchange-install))
-     (use-package evil-textobj-column
-       :config
-       (define-key evil-inner-text-objects-map "c" 'evil-textobj-column-word)
-       (define-key evil-inner-text-objects-map "C" 'evil-textobj-column-WORD))
+       (setq undo-tree-auto-save-history t)
+       (setq
+	undo-tree-history-directory-alist
+	`(("." . ,(expand-file-name "undo-tree" user-emacs-directory)))))
    #+end_src
 * Org-mode
   Wait, this whole file runs on org-mode...how is the setup here?
   #+begin_src emacs-lisp
     (use-package org
+      :ensure t
       :config
       (setq org-src-tab-acts-natively t)
       (global-set-key (kbd "C-c l") 'org-store-link)
       (global-set-key (kbd "C-c a") 'org-agenda)
       (global-set-key (kbd "C-c c") 'org-capture)
-      (use-package org-evil))
+      (use-package org-evil :ensure t))
   #+end_src
 * Ivy
   The plant
@@ -122,49 +115,42 @@
    Poison ivy
    #+begin_src emacs-lisp
      (use-package ivy
+       :ensure t
        :config
        (setq ivy-use-virtual-buffers t)
        (setq ivy-count-format "(%d/%d) ")
-       (global-set-key (kbd "C-c C-r") 'ivy-resume)
        (ivy-mode +1))
    #+end_src
 ** Counsel
    Counselors
    #+begin_src emacs-lisp
      (use-package counsel
-       :config
-       (counsel-mode +1))
+       :ensure t
+       :config (counsel-mode +1))
+   #+end_src
+** Swiper
+   No swiping
+   #+begin_src emacs-lisp
+     (use-package swiper
+       :ensure t)
    #+end_src
 * Magit
   Worms worms worms!
   #+begin_src emacs-lisp
     (use-package magit
+      :ensure t
       :config
       (global-set-key (kbd "C-x g") 'magit-status)
-      (use-package evil-magit))
+      (use-package evil-magit :ensure t))
   #+end_src
-* Programming
-** Langauges
-   #+begin_src emacs-lisp
-     (use-package rust-mode)
-     (use-package zig-mode)
-   #+end_src
+* Programming Languages
+  #+begin_src emacs-lisp
+    (use-package rust-mode :ensure t)
+    (use-package zig-mode :ensure t)
+  #+end_src
 * Misc
-  Daemon
+  Random code is safe
   #+begin_src emacs-lisp
-    (when (daemonp) (server-start))
-  #+end_src
-  Compile my packages
-  #+begin_src emacs-lisp
-    (defun compile-packages ()
-      "This command recompiles every `.el' file in each directory in `load-path' (but not their subdirectories) that needs recompilation.  A file needs recompilation if a `.elc' file exists but is older than the `.el' file.  When a `.el' file has no corresponding `.elc' file, it compiles them.  The returned value is unpredictable."
-      (interactive)
-      (dolist (path load-path)
-	(when (and (file-directory-p path) (file-writable-p path))
-	  (dolist (file (directory-files path t "\.el$" t))
-	    (byte-recompile-file file nil 0)))))
-  #+end_src
-  Slow down, wheel!
-  #+begin_src emacs-lisp
-    (setq mouse-wheel-scroll-amount '(1))
+    (when (daemonp) (server-start)) ;; Daemon
+    (setq mouse-wheel-scroll-amount '(1)) ;; Slow down, wheel!
   #+end_src

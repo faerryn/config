@@ -94,90 +94,9 @@
 [submodule "tmux-yank"]
 	path = tmux/.config/tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank
-[submodule "evil-exchange"]
-	path = emacs/.emacs.d/lisp/evil/evil-exchange
-	url = https://github.com/Dewdrops/evil-exchange
-[submodule "org-evil"]
-	path = emacs/.emacs.d/lisp/evil/org-evil
-	url = https://github.com/GuiltyDolphin/org-evil
-[submodule "evil-numbers"]
-	path = emacs/.emacs.d/lisp/evil/evil-numbers
-	url = https://github.com/cofi/evil-numbers
-[submodule "evil-collection"]
-	path = emacs/.emacs.d/lisp/evil/evil-collection
-	url = https://github.com/emacs-evil/evil-collection
-[submodule "evil-magit"]
-	path = emacs/.emacs.d/lisp/evil/evil-magit
-	url = https://github.com/emacs-evil/evil-magit
-[submodule "evil-surround"]
-	path = emacs/.emacs.d/lisp/evil/evil-surround
-	url = https://github.com/emacs-evil/evil-surround
-[submodule "goto-chg"]
-	path = emacs/.emacs.d/lisp/evil/goto-chg
-	url = https://github.com/emacs-evil/goto-chg.git
-[submodule "evil-commentary"]
-	path = emacs/.emacs.d/lisp/evil/evil-commentary
-	url = https://github.com/linktohack/evil-commentary
-[submodule "evil-textobj-column"]
-	path = emacs/.emacs.d/lisp/evil/evil-textobj-column
-	url = https://github.com/noctuid/evil-textobj-column
-[submodule "evil-matchit"]
-	path = emacs/.emacs.d/lisp/evil/evil-matchit
-	url = https://github.com/redguardtoo/evil-matchit
 [submodule "vim-polyglot"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
-[submodule "evil"]
-	path = emacs/.emacs.d/lisp/evil/evil
-	url = https://github.com/emacs-evil/evil
-[submodule "minions"]
-	path = emacs/.emacs.d/lisp/theme/minions
-	url = https://github.com/tarsius/minions
-[submodule "moody"]
-	path = emacs/.emacs.d/lisp/theme/moody
-	url = https://github.com/tarsius/moody
-[submodule "swiper"]
-	path = emacs/.emacs.d/lisp/ivy
-	url = https://github.com/abo-abo/swiper
-[submodule "magit"]
-	path = emacs/.emacs.d/lisp/magit
-	url = https://github.com/magit/magit
-[submodule "undo-tree"]
-	path = emacs/.emacs.d/lisp/evil/undo-tree
-	url = http://www.dr-qubit.org/git/undo-tree.git
-[submodule "dash.el"]
-	path = emacs/.emacs.d/lisp/lib/dash.el
-	url = https://github.com/magnars/dash.el
-[submodule "annalist.el"]
-	path = emacs/.emacs.d/lisp/lib/annalist.el
-	url = https://github.com/noctuid/annalist.el
-[submodule "names"]
-	path = emacs/.emacs.d/lisp/lib/names
-	url = https://github.com/Malabarba/names
-[submodule "monitor"]
-	path = emacs/.emacs.d/lisp/lib/monitor
-	url = https://github.com/GuiltyDolphin/monitor
-[submodule "with-editor"]
-	path = emacs/.emacs.d/lisp/lib/with-editor
-	url = https://github.com/magit/with-editor
-[submodule "transient"]
-	path = emacs/.emacs.d/lisp/lib/transient
-	url = https://github.com/magit/transient
-[submodule "evil-goggles"]
-	path = emacs/.emacs.d/lisp/evil/evil-goggles
-	url = https://github.com/edkolev/evil-goggles
-[submodule "zenburn-emacs"]
-	path = emacs/.emacs.d/lisp/theme/zenburn-emacs
-	url = https://github.com/bbatsov/zenburn-emacs
 [submodule "nvim-lsp"]
 	path = neovim/.config/nvim/pack/bundle/start/nvim-lsp
 	url = https://github.com/neovim/nvim-lsp
-[submodule "use-package"]
-	path = emacs/.emacs.d/lisp/use-package
-	url = https://github.com/jwiegley/use-package
-[submodule "rust-mode"]
-	path = emacs/.emacs.d/lisp/langs/rust-mode
-	url = https://github.com/rust-lang/rust-mode
-[submodule "zig-mode"]
-	path = emacs/.emacs.d/lisp/langs/zig-mode
-	url = https://github.com/ziglang/zig-mode
