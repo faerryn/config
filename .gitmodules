@@ -178,3 +178,6 @@
 [submodule "transient"]
 	path = emacs/.emacs.d/lisp/lib/transient
 	url = https://github.com/magit/transient
+[submodule "evil-goggles"]
+	path = emacs/.emacs.d/lisp/evil/evil-goggles
+	url = https://github.com/edkolev/evil-goggles

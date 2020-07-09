@@ -11,7 +11,8 @@
 	    (expand-file-name "lisp" user-emacs-directory)))
       (normal-top-level-add-subdirs-to-load-path))
     ;; Load (and recompile) `personal.org'
-    (let ((personal.org (expand-file-name "personal.org" user-emacs-directory)))
+    (let ((personal.org
+	   (expand-file-name "personal.org" user-emacs-directory)))
       (if (file-newer-than-file-p
 	   personal.org
 	   (expand-file-name "personal.elc" user-emacs-directory))

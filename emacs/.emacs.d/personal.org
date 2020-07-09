@@ -61,11 +61,16 @@
     (evil-select-search-module 'evil-search-module 'evil-search)
     (require 'evil-collection)
     (evil-collection-init)
-    (require 'evil-surround)
-    (global-evil-surround-mode +1)
     (require 'evil-numbers)
     (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
     (define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt)
+    (require 'evil-goggles)
+    (evil-goggles-mode +1)
+  #+end_src
+  Emulate Vim's plugins!
+  #+begin_src emacs-lisp
+    (require 'evil-surround)
+    (global-evil-surround-mode +1)
     (require 'evil-commentary)
     (evil-commentary-mode)
     (require 'evil-matchit)
