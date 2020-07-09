@@ -125,7 +125,7 @@
 	path = emacs/.emacs.d/lisp/evil/evil-surround
 	url = https://github.com/emacs-evil/evil-surround
 [submodule "goto-chg"]
-	path = emacs/.emacs.d/lisp/goto-chg
+	path = emacs/.emacs.d/lisp/evil/goto-chg
 	url = https://github.com/emacs-evil/goto-chg.git
 [submodule "evil-commentary"]
 	path = emacs/.emacs.d/lisp/evil/evil-commentary
