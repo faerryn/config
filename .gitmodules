@@ -98,7 +98,7 @@
 	path = emacs/.emacs.d/lisp/evil/evil-exchange
 	url = https://github.com/Dewdrops/evil-exchange
 [submodule "org-evil"]
-	path = emacs/.emacs.d/lisp/org-evil
+	path = emacs/.emacs.d/lisp/evil/org-evil
 	url = https://github.com/GuiltyDolphin/org-evil
 [submodule "evil-numbers"]
 	path = emacs/.emacs.d/lisp/evil/evil-numbers
