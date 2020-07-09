@@ -5,7 +5,7 @@ augroup AutoCommands
 	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
 	
 	" may be obsoleted
-	autocmd VimEnter * call neomake#configure#automake('nirw', 500)
+	autocmd FileType * packadd neomake | call neomake#configure#automake('nirw', 500)
 
 	" Setting up <esc> and <c-w>q
 	autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q

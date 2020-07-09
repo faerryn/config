@@ -35,7 +35,7 @@
 	path = neovim/.config/nvim/pack/bundle/start/vim-bbye
 	url = https://github.com/moll/vim-bbye
 [submodule "neomake"]
-	path = neovim/.config/nvim/pack/bundle/start/neomake
+	path = neovim/.config/nvim/pack/bundle/opt/neomake
 	url = https://github.com/neomake/neomake
 [submodule "vim-mkdir"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-mkdir
