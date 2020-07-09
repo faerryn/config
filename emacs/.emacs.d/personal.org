@@ -147,6 +147,7 @@
    No swiping
    #+begin_src emacs-lisp
      (use-package swiper
+       :bind ("C-s" . 'swiper-isearch)
        :ensure t
        :after (ivy))
    #+end_src
