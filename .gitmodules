@@ -175,6 +175,21 @@
 [submodule "zenburn-emacs"]
 	path = emacs/.emacs.d/lisp/theme/zenburn-emacs
 	url = https://github.com/bbatsov/zenburn-emacs
-[submodule "neovim/.config/nvim/pack/bundle/opt/nvim-lsp"]
+[submodule "nvim-lsp"]
 	path = neovim/.config/nvim/pack/bundle/start/nvim-lsp
 	url = https://github.com/neovim/nvim-lsp
+[submodule "lsp-mode"]
+	path = emacs/.emacs.d/lisp/lsp/lsp-mode
+	url = https://github.com/emacs-lsp/lsp-mode/
+[submodule "use-package"]
+	path = emacs/.emacs.d/lisp/use-package
+	url = https://github.com/jwiegley/use-package
+[submodule "lsp-ui"]
+	path = emacs/.emacs.d/lisp/lsp/lsp-ui
+	url = https://github.com/emacs-lsp/lsp-ui
+[submodule "lsp-ivy"]
+	path = emacs/.emacs.d/lisp/lsp/lsp-ivy
+	url = https://github.com/emacs-lsp/lsp-ivy
+[submodule "dap-mode"]
+	path = emacs/.emacs.d/lisp/lsp/dap-mode
+	url = https://github.com/emacs-lsp/dap-mode

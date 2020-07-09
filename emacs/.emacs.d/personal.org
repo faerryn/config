@@ -1,14 +1,9 @@
+* Use-package
+  #+begin_src emacs-lisp
+    (require 'use-package)
+  #+end_src
 * Aesthetics
   Pretty colors and nice views!
-** No frills
-   Remove cluky GUI elements for a smoother Emacs
-   #+begin_src emacs-lisp
-     (menu-bar-mode -1)
-     (scroll-bar-mode -1)
-     (tool-bar-mode -1)
-     (tooltip-mode -1)
-     (setq inhibit-splash-screen t)
-   #+end_src
 ** Theme
    Noicest theme of them all...
    #+begin_src emacs-lisp
@@ -20,9 +15,12 @@
 *** Moody
     I'm mad!
     #+begin_src emacs-lisp
-      (require 'moody)
-      (moody-replace-mode-line-buffer-identification)
-      (moody-replace-vc-mode)
+      (use-package moody
+	:config
+	(setq x-underline-at-descent-line t)
+	(setq moody-mode-line-height (line-pixel-height))
+	(moody-replace-mode-line-buffer-identification)
+	(moody-replace-vc-mode))
     #+end_src
     Hooks and hoops to make the modeline nice and lean
     #+begin_src emacs-lisp
@@ -42,8 +40,9 @@
 *** Minions
     Begone, lighters!
     #+begin_src emacs-lisp
-      (require 'minions)
-      (minions-mode +1)
+      (use-package minions
+	:config
+	(minions-mode +1))
     #+end_src
 ** Line numbers
    Relative line numbers and highlighted current line
@@ -55,110 +54,127 @@
 ** Emacs-evil
   Worship the VI-VI-VI
   #+begin_src emacs-lisp
-    (setq evil-want-integration t
-	  evil-want-keybinding nil)
-    (require 'evil)
+    (use-package evil
+      :init
+      (setq evil-want-integration t)
+      (setq evil-want-keybinding nil)
+      :config
+      (evil-select-search-module 'evil-search-module 'evil-search))
     (evil-mode +1)
-    (evil-select-search-module 'evil-search-module 'evil-search)
-    (require 'evil-collection)
-    (evil-collection-init)
-    (require 'evil-numbers)
-    (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
-    (define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt)
-    (require 'evil-goggles)
-    (evil-goggles-mode +1)
+    (use-package evil-collection
+      :config
+      (evil-collection-init))
+    (use-package evil-numbers
+      :config
+      (define-key 
+	evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
+      (define-key
+	evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt))
+    (use-package evil-goggles
+      :config
+      (evil-goggles-mode +1))
   #+end_src
 *** Undo-tree
     Replaces auto-save and backups, acts like a pseudo-vcs
     #+begin_src emacs-lisp
-      (setq auto-save-default nil
-	    backup-inhibited t
-	    create-lockfiles nil)
-      (setq undo-tree-auto-save-history t
-	    undo-tree-history-directory-alist
-	    `(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
-      (require 'undo-tree)
+      (use-package undo-tree
+	:init
+	:config
+	(setq undo-tree-auto-save-history t)
+	(setq
+	 undo-tree-history-directory-alist
+	 `(("." . ,(expand-file-name "undo-tree" user-emacs-directory)))))
     #+end_src
 ** Evil-plugins
   Emulate Vim's plugins!
   #+begin_src emacs-lisp
-    (require 'evil-surround)
-    (global-evil-surround-mode +1)
-    (require 'evil-commentary)
-    (evil-commentary-mode)
-    (require 'evil-matchit)
-    (global-evil-matchit-mode +1)
-    (require 'evil-exchange)
-    (evil-exchange-install)
-    (require 'evil-textobj-column)
-    (define-key evil-inner-text-objects-map "c" 'evil-textobj-column-word)
-    (define-key evil-inner-text-objects-map "C" 'evil-textobj-column-WORD)
+    (use-package evil-surround
+      :config
+      (global-evil-surround-mode +1))
+    (use-package evil-commentary
+      :config
+      (evil-commentary-mode +1))
+    (use-package evil-matchit
+      :config
+      (global-evil-matchit-mode +1))
+    (use-package evil-exchange
+      :config
+      (evil-exchange-install))
+    (use-package evil-textobj-column
+      :config
+      (define-key evil-inner-text-objects-map "c" 'evil-textobj-column-word)
+      (define-key evil-inner-text-objects-map "C" 'evil-textobj-column-WORD))
   #+end_src
 * Org-mode
   Wait, this whole file runs on org-mode...how is the setup here?
   #+begin_src emacs-lisp
-    (setq org-src-tab-acts-natively t)
-    (global-set-key (kbd "C-c l") 'org-store-link)
-    (global-set-key (kbd "C-c a") 'org-agenda)
-    (global-set-key (kbd "C-c c") 'org-capture)
+    (use-package org
+      :config
+      (setq org-src-tab-acts-natively t)
+      (global-set-key (kbd "C-c l") 'org-store-link)
+      (global-set-key (kbd "C-c a") 'org-agenda)
+      (global-set-key (kbd "C-c c") 'org-capture))
   #+end_src
   Evil integration
   #+begin_src emacs-lisp
-    (require 'org-evil)
+    (use-package org-evil)
   #+end_src
 * Ivy
   The plant
 ** Ivy
    Poison ivy
    #+begin_src emacs-lisp
-     (require 'ivy)
-     (setq ivy-use-virtual-buffers t)
-     (setq ivy-count-format "(%d/%d) ")
-     (global-set-key (kbd "C-c C-r") 'ivy-resume)
-     (ivy-mode +1)
+     (use-package ivy
+       :config
+       (setq ivy-use-virtual-buffers t)
+       (setq ivy-count-format "(%d/%d) ")
+       (global-set-key (kbd "C-c C-r") 'ivy-resume)
+       (ivy-mode +1))
    #+end_src
 ** Counsel
    Counselors
    #+begin_src emacs-lisp
-     (ivy-mode +1)
-     (require 'counsel)
-     (counsel-mode +1)
-   #+end_src
-** Swiper
-   Steal the things
-   #+begin_src emacs-lisp
-     (require 'swiper)
-     (global-set-key "\C-s" 'swiper)
+     (use-package counsel
+       :config
+       (counsel-mode +1))
    #+end_src
 * Magit
   Worms worms worms!
   #+begin_src emacs-lisp
-    (require 'magit)
-    (with-eval-after-load 'info
-      (info-initialize)
-      (add-to-list 'Info-directory-list
-		   (expand-file-name
-		    "lisp/magit/magit/Documentation"
-		    user-emacs-directory)))
+    (use-package magit
+      :config
+      (global-set-key (kbd "C-x g") 'magit-status))
   #+end_src
   Don't forget evil integration
   #+begin_src emacs-lisp
-    (require 'evil-magit)
+    (use-package evil-magit)
   #+end_src
 * Flycheck
   In the sky...
   #+begin_src emacs-lisp
-    (require 'flycheck)
-    (global-flycheck-mode +1)
+    (use-package flycheck
+      :config
+      (global-flycheck-mode +1))
   #+end_src
 * Projectile
   Like a cannonball!
   #+begin_src emacs-lisp
-    (require 'projectile)
-    (projectile-mode +1)
-    (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+    (use-package projectile
+      :config
+      (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+      (projectile-mode +1))
   #+end_src
+* Emacs-lsp
+  Lovely super-powers!
+** Lsp-mode
+   not lisp-mode
+   #+begin_src emacs-lisp
+     (use-package lsp-mode
+       :init
+       (setq lsp-keymap-prefix "C-c l")
+       :hook ((XXX-mode . lsp))
+       :commands lsp)
+   #+end_src
 * Misc
   Daemon
   #+begin_src emacs-lisp
