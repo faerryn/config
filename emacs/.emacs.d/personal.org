@@ -13,7 +13,7 @@
    Noicest theme of them all...
    #+begin_src emacs-lisp
      (add-to-list 'custom-theme-load-path
-		  (expand-file-name "lisp/theme/zenburn" user-emacs-directory))
+		  (expand-file-name "themes" user-emacs-directory))
      (load-theme 'zenburn t)
    #+end_src
 ** Modeline
@@ -52,6 +52,7 @@
      (global-hl-line-mode +1)
    #+end_src
 * Evil
+** Emacs-evil
   Worship the VI-VI-VI
   #+begin_src emacs-lisp
     (setq evil-want-integration t
@@ -67,6 +68,18 @@
     (require 'evil-goggles)
     (evil-goggles-mode +1)
   #+end_src
+*** Undo-tree
+    Replaces auto-save and backups, acts like a pseudo-vcs
+    #+begin_src emacs-lisp
+      (setq auto-save-default nil
+	    backup-inhibited t
+	    create-lockfiles nil)
+      (setq undo-tree-auto-save-history t
+	    undo-tree-history-directory-alist
+	    `(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
+      (require 'undo-tree)
+    #+end_src
+** Evil-plugins
   Emulate Vim's plugins!
   #+begin_src emacs-lisp
     (require 'evil-surround)
@@ -81,17 +94,6 @@
     (define-key evil-inner-text-objects-map "c" 'evil-textobj-column-word)
     (define-key evil-inner-text-objects-map "C" 'evil-textobj-column-WORD)
   #+end_src
-** Undo-tree
-   Replaces auto-save and backups, acts like a pseudo-vcs
-   #+begin_src emacs-lisp
-     (setq auto-save-default nil
-	   backup-inhibited t
-	   create-lockfiles nil)
-     (setq undo-tree-auto-save-history t
-	   undo-tree-history-directory-alist
-	   `(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
-     (require 'undo-tree)
-   #+end_src
 * Org-mode
   Wait, this whole file runs on org-mode...how is the setup here?
   #+begin_src emacs-lisp
@@ -147,6 +149,7 @@
   In the sky...
   #+begin_src emacs-lisp
     (require 'flycheck)
+    (global-flycheck-mode +1)
   #+end_src
 * Projectile
   Like a cannonball!

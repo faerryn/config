@@ -176,5 +176,5 @@
 	path = emacs/.emacs.d/lisp/evil/evil-goggles
 	url = https://github.com/edkolev/evil-goggles
 [submodule "zenburn-emacs"]
-	path = emacs/.emacs.d/lisp/theme/zenburn
+	path = emacs/.emacs.d/lisp/theme/zenburn-emacs
 	url = https://github.com/bbatsov/zenburn-emacs
