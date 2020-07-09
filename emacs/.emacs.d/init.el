@@ -25,7 +25,7 @@
   (package-install 'use-package))
 (require 'use-package)
 
-;; Tangle and load `personal.org'
+;; Tangle and load `init.org'
 (let ((init-org (expand-file-name "init.org" user-emacs-directory))
       (tangled-el (expand-file-name "tangled.el" user-emacs-directory)))
   (when (file-newer-than-file-p init-org tangled-el)
