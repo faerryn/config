@@ -1,6 +1,3 @@
-[submodule "vim-symlink"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-symlink
-	url = https://github.com/aymericbeaumet/vim-symlink
 [submodule "matchit"]
 	path = neovim/.config/nvim/pack/bundle/start/matchit
 	url = https://github.com/chrisbra/matchit
@@ -31,9 +28,6 @@
 [submodule "vim-signify"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-signify
 	url = https://github.com/mhinz/vim-signify
-[submodule "vim-bbye"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-bbye
-	url = https://github.com/moll/vim-bbye
 [submodule "neomake"]
 	path = neovim/.config/nvim/pack/bundle/opt/neomake
 	url = https://github.com/neomake/neomake
