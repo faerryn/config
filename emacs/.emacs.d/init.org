@@ -119,9 +119,16 @@
       (global-set-key (kbd "C-c l") 'org-store-link)
       (global-set-key (kbd "C-c a") 'org-agenda)
       (global-set-key (kbd "C-c c") 'org-capture))
-    (use-package org-evil
+    (use-package evil-org
       :ensure t
-      :after (org evil))
+      :after (evil org)
+      :config
+      (add-hook 'org-mode-hook 'evil-org-mode)
+      (add-hook 'evil-org-mode-hook
+		(lambda ()
+		  (evil-org-set-key-theme)))
+      (require 'evil-org-agenda)
+      (evil-org-agenda-set-keys))
   #+end_src
 * Ivy
   The plant
@@ -162,7 +169,7 @@
       :ensure t
       :after (magit evil))
   #+end_src
-* Programming Languages
+* Programming
   #+begin_src emacs-lisp
     (use-package rust-mode :ensure t)
     (use-package zig-mode :ensure t)
