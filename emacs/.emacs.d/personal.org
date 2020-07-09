@@ -52,28 +52,28 @@
    #+end_src
 * Evil
 ** Emacs-evil
-  Worship the VI-VI-VI
-  #+begin_src emacs-lisp
-    (use-package evil
-      :init
-      (setq evil-want-integration t)
-      (setq evil-want-keybinding nil)
-      :config
-      (evil-select-search-module 'evil-search-module 'evil-search))
-    (evil-mode +1)
-    (use-package evil-collection
-      :config
-      (evil-collection-init))
-    (use-package evil-numbers
-      :config
-      (define-key 
-	evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
-      (define-key
-	evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt))
-    (use-package evil-goggles
-      :config
-      (evil-goggles-mode +1))
-  #+end_src
+   Worship the VI-VI-VI
+   #+begin_src emacs-lisp
+     (use-package evil
+       :init
+       (setq evil-want-integration t)
+       (setq evil-want-keybinding nil)
+       :config
+       (evil-select-search-module 'evil-search-module 'evil-search))
+     (evil-mode +1)
+     (use-package evil-collection
+       :config
+       (evil-collection-init))
+     (use-package evil-numbers
+       :config
+       (define-key 
+	 evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
+       (define-key
+	 evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt))
+     (use-package evil-goggles
+       :config
+       (evil-goggles-mode +1))
+   #+end_src
 *** Undo-tree
     Replaces auto-save and backups, acts like a pseudo-vcs
     #+begin_src emacs-lisp
@@ -86,25 +86,25 @@
 	 `(("." . ,(expand-file-name "undo-tree" user-emacs-directory)))))
     #+end_src
 ** Evil-plugins
-  Emulate Vim's plugins!
-  #+begin_src emacs-lisp
-    (use-package evil-surround
-      :config
-      (global-evil-surround-mode +1))
-    (use-package evil-commentary
-      :config
-      (evil-commentary-mode +1))
-    (use-package evil-matchit
-      :config
-      (global-evil-matchit-mode +1))
-    (use-package evil-exchange
-      :config
-      (evil-exchange-install))
-    (use-package evil-textobj-column
-      :config
-      (define-key evil-inner-text-objects-map "c" 'evil-textobj-column-word)
-      (define-key evil-inner-text-objects-map "C" 'evil-textobj-column-WORD))
-  #+end_src
+   Emulate Vim's plugins!
+   #+begin_src emacs-lisp
+     (use-package evil-surround
+       :config
+       (global-evil-surround-mode +1))
+     (use-package evil-commentary
+       :config
+       (evil-commentary-mode +1))
+     (use-package evil-matchit
+       :config
+       (global-evil-matchit-mode +1))
+     (use-package evil-exchange
+       :config
+       (evil-exchange-install))
+     (use-package evil-textobj-column
+       :config
+       (define-key evil-inner-text-objects-map "c" 'evil-textobj-column-word)
+       (define-key evil-inner-text-objects-map "C" 'evil-textobj-column-WORD))
+   #+end_src
 * Org-mode
   Wait, this whole file runs on org-mode...how is the setup here?
   #+begin_src emacs-lisp
@@ -149,13 +149,6 @@
   #+begin_src emacs-lisp
     (use-package evil-magit)
   #+end_src
-* Flycheck
-  In the sky...
-  #+begin_src emacs-lisp
-    (use-package flycheck
-      :config
-      (global-flycheck-mode +1))
-  #+end_src
 * Projectile
   Like a cannonball!
   #+begin_src emacs-lisp
@@ -164,16 +157,24 @@
       (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
       (projectile-mode +1))
   #+end_src
-* Emacs-lsp
-  Lovely super-powers!
+* Programming
+** Langauges
+   #+begin_src emacs-lisp
+     (use-package rust-mode)
+   #+end_src
 ** Lsp-mode
-   not lisp-mode
+   Lovely super-powers!
    #+begin_src emacs-lisp
      (use-package lsp-mode
        :init
        (setq lsp-keymap-prefix "C-c l")
-       :hook ((XXX-mode . lsp))
+       (setq lsp-rust-server 'rust-analyzer)
+       (setq company-minimum-prefix-length 1)
+       (setq company-idle-delay 0.0)
+       :hook ((rust-mode . lsp))
        :commands lsp)
+     (use-package lsp-ui :commands lsp-ui-mode)
+     (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
    #+end_src
 * Misc
   Daemon

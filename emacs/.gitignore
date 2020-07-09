@@ -1,6 +1,8 @@
+.emacs.d/.lsp-session-v1
 .emacs.d/auto-save-list/
 .emacs.d/eshell/
 .emacs.d/games/
+.emacs.d/personal.el
 .emacs.d/projectile-bookmarks.eld
 .emacs.d/recentf
 .emacs.d/transient/
@@ -8,5 +10,4 @@
 
 *.elc
 
-.emacs.d/personal.el
 !.emacs.d/themes/*

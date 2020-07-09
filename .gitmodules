@@ -142,9 +142,6 @@
 [submodule "projectile"]
 	path = emacs/.emacs.d/lisp/projectile
 	url = https://github.com/bbatsov/projectile
-[submodule "flycheck"]
-	path = emacs/.emacs.d/lisp/flycheck
-	url = https://github.com/flycheck/flycheck
 [submodule "magit"]
 	path = emacs/.emacs.d/lisp/magit
 	url = https://github.com/magit/magit
@@ -152,10 +149,10 @@
 	path = emacs/.emacs.d/lisp/evil/undo-tree
 	url = http://www.dr-qubit.org/git/undo-tree.git
 [submodule "dash.el"]
-	path = emacs/.emacs.d/lisp/lib/dash
+	path = emacs/.emacs.d/lisp/lib/dash.el
 	url = https://github.com/magnars/dash.el
 [submodule "annalist.el"]
-	path = emacs/.emacs.d/lisp/lib/annalist
+	path = emacs/.emacs.d/lisp/lib/annalist.el
 	url = https://github.com/noctuid/annalist.el
 [submodule "names"]
 	path = emacs/.emacs.d/lisp/lib/names
@@ -190,6 +187,27 @@
 [submodule "lsp-ivy"]
 	path = emacs/.emacs.d/lisp/lsp/lsp-ivy
 	url = https://github.com/emacs-lsp/lsp-ivy
-[submodule "dap-mode"]
-	path = emacs/.emacs.d/lisp/lsp/dap-mode
-	url = https://github.com/emacs-lsp/dap-mode
+[submodule "f.el"]
+	path = emacs/.emacs.d/lisp/lib/f.el
+	url = https://github.com/rejeep/f.el
+[submodule "s.el"]
+	path = emacs/.emacs.d/lisp/lib/s.el
+	url = https://github.com/magnars/s.el
+[submodule "ht.el"]
+	path = emacs/.emacs.d/lisp/lib/ht.el
+	url = https://github.com/Wilfred/ht.el
+[submodule "hydra"]
+	path = emacs/.emacs.d/lisp/lib/hydra
+	url = https://github.com/abo-abo/hydra
+[submodule "markdown-mode"]
+	path = emacs/.emacs.d/lisp/lib/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode
+[submodule "spinner.el"]
+	path = emacs/.emacs.d/lisp/lib/spinner.el
+	url = https://github.com/Malabarba/spinner.el
+[submodule "company-mode"]
+	path = emacs/.emacs.d/lisp/lib/company-mode
+	url = https://github.com/company-mode/company-mode
+[submodule "rust-mode"]
+	path = emacs/.emacs.d/lisp/lang/rust-mode
+	url = https://github.com/rust-lang/rust-mode
