@@ -4,9 +4,6 @@
 .emacs.d/games/
 .emacs.d/transient/
 .emacs.d/undo-tree/
-
-.emacs.d/custom.el
-.emacs.d/init.elc
-.emacs.d/personal.el
-.emacs.d/personal.elc
 .emacs.d/recentf
+
+.emacs.d/tangled.el

@@ -17,10 +17,8 @@
 
 ;; Get packages.el, melpa, and use-packages up and running
 (require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives
-	     '("org" . "https://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (package-initialize)
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -28,16 +26,12 @@
 (require 'use-package)
 
 ;; Tangle and load `personal.org'
-(let ((personal-org
-       (expand-file-name "personal.org" user-emacs-directory))
-      (personal-el
-       (expand-file-name "personal.el" user-emacs-directory)))
-  (when (file-newer-than-file-p
-	 personal-org
-	 personal-el)
+(let ((init-org (expand-file-name "init.org" user-emacs-directory))
+      (tangled-el (expand-file-name "tangled.el" user-emacs-directory)))
+  (when (file-newer-than-file-p init-org tangled-el)
     (require 'ob-tangle)
-    (org-babel-tangle-file personal-org personal-el)))
-(load (expand-file-name "personal" user-emacs-directory))
+    (org-babel-tangle-file init-org tangled-el))
+  (load tangled-el))
 
 ;; Custom file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
