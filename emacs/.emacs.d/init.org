@@ -177,6 +177,6 @@
 * Misc
   Random code is safe
   #+begin_src emacs-lisp
-    (when (daemonp) (server-start)) ;; Daemon
     (setq mouse-wheel-scroll-amount '(1)) ;; Slow down, wheel!
+    (when (daemonp) (server-start)) ;; Daemon
   #+end_src

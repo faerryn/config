@@ -6,4 +6,5 @@
 .emacs.d/undo-tree/
 .emacs.d/recentf
 
+.emacs.d/custom.el
 .emacs.d/tangled.el
