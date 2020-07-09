@@ -7,6 +7,8 @@ augroup AutoCommands
 	" may be obsoleted
 	autocmd FileType * packadd neomake | call neomake#configure#automake('nirw', 500)
 
+	autocmd TextYankPost * lua require'vim.highlight'.on_yank({timeout=300})
+
 	" Setting up <esc> and <c-w>q
 	autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
 	autocmd FileType undotree nnoremap <silent> <buffer> <esc> <cmd>UndotreeHide<cr>
@@ -58,9 +60,6 @@ let g:gruvbox_italicize_strings = 1
 colorscheme gruvbox
 
 let g:lightline = { "colorscheme": "gruvbox", "separator": { "left": "", "right": "" }, "subseparator": { "left": "", "right": "" }, "tabline": { "right": [] } }
-
-" may be obsoleted
-let g:highlightedyank_highlight_duration = 300
 
 " MAPPINGS
 nnoremap <silent> <leader>l <cmd>lopen<cr>
