@@ -42,7 +42,7 @@
      (global-hl-line-mode +1)
    #+end_src
 * Evil
-** Emacs-evil
+** Emulate vim
    Worship the VI-VI-VI
    #+begin_src emacs-lisp
      (use-package evil
@@ -52,39 +52,51 @@
        (setq evil-want-keybinding nil)
        :config
        (evil-select-search-module 'evil-search-module 'evil-search)
-       (evil-mode +1)
-       (use-package evil-collection
-	 :ensure t
-	 :config (evil-collection-init))
-       (use-package evil-numbers
-	 :ensure t
-	 :config
-	 (define-key 
-	   evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
-	 (define-key
-	   evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt))
-       (use-package evil-goggles
-	 :ensure t
-	 :config (evil-goggles-mode +1))
-       (use-package evil-surround
-	 :ensure t
-	 :config (global-evil-surround-mode +1))
-       (use-package evil-commentary
-	 :ensure t
-	 :config (evil-commentary-mode +1))
-       (use-package evil-matchit
-	 :ensure t
-	 :config (global-evil-matchit-mode +1))
-       (use-package evil-exchange
-	 :ensure t
-	 :config (evil-exchange-install))
-       (use-package evil-textobj-column
-	 :ensure t
-	 :config
-	 (define-key 
-	   evil-inner-text-objects-map "c" 'evil-textobj-column-word)
-	 (define-key
-	   evil-inner-text-objects-map "C" 'evil-textobj-column-WORD)))
+       (evil-mode +1))
+     (use-package evil-collection
+       :ensure t
+       :after (evil)
+       :config (evil-collection-init))
+     (use-package evil-numbers
+       :ensure t
+       :after (evil)
+       :config
+       (define-key 
+	 evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
+       (define-key
+	 evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt))
+     (use-package evil-goggles
+       :ensure t
+       :after (evil)
+       :config (evil-goggles-mode +1))
+   #+end_src
+** Emulate vim plugins
+   But in emacs
+   #+begin_src emacs-lisp
+     (use-package evil-surround
+       :ensure t
+       :after (evil)
+       :config (global-evil-surround-mode +1))
+     (use-package evil-commentary
+       :ensure t
+       :after (evil)
+       :config (evil-commentary-mode +1))
+     (use-package evil-matchit
+       :ensure t
+       :after (evil)
+       :config (global-evil-matchit-mode +1))
+     (use-package evil-exchange
+       :ensure t
+       :after (evil)
+       :config (evil-exchange-install))
+     (use-package evil-textobj-column
+       :ensure t
+       :after (evil)
+       :config
+       (define-key 
+	 evil-inner-text-objects-map "c" 'evil-textobj-column-word)
+       (define-key
+	 evil-inner-text-objects-map "C" 'evil-textobj-column-WORD))
    #+end_src
 ** Undo-tree
    Replaces auto-save and backups, acts like a pseudo-vcs
@@ -106,8 +118,10 @@
       (setq org-src-tab-acts-natively t)
       (global-set-key (kbd "C-c l") 'org-store-link)
       (global-set-key (kbd "C-c a") 'org-agenda)
-      (global-set-key (kbd "C-c c") 'org-capture)
-      (use-package org-evil :ensure t))
+      (global-set-key (kbd "C-c c") 'org-capture))
+    (use-package org-evil
+      :ensure t
+      :after (org evil))
   #+end_src
 * Ivy
   The plant
@@ -126,13 +140,15 @@
    #+begin_src emacs-lisp
      (use-package counsel
        :ensure t
+       :after (ivy)
        :config (counsel-mode +1))
    #+end_src
 ** Swiper
    No swiping
    #+begin_src emacs-lisp
      (use-package swiper
-       :ensure t)
+       :ensure t
+       :after (ivy))
    #+end_src
 * Magit
   Worms worms worms!
@@ -140,8 +156,10 @@
     (use-package magit
       :ensure t
       :config
-      (global-set-key (kbd "C-x g") 'magit-status)
-      (use-package evil-magit :ensure t))
+      (global-set-key (kbd "C-x g") 'magit-status))
+    (use-package evil-magit
+      :ensure t
+      :after (magit evil))
   #+end_src
 * Programming Languages
   #+begin_src emacs-lisp
