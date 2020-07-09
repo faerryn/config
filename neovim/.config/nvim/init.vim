@@ -4,8 +4,10 @@ augroup AutoCommands
 	autocmd VimEnter * silent! helptags ALL
 	autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
 	
-	" may be obsoleted
-	autocmd FileType * packadd neomake | call neomake#configure#automake('nirw', 500)
+	" nvim-lsp
+	if executable("rust-analyzer")
+		autocmd FileType rust lua require'nvim_lsp'.rust_analyzer.setup{}
+	endif
 
 	autocmd TextYankPost * lua require'vim.highlight'.on_yank({timeout=300})
 

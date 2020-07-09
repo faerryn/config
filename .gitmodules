@@ -25,9 +25,6 @@
 [submodule "vim-signify"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-signify
 	url = https://github.com/mhinz/vim-signify
-[submodule "neomake"]
-	path = neovim/.config/nvim/pack/bundle/opt/neomake
-	url = https://github.com/neomake/neomake
 [submodule "vim-mkdir"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-mkdir
 	url = https://github.com/pbrisbin/vim-mkdir
@@ -178,3 +175,6 @@
 [submodule "zenburn-emacs"]
 	path = emacs/.emacs.d/lisp/theme/zenburn-emacs
 	url = https://github.com/bbatsov/zenburn-emacs
+[submodule "neovim/.config/nvim/pack/bundle/opt/nvim-lsp"]
+	path = neovim/.config/nvim/pack/bundle/start/nvim-lsp
+	url = https://github.com/neovim/nvim-lsp
