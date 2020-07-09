@@ -211,3 +211,6 @@
 [submodule "rust-mode"]
 	path = emacs/.emacs.d/lisp/lang/rust-mode
 	url = https://github.com/rust-lang/rust-mode
+[submodule "zig-mode"]
+	path = emacs/.emacs.d/lisp/lang/zig-mode
+	url = https://github.com/ziglang/zig-mode

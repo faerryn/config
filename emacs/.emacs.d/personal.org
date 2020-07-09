@@ -161,6 +161,7 @@
 ** Langauges
    #+begin_src emacs-lisp
      (use-package rust-mode)
+     (use-package zig-mode)
    #+end_src
 ** Lsp-mode
    Lovely super-powers!
