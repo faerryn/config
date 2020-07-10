@@ -95,5 +95,5 @@
 	path = neovim/.config/nvim/pack/bundle/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
 [submodule "nvim-lsp"]
-	path = neovim/.config/nvim/pack/bundle/start/nvim-lsp
+	path = neovim/.config/nvim/pack/bundle/opt/nvim-lsp
 	url = https://github.com/neovim/nvim-lsp
