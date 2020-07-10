@@ -12,9 +12,9 @@
       (package-install 'use-package))
     (require 'use-package)
   #+end_src
-* UI
+* User Interface
   Pretty colors and nice views!
-** Clean up
+** Clean UI
    No frills
    #+begin_src emacs-lisp
      (menu-bar-mode -1)
@@ -22,6 +22,11 @@
      (tool-bar-mode -1)
      (tooltip-mode -1)
      (setq inhibit-splash-screen t)
+   #+end_src
+** Mouse scroll
+   Slow down, wheel!
+   #+begin_src emacs-lisp
+     (setq mouse-wheel-scroll-amount '(1))
    #+end_src
 ** Theme
    Noicest theme of them all...
@@ -63,12 +68,11 @@
      (setq-default display-line-numbers 'relative)
      (global-hl-line-mode +1)
    #+end_src
-** Mouse scroll
-   Slow down, wheel!
+** Prettify
    #+begin_src emacs-lisp
-     (setq mouse-wheel-scroll-amount '(1))
+     (global-prettify-symbols-mode +1)
    #+end_src
-* Evil
+* Evil Mode
 ** Emulate vim
    Worship the VI-VI-VI
    #+begin_src emacs-lisp
@@ -137,7 +141,7 @@
 	`(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
        (global-undo-tree-mode +1))
    #+end_src
-* Org
+* Org Mode
   Wait, this whole file runs on org-mode...how is the setup here?
   #+begin_src emacs-lisp
     (use-package org
@@ -197,7 +201,7 @@
       :requires (magit evil))
   #+end_src
 * Coding
-** LSP
+** Eglot
    #+begin_src emacs-lisp
      (use-package eglot
        :ensure t
@@ -205,7 +209,7 @@
        :config
        (setq eglot-server-programs 
 	     '((rust-mode . ("rust-analyzer")) 
-	      ((c-mode c++-mode) . ("clangd" "--background-index"))))
+	       ((c-mode c++-mode) . ("clangd" "--background-index"))))
        (add-hook 'rust-mode-hook 'eglot-ensure)
        (add-hook 'c++-mode-hook 'eglot-ensure))
      (use-package company
@@ -215,22 +219,14 @@
        :ensure t
        :config (yas-global-mode +1))
    #+end_src
-** Rust
+** Languages
    #+begin_src emacs-lisp
      (use-package rust-mode
        :ensure t
        :config (setq rust-format-on-save t))
-   #+end_src
-** Zig
-   #+begin_src emacs-lisp
-     (use-package zig-mode :ensure t)
-   #+end_src
-** C++
-   And C, C++, Objective-C, Java, ...
-   #+begin_src emacs-lisp
-     (use-package cc-mode
+     (use-package zig-mode
        :ensure t
-       :pin manual)
+       :config (setq zig-format-on-save t))
    #+end_src
 * Sundry
 ** No weird files
