@@ -1,10 +1,3 @@
-.emacs.d/auto-save-list/
-.emacs.d/elpa/
-.emacs.d/eshell/
-.emacs.d/games/
-.emacs.d/transient/
-.emacs.d/undo-tree/
-.emacs.d/recentf
-
-.emacs.d/custom.el
-.emacs.d/tangled.el
+.emacs.d/*
+!.emacs.d/init.el
+!.emacs.d/init.org
