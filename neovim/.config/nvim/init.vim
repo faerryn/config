@@ -1,4 +1,4 @@
-execute "augroup AutoCommands"
+execute "augroup Personal"
 autocmd!
 
 let g:mapleader="\<space>"
@@ -32,8 +32,7 @@ nnoremap <silent> <leader>q <cmd>copen<cr>
 " Setting up <esc> and <c-w>q
 autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
 
-" vim-polyglot
-let g:rustfmt_autosave = 1
+" zig.vim
 let g:zig_fmt_autosave = 1
 
 " vim-sandwich
@@ -90,6 +89,10 @@ function s:setup_lsp()
 	nnoremap <silent> <buffer> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 	nnoremap <silent> <buffer> gA    <cmd>lua vim.lsp.buf.code_action()<CR>
 	setlocal omnifunc=v:lua.vim.lsp.omnifunc
+	augroup PersonalNvimLsp
+		autocmd! * <buffer>
+		autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+	augroup END
 endfunction
 execute "autocmd FileType " . join(keys(s:lsps),",") . " call s:setup_lsp()"
 for s:lsp in values(s:lsps)
