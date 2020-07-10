@@ -32,6 +32,6 @@
     (org-babel-tangle-file init-org tangled-el))
   (load tangled-el))
 
-;; Custom file
+;; `custom.el'
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file :noerror)
