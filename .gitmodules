@@ -52,9 +52,6 @@
 [submodule "vim-unimpaired"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired
-[submodule "vimwiki"]
-	path = neovim/.config/nvim/pack/bundle/start/vimwiki
-	url = https://github.com/vimwiki/vimwiki
 [submodule "targets.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/targets.vim
 	url = https://github.com/wellle/targets.vim

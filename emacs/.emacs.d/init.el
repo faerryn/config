@@ -8,14 +8,14 @@
 (tool-bar-mode -1)
 (tooltip-mode -1)
 (setq inhibit-splash-screen t)
+
+;; No weird files
 (setq auto-save-default nil)
 (setq backup-inhibited t)
 (setq create-lockfiles nil)
 
-;; No safe-to-ignore warnings
-(setq load-prefer-newer t)
-
 ;; Get packages.el, melpa, and use-packages up and running
+(setq load-prefer-newer t)
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
