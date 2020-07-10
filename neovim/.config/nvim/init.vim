@@ -32,16 +32,22 @@ nnoremap <silent> <leader>q <cmd>copen<cr>
 " Setting up <esc> and <c-w>q
 autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
 
+" vim-polyglot
 let g:rustfmt_autosave = 1
-
 let g:zig_fmt_autosave = 1
 
+" vim-sandwich
 let g:textobj_sandwich_no_default_key_mappings = 1
 autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
 
+" vim-dirvish
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
+command! -nargs=? -complete=dir Explore Dirvish <args>
+command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
+command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
 
+" undotree
 let g:undotree_HelpLine = 0
 let g:undotree_WindowLayout = 3
 let g:undotree_SetFocusWhenToggle = 1
@@ -49,26 +55,25 @@ let g:undotree_ShortIndicators = 1
 nnoremap <silent> <leader>u <cmd>UndotreeShow<cr>
 autocmd FileType undotree nnoremap <silent> <buffer> <esc> <cmd>UndotreeHide<cr>
 
+" vim-fugitive
 nnoremap <silent> <leader>g <cmd>G<cr>
 
+" fzf
 let $FZF_DEFAULT_COMMAND="fd -HL -E \"**/.git\" -tf"
 nnoremap <silent> <leader>f <cmd>FZF<cr>
 
+" gruvbox
 let g:gruvbox_contrast_dark = "medium"
 let g:gruvbox_invert_signs = 1
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_strings = 1
 colorscheme gruvbox
 
+" lightline.vim
 let g:lightline = { "colorscheme": "gruvbox",
 			\"separator": { "left": "", "right": "" },
 			\"subseparator": { "left": "", "right": "" },
 			\"tabline": { "right": [] } }
-
-" Dirvish
-command! -nargs=? -complete=dir Explore Dirvish <args>
-command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
-command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
 
 " nvim-lsp
 function s:setup_lsp(lsp_executable, lsp_config)
