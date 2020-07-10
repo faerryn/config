@@ -76,7 +76,8 @@ let g:lightline = { "colorscheme": "gruvbox",
 			\"tabline": { "right": [] } }
 
 " nvim-lsp
-let s:lsp_triples = [ ["rust", "rust-analyzer", "rust_analyzer" ] ]
+let s:lsp_triples = [ ["rust", "rust-analyzer", "rust_analyzer" ],
+			\["cpp", "clangd", "clangd"] ]
 
 function s:setup_lsp(lsp_executable, lsp_config)
 	if !executable(a:lsp_executable) | return | endif
