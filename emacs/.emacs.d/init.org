@@ -72,7 +72,7 @@
    #+begin_src emacs-lisp
      (global-prettify-symbols-mode +1)
    #+end_src
-* Evil Mode
+* Evil
 ** Emulate vim
    Worship the VI-VI-VI
    #+begin_src emacs-lisp
@@ -141,7 +141,7 @@
 	`(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
        (global-undo-tree-mode +1))
    #+end_src
-* Org Mode
+* Org
   Wait, this whole file runs on org-mode...how is the setup here?
   #+begin_src emacs-lisp
     (use-package org
@@ -162,7 +162,7 @@
       (require 'evil-org-agenda)
       (evil-org-agenda-set-keys))
   #+end_src
-* Ivy Mode
+* Ivy
   The plant
 ** Ivy
    Poison ivy
@@ -210,7 +210,7 @@
        (add-hook 'before-save-hook 'eglot-format-buffer))
      (use-package eglot
        :ensure t
-       :after (company yasnippet)
+       :after (company yasnippet markdown-mode)
        :config
        (setq eglot-server-programs 
 	     '((rust-mode . ("rust-analyzer")) 
@@ -219,6 +219,7 @@
        (add-hook 'c++-mode-hook 'personal-lsp-setup))
      (use-package company :ensure t)
      (use-package yasnippet :ensure t)
+     (use-package markdown-mode :ensure t)
    #+end_src
 ** Languages
    #+begin_src emacs-lisp
