@@ -48,11 +48,11 @@
 	(if (daemonp)
 	    (add-hook 
 	     'after-make-frame-functions
-	     (defun personal--fix-daemon-moody-height (frame) 
+	     (defun personal-fix-daemon-moody-height (frame) 
 	       (with-selected-frame frame
 		 (setq moody-mode-line-height (line-pixel-height)))
 	       (remove-hook 'after-make-frame-functions
-			    'personal--fix-daemon-moody-height)))
+			    'personal-fix-daemon-moody-height)))
 	  (setq moody-mode-line-height (line-pixel-height))))
     #+end_src
 *** Minions
@@ -201,29 +201,28 @@
       :requires (magit evil))
   #+end_src
 * Coding
-** Eglot
+** Eglot, Company, and Yasnippet
    #+begin_src emacs-lisp
+     (defun personal-lsp-setup () 
+       (company-mode +1)
+       (yas-minor-mode +1)
+       (eglot-ensure)
+       (add-hook 'before-save-hook 'eglot-format-buffer))
      (use-package eglot
        :ensure t
        :after (company yasnippet)
        :config
        (setq eglot-server-programs 
 	     '((rust-mode . ("rust-analyzer")) 
-	       ((c-mode c++-mode) . ("clangd" "--background-index"))))
-       (add-hook 'rust-mode-hook 'eglot-ensure)
-       (add-hook 'c++-mode-hook 'eglot-ensure))
-     (use-package company
-       :ensure t
-       :config (global-company-mode +1))
-     (use-package yasnippet
-       :ensure t
-       :config (yas-global-mode +1))
+	       (c++-mode . ("clangd" "--background-index"))))
+       (add-hook 'rust-mode-hook 'personal-lsp-setup)
+       (add-hook 'c++-mode-hook 'personal-lsp-setup))
+     (use-package company :ensure t)
+     (use-package yasnippet :ensure t)
    #+end_src
 ** Languages
    #+begin_src emacs-lisp
-     (use-package rust-mode
-       :ensure t
-       :config (setq rust-format-on-save t))
+     (use-package rust-mode :ensure t)
      (use-package zig-mode
        :ensure t
        :config (setq zig-format-on-save t))
