@@ -18,14 +18,13 @@
 	(moody-replace-mode-line-buffer-identification)
 	(moody-replace-vc-mode)
 	(if (daemonp)
-	    (progn
-	      (defun personal--fix-daemon-moody-height (frame) 
-		(with-selected-frame frame
-		  (setq moody-mode-line-height (line-pixel-height)))
-		(remove-hook 'after-make-frame-functions
-			     #'personal--fix-daemon-moody-height))
-	      (add-hook 'after-make-frame-functions
-			#'personal--fix-daemon-moody-height))
+	    (add-hook 
+	     'after-make-frame-functions
+	     (defun personal--fix-daemon-moody-height (frame) 
+		 (with-selected-frame frame
+		   (setq moody-mode-line-height (line-pixel-height)))
+		 (remove-hook 'after-make-frame-functions
+			      #'personal--fix-daemon-moody-height)))
 	  (setq moody-mode-line-height (line-pixel-height))))
     #+end_src
 *** Minions
