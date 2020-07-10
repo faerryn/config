@@ -1,5 +1,28 @@
+* Packages
+  Get packages.el, melpa, and use-packages up and running
+  #+begin_src emacs-lisp
+    (setq load-prefer-newer t)
+    (require 'package)
+    (add-to-list 
+     'package-archives '("melpa" . "https://melpa.org/packages/") t)
+    (add-to-list 
+     'package-archives '("org" . "https://orgmode.org/elpa/") t)
+    (unless (package-installed-p 'use-package)
+      (package-refresh-contents)
+      (package-install 'use-package))
+    (require 'use-package)
+  #+end_src
 * UI
   Pretty colors and nice views!
+** Clean up
+   No frills
+   #+begin_src emacs-lisp
+     (menu-bar-mode -1)
+     (scroll-bar-mode -1)
+     (tool-bar-mode -1)
+     (tooltip-mode -1)
+     (setq inhibit-splash-screen t)
+   #+end_src
 ** Theme
    Noicest theme of them all...
    #+begin_src emacs-lisp
@@ -21,10 +44,10 @@
 	    (add-hook 
 	     'after-make-frame-functions
 	     (defun personal--fix-daemon-moody-height (frame) 
-		 (with-selected-frame frame
-		   (setq moody-mode-line-height (line-pixel-height)))
-		 (remove-hook 'after-make-frame-functions
-			      #'personal--fix-daemon-moody-height)))
+	       (with-selected-frame frame
+		 (setq moody-mode-line-height (line-pixel-height)))
+	       (remove-hook 'after-make-frame-functions
+			    'personal--fix-daemon-moody-height)))
 	  (setq moody-mode-line-height (line-pixel-height))))
     #+end_src
 *** Minions
@@ -43,7 +66,7 @@
 ** Mouse scroll
    Slow down, wheel!
    #+begin_src emacs-lisp
-    (setq mouse-wheel-scroll-amount '(1))
+     (setq mouse-wheel-scroll-amount '(1))
    #+end_src
 * Evil
 ** Emulate vim
@@ -111,7 +134,8 @@
        (setq undo-tree-auto-save-history t)
        (setq
 	undo-tree-history-directory-alist
-	`(("." . ,(expand-file-name "undo-tree" user-emacs-directory)))))
+	`(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
+       (global-undo-tree-mode +1))
    #+end_src
 * Org
   Wait, this whole file runs on org-mode...how is the setup here?
@@ -158,7 +182,7 @@
    No swiping
    #+begin_src emacs-lisp
      (use-package swiper
-       :bind ("C-s" . #'swiper-isearch)
+       :bind ("C-s" . 'swiper-isearch)
        :ensure t
        :after (ivy))
    #+end_src
@@ -167,19 +191,34 @@
   #+begin_src emacs-lisp
     (use-package magit
       :ensure t
-      :bind ("C-x g" . #'magit-status))
+      :bind ("C-x g" . 'magit-status))
     (use-package evil-magit
       :ensure t
       :after (magit evil))
   #+end_src
-* Syntax
   #+begin_src emacs-lisp
     (use-package rust-mode :ensure t)
     (use-package zig-mode :ensure t)
   #+end_src
 * Sundry
-  Random code is safe
-  #+begin_src emacs-lisp
-    (setq vc-follow-symlinks t) ;; Follow symlinks please!
-    (when (daemonp) (server-start)) ;; Start a server on deamon-mode
-  #+end_src
+** Syntax
+** No weird files
+   #+begin_src emacs-lisp
+     (setq auto-save-default nil)
+     (setq backup-inhibited t)
+     (setq create-lockfiles nil)
+   #+end_src
+** Follow symlinks
+   #+begin_src emacs-lisp
+     (setq vc-follow-symlinks t)
+   #+end_src
+** Start Server
+   #+begin_src emacs-lisp
+     (when (daemonp) (server-start))
+   #+end_src
+** Custom file
+   Set and load up `custom.el'
+   #+begin_src emacs-lisp
+     (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+     (load custom-file :noerror)
+   #+end_src
