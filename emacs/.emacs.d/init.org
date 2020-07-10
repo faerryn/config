@@ -178,5 +178,6 @@
   Random code is safe
   #+begin_src emacs-lisp
     (setq mouse-wheel-scroll-amount '(1)) ;; Slow down, wheel!
-    (when (daemonp) (server-start)) ;; Daemon
+    (setq vc-follow-symlinks t) ;; Follow symlinks please!
+    (when (daemonp) (server-start)) ;; Start a server on deamon-mode
   #+end_src

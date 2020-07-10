@@ -24,7 +24,7 @@ set undofile
 set updatetime=300
 
 autocmd VimEnter * silent! helptags ALL
-autocmd TextYankPost * lua require'vim.highlight'.on_yank({timeout=300})
+autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=300}
 
 nnoremap <silent> <leader>l <cmd>lopen<cr>
 nnoremap <silent> <leader>q <cmd>copen<cr>
