@@ -88,6 +88,7 @@ function s:setup_lsp()
 	nnoremap <silent> <buffer> gr    <cmd>lua vim.lsp.buf.references()<CR>
 	nnoremap <silent> <buffer> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 	nnoremap <silent> <buffer> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+	nnoremap <silent> <buffer> gA    <cmd>lua vim.lsp.buf.code_action()<CR>
 	setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endfunction
 execute "autocmd FileType " . join(keys(s:lsps),",") . " call s:setup_lsp()"
