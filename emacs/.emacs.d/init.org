@@ -12,7 +12,7 @@
       (package-install 'use-package))
     (require 'use-package)
   #+end_src
-* User Interface
+* Aesthetics
   Pretty colors and nice views!
 ** Clean UI
    No frills
@@ -162,7 +162,7 @@
       (require 'evil-org-agenda)
       (evil-org-agenda-set-keys))
   #+end_src
-* Ivy
+* Ivy Mode
   The plant
 ** Ivy
    Poison ivy
