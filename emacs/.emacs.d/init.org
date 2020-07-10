@@ -1,4 +1,4 @@
-* Aesthetics
+* UI
   Pretty colors and nice views!
 ** Theme
    Noicest theme of them all...
@@ -40,6 +40,11 @@
    #+begin_src emacs-lisp
      (setq-default display-line-numbers 'relative)
      (global-hl-line-mode +1)
+   #+end_src
+** Mouse scroll
+   Slow down, wheel!
+   #+begin_src emacs-lisp
+    (setq mouse-wheel-scroll-amount '(1))
    #+end_src
 * Evil
 ** Emulate vim
@@ -169,15 +174,14 @@
       :ensure t
       :after (magit evil))
   #+end_src
-* Programming
+* Syntax
   #+begin_src emacs-lisp
     (use-package rust-mode :ensure t)
     (use-package zig-mode :ensure t)
   #+end_src
-* Misc
+* Sundry
   Random code is safe
   #+begin_src emacs-lisp
-    (setq mouse-wheel-scroll-amount '(1)) ;; Slow down, wheel!
     (setq vc-follow-symlinks t) ;; Follow symlinks please!
     (when (daemonp) (server-start)) ;; Start a server on deamon-mode
   #+end_src
