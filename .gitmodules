@@ -91,9 +91,9 @@
 [submodule "tmux-yank"]
 	path = tmux/.config/tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank
-[submodule "vim-polyglot"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-polyglot
-	url = https://github.com/sheerun/vim-polyglot
 [submodule "nvim-lsp"]
 	path = neovim/.config/nvim/pack/bundle/opt/nvim-lsp
 	url = https://github.com/neovim/nvim-lsp
+[submodule "zig.vim"]
+	path = neovim/.config/nvim/pack/bundle/start/zig.vim
+	url = https://github.com/ziglang/zig.vim

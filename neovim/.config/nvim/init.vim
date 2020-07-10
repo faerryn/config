@@ -32,9 +32,6 @@ nnoremap <silent> <leader>q <cmd>copen<cr>
 " Setting up <esc> and <c-w>q
 autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
 
-" zig.vim
-let g:zig_fmt_autosave = 1
-
 " vim-sandwich
 let g:textobj_sandwich_no_default_key_mappings = 1
 autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
