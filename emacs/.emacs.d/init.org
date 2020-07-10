@@ -82,11 +82,11 @@
        (evil-mode +1))
      (use-package evil-collection
        :ensure t
-       :after (evil)
+       :requires (evil)
        :config (evil-collection-init))
      (use-package evil-numbers
        :ensure t
-       :after (evil)
+       :requires (evil)
        :config
        (define-key 
 	 evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
@@ -94,7 +94,7 @@
 	 evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt))
      (use-package evil-goggles
        :ensure t
-       :after (evil)
+       :requires (evil)
        :config (evil-goggles-mode +1))
    #+end_src
 ** Emulate vim plugins
@@ -102,23 +102,23 @@
    #+begin_src emacs-lisp
      (use-package evil-surround
        :ensure t
-       :after (evil)
+       :requires (evil)
        :config (global-evil-surround-mode +1))
      (use-package evil-commentary
        :ensure t
-       :after (evil)
+       :requires (evil)
        :config (evil-commentary-mode +1))
      (use-package evil-matchit
        :ensure t
-       :after (evil)
+       :requires (evil)
        :config (global-evil-matchit-mode +1))
      (use-package evil-exchange
        :ensure t
-       :after (evil)
+       :requires (evil)
        :config (evil-exchange-install))
      (use-package evil-textobj-column
        :ensure t
-       :after (evil)
+       :requires (evil)
        :config
        (define-key 
 	 evil-inner-text-objects-map "c" 'evil-textobj-column-word)
@@ -149,7 +149,7 @@
       (global-set-key (kbd "C-c c") 'org-capture))
     (use-package evil-org
       :ensure t
-      :after (evil org)
+      :requires (evil org)
       :config
       (add-hook 'org-mode-hook 'evil-org-mode)
       (add-hook 'evil-org-mode-hook
@@ -175,7 +175,7 @@
    #+begin_src emacs-lisp
      (use-package counsel
        :ensure t
-       :after (ivy)
+       :requires (ivy)
        :config (counsel-mode +1))
    #+end_src
 ** Swiper
@@ -184,7 +184,7 @@
      (use-package swiper
        :bind ("C-s" . 'swiper-isearch)
        :ensure t
-       :after (ivy))
+       :requires (ivy))
    #+end_src
 * Magit
   Worms worms worms!
@@ -194,14 +194,45 @@
       :bind ("C-x g" . 'magit-status))
     (use-package evil-magit
       :ensure t
-      :after (magit evil))
+      :requires (magit evil))
   #+end_src
-  #+begin_src emacs-lisp
-    (use-package rust-mode :ensure t)
-    (use-package zig-mode :ensure t)
-  #+end_src
+* Coding
+** LSP
+   #+begin_src emacs-lisp
+     (use-package eglot
+       :ensure t
+       :after (company yasnippet)
+       :config
+       (setq eglot-server-programs 
+	     '((rust-mode . ("rust-analyzer")) 
+	      ((c-mode c++-mode) . ("clangd" "--background-index"))))
+       (add-hook 'rust-mode-hook 'eglot-ensure)
+       (add-hook 'c++-mode-hook 'eglot-ensure))
+     (use-package company
+       :ensure t
+       :config (global-company-mode +1))
+     (use-package yasnippet
+       :ensure t
+       :config (yas-global-mode +1))
+   #+end_src
+** Rust
+   #+begin_src emacs-lisp
+     (use-package rust-mode
+       :ensure t
+       :config (setq rust-format-on-save t))
+   #+end_src
+** Zig
+   #+begin_src emacs-lisp
+     (use-package zig-mode :ensure t)
+   #+end_src
+** C++
+   And C, C++, Objective-C, Java, ...
+   #+begin_src emacs-lisp
+     (use-package cc-mode
+       :ensure t
+       :pin manual)
+   #+end_src
 * Sundry
-** Syntax
 ** No weird files
    #+begin_src emacs-lisp
      (setq auto-save-default nil)
