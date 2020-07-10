@@ -91,9 +91,14 @@ function s:setup_lsp()
 		autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
 	augroup END
 endfunction
-execute "autocmd FileType " . join(keys(s:lsps),",") . " call s:setup_lsp()"
-for s:lsp in values(s:lsps)
-	execute "lua require'nvim_lsp'." . s:lsp . ".setup{}"
-endfor
+autocmd FileType rust,cpp call s:setup_lsp()
+lua << EOF
+local nvim_lsp = require'nvim_lsp'
+nvim_lsp.rust_analyzer.setup{}
+nvim_lsp.clangd.setup{
+	cmd = { "clangd", "--background-index" },
+	filetypes = { "cpp" }
+}
+EOF
 
 execute "augroup END"
