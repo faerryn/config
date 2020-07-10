@@ -159,7 +159,7 @@
    No swiping
    #+begin_src emacs-lisp
      (use-package swiper
-       :bind ("C-s" . 'swiper-isearch)
+       :bind ("C-s" . #'swiper-isearch)
        :ensure t
        :after (ivy))
    #+end_src
@@ -168,8 +168,7 @@
   #+begin_src emacs-lisp
     (use-package magit
       :ensure t
-      :config
-      (global-set-key (kbd "C-x g") 'magit-status))
+      :bind ("C-x g" . #'magit-status))
     (use-package evil-magit
       :ensure t
       :after (magit evil))
