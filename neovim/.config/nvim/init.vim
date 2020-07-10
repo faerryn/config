@@ -90,7 +90,7 @@ function s:setup_lsp()
 	nnoremap <silent> <buffer> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 	setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endfunction
-execute "autocmd FileType " . join(keys(s:lsps)) . " call s:setup_lsp()"
+execute "autocmd FileType " . join(keys(s:lsps),",") . " call s:setup_lsp()"
 for s:lsp in values(s:lsps)
 	execute "lua require'nvim_lsp'." . s:lsp . ".setup{}"
 endfor
