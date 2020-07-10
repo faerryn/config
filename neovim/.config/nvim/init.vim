@@ -76,6 +76,8 @@ let g:lightline = { "colorscheme": "gruvbox",
 			\"tabline": { "right": [] } }
 
 " nvim-lsp
+let s:lsp_triples = [ ["rust", "rust-analyzer", "rust_analyzer" ] ]
+
 function s:setup_lsp(lsp_executable, lsp_config)
 	if !executable(a:lsp_executable) | return | endif
 	execute "lua require'nvim_lsp'." . a:lsp_config . ".setup{}"
@@ -90,12 +92,9 @@ function s:setup_lsp(lsp_executable, lsp_config)
 	nnoremap <silent> <buffer> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 	setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endfunction
-lua << EOF
-local lang_lsp = { rust = {"rust-analyzer", "rust_analyzer"} }
-for lang, lsp in pairs(lang_lsp) do
-	vim.api.nvim_command("autocmd FileType " .. lang
-		.. " call s:setup_lsp('" .. lsp[1] .. "', '" .. lsp[2] .. "')")
-end
-EOF
+for s:triple in s:lsp_triples
+	execute "autocmd FileType " . s:triple[0] . " call s:setup_lsp(\"" 
+				\. s:triple[1] . "\", \"" . s:triple[2] . "\")"
+endfor
 
 execute "augroup END"
