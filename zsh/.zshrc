@@ -1,11 +1,8 @@
-# Editing
-export EDITOR="nvim"
-export VISUAL="nvim"
-export MANPAGER="nvim -R +\"set signcolumn=no ft=man\" -"
-
 # Aliases
 alias la="ls -la"
 alias ll="ls -l"
+alias ec="emacsclient"
+alias em="emacs"
 
 # Prompt
 ZSH_THEME_GIT_PROMPT_PREFIX=""

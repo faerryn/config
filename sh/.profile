@@ -5,6 +5,10 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export PATH="$HOME/.local/bin:$PATH"
 
+if command -v systemctl >/dev/null; then
+	systemctl --user import-environment PATH
+fi
+
 export LESSHISTFILE="-"
 export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
 
@@ -14,23 +18,15 @@ export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
-if command -v systemctl >/dev/null; then
-	systemctl --user import-environment PATH
-fi
+export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/ccache.config"
+export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 
-if command -v ccache >/dev/null; then
-	export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/ccache.config"
-	export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
-fi
-
+export WINEPREFIX="$HOME/wine"
 if command -v wine >/dev/null; then
-	export WINEPREFIX="$HOME/wine"
 	mkdir -p $WINEPREFIX
 fi
 
-if command -v wget >/dev/null; then
-	alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
-fi
+alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
 
 if command -v nvim >/dev/null; then
 	alias ex="nvim -e"
@@ -38,6 +34,9 @@ if command -v nvim >/dev/null; then
 	alias view="nvim -R"
 	alias vim="nvim"
 	alias vimdiff="nvim -d"
+	export EDITOR="nvim"
+	export VISUAL="nvim"
+	export MANPAGER="nvim -R +\"set signcolumn=no ft=man\" -"
 fi
 
 if command -v exa >/dev/null; then
