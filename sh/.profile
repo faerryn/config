@@ -14,6 +14,10 @@ export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
+if command -v systemctl >/dev/null; then
+	systemctl --user import-environment PATH
+fi
+
 if command -v ccache >/dev/null; then
 	export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/ccache.config"
 	export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
