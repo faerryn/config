@@ -1,255 +1,253 @@
 #+startup: indent
 * Packages
-  #+begin_src emacs-lisp
-    (setq load-prefer-newer t)
+#+begin_src emacs-lisp
+  (setq load-prefer-newer t)
 
-    (require 'package)
-    (add-to-list 'package-archives 
-		 '("melpa" . "https://melpa.org/packages/") t)
-    (add-to-list 'package-archives 
-		 '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-    (add-to-list 'package-archives 
-		 '("org" . "https://orgmode.org/elpa/") t)
+  (require 'package)
+  (add-to-list 'package-archives 
+               '("melpa" . "https://melpa.org/packages/") t)
+  (add-to-list 'package-archives 
+               '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+  (add-to-list 'package-archives 
+               '("org" . "https://orgmode.org/elpa/") t)
 
-    (unless (package-installed-p 'use-package)
-      (package-refresh-contents)
-      (package-install 'use-package))
-    (require 'use-package)
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+  (require 'use-package)
 
-    (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-  #+end_src
+  (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+#+end_src
 * Aesthetics
 ** Clean UI
-   #+begin_src emacs-lisp
-     (menu-bar-mode -1)
-     (scroll-bar-mode -1)
-     (tool-bar-mode -1)
-     (setq inhibit-splash-screen t)
-   #+end_src
+#+begin_src emacs-lisp
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+  (setq inhibit-splash-screen t)
+#+end_src
 ** Maximized
-   #+begin_src emacs-lisp
-     (add-to-list 'default-frame-alist '(fullscreen . maximized))
-   #+end_src
+#+begin_src emacs-lisp
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+#+end_src
 ** Mouse scroll
-   #+begin_src emacs-lisp
-     (setq mouse-wheel-scroll-amount '(1))
-   #+end_src
+#+begin_src emacs-lisp
+  (setq mouse-wheel-scroll-amount '(1))
+#+end_src
 ** Theme
-   #+begin_src emacs-lisp
-     (use-package doom-themes
-       :ensure t
-       :config (load-theme 'doom-vibrant t))
-   #+end_src
+#+begin_src emacs-lisp
+  (use-package doom-themes
+    :ensure t
+    :config (load-theme 'doom-vibrant t))
+#+end_src
 ** Modeline
 *** Moody
-    #+begin_src emacs-lisp
-      (defun personal-moody-fix-height (&optional frame) 
-	(with-selected-frame (if frame (identity frame) (selected-frame))
-	  (setq moody-mode-line-height (line-pixel-height))))
-      (use-package moody
-	:ensure t
-	:config
-	(setq x-underline-at-descent-line t)
-	(moody-replace-mode-line-buffer-identification)
-	(moody-replace-vc-mode)
-	(add-hook 'after-setting-font-hook #'personal-moody-fix-height)
-	(if (daemonp)
-	    (add-hook 'after-make-frame-functions
-		      #'personal-moody-fix-height)
-	  (personal-moody-fix-height)))
-    #+end_src
+#+begin_src emacs-lisp
+  (defun personal-moody-fix-height (&optional frame) 
+    (with-selected-frame (if frame (identity frame) (selected-frame))
+      (setq moody-mode-line-height (line-pixel-height))))
+  (use-package moody
+    :ensure t
+    :config
+    (setq x-underline-at-descent-line t)
+    (moody-replace-mode-line-buffer-identification)
+    (moody-replace-vc-mode)
+    (add-hook 'after-setting-font-hook #'personal-moody-fix-height)
+    (if (daemonp)
+        (add-hook 'after-make-frame-functions
+                  #'personal-moody-fix-height)
+      (personal-moody-fix-height)))
+#+end_src
 *** Minions
-    #+begin_src emacs-lisp
-      (use-package minions
-	:ensure t
-	:config (minions-mode +1))
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package minions
+    :ensure t
+    :config (minions-mode +1))
+#+end_src
 ** Line numbers
-   #+begin_src emacs-lisp
-     (setq-default display-line-numbers 'relative)
-     (global-hl-line-mode +1)
-   #+end_src
+#+begin_src emacs-lisp
+  (setq-default display-line-numbers 'relative)
+  (global-hl-line-mode +1)
+#+end_src
 ** Prettify
-   #+begin_src emacs-lisp
-     (global-prettify-symbols-mode +1)
-   #+end_src
+#+begin_src emacs-lisp
+  (global-prettify-symbols-mode +1)
+#+end_src
 * Evil
 ** Emulate vim
-   #+begin_src emacs-lisp
-     (use-package evil
-       :ensure t
-       :init
-       (setq evil-want-integration t)
-       (setq evil-want-keybinding nil)
-       :config
-       (evil-select-search-module 'evil-search-module 'evil-search)
-       (evil-mode +1))
-     (use-package evil-numbers
-       :ensure t
-       :after (evil)
-       :bind (:map evil-normal-state-map
-                   ("C-c +" . evil-numbers/inc-at-pt)
-                   ("C-c -" . evil-numbers/dec-at-pt)))
-     (use-package evil-goggles
-       :ensure t
-       :after (evil)
-       :config (evil-goggles-mode +1))
-   #+end_src
+#+begin_src emacs-lisp
+  (use-package evil
+    :ensure t
+    :init
+    (setq evil-want-integration t)
+    (setq evil-want-keybinding nil)
+    :config
+    (evil-select-search-module 'evil-search-module 'evil-search)
+    (evil-mode +1))
+  (use-package evil-numbers
+    :ensure t
+    :after (evil)
+    :bind (:map evil-normal-state-map
+                ("C-c +" . evil-numbers/inc-at-pt)
+                ("C-c -" . evil-numbers/dec-at-pt)))
+  (use-package evil-goggles
+    :ensure t
+    :after (evil)
+    :config (evil-goggles-mode +1))
+#+end_src
 ** Emulate vim plugins
-   #+begin_src emacs-lisp
-     (use-package evil-surround
-       :ensure t
-       :after (evil)
-       :config (global-evil-surround-mode +1))
-     (use-package evil-commentary
-       :ensure t
-       :after (evil)
-       :config (evil-commentary-mode +1))
-     (use-package evil-matchit
-       :ensure t
-       :after (evil)
-       :config (global-evil-matchit-mode +1))
-     (use-package evil-exchange
-       :ensure t
-       :after (evil)
-       :config (evil-exchange-install))
-     (use-package evil-textobj-column
-       :ensure t
-       :after (evil)
-       :config
-       (define-key 
-	 evil-inner-text-objects-map "c" #'evil-textobj-column-word)
-       (define-key
-	 evil-inner-text-objects-map "C" #'evil-textobj-column-WORD))
-   #+end_src
+#+begin_src emacs-lisp
+  (use-package evil-surround
+    :ensure t
+    :after (evil)
+    :config (global-evil-surround-mode +1))
+  (use-package evil-commentary
+    :ensure t
+    :after (evil)
+    :config (evil-commentary-mode +1))
+  (use-package evil-matchit
+    :ensure t
+    :after (evil)
+    :config (global-evil-matchit-mode +1))
+  (use-package evil-exchange
+    :ensure t
+    :after (evil)
+    :config (evil-exchange-install))
+  (use-package evil-textobj-column
+    :ensure t
+    :after (evil)
+    :config
+    (define-key 
+      evil-inner-text-objects-map "c" #'evil-textobj-column-word)
+    (define-key
+      evil-inner-text-objects-map "C" #'evil-textobj-column-WORD))
+#+end_src
 ** Evil-collections
-   #+begin_src emacs-lisp
-     (use-package evil-collection
-       :ensure t
-       :after (evil)
-       :config (evil-collection-init))
-   #+end_src
+#+begin_src emacs-lisp
+  (use-package evil-collection
+    :ensure t
+    :after (evil)
+    :config (evil-collection-init))
+#+end_src
 ** Undo-tree
-   #+begin_src emacs-lisp
-     (use-package undo-tree
-       :ensure t
-       :config
-       (setq undo-tree-auto-save-history t)
-       (setq
-	undo-tree-history-directory-alist
-	`(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
-       (global-undo-tree-mode +1))
-   #+end_src
+#+begin_src emacs-lisp
+  (use-package undo-tree
+    :ensure t
+    :config
+    (setq undo-tree-auto-save-history t)
+    (setq
+     undo-tree-history-directory-alist
+     `(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
+    (global-undo-tree-mode +1))
+#+end_src
 * Org
-  #+begin_src emacs-lisp
-    (use-package org
-      :ensure t
-      :bind
-      ("C-c l" . org-store-link)
-      ("C-c a" . org-agenda)
-      ("C-c c" . org-capture)
-      :config
-      (setq org-src-tab-acts-natively t))
-    (use-package evil-org
-      :ensure t
-      :after (evil org)
-      :config
-      (add-hook 'org-mode-hook #'evil-org-mode)
-      (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme)
-      (require 'evil-org-agenda)
-      (evil-org-agenda-set-keys))
-  #+end_src
+#+begin_src emacs-lisp
+  (use-package org
+    :ensure t
+    :bind
+    ("C-c l" . org-store-link)
+    ("C-c a" . org-agenda)
+    ("C-c c" . org-capture)
+    :config
+    (setq org-src-tab-acts-natively t))
+  (use-package evil-org
+    :ensure t
+    :after (evil org)
+    :config
+    (add-hook 'org-mode-hook #'evil-org-mode)
+    (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme)
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys))
+#+end_src
 * Ivy
 ** Ivy
-   #+begin_src emacs-lisp
-     (use-package ivy
-       :ensure t
-       :config
-       (setq ivy-use-virtual-buffers t)
-       (setq ivy-count-format "(%d/%d) ")
-       (ivy-mode +1))
-   #+end_src
+#+begin_src emacs-lisp
+  (use-package ivy
+    :ensure t
+    :config
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-count-format "(%d/%d) ")
+    (ivy-mode +1))
+#+end_src
 ** Counsel
-   #+begin_src emacs-lisp
-     (use-package counsel
-       :ensure t
-       :after (ivy)
-       :config (counsel-mode +1))
-   #+end_src
+#+begin_src emacs-lisp
+  (use-package counsel
+    :ensure t
+    :after (ivy)
+    :config (counsel-mode +1))
+#+end_src
 ** Swiper
-   #+begin_src emacs-lisp
-     (use-package swiper
-       :bind ("C-s" . swiper-isearch)
-       :ensure t
-       :after (ivy))
-   #+end_src
+#+begin_src emacs-lisp
+  (use-package swiper
+    :bind ("C-s" . swiper-isearch)
+    :ensure t
+    :after (ivy))
+#+end_src
 * Magit
-  Worms worms worms!
-  #+begin_src emacs-lisp
-    (use-package magit
-      :ensure t
-      :bind ("C-c g" . magit-status))
-    (use-package evil-magit
-      :ensure t
-      :after (magit evil))
-  #+end_src
+Worms worms worms!
+#+begin_src emacs-lisp
+  (use-package magit
+    :ensure t
+    :bind ("C-c g" . magit-status))
+  (use-package evil-magit
+    :ensure t
+    :after (magit evil))
+#+end_src
 * Coding
 ** Eglot
-   #+begin_src emacs-lisp
-     (defun personal-lsp-setup () 
-       (company-mode +1)
-       (yas-minor-mode +1)
-       (eglot-ensure)
-       (setq gc-cons-threshold 100000000)
-       (setq read-process-output-max (* 1024 1024))
-       (add-hook 'before-save-hook #'eglot-format-buffer))
-     (use-package eglot
-       :ensure t
-       :pin melpa-stable
-       :after (company yasnippet markdown-mode)
-       :config
-       (setq eglot-server-programs 
-	     '((rust-mode . ("rust-analyzer")) 
-	       (c++-mode . ("clangd" "--background-index"))))
-       (add-hook 'rust-mode-hook #'personal-lsp-setup)
-       (add-hook 'c++-mode-hook #'personal-lsp-setup))
-     (use-package company :ensure t)
-     (use-package yasnippet :ensure t)
-     (use-package markdown-mode :ensure t)
-   #+end_src
+#+begin_src emacs-lisp
+  (defun personal-lsp-setup () 
+    (company-mode +1)
+    (yas-minor-mode +1)
+    (eglot-ensure)
+    (setq gc-cons-threshold 100000000)
+    (setq read-process-output-max (* 1024 1024))
+    (add-hook 'before-save-hook #'eglot-format-buffer))
+  (use-package eglot
+    :ensure t
+    :pin melpa-stable
+    :after (company yasnippet markdown-mode)
+    :config
+    (setq eglot-server-programs 
+          '((rust-mode . ("rust-analyzer")) 
+            (c++-mode . ("clangd" "--background-index"))))
+    (add-hook 'rust-mode-hook #'personal-lsp-setup)
+    (add-hook 'c++-mode-hook #'personal-lsp-setup))
+  (use-package company :ensure t)
+  (use-package yasnippet :ensure t)
+  (use-package markdown-mode :ensure t)
+#+end_src
 ** Languages
-   #+begin_src emacs-lisp
-     (use-package rust-mode :ensure t)
-     (use-package zig-mode
-       :ensure t
-       :config (setq zig-format-on-save t))
-   #+end_src
+#+begin_src emacs-lisp
+  (use-package rust-mode :ensure t)
+  (use-package zig-mode :ensure t)
+#+end_src
 ** Lisp
-   #+begin_src emacs-lisp
-     (use-package lispyville
-       :ensure t
-       :config
-       (lispyville-set-key-theme '(operators))
-       (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
-   #+end_src
+#+begin_src emacs-lisp
+  (use-package lispyville
+    :ensure t
+    :config
+    (lispyville-set-key-theme '(operators))
+    (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
+#+end_src
 * Sundry
 ** No weird files
-   #+begin_src emacs-lisp
-     (setq auto-save-default nil)
-     (setq backup-inhibited t)
-     (setq create-lockfiles nil)
-   #+end_src
+#+begin_src emacs-lisp
+  (setq auto-save-default nil)
+  (setq backup-inhibited t)
+  (setq create-lockfiles nil)
+#+end_src
 ** Follow symlinks
-   #+begin_src emacs-lisp
-     (setq vc-follow-symlinks t)
-   #+end_src
+#+begin_src emacs-lisp
+  (setq vc-follow-symlinks t)
+#+end_src
 ** Custom file
-   Set and load up `custom.el'
-   #+begin_src emacs-lisp
-     (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-     (load custom-file :noerror)
-   #+end_src
+Set and load up `custom.el'
+#+begin_src emacs-lisp
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (load custom-file :noerror)
+#+end_src
 ** Start Server
-   #+begin_src emacs-lisp
-     (when (daemonp) (server-start))
-   #+end_src
+#+begin_src emacs-lisp
+  (when (daemonp) (server-start))
+#+end_src
