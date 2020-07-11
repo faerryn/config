@@ -73,7 +73,6 @@ let g:lightline = { "colorscheme": "gruvbox",
 
 " nvim-lsp
 packadd nvim-lsp
-let s:lsps = { "rust": "rust_analyzer", "cpp": "clangd" } 
 function s:setup_lsp()
 	nnoremap <silent> <buffer> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 	nnoremap <silent> <buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
