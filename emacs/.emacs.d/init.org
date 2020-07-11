@@ -236,13 +236,22 @@
    #+begin_src emacs-lisp
      (setq vc-follow-symlinks t)
    #+end_src
-** Start Server
-   #+begin_src emacs-lisp
-     (when (daemonp) (server-start))
-   #+end_src
 ** Custom file
    Set and load up `custom.el'
    #+begin_src emacs-lisp
      (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
      (load custom-file :noerror)
+   #+end_src
+** Setup PATH
+   #+begin_src emacs-lisp
+     (let ((user-bin (expand-file-name "~/.local/bin")))
+       (unless (member user-bin exec-path)
+	 (setenv "PATH" (concat user-bin ":" (getenv "PATH")))
+	 (add-to-list 'exec-path user-bin)))
+   #+end_src
+** Start Server
+   #+begin_src emacs-lisp
+     (when (daemonp) 
+
+       (server-start))
    #+end_src
