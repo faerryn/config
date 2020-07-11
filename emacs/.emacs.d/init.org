@@ -24,7 +24,6 @@
      (menu-bar-mode -1)
      (scroll-bar-mode -1)
      (tool-bar-mode -1)
-     (tooltip-mode -1)
      (setq inhibit-splash-screen t)
    #+end_src
 ** Maximized
@@ -37,9 +36,9 @@
    #+end_src
 ** Theme
    #+begin_src emacs-lisp
-     (use-package zenburn-theme
+     (use-package doom-themes
        :ensure t
-       :config (load-theme 'zenburn t))
+       :config (load-theme 'doom-vibrant t))
    #+end_src
 ** Modeline
 *** Moody
