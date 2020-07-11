@@ -49,10 +49,10 @@
 	(setq x-underline-at-descent-line t)
 	(moody-replace-mode-line-buffer-identification)
 	(moody-replace-vc-mode)
-	(add-hook 'after-setting-font-hook 'personal-moody-fix-height)
+	(add-hook 'after-setting-font-hook #'personal-moody-fix-height)
 	(if (daemonp)
 	    (add-hook 'after-make-frame-functions
-		      'personal-moody-fix-height)
+		      #'personal-moody-fix-height)
 	  (personal-moody-fix-height)))
     #+end_src
 *** Minions
@@ -88,9 +88,9 @@
        :after (evil)
        :config
        (define-key 
-	 evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
+	 evil-normal-state-map (kbd "C-c +") #'evil-numbers/inc-at-pt)
        (define-key
-	 evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt))
+	 evil-normal-state-map (kbd "C-c -") #'evil-numbers/dec-at-pt))
      (use-package evil-goggles
        :ensure t
        :after (evil)
@@ -120,9 +120,9 @@
        :after (evil)
        :config
        (define-key 
-	 evil-inner-text-objects-map "c" 'evil-textobj-column-word)
+	 evil-inner-text-objects-map "c" #'evil-textobj-column-word)
        (define-key
-	 evil-inner-text-objects-map "C" 'evil-textobj-column-WORD))
+	 evil-inner-text-objects-map "C" #'evil-textobj-column-WORD))
    #+end_src
 ** Evil-collections
    #+begin_src emacs-lisp
@@ -150,15 +150,15 @@
       :ensure t
       :config
       (setq org-src-tab-acts-natively t)
-      (global-set-key (kbd "C-c l") 'org-store-link)
-      (global-set-key (kbd "C-c a") 'org-agenda)
-      (global-set-key (kbd "C-c c") 'org-capture))
+      (global-set-key (kbd "C-c l") #'org-store-link)
+      (global-set-key (kbd "C-c a") #'org-agenda)
+      (global-set-key (kbd "C-c c") #'org-capture))
     (use-package evil-org
       :ensure t
       :after (evil org)
       :config
-      (add-hook 'org-mode-hook 'evil-org-mode)
-      (add-hook 'evil-org-mode-hook 'evil-org-set-key-theme)
+      (add-hook 'org-mode-hook #'evil-org-mode)
+      (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme)
       (require 'evil-org-agenda)
       (evil-org-agenda-set-keys))
   #+end_src
@@ -186,7 +186,7 @@
    No swiping
    #+begin_src emacs-lisp
      (use-package swiper
-       :bind ("C-s" . 'swiper-isearch)
+       :bind ("C-s" . #'swiper-isearch)
        :ensure t
        :after (ivy))
    #+end_src
@@ -195,7 +195,7 @@
   #+begin_src emacs-lisp
     (use-package magit
       :ensure t
-      :bind ("C-x g" . 'magit-status))
+      :bind ("C-c g" . #'magit-status))
     (use-package evil-magit
       :ensure t
       :after (magit evil))
@@ -207,7 +207,7 @@
        (company-mode +1)
        (yas-minor-mode +1)
        (eglot-ensure)
-       (add-hook 'before-save-hook 'eglot-format-buffer))
+       (add-hook 'before-save-hook #'eglot-format-buffer))
      (use-package eglot
        :ensure t
        :pin melpa-stable
@@ -216,8 +216,8 @@
        (setq eglot-server-programs 
 	     '((rust-mode . ("rust-analyzer")) 
 	       (c++-mode . ("clangd" "--background-index"))))
-       (add-hook 'rust-mode-hook 'personal-lsp-setup)
-       (add-hook 'c++-mode-hook 'personal-lsp-setup))
+       (add-hook 'rust-mode-hook #'personal-lsp-setup)
+       (add-hook 'c++-mode-hook #'personal-lsp-setup))
      (use-package company :ensure t)
      (use-package yasnippet :ensure t)
      (use-package markdown-mode :ensure t)
@@ -228,6 +228,14 @@
      (use-package zig-mode
        :ensure t
        :config (setq zig-format-on-save t))
+   #+end_src
+** Lisp
+   #+begin_src emacs-lisp
+     (use-package lispyville
+       :ensure t
+       :config
+       (add-hook 'emacs-lisp-mode-hook #'lispy-mode)
+       (add-hook 'lispy-mode-hook #'lispyville-mode))
    #+end_src
 * Sundry
 ** No weird files
