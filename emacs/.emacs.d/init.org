@@ -3,10 +3,12 @@
   #+begin_src emacs-lisp
     (setq load-prefer-newer t)
     (require 'package)
-    (add-to-list 
-     'package-archives '("melpa" . "https://melpa.org/packages/") t)
-    (add-to-list 
-     'package-archives '("org" . "https://orgmode.org/elpa/") t)
+    (add-to-list 'package-archives 
+		 '("melpa" . "https://melpa.org/packages/") t)
+    (add-to-list 'package-archives 
+		 '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+    (add-to-list 'package-archives 
+		 '("org" . "https://orgmode.org/elpa/") t)
     (unless (package-installed-p 'use-package)
       (package-refresh-contents)
       (package-install 'use-package))
@@ -48,11 +50,9 @@
 	(if (daemonp)
 	    (add-hook 
 	     'after-make-frame-functions
-	     (defun personal-fix-daemon-moody-height (frame) 
+	     (lambda (frame) 
 	       (with-selected-frame frame
-		 (setq moody-mode-line-height (line-pixel-height)))
-	       (remove-hook 'after-make-frame-functions
-			    'personal-fix-daemon-moody-height)))
+		 (setq moody-mode-line-height (line-pixel-height)))))
 	  (setq moody-mode-line-height (line-pixel-height))))
     #+end_src
 *** Minions
@@ -78,19 +78,12 @@
    #+begin_src emacs-lisp
      (use-package evil
        :ensure t
-       :init
-       (setq evil-want-integration t)
-       (setq evil-want-keybinding nil)
        :config
        (evil-select-search-module 'evil-search-module 'evil-search)
        (evil-mode +1))
-     (use-package evil-collection
-       :ensure t
-       :requires (evil)
-       :config (evil-collection-init))
      (use-package evil-numbers
        :ensure t
-       :requires (evil)
+       :after (evil)
        :config
        (define-key 
 	 evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
@@ -98,7 +91,7 @@
 	 evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt))
      (use-package evil-goggles
        :ensure t
-       :requires (evil)
+       :after (evil)
        :config (evil-goggles-mode +1))
    #+end_src
 ** Emulate vim plugins
@@ -106,23 +99,23 @@
    #+begin_src emacs-lisp
      (use-package evil-surround
        :ensure t
-       :requires (evil)
+       :after (evil)
        :config (global-evil-surround-mode +1))
      (use-package evil-commentary
        :ensure t
-       :requires (evil)
+       :after (evil)
        :config (evil-commentary-mode +1))
      (use-package evil-matchit
        :ensure t
-       :requires (evil)
+       :after (evil)
        :config (global-evil-matchit-mode +1))
      (use-package evil-exchange
        :ensure t
-       :requires (evil)
+       :after (evil)
        :config (evil-exchange-install))
      (use-package evil-textobj-column
        :ensure t
-       :requires (evil)
+       :after (evil)
        :config
        (define-key 
 	 evil-inner-text-objects-map "c" 'evil-textobj-column-word)
@@ -153,12 +146,10 @@
       (global-set-key (kbd "C-c c") 'org-capture))
     (use-package evil-org
       :ensure t
-      :requires (evil org)
+      :after (evil org)
       :config
       (add-hook 'org-mode-hook 'evil-org-mode)
-      (add-hook 'evil-org-mode-hook
-		(lambda ()
-		  (evil-org-set-key-theme)))
+      (add-hook 'evil-org-mode-hook 'evil-org-set-key-theme)
       (require 'evil-org-agenda)
       (evil-org-agenda-set-keys))
   #+end_src
@@ -179,7 +170,7 @@
    #+begin_src emacs-lisp
      (use-package counsel
        :ensure t
-       :requires (ivy)
+       :after (ivy)
        :config (counsel-mode +1))
    #+end_src
 ** Swiper
@@ -188,7 +179,7 @@
      (use-package swiper
        :bind ("C-s" . 'swiper-isearch)
        :ensure t
-       :requires (ivy))
+       :after (ivy))
    #+end_src
 * Magit
   Worms worms worms!
@@ -198,10 +189,10 @@
       :bind ("C-x g" . 'magit-status))
     (use-package evil-magit
       :ensure t
-      :requires (magit evil))
+      :after (magit evil))
   #+end_src
 * Coding
-** Eglot, Company, and Yasnippet
+** Eglot
    #+begin_src emacs-lisp
      (defun personal-lsp-setup () 
        (company-mode +1)
@@ -210,6 +201,7 @@
        (add-hook 'before-save-hook 'eglot-format-buffer))
      (use-package eglot
        :ensure t
+       :pin melpa-stable
        :after (company yasnippet markdown-mode)
        :config
        (setq eglot-server-programs 
