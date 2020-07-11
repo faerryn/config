@@ -1,7 +1,7 @@
 * Packages
-  Get packages.el, melpa, and use-packages up and running
   #+begin_src emacs-lisp
     (setq load-prefer-newer t)
+
     (require 'package)
     (add-to-list 'package-archives 
 		 '("melpa" . "https://melpa.org/packages/") t)
@@ -9,10 +9,13 @@
 		 '("melpa-stable" . "https://stable.melpa.org/packages/") t)
     (add-to-list 'package-archives 
 		 '("org" . "https://orgmode.org/elpa/") t)
+
     (unless (package-installed-p 'use-package)
       (package-refresh-contents)
       (package-install 'use-package))
     (require 'use-package)
+
+    (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
   #+end_src
 * Aesthetics
 ** Clean UI
@@ -62,7 +65,6 @@
 	:config (minions-mode +1))
     #+end_src
 ** Line numbers
-   Relative line numbers and highlighted current line
    #+begin_src emacs-lisp
      (setq-default display-line-numbers 'relative)
      (global-hl-line-mode +1)
@@ -73,7 +75,6 @@
    #+end_src
 * Evil
 ** Emulate vim
-   Worship the VI-VI-VI
    #+begin_src emacs-lisp
      (use-package evil
        :ensure t
@@ -97,7 +98,6 @@
        :config (evil-goggles-mode +1))
    #+end_src
 ** Emulate vim plugins
-   But in emacs
    #+begin_src emacs-lisp
      (use-package evil-surround
        :ensure t
@@ -132,7 +132,6 @@
        :config (evil-collection-init))
    #+end_src
 ** Undo-tree
-   Replaces auto-save and backups, acts like a pseudo-vcs
    #+begin_src emacs-lisp
      (use-package undo-tree
        :ensure t
@@ -144,7 +143,6 @@
        (global-undo-tree-mode +1))
    #+end_src
 * Org
-  Wait, this whole file runs on org-mode...how is the setup here?
   #+begin_src emacs-lisp
     (use-package org
       :ensure t
@@ -163,9 +161,7 @@
       (evil-org-agenda-set-keys))
   #+end_src
 * Ivy
-  The plant
 ** Ivy
-   Poison ivy
    #+begin_src emacs-lisp
      (use-package ivy
        :ensure t
@@ -175,7 +171,6 @@
        (ivy-mode +1))
    #+end_src
 ** Counsel
-   Counselors
    #+begin_src emacs-lisp
      (use-package counsel
        :ensure t
@@ -183,7 +178,6 @@
        :config (counsel-mode +1))
    #+end_src
 ** Swiper
-   No swiping
    #+begin_src emacs-lisp
      (use-package swiper
        :bind ("C-s" . #'swiper-isearch)
@@ -207,6 +201,8 @@
        (company-mode +1)
        (yas-minor-mode +1)
        (eglot-ensure)
+       (setq gc-cons-threshold 100000000)
+       (setq read-process-output-max (* 1024 1024))
        (add-hook 'before-save-hook #'eglot-format-buffer))
      (use-package eglot
        :ensure t
@@ -234,6 +230,7 @@
      (use-package lispyville
        :ensure t
        :config
+       (lispyville-set-key-theme '(operators))
        (add-hook 'emacs-lisp-mode-hook #'lispy-mode)
        (add-hook 'lispy-mode-hook #'lispyville-mode))
    #+end_src
@@ -253,13 +250,6 @@
    #+begin_src emacs-lisp
      (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
      (load custom-file :noerror)
-   #+end_src
-** Setup PATH
-   #+begin_src emacs-lisp
-     (let ((user-bin (expand-file-name "~/.local/bin")))
-       (unless (member user-bin exec-path)
-	 (setenv "PATH" (concat user-bin ":" (getenv "PATH")))
-	 (add-to-list 'exec-path user-bin)))
    #+end_src
 ** Start Server
    #+begin_src emacs-lisp
