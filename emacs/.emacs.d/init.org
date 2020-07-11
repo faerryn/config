@@ -15,9 +15,7 @@
     (require 'use-package)
   #+end_src
 * Aesthetics
-  Pretty colors and nice views!
 ** Clean UI
-   No frills
    #+begin_src emacs-lisp
      (menu-bar-mode -1)
      (scroll-bar-mode -1)
@@ -30,12 +28,10 @@
      (add-to-list 'default-frame-alist '(fullscreen . maximized))
    #+end_src
 ** Mouse scroll
-   Slow down, wheel!
    #+begin_src emacs-lisp
      (setq mouse-wheel-scroll-amount '(1))
    #+end_src
 ** Theme
-   Noicest theme of them all...
    #+begin_src emacs-lisp
      (use-package zenburn-theme
        :ensure t
@@ -43,7 +39,6 @@
    #+end_src
 ** Modeline
 *** Moody
-    I'm mad!
     #+begin_src emacs-lisp
       (defun personal-moody-fix-height (&optional frame) 
 	(with-selected-frame (if frame (identity frame) (selected-frame))
@@ -61,7 +56,6 @@
 	  (personal-moody-fix-height)))
     #+end_src
 *** Minions
-    Begone, lighters!
     #+begin_src emacs-lisp
       (use-package minions
 	:ensure t
@@ -83,6 +77,9 @@
    #+begin_src emacs-lisp
      (use-package evil
        :ensure t
+       :init
+       (setq evil-want-integration t)
+       (setq evil-want-keybinding nil)
        :config
        (evil-select-search-module 'evil-search-module 'evil-search)
        (evil-mode +1))
@@ -126,6 +123,13 @@
 	 evil-inner-text-objects-map "c" 'evil-textobj-column-word)
        (define-key
 	 evil-inner-text-objects-map "C" 'evil-textobj-column-WORD))
+   #+end_src
+** Evil-collections
+   #+begin_src emacs-lisp
+     (use-package evil-collection
+       :ensure t
+       :after (evil)
+       :config (evil-collection-init))
    #+end_src
 ** Undo-tree
    Replaces auto-save and backups, acts like a pseudo-vcs
@@ -251,7 +255,5 @@
    #+end_src
 ** Start Server
    #+begin_src emacs-lisp
-     (when (daemonp) 
-
-       (server-start))
+     (when (daemonp) (server-start))
    #+end_src
