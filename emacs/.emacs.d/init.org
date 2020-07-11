@@ -41,19 +41,20 @@
 *** Moody
     I'm mad!
     #+begin_src emacs-lisp
+      (defun personal-moody-fix-height (&optional frame) 
+	(with-selected-frame (if frame (identity frame) (selected-frame))
+	  (setq moody-mode-line-height (line-pixel-height))))
       (use-package moody
 	:ensure t
 	:config
 	(setq x-underline-at-descent-line t)
 	(moody-replace-mode-line-buffer-identification)
 	(moody-replace-vc-mode)
+	(add-hook 'after-setting-font-hook 'personal-moody-fix-height)
 	(if (daemonp)
-	    (add-hook 
-	     'after-make-frame-functions
-	     (lambda (frame) 
-	       (with-selected-frame frame
-		 (setq moody-mode-line-height (line-pixel-height)))))
-	  (setq moody-mode-line-height (line-pixel-height))))
+	    (add-hook 'after-make-frame-functions
+		      'personal-moody-fix-height)
+	  (personal-moody-fix-height)))
     #+end_src
 *** Minions
     Begone, lighters!
