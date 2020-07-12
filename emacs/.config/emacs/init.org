@@ -134,9 +134,10 @@
   (defun personal-ivy-emulate-fzf ()
     "Emulates the behavior of FZF"
     (interactive)
-    (find-file (ivy-read (abbreviate-file-name default-directory)
-              (split-string (shell-command-to-string
-                             (getenv "FZF_DEFAULT_COMMAND"))))))
+    (find-file (ivy-read
+                "Find file: "
+                (split-string (shell-command-to-string
+                               (getenv "FZF_DEFAULT_COMMAND"))))))
   (use-package ivy
     :ensure t
     :config

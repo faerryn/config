@@ -30,7 +30,7 @@ map Y y$
 autocmd VimEnter * silent! helptags ALL
 if has("nvim-0.5.0")
     autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=500}
-fi
+endif
 
 nnoremap <silent> <leader>l <cmd>lopen<cr>
 nnoremap <silent> <leader>q <cmd>copen<cr>

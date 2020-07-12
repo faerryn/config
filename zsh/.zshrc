@@ -92,6 +92,6 @@ fi
 if ! command -v fzf >/dev/null; then
     export PATH="$HOME/.config/zsh/plugins/fzf/bin:$PATH"
 fi
-export FZF_CTRL_T_COMMAND="fd --hidden --type=file"
-export FZF_ALT_C_COMMAND="fd --hidden --type=directory"
+export FZF_CTRL_T_COMMAND="fd --hidden --no-ignore-vcs --type=file"
+export FZF_ALT_C_COMMAND="fd --hidden --no-ignore-vcs --type=directory"
 source ~/.config/zsh/plugins/fzf/shell/key-bindings.zsh
