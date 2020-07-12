@@ -1,8 +1,11 @@
 #+startup: indent
 * Packages
+** Load newer lisps
 #+begin_src emacs-lisp
   (setq load-prefer-newer t)
-
+#+end_src
+** Add package sources
+#+begin_src emacs-lisp
   (require 'package)
   (add-to-list 'package-archives 
                '("melpa" . "https://melpa.org/packages/") t)
@@ -10,37 +13,30 @@
                '("melpa-stable" . "https://stable.melpa.org/packages/") t)
   (add-to-list 'package-archives 
                '("org" . "https://orgmode.org/elpa/") t)
-
+#+end_src
+** Load use-package
+#+begin_src emacs-lisp
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
   (require 'use-package)
-
-  (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 #+end_src
 * Aesthetics
-** Clean UI
-#+begin_src emacs-lisp
-  (menu-bar-mode -1)
-  (scroll-bar-mode -1)
-  (tool-bar-mode -1)
-  (setq inhibit-splash-screen t)
-#+end_src
 ** Maximized
 #+begin_src emacs-lisp
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
 #+end_src
-** Mouse scroll
+** Slower mouse scroll
 #+begin_src emacs-lisp
   (setq mouse-wheel-scroll-amount '(1))
 #+end_src
-** Theme
+** Doom Vibrant Theme
 #+begin_src emacs-lisp
   (use-package doom-themes
     :ensure t
     :config (load-theme 'doom-vibrant t))
 #+end_src
-** Modeline
+** Pretty Modeline
 *** Moody
 #+begin_src emacs-lisp
   (defun personal-moody-fix-height (&optional frame) 
@@ -65,12 +61,12 @@
     :ensure t
     :config (minions-mode +1))
 #+end_src
-** Line numbers
+** Relative line numbers
 #+begin_src emacs-lisp
   (setq-default display-line-numbers 'relative)
   (global-hl-line-mode +1)
 #+end_src
-** Prettify
+** Prettify-symbols
 #+begin_src emacs-lisp
   (global-prettify-symbols-mode +1)
 #+end_src
@@ -89,23 +85,25 @@
     (setq evil-want-Y-yank-to-eol t)
     (add-hook 'evil-mode-hook (lambda () (setq evil-auto-indent nil)))
     (evil-mode +1))
-  (use-package evil-numbers
-    :ensure t
-    :after (evil)
-    :bind (:map evil-normal-state-map
-                ("C-c +" . evil-numbers/inc-at-pt)
-                ("C-c -" . evil-numbers/dec-at-pt)))
   (use-package evil-goggles
     :ensure t
     :after (evil)
     :config (evil-goggles-mode +1))
-#+end_src
-** Emulate vim plugins
-#+begin_src emacs-lisp
   (use-package evil-surround
     :ensure t
     :after (evil)
     :config (global-evil-surround-mode +1))
+  (use-package undo-tree
+    :ensure t
+    :config
+    (setq undo-tree-auto-save-history t)
+    (setq
+     undo-tree-history-directory-alist
+     `(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
+    (global-undo-tree-mode +1))
+#+end_src
+** Emulate vim plugins
+#+begin_src emacs-lisp
   (use-package evil-commentary
     :ensure t
     :after (evil)
@@ -118,52 +116,10 @@
     :ensure t
     :after (evil)
     :config (evil-exchange-install))
-  (use-package evil-textobj-column
-    :ensure t
-    :after (evil)
-    :config
-    (define-key 
-      evil-inner-text-objects-map "c" #'evil-textobj-column-word)
-    (define-key
-      evil-inner-text-objects-map "C" #'evil-textobj-column-WORD))
-#+end_src
-** Evil-collections
-#+begin_src emacs-lisp
   (use-package evil-collection
     :ensure t
     :after (evil)
     :config (evil-collection-init))
-#+end_src
-** Undo-tree
-#+begin_src emacs-lisp
-  (use-package undo-tree
-    :ensure t
-    :config
-    (setq undo-tree-auto-save-history t)
-    (setq
-     undo-tree-history-directory-alist
-     `(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
-    (global-undo-tree-mode +1))
-#+end_src
-* Org
-#+begin_src emacs-lisp
-  (use-package org
-    :ensure t
-    :defer nil
-    :bind
-    ("C-c l" . org-store-link)
-    ("C-c a" . org-agenda)
-    ("C-c c" . org-capture)
-    :config
-    (setq org-src-tab-acts-natively t))
-  (use-package evil-org
-    :ensure t
-    :after (evil org)
-    :config
-    (add-hook 'org-mode-hook #'evil-org-mode)
-    (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme)
-    (require 'evil-org-agenda)
-    (evil-org-agenda-set-keys))
 #+end_src
 * Ivy
 ** Ivy
@@ -191,6 +147,26 @@
     :ensure t
     :after (ivy))
 #+end_src
+* Org
+#+begin_src emacs-lisp
+  (use-package org
+    :ensure t
+    :defer nil
+    :bind
+    ("C-c l" . org-store-link)
+    ("C-c a" . org-agenda)
+    ("C-c c" . org-capture)
+    :config
+    (setq org-src-tab-acts-natively t))
+  (use-package evil-org
+    :ensure t
+    :after (evil org)
+    :config
+    (add-hook 'org-mode-hook #'evil-org-mode)
+    (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme)
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys))
+#+end_src
 * Magit
 #+begin_src emacs-lisp
   (use-package magit
@@ -200,12 +176,35 @@
     :ensure t
     :after (magit evil))
 #+end_src
-* Coding
+* Programming
+** Languages
+*** Rust
+#+begin_src emacs-lisp
+  (use-package rust-mode :ensure t)
+#+end_src
+*** Zig
+#+begin_src emacs-lisp
+  (use-package zig-mode :ensure t)
+#+end_src
+*** Lisp
+#+begin_src emacs-lisp
+  (use-package lispyville
+    :ensure t
+    :after (lispy)
+    :config
+    (lispyville-set-key-theme '(operators))
+    (add-hook 'lisp-mode-hook #'lispyville-mode)
+    (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
+  (use-package lispy
+    :ensure t
+    :config
+    (evil-collection-lispy-set-key-theme '(evil paredit c-digits))
+    (add-hook 'lisp-mode-hook #'lispy-mode)
+    (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
+#+end_src
 ** Eglot
 #+begin_src emacs-lisp
   (defun personal-lsp-setup () 
-    (setq gc-cons-threshold 6400000)
-    (setq read-process-output-max (* 1024 1024))
     (eglot-ensure)
     (add-hook 'before-save-hook #'eglot-format-buffer nil t)
     (add-hook 'eglot-managed-mode-hook #'evil-force-normal-state nil t))
@@ -223,25 +222,15 @@
   (use-package yasnippet :ensure t)
   (use-package markdown-mode :ensure t)
 #+end_src
-** Languages
-#+begin_src emacs-lisp
-  (use-package rust-mode :ensure t)
-  (use-package zig-mode :ensure t)
-#+end_src
-** Lisp
-#+begin_src emacs-lisp
-  (use-package lispyville
-    :ensure t
-    :config
-    (evil-collection-lispy-set-key-theme '(evil paredit c-digits))
-    (lispyville-set-key-theme '(operators))
-    (add-hook 'lisp-mode-hook #'lispy-mode)
-    (add-hook 'emacs-lisp-mode-hook #'lispy-mode)
-    (add-hook 'lisp-mode-hook #'lispyville-mode)
-    (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
-#+end_src
 * Sundry
-** No weird files
+** Clean UI
+#+begin_src emacs-lisp
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+  (setq inhibit-splash-screen t)
+#+end_src
+** Clean FS
 #+begin_src emacs-lisp
   (setq auto-save-default nil)
   (setq backup-inhibited t)
@@ -251,13 +240,12 @@
 #+begin_src emacs-lisp
   (setq vc-follow-symlinks t)
 #+end_src
-** Custom file
-Set and load up `custom.el'
+** Load Custom file
 #+begin_src emacs-lisp
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
   (load custom-file :noerror)
 #+end_src
-** Start Server
+** Emacs Server
 #+begin_src emacs-lisp
   (when (daemonp) (server-start))
 #+end_src
