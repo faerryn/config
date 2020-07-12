@@ -3,6 +3,7 @@ autocmd!
 
 let g:mapleader="\<space>"
 set clipboard=unnamed,unnamedplus
+set confirm
 set cursorline cursorcolumn colorcolumn=80
 set foldmethod=syntax foldlevelstart=20
 set hidden
@@ -11,23 +12,23 @@ set lazyredraw
 set list listchars=tab:\ \ ,trail:-,nbsp:+
 set mouse=ar
 set noshowmode
-set nowrap
+set nowrap linebreak
 set nrformats+=alpha,octal
 set number relativenumber
 set omnifunc=syntaxcomplete#Complete
 set signcolumn=yes
 set spell
 set splitbelow splitright
-set termguicolors
-set timeoutlen=300
-set undofile
-set updatetime=300
 set tabstop=8 softtabstop=4 shiftwidth=4
+set termguicolors
+set timeoutlen=500
+set undofile
+set updatetime=500
 
 map Y y$
 
 autocmd VimEnter * silent! helptags ALL
-autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=300}
+autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=500}
 
 nnoremap <silent> <leader>l <cmd>lopen<cr>
 nnoremap <silent> <leader>q <cmd>copen<cr>
@@ -94,14 +95,16 @@ function s:setup_lsp()
 	autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
     augroup END
 endfunction
-autocmd FileType rust,cpp call s:setup_lsp()
+
+lua require'nvim_lsp'.rust_analyzer.setup{}
+autocmd FileType rust call s:setup_lsp()
+
 lua << EOF
-local nvim_lsp = require'nvim_lsp'
-nvim_lsp.rust_analyzer.setup{}
-nvim_lsp.clangd.setup{
+require'nvim_lsp'.clangd.setup{
     cmd = { "clangd", "--background-index" },
     filetypes = { "cpp" }
 }
 EOF
+autocmd FileType cpp call s:setup_lsp()
 
 execute "augroup END"
