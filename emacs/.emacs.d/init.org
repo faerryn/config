@@ -90,7 +90,7 @@
     (setq evil-want-C-u-delete t)
     (setq evil-want-C-u-scroll t)
     (setq evil-want-Y-yank-to-eol t)
-    (add-hook 'evil-mode-hook (lambda () (setq evil-auto-indent nil)))
+    (add-hook 'org-mode-hook (lambda () (setq evil-auto-indent nil)))
     (evil-mode +1))
   (use-package evil-goggles
     :ensure t
