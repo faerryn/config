@@ -39,7 +39,7 @@ if command -v nvim >/dev/null; then
 	export MANPAGER="nvim -R +\"set signcolumn=no ft=man\" -"
 fi
 
-export FZF_DEFAULT_COMMAND="fd --hidden --exclude=\"**/.git/\" --exclude \"$HOME/.local/share/nvim/swap/\" --exclude \"$HOME/.local/share/nvim/undo/\" --exclude \"$HOME/.emacs.d/undo-tree/\" --type=file"
+export FZF_DEFAULT_COMMAND="fd --hidden --type=file"
 
 if command -v exa >/dev/null; then
 	alias ls="exa"
