@@ -22,6 +22,9 @@ set termguicolors
 set timeoutlen=300
 set undofile
 set updatetime=300
+set tabstop=8 softtabstop=4 shiftwidth=4
+
+map Y y$
 
 autocmd VimEnter * silent! helptags ALL
 autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=300}
@@ -67,36 +70,36 @@ colorscheme gruvbox
 
 " lightline.vim
 let g:lightline = { "colorscheme": "gruvbox",
-			\"separator": { "left": "", "right": "" },
-			\"subseparator": { "left": "", "right": "" },
-			\"tabline": { "right": [] } }
+	    \"separator": { "left": "", "right": "" },
+	    \"subseparator": { "left": "", "right": "" },
+	    \"tabline": { "right": [] } }
 
 " nvim-lsp
 packadd nvim-lsp
 function s:setup_lsp()
-	nnoremap <silent> <buffer> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-	nnoremap <silent> <buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-	nnoremap <silent> <buffer> K     <cmd>lua vim.lsp.buf.hover()<CR>
-	nnoremap <silent> <buffer> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-	nnoremap <silent> <buffer> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-	nnoremap <silent> <buffer> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-	nnoremap <silent> <buffer> gr    <cmd>lua vim.lsp.buf.references()<CR>
-	nnoremap <silent> <buffer> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-	nnoremap <silent> <buffer> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-	nnoremap <silent> <buffer> gA    <cmd>lua vim.lsp.buf.code_action()<CR>
-	setlocal omnifunc=v:lua.vim.lsp.omnifunc
-	augroup PersonalNvimLsp
-		autocmd! * <buffer>
-		autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-	augroup END
+    nnoremap <silent> <buffer> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+    nnoremap <silent> <buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+    nnoremap <silent> <buffer> K     <cmd>lua vim.lsp.buf.hover()<CR>
+    nnoremap <silent> <buffer> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+    nnoremap <silent> <buffer> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+    nnoremap <silent> <buffer> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+    nnoremap <silent> <buffer> gr    <cmd>lua vim.lsp.buf.references()<CR>
+    nnoremap <silent> <buffer> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+    nnoremap <silent> <buffer> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+    nnoremap <silent> <buffer> gA    <cmd>lua vim.lsp.buf.code_action()<CR>
+    setlocal omnifunc=v:lua.vim.lsp.omnifunc
+    augroup PersonalNvimLsp
+	autocmd! * <buffer>
+	autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+    augroup END
 endfunction
 autocmd FileType rust,cpp call s:setup_lsp()
 lua << EOF
 local nvim_lsp = require'nvim_lsp'
 nvim_lsp.rust_analyzer.setup{}
 nvim_lsp.clangd.setup{
-	cmd = { "clangd", "--background-index" },
-	filetypes = { "cpp" }
+    cmd = { "clangd", "--background-index" },
+    filetypes = { "cpp" }
 }
 EOF
 

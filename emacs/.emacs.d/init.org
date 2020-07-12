@@ -84,6 +84,10 @@
     (setq evil-want-keybinding nil)
     :config
     (evil-select-search-module 'evil-search-module 'evil-search)
+    (setq evil-want-C-u-delete t)
+    (setq evil-want-C-u-scroll t)
+    (setq evil-want-Y-yank-to-eol t)
+    (add-hook 'evil-mode-hook (lambda () (setq evil-auto-indent nil)))
     (evil-mode +1))
   (use-package evil-numbers
     :ensure t
@@ -175,6 +179,7 @@
   (use-package counsel
     :ensure t
     :after (ivy)
+    :bind ("C-c f" . counsel-file-jump)
     :config (counsel-mode +1))
 #+end_src
 ** Swiper
