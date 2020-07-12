@@ -42,3 +42,7 @@ fi
 if command -v exa >/dev/null; then
 	alias ls="exa"
 fi
+
+if command -v bat >/dev/null; then
+	alias cat="bat"
+fi
