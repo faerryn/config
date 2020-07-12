@@ -22,7 +22,14 @@
   (require 'use-package)
 #+end_src
 * Aesthetics
-** Maximized
+** Clean UI
+#+begin_src emacs-lisp
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+  (setq inhibit-splash-screen t)
+#+end_src
+** Maximized on start
 #+begin_src emacs-lisp
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
 #+end_src
@@ -127,7 +134,7 @@
   (defun personal-ivy-emulate-fzf ()
     "Emulates the behavior of FZF"
     (interactive)
-    (find-file (ivy-read "Files "
+    (find-file (ivy-read (abbreviate-file-name default-directory)
               (split-string (shell-command-to-string
                              (getenv "FZF_DEFAULT_COMMAND"))))))
   (use-package ivy
@@ -223,13 +230,6 @@
   (use-package markdown-mode :ensure t)
 #+end_src
 * Sundry
-** Clean UI
-#+begin_src emacs-lisp
-  (menu-bar-mode -1)
-  (scroll-bar-mode -1)
-  (tool-bar-mode -1)
-  (setq inhibit-splash-screen t)
-#+end_src
 ** Clean FS
 #+begin_src emacs-lisp
   (setq auto-save-default nil)
