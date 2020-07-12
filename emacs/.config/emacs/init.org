@@ -214,7 +214,7 @@
     (add-hook 'lisp-mode-hook #'lispy-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
 #+end_src
-** Eglot
+** LSP
 #+begin_src emacs-lisp
   (defun personal-lsp-setup () 
     (eglot-ensure)
