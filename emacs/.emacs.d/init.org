@@ -132,17 +132,11 @@
 #+end_src
 ** Counsel
 #+begin_src emacs-lisp
-  (defun personal-counsel-fzf ()
-    "Installs fzf if fzf not present before search.  Otherwise identitcal to `counsel-fzf'."
-    (interactive)
-    (unless (executable-find "fzf")
-      (shell-command "~/.local/lib/fzf/install --bin"))
-    (counsel-fzf))
   (use-package counsel
     :ensure t
     :after (ivy)
     :defer nil
-    :bind ("C-c f" . personal-counsel-fzf)
+    :bind ("C-c f" . counsel-file-jump)
     :config
     (counsel-mode +1))
 #+end_src
