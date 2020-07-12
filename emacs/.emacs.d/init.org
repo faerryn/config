@@ -180,7 +180,7 @@
     :ensure t
     :after (ivy)
     :defer nil
-    :bind ("C-c f" . counsel-file-jump)
+    :bind ("C-c f" . counsel-fzf)
     :config
     (counsel-mode +1))
 #+end_src

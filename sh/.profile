@@ -39,6 +39,8 @@ if command -v nvim >/dev/null; then
 	export MANPAGER="nvim -R +\"set signcolumn=no ft=man\" -"
 fi
 
+export FZF_DEFAULT_COMMAND="fd -H -E \"**/.git\" -tf"
+
 if command -v exa >/dev/null; then
 	alias ls="exa"
 fi

@@ -58,7 +58,6 @@ autocmd FileType undotree nnoremap <silent> <buffer> <esc> <cmd>UndotreeHide<cr>
 nnoremap <silent> <leader>g <cmd>G<cr>
 
 " fzf
-let $FZF_DEFAULT_COMMAND="fd -HL -E \"**/.git\" -tf"
 nnoremap <silent> <leader>f <cmd>FZF<cr>
 
 " gruvbox
