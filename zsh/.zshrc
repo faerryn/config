@@ -87,7 +87,7 @@ source ~/.config/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 
 # FZF
 if ! command -v fzf >/dev/null; then
-    ~/.local/lib/fzf/install --bin
+    ~/.local/lib/fzf/install --bin >/dev/null 2>&1
 fi
 export FZF_CTRL_T_COMMAND="fd --hidden --exclude=\"**/.git\" --type=file"
 export FZF_ALT_C_COMMAND="fd --hidden --exclude=\"**/.git\" --type=directory"
