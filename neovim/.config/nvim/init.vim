@@ -32,8 +32,8 @@ autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=300}
 nnoremap <silent> <leader>l <cmd>lopen<cr>
 nnoremap <silent> <leader>q <cmd>copen<cr>
 
-" Setting up <esc> and <c-w>q
-autocmd FileType help,qf,fugitive nnoremap <silent> <buffer> <esc> <c-w>q
+" Setting up q to quit for help, qf
+autocmd FileType help,qf nnoremap <silent> <buffer> q <c-w>q
 
 " vim-sandwich
 let g:textobj_sandwich_no_default_key_mappings = 1
@@ -52,13 +52,15 @@ let g:undotree_WindowLayout = 3
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators = 1
 nnoremap <silent> <leader>u <cmd>UndotreeShow<cr>
-autocmd FileType undotree nnoremap <silent> <buffer> <esc> <cmd>UndotreeHide<cr>
 
 " vim-fugitive
 nnoremap <silent> <leader>g <cmd>G<cr>
+autocmd FileType fugitive nnoremap <silent> <buffer> q <c-w>q
 
 " fzf
-nnoremap <silent> <leader>f <cmd>FZF<cr>
+nnoremap <silent> <leader>f <cmd>Files<cr>
+nnoremap <silent> <leader>b <cmd>Buffers<cr>
+let g:fzf_preview_window = ''
 
 " gruvbox
 let g:gruvbox_contrast_dark = "medium"

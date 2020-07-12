@@ -97,3 +97,6 @@
 [submodule "fzf/.local/lib/fzf"]
 	path = fzf/.local/lib/fzf
 	url = https://github.com/junegunn/fzf
+[submodule "neovim/.config/nvim/pack/bundle/start/fzf.vim"]
+	path = neovim/.config/nvim/pack/bundle/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
