@@ -184,7 +184,6 @@
     :after (ivy))
 #+end_src
 * Magit
-Worms worms worms!
 #+begin_src emacs-lisp
   (use-package magit
     :ensure t
@@ -197,12 +196,11 @@ Worms worms worms!
 ** Eglot
 #+begin_src emacs-lisp
   (defun personal-lsp-setup () 
-    (company-mode +1)
-    (yas-minor-mode +1)
-    (eglot-ensure)
-    (setq gc-cons-threshold 100000000)
+    (setq gc-cons-threshold 6400000)
     (setq read-process-output-max (* 1024 1024))
-    (add-hook 'before-save-hook #'eglot-format-buffer))
+    (eglot-ensure)
+    (add-hook 'before-save-hook #'eglot-format-buffer nil t)
+    (add-hook 'eglot-managed-mode-hook #'evil-force-normal-state nil t))
   (use-package eglot
     :ensure t
     :pin melpa-stable
