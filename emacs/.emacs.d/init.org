@@ -149,6 +149,7 @@
 #+begin_src emacs-lisp
   (use-package org
     :ensure t
+    :defer nil
     :bind
     ("C-c l" . org-store-link)
     ("C-c a" . org-agenda)
@@ -178,8 +179,10 @@
   (use-package counsel
     :ensure t
     :after (ivy)
+    :defer nil
     :bind ("C-c f" . counsel-file-jump)
-    :config (counsel-mode +1))
+    :config
+    (counsel-mode +1))
 #+end_src
 ** Swiper
 #+begin_src emacs-lisp
@@ -232,7 +235,9 @@
     :config
     (evil-collection-lispy-set-key-theme '(evil paredit c-digits))
     (lispyville-set-key-theme '(operators))
+    (add-hook 'lisp-mode-hook #'lispy-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispy-mode)
+    (add-hook 'lisp-mode-hook #'lispyville-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
 #+end_src
 * Sundry
