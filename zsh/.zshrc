@@ -86,9 +86,12 @@ bindkey -M vicmd "^n" history-substring-search-down
 source ~/.config/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 
 # FZF
+if ! command -v fzf >/dev/null && [[ ! -a ~/.config/zsh/plugins/fzf/bin/fzf ]]; then
+    ~/.config/zsh/plugins/fzf/install --bin
+fi
 if ! command -v fzf >/dev/null; then
-    ~/.local/lib/fzf/install --bin >/dev/null 2>&1
+    export PATH="$HOME/.config/zsh/plugins/fzf/bin:$PATH"
 fi
 export FZF_CTRL_T_COMMAND="fd --hidden --exclude=\"**/.git\" --type=file"
 export FZF_ALT_C_COMMAND="fd --hidden --exclude=\"**/.git\" --type=directory"
-source ~/.local/lib/fzf/shell/key-bindings.zsh
+source ~/.config/zsh/plugins/fzf/shell/key-bindings.zsh
