@@ -145,11 +145,19 @@
 * Completion
 ** Ivy
 #+begin_src emacs-lisp
+  (defun personal-ivy-emulate-fzf ()
+    "Emulates the behavior of FZF"
+    (interactive)
+    (ivy-read
+     "Find file: "
+     (split-string (shell-command-to-string
+                    (getenv "FZF_DEFAULT_COMMAND")))
+     :action #'find-file))
   (use-package ivy
     :ensure t
     :config
     (setq ivy-count-format "(%d/%d) ")
-    (global-set-key (kbd "C-c f") #'counsel-file-jump)
+    (global-set-key (kbd "C-c f") #'personal-ivy-emulate-fzf)
     (ivy-mode +1))
 #+end_src
 ** Counsel
