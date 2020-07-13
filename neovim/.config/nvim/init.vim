@@ -1,6 +1,3 @@
-execute "augroup Personal"
-autocmd!
-
 let g:mapleader="\<space>"
 set clipboard=unnamed,unnamedplus
 set confirm
@@ -26,6 +23,9 @@ set undofile
 set updatetime=500
 
 map Y y$
+
+execute "augroup Personal"
+autocmd!
 
 autocmd VimEnter * silent! helptags ALL
 if has("nvim-0.5.0")
