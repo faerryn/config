@@ -1,4 +1,4 @@
-#+startup: indent
+#+startup: indent content
 * Packages
 ** Load newer lisps
 #+begin_src emacs-lisp
@@ -157,6 +157,7 @@
     :ensure t
     :config
     (setq ivy-count-format "(%d/%d) ")
+    (setq ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
     (global-set-key (kbd "C-c f") #'personal-ivy-emulate-fzf)
     (ivy-mode +1))
 #+end_src
@@ -180,6 +181,7 @@
   (use-package org
     :ensure t
     :config
+    (setq org-catch-invisible-edits 'smart)
     (setq org-src-tab-acts-natively t))
 #+end_src
 * Magit
@@ -210,11 +212,11 @@
   (use-package lispy
     :ensure t
     :config
-    (evil-collection-lispy-set-key-theme '(evil paredit c-digits))
+    (evil-collection-lispy-set-key-theme '(paredit c-digits))
     (add-hook 'lisp-mode-hook #'lispy-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
 #+end_src
-** LSP
+** Eglot
 #+begin_src emacs-lisp
   (defun personal-lsp-setup () 
     (eglot-ensure)
