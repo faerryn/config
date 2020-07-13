@@ -47,7 +47,7 @@
 *** Moody
 #+begin_src emacs-lisp
   (defun personal-moody-fix-height (&optional frame) 
-    (with-selected-frame (if frame (identity frame) (selected-frame))
+    (with-selected-frame (if frame frame (selected-frame))
       (setq moody-mode-line-height (line-pixel-height))))
   (use-package moody
     :ensure t
