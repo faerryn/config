@@ -1,7 +1,7 @@
 let g:mapleader="\<space>"
 set clipboard=unnamed,unnamedplus
 set confirm
-set cursorline cursorcolumn colorcolumn=80
+set cursorline cursorcolumn colorcolumn=80 signcolumn=yes
 set foldmethod=syntax foldlevelstart=20
 set hidden
 set inccommand=split
@@ -13,7 +13,7 @@ set nowrap linebreak
 set nrformats+=alpha,octal
 set number relativenumber
 set omnifunc=syntaxcomplete#Complete
-set signcolumn=yes
+set ignorecase smartcase
 set spell
 set splitbelow splitright
 set tabstop=8 softtabstop=4 shiftwidth=4
