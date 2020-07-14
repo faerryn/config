@@ -85,6 +85,7 @@
     :init
     (setq evil-want-integration t)
     (setq evil-want-keybinding nil)
+    (setq case-fold-search nil)
     :config
     (evil-select-search-module 'evil-search-module 'evil-search)
     (setq evil-want-Y-yank-to-eol t)
