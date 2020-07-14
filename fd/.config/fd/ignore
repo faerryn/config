@@ -1,5 +1,6 @@
 **/.git/
-**/emacs.d/undo-tree/
-**/emacs/undo-tree/
-**/nvim/swap/
-**/nvim/undo/
+
+**/undo-tree/
+
+**/swap/
+**/undo/
