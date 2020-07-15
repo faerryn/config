@@ -10,7 +10,7 @@ set list listchars=tab:\ \ ,trail:-,nbsp:+
 set mouse=ar
 set noshowmode
 set nowrap linebreak
-set nrformats+=alpha,octal
+set nrformats=alpha,octal,hex,bin
 set number relativenumber
 set omnifunc=syntaxcomplete#Complete
 set spell
