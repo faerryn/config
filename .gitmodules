@@ -91,9 +91,12 @@
 [submodule "zig.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/zig.vim
 	url = https://github.com/ziglang/zig.vim
-[submodule "fzf/.local/lib/fzf"]
+[submodule "fzf"]
 	path = fzf/.local/lib/fzf
 	url = https://github.com/junegunn/fzf
-[submodule "neovim/.config/nvim/pack/bundle/start/fzf.vim"]
+[submodule "fzf.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
+[submodule "vim-sensible"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-sensible
+	url = https://github.com/tpope/vim-sensible

@@ -4,7 +4,7 @@ set confirm
 set cursorline cursorcolumn colorcolumn=80 signcolumn=yes
 set foldmethod=syntax foldlevelstart=20
 set hidden
-set inccommand=split
+set ignorecase smartcase
 set lazyredraw
 set list listchars=tab:\ \ ,trail:-,nbsp:+
 set mouse=ar
@@ -13,7 +13,6 @@ set nowrap linebreak
 set nrformats+=alpha,octal
 set number relativenumber
 set omnifunc=syntaxcomplete#Complete
-set ignorecase smartcase
 set spell
 set splitbelow splitright
 set tabstop=8 softtabstop=4 shiftwidth=4
@@ -21,6 +20,12 @@ set termguicolors
 set timeoutlen=500
 set undofile
 set updatetime=500
+
+if has("nvim")
+    set inccommand=split
+else
+    set background=dark
+endif
 
 map Y y$
 
@@ -54,16 +59,25 @@ let g:undotree_HelpLine = 0
 let g:undotree_WindowLayout = 3
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators = 1
-nnoremap <silent> <leader>u <cmd>UndotreeShow<cr>
 
 " vim-fugitive
-nnoremap <silent> <leader>g <cmd>G<cr>
 autocmd FileType fugitive nnoremap <silent> <buffer> q <c-w>q
 
 " fzf
-nnoremap <silent> <leader>f <cmd>Files<cr>
-nnoremap <silent> <leader>b <cmd>Buffers<cr>
 let g:fzf_preview_window = ''
+
+" Keybindings
+if has("nvim")
+    nnoremap <silent> <leader>u <cmd>UndotreeShow<cr>
+    nnoremap <silent> <leader>g <cmd>G<cr>
+    nnoremap <silent> <leader>f <cmd>Files<cr>
+    nnoremap <silent> <leader>b <cmd>Buffers<cr>
+else
+    nnoremap <silent> <leader>u :UndotreeShow<cr>
+    nnoremap <silent> <leader>g :G<cr>
+    nnoremap <silent> <leader>f :Files<cr>
+    nnoremap <silent> <leader>b :Buffers<cr>
+endif
 
 " gruvbox
 let g:gruvbox_contrast_dark = "medium"
