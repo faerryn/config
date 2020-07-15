@@ -95,15 +95,19 @@ if has("nvim-0.5.0")
 	setlocal omnifunc=v:lua.vim.lsp.omnifunc
 	augroup PersonalNvimLsp
 	    autocmd! * <buffer>
-	    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+	    autocmd BufWritePre <buffer> silent! lua vim.lsp.buf.formatting_sync()
 	augroup END
     endfunction
 
-    lua require'nvim_lsp'.rust_analyzer.setup{}
-    autocmd FileType rust call s:setup_lsp()
+    try
+	lua require'nvim_lsp'.rust_analyzer.setup{}
+	autocmd FileType rust call s:setup_lsp()
+    endtry
 
-    lua require'nvim_lsp'.clangd.setup{ cmd = { "clangd", "--background-index" }, filetypes = { "cpp" } }
-    autocmd FileType cpp call s:setup_lsp()
+    try
+	lua require'nvim_lsp'.clangd.setup{ cmd = { "clangd", "--background-index" }, filetypes = { "cpp" } }
+	autocmd FileType cpp call s:setup_lsp()
+    endtry
 endif
 
 execute "augroup END"
