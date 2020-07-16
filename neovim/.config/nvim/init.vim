@@ -78,10 +78,7 @@ let g:gruvbox_italicize_strings = 1
 colorscheme gruvbox
 
 " lightline.vim
-let g:lightline = { "colorscheme": "gruvbox",
-	    \"separator": { "left": "", "right": "" },
-	    \"subseparator": { "left": "", "right": "" },
-	    \"tabline": { "right": [] } }
+let g:lightline = { "colorscheme": "gruvbox", "tabline": { "right": [] } }
 
 if has("nvim-0.5.0")
     " nvim-lsp
