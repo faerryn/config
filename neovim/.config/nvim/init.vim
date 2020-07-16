@@ -37,8 +37,8 @@ if has("nvim-0.5.0")
     autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=500}
 endif
 
-nnoremap <silent> <leader>l <cmd>lopen<cr>
-nnoremap <silent> <leader>q <cmd>copen<cr>
+nnoremap <silent> <leader>l :lopen<cr>
+nnoremap <silent> <leader>q :copen<cr>
 
 " Setting up q to quit for help, qf
 autocmd FileType help,qf nnoremap <silent> <buffer> q <c-w>q
@@ -59,25 +59,16 @@ let g:undotree_HelpLine = 0
 let g:undotree_WindowLayout = 3
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators = 1
+nnoremap <silent> <leader>u :UndotreeShow<cr>
 
 " vim-fugitive
 autocmd FileType fugitive nnoremap <silent> <buffer> q <c-w>q
+nnoremap <silent> <leader>g :G<cr>
 
 " fzf
 let g:fzf_preview_window = ''
-
-" Keybindings
-if has("nvim")
-    nnoremap <silent> <leader>u <cmd>UndotreeShow<cr>
-    nnoremap <silent> <leader>g <cmd>G<cr>
-    nnoremap <silent> <leader>f <cmd>Files<cr>
-    nnoremap <silent> <leader>b <cmd>Buffers<cr>
-else
-    nnoremap <silent> <leader>u :UndotreeShow<cr>
-    nnoremap <silent> <leader>g :G<cr>
-    nnoremap <silent> <leader>f :Files<cr>
-    nnoremap <silent> <leader>b :Buffers<cr>
-endif
+nnoremap <silent> <leader>f :Files<cr>
+nnoremap <silent> <leader>b :Buffers<cr>
 
 " gruvbox
 let g:gruvbox_contrast_dark = "medium"
@@ -96,16 +87,16 @@ if has("nvim-0.5.0")
     " nvim-lsp
     packadd nvim-lsp
     function s:setup_lsp()
-	nnoremap <silent> <buffer> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-	nnoremap <silent> <buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-	nnoremap <silent> <buffer> K     <cmd>lua vim.lsp.buf.hover()<CR>
-	nnoremap <silent> <buffer> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-	nnoremap <silent> <buffer> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-	nnoremap <silent> <buffer> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-	nnoremap <silent> <buffer> gr    <cmd>lua vim.lsp.buf.references()<CR>
-	nnoremap <silent> <buffer> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-	nnoremap <silent> <buffer> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-	nnoremap <silent> <buffer> gA    <cmd>lua vim.lsp.buf.code_action()<CR>
+	nnoremap <silent> <buffer> gd    :lua vim.lsp.buf.declaration()<CR>
+	nnoremap <silent> <buffer> <c-]> :lua vim.lsp.buf.definition()<CR>
+	nnoremap <silent> <buffer> K     :lua vim.lsp.buf.hover()<CR>
+	nnoremap <silent> <buffer> gD    :lua vim.lsp.buf.implementation()<CR>
+	nnoremap <silent> <buffer> <c-k> :lua vim.lsp.buf.signature_help()<CR>
+	nnoremap <silent> <buffer> 1gD   :lua vim.lsp.buf.type_definition()<CR>
+	nnoremap <silent> <buffer> gr    :lua vim.lsp.buf.references()<CR>
+	nnoremap <silent> <buffer> g0    :lua vim.lsp.buf.document_symbol()<CR>
+	nnoremap <silent> <buffer> gW    :lua vim.lsp.buf.workspace_symbol()<CR>
+	nnoremap <silent> <buffer> gA    :lua vim.lsp.buf.code_action()<CR>
 	setlocal omnifunc=v:lua.vim.lsp.omnifunc
 	augroup PersonalNvimLsp
 	    autocmd! * <buffer>
