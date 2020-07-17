@@ -214,26 +214,6 @@
     (add-hook 'lisp-mode-hook #'lispy-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
 #+end_src
-** Eglot
-#+begin_src emacs-lisp
-  (defun personal-lsp-setup () 
-    (eglot-ensure)
-    (add-hook 'before-save-hook #'eglot-format-buffer nil t)
-    (add-hook 'eglot-managed-mode-hook #'evil-force-normal-state nil t))
-  (use-package eglot
-    :ensure t
-    :pin melpa-stable
-    :after (company yasnippet markdown-mode)
-    :config
-    (setq eglot-server-programs 
-          '((rust-mode . ("rust-analyzer")) 
-            (c++-mode . ("clangd" "--background-index"))))
-    (add-hook 'rust-mode-hook #'personal-lsp-setup)
-    (add-hook 'c++-mode-hook #'personal-lsp-setup))
-  (use-package company :ensure t)
-  (use-package yasnippet :ensure t)
-  (use-package markdown-mode :ensure t)
-#+end_src
 * Sundry
 ** Clean FS
 #+begin_src emacs-lisp
