@@ -41,7 +41,7 @@ nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> <leader>q :copen<cr>
 
 " Setting up q to quit for help, qf
-autocmd FileType help,qf nnoremap <silent> <buffer> q <c-w>q
+autocmd FileType help,qf nnoremap <silent> <buffer> <esc> <c-w>q
 
 " vim-sandwich
 let g:textobj_sandwich_no_default_key_mappings = 1
@@ -60,9 +60,10 @@ let g:undotree_WindowLayout       = 3
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators    = 1
 nnoremap <silent> <leader>u :UndotreeShow<cr>
+autocmd FileType undotree nnoremap <silent> <buffer> <esc> :UndotreeHide<cr>
 
 " vim-fugitive
-autocmd FileType fugitive nnoremap <silent> <buffer> q <c-w>q
+autocmd FileType fugitive nnoremap <silent> <buffer> <esc> <c-w>q
 nnoremap <silent> <leader>g :G<cr>
 
 " fzf
