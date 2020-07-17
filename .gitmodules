@@ -91,3 +91,6 @@
 [submodule "vim-sensible"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-sensible
 	url = https://github.com/tpope/vim-sensible
+[submodule "vim-wordmotion"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-wordmotion
+	url = https://github.com/chaoren/vim-wordmotion
