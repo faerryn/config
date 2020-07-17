@@ -60,7 +60,7 @@ precmd_functions+=(cursor_beam)
 cursor_beam
 
 # Completion
-autoload -Uz compinit && mkdir -p "~/.cache/zsh" && compinit -d "~/.cache/zsh/zcompdump-$ZSH_VERSION"
+autoload -Uz compinit && mkdir -p "$HOME/.cache/zsh" && compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
 source "$XDG_CONFIG_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
