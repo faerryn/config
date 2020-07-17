@@ -43,26 +43,7 @@
     :ensure t
     :config (load-theme 'doom-vibrant t))
 #+end_src
-** Pretty Modeline
-*** Moody
-#+begin_src emacs-lisp
-  (defun personal-moody-fix-height (&optional frame) 
-    (with-selected-frame (if frame frame (selected-frame))
-      (setq moody-mode-line-height (line-pixel-height))))
-  (use-package moody
-    :ensure t
-    :config
-    (setq x-underline-at-descent-line t)
-    (moody-replace-mode-line-buffer-identification)
-    (moody-replace-vc-mode)
-    (when (display-graphic-p)
-      (add-hook 'after-setting-font-hook #'personal-moody-fix-height)
-      (if (daemonp)
-          (add-hook 'after-make-frame-functions
-                    #'personal-moody-fix-height)
-        (personal-moody-fix-height))))
-#+end_src
-*** Minions
+** Minimized minor modes
 #+begin_src emacs-lisp
   (use-package minions
     :ensure t
