@@ -1,6 +1,7 @@
 # Aliases
-alias la="ls -la"
+alias la="ls -a"
 alias ll="ls -l"
+alias lla="ls -la"
 alias ec="emacsclient"
 alias em="emacs"
 

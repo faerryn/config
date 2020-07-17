@@ -55,10 +55,10 @@ command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
 
 " undotree
-let g:undotree_HelpLine = 0
-let g:undotree_WindowLayout = 3
+let g:undotree_HelpLine           = 0
+let g:undotree_WindowLayout       = 3
 let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_ShortIndicators = 1
+let g:undotree_ShortIndicators    = 1
 nnoremap <silent> <leader>u :UndotreeShow<cr>
 
 " vim-fugitive
@@ -71,9 +71,9 @@ nnoremap <silent> <leader>f :Files<cr>
 nnoremap <silent> <leader>b :Buffers<cr>
 
 " gruvbox
-let g:gruvbox_contrast_dark = "medium"
-let g:gruvbox_invert_signs = 1
-let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark     = "medium"
+let g:gruvbox_invert_signs      = 1
+let g:gruvbox_italic            = 1
 let g:gruvbox_italicize_strings = 1
 colorscheme gruvbox
 
