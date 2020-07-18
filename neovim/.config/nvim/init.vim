@@ -4,39 +4,37 @@ autocmd!
 let g:mapleader="\<space>"
 set clipboard=unnamed,unnamedplus
 set confirm
-set cursorline cursorcolumn colorcolumn=80 signcolumn=yes
-set foldmethod=syntax foldlevelstart=20
 set hidden
 set ignorecase smartcase
 set lazyredraw
-set list listchars=tab:\ \ ,trail:-,nbsp:+
 set mouse=ar
-set noshowmode
-set nowrap linebreak
 set nrformats=alpha,octal,hex,bin
-set number relativenumber
 set omnifunc=syntaxcomplete#Complete
 set spell
 set splitbelow splitright
-set tabstop=4 shiftwidth=4 expandtab
-set termguicolors
 set timeoutlen=500
 set undofile
 set updatetime=500
 
+set background=dark
+set cursorline cursorcolumn colorcolumn=80 signcolumn=yes
+set foldmethod=syntax foldlevelstart=20
+set list listchars=tab:\ \ ,trail:-,nbsp:+
+set list listchars=tab:\ \ ,trail:-,nbsp:+
+set nowrap linebreak
+set number relativenumber
+set tabstop=4 shiftwidth=4 expandtab
+set termguicolors
+
 if has("nvim")
-    set inccommand=split
+    autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=500}
     let g:asmsyntax = 'nasm'
-else
-    set background=dark
+    set inccommand=split
 endif
 
 map Y y$
 
 autocmd VimEnter * silent! helptags ALL
-if has("nvim-0.5.0")
-    autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=500}
-endif
 
 nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> <leader>q :copen<cr>
