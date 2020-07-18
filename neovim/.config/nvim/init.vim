@@ -15,7 +15,7 @@ set number relativenumber
 set omnifunc=syntaxcomplete#Complete
 set spell
 set splitbelow splitright
-set tabstop=8 softtabstop=4 shiftwidth=4
+set tabstop=4 shiftwidth=4 expandtab
 set termguicolors
 set timeoutlen=500
 set undofile
