@@ -1,3 +1,6 @@
+execute "augroup Personal"
+autocmd!
+
 let g:mapleader="\<space>"
 set clipboard=unnamed,unnamedplus
 set confirm
@@ -23,14 +26,12 @@ set updatetime=500
 
 if has("nvim")
     set inccommand=split
+    let g:asmsyntax = 'nasm'
 else
     set background=dark
 endif
 
 map Y y$
-
-execute "augroup Personal"
-autocmd!
 
 autocmd VimEnter * silent! helptags ALL
 if has("nvim-0.5.0")
@@ -40,8 +41,6 @@ endif
 nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> <leader>q :copen<cr>
 nnoremap <silent> <leader>d :digraphs!<cr>
-
-let g:asmsyntax = 'nasm'
 
 " Setting up q to quit for help, qf
 autocmd FileType help,qf nnoremap <silent> <buffer> <esc> <c-w>q
