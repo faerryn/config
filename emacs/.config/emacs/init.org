@@ -171,10 +171,6 @@
 #+end_src
 * Programming
 ** Languages
-*** Rust
-#+begin_src emacs-lisp
-  (use-package rust-mode :ensure t)
-#+end_src
 *** Zig
 #+begin_src emacs-lisp
   (use-package zig-mode :ensure t)

@@ -41,6 +41,8 @@ nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> <leader>q :copen<cr>
 nnoremap <silent> <leader>d :digraphs!<cr>
 
+let g:asmsyntax = 'nasm'
+
 " Setting up q to quit for help, qf
 autocmd FileType help,qf nnoremap <silent> <buffer> <esc> <c-w>q
 
