@@ -34,6 +34,7 @@ if command -v nvim >/dev/null; then
 	alias view="nvim -R"
 	alias vim="nvim"
 	alias vimdiff="nvim -d"
+    alias vimtutor="nvim +Tutor"
 	export EDITOR="nvim"
 	export VISUAL="nvim"
 	export MANPAGER="nvim -R +\"set signcolumn=no ft=man\" -"
