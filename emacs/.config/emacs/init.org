@@ -166,12 +166,11 @@
     :bind ("C-c g" . magit-status))
 #+end_src
 * Programming
-** Languages
-*** Zig
+** Zig
 #+begin_src emacs-lisp
   (use-package zig-mode :ensure t)
 #+end_src
-*** Lisp
+** Lisp
 #+begin_src emacs-lisp
   (use-package lispyville
     :ensure t
