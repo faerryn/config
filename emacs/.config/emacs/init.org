@@ -29,10 +29,6 @@
   (tool-bar-mode -1)
   (setq inhibit-splash-screen t)
 #+end_src
-** Maximized on start
-#+begin_src emacs-lisp
-  (add-to-list 'default-frame-alist '(fullscreen . maximized))
-#+end_src
 ** Slower mouse scroll
 #+begin_src emacs-lisp
   (setq mouse-wheel-scroll-amount '(1))
