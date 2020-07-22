@@ -19,9 +19,6 @@
 [submodule "vim-mkdir"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-mkdir
 	url = https://github.com/pbrisbin/vim-mkdir
-[submodule "vim-exchange"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-exchange
-	url = https://github.com/tommcdo/vim-exchange
 [submodule "vim-lion"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-lion
 	url = https://github.com/tommcdo/vim-lion

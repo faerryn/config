@@ -94,10 +94,6 @@
     :ensure t
     :after (evil)
     :config (global-evil-matchit-mode +1))
-  (use-package evil-exchange
-    :ensure t
-    :after (evil)
-    :config (evil-exchange-install))
 #+end_src
 ** Compatibility
 #+begin_src emacs-lisp
@@ -192,10 +188,6 @@
   (setq auto-save-default nil)
   (setq backup-inhibited t)
   (setq create-lockfiles nil)
-#+end_src
-** Follow symlinks
-#+begin_src emacs-lisp
-  (setq vc-follow-symlinks t)
 #+end_src
 ** Load Custom file
 #+begin_src emacs-lisp

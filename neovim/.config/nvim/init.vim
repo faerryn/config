@@ -20,7 +20,6 @@ set background=dark
 set cursorline cursorcolumn colorcolumn=80 signcolumn=yes
 set foldmethod=syntax foldlevelstart=20
 set list listchars=tab:\ \ ,trail:-,nbsp:+
-set list listchars=tab:\ \ ,trail:-,nbsp:+
 set nowrap linebreak
 set number relativenumber
 set tabstop=4 shiftwidth=4 expandtab
