@@ -39,7 +39,3 @@ if command -v nvim >/dev/null; then
 	export VISUAL="nvim"
 	export MANPAGER="nvim -R +\"set signcolumn=no ft=man\" -"
 fi
-
-if command -v bat >/dev/null; then
-	alias cat="bat"
-fi
