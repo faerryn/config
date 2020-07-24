@@ -13,9 +13,6 @@
 [submodule "undotree"]
 	path = neovim/.config/nvim/pack/bundle/start/undotree
 	url = https://github.com/mbbill/undotree
-[submodule "vim-signify"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-signify
-	url = https://github.com/mhinz/vim-signify
 [submodule "vim-mkdir"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-mkdir
 	url = https://github.com/pbrisbin/vim-mkdir
