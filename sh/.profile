@@ -26,6 +26,9 @@ export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 export CC="ccache cc"
 export CXX="ccache cpp"
 
+# make
+alias make="make -j$(nproc)"
+
 # fzf
 export FZF_DEFAULT_COMMAND="fd --hidden --type=file"
 
