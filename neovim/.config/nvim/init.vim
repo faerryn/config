@@ -35,9 +35,9 @@ map Y y$
 
 autocmd VimEnter * silent! helptags ALL
 
+nnoremap <silent> <leader>d :digraphs!<cr>
 nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> <leader>q :copen<cr>
-nnoremap <silent> <leader>d :digraphs!<cr>
 
 " Setting up q to quit for help, qf
 autocmd FileType help,qf nnoremap <silent> <buffer> <esc> <c-w>q
@@ -56,9 +56,9 @@ command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args
 
 " undotree
 let g:undotree_HelpLine           = 0
-let g:undotree_WindowLayout       = 3
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators    = 1
+let g:undotree_WindowLayout       = 3
 nnoremap <silent> <leader>u :UndotreeShow<cr>
 autocmd FileType undotree nnoremap <silent> <buffer> <esc> :UndotreeHide<cr>
 
