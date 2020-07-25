@@ -7,8 +7,14 @@ fi
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ll -la"
-alias ec="emacsclient"
+
+alias ec="emacsclient -c"
+alias ed="emacs --daemon"
 alias em="emacs"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
 # Prompt
 ZSH_THEME_GIT_PROMPT_PREFIX=""
@@ -36,7 +42,7 @@ ZSH_GIT_PROMPT_SHOW_UPSTREAM="full"
 
 source "$XDG_CONFIG_HOME/zsh/plugins/git-prompt.zsh/git-prompt.zsh"
 
-PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
+PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(2L.%F{green}+%f .)%(0?..%F{red})%(!.#.$)%f "
 RPROMPT="\$(gitprompt)"
 
 # Vi-mode
