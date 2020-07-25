@@ -17,7 +17,7 @@ set undofile
 set updatetime=500
 
 set background=dark
-set cursorline cursorcolumn colorcolumn=80 signcolumn=yes
+set cursorline cursorcolumn colorcolumn=80
 set foldmethod=syntax foldlevelstart=20
 set list listchars=tab:\ \ ,trail:-,nbsp:+
 set nowrap linebreak
