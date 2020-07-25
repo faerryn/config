@@ -43,8 +43,9 @@ nnoremap <silent> <leader>d :digraphs!<cr>
 autocmd FileType help,qf nnoremap <silent> <buffer> <esc> <c-w>q
 
 " vim-sandwich
-let g:textobj_sandwich_no_default_key_mappings = 1
 autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
+nmap s <plug>(operator-sandwich-add)
+nmap S s$
 
 " vim-dirvish
 let g:loaded_netrw       = 1
