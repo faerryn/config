@@ -21,11 +21,13 @@ export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 export FZF_DEFAULT_COMMAND="fd --hidden --type=file"
 
 alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
-alias ls="ls --color=auto"
 
 export WINEPREFIX="$HOME/wine"
-if command -v wine >/dev/null; then
-	mkdir -p $WINEPREFIX
+
+if command -v exa >/dev/null; then
+    alias ls="exa"
+else
+    alias ls="ls --color=auto"
 fi
 
 if command -v nvim >/dev/null; then
