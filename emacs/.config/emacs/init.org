@@ -145,9 +145,9 @@
 ** Swiper
 #+begin_src emacs-lisp
   (use-package swiper
-    :bind ("C-s" . swiper-isearch)
     :ensure t
-    :after (ivy))
+    :after (ivy)
+    :bind ("C-s" . swiper-isearch))
 #+end_src
 * Org mode
 #+begin_src emacs-lisp
@@ -161,7 +161,7 @@
 #+begin_src emacs-lisp
   (use-package magit
     :ensure t
-    :bind ("C-c g" . magit-status))
+    :config (global-set-key (kbd "C-c g") #'magit))
 #+end_src
 * Programming
 ** Zig
