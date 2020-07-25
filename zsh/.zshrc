@@ -1,3 +1,8 @@
+# Ensure that profile is sourced
+if [[ ! -v $PROFILE_SOURCED ]]; then
+    source "$HOME/.profile"
+fi
+
 # Aliases
 alias la="ls -a"
 alias ll="ls -l"
@@ -34,9 +39,6 @@ source "$XDG_CONFIG_HOME/zsh/plugins/git-prompt.zsh/git-prompt.zsh"
 PROMPT=" %F{blue}%c%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
 RPROMPT="\$(gitprompt)"
 
-# Auto-cd
-setopt AUTO_CD
-
 # Vi-mode
 bindkey -v
 
@@ -71,8 +73,8 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 source "$XDG_CONFIG_HOME/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # History
-mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
-HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
+mkdir -p "$XDG_DATA_HOME/zsh"
+HISTFILE="$XDG_DATA_HOME/zsh/history"
 SAVEHIST=1000
 HISTSIZE=1000
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
