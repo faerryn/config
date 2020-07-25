@@ -23,6 +23,8 @@ export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
 # ccache
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/ccache.config"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
+export CC="ccache cc"
+export CXX="ccache cpp"
 
 # fzf
 export FZF_DEFAULT_COMMAND="fd --hidden --type=file"
