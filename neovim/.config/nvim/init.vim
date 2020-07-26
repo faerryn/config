@@ -74,6 +74,6 @@ nnoremap <silent> <leader>f :Files<cr>
 nnoremap <silent> <leader>b :Buffers<cr>
 
 " theme
-colorscheme badwolf
+colorscheme gruvbox
 
 execute "augroup END"
