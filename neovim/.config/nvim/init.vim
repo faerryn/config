@@ -28,7 +28,7 @@ colorscheme gruvbox
 
 if has("nvim")
     autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=500}
-    let g:asmsyntax = 'nasm'
+    let g:asmsyntax='nasm'
     set inccommand=split
 endif
 
