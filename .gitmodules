@@ -85,3 +85,6 @@
 [submodule "vim-wordmotion"]
 	path = neovim/.config/nvim/pack/core/start/vim-wordmotion
 	url = https://github.com/chaoren/vim-wordmotion
+[submodule "neovim/.config/nvim/pack/core/start/vim-sleuth"]
+	path = neovim/.config/nvim/pack/core/start/vim-sleuth
+	url = https://github.com/tpope/vim-sleuth
