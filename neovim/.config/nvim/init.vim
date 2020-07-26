@@ -32,7 +32,7 @@ if has("nvim")
     set inccommand=split
 endif
 
-silent execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
+silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
 
 map Y y$
 
