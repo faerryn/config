@@ -44,6 +44,8 @@ nnoremap <silent> <leader>q :copen<cr>
 
 autocmd FileType help,qf nnoremap <silent> <buffer> <esc> <c-w>q
 
+nnoremap Q @@
+
 " vim-sandwich
 autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
 nmap s <plug>(operator-sandwich-add)
