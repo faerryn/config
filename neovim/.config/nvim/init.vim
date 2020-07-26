@@ -73,4 +73,7 @@ let g:fzf_preview_window = ''
 nnoremap <silent> <leader>f :Files<cr>
 nnoremap <silent> <leader>b :Buffers<cr>
 
+" theme
+colorscheme badwolf
+
 execute "augroup END"
