@@ -38,8 +38,6 @@
   (use-package darktooth-theme
     :ensure t
     :config (load-theme 'darktooth t))
-  (use-package doom-themes
-    :ensure t)
 #+end_src
 ** Minimized minor modes
 #+begin_src emacs-lisp
