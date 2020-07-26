@@ -88,6 +88,3 @@
 [submodule "neovim/.config/nvim/pack/core/start/vim-sleuth"]
 	path = neovim/.config/nvim/pack/core/start/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth
-[submodule "neovim/.config/nvim/pack/theme/start/badwolf"]
-	path = neovim/.config/nvim/pack/theme/start/badwolf
-	url = https://github.com/sjl/badwolf
