@@ -24,6 +24,8 @@ set number relativenumber
 set tabstop=4 shiftwidth=4 expandtab
 set termguicolors
 
+colorscheme gruvbox
+
 if has("nvim")
     autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=500}
     let g:asmsyntax = 'nasm'
@@ -70,8 +72,5 @@ nnoremap <silent> <leader>g :Git<cr>
 let g:fzf_preview_window = ''
 nnoremap <silent> <leader>f :Files<cr>
 nnoremap <silent> <leader>b :Buffers<cr>
-
-" theme
-colorscheme gruvbox
 
 execute "augroup END"
