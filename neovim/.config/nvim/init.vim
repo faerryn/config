@@ -30,6 +30,8 @@ if has("nvim")
     set inccommand=split
 endif
 
+silent execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
+
 map Y y$
 
 autocmd VimEnter * silent! helptags ALL
@@ -38,7 +40,6 @@ nnoremap <silent> <leader>d :digraphs!<cr>
 nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> <leader>q :copen<cr>
 
-" Setting up q to quit for help, qf
 autocmd FileType help,qf nnoremap <silent> <buffer> <esc> <c-w>q
 
 " vim-sandwich
@@ -71,10 +72,6 @@ nnoremap <silent> <leader>f :Files<cr>
 nnoremap <silent> <leader>b :Buffers<cr>
 
 " theme
-let g:gruvbox_contrast_dark     = "medium"
-let g:gruvbox_invert_signs      = 1
-let g:gruvbox_italic            = 1
-let g:gruvbox_italicize_strings = 1
-colorscheme gruvbox
+colorscheme badwolf
 
 execute "augroup END"
