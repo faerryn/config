@@ -80,14 +80,14 @@
 	path = neovim/.config/nvim/pack/fzf/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
 [submodule "vim-sensible"]
-	path = neovim/.config/nvim/pack/core/start/vim-sensible
+	path = neovim/.config/nvim/pack/core/opt/vim-sensible
 	url = https://github.com/tpope/vim-sensible
 [submodule "vim-wordmotion"]
 	path = neovim/.config/nvim/pack/core/start/vim-wordmotion
 	url = https://github.com/chaoren/vim-wordmotion
-[submodule "neovim/.config/nvim/pack/core/start/vim-sleuth"]
+[submodule "vim-sleuth"]
 	path = neovim/.config/nvim/pack/core/start/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth
-[submodule "neovim/.config/nvim/pack/theme/start/badwolf"]
+[submodule "badwolf"]
 	path = neovim/.config/nvim/pack/theme/start/badwolf
 	url = https://github.com/sjl/badwolf

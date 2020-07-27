@@ -49,6 +49,10 @@ nnoremap Q @@
 noremap s <nop>
 noremap S <nop>
 
+" vim-sensible
+packadd vim-sensible
+set scrolloff=0
+
 " vim-dirvish
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
