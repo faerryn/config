@@ -2,7 +2,7 @@
 	path = neovim/.config/nvim/pack/core/start/matchit
 	url = https://github.com/chrisbra/matchit
 [submodule "gruvbox"]
-	path = neovim/.config/nvim/pack/theme/start/gruvbox
+	path = neovim/.config/nvim/pack/looks/start/gruvbox
 	url = https://github.com/gruvbox-community/gruvbox
 [submodule "vim-dirvish"]
 	path = neovim/.config/nvim/pack/filesystem/start/vim-dirvish
@@ -71,13 +71,13 @@
 	path = tmux/.config/tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank
 [submodule "zig.vim"]
-	path = neovim/.config/nvim/pack/lang/start/zig.vim
+	path = neovim/.config/nvim/pack/language/start/zig.vim
 	url = https://github.com/ziglang/zig.vim
 [submodule "fzf"]
 	path = fzf/.local/lib/fzf
 	url = https://github.com/junegunn/fzf
 [submodule "fzf.vim"]
-	path = neovim/.config/nvim/pack/fzf/start/fzf.vim
+	path = neovim/.config/nvim/pack/filesystem/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
 [submodule "vim-sensible"]
 	path = neovim/.config/nvim/pack/core/opt/vim-sensible
@@ -89,5 +89,5 @@
 	path = neovim/.config/nvim/pack/core/start/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth
 [submodule "badwolf"]
-	path = neovim/.config/nvim/pack/theme/start/badwolf
+	path = neovim/.config/nvim/pack/looks/start/badwolf
 	url = https://github.com/sjl/badwolf
