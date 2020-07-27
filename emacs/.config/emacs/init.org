@@ -47,7 +47,7 @@
 #+end_src
 ** Relative line numbers
 #+begin_src emacs-lisp
-  (setq-default display-line-numbers 'relative)
+  (setq-default display-line-numbers 'visual)
   (global-hl-line-mode +1)
 #+end_src
 ** Prettify-symbols
