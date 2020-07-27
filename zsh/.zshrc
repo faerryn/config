@@ -1,5 +1,5 @@
 # Ensure that profile is sourced
-if [[ ! -v $PROFILE_SOURCED ]]; then
+if [[ ! -v $SOURCED_PROFILE ]]; then
     source "$HOME/.profile"
 fi
 

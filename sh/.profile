@@ -1,5 +1,5 @@
 # Profile is sourced 
-export PROFILE_SOURCED=1
+export SOURCED_PROFILE=1
 
 # XDG directories
 export XDG_CACHE_HOME="$HOME/.cache"

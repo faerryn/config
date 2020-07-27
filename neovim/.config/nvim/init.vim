@@ -46,6 +46,9 @@ autocmd FileType help,qf nnoremap <silent> <buffer> <esc> <c-w>q
 
 nnoremap Q @@
 
+noremap s <nop>
+noremap S <nop>
+
 " vim-dirvish
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
