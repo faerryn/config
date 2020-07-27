@@ -48,8 +48,6 @@ nnoremap Q @@
 
 " vim-sandwich
 autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
-nmap s <plug>(operator-sandwich-add)
-nmap S s$
 
 " vim-dirvish
 let g:loaded_netrw       = 1
