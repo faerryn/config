@@ -46,9 +46,6 @@ autocmd FileType help,qf nnoremap <silent> <buffer> <esc> <c-w>q
 
 nnoremap Q @@
 
-" vim-sandwich
-autocmd VimEnter * runtime macros/sandwich/keymap/surround.vim
-
 " vim-dirvish
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
