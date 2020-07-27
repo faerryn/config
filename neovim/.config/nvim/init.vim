@@ -16,27 +16,12 @@ set timeoutlen=500
 set undofile
 set updatetime=500
 
-set background=dark
-set cursorline cursorcolumn colorcolumn=80
-set foldmethod=syntax foldlevelstart=20
-set nowrap linebreak
-set number relativenumber
-set tabstop=4 shiftwidth=4 expandtab
-set termguicolors
+noremap Y y$
+noremap Q @@
 
-colorscheme gruvbox
-
-if has("nvim")
-    autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=500}
-    let g:asmsyntax='nasm'
-    set inccommand=split
-endif
-
-silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
-
-map Y y$
-
-autocmd VimEnter * silent! helptags ALL
+noremap s <nop>
+noremap S <nop>
+noremap <leader> <nop>
 
 nnoremap <silent> <leader>d :digraphs!<cr>
 nnoremap <silent> <leader>l :lopen<cr>
@@ -44,10 +29,22 @@ nnoremap <silent> <leader>q :copen<cr>
 
 autocmd FileType help,qf nnoremap <silent> <buffer> <esc> <c-w>q
 
-nnoremap Q @@
+silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
+autocmd VimEnter * silent! helptags ALL
 
-noremap s <nop>
-noremap S <nop>
+set cursorline cursorcolumn colorcolumn=80
+set foldmethod=syntax foldlevelstart=20
+set nowrap linebreak
+set number relativenumber
+set tabstop=4 shiftwidth=4 expandtab
+set termguicolors
+set inccommand=split
+
+let g:asmsyntax='nasm'
+
+autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=500}
+
+colorscheme gruvbox
 
 " vim-sensible
 packadd vim-sensible
