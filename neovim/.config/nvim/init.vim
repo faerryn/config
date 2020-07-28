@@ -40,11 +40,11 @@ set tabstop=4 shiftwidth=4 expandtab
 set termguicolors
 set inccommand=split
 
-let g:asmsyntax='nasm'
+colorscheme gruvbox
 
 autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=500}
 
-colorscheme gruvbox
+let g:asmsyntax='nasm'
 
 " vim-sensible
 packadd vim-sensible

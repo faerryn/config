@@ -11,7 +11,7 @@
 	path = neovim/.config/nvim/pack/core/start/vim-sandwich
 	url = https://github.com/machakann/vim-sandwich
 [submodule "undotree"]
-	path = neovim/.config/nvim/pack/vcs/start/undotree
+	path = neovim/.config/nvim/pack/version_control/start/undotree
 	url = https://github.com/mbbill/undotree
 [submodule "vim-mkdir"]
 	path = neovim/.config/nvim/pack/filesystem/start/vim-mkdir
@@ -26,7 +26,7 @@
 	path = neovim/.config/nvim/pack/filesystem/start/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch
 [submodule "vim-fugitive"]
-	path = neovim/.config/nvim/pack/vcs/start/vim-fugitive
+	path = neovim/.config/nvim/pack/version_control/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "vim-repeat"]
 	path = neovim/.config/nvim/pack/core/start/vim-repeat
@@ -71,7 +71,7 @@
 	path = tmux/.config/tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank
 [submodule "zig.vim"]
-	path = neovim/.config/nvim/pack/language/start/zig.vim
+	path = neovim/.config/nvim/pack/languages/start/zig.vim
 	url = https://github.com/ziglang/zig.vim
 [submodule "fzf"]
 	path = fzf/.local/lib/fzf
