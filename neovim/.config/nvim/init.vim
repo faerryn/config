@@ -46,10 +46,6 @@ autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=500}
 
 let g:asmsyntax='nasm'
 
-" vim-sensible
-packadd vim-sensible
-set scrolloff=0
-
 " vim-dirvish
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
