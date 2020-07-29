@@ -6,3 +6,7 @@
 [alias]
 	last = log -1 HEAD
 	unstage = reset HEAD --
+[merge]
+	tool = vimdiff
+[diff]
+	tool = vimdiff

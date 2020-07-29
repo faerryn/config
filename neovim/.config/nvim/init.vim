@@ -19,8 +19,8 @@ set updatetime=500
 noremap <silent> Y y$
 noremap <silent> Q @@
 
-noremap <silent> s <nop>
-noremap <silent> S <nop>
+noremap <silent> s        <nop>
+noremap <silent> S        <nop>
 noremap <silent> <leader> <nop>
 
 nnoremap <silent> <leader>d :digraphs!<cr>
