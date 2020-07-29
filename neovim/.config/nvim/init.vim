@@ -16,12 +16,12 @@ set timeoutlen=500
 set undofile
 set updatetime=500
 
-noremap Y y$
-noremap Q @@
+noremap <silent> Y y$
+noremap <silent> Q @@
 
-noremap s <nop>
-noremap S <nop>
-noremap <leader> <nop>
+noremap <silent> s <nop>
+noremap <silent> S <nop>
+noremap <silent> <leader> <nop>
 
 nnoremap <silent> <leader>d :digraphs!<cr>
 nnoremap <silent> <leader>l :lopen<cr>
@@ -33,7 +33,6 @@ silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
 autocmd VimEnter * silent! helptags ALL
 
 set cursorline cursorcolumn colorcolumn=80
-set foldmethod=syntax foldlevelstart=20
 set nowrap linebreak
 set number relativenumber
 set tabstop=4 shiftwidth=4 expandtab
