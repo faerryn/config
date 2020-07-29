@@ -2,7 +2,7 @@
 * Packages
 ** Load newer lisps
 #+begin_src emacs-lisp
-  (setq load-prefer-newer t)
+  (setq-default load-prefer-newer t)
 #+end_src
 ** Add package sources
 #+begin_src emacs-lisp
@@ -27,11 +27,12 @@
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
-  (setq inhibit-splash-screen t)
+  (setq-default truncate-lines t)
+  (setq-default inhibit-splash-screen t)
 #+end_src
 ** Slower mouse scroll
 #+begin_src emacs-lisp
-  (setq mouse-wheel-scroll-amount '(1))
+  (setq-default mouse-wheel-scroll-amount '(1))
 #+end_src
 ** Theme
 #+begin_src emacs-lisp
@@ -60,13 +61,13 @@
   (use-package evil
     :ensure t
     :init
-    (setq evil-want-integration t)
-    (setq evil-want-keybinding nil)
-    (setq evil-want-C-u-delete t)
-    (setq evil-want-C-u-scroll t)
+    (setq-default evil-want-integration t)
+    (setq-default evil-want-keybinding nil)
+    (setq-default evil-want-C-u-delete t)
+    (setq-default evil-want-C-u-scroll t)
     :config
     (evil-select-search-module 'evil-search-module 'evil-search)
-    (setq evil-want-Y-yank-to-eol t)
+    (setq-default evil-want-Y-yank-to-eol t)
     (add-hook 'org-mode-hook (lambda () (setq evil-auto-indent nil)))
     (evil-mode +1))
   (use-package evil-goggles
@@ -80,7 +81,7 @@
   (use-package undo-tree
     :ensure t
     :config
-    (setq undo-tree-auto-save-history t)
+    (setq-default undo-tree-auto-save-history t)
     (setq
      undo-tree-history-directory-alist
      `(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
@@ -129,8 +130,8 @@
   (use-package ivy
     :ensure t
     :config
-    (setq ivy-count-format "(%d/%d) ")
-    (setq ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
+    (setq-default ivy-count-format "(%d/%d) ")
+    (setq-default ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
     (global-set-key (kbd "C-c f") #'personal-ivy-emulate-fzf)
     (ivy-mode +1))
 #+end_src
@@ -154,8 +155,8 @@
   (use-package org
     :ensure t
     :config
-    (setq org-catch-invisible-edits 'smart)
-    (setq org-src-tab-acts-natively t))
+    (setq-default org-catch-invisible-edits 'smart)
+    (setq-default org-src-tab-acts-natively t))
 #+end_src
 * Magit
 #+begin_src emacs-lisp
@@ -187,13 +188,12 @@
 * Sundry
 ** Clean FS
 #+begin_src emacs-lisp
-  (setq auto-save-default nil)
-  (setq backup-inhibited t)
-  (setq create-lockfiles nil)
+  (setq-default auto-save-default nil)
+  (setq-default backup-inhibited t)
 #+end_src
 ** Load Custom file
 #+begin_src emacs-lisp
-  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
   (load custom-file :noerror)
 #+end_src
 ** Emacs Server
