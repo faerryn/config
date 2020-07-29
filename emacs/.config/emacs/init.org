@@ -55,7 +55,7 @@
 #+begin_src emacs-lisp
   (global-prettify-symbols-mode +1)
 #+end_src
-* Evil
+* Evil Mode
 ** Emulate vim
 #+begin_src emacs-lisp
   (use-package evil
@@ -116,8 +116,8 @@
     :ensure t
     :after (magit evil))
 #+end_src
-* Completion
-** Ivy
+* Ivy Completion
+** Base Ivy
 #+begin_src emacs-lisp
   (defun personal-ivy-emulate-fzf ()
     "Emulates the behavior of FZF"
@@ -135,7 +135,7 @@
     (global-set-key (kbd "C-c f") #'personal-ivy-emulate-fzf)
     (ivy-mode +1))
 #+end_src
-** Counsel
+** Ivy-Counsel
 #+begin_src emacs-lisp
   (use-package counsel
     :ensure t
@@ -143,26 +143,12 @@
     :config
     (counsel-mode +1))
 #+end_src
-** Swiper
+** Ivy-Swiper
 #+begin_src emacs-lisp
   (use-package swiper
     :ensure t
     :after (ivy)
     :bind ("C-s" . swiper-isearch))
-#+end_src
-* Org mode
-#+begin_src emacs-lisp
-  (use-package org
-    :ensure t
-    :config
-    (setq-default org-catch-invisible-edits 'smart)
-    (setq-default org-src-tab-acts-natively t))
-#+end_src
-* Magit
-#+begin_src emacs-lisp
-  (use-package magit
-    :ensure t
-    :config (global-set-key (kbd "C-c g") #'magit))
 #+end_src
 * Programming
 ** Zig
@@ -184,6 +170,25 @@
     (evil-collection-lispy-set-key-theme '(paredit c-digits))
     (add-hook 'lisp-mode-hook #'lispy-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
+#+end_src
+* Org Mode
+#+begin_src emacs-lisp
+  (use-package org
+    :ensure t
+    :config
+    (setq-default org-catch-invisible-edits 'smart)
+    (setq-default org-src-tab-acts-natively t)
+    (add-hook 'org-mode-hook #'org-toggle-pretty-entities))
+#+end_src
+* Magit
+#+begin_src emacs-lisp
+  (use-package magit
+    :ensure t
+    :config (global-set-key (kbd "C-c g") #'magit))
+#+end_src
+* EXWM
+#+begin_src emacs-lisp
+  (use-package exwm :ensure t)
 #+end_src
 * Sundry
 ** Clean FS

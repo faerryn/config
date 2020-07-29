@@ -9,7 +9,6 @@ alias ll="ls -l"
 alias lla="ll -la"
 
 alias ec="emacsclient -c"
-alias ed="emacs --daemon"
 alias em="emacs"
 
 alias ..="cd .."
@@ -78,7 +77,6 @@ HISTFILE="$XDG_DATA_HOME/zsh/history"
 SAVEHIST=1000
 HISTSIZE=1000
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
-zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 bindkey -M vicmd "k" history-substring-search-up
 bindkey -M vicmd "j" history-substring-search-down
 bindkey -M vicmd "^p" history-substring-search-up
