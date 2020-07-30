@@ -13,7 +13,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # systemd
 if command -v systemctl >/dev/null; then
-	systemctl --user import-environment PATH
+    systemctl --user import-environment PATH
 fi
 
 # less
@@ -27,7 +27,7 @@ export CC="ccache cc"
 export CXX="ccache cpp"
 
 # make
-alias make="make -j$(nproc)"
+alias make="make -j$(($(nproc) + 1))"
 
 # fzf
 export FZF_DEFAULT_COMMAND="fd --hidden --type=file"
@@ -47,13 +47,13 @@ fi
 
 # vim=nvim
 if command -v nvim >/dev/null; then
-	alias ex="nvim -e"
-	alias vi="nvim"
-	alias view="nvim -R"
-	alias vim="nvim"
-	alias vimdiff="nvim -d"
+    alias ex="nvim -e"
+    alias vi="nvim"
+    alias view="nvim -R"
+    alias vim="nvim"
+    alias vimdiff="nvim -d"
     alias vimtutor="nvim +Tutor"
-	export EDITOR="nvim"
-	export VISUAL="nvim"
-	export MANPAGER="nvim -R +\"set signcolumn=no ft=man\" -"
+    export EDITOR="nvim"
+    export VISUAL="nvim"
+    export MANPAGER="nvim -R +\"set signcolumn=no ft=man\" -"
 fi
