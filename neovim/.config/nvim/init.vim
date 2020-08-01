@@ -2,6 +2,7 @@ execute "augroup Personal"
 autocmd!
 
 let g:mapleader="\<space>"
+
 set clipboard=unnamed,unnamedplus
 set confirm
 set hidden
