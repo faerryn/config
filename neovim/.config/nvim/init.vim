@@ -68,6 +68,5 @@ nnoremap <silent> <leader>g :Git<cr>
 " fzf
 let g:fzf_preview_window = ''
 nnoremap <silent> <leader>f :Files<cr>
-nnoremap <silent> <leader>b :Buffers<cr>
 
 execute "augroup END"
