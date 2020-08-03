@@ -42,8 +42,6 @@ set inccommand=split
 
 colorscheme gruvbox
 
-autocmd TextYankPost * lua require'vim.highlight'.on_yank{timeout=500}
-
 let g:asmsyntax='nasm'
 
 " vim-dirvish
@@ -68,5 +66,8 @@ nnoremap <silent> <leader>g :Git<cr>
 " fzf
 let g:fzf_preview_window = ''
 nnoremap <silent> <leader>f :Files<cr>
+
+" highlightedyank
+let g:highlightedyank_highlight_duration = 500
 
 execute "augroup END"
