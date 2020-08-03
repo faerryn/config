@@ -63,10 +63,6 @@ autocmd FileType undotree nnoremap <silent> <buffer> <esc> :UndotreeHide<cr>
 autocmd FileType fugitive nnoremap <silent> <buffer> <esc> <c-w>q
 nnoremap <silent> <leader>g :Git<cr>
 
-" fzf
-let g:fzf_preview_window = ''
-nnoremap <silent> <leader>f :Files<cr>
-
 " highlightedyank
 let g:highlightedyank_highlight_duration = 500
 
