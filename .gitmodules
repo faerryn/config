@@ -85,3 +85,6 @@
 [submodule "vim-highlightedyank"]
 	path = neovim/.config/nvim/pack/looks/start/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank
+[submodule "vis-commentary"]
+	path = vis/.config/vis/vis-commentary
+	url = https://github.com/lutobler/vis-commentary
