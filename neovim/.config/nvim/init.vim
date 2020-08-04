@@ -51,14 +51,6 @@ command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
 
-" undotree
-let g:undotree_HelpLine           = 0
-let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_ShortIndicators    = 1
-let g:undotree_WindowLayout       = 3
-nnoremap <silent> <leader>u :UndotreeShow<cr>
-autocmd FileType undotree nnoremap <silent> <buffer> <esc> :UndotreeHide<cr>
-
 " vim-fugitive
 autocmd FileType fugitive nnoremap <silent> <buffer> <esc> <c-w>q
 nnoremap <silent> <leader>g :Git<cr>
