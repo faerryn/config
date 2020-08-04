@@ -1,6 +1,6 @@
 require'vis'
 
-local commentary = require'vis-commentary/vis-commentary'
+local commentary = require'vis-commentary'
 
 local surround = require'vis-surround'
 surround.prefix.add = {"sa"}
