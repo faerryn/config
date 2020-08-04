@@ -1,14 +1,14 @@
 require'vis'
 
-local commentary = require'plugins/vis-commentary'
+local vis_commentary = require'plugins/vis-commentary'
 
-local surround = require'plugins/vis-surround'
-surround.prefix.add     = {"sa"}
-surround.prefix.change  = {"sr"}
-surround.prefix.delete  = {"sd"}
+local vis_surround = require'plugins/vis-surround'
+vis_surround.prefix.add     = {"sa"}
+vis_surround.prefix.change  = {"sr"}
+vis_surround.prefix.delete  = {"sd"}
 
-local pairs = require'plugins/vis-pairs'
-pairs.autopairs = false
+local vis_pairs = require'plugins/vis-pairs'
+vis_pairs.autopairs = false
 
 vis.events.subscribe(vis.events.INIT, function()
     -- Your global configuration options
