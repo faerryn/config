@@ -88,3 +88,6 @@
 [submodule "vis-commentary"]
 	path = vis/.config/vis/vis-commentary
 	url = https://github.com/lutobler/vis-commentary
+[submodule "vis/.config/vis/vis-surround"]
+	path = vis/.config/vis/vis-surround
+	url = https://repo.or.cz/vis-surround.git
