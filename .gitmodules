@@ -1,6 +1,3 @@
-[submodule "matchit"]
-	path = neovim/.config/nvim/pack/core/start/matchit
-	url = https://github.com/chrisbra/matchit
 [submodule "gruvbox"]
 	path = neovim/.config/nvim/pack/looks/start/gruvbox
 	url = https://github.com/gruvbox-community/gruvbox
