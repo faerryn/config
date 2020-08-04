@@ -7,8 +7,11 @@
 
 ;; Tangle and load `init.org'
 (let ((init-org (expand-file-name "init.org" user-emacs-directory))
-      (tangled-el (expand-file-name "tangled.el" user-emacs-directory)))
+      (tangled-el (expand-file-name "tangled.el" user-emacs-directory))
+      (tangled-elc (expand-file-name "tangled.elc" user-emacs-directory)))
   (when (file-newer-than-file-p init-org tangled-el)
     (require 'ob-tangle)
     (org-babel-tangle-file init-org tangled-el))
-  (load tangled-el))
+  (when (file-newer-than-file-p tangled-el tangled-elc)
+    (byte-compile-file tangled-el))
+  (load tangled-elc))
