@@ -3,10 +3,6 @@ if [[ ! -v $SOURCED_PROFILE ]]; then
     source "$HOME/.profile"
 fi
 
-# Editor
-export EDITOR=vis
-export VISUAL=vis
-
 # Aliases
 alias la="ls -a"
 alias ll="ls -l"

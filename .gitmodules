@@ -86,8 +86,11 @@
 	path = neovim/.config/nvim/pack/looks/start/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank
 [submodule "vis-surround"]
-	path = vis/.config/vis/vis-surround
+	path = vis/.config/vis/plugins/vis-surround
 	url = https://repo.or.cz/vis-surround.git
 [submodule "vis-commentary"]
-	path = vis/.config/vis/vis-commentary
+	path = vis/.config/vis/plugins/vis-commentary
 	url = https://github.com/jeremybobbin/vis-commentary
+[submodule "vis-pairs"]
+	path = vis/.config/vis/plugins/vis-pairs
+	url = https://repo.or.cz/vis-pairs.git

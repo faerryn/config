@@ -1,22 +1,25 @@
 require'vis'
 
-local commentary = require'vis-commentary'
+local commentary = require'plugins/vis-commentary'
 
-local surround = require'vis-surround'
-surround.prefix.add = {"sa"}
-surround.prefix.change = {"sr"}
-surround.prefix.delete = {"sd"}
+local surround = require'plugins/vis-surround'
+surround.prefix.add     = {"sa"}
+surround.prefix.change  = {"sr"}
+surround.prefix.delete  = {"sd"}
+
+local pairs = require'plugins/vis-pairs'
+pairs.autopairs = false
 
 vis.events.subscribe(vis.events.INIT, function()
     -- Your global configuration options
-    vis:command'set autoindent on'
-    vis:command'set expandtab on'
-    vis:command'set tabwidth 4'
+    vis:command'set autoindent  on'
+    vis:command'set expandtab   on'
+    vis:command'set tabwidth    4'
 end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
     -- Your per window configuration options e.g.
-    vis:command'set colorcolumn 80'
-    vis:command'set cursorline on'
-    vis:command'set relativenumbers on'
+    vis:command'set colorcolumn      80'
+    vis:command'set cursorline       on'
+    vis:command'set relativenumbers  on'
 end)
