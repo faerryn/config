@@ -1,5 +1,5 @@
 [submodule "gruvbox"]
-	path = neovim/.config/nvim/pack/looks/start/gruvbox
+	path = neovim/.config/nvim/pack/aesthetics/start/gruvbox
 	url = https://github.com/gruvbox-community/gruvbox
 [submodule "vim-dirvish"]
 	path = neovim/.config/nvim/pack/filesystem/start/vim-dirvish
@@ -7,9 +7,6 @@
 [submodule "vim-sandwich"]
 	path = neovim/.config/nvim/pack/core/start/vim-sandwich
 	url = https://github.com/machakann/vim-sandwich
-[submodule "undotree"]
-	path = neovim/.config/nvim/pack/version_control/start/undotree
-	url = https://github.com/mbbill/undotree
 [submodule "vim-mkdir"]
 	path = neovim/.config/nvim/pack/filesystem/start/vim-mkdir
 	url = https://github.com/pbrisbin/vim-mkdir
@@ -23,7 +20,7 @@
 	path = neovim/.config/nvim/pack/filesystem/start/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch
 [submodule "vim-fugitive"]
-	path = neovim/.config/nvim/pack/version_control/start/vim-fugitive
+	path = neovim/.config/nvim/pack/core/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "vim-repeat"]
 	path = neovim/.config/nvim/pack/core/start/vim-repeat
@@ -80,7 +77,7 @@
 	path = neovim/.config/nvim/pack/core/start/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth
 [submodule "vim-highlightedyank"]
-	path = neovim/.config/nvim/pack/looks/start/vim-highlightedyank
+	path = neovim/.config/nvim/pack/aesthetics/start/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank
 [submodule "vis-surround"]
 	path = vis/.config/vis/plugins/vis-surround
