@@ -1,9 +1,5 @@
 #+startup: indent content
 * Packages
-** Load newer lisps
-#+begin_src emacs-lisp
-  (setq-default load-prefer-newer t)
-#+end_src
 ** Add package sources
 #+begin_src emacs-lisp
   (require 'package)
@@ -58,13 +54,13 @@
   (use-package evil
     :ensure t
     :init
-    (setq-default evil-want-integration t)
-    (setq-default evil-want-keybinding nil)
     (setq-default evil-want-C-u-delete t)
     (setq-default evil-want-C-u-scroll t)
+    (setq-default evil-want-Y-yank-to-eol t)
+    (setq-default evil-want-integration t)
+    (setq-default evil-want-keybinding nil)
     :config
     (evil-select-search-module 'evil-search-module 'evil-search)
-    (setq-default evil-want-Y-yank-to-eol t)
     (add-hook 'org-mode-hook (lambda () (setq evil-auto-indent nil)))
     (evil-mode +1))
   (use-package evil-goggles

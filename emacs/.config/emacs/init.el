@@ -2,6 +2,9 @@
 (setq gc-cons-threshold most-positive-fixnum)
 (add-hook 'after-init-hook (lambda () (setq-default gc-cons-threshold 800000)))
 
+;; Load newer lisps
+(setq-default load-prefer-newer t)
+
 ;; Follow symlink (since tangled.el will be in a symlinked folder)
 (setq-default vc-follow-symlinks t)
 
