@@ -9,8 +9,9 @@
   (require 'package)
   (add-to-list 'package-archives 
                '("melpa" . "https://melpa.org/packages/") t)
-  (add-to-list 'package-archives 
-               '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+  (add-to-list
+   'package-archives 
+   '("melpa-stable" . "https://stable.melpa.org/packages/") t)
   (add-to-list 'package-archives 
                '("org" . "https://orgmode.org/elpa/") t)
 #+end_src
@@ -83,9 +84,12 @@
     :config
     (evil-define-key nil evil-normal-state-map "s" nil)
     (evil-define-key nil evil-normal-visual-map "S" nil)
-    (evil-define-key nil evil-normal-state-map "sa" #'evil-surround-region)
-    (evil-define-key nil evil-normal-state-map "sd" #'evil-surround-delete)
-    (evil-define-key nil evil-normal-state-map "sr" #'evil-surround-change))
+    (evil-define-key nil evil-normal-state-map "sa" 
+      #'evil-surround-region)
+    (evil-define-key nil evil-normal-state-map "sd" 
+      #'evil-surround-delete)
+    (evil-define-key nil evil-normal-state-map "sr" 
+      #'evil-surround-change))
 #+end_src
 ** Compatibility
 #+begin_src emacs-lisp
@@ -153,7 +157,8 @@
 #+end_src
 ** Load Custom file
 #+begin_src emacs-lisp
-  (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (setq-default custom-file
+                (expand-file-name "custom.el" user-emacs-directory))
   (load custom-file :noerror)
 #+end_src
 ** Emacs Server
