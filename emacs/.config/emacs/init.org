@@ -137,7 +137,12 @@
 #+end_src
 * Magit
 #+begin_src emacs-lisp
-  (use-package magit :ensure t)
+  (use-package magit
+    :ensure t
+    :bind ("C-x g" . magit)
+    :defer t
+    :config
+    (autoload 'magit "magit" nil t))
 #+end_src
 * EXWM
 #+begin_src emacs-lisp
