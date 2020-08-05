@@ -2,13 +2,13 @@ require'vis'
 
 local vis_commentary = require'plugins/vis-commentary'
 
-local vis_surround = require'plugins/vis-surround'
-vis_surround.prefix.add     = {"sa"}
-vis_surround.prefix.change  = {"sr"}
-vis_surround.prefix.delete  = {"sd"}
-
 local vis_pairs = require'plugins/vis-pairs'
 vis_pairs.autopairs = false
+
+local vis_surround = require'plugins/vis-surround'
+vis_surround.prefix.add     = {"sa", "sa"}
+vis_surround.prefix.change  = {"sr", "sr"}
+vis_surround.prefix.delete  = {"sd", "sd"}
 
 vis.events.subscribe(vis.events.INIT, function()
     -- Your global configuration options

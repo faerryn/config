@@ -82,6 +82,8 @@
     (evil-define-key nil evil-normal-visual-map "S" nil)
     (evil-define-key nil evil-normal-state-map "sa" 
       #'evil-surround-region)
+    (evil-define-key nil evil-visual-state-map "sa" 
+      #'evil-surround-region)
     (evil-define-key nil evil-normal-state-map "sd" 
       #'evil-surround-delete)
     (evil-define-key nil evil-normal-state-map "sr" 
