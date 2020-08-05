@@ -102,9 +102,7 @@
     :after (evil org)
     :config
     (add-hook 'org-mode-hook #'evil-org-mode)
-    (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme)
-    (require 'evil-org-agenda)
-    (evil-org-agenda-set-keys))
+    (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme))
   (use-package evil-magit
     :ensure t
     :after (magit evil))
@@ -141,13 +139,15 @@
 #+end_src
 * Magit
 #+begin_src emacs-lisp
-  (use-package magit
-    :ensure t
-    :config (global-set-key (kbd "C-c g") #'magit))
+  (use-package magit :ensure t)
 #+end_src
 * EXWM
 #+begin_src emacs-lisp
-  (use-package exwm :ensure t)
+  (use-package exwm
+    :ensure t
+    :defer t
+    :init
+    (autoload 'exwm-init "exwm" nil t))
 #+end_src
 * Sundry
 ** Clean FS
