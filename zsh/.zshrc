@@ -48,13 +48,14 @@ bindkey -v
 KEYTIMEOUT=1
 
 function cursor_beam() { echo -ne "\e[5 q" }
+function cursor_block() { echo -ne "\e[1 q" }
 
 function zle-line-init() { cursor_beam }
 zle -N zle-line-init
 
 function zle-keymap-select {
     if [[ ${KEYMAP} == vicmd ]] || [[ $1 = "block" ]]; then
-	echo -ne "\e[1 q"
+	cursor_block
     elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = "" ]] || [[ $1 = "beam" ]]; then
 	cursor_beam
     fi
@@ -62,6 +63,7 @@ function zle-keymap-select {
 zle -N zle-keymap-select
 
 precmd_functions+=(cursor_beam)
+preexec_functions+=(cursor_block)
 cursor_beam
 
 # Completion

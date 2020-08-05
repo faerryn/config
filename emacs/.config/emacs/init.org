@@ -29,9 +29,10 @@
 #+end_src
 ** Theme
 #+begin_src emacs-lisp
-  (use-package darktooth-theme
-    :ensure t
-    :config (load-theme 'darktooth t))
+  (when (display-graphic-p)
+   (use-package darktooth-theme
+     :ensure t
+     :config (load-theme 'darktooth t)))
 #+end_src
 ** Minions
 #+begin_src emacs-lisp
@@ -59,6 +60,7 @@
     (setq-default evil-want-Y-yank-to-eol t)
     (setq-default evil-want-integration t)
     (setq-default evil-want-keybinding nil)
+    (setq-default evil-want-C-i-jump (display-graphic-p))
     :config
     (evil-select-search-module 'evil-search-module 'evil-search)
     (evil-define-key nil evil-normal-state-map "Q" "@@")
