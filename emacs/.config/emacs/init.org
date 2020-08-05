@@ -61,21 +61,20 @@
     (setq-default evil-want-keybinding nil)
     :config
     (evil-select-search-module 'evil-search-module 'evil-search)
-    (add-hook 'org-mode-hook (lambda () (setq evil-auto-indent nil)))
     (evil-define-key nil evil-normal-state-map "Q" "@@")
     (evil-mode +1))
   (use-package evil-goggles
     :ensure t
     :after (evil)
     :config (evil-goggles-mode +1))
-  (use-package evil-commentary
-    :ensure t
-    :after (evil)
-    :config (evil-commentary-mode +1))
   (use-package evil-matchit
     :ensure t
     :after (evil)
     :config (global-evil-matchit-mode +1))
+  (use-package evil-commentary
+    :ensure t
+    :after (evil)
+    :config (evil-commentary-mode +1))
   (use-package evil-surround
     :ensure t
     :after (evil)
@@ -102,6 +101,7 @@
     :after (evil org)
     :config
     (add-hook 'org-mode-hook #'evil-org-mode)
+    (add-hook 'org-mode-hook (lambda () (setq evil-auto-indent nil)))
     (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme))
   (use-package evil-magit
     :ensure t
