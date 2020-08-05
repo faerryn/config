@@ -8,7 +8,7 @@ alias la="ls -a"
 alias ll="ls -l"
 alias lla="ll -la"
 
-alias ec="emacsclient -c"
+alias ec="emacsclient"
 alias em="emacs"
 
 alias ..="cd .."
