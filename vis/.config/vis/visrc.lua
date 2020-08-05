@@ -15,6 +15,10 @@ vis.events.subscribe(vis.events.INIT, function()
     vis:command'set autoindent  on'
     vis:command'set expandtab   on'
     vis:command'set tabwidth    4'
+    vis:command'map     normal  Q @@'
+    vis:command'unmap   normal  s'
+    vis:command'unmap   normal  S'
+    vis:command'unmap   visual  s'
 end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
@@ -22,5 +26,4 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
     vis:command'set colorcolumn      80'
     vis:command'set cursorline       on'
     vis:command'set relativenumbers  on'
-    vis:command'map normal Q @@'
 end)
