@@ -22,4 +22,5 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
     vis:command'set colorcolumn      80'
     vis:command'set cursorline       on'
     vis:command'set relativenumbers  on'
+    vis:command'map normal Q @@'
 end)

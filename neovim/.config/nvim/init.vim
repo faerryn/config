@@ -1,8 +1,6 @@
 execute "augroup Personal"
 autocmd!
 
-let g:mapleader="\<space>"
-
 set clipboard=unnamed,unnamedplus
 set confirm
 set hidden
@@ -11,24 +9,25 @@ set lazyredraw
 set mouse=ar
 set nrformats=alpha,octal,hex,bin
 set omnifunc=syntaxcomplete#Complete
+set shada=
 set spell
 set splitbelow splitright
 set timeoutlen=500
-set undofile
 set updatetime=500
 
-noremap <silent> Y y$
-noremap <silent> Q @@
+let g:mapleader="\<space>"
 
 noremap <silent> s        <nop>
 noremap <silent> S        <nop>
 noremap <silent> <leader> <nop>
 
-nnoremap <silent> <leader>d :digraphs!<cr>
+noremap <silent> Y y$
+noremap <silent> Q @@
+
 nnoremap <silent> <leader>l :lopen<cr>
 nnoremap <silent> <leader>q :copen<cr>
 
-autocmd FileType help,qf nnoremap <silent> <buffer> <esc> <c-w>q
+autocmd FileType help,qf nnoremap <silent> <buffer> <esc> :q<cr>
 
 silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
 autocmd VimEnter * silent! helptags ALL
@@ -52,7 +51,7 @@ command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
 
 " vim-fugitive
-autocmd FileType fugitive nnoremap <silent> <buffer> <esc> <c-w>q
+autocmd FileType fugitive nnoremap <silent> <buffer> <esc> :q<cr>
 nnoremap <silent> <leader>g :Git<cr>
 
 " highlightedyank

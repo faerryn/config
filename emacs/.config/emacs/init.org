@@ -62,6 +62,7 @@
     :config
     (evil-select-search-module 'evil-search-module 'evil-search)
     (add-hook 'org-mode-hook (lambda () (setq evil-auto-indent nil)))
+    (evil-define-key nil evil-normal-state-map "Q" "@@")
     (evil-mode +1))
   (use-package evil-goggles
     :ensure t
