@@ -24,7 +24,7 @@ export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/ccache.config"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 export CC="ccache cc"
-export CXX="ccache cpp"
+export CXX="ccache c++"
 
 # make
 alias make="make -j$(($(nproc) + 1))"

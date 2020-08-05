@@ -78,6 +78,7 @@
     :config (global-evil-matchit-mode +1))
   (use-package evil-surround
     :ensure t
+    :after (evil)
     :config
     (evil-define-key nil evil-normal-state-map "s" nil)
     (evil-define-key nil evil-normal-visual-map "S" nil)
@@ -141,7 +142,6 @@
   (use-package magit
     :ensure t
     :bind ("C-x g" . magit)
-    :defer t
     :config
     (autoload 'magit "magit" nil t))
 #+end_src
