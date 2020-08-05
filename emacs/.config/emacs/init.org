@@ -29,10 +29,9 @@
 #+end_src
 ** Theme
 #+begin_src emacs-lisp
-  (when (display-graphic-p)
-   (use-package darktooth-theme
+  (use-package gruvbox-theme
      :ensure t
-     :config (load-theme 'darktooth t)))
+     :config (load-theme 'gruvbox t))
 #+end_src
 ** Minions
 #+begin_src emacs-lisp
