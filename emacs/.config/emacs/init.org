@@ -161,7 +161,3 @@
                 (expand-file-name "custom.el" user-emacs-directory))
   (load custom-file :noerror)
 #+end_src
-** Emacs Server
-#+begin_src emacs-lisp
-  (when (daemonp) (server-start))
-#+end_src
