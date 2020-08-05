@@ -30,10 +30,6 @@
   (setq-default truncate-lines t)
   (setq-default inhibit-splash-screen t)
 #+end_src
-** Mouse scroll
-#+begin_src emacs-lisp
-  (setq-default mouse-wheel-scroll-amount '(1))
-#+end_src
 ** Theme
 #+begin_src emacs-lisp
   (use-package darktooth-theme
@@ -51,7 +47,7 @@
   (setq-default display-line-numbers 'visual)
   (global-hl-line-mode +1)
 #+end_src
-** Prettify-symbols
+** Prettify
 #+begin_src emacs-lisp
   (global-prettify-symbols-mode +1)
 #+end_src
@@ -74,14 +70,6 @@
     :ensure t
     :after (evil)
     :config (evil-goggles-mode +1))
-  (use-package undo-tree
-    :ensure t
-    :config
-    (setq-default undo-tree-auto-save-history t)
-    (setq
-     undo-tree-history-directory-alist
-     `(("." . ,(expand-file-name "undo-tree" user-emacs-directory))))
-    (global-undo-tree-mode +1))
   (use-package evil-commentary
     :ensure t
     :after (evil)
