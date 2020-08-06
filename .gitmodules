@@ -10,9 +10,6 @@
 [submodule "vim-mkdir"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-mkdir
 	url = https://github.com/pbrisbin/vim-mkdir
-[submodule "vim-lion"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-lion
-	url = https://github.com/tommcdo/vim-lion
 [submodule "tcomment_vim"]
 	path = neovim/.config/nvim/pack/bundle/start/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim
@@ -28,9 +25,6 @@
 [submodule "vim-unimpaired"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired
-[submodule "targets.vim"]
-	path = neovim/.config/nvim/pack/bundle/start/targets.vim
-	url = https://github.com/wellle/targets.vim
 [submodule "zsh-system-clipboard"]
 	path = zsh/.config/zsh/plugins/zsh-system-clipboard
 	url = https://github.com/kutsan/zsh-system-clipboard

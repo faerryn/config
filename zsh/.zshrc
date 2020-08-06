@@ -47,8 +47,8 @@ bindkey -v
 
 KEYTIMEOUT=1
 
-function cursor_beam() { echo -ne "\e[5 q" }
 function cursor_block() { echo -ne "\e[1 q" }
+function cursor_beam() { echo -ne "\e[5 q" }
 
 function zle-line-init() { cursor_beam }
 zle -N zle-line-init
