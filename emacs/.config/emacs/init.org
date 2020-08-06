@@ -3,13 +3,15 @@
 ** Add package sources
 #+begin_src emacs-lisp
   (require 'package)
-  (add-to-list 'package-archives 
-               '("melpa" . "https://melpa.org/packages/") t)
+  (add-to-list
+   'package-archives 
+   '("melpa" . "https://melpa.org/packages/") t)
   (add-to-list
    'package-archives 
    '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-  (add-to-list 'package-archives 
-               '("org" . "https://orgmode.org/elpa/") t)
+  (add-to-list 
+   'package-archives 
+   '("org" . "https://orgmode.org/elpa/") t)
 #+end_src
 ** Load use-package
 #+begin_src emacs-lisp
@@ -30,8 +32,8 @@
 ** Theme
 #+begin_src emacs-lisp
   (use-package doom-themes
-     :ensure t
-     :config (load-theme 'doom-vibrant t))
+    :ensure t
+    :config (load-theme 'doom-vibrant t))
 #+end_src
 ** Minions
 #+begin_src emacs-lisp
