@@ -9,7 +9,6 @@ set lazyredraw
 set mouse=ar
 set nrformats=alpha,octal,hex,bin
 set omnifunc=syntaxcomplete#Complete
-set shada=
 set spell
 set splitbelow splitright
 set timeoutlen=500
@@ -32,16 +31,26 @@ autocmd FileType help,qf nnoremap <silent> <buffer> <esc> :q<cr>
 silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
 autocmd VimEnter * silent! helptags ALL
 
+syntax on
 set cursorline cursorcolumn colorcolumn=80
 set nowrap linebreak
 set number relativenumber
 set tabstop=4 shiftwidth=4 expandtab
 set termguicolors
-set inccommand=split
+set background=dark
+set hlsearch incsearch
 
 colorscheme gruvbox
 
 let g:asmsyntax='nasm'
+
+" vim/neovim compat
+if has("nvim")
+    set inccommand=split
+    set shada=
+else
+    set viminfo=
+endif
 
 " vim-dirvish
 let g:loaded_netrw       = 1
