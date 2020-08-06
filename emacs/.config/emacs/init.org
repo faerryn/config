@@ -146,20 +146,7 @@
     :config
     (autoload 'magit "magit" nil t))
 #+end_src
-* EXWM
-#+begin_src emacs-lisp
-  (use-package exwm
-    :ensure t
-    :defer t
-    :init
-    (autoload 'exwm-init "exwm" nil t))
-#+end_src
 * Sundry
-** Clean FS
-#+begin_src emacs-lisp
-  (setq-default auto-save-default nil)
-  (setq-default backup-inhibited t)
-#+end_src
 ** Load Custom file
 #+begin_src emacs-lisp
   (setq-default custom-file

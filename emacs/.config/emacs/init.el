@@ -5,7 +5,7 @@
 ;; Load newer lisps
 (setq-default load-prefer-newer t)
 
-;; Follow symlink (since tangled.el will be in a symlinked folder)
+;; Follow symlink
 (setq-default vc-follow-symlinks t)
 
 ;; Tangle and load `init.org'
