@@ -1,35 +1,35 @@
 [submodule "gruvbox"]
-	path = neovim/.config/nvim/pack/aesthetics/start/gruvbox
+	path = neovim/.config/nvim/pack/bundle/start/gruvbox
 	url = https://github.com/gruvbox-community/gruvbox
 [submodule "vim-dirvish"]
-	path = neovim/.config/nvim/pack/filesystem/start/vim-dirvish
+	path = neovim/.config/nvim/pack/bundle/start/vim-dirvish
 	url = https://github.com/justinmk/vim-dirvish
 [submodule "vim-sandwich"]
-	path = neovim/.config/nvim/pack/core/start/vim-sandwich
+	path = neovim/.config/nvim/pack/bundle/start/vim-sandwich
 	url = https://github.com/machakann/vim-sandwich
 [submodule "vim-mkdir"]
-	path = neovim/.config/nvim/pack/filesystem/start/vim-mkdir
+	path = neovim/.config/nvim/pack/bundle/start/vim-mkdir
 	url = https://github.com/pbrisbin/vim-mkdir
 [submodule "vim-lion"]
-	path = neovim/.config/nvim/pack/core/start/vim-lion
+	path = neovim/.config/nvim/pack/bundle/start/vim-lion
 	url = https://github.com/tommcdo/vim-lion
 [submodule "tcomment_vim"]
-	path = neovim/.config/nvim/pack/core/start/tcomment_vim
+	path = neovim/.config/nvim/pack/bundle/start/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim
 [submodule "vim-eunuch"]
-	path = neovim/.config/nvim/pack/filesystem/start/vim-eunuch
+	path = neovim/.config/nvim/pack/bundle/start/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch
 [submodule "vim-fugitive"]
-	path = neovim/.config/nvim/pack/core/start/vim-fugitive
+	path = neovim/.config/nvim/pack/bundle/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "vim-repeat"]
-	path = neovim/.config/nvim/pack/core/start/vim-repeat
+	path = neovim/.config/nvim/pack/bundle/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat
 [submodule "vim-unimpaired"]
-	path = neovim/.config/nvim/pack/core/start/vim-unimpaired
+	path = neovim/.config/nvim/pack/bundle/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired
 [submodule "targets.vim"]
-	path = neovim/.config/nvim/pack/core/start/targets.vim
+	path = neovim/.config/nvim/pack/bundle/start/targets.vim
 	url = https://github.com/wellle/targets.vim
 [submodule "zsh-system-clipboard"]
 	path = zsh/.config/zsh/plugins/zsh-system-clipboard
@@ -65,19 +65,19 @@
 	path = tmux/.config/tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank
 [submodule "zig.vim"]
-	path = neovim/.config/nvim/pack/languages/start/zig.vim
+	path = neovim/.config/nvim/pack/bundle/start/zig.vim
 	url = https://github.com/ziglang/zig.vim
 [submodule "fzf"]
 	path = fzf/.local/lib/fzf
 	url = https://github.com/junegunn/fzf
 [submodule "vim-wordmotion"]
-	path = neovim/.config/nvim/pack/core/start/vim-wordmotion
+	path = neovim/.config/nvim/pack/bundle/start/vim-wordmotion
 	url = https://github.com/chaoren/vim-wordmotion
 [submodule "vim-sleuth"]
-	path = neovim/.config/nvim/pack/core/start/vim-sleuth
+	path = neovim/.config/nvim/pack/bundle/start/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth
 [submodule "vim-highlightedyank"]
-	path = neovim/.config/nvim/pack/aesthetics/start/vim-highlightedyank
+	path = neovim/.config/nvim/pack/bundle/start/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank
 [submodule "vis-surround"]
 	path = vis/.config/vis/plugins/vis-surround
