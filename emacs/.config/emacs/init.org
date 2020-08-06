@@ -29,9 +29,9 @@
 #+end_src
 ** Theme
 #+begin_src emacs-lisp
-  (use-package gruvbox-theme
+  (use-package doom-themes
      :ensure t
-     :config (load-theme 'gruvbox t))
+     :config (load-theme 'doom-vibrant t))
 #+end_src
 ** Minions
 #+begin_src emacs-lisp
