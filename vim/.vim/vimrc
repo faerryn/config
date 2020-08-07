@@ -3,13 +3,13 @@ autocmd!
 
 " vim/neovim compat
 if has("nvim")
-    set inccommand=split
+    set inccommand=nosplit
     set shada=
     
     autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 else
-    if &term =~ "-256color"
-        let $TERM="xterm-256color"
+    if &term =~ "-256color$"
+        let $TERM = "xterm-256color"
         set term=$TERM
     endif
 
@@ -21,7 +21,7 @@ else
 
     set viminfo=
 
-    let &directory=".,$XDG_DATA_HOME/vim/swap//"
+    set directory=.,$XDG_DATA_HOME/vim/swap//
 
     filetype plugin indent on
     syntax enable
