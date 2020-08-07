@@ -21,7 +21,7 @@ else
 
     set viminfo=
 
-    set directory=.,$XDG_DATA_HOME/vim/swap//
+    set directory=$XDG_DATA_HOME/vim/swap//
 
     filetype plugin indent on
     syntax enable
