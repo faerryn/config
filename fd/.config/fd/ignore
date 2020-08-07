@@ -1,7 +1,2 @@
 **/.git/
-
-**/undo-tree/
-
-**/nvim/{swap,undo}/
-
 **/zig-cache/{h,o}
