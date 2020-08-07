@@ -85,7 +85,7 @@ autocmd FileType fugitive nnoremap <silent> <buffer> <esc> :q<cr>
 nnoremap <silent> <leader>g :Git<cr>
 
 " fzf
-let $FZF_DEFAULT_COMMAND="fd --hidden --type=file"
+let $FZF_DEFAULT_COMMAND="git ls-files 2>/dev/null || fd --hidden --type=file"
 nnoremap <silent> <leader>f :FZF<cr>
 
 " vim-highlightedyank
