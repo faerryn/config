@@ -38,6 +38,7 @@ set nowrap linebreak
 set number relativenumber
 set tabstop=4 shiftwidth=4 expandtab
 set termguicolors
+set guioptions=!aPAcdefip
 
 colorscheme gruvbox
 
