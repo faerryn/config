@@ -26,20 +26,15 @@
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
-  (setq-default truncate-lines t)
   (setq-default inhibit-splash-screen t)
+  (setq-default mode-line-format nil) 
+  (setq-default truncate-lines t)
 #+end_src
 ** Theme
 #+begin_src emacs-lisp
   (use-package doom-themes
     :ensure t
     :config (load-theme 'doom-vibrant t))
-#+end_src
-** Minions
-#+begin_src emacs-lisp
-  (use-package minions
-    :ensure t
-    :config (minions-mode +1))
 #+end_src
 ** Line numbers
 #+begin_src emacs-lisp
