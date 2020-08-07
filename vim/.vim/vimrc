@@ -9,8 +9,10 @@ if has("nvim")
     autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 else
     if &term =~ "-256color$"
-        let $TERM = "xterm-256color"
-        set term=$TERM
+        set term=xterm-256color
+        let &t_SI = "\<esc>[5 q"
+        let &t_SR = "\<esc>[3 q"
+        let &t_EI = "\<esc>[1 q"
     endif
 
     set background=dark
