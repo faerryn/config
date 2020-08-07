@@ -56,7 +56,7 @@
 	path = vim/.vim/pack/bundle/start/vim-wordmotion
 	url = https://github.com/chaoren/vim-wordmotion
 [submodule "vim-highlightedyank"]
-	path = vim/.vim/pack/bundle/start/vim-highlightedyank
+	path = vim/.vim/pack/bundle/opt/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank
 [submodule "vis-surround"]
 	path = vis/.config/vis/vis-surround

@@ -5,6 +5,8 @@ autocmd!
 if has("nvim")
     set inccommand=split
     set shada=
+    
+    autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 else
     if &term =~ "-256color"
         let $TERM="xterm-256color"
@@ -23,6 +25,11 @@ else
 
     filetype plugin indent on
     syntax enable
+
+    " vim-highlightedyank
+    let g:highlightedyank_highlight_duration = 500
+    packadd vim-highlightedyank
+
 endif
 
 " core
@@ -83,8 +90,5 @@ nnoremap <silent> <leader>g :Git<cr>
 " fzf
 let $FZF_DEFAULT_COMMAND="fd --hidden --type=file"
 nnoremap <silent> <leader>f :FZF<cr>
-
-" vim-highlightedyank
-let g:highlightedyank_highlight_duration = 500
 
 execute "augroup END"
