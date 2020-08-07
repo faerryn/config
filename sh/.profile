@@ -45,15 +45,13 @@ else
     alias ls="ls --color=auto"
 fi
 
-# vim=nvim
+# vim and neovim
 if command -v nvim >/dev/null; then
-    alias ex="nvim -e"
-    alias vi="nvim"
-    alias view="nvim -R"
-    alias vim="nvim"
-    alias vimdiff="nvim -d"
-    alias vimtutor="nvim +Tutor"
     export EDITOR="nvim"
     export VISUAL="nvim"
     export MANPAGER="nvim -R +\"set signcolumn=no ft=man\" -"
+elif command -v vim >/dev/null; then
+    export EDITOR="vim"
+    export VISUAL="vim"
+    export MANPAGER="vim -R +\"set signcolumn=no ft=man\" -"
 fi
