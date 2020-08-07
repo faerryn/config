@@ -73,6 +73,7 @@ set number relativenumber
 set shortmess=o
 set tabstop=4 shiftwidth=4 expandtab
 set termguicolors
+set guioptions=!aPAcdfip
 
 colorscheme gruvbox
 
