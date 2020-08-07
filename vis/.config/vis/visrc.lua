@@ -12,9 +12,7 @@ vis_surround.prefix.delete  = {"sd", "sd"}
 
 vis.events.subscribe(vis.events.INIT, function()
     -- Your global configuration options
-    vis:command'set autoindent  on'
-    vis:command'set expandtab   on'
-    vis:command'set tabwidth    4'
+    vis:command'tabwidth 4 set autoindent on expandtab on'
     
     vis:command'map     normal  Q @@'
     vis:command'unmap   normal  s'
@@ -24,7 +22,6 @@ end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
     -- Your per window configuration options e.g.
-    vis:command'set colorcolumn      80'
-    vis:command'set cursorline       on'
-    vis:command'set relativenumbers  on'
+    vis:command'set colorcolumn 80 set cursorline on'
+    vis:command'set relativenumbers on'
 end)

@@ -33,8 +33,10 @@ autocmd VimEnter * silent! helptags ALL
 
 " aesthetics
 set cursorline cursorcolumn colorcolumn=80
+set laststatus=0 showtabline=0
 set nowrap linebreak
 set number relativenumber
+set shortmess=a
 set tabstop=4 shiftwidth=4 expandtab
 set termguicolors
 
@@ -57,6 +59,7 @@ else
 
     set background=dark
     set hlsearch incsearch
+    set ruler
 
     set autoindent
     set backspace=indent,eol,start
