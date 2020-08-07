@@ -41,22 +41,22 @@
 	path = zsh/.config/zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
 [submodule "tmux-copycat"]
-	path = tmux/.config/tmux/plugins/tmux-copycat
+	path = tmux/.config/tmux/tmux-copycat
 	url = https://github.com/tmux-plugins/tmux-copycat
 [submodule "tmux-open"]
-	path = tmux/.config/tmux/plugins/tmux-open
+	path = tmux/.config/tmux/tmux-open
 	url = https://github.com/tmux-plugins/tmux-open
 [submodule "tmux-pain-control"]
-	path = tmux/.config/tmux/plugins/tmux-pain-control
+	path = tmux/.config/tmux/tmux-pain-control
 	url = https://github.com/tmux-plugins/tmux-pain-control
 [submodule "tmux-sensible"]
-	path = tmux/.config/tmux/plugins/tmux-sensible
+	path = tmux/.config/tmux/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible
 [submodule "tmux-sessionist"]
-	path = tmux/.config/tmux/plugins/tmux-sessionist
+	path = tmux/.config/tmux/tmux-sessionist
 	url = https://github.com/tmux-plugins/tmux-sessionist
 [submodule "tmux-yank"]
-	path = tmux/.config/tmux/plugins/tmux-yank
+	path = tmux/.config/tmux/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank
 [submodule "zig.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/zig.vim
