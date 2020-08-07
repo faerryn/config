@@ -91,8 +91,8 @@ fi
 if ! command -v fzf >/dev/null; then
     export PATH="$XDG_CONFIG_HOME/zsh/plugins/fzf/bin:$PATH"
 fi
-export FZF_CTRL_T_COMMAND="git ls-files 2>/dev/null || fd --hidden --no-ignore-vcs --type=file"
-export FZF_ALT_C_COMMAND="git ls-files 2>/dev/null || fd --hidden --no-ignore-vcs --type=directory"
+export FZF_CTRL_T_COMMAND="fd --hidden --no-ignore-vcs --type=file"
+export FZF_ALT_C_COMMAND="fd --hidden --no-ignore-vcs --type=directory"
 source "$XDG_CONFIG_HOME/zsh/fzf/shell/key-bindings.zsh"
 
 # Source plugins

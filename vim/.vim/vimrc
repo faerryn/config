@@ -4,10 +4,7 @@ autocmd!
 " vim/neovim compat
 if has("nvim")
     set inccommand=split
-
     set shada=
-
-    let &directory=".,$XDG_DATA_HOME/nvim/swap//"
 else
     if &term =~ '256color'
         let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
@@ -64,7 +61,7 @@ set laststatus=0 showtabline=0
 set noruler
 set nowrap linebreak
 set number relativenumber
-set shortmess=
+set shortmess=o
 set tabstop=4 shiftwidth=4 expandtab
 set termguicolors
 
@@ -84,7 +81,7 @@ autocmd FileType fugitive nnoremap <silent> <buffer> <esc> :q<cr>
 nnoremap <silent> <leader>g :Git<cr>
 
 " fzf
-let $FZF_DEFAULT_COMMAND="git ls-files 2>/dev/null || fd --hidden --type=file"
+let $FZF_DEFAULT_COMMAND="fd --hidden --type=file"
 nnoremap <silent> <leader>f :FZF<cr>
 
 " vim-highlightedyank
