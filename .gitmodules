@@ -74,11 +74,11 @@
 	path = neovim/.config/nvim/pack/bundle/start/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank
 [submodule "vis-surround"]
-	path = vis/.config/vis/plugins/vis-surround
+	path = vis/.config/vis/vis-surround
 	url = https://repo.or.cz/vis-surround.git
 [submodule "vis-commentary"]
-	path = vis/.config/vis/plugins/vis-commentary
+	path = vis/.config/vis/vis-commentary
 	url = https://github.com/jeremybobbin/vis-commentary
 [submodule "vis-pairs"]
-	path = vis/.config/vis/plugins/vis-pairs
+	path = vis/.config/vis/vis-pairs
 	url = https://repo.or.cz/vis-pairs.git
