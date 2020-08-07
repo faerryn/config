@@ -1,6 +1,7 @@
 execute "augroup Personal"
 autocmd!
 
+" core
 set clipboard=unnamed,unnamedplus
 set confirm
 set hidden
@@ -31,16 +32,17 @@ autocmd FileType help,qf nnoremap <silent> <buffer> <esc> :q<cr>
 silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
 autocmd VimEnter * silent! helptags ALL
 
-syntax on
+" aesthetics
+set background=dark
 set cursorline cursorcolumn colorcolumn=80
+set hlsearch incsearch
 set nowrap linebreak
 set number relativenumber
 set tabstop=4 shiftwidth=4 expandtab
 set termguicolors
-set background=dark
-set hlsearch incsearch
 
 colorscheme gruvbox
+syntax enable
 
 let g:asmsyntax='nasm'
 
@@ -50,8 +52,11 @@ if has("nvim")
     set shada=
 else
     set viminfo=
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
+" PLUGINS
 " vim-dirvish
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
@@ -63,7 +68,7 @@ command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args
 autocmd FileType fugitive nnoremap <silent> <buffer> <esc> :q<cr>
 nnoremap <silent> <leader>g :Git<cr>
 
-" highlightedyank
+" vim-highlightedyank
 let g:highlightedyank_highlight_duration = 500
 
 execute "augroup END"
