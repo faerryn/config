@@ -8,8 +8,11 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+
 # PATH
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$CARGO_HOME/bin:$HOME/.local/bin:$PATH"
 
 # systemd
 if command -v systemctl >/dev/null; then
@@ -30,7 +33,7 @@ export CXX="ccache c++"
 alias make="make -j$(($(nproc) - 1))"
 
 # fzf
-export FZF_DEFAULT_COMMAND="fd --hidden --type=file"
+export FZF_DEFAULT_COMMAND="fd --hidden"
 
 # wget
 alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
