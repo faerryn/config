@@ -47,8 +47,8 @@ bindkey -v
 
 KEYTIMEOUT=1
 
-function cursor_block() { echo -ne "\e[1 q" }
-function cursor_beam() { echo -ne "\e[5 q" }
+function cursor_block() { echo -ne "\e[2 q" }
+function cursor_beam() 	{ echo -ne "\e[6 q" }
 
 function zle-line-init() { cursor_beam }
 zle -N zle-line-init
@@ -93,9 +93,9 @@ if ! command -v fzf >/dev/null; then
 fi
 export FZF_CTRL_T_COMMAND="fd --hidden --no-ignore-vcs --type=file"
 export FZF_ALT_C_COMMAND="fd --hidden --no-ignore-vcs --type=directory"
-source "$XDG_CONFIG_HOME/zsh/plugins/fzf/shell/key-bindings.zsh"
+source "$XDG_CONFIG_HOME/zsh/fzf/shell/key-bindings.zsh"
 
 # Source plugins
-for plugin in ~/.config/zsh/plugins/*/*.plugin.zsh; do
+for plugin in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do
     source $plugin
 done

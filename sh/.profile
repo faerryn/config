@@ -27,7 +27,7 @@ export CC="ccache cc"
 export CXX="ccache c++"
 
 # make
-alias make="make -j$(($(nproc) + 1))"
+alias make="make -j$(($(nproc) - 1))"
 
 # fzf
 export FZF_DEFAULT_COMMAND="fd --hidden --type=file"

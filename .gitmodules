@@ -26,19 +26,19 @@
 	path = neovim/.config/nvim/pack/bundle/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired
 [submodule "zsh-system-clipboard"]
-	path = zsh/.config/zsh/plugins/zsh-system-clipboard
+	path = zsh/.config/zsh/zsh-system-clipboard
 	url = https://github.com/kutsan/zsh-system-clipboard
 [submodule "git-prompt.zsh"]
-	path = zsh/.config/zsh/plugins/git-prompt.zsh
+	path = zsh/.config/zsh/git-prompt.zsh
 	url = https://github.com/woefe/git-prompt.zsh
 [submodule "zsh-autosuggestions"]
-	path = zsh/.config/zsh/plugins/zsh-autosuggestions
+	path = zsh/.config/zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule "zsh-history-substring-search"]
-	path = zsh/.config/zsh/plugins/zsh-history-substring-search
+	path = zsh/.config/zsh/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
 [submodule "zsh-syntax-highlighting"]
-	path = zsh/.config/zsh/plugins/zsh-syntax-highlighting
+	path = zsh/.config/zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
 [submodule "tmux-copycat"]
 	path = tmux/.config/tmux/tmux-copycat
