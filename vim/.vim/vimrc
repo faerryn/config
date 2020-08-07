@@ -6,8 +6,10 @@ if has("nvim")
     set inccommand=split
     set shada=
 else
-    let $TERM="xterm-256color"
-    set term=$TERM
+    if &term =~ "-256color"
+        let $TERM="xterm-256color"
+        set term=$TERM
+    endif
 
     set background=dark
     set hlsearch incsearch
