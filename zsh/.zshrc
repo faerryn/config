@@ -48,16 +48,16 @@ bindkey -v
 KEYTIMEOUT=1
 
 function cursor_block() { echo -ne "\e[2 q" }
-function cursor_beam() 	{ echo -ne "\e[6 q" }
+function cursor_beam()  { echo -ne "\e[6 q" }
 
 function zle-line-init() { cursor_beam }
 zle -N zle-line-init
 
 function zle-keymap-select {
     if [[ ${KEYMAP} == vicmd ]] || [[ $1 = "block" ]]; then
-	cursor_block
+        cursor_block
     elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = "" ]] || [[ $1 = "beam" ]]; then
-	cursor_beam
+        cursor_beam
     fi
 }
 zle -N zle-keymap-select
@@ -96,6 +96,6 @@ export FZF_ALT_C_COMMAND="fd --hidden --no-ignore-vcs --type=directory"
 source "$XDG_CONFIG_HOME/zsh/fzf/shell/key-bindings.zsh"
 
 # Source plugins
-for plugin in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do
-    source $plugin
-done
+function () {
+    for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do source $PLUGIN; done
+}
