@@ -40,6 +40,7 @@
   (setq-default display-line-numbers 'visual)
 #+end_src
 * Evil Mode
+** Vim
 #+begin_src emacs-lisp
   (use-package evil
     :ensure t
@@ -54,14 +55,28 @@
     (evil-define-key '(normal visual) 'global (kbd "SPC") nil)
     (evil-define-key 'normal 'global "Q" "@@")
     (evil-mode +1))
+  (use-package evil-collection
+    :ensure t
+    :after (evil)
+    :config
+    (evil-collection-init))
+#+end_src
+** Goggles
+#+begin_src emacs-lisp
   (use-package evil-goggles
     :ensure t
     :after (evil)
     :config (evil-goggles-mode +1))
+#+end_src
+** Commentary
+#+begin_src emacs-lisp
   (use-package evil-commentary
     :ensure t
     :after (evil)
     :config (evil-commentary-mode +1))
+#+end_src
+** Surround
+#+begin_src emacs-lisp
   (use-package evil-surround 
     :ensure t
     :after (evil) 
@@ -83,11 +98,6 @@
       #'evil-surround-region) 
     (evil-define-key 'normal 'global "sd" #'evil-surround-delete) 
     (evil-define-key 'normal 'global "sr" #'evil-surround-change))
-  (use-package evil-collection
-    :ensure t
-    :after (evil)
-    :config
-    (evil-collection-init))
 #+end_src
 * Org Mode
 #+begin_src emacs-lisp
@@ -115,12 +125,11 @@
     :after (evil magit)
     :config (evil-define-key 'normal 'global (kbd "SPC g") #'magit))
 #+end_src
-* Ivy
+* Counsel
 #+begin_src emacs-lisp
   (use-package counsel
     :ensure t
     :config
-    (setq ivy-use-virtual-buffers t)
     (setq ivy-count-format "(%d/%d) ")
     (counsel-mode +1))
   (use-package counsel-fd
