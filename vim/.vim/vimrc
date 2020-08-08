@@ -5,16 +5,16 @@ autocmd!
 if has("nvim")
     set inccommand=nosplit
     set shada=
-    
+
     autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 else
     if !has("gui_running")
-        set term=xterm-256color
-        " set key codes AFTER term
-        let &t_SI = "\<Esc>[6 q"
-        let &t_SR = "\<Esc>[4 q"
-        let &t_EI = "\<Esc>[2 q"
-        inoremap <Esc> <Esc>jk
+	set term=xterm-256color
+	" set key codes AFTER term
+	let &t_SI = "\<Esc>[6 q"
+	let &t_SR = "\<Esc>[4 q"
+	let &t_EI = "\<Esc>[2 q"
+	inoremap <Esc> <Esc>jk
     endif
 
     set background=dark
@@ -73,7 +73,7 @@ set noruler
 set nowrap linebreak
 set number relativenumber
 set shortmess=o
-set tabstop=4 shiftwidth=4 expandtab
+set softtabstop=4 shiftwidth=4
 set termguicolors
 
 colorscheme gruvbox
@@ -98,13 +98,13 @@ autocmd FileType fzf tnoremap <silent> <buffer> <Esc> <C-C>
 
 " vim-sandwich
 let g:sandwich#recipes = [
-            \ {'buns': ['(', ')'], 'nesting': 1, 'input': ['(', ')', 'b']},
-            \ {'buns': ['{', '}'], 'nesting': 1, 'skip_break': 1, 'input': ['{', '}', 'B']},
-            \ {'buns': ['[', ']'], 'nesting': 1, 'input': ['[', ']', 'r']},
-            \ {'buns': ['<', '>'], 'expand_range': 0},
-            \ {'buns': ['"', '"'], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
-            \ {'buns': ["'", "'"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
-            \ {'buns': ["`", "`"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
-            \ ]
+	    \ {'buns': ['(', ')'], 'nesting': 1, 'input': ['(', ')', 'b']},
+	    \ {'buns': ['{', '}'], 'nesting': 1, 'skip_break': 1, 'input': ['{', '}', 'B']},
+	    \ {'buns': ['[', ']'], 'nesting': 1, 'input': ['[', ']', 'r']},
+	    \ {'buns': ['<', '>'], 'expand_range': 0},
+	    \ {'buns': ['"', '"'], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
+	    \ {'buns': ["'", "'"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
+	    \ {'buns': ["`", "`"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
+	    \ ]
 
 execute "augroup END"

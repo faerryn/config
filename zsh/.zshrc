@@ -1,7 +1,7 @@
 function () {
     # Ensure that profile is sourced
     if [[ ! -v $PERSONAL_PROFILE ]]; then
-        source "$HOME/.profile"
+	source "$HOME/.profile"
     fi
 
     # Aliases
@@ -55,17 +55,17 @@ function () {
     zle -N zle-line-init
 
     function zle-keymap-select {
-        if [[ ${KEYMAP} == vicmd ]] || [[ $1 = "block" ]]; then
-            cursor_block
-        elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = "" ]] || [[ $1 = "beam" ]]; then
-            cursor_beam
-        fi
-    }
-    zle -N zle-keymap-select
+    if [[ ${KEYMAP} == vicmd ]] || [[ $1 = "block" ]]; then
+	cursor_block
+    elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = "" ]] || [[ $1 = "beam" ]]; then
+	cursor_beam
+    fi
+}
+zle -N zle-keymap-select
 
-    precmd_functions+=(cursor_beam)
-    preexec_functions+=(cursor_block)
-    cursor_beam
+precmd_functions+=(cursor_beam)
+preexec_functions+=(cursor_block)
+cursor_beam
 
     # Completion
     autoload -Uz compinit && mkdir -p "$HOME/.cache/zsh" && compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
@@ -87,29 +87,29 @@ function () {
 
     # FZF
     if [[ ! -a "$XDG_CONFIG_HOME/zsh/fzf/bin/fzf" ]]; then
-        "$XDG_CONFIG_HOME/zsh/fzf/install" --bin
+	"$XDG_CONFIG_HOME/zsh/fzf/install" --bin
     fi
     if ! command -v fzf >/dev/null; then
-        export PATH="$XDG_CONFIG_HOME/zsh/fzf/bin:$PATH"
+	export PATH="$XDG_CONFIG_HOME/zsh/fzf/bin:$PATH"
     fi
 
     function personal-fzf-file {
-        LBUFFER="${LBUFFER}$(fd -Htf | fzf --height=40%)"
-        zle reset-prompt
-    }
-    zle -N personal-fzf-file
-    bindkey "^f" personal-fzf-file
+    LBUFFER="${LBUFFER}$(fd -Htf | fzf --height=40%)"
+    zle reset-prompt
+}
+zle -N personal-fzf-file
+bindkey "^f" personal-fzf-file
 
-    function personal-fzf-cd {
-        cd "$({fd -Htd & ancestors} | fzf --height=40%)"
-        zle reset-prompt
-    }
-    zle -N personal-fzf-cd
-    bindkey "\ec" personal-fzf-cd
+function personal-fzf-cd {
+cd "$({fd -Htd & ancestors} | fzf --height=40%)"
+zle reset-prompt
+}
+zle -N personal-fzf-cd
+bindkey "\ec" personal-fzf-cd
 
     # Plugins
     local PLUGIN
     for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do
-        source $PLUGIN
+	source $PLUGIN
     done
 }
