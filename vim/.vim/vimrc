@@ -9,10 +9,10 @@ if has("nvim")
     autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 else
     if &term =~ "-256color$"
+        let &t_SI = "\<esc>[6 q"
+        let &t_SR = "\<esc>[4 q"
+        let &t_EI = "\<esc>[2 q"
         set term=xterm-256color
-        let &t_SI = "\<esc>[5 q"
-        let &t_SR = "\<esc>[3 q"
-        let &t_EI = "\<esc>[1 q"
     endif
 
     set background=dark
@@ -91,7 +91,7 @@ nnoremap <silent> <leader>g :Git<cr>
 
 " fzf
 nnoremap <silent> <leader>f :call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htf", "sink": "e"})<cr>
-nnoremap <silent> <leader>c :call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htd", "sink": "cd"})<cr>
+nnoremap <silent> <leader>c :call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htd & ancestors", "sink": "cd"})<cr>
 
 " vim-sandwich
 let g:sandwich#recipes = [

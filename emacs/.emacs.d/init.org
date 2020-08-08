@@ -80,15 +80,12 @@
      '((?\( . ("(" . ")"))
        (?\) . ("(" . ")"))
        (?b . ("(" . ")"))
-
        (?\{ . ("{" . "}"))
        (?\} . ("{" . "}"))
-       (?\B . ("{" . "}"))
-
+       (?B . ("{" . "}"))
        (?\[ . ("[" . "]"))
        (?\] . ("[" . "]"))
-       (?\r . ("[" . "]"))
-
+       (?r . ("[" . "]"))
        (?< . ("<" . ">"))
        (?> . ("<" . ">"))))
     (evil-define-key '(normal visual) 'global "s" nil) 
@@ -115,9 +112,7 @@
 #+end_src
 * Magit
 #+begin_src emacs-lisp
-  (use-package magit
-    :ensure t
-    :config (autoload 'magit "magit" nil t))
+  (use-package magit :ensure t)
   (use-package evil-magit
     :ensure t
     :after (evil magit)
