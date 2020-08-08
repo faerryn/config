@@ -11,10 +11,10 @@ else
     if !has("gui_running")
         set term=xterm-256color
         " set key codes AFTER term
-        let &t_SI = "\<esc>[6 q"
-        let &t_SR = "\<esc>[4 q"
-        let &t_EI = "\<esc>[2 q"
-        inoremap <esc> <esc>jk
+        let &t_SI = "\<Esc>[6 q"
+        let &t_SR = "\<Esc>[4 q"
+        let &t_EI = "\<Esc>[2 q"
+        inoremap <Esc> <Esc>jk
     endif
 
     set background=dark
@@ -48,19 +48,19 @@ set splitbelow splitright
 set timeoutlen=500
 set updatetime=500
 
-let g:mapleader="\<space>"
+let g:mapleader="\<Space>"
 
-noremap <silent> s        <nop>
-noremap <silent> S        <nop>
-noremap <silent> <leader> <nop>
+noremap <silent> s        <Nop>
+noremap <silent> S        <Nop>
+noremap <silent> <Leader> <Nop>
 
-noremap <silent> Y y$
-noremap <silent> Q @@
+nnoremap <silent> Y y$
+noremap  <silent> Q @@
 
-nnoremap <silent> <leader>l :lopen<cr>
-nnoremap <silent> <leader>q :copen<cr>
+nnoremap <silent> <Leader>l :lopen<CR>
+nnoremap <silent> <Leader>q :copen<CR>
 
-autocmd FileType qf nnoremap <silent> <buffer> <esc> :q<cr>
+autocmd FileType qf nnoremap <silent> <buffer> <esc> :q<CR>
 
 silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
 autocmd VimEnter * silent! helptags ALL
@@ -88,13 +88,13 @@ command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args
 command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
 
 " vim-fugitive
-autocmd FileType fugitive nnoremap <silent> <buffer> <esc> :q<cr>
-nnoremap <silent> <leader>g :Git<cr>
+autocmd FileType fugitive nnoremap <silent> <buffer> <Esc> :q<CR>
+nnoremap <silent> <Leader>g :Git<CR>
 
 " fzf
-nnoremap <silent> <leader>f :call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htf", "sink": "e"})<cr>
-nnoremap <silent> <leader>c :call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htd & ancestors", "sink": "cd"})<cr>
-autocmd FileType fzf tnoremap <silent> <esc> <c-c>
+nnoremap <silent> <Leader>f :call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htf", "sink": "e"})<cr>
+nnoremap <silent> <Leader>c :call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htd & ancestors", "sink": "cd"})<cr>
+autocmd FileType fzf tnoremap <silent> <buffer> <Esc> <C-C>
 
 " vim-sandwich
 let g:sandwich#recipes = [
