@@ -94,14 +94,14 @@ function () {
     fi
 
     function personal-fzf-file {
-        LBUFFER="${LBUFFER}$(fd --hidden --type=file | fzf --height=40%)"
+        LBUFFER="${LBUFFER}$(fd -Htf | fzf --height=40%)"
         zle reset-prompt
     }
     zle -N personal-fzf-file
     bindkey "^f" personal-fzf-file
 
     function personal-fzf-cd {
-        cd "$(fd --hidden --type=directory | fzf --height=40%)"
+        cd "$({fd -Htd & ancestors} | fzf --height=40%)"
         zle reset-prompt
     }
     zle -N personal-fzf-cd
