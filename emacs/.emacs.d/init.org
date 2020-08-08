@@ -4,13 +4,13 @@
 #+begin_src emacs-lisp
   (require 'package)
   (add-to-list
-   'package-archives 
+   'package-archives
    '("melpa" . "https://melpa.org/packages/") t)
   (add-to-list
-   'package-archives 
+   'package-archives
    '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-  (add-to-list 
-   'package-archives 
+  (add-to-list
+   'package-archives
    '("org" . "https://orgmode.org/elpa/") t)
 #+end_src
 ** Load use-package
@@ -27,7 +27,7 @@
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
   (setq-default inhibit-splash-screen t)
-  (setq-default mode-line-format nil) 
+  (setq-default mode-line-format nil)
   (setq-default truncate-lines t)
 #+end_src
 ** Theme
@@ -59,7 +59,7 @@
     (setq-default evil-want-C-i-jump (display-graphic-p))
     :config
     (evil-select-search-module 'evil-search-module 'evil-search)
-    (evil-define-key nil evil-normal-state-map "Q" "@@")
+    (evil-define-key 'normal 'global "Q" "@@")
     (evil-mode +1))
   (use-package evil-goggles
     :ensure t
@@ -73,20 +73,15 @@
     :ensure t
     :after (evil)
     :config (evil-commentary-mode +1))
-  (use-package evil-surround
+  (use-package evil-surround 
     :ensure t
-    :after (evil)
-    :config
-    (evil-define-key nil evil-normal-state-map "s" nil)
-    (evil-define-key nil evil-normal-visual-map "S" nil)
-    (evil-define-key nil evil-normal-state-map "sa" 
-      #'evil-surround-region)
-    (evil-define-key nil evil-visual-state-map "sa" 
-      #'evil-surround-region)
-    (evil-define-key nil evil-normal-state-map "sd" 
-      #'evil-surround-delete)
-    (evil-define-key nil evil-normal-state-map "sr" 
-      #'evil-surround-change))
+    :after (evil) 
+    :config (evil-define-key '(normal visual) 'global "s" nil) 
+    (evil-define-key '(normal visual) 'global "S" nil) 
+    (evil-define-key '(normal visual) 'global "sa"
+      #'evil-surround-region) 
+    (evil-define-key 'normal 'global "sd" #'evil-surround-delete) 
+    (evil-define-key 'normal 'global "sr" #'evil-surround-change))
 #+end_src
 ** Compatibility
 #+begin_src emacs-lisp
@@ -112,17 +107,17 @@
 #+end_src
 ** Lisp
 #+begin_src emacs-lisp
-  (use-package lispyville
+  (use-package
+    lispyville
     :ensure t
     :after (lispy)
-    :config
-    (lispyville-set-key-theme '(operators))
+    :config (lispyville-set-key-theme '(operators))
     (add-hook 'lisp-mode-hook #'lispyville-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
-  (use-package lispy
+  (use-package
+    lispy
     :ensure t
-    :config
-    (evil-collection-lispy-set-key-theme '(paredit c-digits))
+    :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
     (add-hook 'lisp-mode-hook #'lispy-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
 #+end_src
@@ -143,8 +138,7 @@
     :config
     (autoload 'magit "magit" nil t))
 #+end_src
-* Sundry
-** Load Custom file
+* Custom
 #+begin_src emacs-lisp
   (setq-default custom-file
                 (expand-file-name "custom.el" user-emacs-directory))
