@@ -35,33 +35,29 @@
   (use-package doom-themes
     :ensure t
     :config (load-theme 'doom-vibrant t))
-  (setq-default display-line-numbers 'visual)
   (global-hl-line-mode +1)
   (global-prettify-symbols-mode +1)
+  (setq-default display-line-numbers 'visual)
 #+end_src
 * Evil Mode
 #+begin_src emacs-lisp
   (use-package evil
     :ensure t
     :init
+    (setq-default evil-want-C-i-jump (display-graphic-p))
     (setq-default evil-want-C-u-delete t)
     (setq-default evil-want-C-u-scroll t)
     (setq-default evil-want-Y-yank-to-eol t)
-    (setq-default evil-want-integration t)
     (setq-default evil-want-keybinding nil)
-    (setq-default evil-want-C-i-jump (display-graphic-p))
     :config
     (evil-select-search-module 'evil-search-module 'evil-search)
+    (evil-define-key '(normal visual) 'global (kbd "SPC") nil)
     (evil-define-key 'normal 'global "Q" "@@")
     (evil-mode +1))
   (use-package evil-goggles
     :ensure t
     :after (evil)
     :config (evil-goggles-mode +1))
-  (use-package evil-matchit
-    :ensure t
-    :after (evil)
-    :config (global-evil-matchit-mode +1))
   (use-package evil-commentary
     :ensure t
     :after (evil)
@@ -69,7 +65,19 @@
   (use-package evil-surround 
     :ensure t
     :after (evil) 
-    :config (evil-define-key '(normal visual) 'global "s" nil) 
+    :config
+    (setq-default
+     evil-surround-pairs-alist
+     '((?\( . ("(" . ")"))
+       (?\) . ("(" . ")"))
+       (?b . ("(" . ")"))
+       (?\[ . ("[ " . " ]"))
+       (?\] . ("[" . "]"))
+       (?\{ . ("{ " . " }"))
+       (?\} . ("{" . "}"))
+       (?< . ("<" . ">"))
+       (?> . ("<" . ">"))))
+    (evil-define-key '(normal visual) 'global "s" nil) 
     (evil-define-key '(normal visual) 'global "S" nil) 
     (evil-define-key '(normal visual) 'global "sa"
       #'evil-surround-region) 
@@ -78,17 +86,8 @@
   (use-package evil-collection
     :ensure t
     :after (evil)
-    :config (evil-collection-init))
-  (use-package evil-org
-    :ensure t
-    :after (evil org)
     :config
-    (add-hook 'org-mode-hook #'evil-org-mode)
-    (add-hook 'org-mode-hook (lambda () (setq evil-auto-indent nil)))
-    (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme))
-  (use-package evil-magit
-    :ensure t
-    :after (magit evil))
+    (evil-collection-init))
 #+end_src
 * Org Mode
 #+begin_src emacs-lisp
@@ -98,14 +97,23 @@
     (setq-default org-catch-invisible-edits 'smart)
     (setq-default org-src-tab-acts-natively t)
     (add-hook 'org-mode-hook #'org-toggle-pretty-entities))
+  (use-package evil-org
+    :ensure t
+    :after (evil org)
+    :config
+    (add-hook 'org-mode-hook #'evil-org-mode)
+    (add-hook 'org-mode-hook (lambda () (setq evil-auto-indent nil)))
+    (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme))
 #+end_src
 * Magit
 #+begin_src emacs-lisp
   (use-package magit
     :ensure t
-    :bind ("C-x g" . magit)
-    :config
-    (autoload 'magit "magit" nil t))
+    :config (autoload 'magit "magit" nil t))
+  (use-package evil-magit
+    :ensure t
+    :after (evil magit)
+    :config (evil-define-key 'normal 'global (kbd "SPC g") #'magit))
 #+end_src
 * Ivy
 #+begin_src emacs-lisp
@@ -114,7 +122,15 @@
     :config
     (setq ivy-use-virtual-buffers t)
     (setq ivy-count-format "(%d/%d) ")
-    (ivy-mode +1))
+    (counsel-mode +1))
+  (use-package counsel-fd
+    :ensure t
+    :after (counsel evil)
+    :config
+    (evil-define-key
+      'normal 'global (kbd "SPC f") #'counsel-fd-file-jump)
+    (evil-define-key
+      'normal 'global (kbd "SPC c") #'counsel-fd-dired-jump))
 #+end_src
 * Languages
 ** Lisp
