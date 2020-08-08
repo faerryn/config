@@ -1,6 +1,6 @@
 #+startup: indent content
 * Packages
-** Add package sources
+** Sources
 #+begin_src emacs-lisp
   (require 'package)
   (add-to-list
@@ -13,7 +13,7 @@
    'package-archives
    '("org" . "https://orgmode.org/elpa/") t)
 #+end_src
-** Load use-package
+** Use-Package
 #+begin_src emacs-lisp
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
@@ -21,7 +21,7 @@
   (require 'use-package)
 #+end_src
 * Aesthetics
-** Clean UI
+** Clean Up
 #+begin_src emacs-lisp
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
@@ -35,14 +35,8 @@
   (use-package doom-themes
     :ensure t
     :config (load-theme 'doom-vibrant t))
-#+end_src
-** Line numbers
-#+begin_src emacs-lisp
   (setq-default display-line-numbers 'visual)
   (global-hl-line-mode +1)
-#+end_src
-** Prettify
-#+begin_src emacs-lisp
   (global-prettify-symbols-mode +1)
 #+end_src
 * Evil Mode
@@ -123,10 +117,6 @@
     (ivy-mode +1))
 #+end_src
 * Languages
-** Zig
-#+begin_src emacs-lisp
-  (use-package zig-mode :ensure t)
-#+end_src
 ** Lisp
 #+begin_src emacs-lisp
   (use-package
@@ -142,6 +132,10 @@
     :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
     (add-hook 'lisp-mode-hook #'lispy-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
+#+end_src
+** Zig
+#+begin_src emacs-lisp
+  (use-package zig-mode :ensure t)
 #+end_src
 * Custom
 #+begin_src emacs-lisp
