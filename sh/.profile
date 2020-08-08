@@ -37,9 +37,6 @@ export CXX="ccache c++"
 # make
 alias make="make -j$(($(nproc) - 1))"
 
-# fzf
-export FZF_DEFAULT_COMMAND="fd --hidden"
-
 # wget
 alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
 

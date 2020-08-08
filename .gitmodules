@@ -67,3 +67,6 @@
 [submodule "vis-pairs"]
 	path = vis/.config/vis/vis-pairs
 	url = https://repo.or.cz/vis-pairs.git
+[submodule "vis-complete-line"]
+	path = vis/.config/vis/vis-complete-line
+	url = https://repo.or.cz/vis-complete-line.git
