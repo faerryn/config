@@ -46,7 +46,6 @@
   (global-prettify-symbols-mode +1)
 #+end_src
 * Evil Mode
-** Emulate vim
 #+begin_src emacs-lisp
   (use-package evil
     :ensure t
@@ -82,9 +81,6 @@
       #'evil-surround-region) 
     (evil-define-key 'normal 'global "sd" #'evil-surround-delete) 
     (evil-define-key 'normal 'global "sr" #'evil-surround-change))
-#+end_src
-** Compatibility
-#+begin_src emacs-lisp
   (use-package evil-collection
     :ensure t
     :after (evil)
