@@ -100,6 +100,32 @@
     :ensure t
     :after (magit evil))
 #+end_src
+* Org Mode
+#+begin_src emacs-lisp
+  (use-package org
+    :ensure t
+    :config
+    (setq-default org-catch-invisible-edits 'smart)
+    (setq-default org-src-tab-acts-natively t)
+    (add-hook 'org-mode-hook #'org-toggle-pretty-entities))
+#+end_src
+* Magit
+#+begin_src emacs-lisp
+  (use-package magit
+    :ensure t
+    :bind ("C-x g" . magit)
+    :config
+    (autoload 'magit "magit" nil t))
+#+end_src
+* Ivy
+#+begin_src emacs-lisp
+  (use-package counsel
+    :ensure t
+    :config
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-count-format "(%d/%d) ")
+    (ivy-mode +1))
+#+end_src
 * Languages
 ** Zig
 #+begin_src emacs-lisp
@@ -120,23 +146,6 @@
     :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
     (add-hook 'lisp-mode-hook #'lispy-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
-#+end_src
-* Org Mode
-#+begin_src emacs-lisp
-  (use-package org
-    :ensure t
-    :config
-    (setq-default org-catch-invisible-edits 'smart)
-    (setq-default org-src-tab-acts-natively t)
-    (add-hook 'org-mode-hook #'org-toggle-pretty-entities))
-#+end_src
-* Magit
-#+begin_src emacs-lisp
-  (use-package magit
-    :ensure t
-    :bind ("C-x g" . magit)
-    :config
-    (autoload 'magit "magit" nil t))
 #+end_src
 * Custom
 #+begin_src emacs-lisp
