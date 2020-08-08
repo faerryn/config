@@ -3,8 +3,12 @@
       (load-prefer-newer t)                    ; Load new .el over old .elc
       (vc-follow-symlinks t)                   ; Follow stow's symlinks
       (init-org (expand-file-name "init.org" user-emacs-directory))
-      (tangled-el (expand-file-name "tangled.el" user-emacs-directory)))
-  (when (file-newer-than-file-p init-org tangled-el)
-    (require 'ob-tangle)
-    (org-babel-tangle-file init-org tangled-el "emacs-lisp"))
-  (load tangled-el))
+      (tangled (expand-file-name "tangled" user-emacs-directory)))
+  (let ((tangled-el (concat tangled ".el"))
+	(tangled-elc (concat tangled ".elc")))
+    (when (file-newer-than-file-p init-org tangled-el)
+      (require 'ob-tangle)
+      (org-babel-tangle-file init-org tangled-el "emacs-lisp"))
+    (when (file-newer-than-file-p tangled-el tangled-elc)
+      (byte-compile-file tangled-el))
+    (load tangled)))

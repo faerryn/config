@@ -9,10 +9,11 @@
 #+end_src
 ** Use-Package
 #+begin_src emacs-lisp
-  (unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
-  (require 'use-package)
+  (eval-when-compile
+    (unless (package-installed-p 'use-package)
+      (package-refresh-contents)
+      (package-install 'use-package))
+    (require 'use-package))
 #+end_src
 * Aesthetics
 ** Clean Up
@@ -20,9 +21,10 @@
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
-  (setq-default inhibit-splash-screen t)
-  (setq-default mode-line-format nil)
-  (setq-default truncate-lines t)
+  (setq-default
+   inhibit-splash-screen t
+   mode-line-format nil
+   truncate-lines t)
 #+end_src
 ** Theme
 #+begin_src emacs-lisp
@@ -39,15 +41,19 @@
   (use-package evil
     :ensure t
     :init
-    (setq-default evil-want-C-i-jump (display-graphic-p))
-    (setq-default evil-want-C-u-delete t)
-    (setq-default evil-want-C-u-scroll t)
-    (setq-default evil-want-Y-yank-to-eol t)
-    (setq-default evil-want-keybinding nil)
+    (setq-default
+     evil-want-C-i-jump (display-graphic-p)
+     evil-want-C-u-delete t
+     evil-want-C-u-scroll t
+     evil-want-Y-yank-to-eol t
+     evil-want-keybinding nil)
     :config
     (evil-select-search-module 'evil-search-module 'evil-search)
-    (evil-define-key '(normal visual) 'global (kbd "SPC") nil)
-    (evil-define-key 'normal 'global "Q" "@@")
+    (evil-define-key '(normal visual) 'global
+      "s" nil 
+      "S" nil 
+      (kbd "SPC") nil
+      "Q" "@@")
     (evil-mode +1))
   (use-package evil-collection
     :ensure t
@@ -88,19 +94,19 @@
        (?r . ("[" . "]"))
        (?< . ("<" . ">"))
        (?> . ("<" . ">"))))
-    (evil-define-key '(normal visual) 'global "s" nil) 
-    (evil-define-key '(normal visual) 'global "S" nil) 
-    (evil-define-key '(normal visual) 'global "sa" #'evil-surround-region) 
-    (evil-define-key 'normal 'global "sd" #'evil-surround-delete) 
-    (evil-define-key 'normal 'global "sr" #'evil-surround-change))
+    (evil-define-key '(normal visual) 'global "sa" #'evil-surround-region)
+    (evil-define-key 'normal 'global 
+      "sd" #'evil-surround-delete
+      "sr" #'evil-surround-change))
 #+end_src
 * Org Mode
 #+begin_src emacs-lisp
   (use-package org
     :ensure t
     :config
-    (setq-default org-catch-invisible-edits 'smart)
-    (setq-default org-src-tab-acts-natively t)
+    (setq-default
+     org-catch-invisible-edits 'smart
+     org-src-tab-acts-natively t)
     (add-hook 'org-mode-hook #'org-toggle-pretty-entities))
   (use-package evil-org
     :ensure t
@@ -112,7 +118,8 @@
 #+end_src
 * Magit
 #+begin_src emacs-lisp
-  (use-package magit :ensure t)
+  (use-package magit
+    :ensure t)
   (use-package evil-magit
     :ensure t
     :after (evil magit)
@@ -129,8 +136,9 @@
     :ensure t
     :after (counsel evil)
     :config
-    (evil-define-key 'normal 'global (kbd "SPC f") #'counsel-fd-file-jump)
-    (evil-define-key 'normal 'global (kbd "SPC c") #'counsel-fd-dired-jump))
+    (evil-define-key 'normal 'global 
+      (kbd "SPC f") #'counsel-fd-file-jump
+      (kbd "SPC c") #'counsel-fd-dired-jump))
 #+end_src
 * Languages
 ** Lisp
@@ -145,6 +153,7 @@
   (use-package
     lispy
     :ensure t
+    :functions evil-collection-lispy-set-key-theme
     :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
     (add-hook 'lisp-mode-hook #'lispy-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
