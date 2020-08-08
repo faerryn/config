@@ -1,5 +1,5 @@
 (setq-default gc-cons-threshold most-positive-fixnum) ; No GC during init
-(add-hook 'after-init-hook (lambda (setq-default gc-cons-threshold 800000)))
+(add-hook 'after-init-hook (lambda () (setq-default gc-cons-threshold 800000)))
 (let (
       (file-name-handler-alist nil) 	; Faster loading of files
       (load-prefer-newer t)		; Load new .el over old .elc
