@@ -12,6 +12,10 @@ export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
+# Terminfo
+export TERMINFO="$XDG_DATA_HOME/terminfo"
+export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo"
+
 # PATH
 export PATH="$CARGO_HOME/bin:$HOME/.local/bin:$PATH"
 
