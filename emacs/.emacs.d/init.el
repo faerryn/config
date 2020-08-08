@@ -13,5 +13,5 @@
       (tangled-el (expand-file-name "tangled.el" user-emacs-directory)))
   (when (file-newer-than-file-p init-org tangled-el)
     (require 'ob-tangle)
-    (org-babel-tangle-file init-org tangled-el))
+    (org-babel-tangle-file init-org tangled-el emacs-lisp))
   (load tangled-el))
