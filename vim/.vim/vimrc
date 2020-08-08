@@ -8,14 +8,14 @@ if has("nvim")
     
     autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 else
-    if &term =~ "-256color$"
+    if !has("gui_running")
         set term=xterm-256color
         " set key codes AFTER term
         let &t_SI = "\<esc>[6 q"
         let &t_SR = "\<esc>[4 q"
         let &t_EI = "\<esc>[2 q"
+        inoremap <esc> <esc>jk
     endif
-    inoremap <esc> <esc>jk
 
     set background=dark
     set hlsearch incsearch
