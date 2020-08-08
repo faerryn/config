@@ -3,15 +3,9 @@
 ** Sources
 #+begin_src emacs-lisp
   (require 'package)
-  (add-to-list
-   'package-archives
-   '("melpa" . "https://melpa.org/packages/") t)
-  (add-to-list
-   'package-archives
-   '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-  (add-to-list
-   'package-archives
-   '("org" . "https://orgmode.org/elpa/") t)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 #+end_src
 ** Use-Package
 #+begin_src emacs-lisp
@@ -86,16 +80,20 @@
      '((?\( . ("(" . ")"))
        (?\) . ("(" . ")"))
        (?b . ("(" . ")"))
-       (?\[ . ("[ " . " ]"))
-       (?\] . ("[" . "]"))
-       (?\{ . ("{ " . " }"))
+
+       (?\{ . ("{" . "}"))
        (?\} . ("{" . "}"))
+       (?\B . ("{" . "}"))
+
+       (?\[ . ("[" . "]"))
+       (?\] . ("[" . "]"))
+       (?\r . ("[" . "]"))
+
        (?< . ("<" . ">"))
        (?> . ("<" . ">"))))
     (evil-define-key '(normal visual) 'global "s" nil) 
     (evil-define-key '(normal visual) 'global "S" nil) 
-    (evil-define-key '(normal visual) 'global "sa"
-      #'evil-surround-region) 
+    (evil-define-key '(normal visual) 'global "sa" #'evil-surround-region) 
     (evil-define-key 'normal 'global "sd" #'evil-surround-delete) 
     (evil-define-key 'normal 'global "sr" #'evil-surround-change))
 #+end_src
@@ -136,10 +134,8 @@
     :ensure t
     :after (counsel evil)
     :config
-    (evil-define-key
-      'normal 'global (kbd "SPC f") #'counsel-fd-file-jump)
-    (evil-define-key
-      'normal 'global (kbd "SPC c") #'counsel-fd-dired-jump))
+    (evil-define-key 'normal 'global (kbd "SPC f") #'counsel-fd-file-jump)
+    (evil-define-key 'normal 'global (kbd "SPC c") #'counsel-fd-dired-jump))
 #+end_src
 * Languages
 ** Lisp
@@ -164,7 +160,6 @@
 #+end_src
 * Custom
 #+begin_src emacs-lisp
-  (setq-default custom-file
-                (expand-file-name "custom.el" user-emacs-directory))
+  (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
   (load custom-file :noerror)
 #+end_src

@@ -95,13 +95,13 @@ nnoremap <silent> <leader>c :call fzf#run({"window": {"width": 0.8, "height": 0.
 
 " vim-sandwich
 let g:sandwich#recipes = [
+            \ {'buns': ['(', ')'], 'nesting': 1, 'input': ['(', ')', 'b']},
+            \ {'buns': ['{', '}'], 'nesting': 1, 'skip_break': 1, 'input': ['{', '}', 'B']},
+            \ {'buns': ['[', ']'], 'nesting': 1, 'input': ['[', ']', 'r']},
             \ {'buns': ['<', '>'], 'expand_range': 0},
             \ {'buns': ['"', '"'], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
             \ {'buns': ["'", "'"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
             \ {'buns': ["`", "`"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
-            \ {'buns': ['(', ')'], 'nesting': 1, 'input': ['(', ')', 'b']},
-            \ {'buns': ['{', '}'], 'nesting': 1, 'skip_break': 1, 'input': ['{', '}', 'B']}},
-            \ {'buns': ['[', ']'], 'nesting': 1, 'input': ['[', ']', 'r']},
             \ ]
 
 execute "augroup END"
