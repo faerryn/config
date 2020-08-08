@@ -85,17 +85,20 @@ bindkey -M vicmd "^p" history-substring-search-up
 bindkey -M vicmd "^n" history-substring-search-down
 
 # FZF
-if ! command -v fzf >/dev/null && [[ ! -a "$XDG_CONFIG_HOME/zsh/plugins/fzf/bin/fzf" ]]; then
-    "$XDG_CONFIG_HOME/zsh/plugins/fzf/install" --bin
+if [[ ! -a "$XDG_CONFIG_HOME/zsh/fzf/bin/fzf" ]]; then
+    "$XDG_CONFIG_HOME/zsh/fzf/install" --bin
 fi
 if ! command -v fzf >/dev/null; then
-    export PATH="$XDG_CONFIG_HOME/zsh/plugins/fzf/bin:$PATH"
+    export PATH="$XDG_CONFIG_HOME/zsh/fzf/bin:$PATH"
 fi
-export FZF_CTRL_T_COMMAND="fd --hidden --no-ignore-vcs --type=file"
-export FZF_ALT_C_COMMAND="fd --hidden --no-ignore-vcs --type=directory"
-source "$XDG_CONFIG_HOME/zsh/fzf/shell/key-bindings.zsh"
+function fzf-file {
+    LBUFFER="${LBUFFER}$(fd --hidden --type=file | fzf --height=40%)"
+    zle reset-prompt
+}
+zle -N fzf-file
+bindkey "^f" fzf-file
 
-# Source plugins
+# Plugins
 function () {
     for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do source $PLUGIN; done
 }
