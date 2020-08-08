@@ -65,6 +65,7 @@ autocmd VimEnter * silent! helptags ALL
 
 " aesthetics
 set cursorline cursorcolumn colorcolumn=80
+set guioptions=f
 set laststatus=0 showtabline=0
 set noruler
 set nowrap linebreak
@@ -72,7 +73,6 @@ set number relativenumber
 set shortmess=o
 set tabstop=4 shiftwidth=4 expandtab
 set termguicolors
-set guioptions=!aPAcdfip
 
 colorscheme gruvbox
 
