@@ -1,5 +1,5 @@
 # Ensure that profile is sourced
-if [[ ! -v $SOURCED_PROFILE ]]; then
+if [[ ! -v $PERSONAL_PROFILE ]]; then
     source "$HOME/.profile"
 fi
 
@@ -91,14 +91,23 @@ fi
 if ! command -v fzf >/dev/null; then
     export PATH="$XDG_CONFIG_HOME/zsh/fzf/bin:$PATH"
 fi
-function fzf-file {
+
+function personal-fzf-file {
     LBUFFER="${LBUFFER}$(fd --hidden --type=file | fzf --height=40%)"
     zle reset-prompt
 }
-zle -N fzf-file
-bindkey "^f" fzf-file
+zle -N personal-fzf-file
+bindkey "^f" personal-fzf-file
+
+function personal-fzf-cd {
+    cd "$(fd --hidden --type=directory | fzf --height=40%)"
+    zle reset-prompt
+}
+zle -N personal-fzf-cd
+bindkey "\ec" personal-fzf-cd
 
 # Plugins
 function () {
+    local PLUGIN
     for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do source $PLUGIN; done
 }
