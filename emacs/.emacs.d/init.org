@@ -1,8 +1,9 @@
 #+startup: indent content
 * Packages
-** Sources
+** Package.el
 #+begin_src emacs-lisp
   (require 'package)
+  (package-initialize)
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
   (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
   (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
@@ -104,8 +105,8 @@
     :ensure t
     :config
     (setq-default
-     org-catch-invisible-edits 'smart
-     org-src-tab-acts-natively t)
+     org-src-tab-acts-natively t
+     org-log-done t)
     (add-hook 'org-mode-hook #'org-toggle-pretty-entities))
   (use-package evil-org
     :ensure t
@@ -142,29 +143,27 @@
 * Languages
 ** Lisp
 #+begin_src emacs-lisp
-    (use-package
-      lispyville
-      :ensure t
-      :after (lispy)
-      :config (lispyville-set-key-theme '(operators))
-      (add-hook 'lisp-mode-hook #'lispyville-mode)
-      (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
-    (use-package
-      lispy
-      :ensure t
-      :functions evil-collection-lispy-set-key-theme
-      :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
-      (add-hook 'lisp-mode-hook #'lispy-mode)
-      (add-hook 'emacs-lisp-mode-hook #'lispy-mode)
-      (add-hook 'lispy-mode-hook (lambda () (evil-commentary-mode -1)))
-  )
+  (use-package
+    lispyville
+    :ensure t
+    :after (lispy)
+    :config (lispyville-set-key-theme '(operators))
+    (add-hook 'lisp-mode-hook #'lispyville-mode)
+    (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
+  (use-package
+    lispy
+    :ensure t
+    :functions evil-collection-lispy-set-key-theme
+    :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
+    (add-hook 'lisp-mode-hook #'lispy-mode)
+    (add-hook 'emacs-lisp-mode-hook #'lispy-mode)
+    (add-hook 'lispy-mode-hook (lambda () (evil-commentary-mode -1))))
 #+end_src
 ** Zig
 #+begin_src emacs-lisp
   (use-package zig-mode :ensure t)
 #+end_src
-* Custom
+* Follow symlinks
 #+begin_src emacs-lisp
-  (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
-  (load custom-file :noerror)
+  (setq-default vc-follow-symlinks t)
 #+end_src
