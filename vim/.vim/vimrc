@@ -25,14 +25,13 @@ else
 
     set viminfo=
 
-    set directory=~/.local/share/vim/swap//
-    filetype plugin indent on
-    syntax enable
-
     " vim-highlightedyank
     let g:highlightedyank_highlight_duration = 500
     packadd vim-highlightedyank
 
+    set directory=~/.local/share/vim/swap//
+    syntax enable
+    filetype plugin indent on
 endif
 
 " core
@@ -93,7 +92,7 @@ nnoremap <silent> <Leader>g :Git<CR>
 
 " fzf
 nnoremap <silent> <Leader>f :call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htf", "sink": "e"})<cr>
-nnoremap <silent> <Leader>c :call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htd & ancestors", "sink": "cd"})<cr>
+nnoremap <silent> <Leader>c :call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htd", "sink": "cd"})<cr>
 autocmd FileType fzf tnoremap <silent> <buffer> <Esc> <C-C>
 
 " vim-sandwich
