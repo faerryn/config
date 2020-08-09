@@ -13,7 +13,6 @@ vis_surround.prefix.delete = {"sd", "sd"}
 
 vis.events.subscribe(vis.events.INIT, function()
     -- Your global configuration options
-    vis:command'tabwidth 4 set autoindent on expandtab on'
     vis:command'map   normal Q @@'
     vis:command'unmap normal s'
     vis:command'unmap normal S'

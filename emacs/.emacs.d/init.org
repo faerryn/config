@@ -81,19 +81,18 @@
     :ensure t
     :after (evil) 
     :config
-    (setq-default
-     evil-surround-pairs-alist
-     '((?\( . ("(" . ")"))
-       (?\) . ("(" . ")"))
-       (?b . ("(" . ")"))
-       (?\{ . ("{" . "}"))
-       (?\} . ("{" . "}"))
-       (?B . ("{" . "}"))
-       (?\[ . ("[" . "]"))
-       (?\] . ("[" . "]"))
-       (?r . ("[" . "]"))
-       (?< . ("<" . ">"))
-       (?> . ("<" . ">"))))
+    (setq-default evil-surround-pairs-alist
+                  '((?\( . ("(" . ")"))
+                    (?\) . ("(" . ")"))
+                    (?b . ("(" . ")"))
+                    (?\{ . ("{" . "}"))
+                    (?\} . ("{" . "}"))
+                    (?B . ("{" . "}"))
+                    (?\[ . ("[" . "]"))
+                    (?\] . ("[" . "]"))
+                    (?r . ("[" . "]"))
+                    (?< . ("<" . ">"))
+                    (?> . ("<" . ">"))))
     (evil-define-key '(normal visual) 'global "sa" #'evil-surround-region)
     (evil-define-key 'normal 'global 
       "sd" #'evil-surround-delete
@@ -143,20 +142,22 @@
 * Languages
 ** Lisp
 #+begin_src emacs-lisp
-  (use-package
-    lispyville
-    :ensure t
-    :after (lispy)
-    :config (lispyville-set-key-theme '(operators))
-    (add-hook 'lisp-mode-hook #'lispyville-mode)
-    (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
-  (use-package
-    lispy
-    :ensure t
-    :functions evil-collection-lispy-set-key-theme
-    :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
-    (add-hook 'lisp-mode-hook #'lispy-mode)
-    (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
+    (use-package
+      lispyville
+      :ensure t
+      :after (lispy)
+      :config (lispyville-set-key-theme '(operators))
+      (add-hook 'lisp-mode-hook #'lispyville-mode)
+      (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
+    (use-package
+      lispy
+      :ensure t
+      :functions evil-collection-lispy-set-key-theme
+      :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
+      (add-hook 'lisp-mode-hook #'lispy-mode)
+      (add-hook 'emacs-lisp-mode-hook #'lispy-mode)
+      (add-hook 'lispy-mode-hook (lambda () (evil-commentary-mode -1)))
+  )
 #+end_src
 ** Zig
 #+begin_src emacs-lisp
