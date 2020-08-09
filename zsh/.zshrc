@@ -48,24 +48,25 @@ function () {
 
     KEYTIMEOUT=1
 
-    local function cursor_block() { echo -ne "\e[2 q" }
-    local function cursor_beam()  { echo -ne "\e[6 q" }
+    local function cursor_block () { echo -ne "\e[2 q" }
+    local function cursor_beam () { echo -ne "\e[6 q" }
 
-    function zle-line-init() { cursor_beam }
+    function zle-line-init () { cursor_beam }
     zle -N zle-line-init
 
-    function zle-keymap-select {
-    if [[ ${KEYMAP} == vicmd ]] || [[ $1 = "block" ]]; then
-	cursor_block
-    elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = "" ]] || [[ $1 = "beam" ]]; then
-	cursor_beam
-    fi
-}
-zle -N zle-keymap-select
+    function zle-keymap-select () {
+	if [[ ${KEYMAP} == vicmd ]]; then
+	    cursor_block
+	elif [[ ${KEYMAP} == main ]]; then
+	    cursor_beam
+	fi
+    }
 
-precmd_functions+=(cursor_beam)
-preexec_functions+=(cursor_block)
-cursor_beam
+    zle -N zle-keymap-select
+
+    precmd_functions+=(cursor_beam)
+    preexec_functions+=(cursor_block)
+    cursor_beam
 
     # Completion
     autoload -Uz compinit && mkdir -p "$HOME/.cache/zsh" && compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
@@ -93,19 +94,19 @@ cursor_beam
 	export PATH="$XDG_CONFIG_HOME/zsh/fzf/bin:$PATH"
     fi
 
-    function personal-fzf-file {
-    LBUFFER="${LBUFFER}$(fd -Htf | fzf --height=40%)"
-    zle reset-prompt
-}
-zle -N personal-fzf-file
-bindkey "^f" personal-fzf-file
+    function personal-fzf-file () {
+	LBUFFER="${LBUFFER}$(fd -Htf | fzf --height=40%)"
+	zle reset-prompt
+    }
+    zle -N personal-fzf-file
+    bindkey "^f" personal-fzf-file
 
-function personal-fzf-cd {
-cd "$({fd -Htd & ancestors} | fzf --height=40%)"
-zle reset-prompt
-}
-zle -N personal-fzf-cd
-bindkey "\ec" personal-fzf-cd
+    function personal-fzf-cd () {
+	cd "$(fd -Htd | fzf --height=40%)"
+	zle reset-prompt
+    }
+    zle -N personal-fzf-cd
+    bindkey "\ec" personal-fzf-cd
 
     # Plugins
     local PLUGIN
