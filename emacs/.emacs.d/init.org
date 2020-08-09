@@ -143,15 +143,13 @@
 * Languages
 ** Lisp
 #+begin_src emacs-lisp
-  (use-package
-    lispyville
+  (use-package lispyville
     :ensure t
     :after (lispy)
     :config (lispyville-set-key-theme '(operators))
     (add-hook 'lisp-mode-hook #'lispyville-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
-  (use-package
-    lispy
+  (use-package lispy
     :ensure t
     :functions evil-collection-lispy-set-key-theme
     :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
@@ -163,7 +161,10 @@
 #+begin_src emacs-lisp
   (use-package zig-mode :ensure t)
 #+end_src
-* Follow symlinks
+* Sundry
 #+begin_src emacs-lisp
-  (setq-default vc-follow-symlinks t)
+  (setq-default vc-follow-symlinks t
+                custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (when (file-exists-p custom-file)
+    (load-file custom-file))
 #+end_src

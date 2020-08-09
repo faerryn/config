@@ -1,5 +1,3 @@
-(setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file :noerror)
 (let ((gc-cons-threshold most-positive-fixnum) ; No GC during init
       (file-name-handler-alist nil)	       ; Faster loading of files
       (vc-follow-symlinks nil)		       ; Ignore stow's symlinks
