@@ -1,6 +1,6 @@
+(setq-default vc-follow-symlinks t)	       ; Ignore stow's symlinks
 (let ((gc-cons-threshold most-positive-fixnum) ; No GC during init
       (file-name-handler-alist nil)	       ; Faster loading of files
-      (vc-follow-symlinks nil)		       ; Ignore stow's symlinks
       (init-org (expand-file-name "init.org" user-emacs-directory))
       (tangled-el (expand-file-name "tangled.el" user-emacs-directory))
       (tangled-elc (expand-file-name "tangled.elc" user-emacs-directory)))

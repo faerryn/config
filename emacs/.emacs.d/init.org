@@ -53,7 +53,6 @@
     (evil-define-key '(normal visual) 'global
       "s" nil 
       "S" nil 
-      (kbd "SPC") nil
       "Q" "@@")
     (evil-mode +1))
   (use-package evil-collection
@@ -83,17 +82,17 @@
     :after (evil) 
     :config
     (setq-default evil-surround-pairs-alist
-                  '((?\( . ("(" . ")"))
-                    (?\) . ("(" . ")"))
-                    (?b . ("(" . ")"))
-                    (?\{ . ("{" . "}"))
-                    (?\} . ("{" . "}"))
-                    (?B . ("{" . "}"))
-                    (?\[ . ("[" . "]"))
-                    (?\] . ("[" . "]"))
-                    (?r . ("[" . "]"))
-                    (?< . ("<" . ">"))
-                    (?> . ("<" . ">"))))
+		  '((?\( . ("(" . ")"))
+		    (?\) . ("(" . ")"))
+		    (?b . ("(" . ")"))
+		    (?\{ . ("{" . "}"))
+		    (?\} . ("{" . "}"))
+		    (?B . ("{" . "}"))
+		    (?\[ . ("[" . "]"))
+		    (?\] . ("[" . "]"))
+		    (?r . ("[" . "]"))
+		    (?< . ("<" . ">"))
+		    (?> . ("<" . ">"))))
     (evil-define-key '(normal visual) 'global "sa" #'evil-surround-region)
     (evil-define-key 'normal 'global 
       "sd" #'evil-surround-delete
@@ -106,15 +105,23 @@
     :config
     (setq-default
      org-src-tab-acts-natively t
-     org-log-done t)
+     org-log-done t
+     org-agenda-files (list "~/org/agenda.org"))
+    (setq-default org-agenda-start-on-weekday 0)
     (add-hook 'org-mode-hook #'org-toggle-pretty-entities))
   (use-package evil-org
     :ensure t
     :after (evil org)
     :config
-    (add-hook 'org-mode-hook #'evil-org-mode)
-    (add-hook 'org-mode-hook (lambda () (setq evil-auto-indent nil)))
-    (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme))
+    (add-hook 'org-mode-hook #'(lambda ()
+				 (setq evil-auto-indent nil)
+				 (evil-org-mode +1)))
+    (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys)
+    (evil-define-key 'normal 'global 
+      (kbd "C-c l") #'org-store-link
+      (kbd "C-c a") #'org-agenda))
 #+end_src
 * Magit
 #+begin_src emacs-lisp
@@ -123,7 +130,7 @@
   (use-package evil-magit
     :ensure t
     :after (evil magit)
-    :config (evil-define-key 'normal 'global (kbd "SPC g") #'magit))
+    :config (evil-define-key 'normal 'global (kbd "C-c g") #'magit))
 #+end_src
 * Counsel
 #+begin_src emacs-lisp
@@ -131,14 +138,15 @@
     :ensure t
     :config
     (setq ivy-count-format "(%d/%d) ")
+    (ivy-mode +1)
     (counsel-mode +1))
   (use-package counsel-fd
     :ensure t
     :after (counsel evil)
     :config
     (evil-define-key 'normal 'global 
-      (kbd "SPC f") #'counsel-fd-file-jump
-      (kbd "SPC c") #'counsel-fd-dired-jump))
+      (kbd "C-c C-f") #'counsel-fd-file-jump
+      (kbd "C-c C-d") #'counsel-fd-dired-jump))
 #+end_src
 * Languages
 ** Lisp
@@ -155,7 +163,7 @@
     :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
     (add-hook 'lisp-mode-hook #'lispy-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispy-mode)
-    (add-hook 'lispy-mode-hook (lambda () (evil-commentary-mode -1))))
+    (add-hook 'lispy-mode-hook #'(lambda () (evil-commentary-mode -1))))
 #+end_src
 ** Zig
 #+begin_src emacs-lisp
@@ -163,8 +171,7 @@
 #+end_src
 * Sundry
 #+begin_src emacs-lisp
-  (setq-default vc-follow-symlinks t
-                custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
   (when (file-exists-p custom-file)
     (load-file custom-file))
 #+end_src
