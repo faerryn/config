@@ -1,0 +1,5 @@
+/.local/bin/*
+!/.local/bin/fzf
+!/.local/bin/fzf-tmux
+/.local/lib/fzf/*
+!/.local/lib/fzf/
