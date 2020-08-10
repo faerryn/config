@@ -3,11 +3,18 @@ autocmd!
 
 " vim/neovim compat
 if has("nvim")
-    set inccommand=nosplit
     set shada=
 
     autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
+
+    set inccommand=nosplit
 else
+    set viminfo=
+
+    " vim-highlightedyank
+    let g:highlightedyank_highlight_duration = 500
+    packadd vim-highlightedyank
+
     set term=xterm-256color
     let &t_SI = "\<Esc>[6 q"
     let &t_SR = "\<Esc>[4 q"
@@ -20,14 +27,8 @@ else
     set autoindent
     set backspace=indent,eol,start,nostop
 
-    set viminfo=
-    set undodir=~/.vim/undo/
-
-    " vim-highlightedyank
-    let g:highlightedyank_highlight_duration = 500
-    packadd vim-highlightedyank
-
     set directory=~/.vim/swap//
+    set undodir=~/.vim/undo/
     syntax enable
     filetype plugin indent on
 endif
@@ -65,7 +66,6 @@ autocmd VimEnter * silent! helptags ALL
 
 " aesthetics
 set cursorline cursorcolumn colorcolumn=80
-set guioptions=f
 set laststatus=0 showtabline=0
 set noruler
 set nowrap linebreak
