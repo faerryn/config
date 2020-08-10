@@ -1,57 +1,57 @@
 [submodule "gruvbox"]
 	path = vim/.vim/pack/bundle/start/gruvbox
-	url = https://github.com/gruvbox-community/gruvbox
+	url = https://github.com/gruvbox-community/gruvbox.git
 [submodule "vim-dirvish"]
 	path = vim/.vim/pack/bundle/start/vim-dirvish
-	url = https://github.com/justinmk/vim-dirvish
+	url = https://github.com/justinmk/vim-dirvish.git
 [submodule "vim-sandwich"]
 	path = vim/.vim/pack/bundle/start/vim-sandwich
-	url = https://github.com/machakann/vim-sandwich
+	url = https://github.com/machakann/vim-sandwich.git
 [submodule "vim-mkdir"]
 	path = vim/.vim/pack/bundle/start/vim-mkdir
-	url = https://github.com/pbrisbin/vim-mkdir
+	url = https://github.com/pbrisbin/vim-mkdir.git
 [submodule "tcomment_vim"]
 	path = vim/.vim/pack/bundle/start/tcomment_vim
-	url = https://github.com/tomtom/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim.git
 [submodule "vim-eunuch"]
 	path = vim/.vim/pack/bundle/start/vim-eunuch
-	url = https://github.com/tpope/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch.git
 [submodule "vim-fugitive"]
 	path = vim/.vim/pack/bundle/start/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim-repeat"]
 	path = vim/.vim/pack/bundle/start/vim-repeat
-	url = https://github.com/tpope/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
 [submodule "vim-unimpaired"]
 	path = vim/.vim/pack/bundle/start/vim-unimpaired
-	url = https://github.com/tpope/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "zsh-system-clipboard"]
 	path = zsh/.config/zsh/zsh-system-clipboard
-	url = https://github.com/kutsan/zsh-system-clipboard
+	url = https://github.com/kutsan/zsh-system-clipboard.git
 [submodule "tmux-pain-control"]
 	path = tmux/.config/tmux/tmux-pain-control
-	url = https://github.com/tmux-plugins/tmux-pain-control
+	url = https://github.com/tmux-plugins/tmux-pain-control.git
 [submodule "tmux-sessionist"]
 	path = tmux/.config/tmux/tmux-sessionist
-	url = https://github.com/tmux-plugins/tmux-sessionist
+	url = https://github.com/tmux-plugins/tmux-sessionist.git
 [submodule "zig.vim"]
 	path = vim/.vim/pack/bundle/start/zig.vim
-	url = https://github.com/ziglang/zig.vim
+	url = https://github.com/ziglang/zig.vim.git
 [submodule "fzf"]
 	path = fzf/.local/lib/fzf
-	url = https://github.com/junegunn/fzf
+	url = https://github.com/junegunn/fzf.git
 [submodule "vim-wordmotion"]
 	path = vim/.vim/pack/bundle/start/vim-wordmotion
-	url = https://github.com/chaoren/vim-wordmotion
+	url = https://github.com/chaoren/vim-wordmotion.git
 [submodule "vim-highlightedyank"]
 	path = vim/.vim/pack/bundle/opt/vim-highlightedyank
-	url = https://github.com/machakann/vim-highlightedyank
+	url = https://github.com/machakann/vim-highlightedyank.git
 [submodule "vis-surround"]
 	path = vis/.config/vis/vis-surround
 	url = https://repo.or.cz/vis-surround.git
 [submodule "vis-commentary"]
 	path = vis/.config/vis/vis-commentary
-	url = https://github.com/jeremybobbin/vis-commentary
+	url = https://github.com/jeremybobbin/vis-commentary.git
 [submodule "vis-pairs"]
 	path = vis/.config/vis/vis-pairs
 	url = https://repo.or.cz/vis-pairs.git
