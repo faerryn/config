@@ -31,8 +31,6 @@ export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
 # ccache
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/ccache.config"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
-export CC="ccache cc"
-export CXX="ccache c++"
 
 # make
 alias make="make -j$(($(nproc) - 1))"
@@ -54,9 +52,9 @@ fi
 if command -v nvim >/dev/null; then
     export EDITOR="nvim"
     export VISUAL="nvim"
-    export MANPAGER="nvim -R +\"set signcolumn=no ft=man\" -"
+    export MANPAGER="nvim -R +MANPAGER -"
 elif command -v vim >/dev/null; then
     export EDITOR="vim"
     export VISUAL="vim"
-    export MANPAGER="vim -R +\"set signcolumn=no ft=man\" -"
+    export MANPAGER="vim -R +MANPAGER -"
 fi
