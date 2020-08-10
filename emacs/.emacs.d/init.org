@@ -135,7 +135,8 @@
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys))
 #+end_src
-* Magit
+* Git
+** Magit
 #+begin_src emacs-lisp
   (use-package magit
     :ensure t)
@@ -143,6 +144,17 @@
     :ensure t
     :after (evil magit)
     :config (evil-define-key 'normal 'global (kbd "C-c g") #'magit))
+#+end_src
+** Git-gutter
+#+begin_src emacs-lisp
+  (use-package git-gutter
+    :ensure t
+    :after (evil)
+    :config
+    (evil-define-key 'normal 'global 
+      "]c" #'git-gutter:next-hunk
+      "[c" #'git-gutter:previous-hunk)
+    (global-git-gutter-mode +1))
 #+end_src
 * Counsel
 #+begin_src emacs-lisp
