@@ -68,15 +68,8 @@ function () {
     zle -N personal-fzf-file
     bindkey "^f" personal-fzf-file
 
-    function personal-fzf-cd () {
-	cd "$(fd -Htd | fzf --height=40%)"
-	zle reset-prompt
-    }
-    zle -N personal-fzf-cd
-    bindkey "\ec" personal-fzf-cd
-
     function personal-fzf-history () {
-	LBUFFER="$(tac $HISTFILE | fzf --height=40% +s --query="$BUFFER")"
+	LBUFFER="$(tac $HISTFILE | fzf --height=40% +s --query=$BUFFER)"
 	RBUFFER=
 	zle reset-prompt
     }
