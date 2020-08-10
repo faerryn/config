@@ -36,6 +36,11 @@
   (global-prettify-symbols-mode +1)
   (setq-default display-line-numbers 'visual)
 #+end_src
+* Dired
+#+begin_src emacs-lisp
+  (require 'dired-x)
+  (add-hook 'dired-mode-hook 'dired-omit-mode)
+#+end_src
 * Undotree
 #+begin_src emacs-lisp
   (use-package undo-tree
