@@ -66,6 +66,10 @@ function () {
 	local WORD="${LBUFFER##* }"
 	local STUB="${WORD##*/}"
 	local DIRECTORY="$WORD[1,-$((${#STUB}+1))]"
+	if [[ ! -d $DIRECTORY ]]; then
+	    STUB="$DIRECTORY$STUB"
+	    DIRECTORY=
+	fi
 	local FILE="$(fd -Htf . $~DIRECTORY 2>/dev/null | fzf --border=rounded --height=50% --query=$STUB)"
 	if [[ -a $FILE ]]; then
 	    LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$FILE"
