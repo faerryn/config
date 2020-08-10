@@ -62,15 +62,33 @@ function () {
 
     function personal-fzf-file () {
 	local WORD="${LBUFFER##* }"
-	LBUFFER="$LBUFFER[1,-$((${#WORD} + 1))]$(fd -Htf . $~WORD | fzf --height=40%)"
+	local FILE="$(fd -Htf . $~WORD 2>/dev/null | fzf --height=40%)"
+	if [[ -a $FILE ]]; then
+	    LBUFFER="$LBUFFER[1,-$((${#WORD} + 1))]$FILE"
+	fi
 	zle reset-prompt
     }
     zle -N personal-fzf-file
     bindkey "^f" personal-fzf-file
 
+    function personal-fzf-directory () {
+	local WORD="${LBUFFER##* }"
+	local DIRECTORY="$(ls | fzf --height=40% --query=$~WORD)"
+	if [[ -d $DIRECTORY ]]; then
+	    cd "$DIRECTORY"
+	    LBUFFER="$LBUFFER[1,-$((${#WORD} + 1))]"
+	fi
+	zle reset-prompt
+    }
+    zle -N personal-fzf-directory
+    bindkey "\ec" personal-fzf-directory
+
     function personal-fzf-history () {
-	LBUFFER="$(tac $HISTFILE | fzf --height=40% +s --query=$BUFFER)"
-	RBUFFER=
+	local LINE="$(tac $HISTFILE | fzf --height=40% +s --query=$BUFFER)"
+	if [[ -n $LINE ]]; then
+	    LBUFFER="$LINE"
+	    RBUFFER=
+	fi
 	zle reset-prompt
     }
     zle -N personal-fzf-history

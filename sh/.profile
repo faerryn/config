@@ -41,12 +41,8 @@ alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
 # wine
 export WINEPREFIX="$HOME/wine"
 
-# ls=exa
-if command -v exa >/dev/null; then
-    alias ls="exa"
-else
-    alias ls="ls --color=auto"
-fi
+# ls
+alias ls="ls --color=auto"
 
 # vim and neovim
 if command -v nvim >/dev/null; then
