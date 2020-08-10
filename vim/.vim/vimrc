@@ -93,6 +93,9 @@ nnoremap <silent> <Leader>c :call fzf#run({"window": {"width": 0.8, "height": 0.
 autocmd FileType fzf tnoremap <silent> <buffer> <Esc> <C-C>
 
 " vim-sandwich
+let g:sandwich_no_default_key_mappings = 1
+let g:operator_sandwich_no_default_key_mappings = 1
+let g:textobj_sandwich_no_default_key_mappings = 1
 let g:sandwich#recipes = [
 	    \ {'buns': ['(', ')'], 'nesting': 1, 'input': ['(', ')', 'b']},
 	    \ {'buns': ['{', '}'], 'nesting': 1, 'skip_break': 1, 'input': ['{', '}', 'B']},
@@ -102,5 +105,9 @@ let g:sandwich#recipes = [
 	    \ {'buns': ["'", "'"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
 	    \ {'buns': ["`", "`"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
 	    \ ]
+nmap sa <Plug>(operator-sandwich-add)
+xmap sa <Plug>(operator-sandwich-add)
+nmap sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+nmap sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
 
 execute "augroup END"
