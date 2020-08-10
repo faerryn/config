@@ -49,7 +49,7 @@ function () {
     HISTFILE="$XDG_DATA_HOME/zsh/history"
     HISTSIZE=1000000
     SAVEHIST=1000000
-    setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
+    setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
 
     # Completion
     autoload -Uz compinit && mkdir -p "$HOME/.cache/zsh" && compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
@@ -86,7 +86,7 @@ function () {
     bindkey "\ec" personal-fzf-directory
 
     function personal-fzf-history () {
-	local LINE="$(history 0 | sed -r 's/^\s*[0-9]+\s*//' | tac | fzf --border=rounded +s --height=40% --no-sort --query=$BUFFER)"
+	local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\s*//' | fzf --border=rounded --height=40% --no-sort --query=$BUFFER)"
 	if [[ -n $LINE ]]; then
 	    LBUFFER="$LINE"
 	    RBUFFER=
