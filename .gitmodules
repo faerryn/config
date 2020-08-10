@@ -49,3 +49,6 @@
 [submodule "vim-signify"]
 	path = vim/.vim/pack/bundle/start/vim-signify
 	url = https://github.com/mhinz/vim-signify.git
+[submodule "undotree"]
+	path = vim/.vim/pack/bundle/start/undotree
+	url = https://github.com/mbbill/undotree.git

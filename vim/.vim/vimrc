@@ -21,12 +21,13 @@ else
     set backspace=indent,eol,start,nostop
 
     set viminfo=
+    set undodir=~/.vim/undo/
 
     " vim-highlightedyank
     let g:highlightedyank_highlight_duration = 500
     packadd vim-highlightedyank
 
-    set directory=~/.local/share/vim/swap//
+    set directory=~/.vim/swap//
     syntax enable
     filetype plugin indent on
 endif
@@ -42,6 +43,7 @@ set nrformats=alpha,octal,hex,bin
 set omnifunc=syntaxcomplete#Complete
 set splitbelow splitright
 set timeoutlen=500
+set undofile
 set updatetime=500
 
 let g:mapleader="\<Space>"
@@ -109,5 +111,11 @@ nmap sa <Plug>(operator-sandwich-add)
 xmap sa <Plug>(operator-sandwich-add)
 nmap sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
 nmap sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+
+" undotree
+let g:undotree_WindowLayout = 4
+let g:undotree_HelpLine = 0
+nnoremap <silent> <Leader>u :UndotreeShow<CR>:UndotreeFocus<CR>
+autocmd FileType undotree nnoremap <silent> <buffer> <Esc> :UndotreeHide<CR>
 
 execute "augroup END"

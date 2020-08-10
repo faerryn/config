@@ -1,4 +1,4 @@
-#+startup: indent content
+#+startup: indent overview
 * Packages
 ** Package.el
 #+begin_src emacs-lisp
@@ -36,11 +36,24 @@
   (global-prettify-symbols-mode +1)
   (setq-default display-line-numbers 'visual)
 #+end_src
+* Undotree
+#+begin_src emacs-lisp
+  (use-package undo-tree
+    :ensure t
+    :config
+    (setq-default undo-tree-auto-save-history t
+                  undo-tree-history-directory-alist `(("." . ,(expand-file-name "undo" user-emacs-directory))))
+    (add-hook 'undo-tree-visualizer-mode-hook (lambda ()
+                                                (undo-tree-visualizer-selection-mode +1)
+                                                (setq display-line-numbers nil)))
+    (global-undo-tree-mode +1))
+#+end_src
 * Evil Mode
 ** Vim
 #+begin_src emacs-lisp
   (use-package evil
     :ensure t
+    :after (undo-tree)
     :init
     (setq-default
      evil-want-C-i-jump (display-graphic-p)
