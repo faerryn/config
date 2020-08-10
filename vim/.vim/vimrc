@@ -5,17 +5,14 @@ autocmd!
 if has("nvim")
     set inccommand=nosplit
     set shada=
+    set signcolumn=number
 
     autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 else
-    if &term =~# '-256color'
-	set term=xterm-256color
-	" set key codes AFTER term
-	let &t_SI = "\<Esc>[6 q"
-	let &t_SR = "\<Esc>[4 q"
-	let &t_EI = "\<Esc>[2 q"
-	inoremap <Esc> <Esc>jk
-    endif
+    let &t_SI = "\<Esc>[6 q"
+    let &t_SR = "\<Esc>[4 q"
+    let &t_EI = "\<Esc>[2 q"
+    inoremap <Esc> <Esc>jk
 
     set background=dark
     set hlsearch incsearch

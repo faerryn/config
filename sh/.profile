@@ -52,7 +52,10 @@ alias ls="ls --color=auto"
 if command -v nvim >/dev/null; then
     export EDITOR="nvim"
     export VISUAL="nvim"
-    export MANPAGER="nvim -R +MANPAGER -"
+    export MANPAGER="nvim -R +'set ft=man' -"
+    if ! command -v vim >/dev/null; then
+	alias vim="nvim"
+    fi
 elif command -v vim >/dev/null; then
     export EDITOR="vim"
     export VISUAL="vim"

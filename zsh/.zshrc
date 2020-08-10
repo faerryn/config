@@ -76,7 +76,7 @@ function () {
     bindkey "^f" personal-fzf-file
 
     function personal-fzf-directory () {
-    local DIRECTORY="$(fd -Htd -d1 | fzf --border=rounded --height=50%)"
+	local DIRECTORY="$(fd -Htd -d1 | fzf --border=rounded --height=50%)"
 	if [[ -d $DIRECTORY ]]; then
 	    cd "$DIRECTORY"
 	fi
@@ -86,7 +86,7 @@ function () {
     bindkey "\ec" personal-fzf-directory
 
     function personal-fzf-history () {
-    local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\s*//' | fzf --border=rounded --height=50% --no-sort --query=$BUFFER)"
+	local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\s*//' | fzf --border=rounded --height=50% --no-sort --query=$BUFFER)"
 	if [[ -n $LINE ]]; then
 	    LBUFFER="$LINE"
 	    RBUFFER=
