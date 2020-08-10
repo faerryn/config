@@ -62,9 +62,11 @@ function () {
 
     function personal-fzf-file () {
 	local WORD="${LBUFFER##* }"
-	local FILE="$(fd -Htf . $~WORD 2>/dev/null | fzf --height=40%)"
+	local STUB="${WORD##*/}"
+	local DIRECTORY="$WORD[1,-$((${#STUB}+1))]"
+	local FILE="$(fd -Htf . $~DIRECTORY 2>/dev/null | fzf --border=rounded --height=40% --query=$STUB)"
 	if [[ -a $FILE ]]; then
-	    LBUFFER="$LBUFFER[1,-$((${#WORD} + 1))]$FILE"
+	    LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$FILE"
 	fi
 	zle reset-prompt
     }
@@ -72,11 +74,9 @@ function () {
     bindkey "^f" personal-fzf-file
 
     function personal-fzf-directory () {
-	local WORD="${LBUFFER##* }"
-	local DIRECTORY="$(ls | fzf --height=40% --query=$~WORD)"
+	local DIRECTORY="$(fd -Htd -d1 | fzf --border=rounded --height=40%)"
 	if [[ -d $DIRECTORY ]]; then
 	    cd "$DIRECTORY"
-	    LBUFFER="$LBUFFER[1,-$((${#WORD} + 1))]"
 	fi
 	zle reset-prompt
     }
@@ -84,7 +84,7 @@ function () {
     bindkey "\ec" personal-fzf-directory
 
     function personal-fzf-history () {
-	local LINE="$(tac $HISTFILE | fzf --height=40% +s --query=$BUFFER)"
+	local LINE="$(tac $HISTFILE | fzf --border=rounded --height=40% +s --query=$BUFFER)"
 	if [[ -n $LINE ]]; then
 	    LBUFFER="$LINE"
 	    RBUFFER=
@@ -99,32 +99,6 @@ function () {
     ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
     ZSH_AUTOSUGGEST_MANUAL_REBIND=1
     ZSH_AUTOSUGGEST_USE_ASYNC=1
-
-    # Git Prompt
-    ZSH_THEME_GIT_PROMPT_PREFIX=""
-    ZSH_THEME_GIT_PROMPT_SUFFIX=""
-    ZSH_THEME_GIT_PROMPT_SEPARATOR=""
-
-    ZSH_THEME_GIT_PROMPT_DETACHED="%B%F{yellow}:"
-    ZSH_THEME_GIT_PROMPT_BRANCH="%B%F{blue}"
-
-    ZSH_THEME_GIT_PROMPT_UPSTREAM_SYMBOL=""
-    ZSH_THEME_GIT_PROMPT_UPSTREAM_PREFIX=" %F{yellow}("
-    ZSH_THEME_GIT_PROMPT_UPSTREAM_SUFFIX=")"
-
-    ZSH_THEME_GIT_PROMPT_BEHIND=" %F{red}↓"
-    ZSH_THEME_GIT_PROMPT_AHEAD=" %F{green}↑"
-
-    ZSH_THEME_GIT_PROMPT_UNMERGED=" %F{red}!"
-    ZSH_THEME_GIT_PROMPT_STAGED=" %F{green}+"
-    ZSH_THEME_GIT_PROMPT_UNSTAGED=" %F{red}-"
-    ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{yellow}?"
-    ZSH_THEME_GIT_PROMPT_STASHED=" %F{cyan}"
-    ZSH_THEME_GIT_PROMPT_CLEAN=""
-
-    ZSH_GIT_PROMPT_SHOW_UPSTREAM="full"
-
-    RPROMPT="\$(gitprompt)"
 
     # Plugins
     local PLUGIN

@@ -82,17 +82,17 @@
     :after (evil) 
     :config
     (setq-default evil-surround-pairs-alist
-		  '((?\( . ("(" . ")"))
-		    (?\) . ("(" . ")"))
-		    (?b . ("(" . ")"))
-		    (?\{ . ("{" . "}"))
-		    (?\} . ("{" . "}"))
-		    (?B . ("{" . "}"))
-		    (?\[ . ("[" . "]"))
-		    (?\] . ("[" . "]"))
-		    (?r . ("[" . "]"))
-		    (?< . ("<" . ">"))
-		    (?> . ("<" . ">"))))
+                  '((?\( . ("(" . ")"))
+                    (?\) . ("(" . ")"))
+                    (?b . ("(" . ")"))
+                    (?\{ . ("{" . "}"))
+                    (?\} . ("{" . "}"))
+                    (?B . ("{" . "}"))
+                    (?\[ . ("[" . "]"))
+                    (?\] . ("[" . "]"))
+                    (?r . ("[" . "]"))
+                    (?< . ("<" . ">"))
+                    (?> . ("<" . ">"))))
     (evil-define-key '(normal visual) 'global "sa" #'evil-surround-region)
     (evil-define-key 'normal 'global 
       "sd" #'evil-surround-delete
@@ -106,22 +106,21 @@
     (setq-default
      org-src-tab-acts-natively t
      org-log-done t
-     org-agenda-files (list "~/org/agenda.org"))
-    (setq-default org-agenda-start-on-weekday 0)
+     org-agenda-files (list "~/org/agenda.org") 
+     org-agenda-start-on-weekday 0)
+    (global-set-key (kbd "C-c l") #'org-store-link)
+    (global-set-key (kbd "C-c a") #'org-agenda)
     (add-hook 'org-mode-hook #'org-toggle-pretty-entities))
   (use-package evil-org
     :ensure t
     :after (evil org)
     :config
     (add-hook 'org-mode-hook #'(lambda ()
-				 (setq evil-auto-indent nil)
-				 (evil-org-mode +1)))
+                                 (setq evil-auto-indent nil)
+                                 (evil-org-mode +1)))
     (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
     (require 'evil-org-agenda)
-    (evil-org-agenda-set-keys)
-    (evil-define-key 'normal 'global 
-      (kbd "C-c l") #'org-store-link
-      (kbd "C-c a") #'org-agenda))
+    (evil-org-agenda-set-keys))
 #+end_src
 * Magit
 #+begin_src emacs-lisp
@@ -144,9 +143,18 @@
     :ensure t
     :after (counsel evil)
     :config
-    (evil-define-key 'normal 'global 
-      (kbd "C-c C-f") #'counsel-fd-file-jump
-      (kbd "C-c C-d") #'counsel-fd-dired-jump))
+    (global-set-key
+     (kbd "C-c C-d")
+     #'(lambda ()
+         (interactive)
+         (counsel-require-program "fd")
+         (ivy-read "Directory: "
+                   (split-string
+                    (shell-command-to-string
+                     (concat counsel-fd-command "--type d -d1 --exclude '*.git'"))
+                    "\n" t)
+                   :action (lambda (d) (dired-jump nil (expand-file-name d))))))
+    (global-set-key (kbd "C-c C-f") #'counsel-fd-file-jump))
 #+end_src
 * Languages
 ** Lisp
