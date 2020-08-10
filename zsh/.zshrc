@@ -94,12 +94,6 @@ function () {
     zle -N personal-fzf-history
     bindkey "^r" personal-fzf-history
 
-    # Autosuggest
-    ZSH_AUTOSUGGEST_STRATEGY=(completion)
-    ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-    ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-    ZSH_AUTOSUGGEST_USE_ASYNC=1
-
     # Plugins
     local PLUGIN
     for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do

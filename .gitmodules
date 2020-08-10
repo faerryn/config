@@ -28,9 +28,6 @@
 [submodule "zsh-system-clipboard"]
 	path = zsh/.config/zsh/zsh-system-clipboard
 	url = https://github.com/kutsan/zsh-system-clipboard
-[submodule "zsh-autosuggestions"]
-	path = zsh/.config/zsh/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule "tmux-pain-control"]
 	path = tmux/.config/tmux/tmux-pain-control
 	url = https://github.com/tmux-plugins/tmux-pain-control
