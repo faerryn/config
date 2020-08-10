@@ -44,7 +44,7 @@ set omnifunc=syntaxcomplete#Complete
 set splitbelow splitright
 set timeoutlen=500
 set undofile
-set updatetime=500
+set updatetime=50
 
 let g:mapleader="\<Space>"
 
