@@ -8,7 +8,7 @@ if has("nvim")
 
     autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 else
-    if !has("gui_running")
+    if &term =~# '-256color'
 	set term=xterm-256color
 	" set key codes AFTER term
 	let &t_SI = "\<Esc>[6 q"

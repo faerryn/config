@@ -66,7 +66,7 @@ function () {
 	local WORD="${LBUFFER##* }"
 	local STUB="${WORD##*/}"
 	local DIRECTORY="$WORD[1,-$((${#STUB}+1))]"
-	local FILE="$(fd -Htf . $~DIRECTORY 2>/dev/null | fzf --border=rounded --height=40% --query=$STUB)"
+	local FILE="$(fd -Htf . $~DIRECTORY 2>/dev/null | fzf --border=rounded --height=50% --query=$STUB)"
 	if [[ -a $FILE ]]; then
 	    LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$FILE"
 	fi
@@ -76,7 +76,7 @@ function () {
     bindkey "^f" personal-fzf-file
 
     function personal-fzf-directory () {
-	local DIRECTORY="$(fd -Htd -d1 | fzf --border=rounded --height=40%)"
+    local DIRECTORY="$(fd -Htd -d1 | fzf --border=rounded --height=50%)"
 	if [[ -d $DIRECTORY ]]; then
 	    cd "$DIRECTORY"
 	fi
@@ -86,7 +86,7 @@ function () {
     bindkey "\ec" personal-fzf-directory
 
     function personal-fzf-history () {
-	local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\s*//' | fzf --border=rounded --height=40% --no-sort --query=$BUFFER)"
+    local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\s*//' | fzf --border=rounded --height=50% --no-sort --query=$BUFFER)"
 	if [[ -n $LINE ]]; then
 	    LBUFFER="$LINE"
 	    RBUFFER=

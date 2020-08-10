@@ -142,19 +142,7 @@
   (use-package counsel-fd
     :ensure t
     :after (counsel evil)
-    :config
-    (global-set-key
-     (kbd "C-c C-d")
-     #'(lambda ()
-         (interactive)
-         (counsel-require-program "fd")
-         (ivy-read "Directory: "
-                   (split-string
-                    (shell-command-to-string
-                     (concat counsel-fd-command "--type d -d1 --exclude '*.git'"))
-                    "\n" t)
-                   :action (lambda (d) (dired-jump nil (expand-file-name d))))))
-    (global-set-key (kbd "C-c C-f") #'counsel-fd-file-jump))
+    :config (global-set-key (kbd "C-c C-f") #'counsel-fd-file-jump))
 #+end_src
 * Languages
 ** Lisp
