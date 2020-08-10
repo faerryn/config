@@ -5,7 +5,6 @@ autocmd!
 if has("nvim")
     set inccommand=nosplit
     set shada=
-    set signcolumn=number
 
     autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 else
@@ -68,7 +67,7 @@ set guioptions=f
 set laststatus=0 showtabline=0
 set noruler
 set nowrap linebreak
-set number relativenumber
+set number relativenumber signcolumn=number
 set shortmess=o
 set softtabstop=4 shiftwidth=4
 set termguicolors

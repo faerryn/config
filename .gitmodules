@@ -46,3 +46,6 @@
 [submodule "vim-highlightedyank"]
 	path = vim/.vim/pack/bundle/opt/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank.git
+[submodule "vim-signify"]
+	path = vim/.vim/pack/bundle/start/vim-signify
+	url = https://github.com/mhinz/vim-signify.git
