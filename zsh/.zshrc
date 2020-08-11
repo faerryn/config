@@ -4,6 +4,12 @@ function () {
 	source "$HOME/.profile"
     fi
 
+    # Plugins
+    local PLUGIN
+    for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do
+	source $PLUGIN
+    done
+
     # Aliases
     alias la="ls -A"
     alias ll="ls -l"
@@ -17,7 +23,11 @@ function () {
     alias ....="cd ../../.."
 
     # Prompt
-    PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(2L.%F{green}+%f .)%(0?..%F{red})%(!.#.$)%f "
+    PROMPT=" [ %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(2L.%F{green}+%f .)%(0?..%F{red})%(!.#.$)%f ] "
+    function personal-git-prompt () {
+	RPROMPT=$(git --no-optional-locks status --branch --porcelain=v2 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk)
+    }
+    precmd_functions+=(personal-git-prompt)
 
     # Vi-mode
     bindkey -v
@@ -25,25 +35,25 @@ function () {
 
     KEYTIMEOUT=1
 
-    local function cursor_block () { echo -ne "\e[2 q" }
-    local function cursor_beam () { echo -ne "\e[6 q" }
+    local function personal-cursor-block () { echo -ne "\e[2 q" }
+    local function personal-cursor-beam () { echo -ne "\e[6 q" }
 
-    function zle-line-init () { cursor_beam }
+    function zle-line-init () { personal-cursor-beam }
     zle -N zle-line-init
 
     function zle-keymap-select () {
 	if [[ ${KEYMAP} == vicmd ]]; then
-	    cursor_block
+	    personal-cursor-block
 	elif [[ ${KEYMAP} == main ]]; then
-	    cursor_beam
+	    personal-cursor-beam
 	fi
     }
 
     zle -N zle-keymap-select
 
-    precmd_functions+=(cursor_beam)
-    preexec_functions+=(cursor_block)
-    cursor_beam
+    precmd_functions+=(personal-cursor-beam)
+    preexec_functions+=(personal-cursor-block)
+    personal-cursor-beam
 
     # History
     mkdir -p "$XDG_DATA_HOME/zsh"
@@ -102,10 +112,4 @@ function () {
     }
     zle -N personal-fzf-history
     bindkey "^r" personal-fzf-history
-
-    # Plugins
-    local PLUGIN
-    for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do
-	source $PLUGIN
-    done
 }
