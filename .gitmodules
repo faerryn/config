@@ -1,29 +1,29 @@
 [submodule "gruvbox"]
-	path = vim/.vim/pack/bundle/start/gruvbox
+	path = neovim/.config/nvim/pack/bundle/start/gruvbox
 	url = https://github.com/gruvbox-community/gruvbox.git
 [submodule "vim-dirvish"]
-	path = vim/.vim/pack/bundle/start/vim-dirvish
+	path = neovim/.config/nvim/pack/bundle/start/vim-dirvish
 	url = https://github.com/justinmk/vim-dirvish.git
 [submodule "vim-sandwich"]
-	path = vim/.vim/pack/bundle/start/vim-sandwich
+	path = neovim/.config/nvim/pack/bundle/start/vim-sandwich
 	url = https://github.com/machakann/vim-sandwich.git
 [submodule "vim-mkdir"]
-	path = vim/.vim/pack/bundle/start/vim-mkdir
+	path = neovim/.config/nvim/pack/bundle/start/vim-mkdir
 	url = https://github.com/pbrisbin/vim-mkdir.git
 [submodule "tcomment_vim"]
-	path = vim/.vim/pack/bundle/start/tcomment_vim
+	path = neovim/.config/nvim/pack/bundle/start/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim.git
 [submodule "vim-eunuch"]
-	path = vim/.vim/pack/bundle/start/vim-eunuch
+	path = neovim/.config/nvim/pack/bundle/start/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch.git
 [submodule "vim-fugitive"]
-	path = vim/.vim/pack/bundle/start/vim-fugitive
+	path = neovim/.config/nvim/pack/bundle/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim-repeat"]
-	path = vim/.vim/pack/bundle/start/vim-repeat
+	path = neovim/.config/nvim/pack/bundle/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
 [submodule "vim-unimpaired"]
-	path = vim/.vim/pack/bundle/start/vim-unimpaired
+	path = neovim/.config/nvim/pack/bundle/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "zsh-system-clipboard"]
 	path = zsh/.config/zsh/zsh-system-clipboard
@@ -35,22 +35,19 @@
 	path = tmux/.config/tmux/tmux-sessionist
 	url = https://github.com/tmux-plugins/tmux-sessionist.git
 [submodule "zig.vim"]
-	path = vim/.vim/pack/bundle/start/zig.vim
+	path = neovim/.config/nvim/pack/bundle/start/zig.vim
 	url = https://github.com/ziglang/zig.vim.git
 [submodule "fzf"]
 	path = fzf/.local/lib/fzf
 	url = https://github.com/junegunn/fzf.git
 [submodule "vim-wordmotion"]
-	path = vim/.vim/pack/bundle/start/vim-wordmotion
+	path = neovim/.config/nvim/pack/bundle/start/vim-wordmotion
 	url = https://github.com/chaoren/vim-wordmotion.git
-[submodule "vim-highlightedyank"]
-	path = vim/.vim/pack/bundle/opt/vim-highlightedyank
-	url = https://github.com/machakann/vim-highlightedyank.git
 [submodule "vim-signify"]
-	path = vim/.vim/pack/bundle/start/vim-signify
+	path = neovim/.config/nvim/pack/bundle/start/vim-signify
 	url = https://github.com/mhinz/vim-signify.git
 [submodule "undotree"]
-	path = vim/.vim/pack/bundle/start/undotree
+	path = neovim/.config/nvim/pack/bundle/start/undotree
 	url = https://github.com/mbbill/undotree.git
 [submodule "tmux-yank"]
 	path = tmux/.config/tmux/tmux-yank

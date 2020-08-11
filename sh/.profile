@@ -32,13 +32,6 @@ export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache/ccache.config"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 
-# make
-alias make="make -j$(($(nproc) - 1))"
-
-# c/c++
-command -v cc >/dev/null && export CC=cc
-command -v c++ >/dev/null && export CXX=c++
-
 # wget
 alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
 

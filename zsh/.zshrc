@@ -4,21 +4,11 @@ function () {
 	source "$HOME/.profile"
     fi
 
-    # Compile self
-    autoload -Uz zrecompile
-    if ! zrecompile -qt ~/.zshrc; then
-	zrecompile -p ~/.zshrc >/dev/null
-    fi
-
     # Empty out precmd_functions and preexec_functions
     precmd_functions=()
     preexec_functions=()
 
     # Plugins
-    local SOURCE
-    for SOURCE in $(fd ".zsh$" $XDG_CONFIG_HOME/zsh); do
-	zrecompile -q -p $SOURCE
-    done
     local PLUGIN
     for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do
 	source $PLUGIN
