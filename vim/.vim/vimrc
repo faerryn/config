@@ -67,6 +67,7 @@ autocmd VimEnter * silent! helptags ALL
 " aesthetics
 set cursorline cursorcolumn colorcolumn=80
 set laststatus=0 showtabline=0
+set noequalalways
 set noruler
 set nowrap linebreak
 set number relativenumber signcolumn=number
@@ -113,7 +114,9 @@ nmap sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<
 nmap sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
 
 " undotree
-let g:undotree_WindowLayout = 4
+let g:undotree_CustomUndotreeCmd="split"
+let g:undotree_CustomDiffpanelCmd="split"
+let g:undotree_DiffpanelHeight=5
 let g:undotree_HelpLine = 0
 nnoremap <silent> <Leader>u :UndotreeShow<CR>:UndotreeFocus<CR>
 autocmd FileType undotree nnoremap <silent> <buffer> <Esc> :UndotreeHide<CR>
