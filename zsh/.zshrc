@@ -36,10 +36,7 @@ function () {
 	git --no-optional-locks status --branch --porcelain=v2 2>&1 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
     }
     function personal-prompt-callback () {
-	if [[ -n $5 ]]; then
-	    async_start_worker "personal-prompt-worker" -n
-	    personal-prompt-callback
-	else
+	if [[ -z $5 ]]; then
 	    local OUTPUT=("${(f)3}")
 	    if [[ $6 -eq 0 ]] && [[ "$OUTPUT[1]" == "$PWD" ]]; then
 		RPROMPT="$OUTPUT[2]"
@@ -48,9 +45,9 @@ function () {
 	fi
     }
     async_init
-    async_start_worker "personal-prompt-worker" -n
-    async_register_callback "personal-prompt-worker" personal-prompt-callback
     function personal-start-prompt-worker () {
+	async_start_worker "personal-prompt-worker" -n
+	async_register_callback "personal-prompt-worker" personal-prompt-callback
 	async_job "personal-prompt-worker" personal-git-prompt $PWD
     }
     precmd_functions+=(personal-start-prompt-worker)
