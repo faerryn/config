@@ -70,7 +70,7 @@ function () {
 	while [[ -n $DIRECTORY ]] && [[ ! -d $DIRECTORY ]]; do
 	    DIRECTORY="${DIRECTORY%/*}"
 	done
-	local STUB="$WORD[$((${#DIRECTORY}+1)),-1]"
+	local STUB="$WORD[$((${#DIRECTORY}+2)),-1]"
 	local FILE="$(fd -Htf . $~DIRECTORY | fzf --border=rounded --height=50% --query=$STUB)"
 	if [[ -a $FILE ]]; then
 	    LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$FILE"
