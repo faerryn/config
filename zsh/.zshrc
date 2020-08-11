@@ -52,7 +52,9 @@ function () {
     setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
 
     # Completion
-    autoload -Uz compinit && mkdir -p "$HOME/.cache/zsh" && compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
+    autoload -Uz compinit
+    mkdir -p "$HOME/.cache/zsh"
+    compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
 
     # FZF
     if [[ ! -a "$XDG_CONFIG_HOME/zsh/fzf/bin/fzf" ]]; then
@@ -64,13 +66,12 @@ function () {
 
     function personal-fzf-file () {
 	local WORD="${LBUFFER##* }"
-	local STUB="${WORD##*/}"
-	local DIRECTORY="$WORD[1,-$((${#STUB}+1))]"
-	if [[ ! -d $~DIRECTORY ]]; then
-	    STUB="$DIRECTORY$STUB"
-	    DIRECTORY=
-	fi
-	local FILE="$(fd -Htf . $~DIRECTORY 2>/dev/null | fzf --border=rounded --height=50% --query=$STUB)"
+	local DIRECTORY="$WORD"
+	while [[ -n $DIRECTORY ]] && [[ ! -d $DIRECTORY ]]; do
+	    DIRECTORY="${DIRECTORY%/*}"
+	done
+	local STUB="$WORD[$((${#DIRECTORY}+1)),-1]"
+	local FILE="$(fd -Htf . $~DIRECTORY | fzf --border=rounded --height=50% --query=$STUB)"
 	if [[ -a $FILE ]]; then
 	    LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$FILE"
 	fi
