@@ -30,6 +30,7 @@ function () {
     PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(2L.%F{green}+%f .)%(0?..%F{red})%(!.#.$)%f "
 
     RPROMPT=
+    async_init
     function personal-git-prompt () {
 	cd -q $1
 	pwd
@@ -44,11 +45,11 @@ function () {
 	    fi
 	fi
     }
-    async_init
     function personal-start-prompt-worker () {
-	async_start_worker "personal-prompt-worker" -n
-	async_register_callback "personal-prompt-worker" personal-prompt-callback
-	async_job "personal-prompt-worker" personal-git-prompt $PWD
+	while ! async_job "personal-prompt-worker" personal-git-prompt $PWD 2>/dev/null; do
+	    async_start_worker "personal-prompt-worker" -n
+	    async_register_callback "personal-prompt-worker" personal-prompt-callback
+	done
     }
     precmd_functions+=(personal-start-prompt-worker)
 
