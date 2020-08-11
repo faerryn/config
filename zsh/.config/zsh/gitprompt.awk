@@ -10,7 +10,6 @@ BEGIN {
     unmerged = 0;
     staged = 0;
     unstaged = 0;
-    stashed = 0;
 }
 $1 == "fatal:" {
     fatal = 1;
@@ -43,9 +42,6 @@ $1 == "1" || $1 == "2" {
 	++unstaged;
     }
 }
-$2 == "stash.count" {
-    stashed = $3;
-}
 END {
     if (fatal == 1) {
 	exit(1);
@@ -65,10 +61,10 @@ END {
     if (ahead + behind + unmerged > 0) {
 	print " ["
 	if (ahead > 0) {
-	    print " %F{green}+" ahead "%f";
+	    print " %F{green}↑" ahead "%f";
 	}
 	if (behind > 0) {
-	    print " %F{yellow}-" behind "%f";
+	    print " %F{red}↓" behind "%f";
 	}
 	if (unmerged > 0) {
 	    print " %F{red}!" unmerged "%f";
@@ -76,19 +72,16 @@ END {
 	print " ]"
     }
 
-    if (staged + unstaged + untracked + stashed > 0) {
+    if (staged + unstaged + untracked > 0) {
 	print " ["
 	if (staged > 0) {
-	    print " %F{yellow}" staged "%f";
+	    print " %F{green}+" staged "%f";
 	}
 	if (unstaged > 0) {
-	    print " %F{red}" unstaged "%f";
+	    print " %F{red}-" unstaged "%f";
 	}
 	if (untracked > 0) {
-	    print " ?" untracked "%f";
-	}
-	if (stashed > 0) {
-	    print " %F{magenta}" stashed "%f";
+	    print " %F{yellow}?" untracked "%f";
 	}
 	print " ]"
     }

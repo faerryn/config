@@ -4,6 +4,10 @@ function () {
 	source "$HOME/.profile"
     fi
 
+    # Empty out precmd_functions and preexec_functions
+    precmd_functions=()
+    preexec_functions=()
+
     # Plugins
     local PLUGIN
     for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do
@@ -23,7 +27,7 @@ function () {
     alias ....="cd ../../.."
 
     # Prompt
-    PROMPT=" [ %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(2L.%F{green}+%f .)%(0?..%F{red})%(!.#.$)%f ] "
+    PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(2L.%F{green}+%f .)%(0?..%F{red})%(!.#.$)%f "
     RPROMPT=
 
     async_init
