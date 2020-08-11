@@ -30,11 +30,14 @@ function () {
 
     function personal-git-prompt () {
 	cd -q $1
+	echo $PWD 1>&2
 	git --no-optional-locks status --branch --porcelain=v2 2>&1 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
     }
     function personal-prompt-callback () {
-	RPROMPT=$3
-	zle reset-prompt
+	if [[ $6 -eq 0 ]] && [[ $5 == $PWD ]]; then
+	    RPROMPT=$3
+	    zle reset-prompt
+	fi
     }
     function personal-start-prompt-worker () {
 	async_job "personal-prompt-worker" personal-git-prompt $PWD
