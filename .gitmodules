@@ -52,9 +52,9 @@
 [submodule "undotree"]
 	path = vim/.vim/pack/bundle/start/undotree
 	url = https://github.com/mbbill/undotree.git
-[submodule "zsh/.config/zsh/tmux-yank"]
+[submodule "tmux-yank"]
 	path = tmux/.config/tmux/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank.git
-[submodule "zsh/.config/zsh/zsh-async"]
+[submodule "zsh-async"]
 	path = zsh/.config/zsh/zsh-async
 	url = https://github.com/mafredri/zsh-async.git

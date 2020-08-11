@@ -24,10 +24,23 @@ function () {
 
     # Prompt
     PROMPT=" [ %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(2L.%F{green}+%f .)%(0?..%F{red})%(!.#.$)%f ] "
+    RPROMPT=
+
+    async_init
+
     function personal-git-prompt () {
-	RPROMPT=$(git --no-optional-locks status --branch --porcelain=v2 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk)
+	cd -q $1
+	git --no-optional-locks status --branch --porcelain=v2 2>&1 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
     }
-    precmd_functions+=(personal-git-prompt)
+    function personal-prompt-callback () {
+	RPROMPT=$3
+	zle reset-prompt
+	async_job "personal-prompt-worker" personal-git-prompt $PWD
+    }
+
+    async_start_worker "personal-prompt-worker" -n
+    async_register_callback "personal-prompt-worker" personal-prompt-callback
+    async_job "personal-prompt-worker" personal-git-prompt $PWD
 
     # Vi-mode
     bindkey -v

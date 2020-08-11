@@ -25,8 +25,8 @@ $2 == "branch.upstream" {
     upstream = $3;
 }
 $2 == "branch.ab" {
-    ahead = $3;
-    behind = -$4;
+    ahead = $3 + 0;
+    behind = $4 * -1;
 }
 $1 == "?" {
     ++untracked;
@@ -50,37 +50,46 @@ END {
     if (fatal == 1) {
 	exit(1);
     }
+
     print " ["
     if (head == "(detached)") {
 	print " %F{blue}:" substr(oid, 1, 8) "%f";
     } else {
 	print " %F{blue}" head "%f";
     }
-    print "-"
     if (upstream != "") {
-	print "%F{yellow}" upstream "%f";
-    }
-    print " ] ["
-    if (behind > 0) {
-	print " %F{red}" behind "%f";
-    }
-    if (ahead > 0) {
-	print " %F{green}" ahead "%f";
-    }
-    if (unmerged > 0) {
-	print " %F{red}" unmerged "%f";
-    }
-    if (staged > 0) {
-	print " %F{green}" staged "%f";
-    }
-    if (unstaged > 0) {
-	print " %F{red}" unstaged "%f";
-    }
-    if (untracked > 0) {
-	print " %F{yellow}" untracked "%f";
-    }
-    if (stashed > 0) {
-	print " %F{magenta}" stashed "%f";
+	print " %F{yellow}" upstream "%f";
     }
     print " ]"
+
+    if (ahead + behind + unmerged > 0) {
+	print " ["
+	if (ahead > 0) {
+	    print " %F{green}+" ahead "%f";
+	}
+	if (behind > 0) {
+	    print " %F{yellow}-" behind "%f";
+	}
+	if (unmerged > 0) {
+	    print " %F{red}!" unmerged "%f";
+	}
+	print " ]"
+    }
+
+    if (staged + unstaged + untracked + stashed > 0) {
+	print " ["
+	if (staged > 0) {
+	    print " %F{yellow}" staged "%f";
+	}
+	if (unstaged > 0) {
+	    print " %F{red}" unstaged "%f";
+	}
+	if (untracked > 0) {
+	    print " ?" untracked "%f";
+	}
+	if (stashed > 0) {
+	    print " %F{magenta}" stashed "%f";
+	}
+	print " ]"
+    }
 }
