@@ -4,11 +4,21 @@ function () {
 	source "$HOME/.profile"
     fi
 
+    # Compile self
+    autoload -Uz zrecompile
+    if ! zrecompile -qt ~/.zshrc; then
+	zrecompile -p ~/.zshrc >/dev/null
+    fi
+
     # Empty out precmd_functions and preexec_functions
     precmd_functions=()
     preexec_functions=()
 
     # Plugins
+    local SOURCE
+    for SOURCE in $(fd ".zsh$" $XDG_CONFIG_HOME/zsh); do
+	zrecompile -q -p $SOURCE
+    done
     local PLUGIN
     for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do
 	source $PLUGIN
@@ -28,10 +38,8 @@ function () {
 
     # Prompt
     PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(2L.%F{green}+%f .)%(0?..%F{red})%(!.#.$)%f "
+
     RPROMPT=
-
-    async_init
-
     function personal-git-prompt () {
 	cd -q $1
 	echo $PWD 1>&2
@@ -43,12 +51,12 @@ function () {
 	    zle reset-prompt
 	fi
     }
+    async_init
+    async_start_worker "personal-prompt-worker" -n
+    async_register_callback "personal-prompt-worker" personal-prompt-callback
     function personal-start-prompt-worker () {
 	async_job "personal-prompt-worker" personal-git-prompt $PWD
     }
-
-    async_start_worker "personal-prompt-worker" -n
-    async_register_callback "personal-prompt-worker" personal-prompt-callback
     precmd_functions+=(personal-start-prompt-worker)
 
     # Vi-mode
@@ -83,12 +91,6 @@ function () {
     HISTSIZE=1000000
     SAVEHIST=1000000
     setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
-
-    # Completion/Correction
-    autoload -Uz compinit
-    mkdir -p "$HOME/.cache/zsh"
-    compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
-    setopt CORRECT
 
     # FZF
     if [[ ! -a "$XDG_CONFIG_HOME/zsh/fzf/bin/fzf" ]]; then
@@ -134,4 +136,10 @@ function () {
     }
     zle -N personal-fzf-history
     bindkey "^r" personal-fzf-history
+
+    # Completion/Correction
+    autoload -Uz compinit
+    mkdir -p "$XDG_CACHE_HOME/zsh"
+    compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+    setopt CORRECT
 }
