@@ -21,16 +21,15 @@ else
     let &t_EI = "\<Esc>[2 q"
     inoremap <Esc> <Esc>jk
 
-    syntax on
     filetype plugin indent on
-
-    set directory=~/.vim/swap//
-    set undodir=~/.vim/undo/
+    syntax on
 
     set autoindent
     set background=dark
     set backspace=indent,eol,start,nostop
+    set directory=~/.vim/swap//
     set hlsearch incsearch
+    set undodir=~/.vim/undo/
     set wildmenu
 endif
 
