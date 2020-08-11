@@ -28,7 +28,7 @@ noremap  <silent> Q @@
 nnoremap <silent> <Leader>l :lopen<CR>
 nnoremap <silent> <Leader>q :copen<CR>
 
-autocmd FileType qf nnoremap <silent> <buffer> <esc> :q<CR>
+autocmd FileType netrw,qf nnoremap <silent> <buffer> <esc> :q<CR>
 
 silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
 autocmd VimEnter * silent! helptags ALL
@@ -51,12 +51,9 @@ autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 
 let g:asmsyntax='nasm'
 
-" vim-dirvish
-let g:loaded_netrw       = 1
-let g:loaded_netrwPlugin = 1
-command! -nargs=? -complete=dir Explore Dirvish <args>
-command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
-command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
+" netrw
+let g:netrw_banner = 0
+let g:netrw_list_hide = "^./$,^../$"
 
 " vim-fugitive
 autocmd FileType fugitive nnoremap <silent> <buffer> <Esc> :q<CR>

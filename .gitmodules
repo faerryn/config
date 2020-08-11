@@ -1,9 +1,6 @@
 [submodule "gruvbox"]
 	path = neovim/.config/nvim/pack/bundle/start/gruvbox
 	url = https://github.com/gruvbox-community/gruvbox.git
-[submodule "vim-dirvish"]
-	path = neovim/.config/nvim/pack/bundle/start/vim-dirvish
-	url = https://github.com/justinmk/vim-dirvish.git
 [submodule "vim-sandwich"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-sandwich
 	url = https://github.com/machakann/vim-sandwich.git
