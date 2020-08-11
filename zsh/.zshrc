@@ -35,12 +35,14 @@ function () {
     function personal-prompt-callback () {
 	RPROMPT=$3
 	zle reset-prompt
+    }
+    function personal-start-prompt-worker () {
 	async_job "personal-prompt-worker" personal-git-prompt $PWD
     }
 
     async_start_worker "personal-prompt-worker" -n
     async_register_callback "personal-prompt-worker" personal-prompt-callback
-    async_job "personal-prompt-worker" personal-git-prompt $PWD
+    precmd_functions+=(personal-start-prompt-worker)
 
     # Vi-mode
     bindkey -v
