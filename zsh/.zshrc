@@ -21,6 +21,7 @@ function () {
 
     # Vi-mode
     bindkey -v
+    bindkey -M viins "^?" backward-delete-char
 
     KEYTIMEOUT=1
 
@@ -51,10 +52,11 @@ function () {
     SAVEHIST=1000000
     setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
 
-    # Completion
+    # Completion/Correction
     autoload -Uz compinit
     mkdir -p "$HOME/.cache/zsh"
     compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
+    setopt CORRECT
 
     # FZF
     if [[ ! -a "$XDG_CONFIG_HOME/zsh/fzf/bin/fzf" ]]; then

@@ -52,3 +52,6 @@
 [submodule "undotree"]
 	path = vim/.vim/pack/bundle/start/undotree
 	url = https://github.com/mbbill/undotree.git
+[submodule "zsh/.config/zsh/tmux-yank"]
+	path = tmux/.config/tmux/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank.git
