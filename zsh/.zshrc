@@ -66,7 +66,7 @@ function () {
 	local WORD="${LBUFFER##* }"
 	local STUB="${WORD##*/}"
 	local DIRECTORY="$WORD[1,-$((${#STUB}+1))]"
-	if [[ ! -d $DIRECTORY ]]; then
+	if [[ ! -d $~DIRECTORY ]]; then
 	    STUB="$DIRECTORY$STUB"
 	    DIRECTORY=
 	fi
@@ -90,7 +90,7 @@ function () {
     bindkey "\ec" personal-fzf-directory
 
     function personal-fzf-history () {
-	local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\s*//' | fzf --border=rounded --height=50% --no-sort --query=$BUFFER)"
+	local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' | fzf --border=rounded --height=50% --no-sort --query=$BUFFER)"
 	if [[ -n $LINE ]]; then
 	    LBUFFER="$LINE"
 	    RBUFFER=
