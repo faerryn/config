@@ -31,12 +31,12 @@ function () {
 
     RPROMPT=
     async_init
-    function personal-git-prompt () {
+    function personal_git_prompt () {
 	cd -q $1
 	pwd
 	git --no-optional-locks status --branch --porcelain=v2 2>&1 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
     }
-    function personal-prompt-callback () {
+    function personal_prompt_callback () {
 	if [[ -z $5 ]]; then
 	    local OUTPUT=("${(f)3}")
 	    if [[ $6 -eq 0 ]] && [[ "$OUTPUT[1]" == "$PWD" ]]; then
@@ -45,13 +45,13 @@ function () {
 	    fi
 	fi
     }
-    function personal-start-prompt-worker () {
-	while ! async_job "personal-prompt-worker" personal-git-prompt $PWD 2>/dev/null; do
-	    async_start_worker "personal-prompt-worker" -n
-	    async_register_callback "personal-prompt-worker" personal-prompt-callback
+    function personal_start_prompt_worker () {
+	while ! async_job "personal_prompt_worker" personal_git_prompt $PWD 2>/dev/null; do
+	    async_start_worker "personal_prompt_worker" -n
+	    async_register_callback "personal_prompt_worker" personal_prompt_callback
 	done
     }
-    precmd_functions+=(personal-start-prompt-worker)
+    precmd_functions+=(personal_start_prompt_worker)
 
     # Vi-mode
     bindkey -v
@@ -59,25 +59,25 @@ function () {
 
     KEYTIMEOUT=1
 
-    local function personal-cursor-block () { echo -ne "\e[2 q" }
-    local function personal-cursor-beam () { echo -ne "\e[6 q" }
+    local function personal_cursor_block () { echo -ne "\e[2 q" }
+    local function personal_cursor_beam () { echo -ne "\e[6 q" }
 
-    function zle-line-init () { personal-cursor-beam }
+    function zle-line-init () { personal_cursor_beam }
     zle -N zle-line-init
 
     function zle-keymap-select () {
 	if [[ ${KEYMAP} == vicmd ]]; then
-	    personal-cursor-block
+	    personal_cursor_block
 	elif [[ ${KEYMAP} == main ]]; then
-	    personal-cursor-beam
+	    personal_cursor_beam
 	fi
     }
 
     zle -N zle-keymap-select
 
-    precmd_functions+=(personal-cursor-beam)
-    preexec_functions+=(personal-cursor-block)
-    personal-cursor-beam
+    precmd_functions+=(personal_cursor_beam)
+    preexec_functions+=(personal_cursor_block)
+    personal_cursor_beam
 
     # History
     mkdir -p "$XDG_DATA_HOME/zsh"
@@ -94,9 +94,10 @@ function () {
 	export PATH="$XDG_CONFIG_HOME/zsh/fzf/bin:$PATH"
     fi
 
-    function personal-fzf-file () {
+    function personal_fzf_file () {
 	local WORD="${LBUFFER##* }"
-	local DIRECTORY=$(realpath --relative-to=$PWD $~WORD)
+	local EXPANDED_WORD=$(realpath --relative-base=/ --relative-to=$PWD $~WORD)
+	local DIRECTORY="$EXPANDED_WORD"
 	local DIRECTORY_LEN=${#DIRECTORY}
 	while [[ ! -d "$DIRECTORY" ]]; do
 	    DIRECTORY="${DIRECTORY%/*}"
@@ -106,17 +107,17 @@ function () {
 	    fi
 	    DIRECTORY_LEN=${#DIRECTORY}
 	done
-	local STUB="$WORD[$((${#DIRECTORY}+2)),-1]"
+	local STUB="$EXPANDED_WORD[$((${#DIRECTORY}+2)),-1]"
 	local FILE="$(fd -Htf . $~DIRECTORY | fzf --border=rounded --height=50% --query=$STUB)"
 	if [[ -a $FILE ]]; then
 	    LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$FILE"
 	fi
 	zle reset-prompt
     }
-    zle -N personal-fzf-file
-    bindkey "^f" personal-fzf-file
+    zle -N personal_fzf_file
+    bindkey "^f" personal_fzf_file
 
-    function personal-fzf-history () {
+    function personal_fzf_history () {
 	local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' | fzf --border=rounded --height=50% --no-sort --query=$BUFFER)"
 	if [[ -n $LINE ]]; then
 	    LBUFFER="$LINE"
@@ -124,8 +125,8 @@ function () {
 	fi
 	zle reset-prompt
     }
-    zle -N personal-fzf-history
-    bindkey "^r" personal-fzf-history
+    zle -N personal_fzf_history
+    bindkey "^r" personal_fzf_history
 
     # Completion/Correction
     autoload -Uz compinit
