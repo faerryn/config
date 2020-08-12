@@ -96,8 +96,7 @@ function () {
 
     function personal-fzf-file () {
 	local WORD="${LBUFFER##* }"
-	WORD=$(realpath --relative-to=$PWD $~WORD)
-	local DIRECTORY="$WORD"
+	local DIRECTORY=$(realpath --relative-to=$PWD $~WORD)
 	local DIRECTORY_LEN=${#DIRECTORY}
 	while [[ ! -d "$DIRECTORY" ]]; do
 	    DIRECTORY="${DIRECTORY%/*}"
