@@ -17,7 +17,7 @@ export TERMINFO="$XDG_DATA_HOME/terminfo"
 export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo"
 
 # PATH
-export PATH="$CARGO_HOME/bin:$HOME/.local/bin:$PATH"
+export PATH="$CARGO_HOME/bin:$HOME/go/bin:$XDG_DATA_HOME/go/bin:$HOME/local/bin:$HOME/.local/bin:$PATH"
 
 # systemd
 if command -v systemctl >/dev/null; then
