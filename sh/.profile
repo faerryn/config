@@ -12,12 +12,18 @@ export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
+# Go
+export GOPATH="$HOME/go"
+
 # Terminfo
 export TERMINFO="$XDG_DATA_HOME/terminfo"
 export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo"
 
+# Go
+export GOPATH="$HOME/go"
+
 # PATH
-export PATH="$CARGO_HOME/bin:$HOME/go/bin:$XDG_DATA_HOME/go/bin:$HOME/local/bin:$HOME/.local/bin:$PATH"
+export PATH="$CARGO_HOME/bin:$GOPATH/bin:$XDG_DATA_HOME/go/bin:$HOME/local/bin:$HOME/.local/bin:$PATH"
 
 # systemd
 if command -v systemctl >/dev/null; then
@@ -39,7 +45,7 @@ alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
 export WINEPREFIX="$HOME/wine"
 
 # ls
-alias ls="ls -h --color=auto"
+alias ls="ls -hF --color=auto"
 
 # vim and neovim
 if command -v nvim >/dev/null; then

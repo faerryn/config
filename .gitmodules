@@ -34,9 +34,6 @@
 [submodule "zig.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/zig.vim
 	url = https://github.com/ziglang/zig.vim.git
-[submodule "fzf"]
-	path = fzf/.local/lib/fzf
-	url = https://github.com/junegunn/fzf.git
 [submodule "vim-wordmotion"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-wordmotion
 	url = https://github.com/chaoren/vim-wordmotion.git
@@ -58,3 +55,6 @@
 [submodule "rust.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
+[submodule "fzf"]
+	path = neovim/.config/nvim/pack/bundle/start/fzf
+	url = https://github.com/junegunn/fzf.git

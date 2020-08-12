@@ -14,10 +14,13 @@ function () {
 	source $PLUGIN
     done
 
+    # Globbing
+    setopt EXTENDED_GLOB
+
     # Aliases
     alias la="ls -A"
-    alias ll="ls -l"
-    alias lla="ll -lA"
+    alias ll="ls -g"
+    alias lla="ll -gA"
 
     alias ec="emacsclient"
     alias em="emacs"
@@ -34,7 +37,8 @@ function () {
     function personal_git_prompt () {
 	cd -q $1
 	pwd
-	git --no-optional-locks status --branch --porcelain=v2 2>&1 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
+	git --no-optional-locks status --branch --porcelain=v2 2>&1 |
+	    awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
     }
     function personal_prompt_callback () {
 	if [[ -z $5 ]]; then
@@ -86,17 +90,10 @@ function () {
     SAVEHIST=1000000
     setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
 
-    # FZF
-    if [[ ! -a "$XDG_CONFIG_HOME/zsh/fzf/bin/fzf" ]]; then
-	"$XDG_CONFIG_HOME/zsh/fzf/install" --bin
-    fi
-    if ! command -v fzf >/dev/null; then
-	export PATH="$XDG_CONFIG_HOME/zsh/fzf/bin:$PATH"
-    fi
-
+    # fzf
     function personal_fzf_file () {
 	local WORD="${LBUFFER##* }"
-	local EXPANDED_WORD=$(realpath --relative-base=/ --relative-to=$PWD $~WORD)
+	local EXPANDED_WORD=$(realpath --relative-base=/ --relative-to=$PWD $~WORD 2>/dev/null)
 	local DIRECTORY="$EXPANDED_WORD"
 	local DIRECTORY_LEN=${#DIRECTORY}
 	while [[ ! -d "$DIRECTORY" ]]; do
@@ -118,7 +115,9 @@ function () {
     bindkey "^f" personal_fzf_file
 
     function personal_fzf_history () {
-	local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' | fzf --border=rounded --height=50% --no-sort --query=$BUFFER)"
+	local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' |
+	    fzf --border=rounded --height=50% --no-sort --query=$BUFFER |
+	    sed 's/\\n/\n/g')"
 	if [[ -n $LINE ]]; then
 	    LBUFFER="$LINE"
 	    RBUFFER=
