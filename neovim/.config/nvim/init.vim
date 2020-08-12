@@ -98,7 +98,6 @@ let g:rustfmt_autosave = 1
 " nvim-lsp
 packadd nvim-lsp
 lua require'nvim_lsp'.clangd.setup{}
-lua require'nvim_lsp'.gopls.setup{}
 lua require'nvim_lsp'.rust_analyzer.setup{}
 
 function s:personal_setup_lsp()
@@ -114,6 +113,6 @@ function s:personal_setup_lsp()
     autocmd BufWritePre <buffer> silent! lua vim.lsp.buf.formatting_sync(nil, 500)
     setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endfunction
-autocmd FileType c,cpp,objc,objcpp,go,gomod,rust call s:personal_setup_lsp()
+autocmd FileType c,cpp,objc,objcpp,rust call s:personal_setup_lsp()
 
 execute "augroup END"

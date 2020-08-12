@@ -58,3 +58,6 @@
 [submodule "fzf"]
 	path = neovim/.config/nvim/pack/bundle/start/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "vim-go"]
+	path = neovim/.config/nvim/pack/bundle/start/vim-go
+	url = https://github.com/fatih/vim-go.git
