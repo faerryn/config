@@ -3,7 +3,7 @@ export PERSONAL_PROFILE=
 
 # Reset PATH
 if [ -n "$PERSONAL_BASE_PATH" ]; then
-    export PATH=$PERSONAL_BASE_PATH
+    export PATH="$PERSONAL_BASE_PATH"
 else
     export PERSONAL_BASE_PATH="$PATH"
 fi

@@ -76,9 +76,7 @@ function () {
 	    personal_cursor_beam
 	fi
     }
-
     zle -N zle-keymap-select
-
     precmd_functions+=(personal_cursor_beam)
     preexec_functions+=(personal_cursor_block)
     personal_cursor_beam
@@ -100,11 +98,17 @@ function () {
 	    DIRECTORY="${DIRECTORY%/*}"
 	    if [[ $DIRECTORY_LEN -eq ${#DIRECTORY} ]]; then
 		DIRECTORY=
+		DIRECTORY_LEN=0
 		break;
 	    fi
 	    DIRECTORY_LEN=${#DIRECTORY}
 	done
-	local STUB="$EXPANDED_WORD[$((${#DIRECTORY}+2)),-1]"
+	local STUB=
+	if [[ -z $DIRECTORY ]]; then
+	    STUB="$EXPANDED_WORD"
+	else
+	    STUB="$EXPANDED_WORD[$(($DIRECTORY_LEN+2)),-1]"
+	fi
 	local FILE="$(fd -Htf . $~DIRECTORY | fzf --border=rounded --height=50% --query=$STUB)"
 	if [[ -a $FILE ]]; then
 	    LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$FILE"
