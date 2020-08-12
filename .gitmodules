@@ -55,3 +55,6 @@
 [submodule "nvim-lsp"]
 	path = neovim/.config/nvim/pack/bundle/opt/nvim-lsp
 	url = https://github.com/neovim/nvim-lsp.git
+[submodule "rust.vim"]
+	path = neovim/.config/nvim/pack/bundle/start/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git

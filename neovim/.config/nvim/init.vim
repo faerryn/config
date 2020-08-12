@@ -89,6 +89,12 @@ let g:undotree_HelpLine = 0
 nnoremap <silent> <Leader>u <cmd>UndotreeShow<CR>:UndotreeFocus<CR>
 autocmd FileType undotree nnoremap <silent> <buffer> <Esc> <cmd>UndotreeHide<CR>
 
+" zig.vim
+let g:zig_fmt_autosave = 1
+
+" rust.vim
+let g:rustfmt_autosave = 1
+
 " nvim-lsp
 packadd nvim-lsp
 lua require'nvim_lsp'.clangd.setup{}
