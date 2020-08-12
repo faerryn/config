@@ -4,6 +4,7 @@ autocmd!
 " core
 set clipboard=unnamed,unnamedplus
 set confirm
+set grepprg=rg\ --vimgrep
 set hidden
 set ignorecase smartcase
 set lazyredraw
@@ -41,6 +42,7 @@ set noequalalways
 set noruler
 set nowrap linebreak
 set number relativenumber signcolumn=number
+set shortmess+=a
 set softtabstop=4 shiftwidth=4
 set termguicolors
 
