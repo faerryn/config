@@ -25,10 +25,10 @@ noremap <silent> <Leader> <Nop>
 nnoremap <silent> Y y$
 noremap  <silent> Q @@
 
-nnoremap <silent> <Leader>l :lopen<CR>
-nnoremap <silent> <Leader>q :copen<CR>
+nnoremap <silent> <Leader>l <cmd>lopen<CR>
+nnoremap <silent> <Leader>q <cmd>copen<CR>
 
-autocmd FileType qf nnoremap <silent> <buffer> <esc> :q<CR>
+autocmd FileType qf nnoremap <silent> <buffer> <esc> <cmd>q<CR>
 
 silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
 autocmd VimEnter * silent! helptags ALL
@@ -56,11 +56,11 @@ let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
 
 " vim-fugitive
-autocmd FileType fugitive nnoremap <silent> <buffer> <Esc> :q<CR>
-nnoremap <silent> <Leader>g :Git<CR>
+autocmd FileType fugitive nnoremap <silent> <buffer> <Esc> <cmd>q<CR>
+nnoremap <silent> <Leader>g <cmd>Git<CR>
 
 " fzf
-nnoremap <silent> <Leader>f :call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htf", "sink": "e"})<cr>
+nnoremap <silent> <Leader>f <cmd>call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htf", "sink": "e"})<cr>
 autocmd FileType fzf tnoremap <silent> <buffer> <Esc> <C-C>
 
 " vim-sandwich
@@ -86,7 +86,28 @@ let g:undotree_CustomUndotreeCmd="split"
 let g:undotree_CustomDiffpanelCmd="split"
 let g:undotree_DiffpanelHeight=5
 let g:undotree_HelpLine = 0
-nnoremap <silent> <Leader>u :UndotreeShow<CR>:UndotreeFocus<CR>
-autocmd FileType undotree nnoremap <silent> <buffer> <Esc> :UndotreeHide<CR>
+nnoremap <silent> <Leader>u <cmd>UndotreeShow<CR>:UndotreeFocus<CR>
+autocmd FileType undotree nnoremap <silent> <buffer> <Esc> <cmd>UndotreeHide<CR>
+
+" nvim-lsp
+packadd nvim-lsp
+lua require'nvim_lsp'.clangd.setup{}
+
+function s:personal_setup_lsp()
+    if luaeval("table.getn(vim.lsp.buf_get_clients()) > 0")
+	nnoremap <buffer> <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+	nnoremap <buffer> <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+	nnoremap <buffer> <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+	nnoremap <buffer> <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+	nnoremap <buffer> <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+	nnoremap <buffer> <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+	nnoremap <buffer> <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+	nnoremap <buffer> <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+	nnoremap <buffer> <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+	autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
+	setlocal omnifunc=v:lua.vim.lsp.omnifunc
+    endif
+endfunction
+autocmd BufEnter * call s:personal_setup_lsp()
 
 execute "augroup END"
