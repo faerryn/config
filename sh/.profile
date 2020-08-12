@@ -39,7 +39,7 @@ alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
 export WINEPREFIX="$HOME/wine"
 
 # ls
-alias ls="ls --color=auto"
+alias ls="ls -h --color=auto"
 
 # vim and neovim
 if command -v nvim >/dev/null; then
