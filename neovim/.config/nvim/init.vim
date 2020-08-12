@@ -14,7 +14,7 @@ set shada=
 set splitbelow splitright
 set timeoutlen=500
 set undofile
-set updatetime=50
+set updatetime=500
 
 let g:mapleader="\<Space>"
 

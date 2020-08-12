@@ -144,8 +144,7 @@
     :after (counsel evil)
     :config (global-set-key (kbd "C-c C-f") #'counsel-fd-file-jump))
 #+end_src
-* Languages
-** Lisp
+* Lisp
 #+begin_src emacs-lisp
   (use-package lispyville
     :ensure t
@@ -159,10 +158,6 @@
     :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
     (add-hook 'lisp-mode-hook #'lispy-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
-#+end_src
-** Zig
-#+begin_src emacs-lisp
-  (use-package zig-mode :ensure t)
 #+end_src
 * Sundry
 #+begin_src emacs-lisp

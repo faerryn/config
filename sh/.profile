@@ -24,10 +24,11 @@ export CARGO_HOME="$PERSONAL_DATA_HOME/cargo"
 export RUSTUP_HOME="$PERSONAL_DATA_HOME/rustup"
 
 # Go
+export GO_HOME="$HOME/local/go"
 export GOPATH="$HOME/go"
 
 # PATH
-export PATH="$CARGO_HOME/bin:$PERSONAL_DATA_HOME/go/bin:$GOPATH/bin:$HOME/local/bin:$PATH"
+export PATH="$CARGO_HOME/bin:$GO_HOME/bin:$GOPATH/bin:$HOME/local/bin:$PATH"
 
 # terminfo
 export TERMINFO="$XDG_DATA_HOME/terminfo"
