@@ -41,7 +41,6 @@ set noequalalways
 set noruler
 set nowrap linebreak
 set number relativenumber signcolumn=number
-set shortmess=o
 set softtabstop=4 shiftwidth=4
 set termguicolors
 
