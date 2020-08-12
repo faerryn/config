@@ -16,8 +16,8 @@ function () {
 
     # Aliases
     alias la="ls -A"
-    alias ll="ls -l"
-    alias lla="ll -lA"
+    alias ll="ls -lh"
+    alias lla="ll -lhA"
 
     alias ec="emacsclient"
     alias em="emacs"
