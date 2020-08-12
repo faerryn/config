@@ -92,6 +92,8 @@ autocmd FileType undotree nnoremap <silent> <buffer> <Esc> <cmd>UndotreeHide<CR>
 " nvim-lsp
 packadd nvim-lsp
 lua require'nvim_lsp'.clangd.setup{}
+lua require'nvim_lsp'.rust_analyzer.setup{}
+lua require'nvim_lsp'.gopls.setup{}
 
 function s:personal_setup_lsp()
     if luaeval("table.getn(vim.lsp.buf_get_clients()) > 0")
