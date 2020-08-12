@@ -61,7 +61,6 @@ nnoremap <silent> <Leader>g :Git<CR>
 
 " fzf
 nnoremap <silent> <Leader>f :call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htf", "sink": "e"})<cr>
-nnoremap <silent> <Leader>c :call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htd -d1", "sink": "cd"})<cr>
 autocmd FileType fzf tnoremap <silent> <buffer> <Esc> <C-C>
 
 " vim-sandwich
