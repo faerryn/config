@@ -4,7 +4,6 @@ autocmd!
 " core
 set clipboard=unnamed,unnamedplus
 set confirm
-set grepprg=rg\ --vimgrep
 set hidden
 set ignorecase smartcase
 set lazyredraw
@@ -34,6 +33,8 @@ autocmd FileType qf nnoremap <silent> <buffer> <esc> <cmd>q<CR>
 silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
 autocmd VimEnter * silent! helptags ALL
 
+if executable("rg") | set grepprg=rg\ --vimgrep | endif
+
 " aesthetics
 set cursorline cursorcolumn colorcolumn=80
 set inccommand=nosplit
@@ -42,7 +43,6 @@ set noequalalways
 set noruler
 set nowrap linebreak
 set number relativenumber signcolumn=number
-set shortmess+=a
 set softtabstop=4 shiftwidth=4
 set termguicolors
 
