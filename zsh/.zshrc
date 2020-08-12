@@ -96,9 +96,16 @@ function () {
 
     function personal-fzf-file () {
 	local WORD="${LBUFFER##* }"
+	WORD=$(realpath --relative-to=$PWD $~WORD)
 	local DIRECTORY="$WORD"
-	while [[ -n $DIRECTORY ]] && [[ ! -d $DIRECTORY ]]; do
+	local DIRECTORY_LEN=${#DIRECTORY}
+	while [[ ! -d "$DIRECTORY" ]]; do
 	    DIRECTORY="${DIRECTORY%/*}"
+	    if [[ $DIRECTORY_LEN -eq ${#DIRECTORY} ]]; then
+		DIRECTORY=
+		break;
+	    fi
+	    DIRECTORY_LEN=${#DIRECTORY}
 	done
 	local STUB="$WORD[$((${#DIRECTORY}+2)),-1]"
 	local FILE="$(fd -Htf . $~DIRECTORY | fzf --border=rounded --height=50% --query=$STUB)"
