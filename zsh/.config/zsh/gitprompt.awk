@@ -51,7 +51,7 @@ END {
     if (head == "(detached)") {
 	print " %F{blue}:" substr(oid, 1, 8) "%f";
     } else {
-	print " %F{blue}" head "%f";
+	print " %F{blue}HEAD%f";
     }
     if (upstream != "") {
 	print " %F{yellow}" upstream "%f";
