@@ -17,6 +17,7 @@ set undofile
 set updatetime=500
 
 let g:mapleader="\<Space>"
+let &grepprg = "rg --vimgrep"
 
 noremap <silent> s        <Nop>
 noremap <silent> S        <Nop>
@@ -32,8 +33,6 @@ autocmd FileType qf nnoremap <silent> <buffer> <esc> <cmd>q<CR>
 
 silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
 autocmd VimEnter * silent! helptags ALL
-
-if executable("rg") | set grepprg=rg\ --vimgrep | endif
 
 " aesthetics
 set cursorline cursorcolumn colorcolumn=80
@@ -95,25 +94,5 @@ let g:zig_fmt_autosave = 1
 
 " rust.vim
 let g:rustfmt_autosave = 1
-
-" nvim-lsp
-packadd nvim-lsp
-lua require'nvim_lsp'.clangd.setup{}
-lua require'nvim_lsp'.rust_analyzer.setup{}
-
-function s:personal_setup_lsp()
-    nnoremap <buffer> <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-    nnoremap <buffer> <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-    nnoremap <buffer> <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-    nnoremap <buffer> <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-    nnoremap <buffer> <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-    nnoremap <buffer> <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-    nnoremap <buffer> <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-    nnoremap <buffer> <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-    nnoremap <buffer> <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-    autocmd BufWritePre <buffer> silent! lua vim.lsp.buf.formatting_sync(nil, 500)
-    setlocal omnifunc=v:lua.vim.lsp.omnifunc
-endfunction
-autocmd FileType c,cpp,objc,objcpp,rust call s:personal_setup_lsp()
 
 execute "augroup END"

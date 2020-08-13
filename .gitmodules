@@ -49,9 +49,6 @@
 [submodule "zsh-async"]
 	path = zsh/.config/zsh/zsh-async
 	url = https://github.com/mafredri/zsh-async.git
-[submodule "nvim-lsp"]
-	path = neovim/.config/nvim/pack/bundle/opt/nvim-lsp
-	url = https://github.com/neovim/nvim-lsp.git
 [submodule "rust.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
