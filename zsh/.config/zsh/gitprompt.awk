@@ -55,6 +55,8 @@ END {
     }
     if (upstream != "") {
 	print " %F{yellow}" upstream "%f";
+    } else {
+	print " %F{yellow}" head "%f";
     }
     print " ]"
 
