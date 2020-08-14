@@ -16,12 +16,12 @@ set timeoutlen=500
 set undofile
 set updatetime=500
 
-let g:mapleader="\<Space>"
 let &grepprg = "rg --vimgrep"
+let g:mapleader="\<Space>"
 
-noremap <silent> s        <Nop>
-noremap <silent> S        <Nop>
 noremap <silent> <Leader> <Nop>
+noremap <silent> S        <Nop>
+noremap <silent> s        <Nop>
 
 nnoremap <silent> Y y$
 noremap  <silent> Q @@
@@ -76,6 +76,7 @@ let g:sandwich#recipes = [
 	    \ {'buns': ["'", "'"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
 	    \ {'buns': ["`", "`"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
 	    \ ]
+nnoremap dir di[
 nmap sa <Plug>(operator-sandwich-add)
 xmap sa <Plug>(operator-sandwich-add)
 nmap sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
