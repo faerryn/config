@@ -52,21 +52,21 @@ END {
 	print " %F{blue}:" substr(oid, 1, 8) "%f";
     } else {
 	print " %F{blue}HEAD%f";
-    }
-    if (upstream != "") {
-	print " %F{yellow}" upstream "%f";
-    } else {
-	print " %F{yellow}" head "%f";
+	if (upstream != "") {
+	    print " %F{yellow}" upstream "%f";
+	} else {
+	    print " %F{yellow}" head "%f";
+	}
     }
     print " ]"
 
     if (ahead + behind + unmerged > 0) {
 	print " ["
 	if (ahead > 0) {
-	    print " %F{green}↑" ahead "%f";
+	    print " %F{yellow}↑" ahead "%f";
 	}
 	if (behind > 0) {
-	    print " %F{red}↓" behind "%f";
+	    print " %F{yellow}↓" behind "%f";
 	}
 	if (unmerged > 0) {
 	    print " %F{red}!" unmerged "%f";

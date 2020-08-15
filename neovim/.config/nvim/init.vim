@@ -26,10 +26,10 @@ noremap <silent> s        <Nop>
 nnoremap <silent> Y y$
 noremap  <silent> Q @@
 
-nnoremap <silent> <Leader>l <cmd>lopen<CR>
-nnoremap <silent> <Leader>q <cmd>copen<CR>
+nnoremap <silent> <Leader>l <Cmd>lopen<CR>
+nnoremap <silent> <Leader>q <Cmd>copen<CR>
 
-autocmd FileType qf nnoremap <silent> <buffer> <esc> <cmd>q<CR>
+autocmd FileType qf nnoremap <silent> <buffer> <esc> <Cmd>q<CR>
 
 silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
 autocmd VimEnter * silent! helptags ALL
@@ -56,11 +56,11 @@ let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
 
 " vim-fugitive
-autocmd FileType fugitive nnoremap <silent> <buffer> <Esc> <cmd>q<CR>
-nnoremap <silent> <Leader>g <cmd>Git<CR>
+autocmd FileType fugitive nnoremap <silent> <buffer> <Esc> <Cmd>q<CR>
+nnoremap <silent> <Leader>g <Cmd>Git<CR>
 
 " fzf
-nnoremap <silent> <Leader>f <cmd>call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htf", "sink": "e"})<cr>
+nnoremap <silent> <Leader>f <Cmd>call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htf", "sink": "e"})<cr>
 autocmd FileType fzf tnoremap <silent> <buffer> <Esc> <C-C>
 
 " vim-sandwich
@@ -87,8 +87,8 @@ let g:undotree_CustomUndotreeCmd="split"
 let g:undotree_CustomDiffpanelCmd="split"
 let g:undotree_DiffpanelHeight=5
 let g:undotree_HelpLine = 0
-nnoremap <silent> <Leader>u <cmd>UndotreeShow<CR>:UndotreeFocus<CR>
-autocmd FileType undotree nnoremap <silent> <buffer> <Esc> <cmd>UndotreeHide<CR>
+nnoremap <silent> <Leader>u <Cmd>UndotreeShow<CR>:UndotreeFocus<CR>
+autocmd FileType undotree nnoremap <silent> <buffer> <Esc> <Cmd>UndotreeHide<CR>
 
 " zig.vim
 let g:zig_fmt_autosave = 1

@@ -47,6 +47,8 @@ function () {
 		RPROMPT="$OUTPUT[2]"
 		zle reset-prompt
 	    fi
+	else
+	    personal_start_prompt_worker
 	fi
     }
     function personal_start_prompt_worker () {
