@@ -52,10 +52,10 @@ function () {
 	fi
     }
     function personal_start_prompt_worker () {
-	while ! async_job "personal_prompt_worker" personal_git_prompt $PWD 2>/dev/null; do
+	if ! async_job "personal_prompt_worker" personal_git_prompt $PWD 2>/dev/null; then
 	    async_start_worker "personal_prompt_worker" -n
 	    async_register_callback "personal_prompt_worker" personal_prompt_callback
-	done
+	fi
     }
     precmd_functions+=(personal_start_prompt_worker)
 
