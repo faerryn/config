@@ -1,8 +1,6 @@
 function () {
     # Ensure that profile is sourced
-    if [[ ! -v $PERSONAL_PROFILE ]]; then
-	source "$HOME/.profile"
-    fi
+    [[ -v $PERSONAL_PROFILE ]] || source "$HOME/.profile"
 
     # Empty out precmd_functions and preexec_functions
     precmd_functions=()
@@ -31,8 +29,6 @@ function () {
     PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(2L.%F{green}+%f .)%(0?..%F{red})%(!.#.$)%f "
     RPROMPT=
 
-    autoload -Uz promptinit
-    promptinit
     function personal_git_prompt_async () {
 	RPROMPT="$(git --no-optional-locks status --branch --porcelain=v2 2>&1 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk)"
 	zle reset-prompt
@@ -44,7 +40,7 @@ function () {
 	exec {FD}</dev/null
 	zle -F $FD personal_git_prompt_async
     }
-    add-zsh-hook precmd personal_git_prompt_await
+    precmd_functions+=(personal_git_prompt_await)
 
     # Vi-mode
     bindkey -v
