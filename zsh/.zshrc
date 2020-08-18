@@ -95,9 +95,7 @@ function () {
 	    STUB="$EXPANDED_WORD[$(($DIRECTORY_LEN+2)),-1]"
 	fi
 	local FILE="$(fd -H . $~DIRECTORY | fzf --border=rounded --height=50% --query=$STUB)"
-	if [[ -a $FILE ]]; then
-	    LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$FILE"
-	fi
+	[[ -a $FILE ]] && LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$FILE"
 	zle reset-prompt
     }
     zle -N personal_fzf_file
