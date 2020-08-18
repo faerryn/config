@@ -51,16 +51,12 @@ autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 
 let g:asmsyntax='nasm'
 
-" netrw
-let g:loaded_netrw       = 1
-let g:loaded_netrwPlugin = 1
-
 " vim-fugitive
 autocmd FileType fugitive nnoremap <silent> <buffer> <Esc> <Cmd>q<CR>
 nnoremap <silent> <Leader>g <Cmd>Git<CR>
 
 " fzf
-nnoremap <silent> <Leader>f <Cmd>call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -Htf", "sink": "e"})<cr>
+nnoremap <silent> <Leader>f <Cmd>call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -H", "sink": "e"})<cr>
 autocmd FileType fzf tnoremap <silent> <buffer> <Esc> <C-C>
 
 " vim-sandwich

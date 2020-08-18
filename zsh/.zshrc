@@ -29,32 +29,22 @@ function () {
 
     # Prompt
     PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(2L.%F{green}+%f .)%(0?..%F{red})%(!.#.$)%f "
-
     RPROMPT=
-    async_init
-    function personal_git_prompt () {
-	cd -q $1
-	pwd
-	git --no-optional-locks status --branch --porcelain=v2 2>&1 |
-	    awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
+
+    autoload -Uz promptinit
+    promptinit
+    function personal_git_prompt_async () {
+	RPROMPT="$(git --no-optional-locks status --branch --porcelain=v2 2>&1 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk)"
+	zle reset-prompt
+	zle -F $1
+	exec {1}<&-
     }
-    function personal_prompt_callback () {
-	if [[ -z $5 ]]; then
-	    local OUTPUT=("${(f)3}")
-	    if [[ $6 -eq 0 ]] && [[ "$OUTPUT[1]" == "$PWD" ]]; then
-		RPROMPT="$OUTPUT[2]"
-		zle reset-prompt
-	    fi
-	else
-	    personal_start_prompt_worker
-	fi
+    function personal_git_prompt_await () {
+	local FD=
+	exec {FD}</dev/null
+	zle -F $FD personal_git_prompt_async
     }
-    function personal_start_prompt_worker () {
-	async_job "personal_prompt_worker" personal_git_prompt $PWD
-    }
-    precmd_functions+=(personal_start_prompt_worker)
-    async_start_worker "personal_prompt_worker" -n
-    async_register_callback "personal_prompt_worker" personal_prompt_callback
+    add-zsh-hook precmd personal_git_prompt_await
 
     # Vi-mode
     bindkey -v
