@@ -87,8 +87,6 @@ function () {
     SAVEHIST=1000000
     setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
 
-    bindkey '^R' history-incremental-search-backward
-
     # fzf
     function personal_fzf_file () {
 	local WORD="${LBUFFER##* }"
@@ -118,6 +116,18 @@ function () {
     }
     zle -N personal_fzf_file
     bindkey "^F" personal_fzf_file
+
+    function personal_fzf_history () {
+	local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' |
+	    fzf --border=rounded --height=50% --no-sort --query=$BUFFER)"
+	if [[ -n $LINE ]]; then
+	    LBUFFER="$LINE"
+	    RBUFFER=
+	fi
+	zle reset-prompt
+    }
+    zle -N personal_fzf_history
+    bindkey '^R' personal_fzf_history
 
     # Completion/Correction
     autoload -Uz compinit
