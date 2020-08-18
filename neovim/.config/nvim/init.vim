@@ -96,4 +96,7 @@ let g:zig_fmt_autosave = 1
 " rust.vim
 let g:rustfmt_autosave = 1
 
+" vim-go
+let g:go_fmt_autosave = 1
+
 execute "augroup END"

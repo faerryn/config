@@ -10,9 +10,7 @@ function () {
 
     # Plugins
     local PLUGIN
-    for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do
-	source $PLUGIN
-    done
+    for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do source $PLUGIN; done
 
     # Globbing
     setopt EXTENDED_GLOB
@@ -52,12 +50,11 @@ function () {
 	fi
     }
     function personal_start_prompt_worker () {
-	if ! async_job "personal_prompt_worker" personal_git_prompt $PWD 2>/dev/null; then
-	    async_start_worker "personal_prompt_worker" -n
-	    async_register_callback "personal_prompt_worker" personal_prompt_callback
-	fi
+	async_job "personal_prompt_worker" personal_git_prompt $PWD
     }
     precmd_functions+=(personal_start_prompt_worker)
+    async_start_worker "personal_prompt_worker" -n
+    async_register_callback "personal_prompt_worker" personal_prompt_callback
 
     # Vi-mode
     bindkey -v
@@ -90,6 +87,8 @@ function () {
     SAVEHIST=1000000
     setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
 
+    bindkey '^R' history-incremental-search-backward
+
     # fzf
     function personal_fzf_file () {
 	local WORD="${LBUFFER##* }"
@@ -111,31 +110,21 @@ function () {
 	else
 	    STUB="$EXPANDED_WORD[$(($DIRECTORY_LEN+2)),-1]"
 	fi
-	local FILE="$(fd -Htf . $~DIRECTORY | fzf --border=rounded --height=50% --query=$STUB)"
+	local FILE="$(fd -H . $~DIRECTORY | fzf --border=rounded --height=50% --query=$STUB)"
 	if [[ -a $FILE ]]; then
 	    LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$FILE"
 	fi
 	zle reset-prompt
     }
     zle -N personal_fzf_file
-    bindkey "^f" personal_fzf_file
-
-    function personal_fzf_history () {
-	local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' |
-	    fzf --border=rounded --height=50% --no-sort --query=$BUFFER |
-	    sed 's/\\n/\n/g')"
-	if [[ -n $LINE ]]; then
-	    LBUFFER="$LINE"
-	    RBUFFER=
-	fi
-	zle reset-prompt
-    }
-    zle -N personal_fzf_history
-    bindkey "^r" personal_fzf_history
+    bindkey "^F" personal_fzf_file
 
     # Completion/Correction
     autoload -Uz compinit
     mkdir -p "$XDG_CACHE_HOME/zsh"
     compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+    zstyle ':completion:*' accept-exact '*(N)'
+    zstyle ':completion:*' use-cache on
+    zstyle ':completion:*' cache-path ~/.zsh/cache
     setopt CORRECT
 }
