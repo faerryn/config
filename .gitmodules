@@ -49,9 +49,6 @@
 [submodule "rust.vim"]
 	path = neovim/.config/nvim/pack/bundle/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
-[submodule "fzf"]
-	path = neovim/.config/nvim/pack/bundle/start/fzf
-	url = https://github.com/junegunn/fzf.git
 [submodule "vim-go"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-go
 	url = https://github.com/fatih/vim-go.git

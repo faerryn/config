@@ -55,10 +55,6 @@ let g:asmsyntax='nasm'
 autocmd FileType fugitive nnoremap <silent> <buffer> <Esc> <Cmd>q<CR>
 nnoremap <silent> <Leader>g <Cmd>Git<CR>
 
-" fzf
-nnoremap <silent> <Leader>f <Cmd>call fzf#run({"window": {"width": 0.8, "height": 0.6}, "source": "fd -H", "sink": "e"})<cr>
-autocmd FileType fzf tnoremap <silent> <buffer> <Esc> <C-C>
-
 " vim-sandwich
 let g:sandwich_no_default_key_mappings = 1
 let g:operator_sandwich_no_default_key_mappings = 1
