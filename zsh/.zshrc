@@ -120,7 +120,5 @@ function () {
     mkdir -p "$XDG_CACHE_HOME/zsh"
     compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
     zstyle ':completion:*' accept-exact '*(N)'
-    zstyle ':completion:*' use-cache on
-    zstyle ':completion:*' cache-path ~/.zsh/cache
     setopt CORRECT
 }
