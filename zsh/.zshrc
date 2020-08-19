@@ -80,19 +80,15 @@ function () {
 	local NEW_DIRECTORY=
 	local STUB=
 	local FILE=
-	while [[ ! -d $~DIRECTORY ]]; do
+	while [[ ! -d $~DIRECTORY ]] && [[ -n "$DIRECTORY" ]]; do
 	    NEW_DIRECTORY="${DIRECTORY%/*}"
-	    if [[ "$DIRECTORY" == "$NEW_DIRECTORY" ]]; then
-		DIRECTORY=
-		break
-	    fi
-	    DIRECTORY="$NEW_DIRECTORY"
+	    [[ "$DIRECTORY" = "$NEW_DIRECTORY" ]] && DIRECTORY= || DIRECTORY="$NEW_DIRECTORY"
 	done
-	pushd -q $~DIRECTORY
-	STUB="$WORD[${#DIRECTORY}+2,-1]"
+	[[ -n "$DIRECTORY" ]] && pushd -q $~DIRECTORY
+	[[ -n "$DIRECTORY" ]] && STUB="$WORD[${#DIRECTORY}+2,-1]" || STUB="$WORD[${#DIRECTORY}+1,-1]"
 	FILE="$(fd -H | fzf --border=rounded --height=50% --query=$STUB)"
-	[[ -a $FILE ]] && LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$DIRECTORY$FILE"
-	popd -q
+	[[ -n "$FILE" ]] && LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$DIRECTORY$FILE"
+	[[ -n "$DIRECTORY" ]] && popd -q
 	zle reset-prompt
     }
     zle -N personal_fzf_file
