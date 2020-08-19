@@ -27,6 +27,10 @@ export RUSTUP_HOME="$PERSONAL_DATA_HOME/rustup"
 export GO_HOME="$HOME/local/go"
 export GOPATH="$HOME/go"
 
+# Haskell
+export STACK_ROOT="$XDG_DATA_HOME/stack"
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+
 # PATH
 export PATH="$CARGO_HOME/bin:$GO_HOME/bin:$GOPATH/bin:$HOME/local/bin:$PATH"
 
