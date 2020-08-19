@@ -76,26 +76,23 @@ function () {
     # fzf
     function personal_fzf_file () {
 	local WORD="${LBUFFER##* }"
-	local EXPANDED_WORD=$(realpath --relative-base=/ --relative-to=$PWD $~WORD 2>/dev/null)
-	local DIRECTORY="$EXPANDED_WORD"
-	local DIRECTORY_LEN=${#DIRECTORY}
-	while [[ ! -d "$DIRECTORY" ]]; do
-	    DIRECTORY="${DIRECTORY%/*}"
-	    if [[ $DIRECTORY_LEN -eq ${#DIRECTORY} ]]; then
-		DIRECTORY=
-		DIRECTORY_LEN=0
-		break;
-	    fi
-	    DIRECTORY_LEN=${#DIRECTORY}
-	done
+	local DIRECTORY="$WORD"
+	local NEW_DIRECTORY=
 	local STUB=
-	if [[ -z $DIRECTORY ]]; then
-	    STUB="$EXPANDED_WORD"
-	else
-	    STUB="$EXPANDED_WORD[$(($DIRECTORY_LEN+2)),-1]"
-	fi
-	local FILE="$(fd -H . $~DIRECTORY | fzf --border=rounded --height=50% --query=$STUB)"
-	[[ -a $FILE ]] && LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$FILE"
+	local FILE=
+	while [[ ! -d $~DIRECTORY ]]; do
+	    NEW_DIRECTORY="${DIRECTORY%/*}"
+	    if [[ "$DIRECTORY" == "$NEW_DIRECTORY" ]]; then
+		DIRECTORY=
+		break
+	    fi
+	    DIRECTORY="$NEW_DIRECTORY"
+	done
+	pushd -q $~DIRECTORY
+	STUB="$WORD[${#DIRECTORY}+2,-1]"
+	FILE="$(fd -H | fzf --border=rounded --height=50% --query=$STUB)"
+	[[ -a $FILE ]] && LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$DIRECTORY$FILE"
+	popd -q
 	zle reset-prompt
     }
     zle -N personal_fzf_file
