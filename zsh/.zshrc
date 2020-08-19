@@ -77,15 +77,20 @@ function () {
     function personal_fzf_file () {
 	local WORD="${LBUFFER##* }"
 	local DIRECTORY="$WORD"
-	local NEW_DIRECTORY=
+	local DIRECTORY_LEN=${#DIRECTORY}
 	local STUB=
 	local FILE=
 	while [[ ! -d $~DIRECTORY ]] && [[ -n "$DIRECTORY" ]]; do
-	    NEW_DIRECTORY="${DIRECTORY%/*}"
-	    [[ "$DIRECTORY" = "$NEW_DIRECTORY" ]] && DIRECTORY= || DIRECTORY="$NEW_DIRECTORY"
+	    DIRECTORY="${DIRECTORY%/*}"
+	    [[ ${#DIRECTORY} -eq $DIRECTORY_LEN ]] && DIRECTORY=
+	    DIRECTORY_LEN=${#DIRECTORY}
 	done
-	[[ -n "$DIRECTORY" ]] && pushd -q $~DIRECTORY
-	[[ -n "$DIRECTORY" ]] && STUB="$WORD[${#DIRECTORY}+2,-1]" || STUB="$WORD[${#DIRECTORY}+1,-1]"
+	if [[ -n "$DIRECTORY" ]]; then
+	    pushd -q $~DIRECTORY
+	    STUB="$WORD[$DIRECTORY_LEN+2,-1]"
+	else
+	    STUB="$WORD[$DIRECTORY_LEN+1,-1]"
+	fi
 	FILE="$(fd -H | fzf --border=rounded --height=50% --query=$STUB)"
 	[[ -n "$FILE" ]] && LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$DIRECTORY$FILE"
 	[[ -n "$DIRECTORY" ]] && popd -q
