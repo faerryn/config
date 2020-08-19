@@ -85,11 +85,15 @@ function () {
 	    [[ ${#DIRECTORY} -eq $DIRECTORY_LEN ]] && DIRECTORY=
 	    DIRECTORY_LEN=${#DIRECTORY}
 	done
-	[[ -n "$DIRECTORY" ]]\
-	    && STUB="$WORD[$DIRECTORY_LEN+2,-1]"\
-	    || STUB="$WORD[$DIRECTORY_LEN+1,-1]"
-	FILE="$(cd $~DIRECTORY; fd -H | fzf --border=rounded --height=50% --query=$STUB)"
-	[[ -a "$FILE" ]] && LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$DIRECTORY$FILE"
+	if [[ -n "$DIRECTORY" ]]; then
+	    pushd -q $~DIRECTORY
+	    STUB="$WORD[$DIRECTORY_LEN+2,-1]"
+	else
+	    STUB="$WORD[$DIRECTORY_LEN+1,-1]"
+	fi
+	FILE="$(fd -H | fzf --border=rounded --height=50% --query=$STUB)"
+	[[ -n "$FILE" ]] && LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$DIRECTORY$FILE"
+	[[ -n "$DIRECTORY" ]] && popd -q
 	zle reset-prompt
     }
     zle -N personal_fzf_file
