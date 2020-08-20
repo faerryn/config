@@ -8,7 +8,9 @@ function () {
 
     # Plugins
     local PLUGIN
-    for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do source $PLUGIN; done
+    for PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do
+	source $PLUGIN
+    done
 
     # Globbing
     setopt EXTENDED_GLOB
