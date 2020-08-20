@@ -63,16 +63,30 @@ let g:sandwich#recipes = [
 	    \ {'buns': ['(', ')'], 'nesting': 1, 'input': ['(', ')', 'b']},
 	    \ {'buns': ['{', '}'], 'nesting': 1, 'skip_break': 1, 'input': ['{', '}', 'B']},
 	    \ {'buns': ['[', ']'], 'nesting': 1, 'input': ['[', ']', 'r']},
-	    \ {'buns': ['<', '>'], 'expand_range': 0},
+	    \ {'buns': ['<', '>'], 'expand_range': 0, 'input': ['<', '>', 'a']},
 	    \ {'buns': ['"', '"'], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
 	    \ {'buns': ["'", "'"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
 	    \ {'buns': ["`", "`"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
 	    \ ]
-nnoremap dir di[
 nmap sa <Plug>(operator-sandwich-add)
 xmap sa <Plug>(operator-sandwich-add)
 nmap sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
 nmap sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+
+" vim-textobj-user
+packadd vim-textobj-user
+call textobj#user#plugin('personal', {
+	    \	'square': {
+	    \	    'pattern': ['\[', '\]'],
+	    \       'select-a': 'ar',
+	    \       'select-i': 'ir',
+	    \	},
+	    \	'angle': {
+	    \	    'pattern': ['<', '>'],
+	    \       'select-a': 'aa',
+	    \       'select-i': 'ia',
+	    \	},
+	    \ })
 
 " undotree
 let g:undotree_CustomUndotreeCmd="split"
