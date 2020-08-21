@@ -19,17 +19,17 @@ set updatetime=500
 let &grepprg = "rg --vimgrep"
 let g:mapleader="\<Space>"
 
-noremap <silent> <Leader> <Nop>
-noremap <silent> S        <Nop>
-noremap <silent> s        <Nop>
+noremap <Leader> <Nop>
+noremap S        <Nop>
+noremap s        <Nop>
 
-nnoremap <silent> Y y$
-noremap  <silent> Q @@
+nnoremap Y y$
+noremap  Q @@
 
-nnoremap <silent> <Leader>l <Cmd>lopen<CR>
-nnoremap <silent> <Leader>q <Cmd>copen<CR>
+nnoremap <Leader>l <Cmd>lopen<CR>
+nnoremap <Leader>q <Cmd>copen<CR>
 
-autocmd FileType qf nnoremap <silent> <buffer> <esc> <Cmd>q<CR>
+autocmd FileType qf nnoremap <buffer> <esc> <Cmd>q<CR>
 
 silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
 autocmd VimEnter * silent! helptags ALL
@@ -55,8 +55,8 @@ packloadall
 colorscheme gruvbox
 
 " vim-fugitive
-autocmd FileType fugitive nnoremap <silent> <buffer> <Esc> <Cmd>q<CR>
-nnoremap <silent> <Leader>g <Cmd>Git<CR>
+autocmd FileType fugitive nnoremap <buffer> <Esc> <Cmd>q<CR>
+nnoremap <Leader>g <Cmd>Git<CR>
 
 " vim-sandwich
 let g:sandwich_no_default_key_mappings = 1
@@ -94,8 +94,8 @@ let g:undotree_CustomUndotreeCmd="split"
 let g:undotree_CustomDiffpanelCmd="split"
 let g:undotree_DiffpanelHeight=5
 let g:undotree_HelpLine = 0
-nnoremap <silent> <Leader>u <Cmd>UndotreeShow<CR>:UndotreeFocus<CR>
-autocmd FileType undotree nnoremap <silent> <buffer> <Esc> <Cmd>UndotreeHide<CR>
+nnoremap <Leader>u <Cmd>UndotreeShow<CR>:UndotreeFocus<CR>
+autocmd FileType undotree nnoremap <buffer> <Esc> <Cmd>UndotreeHide<CR>
 
 " zig.vim
 let g:zig_fmt_autosave = 1
