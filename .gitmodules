@@ -55,9 +55,10 @@
 [submodule "vim-textobj-user"]
 	path = neovim/.config/nvim/pack/bundle/opt/vim-textobj-user
 	url = https://github.com/kana/vim-textobj-user.git
-[submodule "neovim/.config/nvim/pack/bundle/start/vim-symlink"]
+[submodule "vim-symlink"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-symlink
 	url = https://github.com/aymericbeaumet/vim-symlink.git
-[submodule "neovim/.config/nvim/pack/bundle/start/vim-bbye"]
+	ignore = dirty
+[submodule "vim-bbye"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-bbye
 	url = https://github.com/moll/vim-bbye.git
