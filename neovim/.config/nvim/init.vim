@@ -63,13 +63,13 @@ let g:sandwich_no_default_key_mappings = 1
 let g:operator_sandwich_no_default_key_mappings = 1
 let g:textobj_sandwich_no_default_key_mappings = 1
 let g:sandwich#recipes = [
-	    \ {'buns': ['(', ')'], 'nesting': 1, 'input': ['(', ')', 'b']},
-	    \ {'buns': ['{', '}'], 'nesting': 1, 'skip_break': 1, 'input': ['{', '}', 'B']},
-	    \ {'buns': ['[', ']'], 'nesting': 1, 'input': ['[', ']', 'r']},
-	    \ {'buns': ['<', '>'], 'expand_range': 0, 'input': ['<', '>', 'a']},
-	    \ {'buns': ['"', '"'], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
-	    \ {'buns': ["'", "'"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
-	    \ {'buns': ["`", "`"], 'quoteescape': 1, 'expand_range': 0, 'nesting': 0, 'linewise': 0},
+	    \ {'buns': ['(', ')'], 'linewise': 0, 'input': ['(', ')', 'b']},
+	    \ {'buns': ['{', '}'], 'linewise': 0, 'input': ['{', '}', 'B']},
+	    \ {'buns': ['[', ']'], 'linewise': 0, 'input': ['[', ']', 'r']},
+	    \ {'buns': ['<', '>'], 'linewise': 0, 'input': ['<', '>', 'a']},
+	    \ {'buns': ['"', '"'], 'linewise': 0},
+	    \ {'buns': ["'", "'"], 'linewise': 0},
+	    \ {'buns': ["`", "`"], 'linewise': 0},
 	    \ ]
 nmap sa <Plug>(operator-sandwich-add)
 xmap sa <Plug>(operator-sandwich-add)
