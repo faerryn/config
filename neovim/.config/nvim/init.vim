@@ -45,11 +45,14 @@ set number relativenumber signcolumn=number
 set softtabstop=4 shiftwidth=4
 set termguicolors
 
-colorscheme gruvbox
-
 autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 
 let g:asmsyntax='nasm'
+
+packloadall
+
+" gruvbox
+colorscheme gruvbox
 
 " vim-fugitive
 autocmd FileType fugitive nnoremap <silent> <buffer> <Esc> <Cmd>q<CR>
@@ -74,7 +77,6 @@ nmap sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<
 nmap sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
 
 " vim-textobj-user
-packadd vim-textobj-user
 call textobj#user#plugin('personal', {
 	    \	'square': {
 	    \	    'pattern': ['\[', '\]'],
