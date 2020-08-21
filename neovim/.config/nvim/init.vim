@@ -29,7 +29,7 @@ noremap  Q @@
 nnoremap <Leader>l <Cmd>lopen<CR>
 nnoremap <Leader>q <Cmd>copen<CR>
 
-autocmd FileType qf nnoremap <buffer> <esc> <Cmd>q<CR>
+autocmd FileType qf nnoremap <buffer> <Esc> <C-W>c
 
 silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
 autocmd VimEnter * silent! helptags ALL
@@ -55,7 +55,7 @@ packloadall
 colorscheme gruvbox
 
 " vim-fugitive
-autocmd FileType fugitive nnoremap <buffer> <Esc> <Cmd>q<CR>
+autocmd FileType fugitive nnoremap <buffer> <Esc> <C-W>c
 nnoremap <Leader>g <Cmd>Git<CR>
 
 " vim-sandwich
