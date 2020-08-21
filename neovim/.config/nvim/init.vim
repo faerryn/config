@@ -71,8 +71,7 @@ let g:sandwich#recipes = [
 	    \ {'buns': ["'", "'"], 'linewise': 0},
 	    \ {'buns': ["`", "`"], 'linewise': 0},
 	    \ ]
-nmap sa <Plug>(operator-sandwich-add)
-xmap sa <Plug>(operator-sandwich-add)
+map  sa <Plug>(operator-sandwich-add)
 nmap sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
 nmap sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
 
