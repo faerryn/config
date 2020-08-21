@@ -1,4 +1,4 @@
-execute "augroup Personal"
+execute 'augroup Personal'
 autocmd!
 
 " core
@@ -16,8 +16,8 @@ set timeoutlen=500
 set undofile
 set updatetime=500
 
-let &grepprg = "rg --vimgrep"
-let g:mapleader="\<Space>"
+let &grepprg = 'rg --vimgrep'
+let g:mapleader=' '
 
 noremap <Leader> <Nop>
 noremap S        <Nop>
@@ -31,7 +31,7 @@ nnoremap <Leader>q <Cmd>copen<CR>
 
 autocmd FileType qf nnoremap <buffer> <Esc> <C-W>c
 
-silent! execute "mkspell! " . fnamemodify($MYVIMRC, ":h") . "/spell/*.add"
+silent! execute 'mkspell! ' . fnamemodify($MYVIMRC, ':h') . '/spell/*.add'
 autocmd VimEnter * silent! helptags ALL
 
 " aesthetics
@@ -90,8 +90,8 @@ call textobj#user#plugin('personal', {
 	    \ })
 
 " undotree
-let g:undotree_CustomUndotreeCmd="split"
-let g:undotree_CustomDiffpanelCmd="split"
+let g:undotree_CustomUndotreeCmd='split'
+let g:undotree_CustomDiffpanelCmd='split'
 let g:undotree_DiffpanelHeight=5
 let g:undotree_HelpLine = 0
 nnoremap <Leader>u <Cmd>UndotreeShow<CR>:UndotreeFocus<CR>
@@ -106,4 +106,4 @@ let g:rustfmt_autosave = 1
 " vim-go
 let g:go_fmt_autosave = 1
 
-execute "augroup END"
+execute 'augroup END'
