@@ -58,7 +58,7 @@
 [submodule "vim-symlink"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-symlink
 	url = https://github.com/aymericbeaumet/vim-symlink.git
-	ignore = dirty
+	ignore = untracked
 [submodule "vim-bbye"]
 	path = neovim/.config/nvim/pack/bundle/start/vim-bbye
 	url = https://github.com/moll/vim-bbye.git
