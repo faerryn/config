@@ -1,4 +1,4 @@
-#+startup: indent overview
+#+startup: overview
 * Packages
 ** Package.el
 #+begin_src emacs-lisp
@@ -17,17 +17,24 @@
     (require 'use-package))
 #+end_src
 * Aesthetics
-** Clean Up
+** Elegant
 #+begin_src emacs-lisp
+  (setq-default inhibit-startup-screen t
+                inhibit-startup-echo-area-message t
+                inhibit-startup-message t
+                initial-scratch-message nil
+                initial-major-mode 'org-mode
+                pop-up-windows nil
+                mode-line-format nil
+                truncate-lines t
+                line-spacing 0)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
-  (setq-default
-   inhibit-splash-screen t
-   mode-line-format nil
-   truncate-lines t)
+  (tooltip-mode -1)
+  (fringe-mode '(0 . 0))
 #+end_src
-** Theme
+** Sexy Theme
 #+begin_src emacs-lisp
   (use-package doom-themes
     :ensure t
@@ -35,8 +42,9 @@
   (global-hl-line-mode +1)
   (global-prettify-symbols-mode +1)
   (setq-default display-line-numbers 'visual)
+  (show-paren-mode +1)
 #+end_src
-* Dired
+** Dired omit
 #+begin_src emacs-lisp
   (require 'dired-x)
   (add-hook 'dired-mode-hook 'dired-omit-mode)
@@ -93,9 +101,15 @@
     :config
     (setq-default
      org-src-tab-acts-natively t
+     org-startup-indented t
      org-log-done t
      org-agenda-files (list "~/org/agenda.org") 
-     org-agenda-start-on-weekday 0)
+     org-agenda-start-on-weekday 0
+     org-startup-with-inline-images "inlineimage"
+     org-image-actual-width nil
+     org-startup-align-all-tables t
+     org-hide-emphasis-markers t
+     org-confirm-elisp-link-function nil)
     (global-set-key (kbd "C-c l") #'org-store-link)
     (global-set-key (kbd "C-c a") #'org-agenda)
     (add-hook 'org-mode-hook #'org-toggle-pretty-entities))
@@ -110,7 +124,7 @@
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys))
 #+end_src
-* Git
+* Git Tools
 ** Magit
 #+begin_src emacs-lisp
   (use-package magit
@@ -120,7 +134,7 @@
     :ensure t
     :after (evil magit))
 #+end_src
-** Git gutter
+** Git Gutter
 #+begin_src emacs-lisp
   (use-package git-gutter
     :ensure t
@@ -139,10 +153,6 @@
     (setq ivy-count-format "(%d/%d) ")
     (ivy-mode +1)
     (counsel-mode +1))
-  (use-package counsel-fd
-    :ensure t
-    :after (counsel evil)
-    :config (global-set-key (kbd "C-c C-f") #'counsel-fd-file-jump))
 #+end_src
 * Lisp
 #+begin_src emacs-lisp
@@ -161,6 +171,7 @@
 #+end_src
 * Sundry
 #+begin_src emacs-lisp
+  (setq-default vc-follow-symlinks t)
   (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
   (when (file-exists-p custom-file)
     (load-file custom-file))

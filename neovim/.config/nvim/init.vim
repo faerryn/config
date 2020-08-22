@@ -65,29 +65,12 @@ let g:textobj_sandwich_no_default_key_mappings = 1
 let g:sandwich#recipes = [
 	    \ {'buns': ['(', ')'], 'linewise': 0, 'input': ['(', ')', 'b']},
 	    \ {'buns': ['{', '}'], 'linewise': 0, 'input': ['{', '}', 'B']},
-	    \ {'buns': ['[', ']'], 'linewise': 0, 'input': ['[', ']', 'r']},
-	    \ {'buns': ['<', '>'], 'linewise': 0, 'input': ['<', '>', 'a']},
-	    \ {'buns': ['"', '"'], 'linewise': 0},
-	    \ {'buns': ["'", "'"], 'linewise': 0},
-	    \ {'buns': ["`", "`"], 'linewise': 0},
+	    \ {'buns': ['[', ']'], 'linewise': 0},
+	    \ {'buns': ['<', '>'], 'linewise': 0},
 	    \ ]
 map  sa <Plug>(operator-sandwich-add)
 nmap sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
 nmap sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-
-" vim-textobj-user
-call textobj#user#plugin('personal', {
-	    \	'square': {
-	    \	    'pattern': ['\[', '\]'],
-	    \       'select-a': 'ar',
-	    \       'select-i': 'ir',
-	    \	},
-	    \	'angle': {
-	    \	    'pattern': ['<', '>'],
-	    \       'select-a': 'aa',
-	    \       'select-i': 'ia',
-	    \	},
-	    \ })
 
 " undotree
 let g:undotree_CustomUndotreeCmd='split'
