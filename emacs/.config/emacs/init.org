@@ -122,7 +122,7 @@
 #+begin_src emacs-lisp
   (use-package magit
     :ensure t
-    :config (global-set-key (kbd "C-x g") #'magit-status))
+    :config (global-set-key (kbd "C-c g") #'magit-status))
   (use-package evil-magit
     :ensure t
     :after (evil magit))
