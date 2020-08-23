@@ -24,7 +24,6 @@
                 initial-major-mode 'org-mode
                 pop-up-windows nil
                 mode-line-format nil
-                truncate-lines t
                 line-spacing 0)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
@@ -101,7 +100,7 @@
      org-src-tab-acts-natively t
      org-startup-indented t
      org-log-done t
-     org-agenda-files (list "~/org/agenda.org") 
+     org-agenda-files (list "~/org/agenda.org" "~/School/agenda.org") 
      org-agenda-start-on-weekday 0
      org-hide-emphasis-markers t
      org-confirm-elisp-link-function nil)
