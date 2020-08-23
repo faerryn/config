@@ -1,3 +1,4 @@
 /.config/nvim/.netrwhist
+/.config/nvim/spell/
 /.local/share/nvim/*
-!/.local/share/nvim/swap
+/.local/share/nvim/

@@ -11,6 +11,7 @@ set mouse=ar
 set nrformats=alpha,octal,hex,bin
 set omnifunc=syntaxcomplete#Complete
 set shada=
+set spell spellcapcheck=
 set splitbelow splitright
 set timeoutlen=500
 set undofile
