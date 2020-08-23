@@ -22,17 +22,15 @@ export PERSONAL_DATA_HOME="$HOME/local/share"
 # Rust
 export CARGO_HOME="$PERSONAL_DATA_HOME/cargo"
 export RUSTUP_HOME="$PERSONAL_DATA_HOME/rustup"
+export PATH="$CARGO_HOME/bin:$PATH"
 
 # Go
 export GO_HOME="$HOME/local/go"
 export GOPATH="$HOME/go"
-
-# Haskell
-export STACK_ROOT="$XDG_DATA_HOME/stack"
-export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+export PATH="$GO_HOME/bin:$GOPATH/bin:$PATH"
 
 # PATH
-export PATH="$CARGO_HOME/bin:$GO_HOME/bin:$GOPATH/bin:$HOME/local/bin:$PATH"
+export PATH="$HOME/local/bin:$PATH"
 
 # terminfo
 export TERMINFO="$XDG_DATA_HOME/terminfo"
