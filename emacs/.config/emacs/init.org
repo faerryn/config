@@ -22,7 +22,6 @@
                 inhibit-startup-echo-area-message t
                 initial-scratch-message nil
                 initial-major-mode 'org-mode
-                pop-up-windows nil
                 mode-line-format nil
                 line-spacing 0)
   (menu-bar-mode -1)
