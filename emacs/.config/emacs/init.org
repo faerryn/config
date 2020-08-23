@@ -65,7 +65,6 @@
   (use-package evil
     :ensure t
     :after (undo-tree)
-    :bind ("C-c v" . evil-mode)
     :init
     (setq-default
      evil-want-C-i-jump (display-graphic-p)
@@ -78,7 +77,8 @@
     (evil-define-key '(normal visual) 'global
       "s" nil 
       "S" nil 
-      "Q" "@@"))
+      "Q" "@@")
+    (global-set-key (kbd "C-c v") #'evil-mode))
   (use-package evil-collection
     :ensure t
     :after (evil)
@@ -124,7 +124,7 @@
 #+begin_src emacs-lisp
   (use-package magit
     :ensure t
-    :bind ("C-x g" . magit-status))
+    :config (global-set-key (kbd "C-x g") #'magit-status))
   (use-package evil-magit
     :ensure t
     :after (evil magit))
