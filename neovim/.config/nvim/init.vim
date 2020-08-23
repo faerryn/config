@@ -73,6 +73,11 @@ map  sa <Plug>(operator-sandwich-add)
 nmap sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
 nmap sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
 
+" swap.vim
+let g:swap_no_default_key_mappings = 1
+nmap s[ <Plug>(swap-prev)
+nmap s] <Plug>(swap-next)
+
 " undotree
 let g:undotree_CustomUndotreeCmd='split'
 let g:undotree_CustomDiffpanelCmd='split'
