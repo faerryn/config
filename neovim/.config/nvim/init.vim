@@ -20,8 +20,8 @@ let &grepprg = 'rg --vimgrep'
 let g:mapleader=' '
 
 noremap <Leader> <Nop>
-noremap S        <Nop>
-noremap s        <Nop>
+noremap S <Nop>
+noremap s <Nop>
 
 nnoremap Y y$
 noremap  Q @@
@@ -49,6 +49,7 @@ autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 
 let g:asmsyntax='nasm'
 
+" packages
 packloadall
 
 " gruvbox
