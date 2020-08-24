@@ -80,9 +80,8 @@ nmap s[ <Plug>(swap-prev)
 nmap s] <Plug>(swap-next)
 
 " undotree
-let g:undotree_CustomUndotreeCmd='split'
-let g:undotree_CustomDiffpanelCmd='split'
-let g:undotree_DiffpanelHeight=5
+let g:undotree_CustomUndotreeCmd  = 'split'
+let g:undotree_CustomDiffpanelCmd = 'split'
 let g:undotree_HelpLine = 0
 nnoremap <Leader>u <Cmd>UndotreeShow<CR>:UndotreeFocus<CR>
 autocmd FileType undotree nnoremap <buffer> <Esc> <Cmd>UndotreeHide<CR>
