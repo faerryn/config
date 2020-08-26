@@ -85,6 +85,7 @@ let g:undotree_CustomDiffpanelCmd = 'split'
 let g:undotree_HelpLine = 0
 nnoremap <Leader>u <Cmd>UndotreeShow<CR>:UndotreeFocus<CR>
 autocmd FileType undotree nnoremap <buffer> <Esc> <Cmd>UndotreeHide<CR>
+autocmd FileType undotree nnoremap <buffer> <C-W>c <Cmd>UndotreeHide<CR>
 
 " zig.vim
 let g:zig_fmt_autosave = 1
