@@ -87,6 +87,9 @@ nnoremap <Leader>u <Cmd>UndotreeShow<CR>:UndotreeFocus<CR>
 autocmd FileType undotree nnoremap <buffer> <Esc> <Cmd>UndotreeHide<CR>
 autocmd FileType undotree nnoremap <buffer> <C-W>c <Cmd>UndotreeHide<CR>
 
+" vim-signify
+autocmd User SignifyAutocmds exe 'au! signify' | au signify BufWritePost * call sy#start()
+
 " zig.vim
 let g:zig_fmt_autosave = 1
 
