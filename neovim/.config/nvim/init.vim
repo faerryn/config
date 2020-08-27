@@ -18,7 +18,7 @@ set undofile
 set updatetime=500
 
 let &grepprg = 'rg --vimgrep'
-let g:mapleader=' '
+let g:mapleader = ' '
 
 noremap <Leader> <Nop>
 noremap S <Nop>
@@ -48,7 +48,7 @@ set termguicolors
 
 autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 
-let g:asmsyntax='nasm'
+let g:asmsyntax = 'nasm'
 
 " packages
 packloadall

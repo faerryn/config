@@ -106,6 +106,6 @@ setopt CORRECT
 
 # Plugins
 local PERSONAL_PLUGIN=
-for PERSONAL_PLUGIN in "$XDG_CONFIG_HOME/zsh/*/*.plugin.zsh"; do
+for PERSONAL_PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do
     source "$PERSONAL_PLUGIN"
 done
