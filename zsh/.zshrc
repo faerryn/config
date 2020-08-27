@@ -24,10 +24,24 @@ alias ....="cd ../../.."
 PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(2L.%F{green}+%f .)%(0?..%F{red})%(!.#.$)%f "
 RPROMPT=
 
-function personal_git_prompt () {
-    RPROMPT="$(git --no-optional-locks status --branch --porcelain=v2 2>&1 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk)"
+source "$XDG_CONFIG_HOME/zsh/zsh-async/async.zsh"
+async_init
+
+function personal_prompt () {
+    git -C "$1" --no-optional-locks status --branch --porcelain=v2 2>&1 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
 }
-precmd_functions+=(personal_git_prompt)
+function personal_prompt_callback () {
+    RPROMPT="$3$5"
+    zle reset-prompt
+}
+function personal_prompt_start () {
+    async_flush_jobs personal_prompt_worker
+    async_job personal_prompt_worker personal_prompt $PWD
+}
+
+async_start_worker personal_prompt_worker
+async_register_callback personal_prompt_worker personal_prompt_callback
+precmd_functions+=(personal_prompt_start)
 
 # Vi-mode
 bindkey -v

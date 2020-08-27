@@ -62,3 +62,6 @@
 [submodule "vim-swap"]
 	path = neovim/.config/nvim/pack/personal/start/vim-swap
 	url = https://github.com/machakann/vim-swap.git
+[submodule "zsh-async"]
+	path = zsh/.config/zsh/zsh-async
+	url = https://github.com/mafredri/zsh-async.git
