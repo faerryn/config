@@ -36,11 +36,17 @@ function personal_prompt_callback () {
 }
 function personal_prompt_start () {
     async_flush_jobs personal_prompt_worker
-    async_job personal_prompt_worker personal_prompt $PWD
+    if ! async_job personal_prompt_worker personal_prompt $PWD; then
+	personal_prompt_worker_init
+	async_flush_jobs personal_prompt_worker
+    fi
 }
+function personal_prompt_worker_init () {
+    async_start_worker personal_prompt_worker
+    async_register_callback personal_prompt_worker personal_prompt_callback
+}
+personal_prompt_worker_init
 
-async_start_worker personal_prompt_worker
-async_register_callback personal_prompt_worker personal_prompt_callback
 precmd_functions+=(personal_prompt_start)
 
 # Vi-mode
@@ -57,9 +63,9 @@ zle -N zle-line-init
 
 function zle-keymap-select () {
     if [[ ${KEYMAP} == vicmd ]]; then
-        personal_cursor_block
+	personal_cursor_block
     elif [[ ${KEYMAP} == main ]]; then
-        personal_cursor_beam
+	personal_cursor_beam
     fi
 }
 zle -N zle-keymap-select
@@ -82,15 +88,15 @@ function personal_fzf_file () {
     local STUB=
     local FILE=
     while [[ ! -d $~DIRECTORY ]] && [[ -n "$DIRECTORY" ]]; do
-        DIRECTORY="${DIRECTORY%/*}"
-        [[ ${#DIRECTORY} -eq $DIRECTORY_LEN ]] && DIRECTORY=
-        DIRECTORY_LEN=${#DIRECTORY}
+	DIRECTORY="${DIRECTORY%/*}"
+	[[ ${#DIRECTORY} -eq $DIRECTORY_LEN ]] && DIRECTORY=
+	DIRECTORY_LEN=${#DIRECTORY}
     done
     if [[ -n "$DIRECTORY" ]]; then
-        pushd -q $~DIRECTORY
-        STUB="$WORD[$DIRECTORY_LEN+2,-1]"
+	pushd -q $~DIRECTORY
+	STUB="$WORD[$DIRECTORY_LEN+2,-1]"
     else
-        STUB="$WORD[$DIRECTORY_LEN+1,-1]"
+	STUB="$WORD[$DIRECTORY_LEN+1,-1]"
     fi
     FILE="$(fd -H | fzf --border=rounded --height=50% --query=$STUB)"
     [[ -n "$FILE" ]] && LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$DIRECTORY$FILE"
