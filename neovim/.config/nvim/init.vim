@@ -17,8 +17,8 @@ set timeoutlen=500
 set undofile
 set updatetime=500
 
-let &grepprg = 'rg --vimgrep'
-let g:mapleader = ' '
+let &grepprg='rg --vimgrep'
+let g:mapleader=' '
 
 noremap <Leader> <Nop>
 noremap S <Nop>
@@ -48,7 +48,7 @@ set termguicolors
 
 autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 
-let g:asmsyntax = 'nasm'
+let g:asmsyntax='nasm'
 
 " packages
 packloadall
@@ -61,10 +61,10 @@ autocmd FileType fugitive nnoremap <buffer> <Esc> <C-W>c
 nnoremap <Leader>g <Cmd>Git<CR>
 
 " vim-sandwich
-let g:sandwich_no_default_key_mappings = 1
-let g:operator_sandwich_no_default_key_mappings = 1
-let g:textobj_sandwich_no_default_key_mappings = 1
-let g:sandwich#recipes = [
+let g:sandwich_no_default_key_mappings=1
+let g:operator_sandwich_no_default_key_mappings=1
+let g:textobj_sandwich_no_default_key_mappings=1
+let g:sandwich#recipes=[
 	    \ {'buns': ['(', ')'], 'linewise': 0, 'input': ['(', ')', 'b']},
 	    \ {'buns': ['{', '}'], 'linewise': 0, 'input': ['{', '}', 'B']},
 	    \ {'buns': ['[', ']'], 'linewise': 0},
@@ -75,14 +75,14 @@ nmap sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<
 nmap sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
 
 " swap.vim
-let g:swap_no_default_key_mappings = 1
-nmap s[ <Plug>(swap-prev)
-nmap s] <Plug>(swap-next)
+let g:swap_no_default_key_mappings=1
+nmap sh <Plug>(swap-prev)
+nmap sl <Plug>(swap-next)
 
 " undotree
-let g:undotree_CustomUndotreeCmd  = 'split'
-let g:undotree_CustomDiffpanelCmd = 'split'
-let g:undotree_HelpLine = 0
+let g:undotree_CustomUndotreeCmd='split'
+let g:undotree_CustomDiffpanelCmd='split'
+let g:undotree_HelpLine=0
 nnoremap <Leader>u <Cmd>UndotreeShow<CR>:UndotreeFocus<CR>
 autocmd FileType undotree nnoremap <buffer> <Esc> <Cmd>UndotreeHide<CR>
 autocmd FileType undotree nnoremap <buffer> <C-W>c <Cmd>UndotreeHide<CR>
@@ -91,12 +91,12 @@ autocmd FileType undotree nnoremap <buffer> <C-W>c <Cmd>UndotreeHide<CR>
 autocmd User SignifyAutocmds exe 'au! signify' | au signify BufWritePost * call sy#start()
 
 " zig.vim
-let g:zig_fmt_autosave = 1
+let g:zig_fmt_autosave=1
 
 " rust.vim
-let g:rustfmt_autosave = 1
+let g:rustfmt_autosave=1
 
 " vim-go
-let g:go_fmt_autosave = 1
+let g:go_fmt_autosave=1
 
 execute 'augroup END'

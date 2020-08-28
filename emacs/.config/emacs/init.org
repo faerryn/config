@@ -23,6 +23,7 @@
                 initial-scratch-message nil
                 initial-major-mode 'org-mode
                 mode-line-format nil
+                line-move-visual nil
                 line-spacing 0)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
@@ -51,10 +52,12 @@
     :ensure t
     :config
     (setq-default undo-tree-auto-save-history t
-                  undo-tree-history-directory-alist `(("." . ,(expand-file-name "undo" user-emacs-directory))))
-    (add-hook 'undo-tree-visualizer-mode-hook (lambda ()
-                                                (undo-tree-visualizer-selection-mode +1)
-                                                (setq display-line-numbers nil)))
+                  undo-tree-history-directory-alist 
+                  `(("." . ,(expand-file-name "undo" user-emacs-directory))))
+    (add-hook 'undo-tree-visualizer-mode-hook 
+              (lambda ()
+                (undo-tree-visualizer-selection-mode +1)
+                (setq display-line-numbers nil)))
     (global-undo-tree-mode +1))
 #+end_src
 * Evil Mode
@@ -106,7 +109,9 @@
      org-confirm-elisp-link-function nil)
     (global-set-key (kbd "C-c l") #'org-store-link)
     (global-set-key (kbd "C-c a") #'org-agenda)
-    (add-hook 'org-mode-hook #'org-toggle-pretty-entities))
+    (add-hook 'org-mode-hook (lambda ()
+                               (org-toggle-pretty-entities)
+                               (visual-line-mode +1))))
   (use-package evil-org
     :ensure t
     :after (evil org)

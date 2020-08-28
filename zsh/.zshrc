@@ -18,25 +18,30 @@ alias em="emacs"
 
 alias ..="cd .."
 alias ...="cd ../.."
-alias ....="cd ../../.."
 
 # Prompt
-PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(2L.%F{green}+%f .)%(0?..%F{red})%(!.#.$)%f "
+PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)"
+if [ $SHLVL -gt 1 ]; then
+    PROMPT+="%F{green}"
+    repeat $SHLVL-1 { PROMPT+="+" }
+    PROMPT+="%f "
+fi
+PROMPT+="%(0?..%F{red})%(!.#.$)%f "
 RPROMPT=
 
 source "$XDG_CONFIG_HOME/zsh/zsh-async/async.zsh"
 async_init
 
-function personal_prompt () {
-    git -C "$1" --no-optional-locks status --branch --porcelain=v2 2>&1 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
+function personal_prompt_git () {
+    2>&1 git -C "$1" --no-optional-locks status --branch --porcelain=v2 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
 }
 function personal_prompt_callback () {
-    RPROMPT="$3$5"
+    RPROMPT="$3"
     zle reset-prompt
 }
-function personal_prompt_start () {
+function personal_prompt () {
     async_flush_jobs personal_prompt_worker
-    if ! async_job personal_prompt_worker personal_prompt $PWD; then
+    if ! 2>/dev/null async_job personal_prompt_worker personal_prompt_git $PWD; then
 	personal_prompt_worker_init
 	async_flush_jobs personal_prompt_worker
     fi
@@ -47,7 +52,7 @@ function personal_prompt_worker_init () {
 }
 personal_prompt_worker_init
 
-precmd_functions+=(personal_prompt_start)
+precmd_functions+=(personal_prompt)
 
 # Vi-mode
 bindkey -v
@@ -123,9 +128,3 @@ mkdir -p "$XDG_CACHE_HOME/zsh"
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 zstyle ':completion:*' accept-exact '*(N)'
 setopt CORRECT
-
-# Plugins
-local PERSONAL_PLUGIN=
-for PERSONAL_PLUGIN in $XDG_CONFIG_HOME/zsh/*/*.plugin.zsh; do
-    source "$PERSONAL_PLUGIN"
-done
