@@ -42,11 +42,12 @@ set laststatus=0 showtabline=0
 set noequalalways
 set noruler
 set nowrap linebreak
-set number relativenumber signcolumn=number
+set number relativenumber signcolumn=yes "number
 set softtabstop=4 shiftwidth=4
 set termguicolors
 
-autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
+" autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
+let g:highlightedyank_highlight_duration = 500
 
 let g:asmsyntax='nasm'
 
