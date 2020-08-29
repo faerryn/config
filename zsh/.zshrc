@@ -89,7 +89,7 @@ function personal_fzf_file () {
     local SEARCH="$WORD[${#DIRECTORY}+$MID+1,-1]"
     local FILE="$(
     [[ -n $DIRECTORY ]] && cd -q $DIRECTORY
-    fd -H | fzf --border=rounded --height=50% --query="$SEARCH"
+    fd -H | fzf --height=50% --query="$SEARCH"
     )"
     if [[ -n $FILE ]]; then
 	[[ -n $DIRECTORY ]] && DIRECTORY="$DIRECTORY/"
@@ -101,7 +101,9 @@ zle -N personal_fzf_file
 bindkey "^F" personal_fzf_file
 
 function personal_fzf_history () {
-    local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' | fzf --border=rounded --height=50% --no-sort --query=$BUFFER)"
+    local LINE="$(
+    fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' | fzf --height=50% --no-sort --query=$BUFFER
+    )"
     if [[ -n $LINE ]]; then
 	LBUFFER="$LINE"
 	RBUFFER=
