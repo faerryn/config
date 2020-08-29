@@ -65,3 +65,7 @@
 [submodule "zsh-async"]
 	path = zsh/.config/zsh/zsh-async
 	url = https://github.com/mafredri/zsh-async.git
+[submodule "nvim-colorizer.lua"]
+	path = neovim/.config/nvim/pack/personal/start/nvim-colorizer.lua
+	url = https://github.com/norcalli/nvim-colorizer.lua.git
+	ignore = untracked

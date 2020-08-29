@@ -20,13 +20,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 
 # Prompt
-PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)"
-if [ $SHLVL -gt 1 ]; then
-    PROMPT+="%F{green}"
-    repeat $SHLVL-1 { PROMPT+="+" }
-    PROMPT+="%f "
-fi
-PROMPT+="%(0?..%F{red})%(!.#.$)%f "
+PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%F{green}%f%(0?..%F{red})%(!.#.$)%f "
 RPROMPT=
 
 source "$XDG_CONFIG_HOME/zsh/zsh-async/async.zsh"
@@ -63,8 +57,8 @@ KEYTIMEOUT=1
 function personal_cursor_block () { echo -ne "\e[2 q" }
 function personal_cursor_beam () { echo -ne "\e[6 q" }
 
-function zle-line-init () { personal_cursor_beam }
-zle -N zle-line-init
+precmd_functions+=(personal_cursor_beam)
+preexec_functions+=(personal_cursor_block)
 
 function zle-keymap-select () {
     if [[ ${KEYMAP} == vicmd ]]; then
@@ -74,9 +68,6 @@ function zle-keymap-select () {
     fi
 }
 zle -N zle-keymap-select
-precmd_functions+=(personal_cursor_beam)
-preexec_functions+=(personal_cursor_block)
-personal_cursor_beam
 
 # History
 mkdir -p "$XDG_DATA_HOME/zsh"
