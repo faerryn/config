@@ -69,6 +69,6 @@
 	path = neovim/.config/nvim/pack/personal/start/nvim-colorizer.lua
 	url = https://github.com/norcalli/nvim-colorizer.lua.git
 	ignore = untracked
-[submodule "neovim/.config/nvim/pack/personal/start/vim-highlightedyank"]
+[submodule "vim-highlightedyank"]
 	path = neovim/.config/nvim/pack/personal/start/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank.git
