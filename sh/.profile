@@ -13,23 +13,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 
-# Personal directories
-export PERSONAL_CONFIG_HOME="$HOME/config"
-export PERSONAL_DATA_HOME="$HOME/local/share"
-
-# Rust
-export CARGO_HOME="$PERSONAL_DATA_HOME/cargo"
-export RUSTUP_HOME="$PERSONAL_DATA_HOME/rustup"
-export PATH="$CARGO_HOME/bin:$PATH"
-
-# Go
-export GO_HOME="$HOME/local/go"
-export GOPATH="$HOME/go"
-export PATH="$GO_HOME/bin:$GOPATH/bin:$PATH"
-
-# PATH
-export PATH="$HOME/local/bin:$PATH"
-
 # terminfo
 export TERMINFO="$XDG_DATA_HOME/terminfo"
 export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo"
