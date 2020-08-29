@@ -52,6 +52,8 @@ precmd_functions+=(personal_prompt)
 bindkey -v
 bindkey -M viins "^?" backward-delete-char
 
+source "$XDG_CONFIG_HOME/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh"
+
 KEYTIMEOUT=1
 
 function personal_cursor_block () { echo -ne "\e[2 q" }
@@ -79,24 +81,20 @@ setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
 # fzf
 function personal_fzf_file () {
     local WORD="${LBUFFER##* }"
-    local DIRECTORY="$WORD"
-    local DIRECTORY_LEN=${#DIRECTORY}
-    local STUB=
-    local FILE=
-    while [[ ! -d $~DIRECTORY ]] && [[ -n "$DIRECTORY" ]]; do
-	DIRECTORY="${DIRECTORY%/*}"
-	[[ ${#DIRECTORY} -eq $DIRECTORY_LEN ]] && DIRECTORY=
-	DIRECTORY_LEN=${#DIRECTORY}
-    done
-    if [[ -n "$DIRECTORY" ]]; then
-	pushd -q $~DIRECTORY
-	STUB="$WORD[$DIRECTORY_LEN+2,-1]"
-    else
-	STUB="$WORD[$DIRECTORY_LEN+1,-1]"
+    local DIRECTORY=(${(s:/:)WORD})
+    [[ $WORD[1] = "/" ]] && local PRE="/"
+    [[ $WORD =~ "/" ]] && local MID=1 || local MID=0
+    while [[ ! -d "$PRE${(j:/:)DIRECTORY}" ]] && [[ ${#DIRECTORY[@]} -gt 0 ]] DIRECTORY=($DIRECTORY[1,-2])
+    DIRECTORY="$PRE${(j:/:)DIRECTORY}"
+    local SEARCH="$WORD[${#DIRECTORY}+$MID+1,-1]"
+    local FILE="$(
+    [[ -n $DIRECTORY ]] && cd -q $DIRECTORY
+    fd -H | fzf --border=rounded --height=50% --query="$SEARCH"
+    )"
+    if [[ -n $FILE ]]; then
+	[[ -n $DIRECTORY ]] && DIRECTORY="$DIRECTORY/"
+	LBUFFER="$LBUFFER[1,-${#WORD}-1]$DIRECTORY$FILE"
     fi
-    FILE="$(fd -H | fzf --border=rounded --height=50% --query=$STUB)"
-    [[ -n "$FILE" ]] && LBUFFER="$LBUFFER[1,-$((${#WORD}+1))]$DIRECTORY$FILE"
-    [[ -n "$DIRECTORY" ]] && popd -q
     zle reset-prompt
 }
 zle -N personal_fzf_file
