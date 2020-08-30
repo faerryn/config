@@ -49,8 +49,6 @@ set termguicolors
 " autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 let g:highlightedyank_highlight_duration = 500
 
-let g:asmsyntax='nasm'
-
 " packages
 packloadall
 

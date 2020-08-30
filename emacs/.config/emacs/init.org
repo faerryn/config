@@ -16,7 +16,7 @@
     (require 'use-package))
 #+end_src
 * Aesthetics
-** Elegant
+** Clean Slate
 #+begin_src emacs-lisp
   (setq-default inhibit-startup-screen t
                 inhibit-startup-echo-area-message t
@@ -29,23 +29,20 @@
   (tool-bar-mode -1)
   (tooltip-mode -1)
   (fringe-mode '(0 . 0))
+  (require 'dired-x)
+  (add-hook 'dired-mode-hook 'dired-omit-mode)
 #+end_src
-** Sexy Theme
+** Theme
 #+begin_src emacs-lisp
   (use-package doom-themes
     :ensure t
     :config (load-theme 'doom-vibrant t))
   (global-hl-line-mode +1)
   (global-prettify-symbols-mode +1)
-  (show-paren-mode +1)
   (setq-default display-line-numbers "relative")
 #+end_src
-** Dired omit
-#+begin_src emacs-lisp
-  (require 'dired-x)
-  (add-hook 'dired-mode-hook 'dired-omit-mode)
-#+end_src
-* Undotree
+* Vim Bindings
+** Undotree
 #+begin_src emacs-lisp
   (use-package undo-tree
     :ensure t
@@ -59,8 +56,7 @@
                 (setq display-line-numbers nil)))
     (global-undo-tree-mode +1))
 #+end_src
-* Evil Mode
-** Vim
+** Evil Mode
 #+begin_src emacs-lisp
   (use-package evil
     :ensure t
@@ -80,20 +76,68 @@
       "Q" "@@")
     (global-set-key (kbd "C-c v") #'evil-mode)
     (evil-mode +1))
+#+end_src
+** Evil Bindings
+*** Collection
+#+begin_src emacs-lisp
   (use-package evil-collection
     :ensure t
     :after (evil)
     :config
     (evil-collection-init))
 #+end_src
-** Goggles
+*** Org
+#+begin_src emacs-lisp
+  (use-package evil-org
+    :ensure t
+    :after (evil org)
+    :config
+    (add-hook 'org-mode-hook #'(lambda ()
+                                 (setq evil-auto-indent nil)
+                                 (evil-org-mode +1)))
+    (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys))
+#+end_src
+*** Magit
+#+begin_src emacs-lisp
+  (use-package evil-magit
+    :ensure t
+    :after (evil magit))
+#+end_src
+** Plugins
+*** Goggles
 #+begin_src emacs-lisp
   (use-package evil-goggles
     :ensure t
     :after (evil)
+    :init
+    (setq-default evil-goggles-duration 0.500) ;; default is 0.200
     :config (evil-goggles-mode +1))
 #+end_src
-* Org Mode
+* Majors
+** Lisp
+#+begin_src emacs-lisp
+  (use-package lispyville
+    :ensure t
+    :after (lispy)
+    :config (lispyville-set-key-theme '(operators))
+    (add-hook 'lisp-mode-hook #'lispyville-mode)
+    (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
+  (use-package lispy
+    :ensure t
+    :functions evil-collection-lispy-set-key-theme
+    :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
+    (add-hook 'lisp-mode-hook #'lispy-mode)
+    (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
+#+end_src
+** Zig
+#+begin_src emacs-lisp
+  (use-package zig-mode
+    :ensure t
+    :init (setq-default zig-format-on-save t))
+#+end_src
+** Org
 #+begin_src emacs-lisp
   (use-package org
     :ensure t
@@ -111,27 +155,14 @@
     (add-hook 'org-mode-hook (lambda ()
                                (org-toggle-pretty-entities)
                                (visual-line-mode +1))))
-  (use-package evil-org
-    :ensure t
-    :after (evil org)
-    :config
-    (add-hook 'org-mode-hook #'(lambda ()
-                                 (setq evil-auto-indent nil)
-                                 (evil-org-mode +1)))
-    (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
-    (require 'evil-org-agenda)
-    (evil-org-agenda-set-keys))
 #+end_src
 * Magit
 #+begin_src emacs-lisp
   (use-package magit
     :ensure t
     :config (global-set-key (kbd "C-c g") #'magit-status))
-  (use-package evil-magit
-    :ensure t
-    :after (evil magit))
 #+end_src
-* Counsel
+* Ivy
 #+begin_src emacs-lisp
   (use-package counsel
     :ensure t
@@ -139,21 +170,6 @@
     (setq ivy-count-format "(%d/%d) ")
     (ivy-mode +1)
     (counsel-mode +1))
-#+end_src
-* Lisp
-#+begin_src emacs-lisp
-  (use-package lispyville
-    :ensure t
-    :after (lispy)
-    :config (lispyville-set-key-theme '(operators))
-    (add-hook 'lisp-mode-hook #'lispyville-mode)
-    (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
-  (use-package lispy
-    :ensure t
-    :functions evil-collection-lispy-set-key-theme
-    :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
-    (add-hook 'lisp-mode-hook #'lispy-mode)
-    (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
 #+end_src
 * Sundry
 #+begin_src emacs-lisp
