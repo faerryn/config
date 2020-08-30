@@ -156,6 +156,10 @@
                                (org-toggle-pretty-entities)
                                (visual-line-mode +1))))
 #+end_src
+** Ledger
+#+begin_src emacs-lisp
+  (use-package ledger-mode :ensure t)
+#+end_src
 * Magit
 #+begin_src emacs-lisp
   (use-package magit
