@@ -55,7 +55,7 @@ colorscheme gruvbox
 
 " vim-fugitive
 autocmd FileType fugitive nnoremap <buffer> <Esc> <C-W>c
-nnoremap <Leader>g <Cmd>Git<CR>
+nnoremap <Leader>g <Cmd>Git<CR><C-W>L
 
 " vim-sandwich
 let g:sandwich_no_default_key_mappings=1
@@ -77,7 +77,7 @@ nmap sh <Plug>(swap-prev)
 nmap sl <Plug>(swap-next)
 
 " undotree
-let g:undotree_CustomUndotreeCmd='split'
+let g:undotree_CustomUndotreeCmd='vsplit'
 let g:undotree_CustomDiffpanelCmd='split'
 let g:undotree_HelpLine=0
 nnoremap <Leader>u <Cmd>UndotreeShow<CR>:UndotreeFocus<CR>

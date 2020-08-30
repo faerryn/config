@@ -52,9 +52,10 @@
                   undo-tree-history-directory-alist 
                   `(("." . ,(expand-file-name "undo" user-emacs-directory))))
     :config
-    (add-hook 'undo-tree-visualizer-mode-hook (lambda ()
-                                                (undo-tree-visualizer-selection-mode +1)
-                                                (setq display-line-numbers nil)))
+    (add-hook 'undo-tree-visualizer-mode-hook 
+              (lambda () 
+                (undo-tree-visualizer-selection-mode +1)
+                (setq display-line-numbers nil)))
     (global-undo-tree-mode +1))
 #+end_src
 ** Evil Mode
@@ -85,9 +86,10 @@
   (use-package evil-org
     :after (evil org)
     :config
-    (add-hook 'org-mode-hook (lambda ()
-                               (setq evil-auto-indent nil)
-                               (evil-org-mode +1)))
+    (add-hook 'org-mode-hook 
+              (lambda ()
+                (setq evil-auto-indent nil)
+                (evil-org-mode +1)))
     (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys)
@@ -114,12 +116,14 @@
     :config
     (evil-collection-lispy-set-key-theme '(paredit c-digits))
     (lispyville-set-key-theme '(operators))
-    (add-hook 'lisp-mode-hook (lambda ()
-                                (lispy-mode +1)
-                                (lispyville-mode +1)))
-    (add-hook 'emacs-lisp-mode-hook (lambda ()
-                                      (lispy-mode +1)
-                                      (lispyville-mode +1))))
+    (add-hook 'lisp-mode-hook 
+              (lambda ()
+                (lispy-mode +1)
+                (lispyville-mode +1)))
+    (add-hook 'emacs-lisp-mode-hook 
+              (lambda ()
+                (lispy-mode +1)
+                (lispyville-mode +1))))
 #+end_src
 ** Zig
 #+begin_src emacs-lisp
@@ -140,9 +144,10 @@
     :config
     (global-set-key (kbd "C-c l") #'org-store-link)
     (global-set-key (kbd "C-c a") #'org-agenda)
-    (add-hook 'org-mode-hook (lambda ()
-                               (org-toggle-pretty-entities)
-                               (visual-line-mode +1))))
+    (add-hook 'org-mode-hook 
+              (lambda ()
+                (org-toggle-pretty-entities)
+                (visual-line-mode +1))))
 #+end_src
 ** Ledger
 #+begin_src emacs-lisp
@@ -162,7 +167,8 @@
 #+end_src
 * Sundry
 #+begin_src emacs-lisp
-  (add-hook 'after-init-hook (lambda () (setq-default vc-follow-symlinks t)))
+  (add-hook 'after-init-hook 
+            (lambda () (setq-default vc-follow-symlinks t)))
   (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
   (when (file-exists-p custom-file) (load-file custom-file))
 #+end_src
