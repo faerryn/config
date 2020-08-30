@@ -15,7 +15,7 @@ set spell spellcapcheck=
 set splitbelow splitright
 set timeoutlen=500
 set undofile
-set updatetime=500
+set updatetime=50
 
 let &grepprg='rg --vimgrep'
 let g:mapleader=' '
@@ -90,9 +90,6 @@ autocmd FileType undotree nnoremap <buffer> <C-W>c <Cmd>UndotreeHide<CR>
 
 " nvim-colorizer.lua
 lua require'colorizer'.setup()
-
-" vim-signify
-autocmd User SignifyAutocmds exe 'au! signify' | au signify BufWritePost * call sy#start()
 
 " zig.vim
 let g:zig_fmt_autosave=1
