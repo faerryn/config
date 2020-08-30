@@ -46,10 +46,11 @@
 #+begin_src emacs-lisp
   (use-package undo-tree
     :ensure t
-    :config
+    :init
     (setq-default undo-tree-auto-save-history t
                   undo-tree-history-directory-alist 
                   `(("." . ,(expand-file-name "undo" user-emacs-directory))))
+    :config
     (add-hook 'undo-tree-visualizer-mode-hook 
               (lambda ()
                 (undo-tree-visualizer-selection-mode +1)
@@ -83,8 +84,7 @@
   (use-package evil-collection
     :ensure t
     :after (evil)
-    :config
-    (evil-collection-init))
+    :config (evil-collection-init))
 #+end_src
 *** Org
 #+begin_src emacs-lisp
@@ -111,25 +111,24 @@
   (use-package evil-goggles
     :ensure t
     :after (evil)
-    :init
-    (setq-default evil-goggles-duration 0.500) ;; default is 0.200
+    :init (setq-default evil-goggles-duration 0.500)
     :config (evil-goggles-mode +1))
 #+end_src
 * Majors
 ** Lisp
 #+begin_src emacs-lisp
-  (use-package lispyville
-    :ensure t
-    :after (lispy)
-    :config (lispyville-set-key-theme '(operators))
-    (add-hook 'lisp-mode-hook #'lispyville-mode)
-    (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
   (use-package lispy
     :ensure t
     :functions evil-collection-lispy-set-key-theme
     :config (evil-collection-lispy-set-key-theme '(paredit c-digits))
     (add-hook 'lisp-mode-hook #'lispy-mode)
     (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
+  (use-package lispyville
+    :ensure t
+    :after (lispy)
+    :config (lispyville-set-key-theme '(operators))
+    (add-hook 'lisp-mode-hook #'lispyville-mode)
+    (add-hook 'emacs-lisp-mode-hook #'lispyville-mode))
 #+end_src
 ** Zig
 #+begin_src emacs-lisp
@@ -141,7 +140,7 @@
 #+begin_src emacs-lisp
   (use-package org
     :ensure t
-    :config
+    :init
     (setq-default
      org-src-tab-acts-natively t
      org-startup-indented t
@@ -150,6 +149,7 @@
      org-agenda-start-on-weekday 0
      org-hide-emphasis-markers t
      org-confirm-elisp-link-function nil)
+    :config
     (global-set-key (kbd "C-c l") #'org-store-link)
     (global-set-key (kbd "C-c a") #'org-agenda)
     (add-hook 'org-mode-hook (lambda ()
@@ -166,8 +166,8 @@
 #+begin_src emacs-lisp
   (use-package counsel
     :ensure t
+    :init (setq ivy-count-format "(%d/%d) ")
     :config
-    (setq ivy-count-format "(%d/%d) ")
     (ivy-mode +1)
     (counsel-mode +1))
 #+end_src
@@ -175,6 +175,5 @@
 #+begin_src emacs-lisp
   (add-hook 'after-init-hook (lambda () (setq-default vc-follow-symlinks t)))
   (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
-  (when (file-exists-p custom-file)
-    (load-file custom-file))
+  (when (file-exists-p custom-file) (load-file custom-file))
 #+end_src
