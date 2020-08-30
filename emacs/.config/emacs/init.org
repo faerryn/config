@@ -1,13 +1,16 @@
 * Packages
-** Repositories
+** Add Repositories
 #+begin_src emacs-lisp
   (require 'package)
   (package-initialize)
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 #+end_src
-** Install Packages
+** List Packages
 #+begin_src emacs-lisp
   (setq-default package-selected-packages '(use-package undo-tree evil evil-collection magit evil-magit evil-goggles doom-themes org evil-org lispyville ledger-mode zig-mode))
+#+end_src
+** Install Packages
+#+begin_src emacs-lisp
   (setq personal-already-refreshed nil)
   (dolist (personal-package package-selected-packages)
     (unless (package-installed-p personal-package)
