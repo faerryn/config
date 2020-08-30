@@ -70,5 +70,5 @@
 	path = spacevim/.config/nvim
 	url = https://github.com/SpaceVim/SpaceVim.git
 [submodule "doom-emacs"]
-	path = doom_emacs/.config/emacs
+	path = emacs/.config/emacs
 	url = https://github.com/hlissner/doom-emacs.git
