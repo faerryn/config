@@ -28,7 +28,7 @@ export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 export WINEPREFIX="$HOME/wine"
 
 # ls
-alias ls="ls -hF --color=auto --group-directories-first"
+alias ls="ls -hvxFX --color=auto --group-directories-first"
 
 # Neovim
 if command -v nvim >/dev/null; then
