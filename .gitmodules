@@ -66,9 +66,6 @@
 [submodule "vim-highlightedyank"]
 	path = neovim/.config/nvim/pack/personal/start/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank.git
-[submodule "SpaceVim"]
-	path = spacevim/.config/nvim
-	url = https://github.com/SpaceVim/SpaceVim.git
 [submodule "doom-emacs"]
 	path = emacs/.config/emacs
 	url = https://github.com/hlissner/doom-emacs.git
