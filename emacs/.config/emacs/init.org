@@ -23,7 +23,6 @@
                 initial-scratch-message nil
                 initial-major-mode 'org-mode
                 mode-line-format nil
-                line-move-visual nil
                 line-spacing 0)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
@@ -38,8 +37,8 @@
     :config (load-theme 'doom-vibrant t))
   (global-hl-line-mode +1)
   (global-prettify-symbols-mode +1)
-  (setq-default display-line-numbers 'visual)
   (show-paren-mode +1)
+  (setq-default display-line-numbers "relative")
 #+end_src
 ** Dired omit
 #+begin_src emacs-lisp
@@ -123,8 +122,7 @@
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys))
 #+end_src
-* Git Tools
-** Magit
+* Magit
 #+begin_src emacs-lisp
   (use-package magit
     :ensure t
@@ -132,17 +130,6 @@
   (use-package evil-magit
     :ensure t
     :after (evil magit))
-#+end_src
-** Git Gutter
-#+begin_src emacs-lisp
-  (use-package git-gutter
-    :ensure t
-    :after (evil)
-    :config
-    (evil-define-key 'normal 'global 
-      "]c" #'git-gutter:next-hunk
-      "[c" #'git-gutter:previous-hunk)
-    (global-git-gutter-mode +1))
 #+end_src
 * Counsel
 #+begin_src emacs-lisp
@@ -170,7 +157,7 @@
 #+end_src
 * Sundry
 #+begin_src emacs-lisp
-  (setq-default vc-follow-symlinks t)
+  (add-hook 'after-init-hook (lambda () (setq-default vc-follow-symlinks t)))
   (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
   (when (file-exists-p custom-file)
     (load-file custom-file))
