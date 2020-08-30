@@ -41,7 +41,7 @@
   (use-package doom-themes :config (load-theme 'doom-vibrant t))
   (global-hl-line-mode +1)
   (global-prettify-symbols-mode +1)
-  (setq-default display-line-numbers "relative")
+  (setq-default display-line-numbers 'relative)
 #+end_src
 * Vim Bindings
 ** Undotree

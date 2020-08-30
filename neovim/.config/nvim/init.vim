@@ -5,7 +5,6 @@ autocmd!
 set clipboard=unnamed,unnamedplus
 set confirm
 set hidden
-set ignorecase smartcase
 set lazyredraw
 set mouse=ar
 set nrformats=alpha,octal,hex,bin

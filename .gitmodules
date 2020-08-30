@@ -69,9 +69,6 @@
 [submodule "SpaceVim"]
 	path = spacevim/.config/nvim
 	url = https://github.com/SpaceVim/SpaceVim.git
-[submodule "spacemacs"]
-	path = spacemacs/.config/emacs
-	url = https://github.com/syl20bnr/spacemacs.git
 [submodule "doom-emacs"]
 	path = doom_emacs/.config/emacs
 	url = https://github.com/hlissner/doom-emacs.git
