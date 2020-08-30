@@ -109,7 +109,7 @@ function personal_fzf_history () {
     zle reset-prompt
 }
 zle -N personal_fzf_history
-bindkey '^R' personal_fzf_history
+bindkey "^R" personal_fzf_history
 
 # Completion/Correction
 autoload -Uz compinit
