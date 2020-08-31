@@ -35,22 +35,23 @@ autocmd VimEnter * silent! helptags ALL
 " aesthetics
 set cursorline cursorcolumn colorcolumn=80
 set inccommand=nosplit
-set laststatus=0 showtabline=0
 set noequalalways
 set noruler
+set noshowmode
 set nowrap linebreak
 set number relativenumber signcolumn=yes "number
+set showtabline=0
 set softtabstop=4 shiftwidth=4
 set termguicolors
 
 " autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 let g:highlightedyank_highlight_duration = 500
 
-" packages
-packloadall
-
 " gruvbox
 colorscheme gruvbox
+
+" lightline.vim
+let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " vim-fugitive
 autocmd FileType fugitive nnoremap <buffer> <Esc> <C-W>c
@@ -84,7 +85,7 @@ autocmd FileType undotree nnoremap <buffer> <Esc> <Cmd>UndotreeHide<CR>
 autocmd FileType undotree nnoremap <buffer> <C-W>c <Cmd>UndotreeHide<CR>
 
 " nvim-colorizer.lua
-lua require'colorizer'.setup()
+autocmd VimEnter * lua require'colorizer'.setup()
 
 " zig.vim
 let g:zig_fmt_autosave=1

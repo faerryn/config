@@ -22,9 +22,6 @@
 [submodule "vim-unimpaired"]
 	path = neovim/.config/nvim/pack/personal/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "zsh-system-clipboard"]
-	path = zsh/.config/zsh/zsh-system-clipboard
-	url = https://github.com/kutsan/zsh-system-clipboard.git
 [submodule "tmux-pain-control"]
 	path = tmux/.config/tmux/tmux-pain-control
 	url = https://github.com/tmux-plugins/tmux-pain-control.git
@@ -56,9 +53,6 @@
 [submodule "vim-swap"]
 	path = neovim/.config/nvim/pack/personal/start/vim-swap
 	url = https://github.com/machakann/vim-swap.git
-[submodule "zsh-async"]
-	path = zsh/.config/zsh/zsh-async
-	url = https://github.com/mafredri/zsh-async.git
 [submodule "nvim-colorizer.lua"]
 	path = neovim/.config/nvim/pack/personal/start/nvim-colorizer.lua
 	url = https://github.com/norcalli/nvim-colorizer.lua.git
@@ -66,6 +60,15 @@
 [submodule "vim-highlightedyank"]
 	path = neovim/.config/nvim/pack/personal/start/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank.git
+[submodule "lightline.vim"]
+	path = neovim/.config/nvim/pack/personal/start/lightline.vim
+	url = https://github.com/itchyny/lightline.vim.git
+[submodule "zsh-async"]
+	path = zsh/.config/zsh/zsh-async
+	url = https://github.com/mafredri/zsh-async.git
+[submodule "zsh-system-clipboard"]
+	path = zsh/.config/zsh/zsh-system-clipboard
+	url = https://github.com/kutsan/zsh-system-clipboard.git
 [submodule "doom-emacs"]
 	path = emacs/.config/emacs
 	url = https://github.com/hlissner/doom-emacs.git

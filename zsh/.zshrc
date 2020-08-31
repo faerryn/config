@@ -13,13 +13,11 @@ alias la="ls -A"
 alias ll="ls -g"
 alias lla="ll -gA"
 
-alias ec="emacsclient"
-alias em="emacs"
-
 alias ..="cd .."
 alias ...="cd ../.."
 
 # Prompt
+setopt PROMPT_SUBST
 PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%F{green}%f%(0?..%F{red})%(!.#.$)%f "
 RPROMPT=
 
@@ -117,3 +115,24 @@ mkdir -p "$XDG_CACHE_HOME/zsh"
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 zstyle ':completion:*' accept-exact '*(N)'
 setopt CORRECT
+
+# emacs-libvterm
+if [[ -n "$INSIDE_EMACS" ]]; then
+    function vterm_printf () {
+	[ -n "$TMUX" ]\
+	    && printf "\ePtmux;\e\e]%s\007\e\\" "$1"\
+	    || printf "\e]%s\e\\" "$1"
+    }
+    function vterm_prompt_end () { vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"; }
+    PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
+    function vterm_cmd () {
+	local vterm_elisp
+	vterm_elisp=""
+	while [ $# -gt 0 ]; do
+	    vterm_elisp="$vterm_elisp""$(printf '"%s" ' "$(printf "%s" "$1" | sed -e 's|\\|\\\\|g' -e 's|"|\\"|g')")"
+	    shift
+	done
+	vterm_printf "51;E$vterm_elisp"
+    }
+    function emacs () { vterm_cmd find-file "$(realpath "$@")" }
+fi
