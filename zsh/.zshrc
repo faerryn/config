@@ -35,7 +35,7 @@ function personal_prompt_callback () {
 }
 function personal_prompt () {
     async_flush_jobs personal_prompt_worker
-    if ! 2>/dev/null async_job personal_prompt_worker personal_prompt_git $PWD; then
+    if ! {2>/dev/null async_job personal_prompt_worker personal_prompt_git $PWD}; then
 	personal_prompt_worker_init
 	async_flush_jobs personal_prompt_worker
     fi
