@@ -1,10 +1,3 @@
-let g:plug_window='split new'
-let g:plug_pwindow='split'
-
-autocmd FileType vim-plug nmap <Esc> q
-
-call plug#begin(g:personal_vim_d . '/plugged')
-
 Plug 'aymericbeaumet/vim-symlink'
 Plug 'chaoren/vim-wordmotion'
 Plug 'machakann/vim-sandwich'
@@ -24,5 +17,3 @@ Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mhinz/vim-signify'
 Plug 'norcalli/nvim-colorizer.lua'
-
-call plug#end()
