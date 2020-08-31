@@ -81,13 +81,12 @@ function personal_fzf_file () {
     local WORD="${LBUFFER##* }"
     local PIECES=(${(s:/:)WORD})
     local DIRECTORY="$PRE${(j:/:)PIECES}"
-    [[ $WORD[1] = "/" ]] && local PRE="/"
-    [[ $WORD =~ "/" ]] && local MID=1 || local MID=0
+    [[ $WORD[1] = "/" ]] && local PRE="/" || local PRE=
     while [[ ! -d $~DIRECTORY ]] && [[ ${#PIECES[@]} -gt 0 ]]; do
 	PIECES=($PIECES[1,-2])
 	DIRECTORY="$PRE${(j:/:)PIECES}"
     done
-    local SEARCH="$WORD[${#DIRECTORY}+$MID+1,-1]"
+    local SEARCH="$WORD[${#DIRECTORY}+2,-1]"
     local FILE="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd -H | fzf --height=50% --query="$SEARCH")"
     if [[ -n $FILE ]]; then
 	[[ -n $DIRECTORY ]] && DIRECTORY="$DIRECTORY/"

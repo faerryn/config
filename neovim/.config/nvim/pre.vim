@@ -28,6 +28,8 @@ nnoremap <Leader>q <Cmd>copen<CR>
 
 autocmd FileType qf nnoremap <buffer> <Esc> <C-W>c
 
+silent! execute 'mkspell! ' g:personal_vim_d '/spell/*.add'
+
 " aesthetics
 set cursorline cursorcolumn colorcolumn=80
 set inccommand=nosplit

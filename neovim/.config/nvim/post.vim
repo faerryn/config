@@ -1,5 +1,4 @@
 " core
-silent! execute 'mkspell! ' g:personal_vim_d '/spell/*.add'
 silent! helptags ALL
 
 " gruvbox
