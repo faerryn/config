@@ -1,7 +1,3 @@
-" vim-highlightedyank
-" autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
-let g:highlightedyank_highlight_duration = 500
-
 " vim-plug
 let g:plug_window='split new'
 let g:plug_pwindow='split'

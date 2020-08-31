@@ -17,15 +17,13 @@ let g:mapleader=' '
 
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 autocmd BufEnter * if len(expand('%')) > 0 | execute 'cd ' expand('%:h') | endif
+autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
 
 noremap <Leader> <Nop>
 noremap s <Nop>
-
 nnoremap Y y$
-
 nnoremap <Leader>l <Cmd>lopen<CR>
 nnoremap <Leader>q <Cmd>copen<CR>
-
 autocmd FileType qf nnoremap <buffer> <Esc> <C-W>c
 
 silent! execute 'mkspell! ' g:personal_vim_d '/spell/*.add'
@@ -37,7 +35,7 @@ set noequalalways
 set noruler
 set noshowmode
 set wrap linebreak
-set number relativenumber signcolumn=yes "number
+set number relativenumber signcolumn=number
 set showtabline=0
 set softtabstop=4 shiftwidth=4
 set termguicolors
