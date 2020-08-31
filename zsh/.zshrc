@@ -15,6 +15,7 @@ alias lla="ll -gA"
 
 alias ..="cd .."
 alias ...="cd ../.."
+alias ....="cd ../../.."
 
 # Prompt
 setopt PROMPT_SUBST
