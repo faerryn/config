@@ -1,4 +1,4 @@
-# Profile is sourced 
+# Profile is sourced
 export PERSONAL_PROFILE=
 
 # XDG directories

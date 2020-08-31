@@ -13,6 +13,8 @@ alias la="ls -A"
 alias ll="ls -g"
 alias lla="ll -gA"
 
+alias em=emacs
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
