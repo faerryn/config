@@ -24,9 +24,8 @@ alias ls="ls -hvxFX --color=auto --group-directories-first"
 alias fd="fd --ignore-file=$XDG_CONFIG_HOME/fd/ignore"
 
 # Neovim
-if command -v nvim >/dev/null; then
+if {command -v nvim >/dev/null}; then
     export EDITOR="nvim"
     export VISUAL="nvim"
-    export MANPAGER="nvim -R +'set ft=man' -"
     alias vim="nvim"
 fi
