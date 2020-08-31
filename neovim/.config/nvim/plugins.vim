@@ -1,7 +1,7 @@
 let g:plug_window='split new'
 let g:plug_pwindow='split'
 
-call plug#begin(fnamemodify($MYVIMRC, ':h') . '/plugged')
+call plug#begin(g:personal_vim_d . '/plugged')
 
 Plug 'mhinz/vim-startify'
 Plug 'aymericbeaumet/vim-symlink'
