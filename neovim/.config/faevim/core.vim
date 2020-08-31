@@ -12,12 +12,11 @@ set timeoutlen=500
 set undofile
 set updatetime=50
 
-let &grepprg='rg --vimgrep'
+if executable('rg') | let &grepprg='rg --vimgrep' | endif
 let g:mapleader=' '
 
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 autocmd BufEnter * if len(expand('%')) > 0 | execute 'cd ' expand('%:h') | endif
-autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 
 noremap <Leader> <Nop>
 noremap s <Nop>
@@ -39,3 +38,5 @@ set number relativenumber signcolumn=number
 set showtabline=0
 set softtabstop=4 shiftwidth=4
 set termguicolors
+
+autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
