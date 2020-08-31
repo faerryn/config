@@ -1,3 +1,9 @@
+[submodule "vim-plug"]
+	path = neovim/.config/nvim/autoload
+	url = https://github.com/junegunn/vim-plug.git
+[submodule "doom-emacs"]
+	path = emacs/.config/emacs
+	url = https://github.com/hlissner/doom-emacs.git
 [submodule "tmux-pain-control"]
 	path = tmux/.config/tmux/tmux-pain-control
 	url = https://github.com/tmux-plugins/tmux-pain-control.git
@@ -13,9 +19,3 @@
 [submodule "zsh-system-clipboard"]
 	path = zsh/.config/zsh/zsh-system-clipboard
 	url = https://github.com/kutsan/zsh-system-clipboard.git
-[submodule "doom-emacs"]
-	path = emacs/.config/emacs
-	url = https://github.com/hlissner/doom-emacs.git
-[submodule "neovim/.config/nvim/vim-plug"]
-	path = neovim/.config/nvim/autoload
-	url = https://github.com/junegunn/vim-plug.git
