@@ -1,5 +1,7 @@
 return {
+
     -- core
+
     "aymericbeaumet/vim-symlink",
     "chaoren/vim-wordmotion",
     "machakann/vim-sandwich",
@@ -14,11 +16,14 @@ return {
     "tpope/vim-unimpaired",
 
     -- aesthetics
+
     "airblade/vim-gitgutter",
     "gruvbox-community/gruvbox",
     "itchyny/lightline.vim",
     "norcalli/nvim-colorizer.lua",
 
     -- languages
+
     "ziglang/zig.vim",
+
 }

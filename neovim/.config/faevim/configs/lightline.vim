@@ -1,4 +1,4 @@
-function s:update_lightline()
+function! s:update_lightline() abort
     if exists('g:colors_name')
 	let g:lightline={'colorscheme': g:colors_name}
 	call lightline#enable()
