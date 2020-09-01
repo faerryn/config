@@ -1,2 +1,2 @@
 set spell spellcapcheck=
-execute 'silent! mkspell!' luaeval('nvim_d') . '/spell/*.add'
+execute 'silent! mkspell!' fnamemodify($MYVIMRC, ':h') . '/spell/*.add'

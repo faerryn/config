@@ -1,5 +1,5 @@
 /.config/nvim/.netrwhist
-/.config/nvim/dein_cache/
+/.config/nvim/plugged/
 /.config/nvim/spell/
 /.local/share/nvim/*
 /.local/share/nvim/
