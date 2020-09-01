@@ -11,9 +11,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 
-Plug 'ziglang/zig.vim'
-
 Plug 'airblade/vim-gitgutter'
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'norcalli/nvim-colorizer.lua'
+
+Plug 'ziglang/zig.vim'
