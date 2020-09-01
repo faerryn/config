@@ -1,2 +1,2 @@
 set spell spellcapcheck=
-silent! execute 'mkspell! ' g:personal_vim_d . '/spell/*.add'
+execute 'silent! mkspell!' luaeval('nvim_d') . '/spell/*.add'

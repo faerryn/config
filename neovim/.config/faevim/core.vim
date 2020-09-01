@@ -1,3 +1,7 @@
+augroup Faevim
+    autocmd!
+augroup END
+
 " core
 set clipboard=unnamed,unnamedplus
 set confirm
