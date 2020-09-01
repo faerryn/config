@@ -11,8 +11,6 @@ set timeoutlen=500
 set undofile
 set updatetime=500
 
-if executable('rg') | let &grepprg='rg --vimgrep' | endif
-
 autocmd BufEnter * if len(expand('%')) > 0 | execute 'cd ' expand('%:h') | endif
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 
