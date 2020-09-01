@@ -1,19 +1,19 @@
-Plug 'aymericbeaumet/vim-symlink'
-Plug 'chaoren/vim-wordmotion'
-Plug 'machakann/vim-sandwich'
-Plug 'machakann/vim-swap'
-Plug 'mbbill/undotree'
-Plug 'moll/vim-bbye'
-Plug 'pbrisbin/vim-mkdir'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-unimpaired'
+call dein#add('aymericbeaumet/vim-symlink')
+call dein#add('chaoren/vim-wordmotion')
+call dein#add('machakann/vim-sandwich')
+call dein#add('machakann/vim-swap')
+call dein#add('mbbill/undotree')
+call dein#add('moll/vim-bbye')
+call dein#add('pbrisbin/vim-mkdir')
+call dein#add('tomtom/tcomment_vim')
+call dein#add('tpope/vim-eunuch')
+call dein#add('tpope/vim-fugitive')
+call dein#add('tpope/vim-repeat')
+call dein#add('tpope/vim-unimpaired')
 
-Plug 'ziglang/zig.vim'
+call dein#add('ziglang/zig.vim')
 
-Plug 'airblade/vim-gitgutter'
-Plug 'gruvbox-community/gruvbox'
-Plug 'itchyny/lightline.vim'
-Plug 'norcalli/nvim-colorizer.lua'
+call dein#add('airblade/vim-gitgutter')
+call dein#add('gruvbox-community/gruvbox')
+call dein#add('itchyny/lightline.vim')
+call dein#add('norcalli/nvim-colorizer.lua')

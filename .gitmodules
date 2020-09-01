@@ -1,6 +1,6 @@
-[submodule "vim-plug"]
-	path = neovim/.config/nvim/autoload
-	url = https://github.com/junegunn/vim-plug.git
+[submodule "dein.vim"]
+	path = neovim/.config/nvim/dein.vim
+	url = https://github.com/Shougo/dein.vim.git
 [submodule "doom-emacs"]
 	path = emacs/.config/emacs
 	url = https://github.com/hlissner/doom-emacs.git

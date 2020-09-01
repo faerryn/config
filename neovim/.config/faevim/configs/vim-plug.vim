@@ -1,3 +1,2 @@
-let g:plug_window='split new'
-let g:plug_pwindow='split'
-autocmd FileType vim-plug nmap <Esc> q
+command! DeinUpdate call dein#update()
+command! DeinClean for s:plugin in  dein#check_clean() | call delete(s:plugin, 'rf') | endfor

@@ -1,29 +1,28 @@
-let s:guards = {}
-function s:guarded_source(file)
-    if !exists("s:guards['" . a:file . "']")
-	execute 'source' a:file
-	let s:guards[a:file] = 1
-    endif
-endfunction
-
 execute 'augroup Personal'
 autocmd!
 
 let s:faevim_d=expand('$XDG_CONFIG_HOME/faevim')
-let s:plugged_d=fnamemodify($MYVIMRC, ':h') . '/plugged'
 
-call s:guarded_source(s:faevim_d . '/core.vim')
+execute 'source' s:faevim_d . '/core.vim'
 
-call s:guarded_source(s:faevim_d . '/configs/vim-plug.vim')
-call plug#begin(s:plugged_d)
-call s:guarded_source(s:faevim_d . '/list.vim')
-call plug#end()
-if !isdirectory(s:plugged_d)
-    PlugInstall
+let s:dein_d=fnamemodify($MYVIMRC, ':h') . '/dein.vim'
+let s:dein_cache_d=fnamemodify($MYVIMRC, ':h') . '/dein_cache'
+
+let &runtimepath.=',' . s:dein_d
+
+if dein#load_state(s:dein_cache_d)
+    call dein#begin(s:dein_cache_d)
+    call dein#add(s:dein_d)
+    execute 'source' s:faevim_d . '/list.vim'
+    call dein#end()
+    call dein#save_state()
+endif
+if !isdirectory(s:dein_cache_d . '/repos')
+    call dein#install()
 endif
 
 for s:config in split(glob(s:faevim_d . '/configs/*.vim'), '\n')
-    call s:guarded_source(s:config)
+    execute 'source' s:config
 endfor
 
 execute 'augroup END'
