@@ -1,7 +1,7 @@
 set hidden termguicolors
 
-let s:faevim_d = expand('$XDG_CONFIG_HOME/faevim')
-let s:plugged_d = fnamemodify($MYVIMRC, ':h') . '/plugged'
+let s:faevim_d=expand('$XDG_CONFIG_HOME/faevim')
+let s:plugged_d=fnamemodify($MYVIMRC, ':h') . '/plugged'
 
 execute 'augroup Personal'
 autocmd!

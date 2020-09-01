@@ -13,8 +13,7 @@ Plug 'tpope/vim-unimpaired'
 
 Plug 'ziglang/zig.vim'
 
+Plug 'airblade/vim-gitgutter'
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
-Plug 'machakann/vim-highlightedyank'
-Plug 'mhinz/vim-signify'
 Plug 'norcalli/nvim-colorizer.lua'

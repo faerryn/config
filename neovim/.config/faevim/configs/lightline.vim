@@ -1,6 +1,6 @@
 function s:update_lightline()
     if exists('g:colors_name')
-	let g:lightline = {'colorscheme': g:colors_name}
+	let g:lightline={'colorscheme': g:colors_name}
 	call lightline#enable()
     endif
 endfunction
