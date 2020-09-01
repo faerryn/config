@@ -18,6 +18,10 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") < line('$') | execute "n
 
 let g:mapleader=' '
 
+nnoremap Y y$
+noremap <Leader> <Nop>
+noremap s <Nop>
+
 " aesthetics
 set cursorline cursorcolumn colorcolumn=80
 set inccommand=nosplit
