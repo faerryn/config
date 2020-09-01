@@ -1,6 +1,7 @@
 " core
 set clipboard=unnamed,unnamedplus
 set confirm
+set hidden
 set mouse=ar
 set nrformats=alpha,octal,hex,bin
 set omnifunc=syntaxcomplete#Complete
@@ -9,15 +10,9 @@ set timeoutlen=500 updatetime=500
 set undofile
 
 autocmd BufEnter * if !empty(@%) && empty(&buftype) | execute 'cd ' expand('%:h') | endif
-autocmd BufReadPost * execute "normal! g'\""
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") < line('$') | execute "normal! g'\"" | endif
 
-noremap <Space> <Nop>
-noremap s <Nop>
-nnoremap Y y$
-autocmd FileType qf nnoremap <buffer> <Esc> <C-W>c
-
-nnoremap <Space>l <Cmd>lopen<CR>
-nnoremap <Space>q <Cmd>copen<CR>
+let g:mapleader=' '
 
 " aesthetics
 set cursorline cursorcolumn colorcolumn=80

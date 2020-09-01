@@ -27,7 +27,7 @@ alias fd="fd --ignore-file=$XDG_CONFIG_HOME/fd/ignore"
 alias rg="rg --hidden"
 
 # Neovim
-if {command -v nvim >/dev/null}; then
+if {>/dev/null command -v nvim}; then
     export EDITOR=nvim
     export VISUAL=nvim
     alias vim=nvim

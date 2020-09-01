@@ -1,1 +1,1 @@
-lua require'colorizer'.setup()
+autocmd VimEnter * lua require'colorizer'.setup()
