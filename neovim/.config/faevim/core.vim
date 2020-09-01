@@ -1,7 +1,6 @@
 " core
 set clipboard=unnamed,unnamedplus
 set confirm
-set hidden
 set lazyredraw
 set mouse=ar
 set nrformats=alpha,octal,hex,bin
@@ -10,22 +9,21 @@ set spell spellcapcheck=
 set splitbelow splitright
 set timeoutlen=500
 set undofile
-set updatetime=50
+set updatetime=500
 
 if executable('rg') | let &grepprg='rg --vimgrep' | endif
-let g:mapleader=' '
 
 autocmd BufEnter * if len(expand('%')) > 0 | execute 'cd ' expand('%:h') | endif
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 
-noremap <Leader> <Nop>
+noremap <Space> <Nop>
 noremap s <Nop>
 nnoremap Y y$
-nnoremap <Leader>l <Cmd>lopen<CR>
-nnoremap <Leader>q <Cmd>copen<CR>
 autocmd FileType qf nnoremap <buffer> <Esc> <C-W>c
+silent! execute 'mkspell! ' g:personal_vim_d . '/spell/*.add'
 
-silent! execute 'mkspell! ' g:personal_vim_d '/spell/*.add'
+nnoremap <Space>l <Cmd>lopen<CR>
+nnoremap <Space>q <Cmd>copen<CR>
 
 " aesthetics
 set cursorline cursorcolumn colorcolumn=80
@@ -37,6 +35,5 @@ set wrap linebreak
 set number relativenumber signcolumn=number
 set showtabline=0
 set softtabstop=4 shiftwidth=4
-set termguicolors
 
 autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}

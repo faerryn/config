@@ -10,6 +10,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
+
 Plug 'ziglang/zig.vim'
 
 Plug 'gruvbox-community/gruvbox'
