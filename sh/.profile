@@ -1,6 +1,11 @@
 # Profile is sourced
 export PERSONAL_PROFILE=1
 
+# Path is reset
+[ -z "$PERSONAL_PATH" ]\
+    && export PERSONAL_PATH="$PATH"\
+    || export PATH="$PERSONAL_PATH"
+
 # XDG directories
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_DIRS=/etc/xdg

@@ -34,16 +34,11 @@ function personal_prompt_callback () {
 }
 function personal_prompt () {
     async_flush_jobs personal_prompt_worker
-    if ! {2>/dev/null async_job personal_prompt_worker personal_prompt_git $PWD}; then
-	personal_prompt_worker_init
-	async_flush_jobs personal_prompt_worker
-    fi
+    while ! {2>/dev/null async_job personal_prompt_worker personal_prompt_git $PWD}; do
+	async_start_worker personal_prompt_worker
+	async_register_callback personal_prompt_worker personal_prompt_callback
+    done
 }
-function personal_prompt_worker_init () {
-    async_start_worker personal_prompt_worker
-    async_register_callback personal_prompt_worker personal_prompt_callback
-}
-personal_prompt_worker_init
 
 precmd_functions+=(personal_prompt)
 
@@ -130,5 +125,5 @@ if [[ "$INSIDE_EMACS" == vterm ]]; then
 	done
 	vterm_printf "51;E$vterm_elisp"
     }
-    function emacs () { vterm_cmd find-file "$(realpath "$@")" }
+function emacs () { vterm_cmd find-file "$(realpath "$@")" }
 fi
