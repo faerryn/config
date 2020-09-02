@@ -87,10 +87,10 @@ function personal_fzf_file () {
 	PIECES=($PIECES[1,-2])
 	DIRECTORY="$PRE${(j:/:)PIECES}"
     done
-    local SEARCH="$WORD[${#DIRECTORY}+2,-1]"
+    [[ -n $DIRECTORY ]] && DIRECTORY="$DIRECTORY/"
+    local SEARCH="$WORD[${#DIRECTORY}+1,-1]"
     local FILE="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd | fzf --height=50% --query="$SEARCH")"
     if [[ -n $FILE ]]; then
-	[[ -n $DIRECTORY ]] && DIRECTORY="$DIRECTORY/"
 	LBUFFER="$LBUFFER[1,-${#WORD}-1]$DIRECTORY$FILE"
     fi
     zle reset-prompt
