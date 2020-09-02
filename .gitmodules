@@ -4,15 +4,6 @@
 [submodule "doom-emacs"]
 	path = emacs/.config/emacs
 	url = https://github.com/hlissner/doom-emacs.git
-[submodule "tmux-pain-control"]
-	path = tmux/.config/tmux/tmux-pain-control
-	url = https://github.com/tmux-plugins/tmux-pain-control.git
-[submodule "tmux-sessionist"]
-	path = tmux/.config/tmux/tmux-sessionist
-	url = https://github.com/tmux-plugins/tmux-sessionist.git
-[submodule "tmux-yank"]
-	path = tmux/.config/tmux/tmux-yank
-	url = https://github.com/tmux-plugins/tmux-yank.git
 [submodule "zsh-async"]
 	path = zsh/.config/zsh/zsh-async
 	url = https://github.com/mafredri/zsh-async.git
