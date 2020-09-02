@@ -1,5 +1,6 @@
 Plug 'aymericbeaumet/vim-symlink'
 Plug 'chaoren/vim-wordmotion'
+Plug 'justinmk/vim-dirvish'
 Plug 'machakann/vim-sandwich'
 Plug 'machakann/vim-swap'
 Plug 'mbbill/undotree'
@@ -11,9 +12,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 
-Plug 'airblade/vim-gitgutter'
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
+Plug 'mhinz/vim-signify'
 Plug 'norcalli/nvim-colorizer.lua'
 
 Plug 'ziglang/zig.vim'

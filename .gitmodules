@@ -1,5 +1,5 @@
 [submodule "vim-plug"]
-	path = neovim/.config/nvim/autoload
+	path = neovim/.config/nvim/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
 [submodule "doom-emacs"]
 	path = emacs/.config/emacs

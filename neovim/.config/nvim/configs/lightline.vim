@@ -4,5 +4,5 @@ function! s:update_lightline() abort
 	call lightline#enable()
     endif
 endfunction
-autocmd Faevim VimEnter * call s:update_lightline()
-autocmd Faevim ColorScheme * call s:update_lightline()
+autocmd VimEnter * call s:update_lightline()
+autocmd ColorScheme * call s:update_lightline()

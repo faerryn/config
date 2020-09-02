@@ -1,7 +1,3 @@
-augroup Faevim
-    autocmd!
-augroup END
-
 " core
 set clipboard+=unnamedplus
 set confirm
@@ -13,8 +9,7 @@ set splitbelow splitright
 set timeoutlen=500 updatetime=500
 set undofile
 
-autocmd BufEnter * if !empty(@%) && empty(&buftype) | execute 'cd ' expand('%:h') | endif
-autocmd BufReadPost * if line("'\"") > 0 && line("'\"") < line('$') | execute "normal! g'\"" | endif
+" autocmd BufReadPost * if line("'\"") > 0 && line("'\"") < line('$') | execute "normal! g'\"" | endif
 
 let g:mapleader=' '
 
