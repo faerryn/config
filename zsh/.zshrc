@@ -1,5 +1,5 @@
 # Ensure that profile is sourced
-[[ -z "$PERSONAL_PROFILE" ]] || source "$HOME/.profile"
+[[ -z "$PERSONAL_PROFILE" ]] && source "$HOME/.profile"
 
 # Empty out precmd_functions and preexec_functions
 precmd_functions=()
