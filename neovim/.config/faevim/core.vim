@@ -3,7 +3,7 @@ augroup Faevim
 augroup END
 
 " core
-set clipboard=unnamed,unnamedplus
+set clipboard+=unnamedplus
 set confirm
 set hidden
 set mouse=ar

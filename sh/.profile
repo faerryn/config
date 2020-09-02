@@ -11,12 +11,6 @@ export XDG_DATA_DIRS=/usr/local/share:/usr/share
 # DOOM Emacs
 export PATH="$XDG_CONFIG_HOME/emacs/bin:$PATH"
 
-# less
-export LESSHISTFILE=-
-
-# Wine
-export WINEPREFIX="$HOME/wine"
-
 # ls
 alias ls="ls -hvxFX --color=auto --group-directories-first"
 
@@ -31,3 +25,13 @@ if {>/dev/null command -v nvim}; then
     export EDITOR=nvim
     export VISUAL=nvim
 fi
+
+# ccache
+export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache.conf"
+export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
+
+# less
+export LESSHISTFILE=-
+
+# Wine
+export WINEPREFIX="$HOME/wine"
