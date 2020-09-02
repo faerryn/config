@@ -13,15 +13,13 @@ alias la="ls -A"
 alias ll="ls -g"
 alias lla="ll -gA"
 
-alias em=emacs
-
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # Prompt
 setopt PROMPT_SUBST
-PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%F{green}%f%(0?..%F{red})%(!.#.$)%f "
+PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
 RPROMPT=
 
 source "$XDG_CONFIG_HOME/zsh/zsh-async/async.zsh"
@@ -90,7 +88,7 @@ function personal_fzf_file () {
 	DIRECTORY="$PRE${(j:/:)PIECES}"
     done
     local SEARCH="$WORD[${#DIRECTORY}+2,-1]"
-    local FILE="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd -H | fzf --height=50% --query="$SEARCH")"
+    local FILE="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd | fzf --height=50% --query="$SEARCH")"
     if [[ -n $FILE ]]; then
 	[[ -n $DIRECTORY ]] && DIRECTORY="$DIRECTORY/"
 	LBUFFER="$LBUFFER[1,-${#WORD}-1]$DIRECTORY$FILE"
@@ -119,12 +117,8 @@ zstyle ':completion:*' accept-exact '*(N)'
 setopt CORRECT
 
 # emacs-libvterm
-if [[ -n "$INSIDE_EMACS" ]]; then
-    function vterm_printf () {
-	[ -n "$TMUX" ]\
-	    && printf "\ePtmux;\e\e]%s\007\e\\" "$1"\
-	    || printf "\e]%s\e\\" "$1"
-    }
+if [[ "$INSIDE_EMACS" == vterm ]]; then
+    function vterm_printf () { printf "\e]%s\e\\" "$1" }
     function vterm_prompt_end () { vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"; }
     PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
     function vterm_cmd () {

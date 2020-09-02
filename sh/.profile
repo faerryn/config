@@ -21,7 +21,7 @@ export WINEPREFIX="$HOME/wine"
 alias ls="ls -hvxFX --color=auto --group-directories-first"
 
 # fd
-alias fd="fd --ignore-file=$XDG_CONFIG_HOME/fd/ignore"
+alias fd="fd --hidden --ignore-file=$XDG_CONFIG_HOME/fd/ignore"
 
 # rg
 alias rg="rg --hidden"
@@ -30,5 +30,4 @@ alias rg="rg --hidden"
 if {>/dev/null command -v nvim}; then
     export EDITOR=nvim
     export VISUAL=nvim
-    alias vim=nvim
 fi
