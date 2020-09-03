@@ -13,6 +13,11 @@ ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 export ZPFX="$ZINIT[HOME_DIR]/polaris"
 source "$ZINIT[BIN_DIR]/zinit.zsh"
 
+zinit ice wait'!0' atload'precmd_functions+=(personal_prompt)'
+zinit load mafredri/zsh-async
+zinit ice wait'!0'
+zinit load kutsan/zsh-system-clipboard
+
 # Globbing
 setopt EXTENDED_GLOB
 
@@ -30,7 +35,6 @@ setopt PROMPT_SUBST
 PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
 RPROMPT=
 
-zinit load mafredri/zsh-async
 function personal_prompt_git () {
     2>&1 git -C "$1" --no-optional-locks status --branch --porcelain=v2 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
 }
@@ -38,6 +42,7 @@ function personal_prompt_callback () {
     RPROMPT="$3"
     zle reset-prompt
 }
+function send_prompt_job () {}
 function personal_prompt () {
     async_flush_jobs personal_prompt_worker
     while ! {2>/dev/null async_job personal_prompt_worker personal_prompt_git $PWD}; do
@@ -46,12 +51,9 @@ function personal_prompt () {
     done
 }
 
-precmd_functions+=(personal_prompt)
-
 # Vi-mode
 bindkey -v
 bindkey -M viins "^?" backward-delete-char
-zinit load kutsan/zsh-system-clipboard
 
 KEYTIMEOUT=1
 
