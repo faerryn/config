@@ -5,9 +5,6 @@
 [submodule "doom-emacs"]
 	path = emacs/.config/emacs
 	url = https://github.com/hlissner/doom-emacs.git
-[submodule "zinit"]
-	path = zsh/.config/zsh/zinit/bin
-	url = https://github.com/zdharma/zinit.git
 [submodule "tpm"]
 	path = tmux/.config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git

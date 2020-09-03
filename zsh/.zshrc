@@ -13,6 +13,8 @@ ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 ZINIT[COMPINIT_OPTS]="-d $ZINIT[ZCOMPDUMP_PATH] -C"
 export ZPFX="$ZINIT[HOME_DIR]/polaris"
 
+[[ ! -d "$ZINIT[BIN_DIR]" ]] && git clone --depth 1 https://github.com/zdharma/zinit.git "$ZINIT[BIN_DIR]"
+
 if [[ -f "$ZINIT[BIN_DIR]/zmodules/Src/zdharma/zplugin.so" ]]; then
     module_path+=("$ZINIT[BIN_DIR]/zmodules/Src")
     zmodload zdharma/zplugin
@@ -20,19 +22,19 @@ fi
 
 source "$ZINIT[BIN_DIR]/zinit.zsh"
 
-zinit ice compile wait'!0' atload'precmd_functions+=(personal_prompt)'
+zinit ice lucid compile wait'!0' atload'precmd_functions+=(personal_prompt)'
 zinit load mafredri/zsh-async
 
-zinit ice compile wait'!0'
+zinit ice lucid compile wait'!0'
 zinit load kutsan/zsh-system-clipboard
 
-zinit ice as'completion'
+zinit ice lucid as'completion'
 zinit snippet https://github.com/tiehuis/zig-compiler-completions/blob/master/completions/_zig
 
-zinit ice compile wait'!0'
+zinit ice lucid compile wait'!0'
 zinit load zsh-users/zsh-autosuggestions
 
-zinit ice compile wait'!0' atinit'zicompinit'
+zinit ice lucid compile wait'!0' atinit'zicompinit'
 zinit load zsh-users/zsh-syntax-highlighting
 
 # Aliases
