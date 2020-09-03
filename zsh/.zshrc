@@ -38,9 +38,13 @@ zinit ice lucid compile wait'!0' atinit'zicompinit'
 zinit load zsh-users/zsh-syntax-highlighting
 
 # Aliases
+alias ls="ls -hvxFX --color=auto --group-directories-first"
 alias la="ls -A"
 alias ll="ls -g"
 alias lla="ll -gA"
+
+alias fd="fd --hidden"
+alias rg="rg --hidden"
 
 alias ..="cd .."
 alias ...="cd ../.."
