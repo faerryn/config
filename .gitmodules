@@ -1,6 +1,3 @@
 [submodule "doom-emacs"]
 	path = emacs/.config/emacs
 	url = https://github.com/hlissner/doom-emacs.git
-[submodule "tpm"]
-	path = tmux/.config/tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm.git
