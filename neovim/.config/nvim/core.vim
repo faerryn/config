@@ -9,7 +9,6 @@ set splitbelow splitright
 set timeoutlen=500 updatetime=500
 set undofile
 
-autocmd BufEnter * if !empty(@%) && empty(&buftype) | silent! lcd %:p:h | endif
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") < line('$') | execute "normal! g'\"" | endif
 
 let g:mapleader=' '
