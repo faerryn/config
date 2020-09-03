@@ -138,6 +138,7 @@ bindkey "^R" personal_fzf_history
 if [[ "$INSIDE_EMACS" == vterm ]]; then
     function vterm_printf () { printf "\e]%s\e\\" "$1" }
     function vterm_prompt_end () { vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"; }
+    setopt PROMPT_SUBST
     PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
     function vterm_cmd () {
 	local vterm_elisp
