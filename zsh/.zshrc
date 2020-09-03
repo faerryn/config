@@ -8,7 +8,7 @@ preexec_functions=()
 # zinit
 declare -A ZINIT
 ZINIT[BIN_DIR]="$XDG_CONFIG_HOME/zsh/zinit"
-ZINIT[HOME_DIR]="$XDG_CACHE_HOME/zinit"
+ZINIT[HOME_DIR]="$XDG_DATA_HOME/zinit"
 ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 export ZPFX="$ZINIT[HOME_DIR]/polaris"
 
@@ -23,7 +23,7 @@ zinit ice compile wait'!0' atload'precmd_functions+=(personal_prompt)'
 zinit load mafredri/zsh-async
 zinit ice compile wait'!0'
 zinit load kutsan/zsh-system-clipboard
-zinit ice compile wait'zicompinit'
+zinit ice compile wait'!0' atinit'zicompinit'
 zinit load zsh-users/zsh-syntax-highlighting
 
 # Globbing

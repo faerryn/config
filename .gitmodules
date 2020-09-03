@@ -1,9 +1,10 @@
 [submodule "vim-plug"]
-	path = neovim/.config/nvim/vim-plug
-	url = https://github.com/junegunn/vim-plug.git
+    path = neovim/.config/nvim/vim-plug
+    url = https://github.com/junegunn/vim-plug.git
+    ignore = untracked
 [submodule "doom-emacs"]
-	path = emacs/.emacs.d
-	url = https://github.com/hlissner/doom-emacs.git
+    path = emacs/.emacs.d
+    url = https://github.com/hlissner/doom-emacs.git
 [submodule "zinit"]
-	path = zsh/.config/zsh/zinit
-	url = https://github.com/zdharma/zinit.git
+    path = zsh/.config/zsh/zinit
+    url = https://github.com/zdharma/zinit.git

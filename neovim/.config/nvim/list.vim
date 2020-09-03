@@ -18,3 +18,4 @@ Plug 'mhinz/vim-signify'
 Plug 'norcalli/nvim-colorizer.lua'
 
 Plug 'ziglang/zig.vim'
+Plug 'zinit-zsh/zinit-vim-syntax', {'for': 'zsh'}
