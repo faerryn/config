@@ -11,12 +11,20 @@ ZINIT[BIN_DIR]="$XDG_CONFIG_HOME/zsh/zinit"
 ZINIT[HOME_DIR]="$XDG_CACHE_HOME/zinit"
 ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 export ZPFX="$ZINIT[HOME_DIR]/polaris"
+
+if [[ -d "$ZINIT[BIN_DIR]/zmodules/Src" ]]; then
+    module_path+=("$ZINIT[BIN_DIR]/zmodules/Src")
+    zmodload zdharma/zplugin
+fi
+
 source "$ZINIT[BIN_DIR]/zinit.zsh"
 
-zinit ice wait'!0' atload'precmd_functions+=(personal_prompt)'
+zinit ice compile wait'!0' atload'precmd_functions+=(personal_prompt)'
 zinit load mafredri/zsh-async
-zinit ice wait'!0'
+zinit ice compile wait'!0'
 zinit load kutsan/zsh-system-clipboard
+zinit ice compile wait'zicompinit'
+zinit load zsh-users/zsh-syntax-highlighting
 
 # Globbing
 setopt EXTENDED_GLOB
