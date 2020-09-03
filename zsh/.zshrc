@@ -99,6 +99,7 @@ SAVEHIST=1000000
 setopt CORRECT
 zstyle ':completion:*' accept-exact '*(N)'
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 # fzf
 function personal_fzf_file () {
