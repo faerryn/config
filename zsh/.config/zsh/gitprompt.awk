@@ -30,11 +30,8 @@ $2 == "branch.ab" {
 
 $1 == "1" || $1 == "2" {
     split($2, chars, "")
-    if (chars[1] == ".") {
-	unstaged += 1
-    } else {
-	staged += 1
-    }
+    if (chars[1] != ".") { staged += 1 }
+    if (chars[2] != ".") { unstaged += 1 }
 }
 $1 == "?" { untracked += 1; }
 
