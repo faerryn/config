@@ -10,6 +10,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-unimpaired'
 
 Plug 'gruvbox-community/gruvbox'
