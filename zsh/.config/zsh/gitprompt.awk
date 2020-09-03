@@ -29,7 +29,8 @@ $2 == "branch.ab" {
 }
 
 $1 == "1" || $1 == "2" {
-    if (substr($2, 0, 1) == ".") {
+    split($2, chars, "")
+    if (chars[1] == ".") {
 	unstaged += 1
     } else {
 	staged += 1
