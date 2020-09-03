@@ -31,6 +31,9 @@ if {>/dev/null command -v nvim}; then
     export VISUAL=nvim
 fi
 
+# Rust
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+
 # ccache
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache.conf"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
