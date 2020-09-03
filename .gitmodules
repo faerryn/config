@@ -4,9 +4,6 @@
 [submodule "doom-emacs"]
 	path = emacs/.emacs.d
 	url = https://github.com/hlissner/doom-emacs.git
-[submodule "zsh-async"]
-	path = zsh/.config/zsh/zsh-async
-	url = https://github.com/mafredri/zsh-async.git
-[submodule "zsh-system-clipboard"]
-	path = zsh/.config/zsh/zsh-system-clipboard
-	url = https://github.com/kutsan/zsh-system-clipboard.git
+[submodule "zinit"]
+	path = zsh/.config/zsh/zinit
+	url = https://github.com/zdharma/zinit.git

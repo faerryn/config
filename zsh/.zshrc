@@ -5,6 +5,14 @@
 precmd_functions=()
 preexec_functions=()
 
+# zinit
+declare -A ZINIT
+ZINIT[BIN_DIR]="$XDG_CONFIG_HOME/zsh/zinit"
+ZINIT[HOME_DIR]="$XDG_CACHE_HOME/zinit"
+ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+export ZPFX="$ZINIT[HOME_DIR]/polaris"
+source "$ZINIT[BIN_DIR]/zinit.zsh"
+
 # Globbing
 setopt EXTENDED_GLOB
 
@@ -22,9 +30,7 @@ setopt PROMPT_SUBST
 PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
 RPROMPT=
 
-source "$XDG_CONFIG_HOME/zsh/zsh-async/async.zsh"
-async_init
-
+zinit load mafredri/zsh-async
 function personal_prompt_git () {
     2>&1 git -C "$1" --no-optional-locks status --branch --porcelain=v2 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
 }
@@ -45,8 +51,7 @@ precmd_functions+=(personal_prompt)
 # Vi-mode
 bindkey -v
 bindkey -M viins "^?" backward-delete-char
-
-source "$XDG_CONFIG_HOME/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh"
+zinit load kutsan/zsh-system-clipboard
 
 KEYTIMEOUT=1
 
@@ -105,9 +110,6 @@ zle -N personal_fzf_history
 bindkey "^R" personal_fzf_history
 
 # Completion/Correction
-autoload -Uz compinit
-mkdir -p "$XDG_CACHE_HOME/zsh"
-compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 zstyle ':completion:*' accept-exact '*(N)'
 setopt CORRECT
 
