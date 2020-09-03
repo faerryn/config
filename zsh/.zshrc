@@ -13,7 +13,7 @@ ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 ZINIT[COMPINIT_OPTS]="-d $ZINIT[ZCOMPDUMP_PATH] -C"
 export ZPFX="$ZINIT[HOME_DIR]/polaris"
 
-if [[ -d "$ZINIT[BIN_DIR]/zmodules/Src" ]]; then
+if [[ -f "$ZINIT[BIN_DIR]/zmodules/Src/zdharma/zplugin.so" ]]; then
     module_path+=("$ZINIT[BIN_DIR]/zmodules/Src")
     zmodload zdharma/zplugin
 fi
@@ -100,6 +100,7 @@ setopt CORRECT
 zstyle ':completion:*' accept-exact '*(N)'
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 # fzf
 function personal_fzf_file () {
