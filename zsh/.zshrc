@@ -10,6 +10,7 @@ declare -A ZINIT
 ZINIT[BIN_DIR]="$XDG_CONFIG_HOME/zsh/zinit"
 ZINIT[HOME_DIR]="$XDG_DATA_HOME/zinit"
 ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+ZINIT[COMPINIT_OPTS]="-d $ZINIT[ZCOMPDUMP_PATH] -C"
 export ZPFX="$ZINIT[HOME_DIR]/polaris"
 
 if [[ -d "$ZINIT[BIN_DIR]/zmodules/Src" ]]; then
