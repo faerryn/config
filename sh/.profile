@@ -25,12 +25,6 @@ alias fd="fd --hidden --ignore-file=$XDG_CONFIG_HOME/fd/ignore"
 # rg
 alias rg="rg --hidden"
 
-# Neovim
-if {>/dev/null command -v nvim}; then
-    export EDITOR=nvim
-    export VISUAL=nvim
-fi
-
 # Rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 

@@ -35,9 +35,6 @@ zinit load zsh-users/zsh-autosuggestions
 zinit ice compile wait'!0' atinit'zicompinit'
 zinit load zsh-users/zsh-syntax-highlighting
 
-# Globbing
-setopt EXTENDED_GLOB
-
 # Aliases
 alias la="ls -A"
 alias ll="ls -g"
@@ -47,8 +44,10 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+# Manpager
+export MANPAGER="vim +'set ft=man'"
+
 # Prompt
-setopt PROMPT_SUBST
 PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
 RPROMPT=
 
@@ -90,15 +89,15 @@ function zle-keymap-select () {
 zle -N zle-keymap-select
 
 # History
+setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
 mkdir -p "$XDG_DATA_HOME/zsh"
 HISTFILE="$XDG_DATA_HOME/zsh/history"
 HISTSIZE=1000000
 SAVEHIST=1000000
-setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
 
 # Completion/Correction/Suggestion
-zstyle ':completion:*' accept-exact '*(N)'
 setopt CORRECT
+zstyle ':completion:*' accept-exact '*(N)'
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
 # fzf
