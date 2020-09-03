@@ -22,8 +22,16 @@ source "$ZINIT[BIN_DIR]/zinit.zsh"
 
 zinit ice compile wait'!0' atload'precmd_functions+=(personal_prompt)'
 zinit load mafredri/zsh-async
+
 zinit ice compile wait'!0'
 zinit load kutsan/zsh-system-clipboard
+
+zinit ice as'completion'
+zinit snippet https://github.com/tiehuis/zig-compiler-completions/blob/master/completions/_zig
+
+zinit ice compile wait'!0'
+zinit load zsh-users/zsh-autosuggestions
+
 zinit ice compile wait'!0' atinit'zicompinit'
 zinit load zsh-users/zsh-syntax-highlighting
 
@@ -88,6 +96,11 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
 
+# Completion/Correction/Suggestion
+zstyle ':completion:*' accept-exact '*(N)'
+setopt CORRECT
+ZSH_AUTOSUGGEST_STRATEGY=(completion)
+
 # fzf
 function personal_fzf_file () {
     local WORD="${LBUFFER##* }"
@@ -119,10 +132,6 @@ function personal_fzf_history () {
 }
 zle -N personal_fzf_history
 bindkey "^R" personal_fzf_history
-
-# Completion/Correction
-zstyle ':completion:*' accept-exact '*(N)'
-setopt CORRECT
 
 # emacs-libvterm
 if [[ "$INSIDE_EMACS" == vterm ]]; then
