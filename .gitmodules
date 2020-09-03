@@ -1,7 +1,3 @@
-[submodule "vim-plug"]
-	path = neovim/.config/nvim/vim-plug
-	url = https://github.com/junegunn/vim-plug.git
-	ignore = untracked
 [submodule "doom-emacs"]
 	path = emacs/.config/emacs
 	url = https://github.com/hlissner/doom-emacs.git

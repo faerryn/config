@@ -1,5 +1,6 @@
 let s:nvim_d=stdpath('config')
 let s:plugged_d=s:nvim_d . '/plugged'
+let s:plug_vim = s:nvim_d . '/autoload/plug.vim'
 
 let s:guards = {}
 function s:guarded_source(file)
@@ -12,7 +13,15 @@ endfunction
 call s:guarded_source(s:nvim_d . '/core.vim')
 
 call s:guarded_source(s:nvim_d . '/configs/vim-plug.vim')
-execute 'set runtimepath+=' . s:nvim_d . '/vim-plug'
+
+if !filereadable(s:plug_vim)
+    let s:plug_doc = s:nvim_d . '/doc/plug.txt'
+    execute 'silent !curl -fLo "' . s:plug_vim . '" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    execute 'silent !curl -fLo "' . s:plug_doc . '"--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/doc/plug.txt'
+    execute 'source' s:plug_vim
+    execut 'helptag' fnamemodify(s:plug_doc, ':h')
+endif
+
 call plug#begin(s:plugged_d)
 call s:guarded_source(s:nvim_d . '/list.vim')
 call plug#end()
