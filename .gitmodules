@@ -2,7 +2,7 @@
 	path = neovim/.config/nvim/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
 [submodule "doom-emacs"]
-	path = emacs/.config/emacs
+	path = emacs/.emacs.d
 	url = https://github.com/hlissner/doom-emacs.git
 [submodule "zsh-async"]
 	path = zsh/.config/zsh/zsh-async
