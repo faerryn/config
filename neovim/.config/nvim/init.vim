@@ -1,5 +1,5 @@
 let s:nvim_d=stdpath('config')
-let s:plugged_d=stdpath('data') . '/plugged'
+let s:plugged_d=s:nvim_d . '/plugged'
 
 let s:guards = {}
 function s:guarded_source(file)
