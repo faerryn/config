@@ -20,7 +20,6 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-signify'
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'wellle/context.vim'
 
 Plug 'ziglang/zig.vim'
 Plug 'zinit-zsh/zinit-vim-syntax', {'for': 'zsh'}
