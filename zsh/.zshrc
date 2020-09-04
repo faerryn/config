@@ -22,8 +22,11 @@ fi
 
 source "$ZINIT[BIN_DIR]/zinit.zsh"
 
-zinit ice lucid compile wait'!0' atload'precmd_functions+=(personal_prompt)'
+zinit ice lucid compile wait'!0'
 zinit load mafredri/zsh-async
+
+zinit ice lucid compile wait'!0'
+zinit load $XDG_CONFIG_HOME/zsh/ascii_prompt
 
 zinit ice lucid compile wait'!0'
 zinit load kutsan/zsh-system-clipboard
@@ -52,26 +55,6 @@ alias ....="cd ../../.."
 
 # Manpager
 export MANPAGER="vim +'set ft=man'"
-
-# Prompt
-PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
-RPROMPT=
-
-function personal_prompt_git () {
-    2>&1 git -C "$1" --no-optional-locks status --branch --porcelain=v2 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
-}
-function personal_prompt_callback () {
-    RPROMPT="$3"
-    zle reset-prompt
-}
-function send_prompt_job () {}
-function personal_prompt () {
-    async_flush_jobs personal_prompt_worker
-    while ! {2>/dev/null async_job personal_prompt_worker personal_prompt_git $PWD}; do
-	async_start_worker personal_prompt_worker
-	async_register_callback personal_prompt_worker personal_prompt_callback
-    done
-}
 
 # Vi-mode
 bindkey -v
