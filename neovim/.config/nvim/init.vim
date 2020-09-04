@@ -1,4 +1,4 @@
-let s:list_f=stdpath('config') . '/list.vim'
+let s:list_f=stdpath('config') . '/plugin_list.vim'
 let s:configs_d=stdpath('config') . '/configs'
 let s:plugged_d=stdpath('data') . '/plugged'
 
@@ -13,7 +13,7 @@ endfunction
 
 function! s:load_list() abort
 	call plug#begin(s:plugged_d)
-	call s:enhanced_source(s:list_f)
+	execute 'source' s:list_f
 	call plug#end()
 endfunction
 
@@ -37,6 +37,7 @@ endif
 
 """ PLUG_LIST
 call s:load_list()
+execute 'autocmd PersonalInit BufWritePost' resolve(s:list_f) 'source call s:load_list()'
 
 if !isdirectory(s:plugged_d)
 	call s:enhanced_source(s:configs_d . '/vim-plug.vim')
