@@ -28,9 +28,6 @@ zinit load mafredri/zsh-async
 zinit ice lucid compile
 zinit snippet "$XDG_CONFIG_HOME/zsh/ascii_prompt.zsh" # 'close string' to keep vim happy"
 
-zinit ice lucid compile
-zinit snippet "$XDG_CONFIG_HOME/zsh/cursor_shape.zsh" #"
-
 zinit ice lucid compile wait'!0'
 zinit snippet "$XDG_CONFIG_HOME/zsh/fzf_tools.zsh" #"
 
@@ -64,10 +61,6 @@ alias rg="rg --hidden"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-
-# Vi-mode
-bindkey -v
-bindkey -M viins "^?" backward-delete-char
 
 # History
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY

@@ -37,7 +37,7 @@
 [git]
 #max_concurrency = 5
 # Additional git repositories to pull
-repos = [ "$HOME/source/*" ]
+repos = [ "$HOME/src/*" ]
 
 # Don't pull the predefined git repos
 #predefined_repos = false

@@ -1,4 +1,6 @@
-execute 'source' stdpath('config') . '/core.vim'
+let s:core_f=stdpath('config') . '/core.vim'
+execute 'source' s:core_f
+execute 'autocmd BufWritePost' resolve(s:core_f) 'source' s:core_f
 
 let s:plug_vim=stdpath('data') . '/site/autoload/plug.vim'
 if !filereadable(s:plug_vim)
@@ -26,6 +28,7 @@ if !isdirectory(s:plugged_d)
     PlugInstall
 endif
 
-for s:config in split(glob(stdpath('config') . '/configs/*.vim'), '\n')
-    execute 'source' s:config
+for s:config_f in split(glob(stdpath('config') . '/configs/*.vim'), '\n')
+    execute 'source' s:config_f
+    execute 'autocmd BufWritePost' resolve(s:config_f) 'source' s:config_f
 endfor

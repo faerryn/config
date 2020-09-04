@@ -1,6 +1,6 @@
 Plug 'aymericbeaumet/vim-symlink' | Plug 'moll/vim-bbye'
 Plug 'chaoren/vim-wordmotion'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim' | Plug 'junegunn/fzf'
 Plug 'justinmk/vim-dirvish'
 Plug 'machakann/vim-sandwich'
 Plug 'machakann/vim-swap'

@@ -9,7 +9,7 @@ function personal_fzf_file () {
     done
     [[ -n $DIRECTORY ]] && DIRECTORY="$DIRECTORY/"
     local SEARCH="$WORD[${#DIRECTORY}+1,-1]"
-    local FILE="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd | fzf --height=50% --query="$SEARCH")"
+    local FILE="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd -tf -td | fzf --height=50% --query="$SEARCH")"
     if [[ -n $FILE ]]; then
 	LBUFFER="$LBUFFER[1,-${#WORD}-1]$DIRECTORY$FILE"
     fi
@@ -27,5 +27,5 @@ function personal_fzf_history () {
 }
 zle -N personal_fzf_history
 
-bindkey "^F" personal_fzf_file
-bindkey "^R" personal_fzf_history
+bindkey "^x^f" personal_fzf_file
+bindkey "^r" personal_fzf_history
