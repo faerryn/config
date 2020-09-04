@@ -19,6 +19,9 @@ doom () {
     "$XDG_CONFIG_HOME/emacs/bin/doom" "$@"
 }
 
+# Manpager
+{>/dev/null 2>&1 command -v vim} && export MANPAGER="vim +'set ft=man'"
+
 # Rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 

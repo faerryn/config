@@ -45,6 +45,9 @@ zinit snippet https://github.com/tiehuis/zig-compiler-completions/blob/master/co
 
 zinit ice lucid compile wait'!0'
 zinit load zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_STRATEGY=(completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 zinit ice lucid compile wait'!0' atinit'zicompinit'
 zinit load zsh-users/zsh-syntax-highlighting
@@ -62,9 +65,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-# Manpager
-export MANPAGER="vim +'set ft=man'"
-
 # Vi-mode
 bindkey -v
 bindkey -M viins "^?" backward-delete-char
@@ -79,6 +79,3 @@ SAVEHIST=1000000
 # Completion/Correction/Suggestion
 setopt CORRECT
 zstyle ':completion:*' accept-exact '*(N)'
-ZSH_AUTOSUGGEST_STRATEGY=(completion)
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1

@@ -21,5 +21,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-signify'
 Plug 'norcalli/nvim-colorizer.lua'
 
+Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 Plug 'ziglang/zig.vim'
 Plug 'zinit-zsh/zinit-vim-syntax', {'for': 'zsh'}
