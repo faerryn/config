@@ -1,0 +1,68 @@
+# Main
+snippet main
+	pub fn main() void {
+		${0:${VISUAL}}
+	}
+
+## Control Statements
+# if
+snippet if
+	if (${1:true}) {
+		${0:${VISUAL}}
+	}
+
+# else
+snippet else
+	else {
+		${0:${VISUAL}}
+	}
+
+# else if
+snippet elif
+	else if (${1:true}) {
+		${0:${VISUAL}}
+	}
+
+# switch
+snippet switch
+	switch (${1}) {
+		${2}: {
+			${3}
+		},
+	}
+
+snippet ret
+	return ${0:${VISUAL}};
+
+## Loops
+# for
+snippet for
+	for (${1:array}) |${2:element}| {
+		${0:${VISUAL}}
+	}
+
+# while
+snippet while
+	while (${1:true}) {
+		${0:${VISUAL}}
+	}
+
+## Functions
+# function definition
+snippet fn
+	fn ${1:function_name}(${2}) ${3:void} {
+		${0:${VISUAL}}
+	}
+
+## Types
+# struct
+snippet struct
+	struct ${1:name} {
+		${0:${VISUAL}}
+	};
+
+# enum
+snippet enum
+	enum ${1:name} {
+		${0:${VISUAL}}
+	};
