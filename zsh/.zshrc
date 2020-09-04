@@ -34,9 +34,6 @@ zinit snippet "$XDG_CONFIG_HOME/zsh/fzf_tools.zsh" #"
 zinit ice lucid compile wait'!0'
 zinit snippet "$XDG_CONFIG_HOME/zsh/emacs_libvterm.zsh" #"
 
-zinit ice lucid compile wait'!0'
-zinit load kutsan/zsh-system-clipboard
-
 zinit ice lucid as'completion'
 zinit snippet https://github.com/tiehuis/zig-compiler-completions/blob/master/completions/_zig
 

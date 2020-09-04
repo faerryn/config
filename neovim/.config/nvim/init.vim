@@ -33,7 +33,6 @@ let s:plug_vim=stdpath('data') . '/site/autoload/plug.vim'
 let s:plug_doc = stdpath('data') . '/site/doc/plug.txt'
 if !filereadable(s:plug_vim)
 	execute 'silent !curl -fLo "' . s:plug_vim . '" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-	execute 'source' s:plug_vim
 	execute 'silent !curl -fLo "' . s:plug_doc . '" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/doc/plug.txt'
 endif
 
