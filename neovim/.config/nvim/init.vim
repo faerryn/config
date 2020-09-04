@@ -7,7 +7,7 @@ function! s:enhanced_source(file) abort
 	execute 'augroup Personal_' . substitute(l:resolved_file, '\/\|\.', '_', 'g')
 	autocmd!
 	execute 'source' a:file
-	execute 'autocmd BufWritePost' resolve(l:resolved_file) 'source' l:resolved_file
+	execute 'autocmd BufWritePost' l:resolved_file 'source' l:resolved_file
 	execute 'augroup END'
 endfunction
 
