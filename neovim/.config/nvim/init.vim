@@ -1,6 +1,8 @@
 let s:plugin_list_f=stdpath('config') . '/plugin_list.vim'
 let s:configs_d=stdpath('config') . '/configs'
+let s:plug_vim=stdpath('data') . '/site/autoload/plug.vim'
 let s:plugged_d=stdpath('data') . '/plugged'
+let s:plug_doc = stdpath('data') . '/site/doc/plug.txt'
 
 function! s:enhanced_source(file) abort
 	let l:resolved_file=resolve(a:file)
@@ -15,6 +17,7 @@ function! s:load_list() abort
 	call plug#begin(s:plugged_d)
 	execute 'source' s:plugin_list_f
 	call plug#end()
+	execute 'helptag' fnamemodify(s:plug_doc, ':h')
 endfunction
 
 augroup PersonalInit
@@ -27,12 +30,11 @@ call s:enhanced_source(stdpath('config') . '/core.vim')
 
 """ VIM-PLUG
 let s:plug_vim=stdpath('data') . '/site/autoload/plug.vim'
+let s:plug_doc = stdpath('data') . '/site/doc/plug.txt'
 if !filereadable(s:plug_vim)
 	execute 'silent !curl -fLo "' . s:plug_vim . '" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 	execute 'source' s:plug_vim
-	let s:plug_doc = stdpath('data') . '/site/doc/plug.txt'
 	execute 'silent !curl -fLo "' . s:plug_doc . '" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/doc/plug.txt'
-	execut 'helptag' fnamemodify(s:plug_doc, ':h')
 endif
 
 """ PLUG_LIST

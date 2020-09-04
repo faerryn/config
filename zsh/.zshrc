@@ -51,9 +51,8 @@ zinit load zsh-users/zsh-syntax-highlighting
 
 # Aliases
 alias ls="ls -hvxFX --color=auto --group-directories-first"
-alias la="ls -A"
 alias ll="ls -g"
-alias lla="ll -gA"
+alias la="ls -gA"
 
 alias fd="fd --hidden"
 alias rg="rg --hidden"
