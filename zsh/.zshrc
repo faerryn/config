@@ -16,8 +16,8 @@ export ZPFX="$ZINIT[HOME_DIR]/polaris"
 [[ ! -d "$ZINIT[BIN_DIR]" ]] && git clone --depth 1 https://github.com/zdharma/zinit.git "$ZINIT[BIN_DIR]"
 
 if [[ -f "$ZINIT[BIN_DIR]/zmodules/Src/zdharma/zplugin.so" ]]; then
-    module_path+=("$ZINIT[BIN_DIR]/zmodules/Src")
-    zmodload zdharma/zplugin
+	module_path+=("$ZINIT[BIN_DIR]/zmodules/Src")
+	zmodload zdharma/zplugin
 fi
 
 source "$ZINIT[BIN_DIR]/zinit.zsh"

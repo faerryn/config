@@ -3,8 +3,8 @@ export PERSONAL_PROFILE=1
 
 # Path
 [ -z "$PERSONAL_PATH" ]\
-    && export PERSONAL_PATH="$PATH"\
-    || export PATH="$PERSONAL_PATH"
+	&& export PERSONAL_PATH="$PATH"\
+	|| export PATH="$PERSONAL_PATH"
 
 # XDG directories
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -15,8 +15,8 @@ export XDG_DATA_DIRS=/usr/local/share:/usr/share
 
 # DOOM Emacs
 doom () {
-    [ ! -d "$XDG_CONFIG_HOME/emacs/bin" ] && git clone --depth 1 https://github.com/hlissner/doom-emacs.git "$XDG_CONFIG_HOME/emacs" 
-    "$XDG_CONFIG_HOME/emacs/bin/doom" "$@"
+	[ ! -d "$XDG_CONFIG_HOME/emacs/bin" ] && git clone --depth 1 https://github.com/hlissner/doom-emacs.git "$XDG_CONFIG_HOME/emacs" 
+	"$XDG_CONFIG_HOME/emacs/bin/doom" "$@"
 }
 
 # Manpager
