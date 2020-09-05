@@ -13,21 +13,19 @@ set undofile
 
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") < line('$') | execute "normal! g'\"" | endif
 
-let g:mapleader=' '
+let mapleader=' '
 
 nnoremap Y y$
 noremap <Leader> <Nop>
 noremap s <Nop>
 
 " aesthetics
+if has('nvim') | set inccommand=nosplit | endif
 set cursorline cursorcolumn colorcolumn=80
-set inccommand=nosplit
+set lazyredraw
 set noequalalways
 set noruler
 set noshowmode
-set wrap linebreak
 set number relativenumber signcolumn=number
 set showtabline=0
-set lazyredraw
-
-autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
+set wrap linebreak

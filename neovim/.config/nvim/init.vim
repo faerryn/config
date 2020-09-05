@@ -1,8 +1,21 @@
-let s:plugin_list_f=stdpath('config') . '/plugin_list.vim'
-let s:configs_d=stdpath('config') . '/configs'
-let s:plug_vim=stdpath('data') . '/site/autoload/plug.vim'
-let s:plugged_d=stdpath('data') . '/plugged'
-let s:plug_doc = stdpath('data') . '/site/doc/plug.txt'
+if has('nvim')
+	let s:config_d=stdpath('config')
+	let s:data_d=stdpath('data')
+else
+	let &runtimepath.=',' . expand('$XDG_DATA_HOME/vim/site')
+	set term=xterm-256color
+	set background=dark
+	set laststatus=2
+
+	let s:config_d=fnamemodify($MYVIMRC, ':p:h')
+	let s:data_d=expand('$XDG_DATA_HOME/vim')
+endif
+
+let s:plugin_list_f=s:config_d . '/plugin_list.vim'
+let s:bits_d=s:config_d . '/bits'
+let s:plug_vim=s:data_d . '/site/autoload/plug.vim'
+let s:plugged_d=s:data_d . '/plugged'
+let s:plug_doc = s:data_d . '/site/doc/plug.txt'
 
 function! s:enhanced_source(file) abort
 	let l:resolved_file=resolve(a:file)
@@ -17,7 +30,7 @@ function! s:load_list() abort
 	call plug#begin(s:plugged_d)
 	execute 'source' s:plugin_list_f
 	call plug#end()
-	execute 'helptag' fnamemodify(s:plug_doc, ':h')
+	execute 'helptag' fnamemodify(s:plug_doc, ':p:h')
 endfunction
 
 augroup PersonalInit
@@ -26,11 +39,11 @@ augroup PersonalInit
 augroup END
 
 """ CORE
-call s:enhanced_source(stdpath('config') . '/core.vim')
+call s:enhanced_source(s:config_d . '/core.vim')
 
 """ VIM-PLUG
-let s:plug_vim=stdpath('data') . '/site/autoload/plug.vim'
-let s:plug_doc = stdpath('data') . '/site/doc/plug.txt'
+let s:plug_vim=s:data_d . '/site/autoload/plug.vim'
+let s:plug_doc=s:data_d . '/site/doc/plug.txt'
 if !filereadable(s:plug_vim)
 	execute 'silent !curl -fLo "' . s:plug_vim . '" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 	execute 'silent !curl -fLo "' . s:plug_doc . '" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/doc/plug.txt'
@@ -41,11 +54,11 @@ call s:load_list()
 execute 'autocmd PersonalInit BufWritePost' resolve(s:plugin_list_f) 'call s:load_list()'
 
 if !isdirectory(s:plugged_d)
-	call s:enhanced_source(s:configs_d . '/vim-plug.vim')
+	call s:enhanced_source(s:bits_d . '/vim-plug.vim')
 	PlugInstall
 endif
 
-""" CONFIGS
-for s:config_f in split(glob(s:configs_d . '/*.vim'), '\n')
+""" BITS
+for s:config_f in split(glob(s:bits_d . '/*.vim'), '\n')
 	call s:enhanced_source(s:config_f)
 endfor
