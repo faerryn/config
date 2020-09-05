@@ -4,10 +4,6 @@
 [pull]
 	rebase = false
 [alias]
-	s = status
-	a = add
-	c = commit
-	p = push
 	amend = commit --amend
 [merge]
 	tool = vimdiff
