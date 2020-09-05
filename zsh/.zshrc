@@ -54,7 +54,7 @@ alias la="ls -gA"
 alias fd="fd --hidden"
 alias rg="rg --hidden"
 
-alias v="$VISUAL"
+alias v=vim
 alias g=git
 
 # Navigation
