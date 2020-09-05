@@ -1,3 +1,5 @@
+# Copyright (c) 2020 Jiang Meng Liao (Faerryn) <alexandre.liao@gmail.com>
+
 function personal_fzf_file () {
 	local WORD="${LBUFFER##* }"
 	local PIECES=(${(s:/:)WORD})
