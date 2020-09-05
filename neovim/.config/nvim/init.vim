@@ -1,15 +1,5 @@
-if has('nvim')
-	let s:config_d=stdpath('config')
-	let s:data_d=stdpath('data')
-else
-	let &runtimepath.=',' . expand('$XDG_DATA_HOME/vim/site')
-	set term=xterm-256color
-	set background=dark
-	set laststatus=2
-
-	let s:config_d=fnamemodify($MYVIMRC, ':p:h')
-	let s:data_d=expand('$XDG_DATA_HOME/vim')
-endif
+let s:config_d=stdpath('config')
+let s:data_d=stdpath('data')
 
 let s:plugin_list_f=s:config_d . '/plugin_list.vim'
 let s:bits_d=s:config_d . '/bits'
