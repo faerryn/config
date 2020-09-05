@@ -38,7 +38,7 @@ endif
 
 """ PLUG_LIST
 call s:load_list()
-execute 'autocmd PersonalInit BufWritePost' resolve(s:plugin_list_f) 'source call s:load_list()'
+execute 'autocmd PersonalInit BufWritePost' resolve(s:plugin_list_f) 'call s:load_list()'
 
 if !isdirectory(s:plugged_d)
 	call s:enhanced_source(s:configs_d . '/vim-plug.vim')

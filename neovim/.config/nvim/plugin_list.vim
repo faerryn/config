@@ -1,4 +1,5 @@
 Plug 'Jorengarenar/miniSnip'
+Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'aymericbeaumet/vim-symlink' | Plug 'moll/vim-bbye'
 Plug 'chaoren/vim-wordmotion'
 Plug 'junegunn/fzf.vim' | Plug 'junegunn/fzf'
