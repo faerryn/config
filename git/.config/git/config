@@ -1,10 +1,10 @@
 [user]
-	name = Faerryn
+	name = Jiang Meng Liao (Faerryn)
 	email = alexandre.liao@gmail.com
 [pull]
 	rebase = false
 [alias]
-	last = log -1 HEAD
+	amend = commit --amend
 [merge]
 	tool = vimdiff
 [diff]

@@ -28,22 +28,22 @@ zinit load mafredri/zsh-async
 zinit ice lucid compile
 zinit snippet "$XDG_CONFIG_HOME/zsh/ascii_prompt.zsh" # 'close string' to keep vim happy"
 
-zinit ice lucid compile wait'!0'
+zinit ice lucid compile wait"!0"
 zinit snippet "$XDG_CONFIG_HOME/zsh/fzf_tools.zsh" #"
 
-zinit ice lucid compile wait'!0'
+zinit ice lucid compile wait"!0"
 zinit snippet "$XDG_CONFIG_HOME/zsh/emacs_libvterm.zsh" #"
 
-zinit ice lucid as'completion'
+zinit ice lucid as"completion"
 zinit snippet https://github.com/tiehuis/zig-compiler-completions/blob/master/completions/_zig
 
-zinit ice lucid compile wait'!0'
+zinit ice lucid compile wait"!0"
 zinit load zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
-zinit ice lucid compile wait'!0' atinit'zicompinit'
+zinit ice lucid compile wait"!0" atinit'zicompinit'
 zinit load zsh-users/zsh-syntax-highlighting
 
 # Aliases
@@ -54,9 +54,11 @@ alias la="ls -gA"
 alias fd="fd --hidden"
 alias rg="rg --hidden"
 
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
+alias v="$VISUAL"
+alias g=git
+
+# Navigation
+setopt AUTO_CD
 
 # History
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
