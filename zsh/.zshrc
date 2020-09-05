@@ -59,6 +59,12 @@ alias g=git
 
 # Navigation
 setopt AUTO_CD
+function dc () {
+	1="${1:-1}"
+	[[ ! $1 =~ ^[0-9]+$ ]] && return 1
+	repeat $1 { cd .. }
+}
+alias ..=dc
 
 # History
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
