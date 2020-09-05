@@ -13,6 +13,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DATA_DIRS=/usr/local/share:/usr/share
 
+# Scripts
+export PATH="$HOME/scripts:$PATH"
+
 # DOOM Emacs
 doom () {
 	[ ! -d "$XDG_CONFIG_HOME/emacs/bin" ] && git clone --depth 1 https://github.com/hlissner/doom-emacs.git "$XDG_CONFIG_HOME/emacs" 
