@@ -28,7 +28,6 @@ function! s:load_list() abort
 	call plug#begin(s:plugged_d)
 	execute 'source' s:plugin_list_f
 	call plug#end()
-	execute 'helptag' fnamemodify(s:plug_doc, ':p:h')
 endfunction
 
 augroup PersonalInit
@@ -49,6 +48,7 @@ let s:plug_doc=s:data_d . '/site/doc/plug.txt'
 if !filereadable(s:plug_vim)
 	execute 'silent !curl -fLo "' . s:plug_vim . '" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 	execute 'silent !curl -fLo "' . s:plug_doc . '" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/doc/plug.txt'
+	execute 'helptag' fnamemodify(s:plug_doc, ':p:h')
 endif
 
 """ PLUG_LIST
