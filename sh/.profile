@@ -14,7 +14,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DATA_DIRS=/usr/local/share:/usr/share
 
 # scripts
-export PATH="$HOME/scripts:$PATH"
+export PATH="$HOME/shell-scripts:$PATH"
 
 # DOOM Emacs
 doom () {
