@@ -1,2 +1,3 @@
 --hidden
---ignore-file "$XDG_CONFIG_HOME/rg/ignore"
+--ignore-file
+~/.config/rg/ignore
