@@ -34,12 +34,16 @@ endfunction
 augroup PersonalInit
 	autocmd!
 	execute 'autocmd BufWritePost' resolve($MYVIMRC) 'source $MYVIMRC'
+	autocmd PersonalInit FileType vim-plug nnoremap <Esc> <C-W>c
 augroup END
 
 """ CORE
 call s:enhanced_source(s:config_d . '/core.vim')
 
 """ VIM-PLUG
+let g:plug_window='split new'
+let g:plug_pwindow='split new'
+
 let s:plug_vim=s:data_d . '/site/autoload/plug.vim'
 let s:plug_doc=s:data_d . '/site/doc/plug.txt'
 if !filereadable(s:plug_vim)
@@ -52,7 +56,6 @@ call s:load_list()
 execute 'autocmd PersonalInit BufWritePost' resolve(s:plugin_list_f) 'call s:load_list()'
 
 if !isdirectory(s:plugged_d)
-	call s:enhanced_source(s:bits_d . '/vim-plug.vim')
 	PlugInstall
 endif
 
