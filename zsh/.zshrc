@@ -65,9 +65,6 @@ alias rg="rg --hidden"
 alias v=vim
 alias g=git
 
-# Hub as git
->/dev/null command -v hub && alias git=hub
-
 # Navigation
 setopt AUTO_CD
 function dc () {
