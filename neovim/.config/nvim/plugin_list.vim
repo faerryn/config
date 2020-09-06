@@ -19,6 +19,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-signify'
 
+Plug 'gisphm/vim-gitignore'
 Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 Plug 'ziglang/zig.vim'
 Plug 'zinit-zsh/zinit-vim-syntax', {'for': 'zsh'}
