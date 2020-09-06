@@ -1,7 +1,7 @@
 # Profile is sourced
 export PERSONAL_PROFILE=1
 
-# Path
+# PATH
 [ -z "$PERSONAL_PATH" ]\
 	&& export PERSONAL_PATH="$PATH"\
 	|| export PATH="$PERSONAL_PATH"
@@ -13,7 +13,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DATA_DIRS=/usr/local/share:/usr/share
 
-# Scripts
+# scripts
 export PATH="$HOME/scripts:$PATH"
 
 # DOOM Emacs
@@ -22,10 +22,13 @@ doom () {
 	"$XDG_CONFIG_HOME/emacs/bin/doom" "$@"
 }
 
-# Manpager
-{>/dev/null 2>&1 command -v vim} && export MANPAGER="vim +'set ft=man'"
+# MANPAGER
+>/dev/null command -v vim && export MANPAGER="vim +'set ft=man'"
 
-# Rust
+# ripgrep
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg/rgrc"
+
+# rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
 # ccache
@@ -35,5 +38,5 @@ export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 # less
 export LESSHISTFILE=-
 
-# Wine
+# WINE
 export WINEPREFIX="$HOME/wine"
