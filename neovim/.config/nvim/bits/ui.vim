@@ -1,20 +1,17 @@
+set clipboard+=unnamedplus
+set confirm
 set cursorline cursorcolumn colorcolumn=80
 set inccommand=nosplit
 set lazyredraw
+set mouse=ar
 set noequalalways
 set noruler
 set noshowmode
+set nrformats=alpha,octal,hex,bin
 set number relativenumber signcolumn=number
+set omnifunc=syntaxcomplete#Complete
 set showtabline=0
 set splitbelow splitright
-set termguicolors
 set wrap linebreak
 
-let g:gruvbox_bold=1
-let g:gruvbox_italic=1
-let g:gruvbox_underline=1
-let g:gruvbox_undercurl=1
-colorscheme gruvbox
-
-let g:lightline={'colorscheme': 'gruvbox'}
-call lightline#enable()
+autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}
