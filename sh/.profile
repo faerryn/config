@@ -23,7 +23,7 @@ doom () {
 }
 
 # MANPAGER
->/dev/null command -v vim && export MANPAGER="vim +'set ft=man'"
+>/dev/null command -v vim && export MANPAGER='vim +"set ft=man"'
 
 # ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg/rgrc"
