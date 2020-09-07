@@ -10,4 +10,4 @@
 [diff]
 	tool = vimdiff
 [core]
-	excludesfile = ~/.config/git/.gitignore
+	excludesfile = ~/.config/git/ignore

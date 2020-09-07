@@ -62,9 +62,6 @@ alias la='ls -gA'
 alias fd='fd --hidden'
 alias rg='rg --hidden'
 
-alias v=vim
-alias g=git
-
 # Navigation
 setopt AUTO_CD
 function dc () {
