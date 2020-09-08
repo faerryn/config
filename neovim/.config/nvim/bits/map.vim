@@ -12,10 +12,10 @@ nnoremap [b <Cmd>bprevious<CR>
 nnoremap ]B <Cmd>blast<CR>
 nnoremap [B <Cmd>bfirst<CR>
 
-nnoremap ]c <Cmd>cnext<CR>
-nnoremap [c <Cmd>cprevious<CR>
-nnoremap ]C <Cmd>clast<CR>
-nnoremap [C <Cmd>cfirst<CR>
+nnoremap ]q <Cmd>cnext<CR>
+nnoremap [q <Cmd>cprevious<CR>
+nnoremap ]Q <Cmd>clast<CR>
+nnoremap [Q <Cmd>cfirst<CR>
 
 nnoremap ]l <Cmd>lnext<CR>
 nnoremap [l <Cmd>lprevious<CR>
