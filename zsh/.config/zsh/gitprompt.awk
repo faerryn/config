@@ -40,25 +40,26 @@ $2 == "branch.ab" {
 
 $1 == "1" || $1 == "2" {
 	split($2, chars, "")
-	if (chars[1] != ".") { staged += 1; }
-	if (chars[2] != ".") { unstaged += 1; }
+	if (chars[1] != ".")
+		staged += 1; 
+	if (chars[2] != ".")
+		unstaged += 1; 
 }
 $1 == "?" { untracked += 1; }
 
 END {
-	if (fatal == 1) { exit(1); }
+	if (fatal == 1)
+		exit(1); 
 
 	print " ["
-	if (head == "(detached)") {
+	if (head == "(detached)")
 		print " %F{blue}:" substr(oid, 1, 8) "%f";
-	} else {
-	print " %F{blue}HEAD%f";
-	if (upstream != "") {
+	else
+		print " %F{blue}HEAD%f";
+	if (upstream != "")
 		print " %F{yellow}" upstream "%f";
-	} else {
-	print " %F{yellow}" head "%f";
-}
-	}
+	else
+		print " %F{yellow}" head "%f";
 	print " ]"
 
 	if (unmerged + ahead + behind > 0) {
