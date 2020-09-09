@@ -34,13 +34,13 @@ zinit ice lucid compile
 zinit load mafredri/zsh-async
 
 zinit ice lucid compile
-zinit snippet '$XDG_CONFIG_HOME/zsh/ascii_prompt.zsh'
+zinit snippet $XDG_CONFIG_HOME/zsh/ascii_prompt.zsh
 
 zinit ice lucid compile wait'!0'
-zinit snippet '$XDG_CONFIG_HOME/zsh/fzf_tools.zsh'
+zinit snippet $XDG_CONFIG_HOME/zsh/fzf_tools.zsh
 
 zinit ice lucid compile wait'!0'
-zinit snippet '$XDG_CONFIG_HOME/zsh/emacs_libvterm.zsh'
+zinit snippet $XDG_CONFIG_HOME/zsh/emacs_libvterm.zsh
 
 zinit ice lucid as'completion'
 zinit snippet https://github.com/tiehuis/zig-compiler-completions/blob/master/completions/_zig
