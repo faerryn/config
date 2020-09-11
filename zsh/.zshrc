@@ -60,10 +60,8 @@ alias ll='ls -g'
 alias la='ls -gA'
 
 alias fd='fd --hidden'
-alias rg='rg --hidden'
 
 # Navigation
-setopt AUTO_CD
 function dc () {
 	1="${1:-1}"
 	[[ ! $1 =~ ^[0-9]+$ ]] && return 1
