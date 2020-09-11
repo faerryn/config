@@ -60,6 +60,7 @@ alias ll='ls -g'
 alias la='ls -gA'
 
 alias fd='fd --hidden'
+alias rg="rg --hidden --ignore-file $XDG_CONFIG_HOME/rg/ignore"
 
 # Navigation
 function dc () {
