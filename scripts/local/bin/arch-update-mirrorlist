@@ -1,0 +1,17 @@
+#!/bin/sh
+MIRROR_FLAGS='country=US&protocol=https&ip_version=4&ip_version=6&use_mirror_status=on'
+RANK_FLAGS='-n 8'
+if ! >/dev/null 2>&1 command -v rankmirrors; then
+	1>&2 echo error: you need to have pacman-contrib installed on your system
+	exit 1
+fi
+if [ "$(id -u)" -ne 0 ]; then
+	1>&2 echo error: you cannot perform this operation unless you are root
+	exit 1
+fi
+set -ux
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+TMP="$(mktemp /tmp/mirrorlist-XXX)"
+curl "https://www.archlinux.org/mirrorlist/?$MIRROR_FLAGS" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors $RANK_FLAGS - > "$TMP"
+cp "$TMP" /etc/pacman.d/mirrorlist
+rm "$TMP"
