@@ -16,6 +16,7 @@ let s:plugged_d=s:data_d . '/plugged'
 let s:plug_doc=s:data_d . '/site/doc/plug.txt'
 
 function! s:enhanced_source(file) abort
+	if !filereadable(a:file) | return | endif
 	let l:resolved_file=resolve(a:file)
 	let l:file_extension=fnamemodify(l:resolved_file, ':e')
 	execute 'augroup Personal_' . substitute(l:resolved_file, '\/\|\.', '_', 'g')
@@ -44,6 +45,7 @@ augroup END
 
 """ CORE
 call s:enhanced_source(s:config_d . '/core.vim')
+call s:enhanced_source(s:config_d . '/core.lua')
 
 """ VIM-PLUG
 let g:plug_window='split new'
