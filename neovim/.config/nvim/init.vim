@@ -31,12 +31,6 @@ function! s:enhanced_source(file) abort
 	execute 'augroup END'
 endfunction
 
-function! s:load_list() abort
-	call plug#begin(s:plugged_d)
-	execute 'source' s:plugin_list_f
-	call plug#end()
-endfunction
-
 augroup PersonalInit
 	autocmd!
 	execute 'autocmd BufWritePost' resolve($MYVIMRC) 'source $MYVIMRC'
@@ -60,6 +54,11 @@ if !filereadable(s:plug_vim)
 endif
 
 """ PLUG_LIST
+function! s:load_list() abort
+	call plug#begin(s:plugged_d)
+	execute 'source' s:plugin_list_f
+	call plug#end()
+endfunction
 call s:load_list()
 execute 'autocmd PersonalInit BufWritePost' resolve(s:plugin_list_f) 'call s:load_list()'
 

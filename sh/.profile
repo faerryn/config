@@ -27,6 +27,7 @@ doom () {
 
 # rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export PATH="$CARGO_HOME/bin:$PATH"
 
 # ccache
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache.conf"
