@@ -21,11 +21,11 @@ function! s:enhanced_source(file) abort
 	execute 'augroup Personal_' . substitute(l:resolved_file, '\/\|\.', '_', 'g')
 	autocmd!
 	if l:file_extension == 'vim'
-		execute 'try | source' l:resolved_file '| endtry'
-		execute 'autocmd BufWritePost' l:resolved_file 'try | source' l:resolved_file '| endtry'
+		execute 'try | source' l:resolved_file '| catch | echomsg v:exception | endtry'
+		execute 'autocmd BufWritePost' l:resolved_file 'try | source' l:resolved_file '| catch | echomsg v:exception | endtry'
 	elseif l:file_extension == 'lua'
-		try | execute 'luafile' l:resolved_file | endtry
-		execute 'autocmd BufWritePost' l:resolved_file 'try | execute "luafile' l:resolved_file . '" | endtry'
+		try | execute 'luafile' l:resolved_file | catch | echomsg v:exception | endtry
+		execute 'autocmd BufWritePost' l:resolved_file 'try | execute "luafile' l:resolved_file . '" | catch | echomsg v:exception | endtry'
 	endif
 	execute 'augroup END'
 endfunction

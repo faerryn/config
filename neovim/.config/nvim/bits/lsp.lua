@@ -1,15 +1,17 @@
 local nvim_lsp = require'nvim_lsp'
-nvim_lsp.clangd.setup{}
-nvim_lsp.gopls.setup{}
+local configs = require'nvim_lsp/configs'
+local util = require'nvim_lsp/util'
+
+if not configs.zls then
+	configs.zls = {
+		default_config = {
+			cmd = {'zls'};
+			filetypes = {'zig'};
+			root_dir = util.root_pattern('build.zig', '.git');
+		};
+	}
+end
+
+nvim_lsp.clangd.setup{ filetypes = { "c", "cpp" } }
 nvim_lsp.rls.setup{}
--- if not nvim_lsp.zls then
-	-- nvim_lsp.configs.zls = {
-		-- default_config = {
-			-- cmd = {'zls'};
-			-- filetypes = {'zig'};
-			-- root_dir = nvim_lsp.util.root_pattern('build.zig');
-			-- settings = {};
-		-- };
-	-- }
--- end
--- nvim_lsp.zls.setup{}
+nvim_lsp.zls.setup{}

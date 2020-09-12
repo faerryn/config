@@ -1,1 +1,0 @@
-Copyright (c) <{`!strftime('%Y')}> <{sig}>@{}@
