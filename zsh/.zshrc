@@ -30,29 +30,43 @@ fi
 
 source "$ZINIT[BIN_DIR]/zinit.zsh"
 
-zinit ice lucid compile
+zinit ice silent compile
 zinit load mafredri/zsh-async
 
-zinit ice lucid compile
-zinit snippet "$XDG_CONFIG_HOME/zsh/ascii_prompt.zsh" #"
+zinit ice silent compile
+zinit snippet "$XDG_CONFIG_HOME/zsh/gitprompt.zsh" #"
 
-zinit ice lucid compile wait'!0'
+zinit ice silent compile wait'!0'
 zinit snippet "$XDG_CONFIG_HOME/zsh/fzf_tools.zsh" #"
 
-zinit ice lucid compile wait'!0'
+zinit ice silent compile wait'!0'
 zinit snippet "$XDG_CONFIG_HOME/zsh/emacs_libvterm.zsh" #"
 
-zinit ice lucid as'completion'
+zinit ice silent compile wait'!0'
+zinit load chisui/zsh-nix-shell
+
+zinit ice silent compile wait'!0'
+zinit load spwhitt/nix-zsh-completions
+
+zinit ice silent as'completion'
 zinit snippet https://github.com/tiehuis/zig-compiler-completions/blob/master/completions/_zig
 
-zinit ice lucid compile wait'!0'
+zinit ice silent compile wait'!0'
 zinit load zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
-zinit ice lucid compile wait'!0' atinit'zicompinit'
+zinit ice silent compile wait'!0' atinit'zicompinit'
 zinit load zsh-users/zsh-syntax-highlighting
+
+# Prompt
+PROMPT=
+[[ -n "$IN_NIX_SHELL" ]] && PROMPT+=' [ %F{green}nix%f ]'
+PROMPT+=' [ %F{blue}%3~%f ]'
+PROMPT+='%(1j. [ %F{yellow}*%f ].)'
+PROMPT+=' %(0?..%F{red})%(!.#.$)%f'
+PROMPT+=' '
 
 # Aliases
 alias ls='ls -hvxFX --color=auto --group-directories-first'

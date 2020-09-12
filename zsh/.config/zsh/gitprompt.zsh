@@ -1,6 +1,4 @@
 # Copyright (c) 2020 Jiang Meng Liao (Faerryn) <alexandre.liao@gmail.com>
-
-PROMPT=" %F{blue}%3~%f %(1j.%F{yellow}*%f .)%(0?..%F{red})%(!.#.$)%f "
 RPROMPT=
 
 function personal_prompt_async () {

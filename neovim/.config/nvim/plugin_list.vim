@@ -24,6 +24,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'mhinz/vim-signify'
 
+Plug 'LnL7/vim-nix'
 Plug 'gisphm/vim-gitignore'
 Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 Plug 'ziglang/zig.vim'
