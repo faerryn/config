@@ -13,14 +13,20 @@ let s:plugin_list_f=s:config_d . '/plugin_list.vim'
 let s:bits_d=s:config_d . '/bits'
 let s:plug_vim=s:data_d . '/site/autoload/plug.vim'
 let s:plugged_d=s:data_d . '/plugged'
-let s:plug_doc = s:data_d . '/site/doc/plug.txt'
+let s:plug_doc=s:data_d . '/site/doc/plug.txt'
 
 function! s:enhanced_source(file) abort
 	let l:resolved_file=resolve(a:file)
+	let l:file_extension=fnamemodify(l:resolved_file, ':e')
 	execute 'augroup Personal_' . substitute(l:resolved_file, '\/\|\.', '_', 'g')
 	autocmd!
-	execute 'source' l:resolved_file
-	execute 'autocmd BufWritePost' l:resolved_file 'source' l:resolved_file
+	if l:file_extension == 'vim'
+		execute 'try | source' l:resolved_file '| endtry'
+		execute 'autocmd BufWritePost' l:resolved_file 'try | source' l:resolved_file '| endtry'
+	elseif l:file_extension == 'lua'
+		try | execute 'luafile' l:resolved_file | endtry
+		execute 'autocmd BufWritePost' l:resolved_file 'try | execute "luafile' l:resolved_file . '" | endtry'
+	endif
 	execute 'augroup END'
 endfunction
 
@@ -60,6 +66,6 @@ if !isdirectory(s:plugged_d)
 endif
 
 """ BITS
-for s:config_f in split(glob(s:bits_d . '/*.vim'), '\n')
+for s:config_f in split(glob(s:bits_d . '/*.{vim,lua}'), '\n')
 	call s:enhanced_source(s:config_f)
 endfor
