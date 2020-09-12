@@ -1,6 +1,7 @@
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'tpope/vim-repeat'
 
+Plug 'Jorengarenar/miniSnip'
 Plug 'chaoren/vim-wordmotion'
 Plug 'faerryn/vim-symlink' | Plug 'moll/vim-bbye'
 Plug 'junegunn/fzf.vim' | Plug 'junegunn/fzf'
