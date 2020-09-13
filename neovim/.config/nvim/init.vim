@@ -42,8 +42,8 @@ call s:enhanced_source(s:config_d . '/core.vim')
 call s:enhanced_source(s:config_d . '/core.lua')
 
 """ VIM-PLUG
-let g:plug_window='split new'
-let g:plug_pwindow='split new'
+let g:plug_window='new'
+let g:plug_pwindow='new'
 
 let s:plug_vim=s:data_d . '/site/autoload/plug.vim'
 let s:plug_doc=s:data_d . '/site/doc/plug.txt'
