@@ -31,31 +31,31 @@ fi
 source "$ZINIT[BIN_DIR]/zinit.zsh"
 
 zinit ice silent compile
-zinit load mafredri/zsh-async
+zinit light mafredri/zsh-async
 
-zinit ice silent compile
-zinit load "$XDG_CONFIG_HOME/zsh/gitprompt"
+zinit ice silent compile has'git'
+zinit light "$XDG_CONFIG_HOME/zsh/gitprompt"
 
-zinit ice silent compile wait'!0'
+zinit ice silent compile wait'!0' has'fzf'
 zinit snippet "$XDG_CONFIG_HOME/zsh/fzf_tools.zsh" #"
 
-zinit ice silent compile wait'!0'
+zinit ice silent compile wait'!0' has'emacs'
 zinit snippet "$XDG_CONFIG_HOME/zsh/emacs_libvterm.zsh" #"
 
-zinit ice silent compile wait'!0'
-zinit load chisui/zsh-nix-shell
+zinit ice silent compile wait'!0' has'nix'
+zinit light chisui/zsh-nix-shell
+
+zinit ice silent compile wait'!0' has'nix'
+zinit light spwhitt/nix-zsh-completions
 
 zinit ice silent compile wait'!0'
-zinit load spwhitt/nix-zsh-completions
-
-zinit ice silent compile wait'!0'
-zinit load zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 zinit ice silent compile wait'!0' atinit'zicompinit'
-zinit load zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-syntax-highlighting
 
 # Prompt
 setopt PROMPT_SUBST

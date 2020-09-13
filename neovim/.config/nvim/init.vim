@@ -56,7 +56,7 @@ endif
 """ PLUG_LIST
 function! s:load_list() abort
 	call plug#begin(s:plugged_d)
-	execute 'source' s:plugin_list_f
+	try | execute 'source' s:plugin_list_f | catch | echo v:exception | endtry
 	call plug#end()
 endfunction
 call s:load_list()
