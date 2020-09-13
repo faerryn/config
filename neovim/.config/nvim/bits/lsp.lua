@@ -9,9 +9,13 @@ if not configs.zls then
 			filetypes = {'zig'};
 			root_dir = util.root_pattern('build.zig', '.git');
 		};
+		docs = {
+			description = [[ ]];
+			default_config = {
+				root_dir = [[root_pattern("build.zig", ".git")]];
+			};
+		};
 	}
 end
 
-nvim_lsp.clangd.setup{ filetypes = { "c", "cpp" } }
-nvim_lsp.rls.setup{}
 nvim_lsp.zls.setup{}

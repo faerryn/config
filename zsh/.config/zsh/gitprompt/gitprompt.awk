@@ -56,9 +56,9 @@ END {
 		if (unmerged > 0)
 			print " %F{red}!" unmerged "%f"; 
 		if (ahead > 0)
-			print " %F{red}↑" ahead "%f"; 
+			print " %F{cyan}↑" ahead "%f"; 
 		if (behind > 0)
-			print " %F{green}↓" behind "%f"; 
+			print " %F{magenta}↓" behind "%f"; 
 		print " ]"
 	}
 }

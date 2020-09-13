@@ -34,7 +34,7 @@ endfunction
 augroup PersonalInit
 	autocmd!
 	execute 'autocmd BufWritePost' resolve($MYVIMRC) 'source $MYVIMRC'
-	autocmd PersonalInit FileType vim-plug nnoremap <buffer> <Esc> <C-W>c
+	autocmd PersonalInit FileType vim-plug nnoremap <silent> <buffer> <Esc> <C-W>c
 augroup END
 
 """ CORE
