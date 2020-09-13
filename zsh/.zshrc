@@ -37,10 +37,7 @@ zinit ice silent compile has'git'
 zinit light "$XDG_CONFIG_HOME/zsh/gitprompt"
 
 zinit ice silent compile wait'!0' has'fzf'
-zinit snippet "$XDG_CONFIG_HOME/zsh/fzf_tools.zsh" #"
-
-zinit ice silent compile wait'!0' has'emacs'
-zinit snippet "$XDG_CONFIG_HOME/zsh/emacs_libvterm.zsh" #"
+zinit light "$XDG_CONFIG_HOME/zsh/smart_fzf"
 
 zinit ice silent compile wait'!0' has'nix'
 zinit light chisui/zsh-nix-shell
