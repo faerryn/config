@@ -48,9 +48,6 @@ zinit load chisui/zsh-nix-shell
 zinit ice silent compile wait'!0'
 zinit load spwhitt/nix-zsh-completions
 
-zinit ice silent compile wait'!0' as'completion'
-zinit snippet https://github.com/tiehuis/zig-compiler-completions/blob/master/completions/_zig
-
 zinit ice silent compile wait'!0'
 zinit load zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(completion)

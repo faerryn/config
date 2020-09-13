@@ -13,9 +13,5 @@ function! s:setup_lsp() abort
 	setlocal omnifunc=v:lua.vim.lsp.omnifunc
 	setlocal formatexpr=v:lua.vim.lsp.buf.formatting
 	autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
-
-	set completeopt=menuone,noinsert,noselect
-	set shortmess+=c
-	lua require'completion'.on_attach()
 endfunction
 autocmd FileType c,cpp,rust,zig call s:setup_lsp()

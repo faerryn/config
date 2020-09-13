@@ -11,7 +11,7 @@ function personal_fzf_file () {
 	done
 	[[ -n $DIRECTORY ]] && DIRECTORY="$DIRECTORY/"
 	local SEARCH="$WORD[${#DIRECTORY}+1,-1]"
-	local FILE="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd -tf -td | fzf-tmux --height=50% --query="$SEARCH")"
+	local FILE="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd -tf -td | fzf --height=50% --query="$SEARCH")"
 	if [[ -n $FILE ]]; then
 		LBUFFER="$LBUFFER[1,-${#WORD}-1]$DIRECTORY$FILE"
 	fi
@@ -20,7 +20,7 @@ function personal_fzf_file () {
 zle -N personal_fzf_file
 
 function personal_fzf_history () {
-	local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' | fzf-tmux --height=50% --no-sort --query=$BUFFER)"
+	local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' | fzf --height=50% --no-sort --query=$BUFFER)"
 	if [[ -n $LINE ]]; then
 		LBUFFER="$LINE"
 		RBUFFER=
