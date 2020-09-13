@@ -29,5 +29,5 @@ function personal_fzf_history () {
 }
 zle -N personal_fzf_history
 
-bindkey "^x^f" personal_fzf_file
-bindkey "^r" personal_fzf_history
+bindkey "^X^F" personal_fzf_file
+bindkey "^R" personal_fzf_history

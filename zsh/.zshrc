@@ -34,7 +34,7 @@ zinit ice silent compile
 zinit load mafredri/zsh-async
 
 zinit ice silent compile
-zinit snippet "$XDG_CONFIG_HOME/zsh/gitprompt.zsh" #"
+zinit load "$XDG_CONFIG_HOME/zsh/gitprompt"
 
 zinit ice silent compile wait'!0'
 zinit snippet "$XDG_CONFIG_HOME/zsh/fzf_tools.zsh" #"
@@ -48,7 +48,7 @@ zinit load chisui/zsh-nix-shell
 zinit ice silent compile wait'!0'
 zinit load spwhitt/nix-zsh-completions
 
-zinit ice silent as'completion'
+zinit ice silent compile wait'!0' as'completion'
 zinit snippet https://github.com/tiehuis/zig-compiler-completions/blob/master/completions/_zig
 
 zinit ice silent compile wait'!0'

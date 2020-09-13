@@ -1,10 +1,10 @@
 # Copyright (c) 2020 Jiang Meng Liao (Faerryn) <alexandre.liao@gmail.com>
-RPROMPT=
+0=${(%):-%N}
+PERSONAL_GITPROMPT_AWK="${0:A:h}/gitprompt.awk"
 
-function personal_prompt_async () {
-	2>&1 git -C "$1" --no-optional-locks status --branch --porcelain=v2 | awk -f $XDG_CONFIG_HOME/zsh/gitprompt.awk
-}
+function personal_prompt_async () { 2>&1 git -C "$1" --no-optional-locks status --branch --porcelain=v2 | awk -f "$PERSONAL_GITPROMPT_AWK" }
 function personal_prompt_callback () {
+	[[ -n "$5" ]] && return
 	RPROMPT="$3"
 	zle reset-prompt
 }
@@ -17,4 +17,5 @@ function personal_prompt () {
 	done
 }
 
+RPROMPT=
 precmd_functions+=(personal_prompt)
