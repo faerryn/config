@@ -12,6 +12,8 @@ Plug 'mbbill/undotree'
 Plug 'neovim/nvim-lspconfig'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'ryvnf/readline.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'skywind3000/asyncrun.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -22,9 +24,3 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'mhinz/vim-signify'
-
-Plug 'LnL7/vim-nix'
-Plug 'gisphm/vim-gitignore'
-Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
-Plug 'ziglang/zig.vim'
-Plug 'zinit-zsh/zinit-vim-syntax', {'for': 'zsh'}
