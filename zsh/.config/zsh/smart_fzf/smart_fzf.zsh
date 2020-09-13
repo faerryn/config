@@ -2,8 +2,8 @@
 function personal_fzf_file () {
 	local WORD="${LBUFFER##* }"
 	local PIECES=(${(s:/:)WORD})
+	[[ "$WORD[1]" = "/" ]] && local PRE="/" || local PRE=
 	local DIRECTORY="$PRE${(j:/:)PIECES}"
-	[[ $WORD[1] = "/" ]] && local PRE="/" || local PRE=
 	while [[ ! -d $~DIRECTORY ]] && [[ ${#PIECES[@]} -gt 0 ]]; do
 		PIECES=($PIECES[1,-2])
 		DIRECTORY="$PRE${(j:/:)PIECES}"
