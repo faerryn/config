@@ -10,20 +10,20 @@ function personal_fzf_file () {
 	done
 	[[ -n $DIRECTORY ]] && DIRECTORY="$DIRECTORY/"
 	local SEARCH="$WORD[${#DIRECTORY}+1,-1]"
-	local FILE="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd -tf -td | fzf --height=50% --query="$SEARCH")"
-	if [[ -n $FILE ]]; then
-		LBUFFER="$LBUFFER[1,-${#WORD}-1]$DIRECTORY$FILE"
+	local FILES="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd -tf -td | fzf --multi --height=50% --query="$SEARCH" | tr '\n' ' ')"
+	if [[ -n $FILES ]]; then
+		LBUFFER="$LBUFFER[1,-${#WORD}-1]$DIRECTORY$FILES"
 	fi
 	zle reset-prompt
 }
 zle -N personal_fzf_file
 
 function personal_fzf_history () {
-	local LINE="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' | fzf --height=50% --no-sort --query=$BUFFER)"
-	if [[ -n $LINE ]]; then
-		LBUFFER="$LINE"
-		RBUFFER=
-	fi
+	local RESULT=(${(f)"$(fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' | fzf --print-query --height=50% --no-sort --query=$BUFFER)"})
+	[[ -n "$RESULT[2]" ]]\
+		&& LBUFFER="$(echo $RESULT[2] | sed -r 's/\\n/\n/g')"\
+		|| LBUFFER="$RESULT[1]"
+	RBUFFER=
 	zle reset-prompt
 }
 zle -N personal_fzf_history
