@@ -34,7 +34,7 @@ zinit ice silent compile
 zinit light mafredri/zsh-async
 
 zinit ice silent compile has'git'
-zinit light "$XDG_CONFIG_HOME/zsh/gitprompt"
+zinit light "$XDG_CONFIG_HOME/zsh/smart_prompt"
 
 zinit ice silent compile wait'!0' has'fzf'
 zinit light "$XDG_CONFIG_HOME/zsh/smart_fzf"
