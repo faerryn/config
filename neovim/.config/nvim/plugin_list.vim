@@ -32,5 +32,6 @@ Plug 'mbbill/undotree'
 Plug 'preservim/tagbar'
 
 Plug 'LnL7/vim-nix'
-Plug 'faerryn/zig.vim'
+Plug 'axvr/org.vim'
+Plug 'ziglang/zig.vim'
 Plug 'zinit-zsh/zinit-vim-syntax', { 'for': 'zsh' }

@@ -12,3 +12,4 @@ set spell spellcapcheck=
 set splitbelow splitright
 set termguicolors
 set timeoutlen=500 updatetime=500
+set foldlevelstart=99

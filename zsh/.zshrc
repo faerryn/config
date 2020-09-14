@@ -62,6 +62,8 @@ alias la='ls -gA'
 alias fd='fd --hidden'
 alias rg="rg --hidden --ignore-file $XDG_CONFIG_HOME/rg/ignore"
 
+alias vimwiki='vim +VimwikiIndex'
+
 # Navigation
 function dc () {
 	1="${1:-1}"
