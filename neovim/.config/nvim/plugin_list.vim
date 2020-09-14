@@ -30,5 +30,5 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-peekaboo'
 
 Plug 'LnL7/vim-nix'
-Plug 'ziglang/zig.vim'
+Plug 'faerryn/zig.vim'
 Plug 'zinit-zsh/zinit-vim-syntax', { 'for': 'zsh' }
