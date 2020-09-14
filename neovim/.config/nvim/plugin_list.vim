@@ -2,6 +2,7 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'faerryn/vim-symlink'
 Plug 'inkarkat/vim-visualrepeat'
 Plug 'pbrisbin/vim-mkdir'
+Plug 'romainl/vim-qf'
 Plug 'tpope/vim-repeat'
 
 Plug 'AndrewRadev/bufferize.vim'

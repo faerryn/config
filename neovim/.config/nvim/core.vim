@@ -10,6 +10,5 @@ set nrformats=alpha,octal,hex,bin
 set omnifunc=syntaxcomplete#Complete
 set spell spellcapcheck=
 set splitbelow splitright
-set tabstop=4 shiftwidth=4 noexpandtab
 set termguicolors
 set timeoutlen=500 updatetime=500

@@ -15,26 +15,29 @@ let s:plug_vim=s:data_d . '/site/autoload/plug.vim'
 let s:plugged_d=s:data_d . '/plugged'
 let s:plug_doc=s:data_d . '/site/doc/plug.txt'
 
-function! s:enhanced_source(file) abort
-	if !filereadable(a:file) | return | endif
-	let l:resolved_file=resolve(a:file)
-	let l:file_extension=fnamemodify(l:resolved_file, ':e')
+function! s:try_source(source_file) abort
+	if !filereadable(a:source_file) | return | endif
+	let l:file_extension=fnamemodify(a:source_file, ':e')
+	if l:file_extension == 'vim'
+		execute 'try | source' a:source_file '| catch | echomsg v:exception | endtry'
+	elseif l:file_extension == 'lua'
+		execute 'try | luafile' a:source_file '| catch | echomsg v:exception | endtry'
+	endif
+endfunction
+
+function! s:enhanced_source(source_file) abort
+	if !filereadable(a:source_file) | return | endif
+	let l:resolved_file=resolve(a:source_file)
 	execute 'augroup Personal_' . substitute(l:resolved_file, '\/\|\.', '_', 'g')
 	autocmd!
-	if l:file_extension == 'vim'
-		execute 'try | source' l:resolved_file '| catch | echomsg v:exception | endtry'
-		execute 'autocmd BufWritePost' l:resolved_file 'try | source' l:resolved_file '| catch | echomsg v:exception | endtry'
-	elseif l:file_extension == 'lua'
-		try | execute 'luafile' l:resolved_file | catch | echomsg v:exception | endtry
-		execute 'autocmd BufWritePost' l:resolved_file 'try | execute "luafile' l:resolved_file . '" | catch | echomsg v:exception | endtry'
-	endif
+	call s:try_source(l:resolved_file)
+	execute 'autocmd BufWritePost' l:resolved_file 'call s:try_source("' . l:resolved_file . '")'
 	execute 'augroup END'
 endfunction
 
 augroup PersonalInit
 	autocmd!
-	execute 'autocmd BufWritePost' resolve($MYVIMRC) 'source $MYVIMRC'
-	autocmd PersonalInit FileType vim-plug nnoremap <silent> <buffer> <Esc> <C-W>c
+	execute 'autocmd PersonalInit BufWritePost' resolve($MYVIMRC) 'source $MYVIMRC'
 augroup END
 
 """ CORE
@@ -44,6 +47,7 @@ call s:enhanced_source(s:config_d . '/core.lua')
 """ VIM-PLUG
 let g:plug_window='new'
 let g:plug_pwindow='new'
+autocmd PersonalInit FileType vim-plug nnoremap <silent> <buffer> <Esc> <C-W>c
 
 let s:plug_vim=s:data_d . '/site/autoload/plug.vim'
 let s:plug_doc=s:data_d . '/site/doc/plug.txt'
@@ -56,7 +60,7 @@ endif
 """ PLUG_LIST
 function! s:load_list() abort
 	call plug#begin(s:plugged_d)
-	try | execute 'source' s:plugin_list_f | catch | echo v:exception | endtry
+	call s:try_source(s:plugin_list_f)
 	call plug#end()
 endfunction
 call s:load_list()
