@@ -89,5 +89,3 @@ SAVEHIST=1000000
 # Completion/Correction/Suggestion
 setopt CORRECT
 zstyle ':completion:*' accept-exact '*(N)'
-
->/dev/null command -v fortune && fortune -s
