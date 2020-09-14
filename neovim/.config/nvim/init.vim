@@ -6,20 +6,24 @@
 "" 
 "" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-let s:plugin_list_f = stdpath('config') . '/plugin_list.vim'
-let s:bits_d = stdpath('config') . '/bits'
-let s:plug_vim = stdpath('data') . '/site/autoload/plug.vim'
+let s:list_f    = stdpath('config') . '/list.vim'
+let s:bits_d    = stdpath('config') . '/bits'
+let s:plug_vim  = stdpath('data') . '/site/autoload/plug.vim'
 let s:plugged_d = stdpath('data') . '/plugged'
-let s:plug_doc = stdpath('data') . '/site/doc/plug.txt'
+let s:plug_doc  = stdpath('data') . '/site/doc/plug.txt'
 
 function! s:try_source(source_file) abort
 	if !filereadable(a:source_file) | return | endif
 	let l:file_extension = fnamemodify(a:source_file, ':e')
-	if l:file_extension == 'vim'
-		execute 'try | source' a:source_file '| catch | echomsg v:exception | endtry'
-	elseif l:file_extension == 'lua'
-		execute 'try | luafile' a:source_file '| catch | echomsg v:exception | endtry'
-	endif
+	try
+		if l:file_extension == 'vim'
+			execute 'source' a:source_file
+		elseif l:file_extension == 'lua'
+			execute 'luafile' a:source_file
+		endif
+	catch
+		echomsg v:exception
+	endtry
 endfunction
 
 function! s:enhanced_source(source_file) abort
@@ -57,11 +61,11 @@ endif
 """ PLUG_LIST
 function! s:load_list() abort
 	call plug#begin(s:plugged_d)
-	call s:try_source(s:plugin_list_f)
+	call s:try_source(s:list_f)
 	call plug#end()
 endfunction
 call s:load_list()
-execute 'autocmd PersonalInit BufWritePost' resolve(s:plugin_list_f) 'call s:load_list()'
+execute 'autocmd PersonalInit BufWritePost' resolve(s:list_f) 'call s:load_list()'
 
 if !isdirectory(s:plugged_d)
 	PlugInstall
