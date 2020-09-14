@@ -17,8 +17,11 @@ function personal_fzf_file () {
 zle -N personal_fzf_file
 
 function personal_fzf_history () {
-	LBUFFER="$(echo "$(fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' | fzf --height=50% --no-sort --query=$BUFFER)")"
-	RBUFFER=
+	local OUTPUT="$(fc -lr 0 | sed -r 's/^\s*[0-9]+\*?\s*//' | fzf --height=50% --no-sort --query=$BUFFER)"
+	if [[ -n "$OUTPUT" ]] {
+		LBUFFER="$(echo "$OUTPUT")"
+		RBUFFER=
+	}
 	zle reset-prompt
 }
 zle -N personal_fzf_history
