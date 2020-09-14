@@ -79,6 +79,15 @@ function dc () {
 }
 alias ..=dc
 
+# Bindings
+function personal_fg () {
+	[[ -n "$BUFFER" ]] && return
+	fg
+	zle reset-prompt
+}
+zle -N personal_fg
+bindkey '^Z' personal_fg
+
 # History
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
 mkdir -p "$XDG_DATA_HOME/zsh"
