@@ -54,15 +54,6 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 zinit ice silent compile wait'!0' atinit'zicompinit'
 zinit light zsh-users/zsh-syntax-highlighting
 
-# Prompt
-setopt PROMPT_SUBST
-PROMPT=
-[[ -n "$IN_NIX_SHELL" ]] && PROMPT+=' [ %F{green}$IN_NIX_SHELL%f ]'
-PROMPT+=' [ %F{blue}%3~%f ]'
-PROMPT+='%(1j. [ %(2j.%j .)%F{yellow}*%f ].)'
-PROMPT+=' %(0?..%F{red})%(!.#.$)%f'
-PROMPT+=' '
-
 # Aliases
 alias ls='ls -hvxFX --color=auto --group-directories-first'
 alias ll='ls -g'

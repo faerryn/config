@@ -5,6 +5,7 @@
 	rebase = false
 [alias]
 	amend = commit --amend
+	root = rev-parse --show-toplevel
 [merge]
 	tool = vimdiff
 [diff]
