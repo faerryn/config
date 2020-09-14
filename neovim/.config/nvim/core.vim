@@ -1,4 +1,4 @@
-let mapleader=' '
+let mapleader = ' '
 set clipboard+=unnamedplus
 set confirm
 set hidden

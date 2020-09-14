@@ -1,2 +1,2 @@
-let g:miniSnip_trigger='<Tab>'
-let g:miniSnip_complkey=''
+let g:miniSnip_trigger = '<Tab>'
+let g:miniSnip_complkey = ''
