@@ -5,3 +5,4 @@ let g:tagbar_type_zig = {
 			\ 'ctagstype': 'zig',
 			\ 'kinds' : [ 'f:functions', 's:structs', 'e:enums', 'u:unions', 'E:errors' ]
 			\ }
+let g:tagbar_compact = 1
