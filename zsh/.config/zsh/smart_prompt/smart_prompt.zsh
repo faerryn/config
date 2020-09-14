@@ -20,9 +20,7 @@ function personal_prompt () {
 	}
 }
 
-PERSONAL_PROMPT_NIX=
-[[ -n "$IN_NIX_SHELL" ]] && PERSONAL_PROMPT_NIX+=' [ %F{green}$IN_NIX_SHELL%f ]'
-PERSONAL_PROMPT_GIT=
+[[ -n "$IN_NIX_SHELL" ]] && PERSONAL_PROMPT_NIX=" [ %F{green}$IN_NIX_SHELL%f ]"
 PERSONAL_PROMPT_DIR=' [ %F{blue}%3~%f ]'
 PERSONAL_PROMPT_JOBS='%(1j. [ %(2j.%j .)%F{yellow}*%f ].)'
 PERSONAL_PROMPT_BANG=' %(0?..%F{red})%(!.#.$)%f'
