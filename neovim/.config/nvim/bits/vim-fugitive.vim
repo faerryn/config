@@ -1,5 +1,2 @@
-nnoremap <silent> <Leader>gP :Gpull<CR>
-nnoremap <silent> <Leader>gb :Gblame<CR>
-nnoremap <silent> <Leader>gg :Git<CR>
-nnoremap <silent> <Leader>gp :Gpush<CR>
+nnoremap <silent> <Leader>g :Git<CR>
 autocmd FileType fugitive nnoremap <silent> <buffer> <Esc> <C-W>c
