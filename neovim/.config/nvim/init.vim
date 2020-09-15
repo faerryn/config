@@ -8,9 +8,9 @@
 
 let s:list_f    = stdpath('config') . '/list.vim'
 let s:bits_d    = stdpath('config') . '/bits'
-let s:plug_vim  = stdpath('data') . '/site/autoload/plug.vim'
-let s:plugged_d = stdpath('data') . '/plugged'
-let s:plug_doc  = stdpath('data') . '/site/doc/plug.txt'
+let s:plug_vim  = stdpath('data')   . '/site/autoload/plug.vim'
+let s:plugged_d = stdpath('data')   . '/plugged'
+let s:plug_doc  = stdpath('data')   . '/site/doc/plug.txt'
 
 function! s:try_source(source_file) abort
 	if !filereadable(a:source_file) | return | endif
