@@ -40,7 +40,10 @@ END {
 		exit(1); 
 
 	print " ["
-	print " %F{blue}:" substr(oid, 1, 8) "%f";
+	if (oid ~ /^\(.*\)$/) 
+		print " %F{blue}" oid "%f";
+	else 
+		print " %F{blue}:" substr(oid, 1, 7) "%f";
 	print " %F{yellow}" head "%f";
 	if (untracked > 0)
 		print " %F{yellow}?" untracked "%f"; 
