@@ -5,10 +5,10 @@ set foldlevelstart=99
 set hidden
 set inccommand=nosplit
 set iskeyword=a-z,A-Z,48-57,_,-
+set laststatus=2 showtabline=2
 set lazyredraw
 set mouse=ar
 set noequalalways
-set noruler
 set noshowmode
 set nrformats=alpha,octal,hex,bin
 set number relativenumber signcolumn=number
