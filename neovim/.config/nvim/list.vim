@@ -32,6 +32,5 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
 
 " File Types
-Plug 'vimwiki/vimwiki'
 Plug 'ziglang/zig.vim'
 Plug 'zinit-zsh/zinit-vim-syntax', { 'for': 'zsh' }
