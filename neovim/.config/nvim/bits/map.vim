@@ -1,6 +1,7 @@
-nnoremap Y y$
 noremap <silent> <Leader> <Nop>
 noremap <silent> s <Nop>
+
+nnoremap Y y$
 
 nnoremap <silent> ]a <cmd>next<CR>
 nnoremap <silent> [a <cmd>previous<CR>
