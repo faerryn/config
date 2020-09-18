@@ -1,4 +1,5 @@
 let mapleader = ' '
+set background=dark
 set clipboard+=unnamedplus
 set confirm
 set foldlevelstart=99
