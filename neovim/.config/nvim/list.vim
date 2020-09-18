@@ -20,7 +20,7 @@ Plug 'AndrewRadev/bufferize.vim'
 Plug 'Jorengarenar/miniSnip'
 Plug 'airblade/vim-gitgutter'
 Plug 'faerryn/vim-symlink' | Plug 'moll/vim-bbye'
-Plug 'junegunn/fzf.vim' | Plug 'junegunn/fzf'
+Plug 'junegunn/fzf'
 Plug 'justinmk/vim-dirvish'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mbbill/undotree'
@@ -30,6 +30,8 @@ Plug 'skywind3000/asyncrun.vim'
 " Aesthetics
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 " File Types
 Plug 'ziglang/zig.vim'
