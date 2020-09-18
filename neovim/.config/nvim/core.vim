@@ -10,7 +10,7 @@ set laststatus=2 showtabline=2
 set lazyredraw
 set mouse=ar
 set noequalalways
-set noshowmode
+set noshowmode noshowcmd
 set nrformats=alpha,octal,hex,bin
 set number relativenumber signcolumn=number
 set omnifunc=syntaxcomplete#Complete

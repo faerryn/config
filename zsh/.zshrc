@@ -79,6 +79,10 @@ function personal_fg () {
 zle -N personal_fg
 bindkey '^Z' personal_fg
 
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
 # History
 setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY
 mkdir -p "$XDG_DATA_HOME/zsh"
