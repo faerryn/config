@@ -8,10 +8,17 @@ function personal_fzf_file () {
 		PIECES=($PIECES[1,-2])
 		DIRECTORY="$PRE${(j:/:)PIECES}"
 	}
-	[[ -n $DIRECTORY ]] && DIRECTORY="$DIRECTORY/"
+	[[ ! $DIRECTORY =~ \/$ ]] && DIRECTORY="$DIRECTORY/"
 	local SEARCH="$WORD[${#DIRECTORY}+1,-1]"
-	local FILES="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd -tf -td | fzf --multi --height=50% --query="$SEARCH" | tr '\n' ' ')"
-	[[ -n $FILES ]] && LBUFFER="$LBUFFER[1,-${#WORD}-1]$DIRECTORY$FILES"
+	local OUTPUT="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd -tf -td | fzf --multi --height=50% --query="$SEARCH" | tr '\n' ' ')"
+	if [[ -n $OUTPUT ]] {
+		LBUFFER="$LBUFFER[1,-${#WORD}-2]"
+		local FILES=(${(s: :)OUTPUT})
+		local FILE=""
+		for FILE in $FILES; do
+			LBUFFER="$LBUFFER $DIRECTORY$FILE"
+		done
+	}
 	zle reset-prompt
 }
 zle -N personal_fzf_file
