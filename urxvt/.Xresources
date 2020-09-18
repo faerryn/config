@@ -19,3 +19,5 @@ URxvt.scrollBar: false
 *color14: #8ec07c
 *color7:  #a89984
 *color15: #ebdbb2
+
+URxvt.perl-ext-common: font-size
