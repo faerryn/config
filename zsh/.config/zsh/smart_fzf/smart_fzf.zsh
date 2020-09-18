@@ -10,7 +10,7 @@ function personal_fzf_file () {
 	}
 	[[ ! $DIRECTORY =~ \/$ ]] && DIRECTORY="$DIRECTORY/"
 	local SEARCH="$WORD[${#DIRECTORY}+1,-1]"
-	local OUTPUT="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd -tf -td | fzf --multi --height=50% --query="$SEARCH" | tr '\n' ' ')"
+	local OUTPUT="$([[ -n $DIRECTORY ]] && cd -q $DIRECTORY; fd -tf -td | fzf --multi --height=50% --query="$SEARCH" | tr '\n' ' ')"
 	if [[ -n $OUTPUT ]] {
 		LBUFFER="$LBUFFER[1,-${#WORD}-2]"
 		local FILES=(${(s: :)OUTPUT})
