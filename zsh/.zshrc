@@ -51,7 +51,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
-zinit ice silent compile wait'!0' atinit'zicompinit'
+zinit ice silent compile wait'!0' atinit'zicompinit' atinit'[[ -n "$TMUX" ]] && tmux clear-history'
 zinit light zsh-users/zsh-syntax-highlighting
 
 # Aliases
