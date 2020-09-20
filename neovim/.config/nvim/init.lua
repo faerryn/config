@@ -5,14 +5,14 @@ local plugged_d = vim.fn.stdpath'data'   .. '/plugged'
 local plug_doc  = vim.fn.stdpath'data'   .. '/site/doc/plug.txt'
 
 local file_command = {
-	vim = 'source',
-	lua = 'luafile',
+	vim = 'source ',
+	lua = 'luafile ',
 }
 local function try_source (source_file)
-	pcall(vim.cmd, file_command[vim.fn.fnamemodify(source_file, ':e')] .. ' ' .. source_file)
+	pcall(vim.cmd, file_command[vim.fn.fnamemodify(source_file, ':e')] .. source_file)
 end
 
-function enhanced_source (source_file)
+function personal_enhanced_source (source_file)
 	if io.open(source_file) == nil then
 		return
 	end
@@ -20,7 +20,7 @@ function enhanced_source (source_file)
 	vim.cmd('augroup Personal' .. source_file:gsub('[/|.]', '_'))
 	vim.cmd'autocmd!'
 	try_source(source_file)
-	vim.cmd('autocmd BufWritePost ' .. source_file .. ' lua enhanced_source"' .. source_file .. '"')
+	vim.cmd('autocmd BufWritePost ' .. source_file .. ' lua personal_enhanced_source"' .. source_file .. '"')
 	vim.cmd'augroup END'
 end
 
@@ -29,8 +29,8 @@ vim.cmd'autocmd!'
 vim.cmd('augroup END')
 
 -- CORE
-enhanced_source(vim.fn.stdpath'config' .. '/core.vim')
-enhanced_source(vim.fn.stdpath'config' .. '/core.lua')
+personal_enhanced_source(vim.fn.stdpath'config' .. '/core.vim')
+personal_enhanced_source(vim.fn.stdpath'config' .. '/core.lua')
 
 -- VIM-PLUG
 vim.g.plug_window = 'new'
@@ -46,13 +46,13 @@ if io.open(plug_vim) == nil then
 end
 
 -- PLUG_LIST
-function load_list ()
+function personal_load_list ()
 	vim.fn['plug#begin'](plugged_d)
 	try_source(list_f)
 	vim.fn['plug#end']()
 end
-load_list()
-vim.cmd('autocmd PersonalInit BufWritePost ' .. vim.fn.resolve(list_f) .. ' lua load_list()')
+personal_load_list()
+vim.cmd('autocmd PersonalInit BufWritePost ' .. vim.fn.resolve(list_f) .. ' lua personal_load_list()')
 
 if not vim.fn.isdirectory(plugged_d) then
 	vim.cmd'PlugInstall'
@@ -60,5 +60,5 @@ end
 
 -- BITS
 for config_f in vim.fn.glob(bits_d .. '/*.{vim,lua}'):gmatch'[^\n]+' do
-	enhanced_source(config_f)
+	personal_enhanced_source(config_f)
 end

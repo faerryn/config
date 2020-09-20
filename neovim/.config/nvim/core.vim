@@ -17,7 +17,7 @@ let &shadafile = expand('$XDG_CACHE_HOME/nvim/shada/main.shada')
 set directory=$XDG_CACHE_HOME/nvim/swap
 set undodir=$XDG_CACHE_HOME/nvim/undo
 
-autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line('$') | execute "normal! g'\"" | endif
+autocmd BufReadPost * lua if vim.fn.line"'\"" > 0 and vim.fn.line"'\"" <= vim.fn.line'$' then vim.cmd"normal! g'\"" end
 
 set laststatus=2 showtabline=2
 set noequalalways
