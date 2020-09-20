@@ -12,21 +12,23 @@ local function try_source (source_file)
 	pcall(vim.cmd, file_command[vim.fn.fnamemodify(source_file, ':e')] .. source_file)
 end
 
+
+local real_config = vim.fn.resolve(vim.fn.stdpath'config'):gsub('[~|/|.]', '_')
 function personal_enhanced_source (source_file)
 	if io.open(source_file) == nil then
 		return
 	end
 	source_file = vim.fn.resolve(source_file)
-	vim.cmd('augroup Personal' .. source_file:gsub('[/|.]', '_'))
+	vim.cmd('augroup Personal' .. source_file:gsub('[~|/|.]', '_'):gsub('^' .. real_config, ''))
 	vim.cmd'autocmd!'
 	try_source(source_file)
 	vim.cmd('autocmd BufWritePost ' .. source_file .. ' lua personal_enhanced_source"' .. source_file .. '"')
 	vim.cmd'augroup END'
 end
 
-vim.cmd'augroup PersonalInit'
+vim.cmd'augroup Personal_init_lua'
 vim.cmd'autocmd!'
-vim.cmd('augroup END')
+vim.cmd'augroup END'
 
 -- CORE
 personal_enhanced_source(vim.fn.stdpath'config' .. '/core.vim')
@@ -35,7 +37,7 @@ personal_enhanced_source(vim.fn.stdpath'config' .. '/core.lua')
 -- VIM-PLUG
 vim.g.plug_window = 'new'
 vim.g.plug_pwindow = 'new'
-vim.cmd'autocmd PersonalInit FileType vim-plug nnoremap <silent> <buffer> <Esc> <C-W>c'
+vim.cmd'autocmd Personal_init_lua FileType vim-plug nnoremap <silent> <buffer> <Esc> <C-W>c'
 
 local plug_vim = vim.fn.stdpath'data' .. '/site/autoload/plug.vim'
 local plug_doc = vim.fn.stdpath'data' .. '/site/doc/plug.txt'
@@ -52,7 +54,7 @@ function personal_load_list ()
 	vim.fn['plug#end']()
 end
 personal_load_list()
-vim.cmd('autocmd PersonalInit BufWritePost ' .. vim.fn.resolve(list_f) .. ' lua personal_load_list()')
+vim.cmd('autocmd Personal_init_lua BufWritePost ' .. vim.fn.resolve(list_f) .. ' lua personal_load_list()')
 
 if not vim.fn.isdirectory(plugged_d) then
 	vim.cmd'PlugInstall'
