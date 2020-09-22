@@ -54,13 +54,12 @@ function personal_load_list ()
 	vim.fn['plug#begin'](plugged_d)
 	try_source(list_f)
 	vim.fn['plug#end']()
+	if not vim.fn.isdirectory(plugged_d) then
+		vim.cmd'PlugInstall'
+	end
 end
 personal_load_list()
 vim.cmd('autocmd _init_lua BufWritePost ' .. vim.fn.resolve(list_f) .. ' lua personal_load_list()')
-
-if not vim.fn.isdirectory(plugged_d) then
-	vim.cmd'PlugInstall'
-end
 
 -- BITS
 for config_f in vim.fn.glob(bits_d .. '/*.{vim,lua}'):gmatch'[^\n]+' do
