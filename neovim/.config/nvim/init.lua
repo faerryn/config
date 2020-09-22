@@ -5,13 +5,15 @@ local plugged_d = vim.fn.stdpath'data'   .. '/plugged'
 local plug_doc  = vim.fn.stdpath'data'   .. '/site/doc/plug.txt'
 
 local file_command = {
-	vim = 'source ',
-	lua = 'luafile ',
+	vim = function (source_file) vim.cmd('source ' .. source_file) end,
+	lua = dofile,
 }
 local function try_source (source_file)
-	pcall(vim.cmd, file_command[vim.fn.fnamemodify(source_file, ':e')] .. source_file)
+	local status, err = pcall(file_command[vim.fn.fnamemodify(source_file, ':e')], source_file)
+	if not status then
+		print('Error in ' .. source_file .. ':\n' .. err)
+	end
 end
-
 
 local real_config = vim.fn.resolve(vim.fn.stdpath'config'):gsub('[~|/|.]', '_')
 function personal_enhanced_source (source_file)
