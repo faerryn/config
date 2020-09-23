@@ -37,7 +37,7 @@ personal_enhanced_source(vim.fn.stdpath'config' .. '/core.vim')
 personal_enhanced_source(vim.fn.stdpath'config' .. '/core.lua')
 
 -- VIM-PLUG
-vim.g.plug_window = 'new'
+vim.g.plug_window  = 'new'
 vim.g.plug_pwindow = 'new'
 vim.cmd'autocmd _init_lua FileType vim-plug nnoremap <silent> <buffer> <Esc> <C-W>c'
 

@@ -65,7 +65,7 @@ alias rg="rg --hidden --ignore-file $XDG_CONFIG_HOME/rg/ignore"
 # Navigation
 function dc () {
 	1="${1:-1}"
-	[[ ! $1 =~ ^[0-9]+$ ]] && return 1
+	[[ ! "$1" =~ ^[0-9]+$ ]] && return 1
 	repeat $1 { cd .. }
 }
 alias ..=dc

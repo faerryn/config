@@ -17,7 +17,6 @@ Plug 'tpope/vim-repeat'
 
 " Misc
 Plug 'AndrewRadev/bufferize.vim'
-Plug 'Jorengarenar/miniSnip'
 Plug 'airblade/vim-gitgutter'
 Plug 'faerryn/vim-symlink' | Plug 'moll/vim-bbye'
 Plug 'junegunn/fzf'
