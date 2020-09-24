@@ -9,9 +9,9 @@ vim.o.mouse          = 'ar'
 vim.o.timeoutlen     = 500
 vim.o.updatetime     = 500
 
-vim.o.shadafile      = vim.fn.expand'$XDG_CACHE_HOME/nvim/shada/main.shada'
-vim.o.directory      = vim.fn.expand'$XDG_CACHE_HOME/nvim/swap'
-vim.o.undodir        = vim.fn.expand'$XDG_CACHE_HOME/nvim/undo'
+vim.o.shadafile      = vim.fn.stdpath'cache' .. '/shada/main.shada'
+vim.o.directory      = vim.fn.stdpath'cache' .. '/swap'
+vim.o.undodir        = vim.fn.stdpath'cache' .. '/undo'
 
 vim.o.laststatus     = 2
 vim.o.showtabline    = 2

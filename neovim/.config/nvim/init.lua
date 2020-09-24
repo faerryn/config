@@ -4,28 +4,29 @@ local plug_vim  = vim.fn.stdpath'data'   .. '/site/autoload/plug.vim'
 local plugged_d = vim.fn.stdpath'data'   .. '/plugged'
 local plug_doc  = vim.fn.stdpath'data'   .. '/site/doc/plug.txt'
 
-local file_command = {
-	vim = function (source_file) vim.cmd('source ' .. source_file) end,
+local sourcers = {
+	vim = function (file) vim.cmd('source ' .. file) end,
 	lua = dofile,
 }
-local function try_source (source_file)
-	local status, err = pcall(file_command[vim.fn.fnamemodify(source_file, ':e')], source_file)
+local function try_source (file)
+	local status, err = pcall(sourcers[vim.fn.fnamemodify(file, ':e')], file)
 	if not status then
-		print('Error in ' .. source_file .. ':\n' .. err)
+		print('Error in ' .. file .. ':\n' .. err)
 	end
 end
 
 local real_config = vim.fn.resolve(vim.fn.stdpath'config'):gsub('[~|/|.]', '_')
-function personal_enhanced_source (source_file)
-	if io.open(source_file) == nil then
-		return
-	end
-	source_file = vim.fn.resolve(source_file)
-	vim.cmd('augroup ' .. source_file:gsub('[~|/|.]', '_'):gsub('^' .. real_config, ''))
+function personal_enhanced_source (file, ...)
+	if io.open(file) == nil then return end
+	local arg = {...}
+	if arg[1] then arg[1]() end
+	file = vim.fn.resolve(file)
+	vim.cmd('augroup ' .. file:gsub('[~|/|.]', '_'):gsub('^' .. real_config, ''))
 	vim.cmd'autocmd!'
-	try_source(source_file)
-	vim.cmd('autocmd BufWritePost ' .. source_file .. ' lua personal_enhanced_source"' .. source_file .. '"')
+	try_source(file)
+	vim.cmd('autocmd BufWritePost ' .. file .. ' lua personal_enhanced_source"' .. file .. '"')
 	vim.cmd'augroup END'
+	if arg[2] then arg[2]() end
 end
 
 vim.cmd'augroup _init_lua'
@@ -50,16 +51,14 @@ if io.open(plug_vim) == nil then
 end
 
 -- PLUG_LIST
-function personal_load_list ()
-	vim.fn['plug#begin'](plugged_d)
-	try_source(list_f)
+personal_enhanced_source(list_f,
+function () vim.fn['plug#begin'](plugged_d) end,
+function ()
 	vim.fn['plug#end']()
 	if not vim.fn.isdirectory(plugged_d) then
 		vim.cmd'PlugInstall'
 	end
-end
-personal_load_list()
-vim.cmd('autocmd _init_lua BufWritePost ' .. vim.fn.resolve(list_f) .. ' lua personal_load_list()')
+end)
 
 -- BITS
 for config_f in vim.fn.glob(bits_d .. '/*.{vim,lua}'):gmatch'[^\n]+' do
