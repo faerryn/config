@@ -19,10 +19,11 @@ local real_config = vim.fn.resolve(vim.fn.stdpath'config'):gsub('[~|/|.]', '_')
 function personal_enhanced_source (file, ...)
 	if io.open(file) == nil then return end
 	file = vim.fn.resolve(file)
-	vim.cmd('augroup ' .. file:gsub('[~|/|.]', '_'):gsub('^' .. real_config, ''))
+	local augroup = file:gsub('[~|/|.]', '_'):gsub('^' .. real_config, '')
+	vim.cmd('augroup ' .. augroup)
 	vim.cmd'autocmd!'
 	try_source(file)
-	vim.cmd('autocmd BufWritePost ' .. file .. ' lua personal_enhanced_source"' .. file .. '"')
+	vim.cmd('autocmd ' .. augroup .. ' BufWritePost ' .. file .. ' lua personal_enhanced_source"' .. file .. '"')
 	vim.cmd'augroup END'
 end
 
