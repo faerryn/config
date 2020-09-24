@@ -18,15 +18,12 @@ end
 local real_config = vim.fn.resolve(vim.fn.stdpath'config'):gsub('[~|/|.]', '_')
 function personal_enhanced_source (file, ...)
 	if io.open(file) == nil then return end
-	local arg = {...}
-	if arg[1] then arg[1]() end
 	file = vim.fn.resolve(file)
 	vim.cmd('augroup ' .. file:gsub('[~|/|.]', '_'):gsub('^' .. real_config, ''))
 	vim.cmd'autocmd!'
 	try_source(file)
 	vim.cmd('autocmd BufWritePost ' .. file .. ' lua personal_enhanced_source"' .. file .. '"')
 	vim.cmd'augroup END'
-	if arg[2] then arg[2]() end
 end
 
 -- CORE
@@ -51,14 +48,17 @@ if io.open(plug_vim) == nil then
 end
 
 -- PLUG_LIST
-personal_enhanced_source(list_f,
-function () vim.fn['plug#begin'](plugged_d) end,
-function ()
+function personal_load_list ()
+	vim.fn['plug#begin'](plugged_d)
+	vim.cmd'autocmd!'
+	try_source(list_f)
+	vim.cmd('autocmd BufWritePost ' .. vim.fn.resolve(list_f) .. ' lua personal_load_list()')
 	vim.fn['plug#end']()
 	if not vim.fn.isdirectory(plugged_d) then
 		vim.cmd'PlugInstall'
 	end
-end)
+end
+personal_load_list()
 
 -- BITS
 for config_f in vim.fn.glob(bits_d .. '/*.{vim,lua}'):gmatch'[^\n]+' do
