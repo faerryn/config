@@ -16,7 +16,7 @@ local function try_source (file)
 end
 
 local real_config = vim.fn.resolve(vim.fn.stdpath'config'):gsub('[~|/|.]', '_')
-function personal_enhanced_source (file, ...)
+function personal_enhanced_source (file)
 	if io.open(file) == nil then return end
 	file = vim.fn.resolve(file)
 	local augroup = file:gsub('[~|/|.]', '_'):gsub('^' .. real_config, '')
