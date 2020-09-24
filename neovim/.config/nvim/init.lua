@@ -1,8 +1,8 @@
-local list_f    = vim.fn.stdpath'config' .. '/list.vim'
-local bits_d    = vim.fn.stdpath'config' .. '/bits'
-local plug_vim  = vim.fn.stdpath'data'   .. '/site/autoload/plug.vim'
-local plugged_d = vim.fn.stdpath'data'   .. '/plugged'
-local plug_doc  = vim.fn.stdpath'data'   .. '/site/doc/plug.txt'
+local list_f    = vim.fn.resolve(vim.fn.stdpath'config' .. '/list.vim')
+local bits_d    = vim.fn.resolve(vim.fn.stdpath'config' .. '/bits')
+local plug_vim  = vim.fn.resolve(vim.fn.stdpath'data'   .. '/site/autoload/plug.vim')
+local plugged_d = vim.fn.resolve(vim.fn.stdpath'data'   .. '/plugged')
+local plug_doc  = vim.fn.resolve(vim.fn.stdpath'data'   .. '/site/doc/plug.txt')
 
 local sourcers = {
 	vim = function (file) vim.cmd('source ' .. file) end,
@@ -50,9 +50,10 @@ end
 -- PLUG_LIST
 function personal_load_list ()
 	vim.fn['plug#begin'](plugged_d)
+	vim.cmd('augroup ' .. list_f:gsub('[~|/|.]', '_'):gsub('^' .. real_config, ''))
 	vim.cmd'autocmd!'
 	try_source(list_f)
-	vim.cmd('autocmd BufWritePost ' .. vim.fn.resolve(list_f) .. ' lua personal_load_list()')
+	vim.cmd('autocmd BufWritePost ' .. list_f .. ' lua personal_load_list()')
 	vim.fn['plug#end']()
 	if not vim.fn.isdirectory(plugged_d) then
 		vim.cmd'PlugInstall'

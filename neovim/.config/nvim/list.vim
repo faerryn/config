@@ -33,5 +33,5 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
 " File Types
-Plug '~/src/zig.vim'
+Plug 'ziglang/zig.vim'
 Plug 'zinit-zsh/zinit-vim-syntax', { 'for': 'zsh' }
