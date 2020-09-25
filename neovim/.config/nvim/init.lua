@@ -1,8 +1,8 @@
-local list_f    = vim.fn.resolve(vim.fn.stdpath'config' .. '/list.vim')
-local bits_d    = vim.fn.resolve(vim.fn.stdpath'config' .. '/bits')
-local plug_vim  = vim.fn.resolve(vim.fn.stdpath'data'   .. '/site/autoload/plug.vim')
-local plugged_d = vim.fn.resolve(vim.fn.stdpath'data'   .. '/plugged')
-local plug_doc  = vim.fn.resolve(vim.fn.stdpath'data'   .. '/site/doc/plug.txt')
+local list_f    = vim.fn.stdpath'config' .. '/list.vim'
+local bits_d    = vim.fn.stdpath'config' .. '/bits'
+local plug_vim  = vim.fn.stdpath'data'   .. '/site/autoload/plug.vim'
+local plugged_d = vim.fn.stdpath'data'   .. '/plugged'
+local plug_doc  = vim.fn.stdpath'data'   .. '/site/doc/plug.txt'
 
 local sourcers = {
 	vim = function (file) vim.cmd('source ' .. file) end,
@@ -49,11 +49,12 @@ end
 -- PLUG_LIST
 function personal_load_list ()
 	vim.fn['plug#begin'](plugged_d)
-	local augroup = list_f:gsub('[~|/|.]', '_'):gsub('^' .. real_config, '')
+	local list_f_resolved = vim.fn.resolve(list_f)
+	local augroup = list_f_resolved:gsub('[~|/|.]', '_'):gsub('^' .. real_config, '')
 	vim.cmd('augroup ' .. augroup)
 	vim.cmd'autocmd!'
 	try_source(list_f)
-	vim.cmd('autocmd ' .. augroup .. ' BufWritePost ' .. list_f .. ' lua personal_load_list()')
+	vim.cmd('autocmd ' .. augroup .. ' BufWritePost ' .. list_f_resolved .. ' lua personal_load_list()')
 	vim.cmd('augroup END');
 	vim.fn['plug#end']()
 	if vim.fn.isdirectory(plugged_d) == 0 then vim.cmd'PlugInstall' end
