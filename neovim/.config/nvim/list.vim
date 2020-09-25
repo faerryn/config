@@ -16,11 +16,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 
 " Misc
-Plug 'AndrewRadev/bufferize.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'faerryn/vim-symlink' | Plug 'moll/vim-bbye'
 Plug 'junegunn/fzf'
 Plug 'justinmk/vim-dirvish'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'mbbill/undotree'
 Plug 'romainl/vim-qf'
 Plug 'skywind3000/asyncrun.vim'
