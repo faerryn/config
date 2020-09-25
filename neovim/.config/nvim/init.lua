@@ -10,9 +10,7 @@ local sourcers = {
 }
 local function try_source (file)
 	local status, err = pcall(sourcers[vim.fn.fnamemodify(file, ':e')], file)
-	if not status then
-		print('Error in ' .. file .. ':\n' .. err)
-	end
+	if not status then print('Error in ' .. file .. ':\n' .. err) end
 end
 
 local real_config = vim.fn.resolve(vim.fn.stdpath'config'):gsub('[~|/|.]', '_')
@@ -43,22 +41,22 @@ vim.cmd'augroup END'
 local plug_vim = vim.fn.stdpath'data' .. '/site/autoload/plug.vim'
 local plug_doc = vim.fn.stdpath'data' .. '/site/doc/plug.txt'
 if io.open(plug_vim) == nil then
-	vim.cmd('silent !curl -fLo "' .. plug_vim .. '" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
-	vim.cmd('silent !curl -fLo "' .. plug_doc .. '" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/doc/plug.txt')
+	os.execute('curl -fLo "' .. plug_vim .. '" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+	os.execute('curl -fLo "' .. plug_doc .. '" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/doc/plug.txt')
 	vim.cmd('helptag ' .. vim.fn.fnamemodify(plug_doc, ':p:h'))
 end
 
 -- PLUG_LIST
 function personal_load_list ()
 	vim.fn['plug#begin'](plugged_d)
-	vim.cmd('augroup ' .. list_f:gsub('[~|/|.]', '_'):gsub('^' .. real_config, ''))
+	local augroup = list_f:gsub('[~|/|.]', '_'):gsub('^' .. real_config, '')
+	vim.cmd('augroup ' .. augroup)
 	vim.cmd'autocmd!'
 	try_source(list_f)
-	vim.cmd('autocmd BufWritePost ' .. list_f .. ' lua personal_load_list()')
+	vim.cmd('autocmd ' .. augroup .. ' BufWritePost ' .. list_f .. ' lua personal_load_list()')
+	vim.cmd('augroup END');
 	vim.fn['plug#end']()
-	if not vim.fn.isdirectory(plugged_d) then
-		vim.cmd'PlugInstall'
-	end
+	if vim.fn.isdirectory(plugged_d) == 0 then vim.cmd'PlugInstall' end
 end
 personal_load_list()
 
