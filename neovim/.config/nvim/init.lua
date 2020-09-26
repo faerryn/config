@@ -33,11 +33,6 @@ personal_enhanced_source(vim.fn.stdpath'config' .. '/core.lua')
 vim.g.plug_window  = 'new'
 vim.g.plug_pwindow = 'new'
 
-vim.cmd'augroup _init_lua'
-vim.cmd'autocmd!'
-vim.cmd'autocmd FileType vim-plug nnoremap <silent> <buffer> <Esc> <C-W>c'
-vim.cmd'augroup END'
-
 local plug_vim = vim.fn.stdpath'data' .. '/site/autoload/plug.vim'
 local plug_doc = vim.fn.stdpath'data' .. '/site/doc/plug.txt'
 if io.open(plug_vim) == nil then
