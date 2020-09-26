@@ -62,6 +62,6 @@ end
 personal_load_list()
 
 -- BITS
-for config_f in vim.fn.glob(bits_d .. '/*.{vim,lua}'):gmatch'[^\n]+' do
+for config_f in vim.gsplit(vim.fn.glob(bits_d .. '/*.{vim,lua}'), '\n', true) do
 	personal_enhanced_source(config_f)
 end
