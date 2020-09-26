@@ -25,6 +25,7 @@
 ;; If you'd like to disable a package included with Doom, you can do so here
 ;; with the `:disable' property:
 ;(package! builtin-package :disable t)
+(package! evil-embrace :disable t)
 (package! evil-snipe :disable t)
 
 ;; You can override the recipe of a built in package without having to specify
