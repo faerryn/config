@@ -39,6 +39,9 @@ zinit light "$XDG_CONFIG_HOME/zsh/smart_prompt"
 zinit ice silent compile wait'!0' has'fzf'
 zinit light "$XDG_CONFIG_HOME/zsh/smart_fzf"
 
+zinit ice silent compile wait'!0' if'[[ -n "$INSIDE_EMACS" ]]'
+zinit light "$XDG_CONFIG_HOME/zsh/emacs_vterm"
+
 zinit ice silent compile wait'!0'
 zinit light zsh-users/zsh-completions
 
