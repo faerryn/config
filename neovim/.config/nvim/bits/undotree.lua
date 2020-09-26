@@ -7,3 +7,4 @@ function personal_undotree()
 	vim.cmd'UndotreeFocus'
 	vim.bo.filetype = 'undotree'
 end
+vim.cmd'nnoremap <silent> <Leader>u <cmd>lua personal_undotree()<CR>'
