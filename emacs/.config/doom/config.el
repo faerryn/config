@@ -53,27 +53,38 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 (map!
- :nv "S" nil
+ :nvo "S" nil
  :nvo "s" nil
  :nv "sa" #'evil-surround-region
- :n "sd" #'embrace-delete
- :n "sr" #'embrace-change
- :o "ih" "i("
- :o "ah" "a("
- :o "ij" "i{"
- :o "aj" "a{"
- :o "ik" "i["
- :o "ak" "a["
- :o "il" "i<"
- :o "al" "a<")
+ :n "sd" #'evil-surround-delete
+ :n "sr" #'evil-surround-change
+ (:map evil-inner-text-objects-map
+  "h" #'evil-inner-paren
+  "j" #'evil-inner-curly
+  "k" #'evil-inner-bracket
+  "l" #'evil-inner-angle)
+ (:map evil-outer-text-objects-map
+  "h" #'evil-a-paren
+  "j" #'evil-a-curly
+  "k" #'evil-a-bracket
+  "l" #'evil-an-angle))
 
-(after! evil-surround
-  (let ((pairs '((?h . ("(" . ")"))
-                 (?j . ("[" . "]"))
-                 (?k . ("{" . "}"))
-                 (?l . ("<" . ">")))))
-    (prependq! evil-surround-pairs-alist pairs)
-    (prependq! evil-embrace-evil-surround-keys (mapcar #'car pairs))))
+(after! (evil-surround evil)
+  (setq-default evil-surround-pairs-alist
+                '((?\( "(" . ")")
+                  (?\[ "[" . "]")
+                  (?\{ "{" . "}")
+                  (?\< "<" . ">")
+
+                  (?\) "(" . ")")
+                  (?\] "[" . "]")
+                  (?\} "{" . "}")
+                  (?\> "<" . ">")
+
+                  (?h "(" . ")")
+                  (?j "[" . "]")
+                  (?k "{" . "}")
+                  (?l "<" . ">"))))
 
 (after! evil-snipe
   (evil-snipe-mode -1))
