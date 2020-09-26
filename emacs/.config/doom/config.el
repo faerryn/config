@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Faerryn"
+      user-mail-address "alexandre.liao@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -33,7 +33,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -52,3 +52,28 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+(map!
+ :nv "S" nil
+ :nvo "s" nil
+ :nv "sa" #'evil-surround-region
+ :n "sd" #'embrace-delete
+ :n "sr" #'embrace-change
+ :o "ih" "i("
+ :o "ah" "a("
+ :o "ij" "i{"
+ :o "aj" "a{"
+ :o "ik" "i["
+ :o "ak" "a["
+ :o "il" "i<"
+ :o "al" "a<")
+
+(after! evil-surround
+  (let ((pairs '((?h . ("(" . ")"))
+                 (?j . ("[" . "]"))
+                 (?k . ("{" . "}"))
+                 (?l . ("<" . ">")))))
+    (prependq! evil-surround-pairs-alist pairs)
+    (prependq! evil-embrace-evil-surround-keys (mapcar #'car pairs))))
+
+(after! evil-snipe
+  (evil-snipe-mode -1))
