@@ -26,3 +26,21 @@ nnoremap <silent> ]l <cmd>lnext<CR>
 nnoremap <silent> [l <cmd>lprevious<CR>
 nnoremap <silent> ]L <cmd>llast<CR>
 nnoremap <silent> [L <cmd>lfirst<CR>
+
+onoremap <silent> ih i(
+onoremap <silent> ah a(
+onoremap <silent> ij i{
+onoremap <silent> aj a{
+onoremap <silent> ik i[
+onoremap <silent> al a[
+onoremap <silent> il i<
+onoremap <silent> ak a<
+
+vnoremap <silent> ih i(
+vnoremap <silent> ah a(
+vnoremap <silent> ij i{
+vnoremap <silent> aj a{
+vnoremap <silent> ik i[
+vnoremap <silent> al a[
+vnoremap <silent> il i<
+vnoremap <silent> ak a<
