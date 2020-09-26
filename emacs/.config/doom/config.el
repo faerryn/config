@@ -57,17 +57,7 @@
  :nvo "s" nil
  :nv "sa" #'evil-surround-region
  :n "sd" #'evil-surround-delete
- :n "sr" #'evil-surround-change
- (:map evil-inner-text-objects-map
-  "h" #'evil-inner-paren
-  "j" #'evil-inner-curly
-  "k" #'evil-inner-bracket
-  "l" #'evil-inner-angle)
- (:map evil-outer-text-objects-map
-  "h" #'evil-a-paren
-  "j" #'evil-a-curly
-  "k" #'evil-a-bracket
-  "l" #'evil-an-angle))
+ :n "sr" #'evil-surround-change)
 
 (after! (evil-surround evil)
   (setq-default evil-surround-pairs-alist
@@ -82,9 +72,4 @@
                   (?\> "<" . ">")
 
                   (?b "(" . ")")
-                  (?B "{" . "}")
-
-                  (?h "(" . ")")
-                  (?j "{" . "}")
-                  (?k "[" . "]")
-                  (?l "<" . ">"))))
+                  (?B "{" . "}"))))

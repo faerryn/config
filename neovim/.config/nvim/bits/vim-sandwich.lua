@@ -1,8 +1,8 @@
 vim.g['sandwich#recipes'] = {
-	{ buns = {'(', ')'}, nesting = -1, linewise = 0, input = {'(', ')', 'h', 'b'} },
-	{ buns = {'{', '}'}, nesting = -1, linewise = 0, input = {'{', '}', 'j', 'B'} },
-	{ buns = {'[', ']'}, nesting = -1, linewise = 0, input = {'[', ']', 'k'} },
-	{ buns = {'<', '>'}, nesting = -1, linewise = 0, input = {'<', '>', 'l'} },
+	{ buns = {'(', ')'}, nesting = -1, linewise = 0, input = {'(', ')', 'b'} },
+	{ buns = {'{', '}'}, nesting = -1, linewise = 0, input = {'{', '}', 'B'} },
+	{ buns = {'[', ']'}, nesting = -1, linewise = 0, input = {'[', ']'} },
+	{ buns = {'<', '>'}, nesting = -1, linewise = 0, input = {'<', '>'} },
 }
 vim.g.sandwich_no_default_key_mappings          = 1
 vim.g.operator_sandwich_no_default_key_mappings = 1
