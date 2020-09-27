@@ -22,6 +22,12 @@ doom () {
 	"$XDG_CONFIG_HOME/emacs/bin/doom" "$@"
 }
 
+# fey vim
+fey () {
+	[ ! -d "$XDG_CONFIG_HOME/nvim/bin" ] && git clone --depth 1 https://github.com/faerryn/fey.git "$XDG_CONFIG_HOME/nvim" 
+	"$XDG_CONFIG_HOME/nvim/bin/fey" "$@"
+}
+
 # MANPAGER
 >/dev/null command -v vim && export MANPAGER='vim +"set ft=man"'
 
