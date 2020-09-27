@@ -24,7 +24,7 @@ doom () {
 
 # fey vim
 fey () {
-	[ ! -d "$XDG_CONFIG_HOME/nvim/bin" ] && git clone --depth 1 https://github.com/faerryn/fey.git "$XDG_CONFIG_HOME/nvim" 
+	[ ! -d "$XDG_CONFIG_HOME/nvim/bin" ] && git clone --depth 1 https://github.com/faerryn/fey_neovim.git "$XDG_CONFIG_HOME/nvim" 
 	"$XDG_CONFIG_HOME/nvim/bin/fey" "$@"
 }
 

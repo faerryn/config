@@ -1,1 +1,1 @@
-vim.cmd"autocmd fey_user VimEnter * lua fey_ui_colorscheme('gruvbox', 'dark')"
+vim.cmd"autocmd fey_user VimEnter * lua fey_core_set_colorscheme('gruvbox', 'dark')"
