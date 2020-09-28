@@ -1,4 +1,4 @@
-vim.cmd"autocmd fey_user VimEnter * lua fey_core_set_colorscheme('gruvbox', 'dark')"
+fey_core_set_colorscheme('gruvbox', 'dark')
 
 local prose_mode = false
 function fey_user_toggle_prose()
