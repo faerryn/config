@@ -24,6 +24,8 @@ function fey_user_toggle_prose()
 		vim.cmd'onoremap ^ g^'
 		vim.cmd'onoremap $ g$'
 		vim.cmd'onoremap <End> g<End>'
+
+		print'Prose mode ON'
 	else
 		vim.cmd'unmap j'
 		vim.cmd'unmap k'
@@ -31,6 +33,8 @@ function fey_user_toggle_prose()
 		vim.cmd'unmap ^'
 		vim.cmd'unmap $'
 		vim.cmd'unmap <End>'
+
+		print'Prose mode OFF'
 	end
 end
 vim.cmd'command! Prose lua fey_user_toggle_prose()'
