@@ -4,26 +4,12 @@ local prose_mode = false
 function fey_user_toggle_prose()
 	prose_mode = not prose_mode
 	if prose_mode then
-		vim.cmd'nnoremap j gj'
-		vim.cmd'nnoremap k gk'
-		vim.cmd'nnoremap 0 g0'
-		vim.cmd'nnoremap ^ g^'
-		vim.cmd'nnoremap $ g$'
-		vim.cmd'nnoremap <End> g<End>'
-
-		vim.cmd'vnoremap j gj'
-		vim.cmd'vnoremap k gk'
-		vim.cmd'vnoremap 0 g0'
-		vim.cmd'vnoremap ^ g^'
-		vim.cmd'vnoremap $ g$'
-		vim.cmd'vnoremap <End> g<End>'
-
-		vim.cmd'onoremap j gj'
-		vim.cmd'onoremap k gk'
-		vim.cmd'onoremap 0 g0'
-		vim.cmd'onoremap ^ g^'
-		vim.cmd'onoremap $ g$'
-		vim.cmd'onoremap <End> g<End>'
+		vim.cmd'noremap j gj'
+		vim.cmd'noremap k gk'
+		vim.cmd'noremap 0 g0'
+		vim.cmd'noremap ^ g^'
+		vim.cmd'noremap $ g$'
+		vim.cmd'noremap <End> g<End>'
 
 		print'Prose mode ON'
 	else
