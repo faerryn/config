@@ -11,7 +11,9 @@ return {
 
 	lang = {
 		'zig',
-		'zsh',
+		zsh = {
+			'zinit',
+		},
 	},
 
 	tools = {
