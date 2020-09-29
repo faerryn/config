@@ -7,7 +7,6 @@ return {
 		'exchange',
 		'navigate',
 		'surround',
-		'undo_tree',
 	},
 
 	lang = {
@@ -21,14 +20,14 @@ return {
 		'git',
 		'system',
 		'tags',
+		'undo_tree',
 	},
 
 	ui = {
+		'clean',
 		'colorscheme',
 		'status_line',
 		'vc_gutter',
-		-- custom
-		'clean',
 	},
 
 }
