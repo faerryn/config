@@ -8,7 +8,9 @@ function personal_fzf_file () {
 		PIECES=($PIECES[1,-2])
 		DIRECTORY="$PRE${(j:/:)PIECES}"
 	}
-	if [[ -n "$DIRECTORY" ]] && [[ ! "$DIRECTORY" =~ \/$ ]] { DIRECTORY="$DIRECTORY/" }
+	if [[ -n "$DIRECTORY" ]] && [[ ! "$DIRECTORY" =~ \/$ ]] {
+		DIRECTORY="$DIRECTORY/"
+	}
 	local SEARCH="$WORD[${#DIRECTORY}+1,-1]"
 	local OUTPUT="$([[ -n $DIRECTORY ]] && cd -q $~DIRECTORY; fd -tf -td | fzf --multi --height=50% --query="$SEARCH" | tr '\n' ' ')"
 	if [[ -n $OUTPUT ]] {

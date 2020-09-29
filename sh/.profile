@@ -2,9 +2,11 @@
 export PERSONAL_PROFILE=1
 
 # PATH
-[ -n "$PERSONAL_PATH" ]\
-	&& export PATH="$PERSONAL_PATH"\
-	|| export PERSONAL_PATH="$PATH"
+if [ -n "$PERSONAL_PATH" ]; then
+	export PATH="$PERSONAL_PATH"
+else
+	export PERSONAL_PATH="$PATH"
+fi
 
 # XDG directories
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:-"$HOME/.cache"}
@@ -18,18 +20,24 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # DOOM Emacs
 doom () {
-	[ ! -d "$XDG_CONFIG_HOME/emacs/bin" ] && git clone --depth 1 https://github.com/hlissner/doom-emacs.git "$XDG_CONFIG_HOME/emacs" 
+	if [ ! -d "$XDG_CONFIG_HOME/emacs/bin" ]; then
+		git clone --depth 1 https://github.com/hlissner/doom-emacs.git "$XDG_CONFIG_HOME/emacs"
+	fi
 	"$XDG_CONFIG_HOME/emacs/bin/doom" "$@"
 }
 
 # fey vim
 fey () {
-	[ ! -d "$XDG_CONFIG_HOME/nvim/bin" ] && git clone --depth 1 https://github.com/faerryn/fey_neovim.git "$XDG_CONFIG_HOME/nvim" 
+	if [ ! -d "$XDG_CONFIG_HOME/nvim/bin" ]; then
+		git clone --depth 1 https://github.com/faerryn/fey_neovim.git "$XDG_CONFIG_HOME/nvim"
+	fi
 	"$XDG_CONFIG_HOME/nvim/bin/fey" "$@"
 }
 
 # MANPAGER
->/dev/null command -v vim && export MANPAGER='vim +"set ft=man"'
+if >/dev/null command -v vim; then
+	export MANPAGER='vim +"set ft=man"'
+fi
 
 # rust
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"

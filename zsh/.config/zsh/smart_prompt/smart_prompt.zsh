@@ -2,7 +2,9 @@
 0=${(%):-%N}
 PERSONAL_GITPROMPT_AWK="${0:A:h}/git.awk"
 
-function personal_prompt_async () { 2>&1 git -C "$1" --no-optional-locks status --branch --porcelain=v2 | awk -f "$PERSONAL_GITPROMPT_AWK" }
+function personal_prompt_async () {
+	2>&1 git -C "$1" --no-optional-locks status --branch --porcelain=v2 | awk -f "$PERSONAL_GITPROMPT_AWK"
+}
 function personal_prompt_callback () {
 	[[ -n "$5" ]] && return
 	PERSONAL_PROMPT_GIT="$3"

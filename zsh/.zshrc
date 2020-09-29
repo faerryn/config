@@ -7,7 +7,7 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Ensure that profile is sourced
-[[ -z "$PERSONAL_PROFILE" ]] && source "$HOME/.profile"
+if [[ -z "$PERSONAL_PROFILE" ]] { source "$HOME/.profile" }
 
 # Empty out precmd_functions and preexec_functions
 precmd_functions=()
@@ -21,12 +21,12 @@ ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 ZINIT[COMPINIT_OPTS]="-d $ZINIT[ZCOMPDUMP_PATH] -C"
 export ZPFX="$ZINIT[HOME_DIR]/polaris"
 
-[[ ! -d "$ZINIT[BIN_DIR]" ]] && git clone --depth 1 https://github.com/zdharma/zinit.git "$ZINIT[BIN_DIR]"
+if [[ ! -d "$ZINIT[BIN_DIR]" ]] { git clone --depth 1 https://github.com/zdharma/zinit.git "$ZINIT[BIN_DIR]" }
 
-if [[ -f "$ZINIT[BIN_DIR]/zmodules/Src/zdharma/zplugin.so" ]]; then
+if [[ -f "$ZINIT[BIN_DIR]/zmodules/Src/zdharma/zplugin.so" ]] {
 	module_path+=("$ZINIT[BIN_DIR]/zmodules/Src")
 	zmodload zdharma/zplugin
-fi
+}
 
 source "$ZINIT[BIN_DIR]/zinit.zsh"
 
@@ -54,7 +54,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
-zinit ice silent compile wait'!0' atinit'zicompinit' atinit'[[ -n "$TMUX" ]] && tmux clear-history'
+zinit ice silent compile wait'!0' atinit'zicompinit'
 zinit light zsh-users/zsh-syntax-highlighting
 
 # Aliases
@@ -75,7 +75,7 @@ alias ..=dc
 
 # Bindings
 function personal_fg () {
-	[[ -n "$BUFFER" ]] && return
+	if [[ -n "$BUFFER" ]] { return }
 	fg
 	zle reset-prompt
 }
