@@ -1,7 +1,7 @@
 fey.core.set_colorscheme('gruvbox', 'dark')
 
 local prose_mode = false
-function fey_user_toggle_prose()
+function fey.user.toggle_prose()
 	prose_mode = not prose_mode
 	if prose_mode then
 		vim.cmd'noremap j gj'
@@ -23,4 +23,4 @@ function fey_user_toggle_prose()
 		print'Prose mode OFF'
 	end
 end
-vim.cmd'command! Prose lua fey_user_toggle_prose()'
+vim.cmd'command! Prose lua fey.user.toggle_prose()'
