@@ -58,9 +58,11 @@ zinit ice silent compile wait'!0' atinit'zicompinit'
 zinit light zsh-users/zsh-syntax-highlighting
 
 # Aliases
-alias ls='ls -hvxFX --color=auto --group-directories-first'
+alias ls='ls -hvxCFX --color=auto --group-directories-first'
 alias ll='ls -g'
 alias la='ls -gA'
+
+alias grep='grep --color=auto'
 
 alias fd='fd --hidden'
 alias rg="rg --hidden --ignore-file $XDG_CONFIG_HOME/rg/ignore"

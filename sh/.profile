@@ -26,7 +26,7 @@ doom () {
 	"$XDG_CONFIG_HOME/emacs/bin/doom" "$@"
 }
 
-# fey vim
+# FEY Neovim
 fey () {
 	if [ ! -d "$XDG_CONFIG_HOME/nvim/bin" ]; then
 		git clone --depth 1 https://github.com/faerryn/fey_neovim.git "$XDG_CONFIG_HOME/nvim"
@@ -43,6 +43,9 @@ fi
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export PATH="$CARGO_HOME/bin:$PATH"
+
+# go
+export GOPATH="$XDG_DATA_HOME/go"
 
 # ccache
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache.conf"

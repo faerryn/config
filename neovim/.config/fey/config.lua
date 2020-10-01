@@ -1,4 +1,5 @@
-fey.core.set_colorscheme('gruvbox', 'dark')
+vim.o.background = 'dark'
+vim.cmd'colorscheme gruvbox'
 
 local prose_mode = false
 function fey.user.toggle_prose()

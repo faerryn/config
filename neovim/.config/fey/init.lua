@@ -5,7 +5,6 @@ return {
 		'align',
 		'comment',
 		'exchange',
-		'navigate',
 		'surround',
 	},
 
@@ -25,10 +24,11 @@ return {
 		'git',
 		'tags',
 		'undo_tree',
+		'unimpaired',
 	},
 
 	ui = {
-		'clean',
+		'goyo',
 		'colorscheme',
 		'status_line',
 		'vc_gutter',
