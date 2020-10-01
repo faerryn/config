@@ -10,6 +10,7 @@ return {
 	},
 
 	lang = {
+		'org',
 		'zig',
 		zsh = {
 			'zinit',
@@ -18,9 +19,10 @@ return {
 
 	tools = {
 		'async',
+		'dirvish',
+		'eunuch',
 		'fzf',
 		'git',
-		'system',
 		'tags',
 		'undo_tree',
 	},
