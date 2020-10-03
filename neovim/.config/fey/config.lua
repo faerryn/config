@@ -1,5 +1,6 @@
 vim.o.background = 'dark'
 vim.cmd'colorscheme gruvbox'
+vim.cmd'doautocmd ColorScheme'
 
 local prose_mode = false
 function fey.user.toggle_prose()
@@ -10,7 +11,6 @@ function fey.user.toggle_prose()
 		vim.cmd'noremap 0 g0'
 		vim.cmd'noremap ^ g^'
 		vim.cmd'noremap $ g$'
-		vim.cmd'noremap <End> g<End>'
 
 		print'Prose mode ON'
 	else
@@ -19,7 +19,6 @@ function fey.user.toggle_prose()
 		vim.cmd'unmap 0'
 		vim.cmd'unmap ^'
 		vim.cmd'unmap $'
-		vim.cmd'unmap <End>'
 
 		print'Prose mode OFF'
 	end
