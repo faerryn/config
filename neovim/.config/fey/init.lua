@@ -29,7 +29,7 @@ return {
 
 	ui = {
 		'goyo',
-		'colorscheme',
+		-- 'colorscheme',
 		'status_line',
 		'vc_gutter',
 	},

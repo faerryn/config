@@ -98,3 +98,23 @@ SAVEHIST=1000000
 # Completion/Correction/Suggestion
 setopt CORRECT
 zstyle ':completion:*' accept-exact '*(N)'
+
+# TTY gruvbox
+if [ "$TERM" = "linux" ]; then
+	echo -en "\e]P0282828"
+	echo -en "\e]P1CC241D"
+	echo -en "\e]P298971A"
+	echo -en "\e]P3D79921"
+	echo -en "\e]P4458588"
+	echo -en "\e]P5B16286"
+	echo -en "\e]P6689D6A"
+	echo -en "\e]P7A89984"
+	echo -en "\e]P8928374"
+	echo -en "\e]P9FB4934"
+	echo -en "\e]PAB8BB26"
+	echo -en "\e]PBFABD2F"
+	echo -en "\e]PC83A598"
+	echo -en "\e]PDD3869B"
+	echo -en "\e]PE8EC07C"
+	echo -en "\e]PFEBDBB2"
+fi

@@ -1,6 +1,6 @@
-vim.o.termguicolors = true
+-- vim.o.termguicolors = true
+-- vim.cmd'colorscheme gruvbox'
 vim.o.background    = 'dark'
-vim.cmd'colorscheme gruvbox'
 vim.cmd'doautocmd ColorScheme'
 
 local prose_mode = false
