@@ -67,6 +67,22 @@ alias grep='grep --color=auto'
 alias fd='fd --hidden'
 alias rg="rg --hidden --ignore-file $XDG_CONFIG_HOME/rg/ignore"
 
+# DOOM Emacs
+doom () {
+	if [ ! -d "$XDG_CONFIG_HOME/emacs/bin" ]; then
+		git clone --depth 1 https://github.com/hlissner/doom-emacs.git "$XDG_CONFIG_HOME/emacs"
+	fi
+	"$XDG_CONFIG_HOME/emacs/bin/doom" "$@"
+}
+
+# FEY Neovim
+fey () {
+	if [ ! -d "$XDG_CONFIG_HOME/nvim/bin" ]; then
+		git clone --depth 1 https://github.com/faerryn/fey_neovim.git "$XDG_CONFIG_HOME/nvim"
+	fi
+	"$XDG_CONFIG_HOME/nvim/bin/fey" "$@"
+}
+
 # Navigation
 function dc () {
 	1="${1:-1}"
