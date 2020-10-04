@@ -34,11 +34,6 @@ fey () {
 	"$XDG_CONFIG_HOME/nvim/bin/fey" "$@"
 }
 
-# MANPAGER
-if >/dev/null command -v vim; then
-	export MANPAGER='vim +"set ft=man"'
-fi
-
 # rust
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
