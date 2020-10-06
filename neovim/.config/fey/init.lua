@@ -32,6 +32,8 @@ return {
 		'colorscheme',
 		'status_line',
 		'vc_gutter',
+		-- custom
+		'colorizer',
 	},
 
 }

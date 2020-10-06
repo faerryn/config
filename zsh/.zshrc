@@ -67,6 +67,11 @@ alias grep='grep --color=auto'
 alias fd='fd --hidden'
 alias rg="rg --hidden --ignore-file $XDG_CONFIG_HOME/rg/ignore"
 
+if >/dev/null command -v vim; then
+	export EDITOR=vim
+	export VISUAL=vim
+fi
+
 # DOOM Emacs
 doom () {
 	if [ ! -d "$XDG_CONFIG_HOME/emacs/bin" ]; then
@@ -92,6 +97,11 @@ function dc () {
 alias ..=dc
 
 # Bindings
+
+# Emacs
+bindkey -e
+
+# ^Z for fg
 function personal_fg () {
 	if [[ -n "$BUFFER" ]] { return }
 	fg
@@ -100,6 +110,7 @@ function personal_fg () {
 zle -N personal_fg
 bindkey '^Z' personal_fg
 
+# ^X^E to edit current BUFFER in editor
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
