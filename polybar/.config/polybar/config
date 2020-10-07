@@ -1,0 +1,10 @@
+[bar/dwm]
+dpi = -1
+font-0 = "monospace:size=12;0"
+modules-center = date
+
+[module/date]
+type = internal/date
+date = %Y-%m-%d%
+time = %H:%M:%S
+label = %date% %time%
