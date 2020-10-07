@@ -33,4 +33,4 @@ function fey.user.setup_tags()
 	end
 	vim.bo.tags = vim.fn.eval('&tags') .. ',' .. tags
 end
-vim.cmd'autocmd BufEnter * lua fey.user.setup_tags()'
+vim.cmd'autocmd FileType * lua fey.user.setup_tags()'
