@@ -25,3 +25,12 @@ function fey.user.toggle_prose()
 	end
 end
 vim.cmd'command! Prose lua fey.user.toggle_prose()'
+
+function fey.user.setup_tags()
+	local tags = ''
+	for path in vim.gsplit(vim.fn.eval('&path'), ',') do
+		 tags = tags .. ',' .. path .. '/' .. 'tags'
+	end
+	vim.bo.tags = vim.fn.eval('&tags') .. ',' .. tags
+end
+vim.cmd'autocmd BufEnter * lua fey.user.setup_tags()'
