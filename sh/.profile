@@ -35,3 +35,7 @@ export LESSHISTFILE=-
 
 # WINE
 export WINEPREFIX="$HOME/wine"
+export WINEARCH=win32
+export WINEDEBUG=-all
+export mesa_glthread=true
+export __GL_THREADED_OPTIMIZATIONS=1
