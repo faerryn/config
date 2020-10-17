@@ -18,14 +18,6 @@ export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
 # local bin
 export PATH="$HOME/.local/bin:$PATH"
 
-# rust
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export PATH="$CARGO_HOME/bin:$PATH"
-
-# go
-export GOPATH="$XDG_DATA_HOME/go"
-
 # ccache
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache.conf"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
