@@ -2,7 +2,7 @@
 export PERSONAL_PROFILE=1
 
 # PATH
-if [ -n "$PERSONAL_PATH" ]; then
+if test -n "$PERSONAL_PATH"; then
 	export PATH="$PERSONAL_PATH"
 else
 	export PERSONAL_PATH="$PATH"
@@ -25,3 +25,22 @@ export LESSHISTFILE=-
 # WINE
 export WINEPREFIX="$HOME/wine"
 export WINEARCH=win32
+
+case "$-" in
+	*i*)
+		# Aliases
+		alias ls='ls -hvxCFX --color=auto --group-directories-first'
+		alias ll='ls -g'
+		alias la='ls -gA'
+
+		alias grep='grep --color=auto'
+
+		alias fd='fd --hidden'
+		alias rg='rg --hidden'
+
+		if >/dev/null command -v vim; then
+			export EDITOR=vim
+			export VISUAL=vim
+		fi
+		;;
+esac

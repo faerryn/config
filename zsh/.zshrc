@@ -54,21 +54,6 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 zinit ice silent compile wait'!0' atinit'zicompinit'
 zinit light zsh-users/zsh-syntax-highlighting
 
-# Aliases
-alias ls='ls -hvxCFX --color=auto --group-directories-first'
-alias ll='ls -g'
-alias la='ls -gA'
-
-alias grep='grep --color=auto'
-
-alias fd='fd --hidden'
-alias rg='rg --hidden'
-
-if >/dev/null command -v vim; then
-	export EDITOR=vim
-	export VISUAL=vim
-fi
-
 # Navigation
 function dc () {
 	1="${1:-1}"
