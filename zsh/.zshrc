@@ -62,7 +62,7 @@ alias la='ls -gA'
 alias grep='grep --color=auto'
 
 alias fd='fd --hidden'
-alias rg="rg --hidden --ignore-file $XDG_CONFIG_HOME/rg/ignore"
+alias rg='rg --hidden'
 
 if >/dev/null command -v vim; then
 	export EDITOR=vim
