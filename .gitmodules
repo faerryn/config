@@ -1,0 +1,3 @@
+[submodule "neovim/.config/fim"]
+	path = neovim/.config/fim
+	url = git@github.com:faerryn/fim.git

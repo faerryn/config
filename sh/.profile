@@ -15,9 +15,6 @@ export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 export XDG_DATA_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}"
 export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
 
-# local bin
-export PATH="$HOME/.local/bin:$PATH"
-
 # ccache
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache.conf"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
@@ -28,6 +25,3 @@ export LESSHISTFILE=-
 # WINE
 export WINEPREFIX="$HOME/wine"
 export WINEARCH=win32
-export WINEDEBUG=-all
-export mesa_glthread=true
-export __GL_THREADED_OPTIMIZATIONS=1

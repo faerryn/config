@@ -39,9 +39,6 @@ zinit light "$XDG_CONFIG_HOME/zsh/smart_prompt"
 zinit ice silent compile wait'!0' has'fzf'
 zinit light "$XDG_CONFIG_HOME/zsh/smart_fzf"
 
-zinit ice silent compile wait'!0' if'[[ -n "$INSIDE_EMACS" ]]'
-zinit light "$XDG_CONFIG_HOME/zsh/emacs_vterm"
-
 zinit ice silent compile wait'!0'
 zinit light zsh-users/zsh-completions
 
@@ -71,22 +68,6 @@ if >/dev/null command -v vim; then
 	export EDITOR=vim
 	export VISUAL=vim
 fi
-
-# DOOM Emacs
-doom () {
-	if [ ! -d "$XDG_CONFIG_HOME/emacs/bin" ]; then
-		git clone --depth 1 https://github.com/hlissner/doom-emacs.git "$XDG_CONFIG_HOME/emacs"
-	fi
-	"$XDG_CONFIG_HOME/emacs/bin/doom" "$@"
-}
-
-# FEY Neovim
-fey () {
-	if [ ! -d "$XDG_CONFIG_HOME/nvim/bin" ]; then
-		git clone --depth 1 https://github.com/faerryn/fey_neovim.git "$XDG_CONFIG_HOME/nvim"
-	fi
-	"$XDG_CONFIG_HOME/nvim/bin/fey" "$@"
-}
 
 # Navigation
 function dc () {
