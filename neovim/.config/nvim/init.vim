@@ -93,6 +93,7 @@ function s:load_modules_config() abort
 	endfor
 endfunction
 
-command! -bar PackUpdate call s:load_modules_packages() | call s:load_modules_config()
+command! -bar LoadPackages call s:load_modules_packages()
+command! -bar LoadConfig call s:load_modules_config()
 
 call s:load_modules_config()
