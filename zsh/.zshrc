@@ -91,3 +91,18 @@ SAVEHIST=1000000
 # Completion/Correction/Suggestion
 setopt CORRECT
 zstyle ':completion:*' accept-exact '*(N)'
+
+# Aliases
+alias ls='ls -hvxCFX --color=auto --group-directories-first'
+alias ll='ls -g'
+alias la='ls -gA'
+
+alias grep='grep --color=auto'
+
+alias fd='fd --hidden'
+alias rg='rg --hidden'
+
+if >/dev/null command -v vim; then
+	export EDITOR=vim
+	export VISUAL=vim
+fi
