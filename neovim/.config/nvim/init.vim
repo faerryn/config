@@ -32,12 +32,12 @@ set nrformats=alpha,octal,hex,bin
 set omnifunc=syntaxcomplete#Complete
 
 if executable('rg')
-	let &grepprg='rg --hidden --vimgrep'
+	let &grepprg = 'rg --hidden --vimgrep'
 	set grepformat=%f:%l:%c:%m
 endif
 
-let g:loaded_netrw=1
-let g:loaded_netrwPlugin=1
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
 
 nnoremap Y y$
 
@@ -83,8 +83,6 @@ function s:load_modules_packages() abort
 	for s:packages_f in split(glob(s:config_d.'/modules/*/packages.vim'), '\n')
 		execute 'source' s:packages_f
 	endfor
-
-	call minpac#update()
 endfunction
 
 function s:load_modules_config() abort
