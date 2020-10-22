@@ -15,13 +15,5 @@ export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 export XDG_DATA_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}"
 export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
 
-# ccache
-export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME/ccache.conf"
-export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
-
 # less
 export LESSHISTFILE=-
-
-# WINE
-export WINEPREFIX="$HOME/wine"
-export WINEARCH=win32
