@@ -64,6 +64,12 @@ nnoremap <silent> [l <cmd>lprevious<CR>
 nnoremap <silent> ]L <cmd>llast<CR>
 nnoremap <silent> [L <cmd>lfirst<CR>
 
+augroup Personal
+	autocmd!
+augroup END
+
+autocmd Personal FileType qf nnoremap <silent> <buffer> <Esc> <C-W>c
+
 if !executable('git')
 	finish
 end
