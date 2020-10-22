@@ -1,13 +1,3 @@
-# Profile is sourced
-export PERSONAL_PROFILE=1
-
-# PATH
-if test -n "$PERSONAL_PATH"; then
-	export PATH="$PERSONAL_PATH"
-else
-	export PERSONAL_PATH="$PATH"
-fi
-
 # XDG directories
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-"$HOME/.cache"}"
 export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:-/etc/xdg}"
@@ -17,3 +7,7 @@ export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
 
 # less
 export LESSHISTFILE=-
+
+if test $XDG_VTNR -eq 1; then
+	exec tbsm
+fi
