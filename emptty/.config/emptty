@@ -1,0 +1,3 @@
+#!/bin/sh -l
+ENVIRONMENT=wayland
+exec dbus-run-session sway
