@@ -7,7 +7,3 @@ export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
 
 # less
 export LESSHISTFILE=-
-
-if test $XDG_VTNR -eq 1; then
-	exec tbsm
-fi
