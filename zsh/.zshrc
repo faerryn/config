@@ -58,11 +58,9 @@ zinit light zsh-users/zsh-syntax-highlighting
 function dc () {
 	1="${1:-1}"
 	[[ ! "$1" =~ ^[0-9]+$ ]] && return 1
-	repeat $1 { cd .. }
+	repeat $1 { cd '..' }
 }
 alias ..=dc
-
-# Bindings
 
 # Emacs
 bindkey -e
@@ -101,8 +99,3 @@ alias grep='grep --color=auto'
 
 alias fd='fd --hidden'
 alias rg='rg --hidden'
-
-if >/dev/null command -v vim; then
-	export EDITOR=vim
-	export VISUAL=vim
-fi
