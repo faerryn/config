@@ -6,6 +6,7 @@
 [alias]
 	amend = commit --amend
 	root = rev-parse --show-toplevel
+	abbrev = rev-parse --short
 [core]
 	autocrlf = false
 	eol = lf
