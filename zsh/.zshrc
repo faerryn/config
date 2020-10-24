@@ -42,6 +42,9 @@ zinit light zsh-users/zsh-completions
 zinit ice silent compile wait'!0' has'nix'
 zinit light chisui/zsh-nix-shell
 
+zinit ice silent compile wait'!0' has 'nix'
+zinit light spwhitt/nix-zsh-completions
+
 zinit ice silent compile wait'!0'
 zinit light zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
