@@ -12,7 +12,7 @@
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
@@ -38,7 +38,7 @@
   #  y: 0
 
   # Spread additional padding evenly around the terminal content.
-  #dynamic_padding: false
+  dynamic_padding: true
 
   # Window decorations
   #
@@ -64,6 +64,9 @@
 
   # Window title
   #title: Alacritty
+
+  # Allow terminal applications to change Alacritty's window title.
+  dynamic_title: true
 
   # Window class (Linux/BSD only):
   #class:
@@ -317,9 +320,6 @@ font:
 
   # When set to `true`, selected text will be copied to the primary clipboard.
   #save_to_clipboard: false
-
-# Allow terminal applications to change Alacritty's window title.
-#dynamic_title: true
 
 #cursor:
   # Cursor style
