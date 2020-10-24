@@ -70,11 +70,13 @@ augroup END
 
 autocmd Personal FileType qf nnoremap <silent> <buffer> <Esc> <C-W>c
 
+autocmd Personal BufReadPost * call cursor(line("'\""), col("'\""))
+
 if !executable('git')
 	finish
 end
 
-let s:config_d=expand('<sfile>:p:h')
+let s:config_d = expand('<sfile>:p:h')
 
 function s:load_modules_packages() abort
 	if !exists('g:loaded_minpac')
