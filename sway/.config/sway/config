@@ -26,8 +26,8 @@ set $menu dmenu-wl_path | dmenu-wl -i -h 24 | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg #000000 solid_color
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#output * bg #000000 solid_color
 #
 # Example configuration:
 #
@@ -89,7 +89,7 @@ input type:keyboard {
     bindsym $mod+Shift+c kill
 
     # Start your launcher
-    bindsym $mod+p exec $menu
+    bindsym $mod+d exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

@@ -4,5 +4,5 @@ function! s:lightline_sync_colorscheme() abort
 	let g:lightline.colorscheme = g:colors_name
 	call lightline#enable()
 endfunction
-autocmd Personal VimEnter,ColorScheme * call s:lightline_sync_colorscheme()
+autocmd Personal ColorScheme * call s:lightline_sync_colorscheme()
 packadd lightline.vim
