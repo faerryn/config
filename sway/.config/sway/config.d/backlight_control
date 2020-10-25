@@ -1,0 +1,2 @@
+bindsym XF86MonBrightnessDown exec light -U 5%
+bindsym XF86MonBrightnessUp   exec light -A 5%
