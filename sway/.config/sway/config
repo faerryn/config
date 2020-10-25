@@ -27,8 +27,8 @@ set $menu dmenu-wl_path | $dmenu | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#output * bg #000000 solid_color
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg #000000 solid_color
 #
 # Example configuration:
 #
@@ -192,12 +192,6 @@ mode "resize" {
     bindsym $down  resize grow   height 10px
     bindsym $up    resize shrink height 10px
     bindsym $right resize grow   width  10px
-
-    # Ditto, with arrow keys
-    bindsym Left  resize shrink width  10px
-    bindsym Down  resize grow   height 10px
-    bindsym Up    resize shrink height 10px
-    bindsym Right resize grow   width  10px
 
     # Return to default mode
     bindsym Return mode "default"
