@@ -188,10 +188,10 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left  resize shrink width  10px
-    bindsym $down  resize grow   height 10px
-    bindsym $up    resize shrink height 10px
-    bindsym $right resize grow   width  10px
+    bindsym $left  resize shrink width  128px
+    bindsym $down  resize grow   height 128px
+    bindsym $up    resize shrink height 128px
+    bindsym $right resize grow   width  128px
 
     # Return to default mode
     bindsym Return mode "default"

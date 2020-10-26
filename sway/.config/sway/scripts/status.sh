@@ -10,7 +10,7 @@ module_charge () {
 }
 
 module_sound () {
-	aucatctl master | cut -d'=' -f2
+	echo $((100*$(aucatctl master | cut -d'=' -f2)/127))
 }
 
 echo "| vol: $(module_sound)% | $(module_date_time) | $(module_charge) |"
