@@ -1,4 +1,4 @@
 set $aucatctl_wrapper ~/.config/sway/scripts/aucatctl_wrapper.sh
 bindsym XF86AudioRaiseVolume exec $aucatctl_wrapper master +8
 bindsym XF86AudioLowerVolume exec $aucatctl_wrapper master -8
-bindsym XF86AudioMute        exec aucatctl master=0
+bindsym XF86AudioMute        exec $aucatctl_wrapper master *0
