@@ -1,3 +1,4 @@
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
-bindsym XF86AudioLowerVolume exec amixer set Master 5%-
-bindsym XF86AudioMute        exec amixer set Master toggle
+set $aucatctl_wrapper ~/.config/sway/scripts/aucatctl_wrapper.sh
+bindsym XF86AudioRaiseVolume exec $aucatctl_wrapper master +8
+bindsym XF86AudioLowerVolume exec $aucatctl_wrapper master -8
+bindsym XF86AudioMute        exec aucatctl master=0

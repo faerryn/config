@@ -21,7 +21,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $dmenu dmenu-wl -i -m $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') -h 24 
+set $dmenu dmenu-wl -i -m $(swaymsg -t get_outputs | jq -r '.[] | select(.focused).name') -h 24 
 set $menu dmenu-wl_path | $dmenu | xargs swaymsg exec --
 
 ### Output configuration
