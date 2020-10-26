@@ -1,7 +1,7 @@
 #!/bin/sh
 
 module_date_time () {
-	date +'%Y-%m-%d %l:%M:%S %p'
+	date
 }
 
 module_charge () {
@@ -9,4 +9,8 @@ module_charge () {
 	echo $(cat $battery/capacity)% $(cat $battery/status)
 }
 
-echo "| $(module_date_time) | $(module_charge) |"
+module_sound () {
+	aucatctl master | cut -d'=' -f2
+}
+
+echo "| vol: $(module_sound)% | $(module_date_time) | $(module_charge) |"
