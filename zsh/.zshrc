@@ -27,10 +27,10 @@ if [[ -f "$ZINIT[BIN_DIR]/zmodules/Src/zdharma/zplugin.so" ]] {
 
 source "$ZINIT[BIN_DIR]/zinit.zsh"
 
-zinit ice silent compile
+zinit ice silent compile wait'!0'
 zinit light mafredri/zsh-async
 
-zinit ice silent compile has'git'
+zinit ice silent compile wait'!0' has'git'
 zinit light "$XDG_CONFIG_HOME/zsh/smart_prompt"
 
 zinit ice silent compile wait'!0' has'fzf'
