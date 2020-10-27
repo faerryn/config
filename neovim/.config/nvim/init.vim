@@ -100,6 +100,6 @@ function s:load_modules_config() abort
 endfunction
 
 command! -bar LoadPackages call s:load_modules_packages()
-command! -bar LoadConfig call s:load_modules_config()
+command! -bar LoadConfig   call s:load_modules_config()
 
 call s:load_modules_config()

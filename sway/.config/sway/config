@@ -7,6 +7,9 @@
 ### Disable XWayland
 xwayland disable
 
+### Enable Adaptive Sync
+output * adaptive_sync on
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
