@@ -1,8 +1,9 @@
 #!/bin/sh
 
 module_charge () {
-	battery=/sys/class/power_supply/${1:-BAT1}
-	echo $(cat $battery/capacity)% $(cat $battery/status)
+	for battery in /sys/class/power_supply/BAT*; do
+		echo $(basename $battery): $(cat $battery/capacity)% $(cat $battery/status)
+	done
 }
 
 module_sound () {
