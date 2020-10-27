@@ -99,3 +99,7 @@ alias grep='grep --color=auto'
 
 alias fd='fd --hidden'
 alias rg='rg --hidden'
+
+if (command -v ufetch >/dev/null) {
+	ufetch
+}

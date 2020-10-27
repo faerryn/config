@@ -1,1 +1,1 @@
-exec gammastep &
+exec pgrep gammastep || gammastep &
