@@ -1,1 +1,1 @@
-exec pgrep gammastep || $(gammastep & disown)
+exec gammastep &
