@@ -1,0 +1,5 @@
+#!/bin/sh -l
+ENVIRONMENT=wayland
+export MOZ_ENABLE_WAYLAND=
+export WM=sway
+exec dbus-run-session sway
