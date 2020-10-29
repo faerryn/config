@@ -12,13 +12,15 @@ preexec_functions=()
 
 # zinit
 declare -A ZINIT
-ZINIT[HOME_DIR]="$XDG_DATA_HOME/zinit"
-ZINIT[BIN_DIR]="$ZINIT[HOME_DIR]/bin"
-ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+ZINIT[HOME_DIR]="$XDG_DATA_HOME"/zinit
+ZINIT[BIN_DIR]="$ZINIT[HOME_DIR]"/bin
+ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 ZINIT[COMPINIT_OPTS]="-d $ZINIT[ZCOMPDUMP_PATH] -C"
-export ZPFX="$ZINIT[HOME_DIR]/polaris"
+export ZPFX="$ZINIT[HOME_DIR]"/polaris
 
-if [[ ! -d "$ZINIT[BIN_DIR]" ]] { git clone --depth 1 https://github.com/zdharma/zinit.git "$ZINIT[BIN_DIR]" }
+if [[ ! -d "$ZINIT[BIN_DIR]" ]] {
+	git clone --depth 1 https://github.com/zdharma/zinit.git "$ZINIT[BIN_DIR]"
+}
 
 if [[ -f "$ZINIT[BIN_DIR]/zmodules/Src/zdharma/zplugin.so" ]] {
 	module_path+=("$ZINIT[BIN_DIR]/zmodules/Src")
@@ -97,9 +99,14 @@ alias la='ls -gA'
 
 alias grep='grep --color=auto'
 
-alias fd='fd --hidden'
-alias rg='rg --hidden'
+if test -f "$XDG_CONFIG_HOME/git/ignore"; then
+	alias fd="fd --hidden --ignore-file $XDG_CONFIG_HOME/git/ignore"
+	alias rg="rg --hidden --ignore-file $XDG_CONFIG_HOME/git/ignore"
+else
+	alias fd='fd --hidden'
+	alias rg='rg --hidden'
+fi
 
-if (command -v ufetch >/dev/null) {
+if {command -v ufetch >/dev/null} {
 	ufetch
 }
