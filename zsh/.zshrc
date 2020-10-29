@@ -99,13 +99,8 @@ alias la='ls -gA'
 
 alias grep='grep --color=auto'
 
-if test -f "$XDG_CONFIG_HOME/git/ignore"; then
-	alias fd="fd --hidden --ignore-file $XDG_CONFIG_HOME/git/ignore"
-	alias rg="rg --hidden --ignore-file $XDG_CONFIG_HOME/git/ignore"
-else
-	alias fd='fd --hidden'
-	alias rg='rg --hidden'
-fi
+alias fd="fd --hidden --ignore-file $XDG_CONFIG_HOME/git/ignore"
+alias rg="rg --hidden --ignore-file $XDG_CONFIG_HOME/git/ignore"
 
 if {command -v ufetch >/dev/null} {
 	ufetch

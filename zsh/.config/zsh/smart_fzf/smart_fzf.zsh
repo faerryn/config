@@ -2,7 +2,9 @@
 function personal_fzf_file () {
 	local WORD="${LBUFFER##* }"
 	local PIECES=(${(s:/:)WORD})
-	[[ "$WORD[1]" = "/" ]] && local PRE="/" || local PRE=
+	if [[ "$WORD[1]" = "/" ]] {
+		local PRE="/"
+	}
 	local DIRECTORY="$PRE${(j:/:)PIECES}"
 	while [[ ! -d $~DIRECTORY ]] && [[ ${#PIECES[@]} -gt 0 ]] {
 		PIECES=($PIECES[1,-2])
@@ -17,9 +19,9 @@ function personal_fzf_file () {
 		LBUFFER="$LBUFFER[1,-${#WORD}-2]"
 		local FILES=(${(s: :)OUTPUT})
 		local FILE=""
-		for FILE in $FILES; do
+		for FILE in $FILES; {
 			LBUFFER="$LBUFFER $DIRECTORY$FILE"
-		done
+		}
 	}
 	zle reset-prompt
 }
