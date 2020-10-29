@@ -33,10 +33,10 @@ zinit ice silent compile wait'!0'
 zinit light mafredri/zsh-async
 
 zinit ice silent compile wait'!0' has'git'
-zinit light "$XDG_CONFIG_HOME/zsh/smart_prompt"
+zinit light "$XDG_CONFIG_HOME/zsh/prompt"
 
 zinit ice silent compile wait'!0' has'fzf'
-zinit light "$XDG_CONFIG_HOME/zsh/smart_fzf"
+zinit light "$XDG_CONFIG_HOME/zsh/fzf"
 
 zinit ice silent compile wait'!0'
 zinit light zsh-users/zsh-completions
