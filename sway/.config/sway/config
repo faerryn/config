@@ -161,6 +161,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
+# Gaps and Borders:
+#
+gaps inner 8
+smart_gaps on
+smart_borders no_gaps
+
+#
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
