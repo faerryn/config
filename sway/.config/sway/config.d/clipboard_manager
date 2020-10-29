@@ -1,2 +1,2 @@
 exec wl-paste -t text --watch clipman store
-bindsym $mod+p exec clipman pick --tool=CUSTOM --tool-args="$dmenu"
+bindsym $mod+p exec clipman pick --tool=wofi
