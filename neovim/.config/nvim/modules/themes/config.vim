@@ -1,5 +1,7 @@
 set termguicolors
 
+autocmd Personal ColorScheme * highlight Normal guibg=None | highlight LineNr guibg=None | highlight CursorLineNr guibg=None | highlight SignColumn guibg=None | highlight StatusLine guibg=None | highlight StatusLineNC guibg=None
+
 "" GRUVBOX
 let g:gruvbox_italic = 1
 packadd gruvbox
@@ -8,8 +10,3 @@ packadd gruvbox
 packadd onehalf
 
 colorscheme onehalfdark
-
-highlight Normal       guibg=None
-highlight LineNR       guibg=None
-highlight StatusLine   guibg=None
-highlight StatusLineNC guibg=None
