@@ -19,7 +19,7 @@ set $term alacritty
 
 set $menu wofi -S run
 
-output * bg #000000 solid_color
+exec ~/.azotebg
 
 ### Input configuration
 #
@@ -184,8 +184,8 @@ bar {
 
     colors {
         statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        background #32323288
+        inactive_workspace #32323288 #32323288 #808080
     }
 }
 
