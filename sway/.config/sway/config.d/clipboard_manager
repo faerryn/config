@@ -1,2 +1,0 @@
-exec wl-paste -t text --watch clipman store
-bindsym $mod+p exec clipman pick --tool=wofi

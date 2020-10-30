@@ -8,3 +8,8 @@ packadd gruvbox
 packadd onehalf
 
 colorscheme onehalfdark
+
+highlight Normal       guibg=None
+highlight LineNR       guibg=None
+highlight StatusLine   guibg=None
+highlight StatusLineNC guibg=None

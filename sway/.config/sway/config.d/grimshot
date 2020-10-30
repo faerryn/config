@@ -1,0 +1,13 @@
+mode "grimshot" {
+    # s will capture the focused screen
+    # w will capture the focused window
+    # a will capture selected area
+    bindsym s exec grimshot save screen
+    bindsym w exec grimshot save active
+    bindsym a exec grimshot save area
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+y mode "grimshot"

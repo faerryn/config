@@ -1,0 +1,3 @@
+# we need one that doesn't mess stuff up!
+exec wl-paste -w sh -c 'wl-paste -n | jq -Rs >> ~/.clipboard'
+bindsym $mod+p exec wofi -d < .clipboard | jq -jr | wl-copy -n
