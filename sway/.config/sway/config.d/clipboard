@@ -1,2 +1,2 @@
 exec wl-paste -t text -w sh -c 'YANKED=$(wl-paste -n); test -n "$YANKED" && { jq -Rs >> ~/.clipboard; }'
-bindsym $mod+p exec wofi -d < .clipboard | jq -jr | wl-copy -n
+bindsym $mod+p exec tac ~/.clipboard | wofi -d | jq -jr | wl-copy -n
