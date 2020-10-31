@@ -1,4 +1,0 @@
-exec gsettings set org.gnome.desktop.interface cursor-size  24
-exec gsettings set org.gnome.desktop.interface cursor-theme Breeze_Snow
-exec gsettings set org.gnome.desktop.interface gtk-theme    Arc-Dark
-exec gsettings set org.gnome.desktop.interface icon-theme   Arc

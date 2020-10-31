@@ -167,11 +167,6 @@ smart_gaps on
 smart_borders no_gaps
 
 #
-# Cursor:
-#
-seat seat0 xcursor_theme Breeze_Snow 24
-
-#
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.

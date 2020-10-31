@@ -15,4 +15,3 @@ LESSHISTFILE       OVERRIDE=-
 
 # Stuff for GUI
 MOZ_ENABLE_WAYLAND OVERRIDE=1
-WM                 OVERRIDE=sway
