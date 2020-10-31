@@ -38,23 +38,14 @@ zinit light "$XDG_CONFIG_HOME/zsh/prompt"
 zinit ice silent compile wait'!0' has'fzf'
 zinit light "$XDG_CONFIG_HOME/zsh/fzf"
 
-zinit ice silent compile wait'!0'
-zinit light zsh-users/zsh-completions
-
 zinit ice silent compile wait'!0' has'nix'
 zinit light chisui/zsh-nix-shell
 
 zinit ice silent compile wait'!0' has 'nix'
 zinit light spwhitt/nix-zsh-completions
 
-zinit ice silent compile wait'!0'
-zinit light zsh-users/zsh-autosuggestions
-ZSH_AUTOSUGGEST_STRATEGY=(completion)
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-
 zinit ice silent compile wait'!0' atinit'zicompinit'
-zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
 
 # Navigation
 function dc () {
@@ -102,6 +93,6 @@ alias grep='grep --color=auto'
 alias fd="fd --hidden --ignore-file $XDG_CONFIG_HOME/git/ignore"
 alias rg="rg --hidden --ignore-file $XDG_CONFIG_HOME/git/ignore"
 
-if {command -v ufetch >/dev/null} {
+if { command -v ufetch >/dev/null } {
 	ufetch
 }
