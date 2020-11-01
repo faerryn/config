@@ -19,8 +19,6 @@ set $term alacritty
 
 set $menu wofi -S run
 
-exec ~/.azotebg
-
 ### Input configuration
 #
 # Natural Scroll
@@ -179,8 +177,8 @@ bar {
 
     colors {
         statusline #ffffff
-        background #323232
-        inactive_workspace #323232 #323232 #808080
+        background #00000000
+        inactive_workspace #00000000 #00000000 #808080
     }
 }
 
