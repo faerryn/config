@@ -1,48 +1,15 @@
 * {
+    background-color: transparent;
     font-family: monospace;
     font-size: 18px;
     min-height: 0;
-}
-
-window#waybar {
-    background-color: transparent;
-    color: #ffffff;
-}
-
-#window {
-    background-color: black;
+    padding: 0 4px;
 }
 
 #workspaces button {
-    padding: 0 2px;
-    background-color: transparent;
     color: #808080;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
-    color: #d0d0d0;
-}
-
 #workspaces button.focused {
-    background-color: transparent;
     color: #ffffff;
-}
-
-#clock,
-#battery {
-    padding: 0 4px;
-    margin: 0 4px;
-    color: #ffffff;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-label:focus {
-    background-color: #000000;
 }

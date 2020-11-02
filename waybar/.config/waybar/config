@@ -1,7 +1,6 @@
 {
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
     "modules-right": ["clock", "battery"],
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
