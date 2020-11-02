@@ -4,8 +4,6 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-xwayland disable
-
 output * adaptive_sync on
 
 set $mod Mod4
@@ -158,29 +156,25 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
+# Wallpaper
+#
+exec_always ~/.wallpaper
+
+#
+# Font
+#
+font pango:monospace 12
+
+#
 # Gaps and Borders:
 #
 gaps inner 8
-smart_gaps on
-smart_borders no_gaps
+default_border pixel 2
 
 #
 # Status Bar:
 #
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while ~/.config/sway/scripts/status.sh; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #00000000
-        inactive_workspace #00000000 #00000000 #808080
-    }
-}
+exec_always waybar &
 
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
