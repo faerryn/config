@@ -174,8 +174,9 @@ default_border pixel 2
 #
 # Status Bar:
 #
-exec_always pkill waybar
-exec_always waybar &
+bar {
+	swaybar_command waybar
+}
 
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
