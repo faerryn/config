@@ -13,7 +13,7 @@ set $down j
 set $up k
 set $right l
 
-set $term kitty
+set $term alacritty
 
 set $menu wofi -S run
 
@@ -169,6 +169,7 @@ font pango:monospace 12
 # Gaps and Borders:
 #
 gaps inner 8
+gaps top -8
 default_border pixel 2
 
 #
