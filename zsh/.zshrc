@@ -44,8 +44,11 @@ zinit light chisui/zsh-nix-shell
 zinit ice silent compile wait'!0' has 'nix'
 zinit light spwhitt/nix-zsh-completions
 
-zinit ice silent compile wait'!0' atinit'zicompinit'
+zinit ice silent compile wait'!0'
 zinit light zsh-users/zsh-completions
+
+zinit ice silent compile wait'!0' atinit'zicompinit'
+zinit light zsh-users/zsh-syntax-highlighting
 
 # Navigation
 function dc () {
