@@ -4,8 +4,6 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-xwayland off
-
 output * adaptive_sync on
 
 set $mod Mod4
