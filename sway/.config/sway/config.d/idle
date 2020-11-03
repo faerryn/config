@@ -1,0 +1,5 @@
+exec swayidle -w\
+    timeout 60 'swaylock -f -c 000000'\
+    timeout 300 'sudo zzz'
+
+# vim: ts=4 sw=4 et ft=conf

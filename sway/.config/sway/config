@@ -17,8 +17,7 @@ set $right l
 
 set $term alacritty
 
-set $dmenu dmenu-wl -fn 'monospace 12' -h 24 -m $(swaymsg -t get_outputs | jq -r '.[] | select(.focused).name') 
-set $menu dmenu-wl_path | $dmenu | xargs swaymsg exec --
+set $menu wofi -S run
 
 ### Input configuration
 #
@@ -139,7 +138,7 @@ input type:keyboard {
 #
 # Wallpaper
 #
-exec_always ~/.wallpaper &
+exec_always ~/.wallpaper
 
 #
 # Font
