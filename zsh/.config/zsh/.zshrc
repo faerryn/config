@@ -16,33 +16,19 @@ ZINIT[HOME_DIR]="$XDG_DATA_HOME"/zinit
 ZINIT[BIN_DIR]="$ZINIT[HOME_DIR]"/bin
 ZINIT[ZCOMPDUMP_PATH]="$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 ZINIT[COMPINIT_OPTS]="-d $ZINIT[ZCOMPDUMP_PATH] -C"
-export ZPFX="$ZINIT[HOME_DIR]"/polaris
 
 if [[ ! -d "$ZINIT[BIN_DIR]" ]] {
 	git clone --depth 1 https://github.com/zdharma/zinit.git "$ZINIT[BIN_DIR]"
 }
 
-if [[ -f "$ZINIT[BIN_DIR]/zmodules/Src/zdharma/zplugin.so" ]] {
-	module_path+=("$ZINIT[BIN_DIR]/zmodules/Src")
-	zmodload zdharma/zplugin
-}
-
 source "$ZINIT[BIN_DIR]/zinit.zsh"
 
-zinit ice silent compile wait'!0'
-zinit light mafredri/zsh-async
-
-zinit ice silent compile wait'!0' has'git'
-zinit light "$XDG_CONFIG_HOME/zsh/prompt"
-
-zinit ice silent compile wait'!0' has'fzf'
-zinit light "$XDG_CONFIG_HOME/zsh/fzf"
-
-zinit ice silent compile wait'!0'
-zinit light zsh-users/zsh-completions
-
-zinit ice silent compile wait'!0' atinit'zicompinit'
-zinit light zsh-users/zsh-syntax-highlighting
+zinit silent compile wait'!0' for\
+	light-mode mafredri/zsh-async\
+	light-mode "$XDG_CONFIG_HOME/zsh/prompt"\
+	light-mode has'fzf' "$XDG_CONFIG_HOME/zsh/fzf"\
+	light-mode zsh-users/zsh-completions\
+	light-mode atinit'zicompinit' zsh-users/zsh-syntax-highlighting
 
 # Navigation
 function dc () {
@@ -90,6 +76,6 @@ alias grep='grep --color=auto'
 alias fd="fd --hidden --ignore-file $XDG_CONFIG_HOME/git/ignore"
 alias rg="rg --hidden --ignore-file $XDG_CONFIG_HOME/git/ignore"
 
-if { command -v ufetch >/dev/null } {
+if [[ "$PWD" = "$HOME" ]] && { command -v ufetch >/dev/null } {
 	ufetch
 }
