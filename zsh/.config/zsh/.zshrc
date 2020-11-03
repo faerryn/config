@@ -75,7 +75,3 @@ alias grep='grep --color=auto'
 
 alias fd="fd --hidden --ignore-file $XDG_CONFIG_HOME/git/ignore"
 alias rg="rg --hidden --ignore-file $XDG_CONFIG_HOME/git/ignore"
-
-if [[ "$PWD" = "$HOME" ]] && { command -v ufetch >/dev/null } {
-	ufetch
-}
