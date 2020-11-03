@@ -38,12 +38,6 @@ zinit light "$XDG_CONFIG_HOME/zsh/prompt"
 zinit ice silent compile wait'!0' has'fzf'
 zinit light "$XDG_CONFIG_HOME/zsh/fzf"
 
-zinit ice silent compile wait'!0' has'nix'
-zinit light chisui/zsh-nix-shell
-
-zinit ice silent compile wait'!0' has 'nix'
-zinit light spwhitt/nix-zsh-completions
-
 zinit ice silent compile wait'!0'
 zinit light zsh-users/zsh-completions
 
