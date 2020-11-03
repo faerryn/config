@@ -17,7 +17,8 @@ set $right l
 
 set $term alacritty
 
-set $menu wofi -S run
+set $dmenu dmenu-wl -fn 'monospace 12' -h 24 -m $(swaymsg -t get_outputs | jq -r '.[] | select(.focused).name') 
+set $menu dmenu-wl_path | $dmenu | xargs swaymsg exec --
 
 ### Input configuration
 #
@@ -160,7 +161,7 @@ bindsym $mod+r mode "resize"
 #
 # Wallpaper
 #
-exec_always ~/.wallpaper
+exec_always ~/.wallpaper &
 
 #
 # Font
@@ -171,14 +172,24 @@ font pango:monospace 12
 # Gaps and Borders:
 #
 gaps inner 8
-gaps top -8
 default_border pixel 2
 
 #
-# Status Bar:
+# Status Bar
 #
+gaps top -8
 bar {
-	swaybar_command waybar
+    position top
+
+    font pango:monospace 12
+    height 24
+
+    colors {
+        background         #00000000
+	focused_workspace  #00000000 #00000000 #ffffff
+	inactive_workspace #00000000 #00000000 #808080
+	inactive_workspace #00000000 #00000000 #404040
+    }
 }
 
 include /etc/sway/config.d/*

@@ -1,2 +1,0 @@
-exec wl-paste -t text -w sh -c 'jq -Rs >> ~/.clipboard'
-bindsym $mod+p exec sh -c 'SELECTED=$(tac ~/.clipboard | wofi -d | jq -jr); test -n "$SELECTED" && wl-copy -n "$SELECTED"'
