@@ -187,7 +187,7 @@ bar {
     colors {
         background         #00000000
 	focused_workspace  #00000000 #00000000 #ffffff
-	inactive_workspace #00000000 #00000000 #808080
+	active_workspace   #00000000 #00000000 #808080
 	inactive_workspace #00000000 #00000000 #404040
     }
 }
