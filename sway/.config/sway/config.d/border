@@ -1,0 +1,10 @@
+#
+# Gaps and Borders:
+#
+gaps inner 8
+default_border pixel 2
+
+titlebar_border_thickness 2
+titlebar_padding 4 2
+
+# vim: ts=4 sw=4 et ft=conf

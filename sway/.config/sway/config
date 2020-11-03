@@ -136,28 +136,6 @@ input type:keyboard {
     # Move the currently focused window to the scratchpad
     bindsym $mod+Shift+0 move scratchpad
 
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+0 scratchpad show
-#
-# Resizing containers:
-#
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left  resize shrink width  128px
-    bindsym $down  resize grow   height 128px
-    bindsym $up    resize shrink height 128px
-    bindsym $right resize grow   width  128px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
 #
 # Wallpaper
 #
@@ -168,29 +146,7 @@ exec_always ~/.wallpaper &
 #
 font pango:monospace 12
 
-#
-# Gaps and Borders:
-#
-gaps inner 8
-default_border pixel 2
-
-#
-# Status Bar
-#
-gaps top -8
-bar {
-    position top
-
-    font pango:monospace 12
-    height 24
-
-    colors {
-        background         #00000000
-	focused_workspace  #00000000 #00000000 #ffffff
-	active_workspace   #00000000 #00000000 #808080
-	inactive_workspace #00000000 #00000000 #404040
-    }
-}
-
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
+
+# vim: ts=4 sw=4 et
