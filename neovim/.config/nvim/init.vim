@@ -14,7 +14,7 @@ set signcolumn=yes
 
 set spell spellcapcheck=
 
-set laststatus=0 showtabline=0
+set laststatus=2 showtabline=2
 
 set noequalalways
 set splitbelow splitright
