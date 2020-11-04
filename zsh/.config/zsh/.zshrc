@@ -23,11 +23,11 @@ if [[ ! -d "$ZINIT[BIN_DIR]" ]] {
 
 source "$ZINIT[BIN_DIR]/zinit.zsh"
 
-zinit silent compile wait'!0' for\
-	light-mode mafredri/zsh-async\
-	light-mode "$XDG_CONFIG_HOME/zsh/prompt"\
-	light-mode has'fzf' "$XDG_CONFIG_HOME/zsh/fzf"\
-	light-mode zsh-users/zsh-completions\
+zinit silent compile wait'!0' for \
+	light-mode mafredri/zsh-async \
+	light-mode "$XDG_CONFIG_HOME/zsh/prompt" \
+	light-mode has'fzf' "$XDG_CONFIG_HOME/zsh/fzf" \
+	light-mode zsh-users/zsh-completions \
 	light-mode atinit'zicompinit' zsh-users/zsh-syntax-highlighting
 
 # Navigation
