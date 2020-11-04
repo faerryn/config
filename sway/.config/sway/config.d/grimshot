@@ -11,3 +11,5 @@ mode "grimshot" {
 	bindsym Escape mode "default"
 }
 bindsym $mod+g mode "grimshot"
+
+" vim: ft=conf

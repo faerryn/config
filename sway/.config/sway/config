@@ -147,3 +147,5 @@ font pango:monospace 12
 
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
+
+" vim: ft=conf

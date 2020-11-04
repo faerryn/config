@@ -6,3 +6,5 @@ default_border pixel 2
 
 titlebar_border_thickness 2
 titlebar_padding 4 2
+
+" vim: ft=conf

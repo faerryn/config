@@ -18,3 +18,5 @@ mode "resize" {
 	bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+" vim: ft=conf
