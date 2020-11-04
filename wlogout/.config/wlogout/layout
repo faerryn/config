@@ -6,7 +6,7 @@
 }
 {
     "label" : "hibernate",
-    "action" : "sudo zzz -Z",
+    "action" : "for output in $(swaymsg -t get_outputs | jq -r '.[] | select(.active==false).name'); do swaymsg output ${output} enable; done; sudo zzz -Z",
     "text" : "Hibernate",
     "keybind" : "h"
 }
@@ -24,7 +24,7 @@
 }
 {
     "label" : "suspend",
-    "action" : "sudo zzz",
+    "action" : "for output in $(swaymsg -t get_outputs | jq -r '.[] | select(.active==false).name'); do swaymsg output ${output} enable; done; sudo zzz",
     "text" : "Suspend",
     "keybind" : "u"
 }

@@ -6,19 +6,17 @@
 gaps top -8
 
 bar {
-    position top
+	position top
 
-    font pango:monospace 12
-    height 24
+	font pango:monospace 12
+	height 24
 
-    colors {
-        background         #00000000
-        focused_workspace  #00000000 #00000000 #ffffff
-        active_workspace   #00000000 #00000000 #888888
-        inactive_workspace #00000000 #00000000 #444444
-    }
+	colors {
+		background         #00000000
+		focused_workspace  #00000000 #00000000 #ffffff
+		active_workspace   #00000000 #00000000 #888888
+		inactive_workspace #00000000 #00000000 #444444
+	}
 
-    status_command while true; do echo "$(date +%r) $(cat /sys/class/power_supply/BAT1/capacity)%"; sleep 1; done
+	status_command while true; do echo "$(date +%r) $(cat /sys/class/power_supply/BAT1/capacity)%"; sleep 1; done
 }
-
-# vim: ts=4 sw=4 et ft=conf

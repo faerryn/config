@@ -1,15 +1,13 @@
 mode "grimshot" {
-    # s will capture the focused screen
-    # w will capture the focused window
-    # a will capture selected area
-    bindsym s exec grimshot save screen, mode "default"
-    bindsym w exec grimshot save active, mode "default"
-    bindsym a exec grimshot save area,   mode "default"
+	# s will capture the focused screen
+	# w will capture the focused window
+	# a will capture selected area
+	bindsym s exec grimshot save screen, mode "default"
+	bindsym w exec grimshot save active, mode "default"
+	bindsym a exec grimshot save area,   mode "default"
 
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+	# Return to default mode
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 bindsym $mod+g mode "grimshot"
-
-# vim: ts=4 sw=4 et ft=conf

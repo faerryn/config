@@ -3,5 +3,3 @@ bindsym Shift+XF86AudioRaiseVolume exec amixer set Master 100%
 bindsym XF86AudioLowerVolume       exec amixer set Master 5%-
 bindsym Shift+XF86AudioLowerVolume exec amixer set Master 0%
 bindsym XF86AudioMute              exec amixer set Master toggle
-
-# vim: ts=4 sw=4 et ft=conf
