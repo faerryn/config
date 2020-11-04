@@ -19,7 +19,7 @@ set $term alacritty
 
 set $browser firefox-wayland
 
-set $menu wofi -f -S run
+set $menu swaymsg -t get_outputs | jq 'map(.focused) | indices(true)[0] + 1' | xargs bemenu-run -i -p '' --fn 'monospace 12' -H 24 -m
 
 ### Input configuration
 #
@@ -36,6 +36,7 @@ input type:touchpad {
 # Keyboard
 input type:keyboard {
 	xkb_options caps:escape
+	xkb_capslock disable
 	xkb_numlock enable
 }
 

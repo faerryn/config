@@ -1,5 +1,8 @@
 font=monospace 12
-margin=8
+background-color=#282c3488
+border-color=#dcdfe488
+
+margin=16
 padding=0
 border-size=2
 anchor=bottom-right
