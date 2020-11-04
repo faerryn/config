@@ -1,0 +1,11 @@
+font=monospace 12
+margin=8
+padding=0
+border-size=2
+anchor=bottom-right
+
+group-by=category
+
+[category=volume]
+default-timeout=1000
+format=%s

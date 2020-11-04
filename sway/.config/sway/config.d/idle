@@ -1,5 +1,5 @@
 exec swayidle -w\
 	timeout 300 'swaylock -f -c 000000'\
-	timeout 900 "for output in $(swaymsg -t get_outputs | jq -r '.[] | select(.active==false).name'); do swaymsg output ${output} enable; done; sudo zzz"
+	timeout 900 output '*' enable, exec sudo zzz
 
 # vim: ft=conf

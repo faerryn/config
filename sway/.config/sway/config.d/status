@@ -18,7 +18,7 @@ bar {
 		inactive_workspace #00000000 #00000000 #888888
 	}
 
-	status_command while true; do echo "$(date +%r) $(cat /sys/class/power_supply/BAT1/capacity)%"; sleep 1; done
+	status_command while true; do echo "$(date +%r) \| $(cat /sys/class/power_supply/BAT1/capacity)%"; sleep 1; done
 }
 
 # vim: ft=conf
