@@ -1,5 +1,5 @@
 exec swayidle -w\
 	timeout 300 'swaylock -f -c 000000'\
-	timeout 900 output '*' enable, exec sudo zzz
+	timeout 900 'sway output '*' enable; exec sudo zzz'
 
 # vim: ft=conf

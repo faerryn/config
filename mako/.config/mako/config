@@ -12,3 +12,7 @@ group-by=category
 [category=volume]
 default-timeout=1000
 format=%s
+
+[category=backlight]
+default-timeout=1000
+format=%s

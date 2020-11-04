@@ -1,0 +1,21 @@
+bindsym XF86AudioRaiseVolume       exec "amixer set Master 5%+;    amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' | xargs notify-send -c volume"
+bindsym Shift+XF86AudioRaiseVolume exec "amixer set Master 100%;   amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' | xargs notify-send -c volume"
+bindsym XF86AudioLowerVolume       exec "amixer set Master 5%-;    amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' | xargs notify-send -c volume"
+bindsym Shift+XF86AudioLowerVolume exec "amixer set Master 0%;     amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' | xargs notify-send -c volume"
+bindsym XF86AudioMute              exec "amixer set Master toggle; amixer get Master | sed -n 's/^.*\[\(off\|on\)\].*$/\1/p'  | xargs notify-send -c volume"
+
+bindsym $mod+v mode "volume"
+
+mode "volume" {
+	bindsym $right exec "amixer set Master 5%+;    amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' | xargs notify-send -c volume"
+	bindsym $up    exec "amixer set Master 100%;   amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' | xargs notify-send -c volume"
+	bindsym $left  exec "amixer set Master 5%-;    amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' | xargs notify-send -c volume"
+	bindsym $down  exec "amixer set Master 0%;     amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' | xargs notify-send -c volume"
+	bindsym Space  exec "amixer set Master toggle; amixer get Master | sed -n 's/^.*\[\(off\|on\)\].*$/\1/p'  | xargs notify-send -c volume"
+
+	# Return to default mode
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# vim: ft=conf
