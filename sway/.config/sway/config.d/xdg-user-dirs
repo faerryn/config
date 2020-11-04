@@ -1,3 +1,3 @@
-exec xdg-user-dirs-update --force
+exec xdg-user-dirs-update
 
 # vim: ft=conf
