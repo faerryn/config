@@ -4,10 +4,10 @@ bindsym XF86MonBrightnessDown       exec light -U 5%
 bindsym Shift+XF86MonBrightnessDown exec light -S 0%
 
 mode "backlight" {
-	bindsym $right exec "light -A 5%;   light -G | xargs notify-send -c backlight"
-	bindsym $up    exec "light -S 100%; light -G | xargs notify-send -c backlight"
-	bindsym $left  exec "light -U 5%;   light -G | xargs notify-send -c backlight"
-	bindsym $down  exec "light -S 0%;   light -G | xargs notify-send -c backlight"
+	bindsym $right exec light -A 5%
+	bindsym $up    exec light -S 100%
+	bindsym $left  exec light -U 5%
+	bindsym $down  exec light -S 0%
 
 	# Return to default mode
 	bindsym Return mode "default"
