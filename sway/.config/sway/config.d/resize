@@ -19,4 +19,4 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-" vim: ft=conf
+# vim: ft=conf

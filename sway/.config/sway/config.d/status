@@ -21,4 +21,4 @@ bar {
 	status_command while true; do echo "$(date +%r) $(cat /sys/class/power_supply/BAT1/capacity)%"; sleep 1; done
 }
 
-" vim: ft=conf
+# vim: ft=conf

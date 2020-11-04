@@ -3,4 +3,4 @@ bindsym Shift+XF86MonBrightnessDown exec light -S 0%
 bindsym XF86MonBrightnessUp         exec light -A 5%
 bindsym Shift+XF86MonBrightnessUp   exec light -S 100%
 
-" vim: ft=conf
+# vim: ft=conf

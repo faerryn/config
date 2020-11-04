@@ -12,4 +12,4 @@ mode "grimshot" {
 }
 bindsym $mod+g mode "grimshot"
 
-" vim: ft=conf
+# vim: ft=conf
