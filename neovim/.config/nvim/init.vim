@@ -29,8 +29,6 @@ set inccommand=nosplit
 set iskeyword=a-z,A-Z,48-57,_,-
 set lazyredraw
 set nrformats=alpha,octal,hex,bin
-set omnifunc=syntaxcomplete#Complete
-set complete+=kspell,t
 
 if executable('rg')
 	let &grepprg = 'rg --hidden --vimgrep'

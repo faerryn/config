@@ -17,6 +17,8 @@ set $right l
 
 set $term alacritty
 
+set $browser firefox-wayland
+
 set $menu wofi -f -S run
 
 ### Input configuration
@@ -44,11 +46,14 @@ input type:keyboard {
 	# Start a terminal
 	bindsym $mod+Return exec $term
 
-	# Kill focused window
-	bindsym $mod+Shift+c kill
+	# Start a file manager
+	bindsym $mod+o exec $term -e ranger
+
+	# Start a browser
+	bindsym $mod+i exec $browser
 
 	# Start your launcher
-	bindsym $mod+d exec $menu
+	bindsym $mod+p exec $menu
 
 	# Drag floating windows by holding down $mod and left mouse button.
 	# Resize them with right mouse button + $mod.
@@ -57,11 +62,16 @@ input type:keyboard {
 	# mouse button for dragging.
 	floating_modifier $mod normal
 
+	# Kill focused window
+	bindsym $mod+Shift+c kill
+
 	# Reload the configuration file
 	bindsym $mod+Shift+r reload
 
 	# Exit sway (logs you out of your Wayland session)
-	bindsym $mod+Shift+q exec pgrep wlogout || wlogout
+	bindsym $mod+Shift+q    exec pgrep wlogout || wlogout
+	bindsym Ctrl+Alt+Delete exec pgrep wlogout || wlogout
+
 #
 # Moving around:
 #
@@ -76,6 +86,7 @@ input type:keyboard {
 	bindsym $mod+Shift+$down  move down
 	bindsym $mod+Shift+$up    move up
 	bindsym $mod+Shift+$right move right
+
 #
 # Workspaces:
 #
@@ -101,17 +112,18 @@ input type:keyboard {
 	bindsym $mod+Shift+9 move container to workspace number 9
 	# Note: workspaces can have any name you want, not just numbers.
 	# We just use 1-10 as the default.
+
 #
 # Layout stuff:
 #
 	# You can "split" the current object of your focus with
-	# $mod+b or $mod+v, for horizontal and vertical splits
+	# $mod+s or $mod+d, for horizontal and vertical splits
 	# respectively.
-	bindsym $mod+b splith
-	bindsym $mod+v splitv
+	bindsym $mod+s splith
+	bindsym $mod+d splitv
 
 	# Switch the current container between different layout styles
-	bindsym $mod+s layout stacking
+	bindsym $mod+q layout default
 	bindsym $mod+w layout tabbed
 	bindsym $mod+e layout toggle split
 
@@ -126,6 +138,7 @@ input type:keyboard {
 
 	# Move focus to the parent container
 	bindsym $mod+a focus parent
+
 #
 # Scratchpad:
 #
@@ -134,6 +147,10 @@ input type:keyboard {
 
 	# Move the currently focused window to the scratchpad
 	bindsym $mod+Shift+0 move scratchpad
+
+	# Show the next scratchpad window or hide the focused scratchpad window.
+	# If there are multiple scratchpad windows, this command cycles through them.
+	bindsym $mod+0 scratchpad show
 
 #
 # Wallpaper
