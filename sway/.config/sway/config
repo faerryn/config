@@ -17,7 +17,7 @@ set $right l
 
 set $term alacritty
 
-set $menu wofi -S run
+set $menu wofi -f -S run
 
 ### Input configuration
 #

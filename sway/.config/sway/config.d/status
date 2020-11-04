@@ -3,7 +3,7 @@
 #
 
 # remove the gaps at the top
-gaps top -8
+gaps top -6
 
 bar {
 	position top
