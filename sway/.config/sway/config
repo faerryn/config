@@ -17,7 +17,7 @@ set $right l
 
 set $term alacritty
 
-set $menu echo $PATH | tr ':' '\n' | xargs readlink -f | uniq | xargs -I{} fd -tf -d1 . {} -X echo {/} | tr ' ' '\n' | dmenu-wl -fn 'monospace 12' -h 24 -m $(swaymsg -t get_outputs | jq -r '.[] | select(.focused).name') | xargs swaymsg exec -- 
+set $menu echo $PATH | tr ':' '\n' | xargs readlink -f | uniq | xargs -I{} fd . {} -tf -d1 -L -X echo {/} | tr ' ' '\n' | dmenu-wl -fn 'monospace 12' -h 24 -m $(swaymsg -t get_outputs | jq -r '.[] | select(.focused).name') | xargs swaymsg exec -- 
 
 ### Key bindings
 #
