@@ -1,0 +1,20 @@
+### Input configuration
+#
+# Natural Scroll
+input type:touchpad natural_scroll enabled
+input type:pointer  natural_scroll enabled
+#
+# Tap
+input type:touchpad {
+	tap enabled
+	tap_button_map lrm
+}
+#
+# Keyboard
+input type:keyboard {
+	xkb_options caps:escape
+	xkb_capslock disable
+	xkb_numlock enable
+}
+
+# vim: ft=conf

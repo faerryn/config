@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "swaylock -c 000000",
+    "action" : "waylock --init-color 0x000000 &",
     "text" : "Lock",
     "keybind" : "l"
 }
