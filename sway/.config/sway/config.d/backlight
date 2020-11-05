@@ -1,13 +1,13 @@
-bindsym XF86MonBrightnessUp         exec "light -A 5%;   expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
-bindsym Shift+XF86MonBrightnessUp   exec "light -S 100%; expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
-bindsym XF86MonBrightnessDown       exec "light -U 5%;   expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
-bindsym Shift+XF86MonBrightnessDown exec "light -S 0%;   expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
+bindsym XF86MonBrightnessUp         exec "brightnessctl s +5%;  expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
+bindsym Shift+XF86MonBrightnessUp   exec "brightnessctl s 100%; expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
+bindsym XF86MonBrightnessDown       exec "brightnessctl s 5%-;  expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
+bindsym Shift+XF86MonBrightnessDown exec "brightnessctl s 0%;   expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
 
 mode "backlight" {
-	bindsym $up         exec "light -A 5%;   expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
-	bindsym Shift+$up   exec "light -S 100%; expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
-	bindsym $down       exec "light -U 5%;   expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
-	bindsym Shift+$down exec "light -S 0%;   expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
+	bindsym $up    exec "brightnessctl s +5%;  expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
+	bindsym $right exec "brightnessctl s 100%; expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
+	bindsym $down  exec "brightnessctl s 5%-;  expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
+	bindsym $left  exec "brightnessctl s 0%;   expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
 
 	# Return to default mode
 	bindsym Return mode "default"
