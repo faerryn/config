@@ -1,2 +1,2 @@
 #!/bin/sh
-dmenu-wl -i -fn 'monospace 12' -h 24 -m $(swaymsg -t get_outputs | jq -r '.[] | select(.focused).name')
+dmenu-wl -i -fn 'monospace 12' -h 24 -m $(swaymsg -t get_outputs | jq -r 'map(.focused) | index(true)')

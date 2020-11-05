@@ -2,9 +2,6 @@
 # Status Bar
 #
 
-# remove the gaps at the top
-gaps top -6
-
 bar {
 	position top
 
@@ -18,7 +15,9 @@ bar {
 		inactive_workspace #00000000 #00000000 #888888
 	}
 
-	status_command while true; do echo "$(date +%r) \| $(cat /sys/class/power_supply/BAT1/capacity)%"; sleep 1; done
+	status_command while true; do $scripts/status; sleep 1; done
+
+	gaps 4 8 0 8
 }
 
 # vim: ft=conf

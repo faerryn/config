@@ -18,4 +18,4 @@ function! s:prose() abort
 	endif
 endfunction
 
-command! Prose call s:prose()
+command! -bar Prose call s:prose()

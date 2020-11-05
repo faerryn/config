@@ -1,8 +1,10 @@
 #
 # Window Decoration:
 #
+
 gaps inner 8
 default_border pixel 2
+gaps top -6
 
 titlebar_border_thickness 2
 titlebar_padding 4 2
