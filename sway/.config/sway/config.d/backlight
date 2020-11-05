@@ -1,13 +1,13 @@
-bindsym XF86MonBrightnessUp         exec "light -A 5%;   expr 100 '*' $(light -rG) / 255 >> /tmp/wobpipe"
-bindsym Shift+XF86MonBrightnessUp   exec "light -S 100%; expr 100 '*' $(light -rG) / 255 >> /tmp/wobpipe"
-bindsym XF86MonBrightnessDown       exec "light -U 5%;   expr 100 '*' $(light -rG) / 255 >> /tmp/wobpipe"
-bindsym Shift+XF86MonBrightnessDown exec "light -S 0%;   expr 100 '*' $(light -rG) / 255 >> /tmp/wobpipe"
+bindsym XF86MonBrightnessUp         exec "light -A 5%;   expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
+bindsym Shift+XF86MonBrightnessUp   exec "light -S 100%; expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
+bindsym XF86MonBrightnessDown       exec "light -U 5%;   expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
+bindsym Shift+XF86MonBrightnessDown exec "light -S 0%;   expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
 
 mode "backlight" {
-	bindsym $up         exec "light -A 5%;   expr 100 '*' $(light -rG) / 255 >> /tmp/wobpipe"
-	bindsym Shift+$up   exec "light -S 100%; expr 100 '*' $(light -rG) / 255 >> /tmp/wobpipe"
-	bindsym $down       exec "light -U 5%;   expr 100 '*' $(light -rG) / 255 >> /tmp/wobpipe"
-	bindsym Shift+$down exec "light -S 0%;   expr 100 '*' $(light -rG) / 255 >> /tmp/wobpipe"
+	bindsym $up         exec "light -A 5%;   expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
+	bindsym Shift+$up   exec "light -S 100%; expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
+	bindsym $down       exec "light -U 5%;   expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
+	bindsym Shift+$down exec "light -S 0%;   expr 100 '*' $(light -rG) / 255 >> $XDG_RUNTIME_DIR/g/wobpipe"
 
 	# Return to default mode
 	bindsym Return mode "default"
