@@ -2,14 +2,12 @@ bindsym XF86AudioRaiseVolume       exec amixer -M set Master 5%+    | sed -n 's/
 bindsym Shift+XF86AudioRaiseVolume exec amixer -M set Master 100%   | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
 bindsym XF86AudioLowerVolume       exec amixer -M set Master 5%-    | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
 bindsym Shift+XF86AudioLowerVolume exec amixer -M set Master 0%     | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
-bindsym XF86AudioMute              exec amixer -M set Master toggle
 
 mode "volume" {
-	bindsym $up    exec amixer -M set Master 5%+    | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
-	bindsym $right exec amixer -M set Master 100%   | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
-	bindsym $down  exec amixer -M set Master 5%-    | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
-	bindsym $left  exec amixer -M set Master 0%     | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
-	bindsym Space  exec amixer -M set Master toggle
+	bindsym $up         exec amixer -M set Master 5%+  | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
+	bindsym Shift+$up   exec amixer -M set Master 100% | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
+	bindsym $down       exec amixer -M set Master 5%-  | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
+	bindsym Shift+$down exec amixer -M set Master 0%   | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
 
 	# Return to default mode
 	bindsym Return mode "default"
