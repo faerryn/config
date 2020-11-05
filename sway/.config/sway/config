@@ -26,11 +26,11 @@ set $term alacritty -e
 	# Start a terminal
 	bindsym $mod+Return exec $term $SHELL
 
-	# Start a file manager
-	bindsym $mod+o exec $term ranger
-
 	# Start your launcher
-	bindsym $mod+p exec pgrep dmenu-wl || $scripts/dmenu_path | $scripts/dmenu | xargs $term
+	bindsym $mod+p exec pgrep dmenu-wl || $scripts/dmenu_path | $scripts/dmenu | xargs swaymsg exec --
+
+	# Start your term launcher
+	bindsym $mod+o exec pgrep dmenu-wl || $scripts/dmenu_path | $scripts/dmenu | xargs swaymsg exec -- $term
 
 	# Drag floating windows by holding down $mod and left mouse button.
 	# Resize them with right mouse button + $mod.
@@ -46,7 +46,8 @@ set $term alacritty -e
 	bindsym $mod+Shift+r reload
 
 	# Exit sway (logs you out of your Wayland session)
-	bindsym $mod+Shift+q exec pgrep dmenu-wl || $scripts/logout | $scripts/dmenu | xargs $scripts/logout
+	bindsym $mod+Shift+q    exec pgrep dmenu-wl || $scripts/logout | $scripts/dmenu | xargs swaymsg exec -- $scripts/logout
+	bindsym Ctrl+Alt+Delete exec pgrep dmenu-wl || $scripts/logout | $scripts/dmenu | xargs swaymsg exec -- $scripts/logout
 
 #
 # Moving around:
