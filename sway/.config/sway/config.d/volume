@@ -1,21 +1,20 @@
-bindsym XF86AudioRaiseVolume       exec amixer set Master 5%+
-bindsym Shift+XF86AudioRaiseVolume exec amixer set Master 100%
-bindsym XF86AudioLowerVolume       exec amixer set Master 5%-
-bindsym Shift+XF86AudioLowerVolume exec amixer set Master 0%
-bindsym XF86AudioMute              exec amixer set Master toggle
-
-bindsym $mod+v mode "volume"
+bindsym XF86AudioRaiseVolume       exec amixer -M set Master 5%+    | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
+bindsym Shift+XF86AudioRaiseVolume exec amixer -M set Master 100%   | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
+bindsym XF86AudioLowerVolume       exec amixer -M set Master 5%-    | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
+bindsym Shift+XF86AudioLowerVolume exec amixer -M set Master 0%     | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
+bindsym XF86AudioMute              exec amixer -M set Master toggle
 
 mode "volume" {
-	bindsym $right exec amixer set Master 5%+
-	bindsym $up    exec amixer set Master 100%
-	bindsym $left  exec amixer set Master 5%-
-	bindsym $down  exec amixer set Master 0%
-	bindsym Space  exec amixer set Master toggle
+	bindsym $up    exec amixer -M set Master 5%+    | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
+	bindsym $right exec amixer -M set Master 100%   | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
+	bindsym $down  exec amixer -M set Master 5%-    | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
+	bindsym $left  exec amixer -M set Master 0%     | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> /tmp/wobpipe
+	bindsym Space  exec amixer -M set Master toggle
 
 	# Return to default mode
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
+bindsym $mod+v mode "volume"
 
 # vim: ft=conf

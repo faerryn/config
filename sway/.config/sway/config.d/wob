@@ -1,0 +1,3 @@
+exec "test -p /tmp/wobpipe || mkfifo /tmp/wobpipe; tail -f /tmp/wobpipe | wob --background-color '#00000000'"
+
+# vim: ft=conf
