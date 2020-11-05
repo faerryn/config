@@ -30,7 +30,7 @@ set $menu dmenu-wl -fn 'monospace 12' -h 24 -m $(swaymsg -t get_outputs | jq -r 
 	bindsym $mod+o exec $term ranger
 
 	# Start your launcher
-	bindsym $mod+p exec pgrep dmenu-wl || echo $PATH | tr ':' '\n' | xargs readlink -f | sort | uniq | xargs -I{} fd . {} -tf -d1 -L -X echo {/} | tr ' ' '\n' | sort | uniq | $menu | xargs swaymsg exec --
+	bindsym $mod+p exec pgrep dmenu-wl || echo $PATH | tr ':' '\n' | xargs readlink -f | sort | uniq | xargs -I{} fd . {} -tf -d1 -L -X echo {/} | tr ' ' '\n' | sort | uniq | $menu | xargs $term
 
 	# Drag floating windows by holding down $mod and left mouse button.
 	# Resize them with right mouse button + $mod.
