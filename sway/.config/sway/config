@@ -1,4 +1,4 @@
-# Default config for sway
+#~/.config/sway/~/.config/sway/ Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
@@ -15,9 +15,9 @@ set $down  j
 set $up    k
 set $right l
 
-set $term alacritty -e
+set $scripts ~/.config/sway/scripts
 
-set $menu dmenu-wl -fn 'monospace 12' -h 24 -m $(swaymsg -t get_outputs | jq -r '.[] | select(.focused).name')
+set $term alacritty -e
 
 ### Key bindings
 #
@@ -30,7 +30,7 @@ set $menu dmenu-wl -fn 'monospace 12' -h 24 -m $(swaymsg -t get_outputs | jq -r 
 	bindsym $mod+o exec $term ranger
 
 	# Start your launcher
-	bindsym $mod+p exec pgrep dmenu-wl || echo $PATH | tr ':' '\n' | xargs readlink -f | sort | uniq | xargs -I{} fd . {} -tf -d1 -L -X echo {/} | tr ' ' '\n' | sort | uniq | $menu | xargs $term
+	bindsym $mod+p exec pgrep dmenu-wl || $scripts/dmenu_path | $scripts/dmenu | xargs $term
 
 	# Drag floating windows by holding down $mod and left mouse button.
 	# Resize them with right mouse button + $mod.
@@ -46,8 +46,7 @@ set $menu dmenu-wl -fn 'monospace 12' -h 24 -m $(swaymsg -t get_outputs | jq -r 
 	bindsym $mod+Shift+r reload
 
 	# Exit sway (logs you out of your Wayland session)
-	bindsym $mod+Shift+q    exec pgrep wlogout || wlogout
-	bindsym Ctrl+Alt+Delete exec pgrep wlogout || wlogout
+	bindsym $mod+Shift+q exec pgrep dmenu-wl || $scripts/logout | $scripts/dmenu | xargs $scripts/logout
 
 #
 # Moving around:

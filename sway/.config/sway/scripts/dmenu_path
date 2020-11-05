@@ -1,0 +1,2 @@
+#!/bin/sh
+echo $PATH | tr ':' '\n' | xargs readlink -f | sort | uniq | xargs -I{} fd . {} -tf -d1 -L -X echo {/} | tr ' ' '\n' | sort | uniq
