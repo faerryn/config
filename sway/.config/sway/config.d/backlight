@@ -1,13 +1,13 @@
-bindsym XF86MonBrightnessUp         exec "brightnessctl s +5%;  expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
-bindsym Shift+XF86MonBrightnessUp   exec "brightnessctl s 100%; expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
-bindsym XF86MonBrightnessDown       exec "brightnessctl s 5%-;  expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
-bindsym Shift+XF86MonBrightnessDown exec "brightnessctl s 0%;   expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
+bindsym XF86MonBrightnessUp         exec "brightnessctl s +5%;  expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> ${XDG_RUNTIME_DIR}/wobpipe"
+bindsym Shift+XF86MonBrightnessUp   exec "brightnessctl s 100%; expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> ${XDG_RUNTIME_DIR}/wobpipe"
+bindsym XF86MonBrightnessDown       exec "brightnessctl s 5%-;  expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> ${XDG_RUNTIME_DIR}/wobpipe"
+bindsym Shift+XF86MonBrightnessDown exec "brightnessctl s 0%;   expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> ${XDG_RUNTIME_DIR}/wobpipe"
 
 mode "backlight" {
-	bindsym $up    exec "brightnessctl s +5%;  expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
-	bindsym $right exec "brightnessctl s 100%; expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
-	bindsym $down  exec "brightnessctl s 5%-;  expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
-	bindsym $left  exec "brightnessctl s 0%;   expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> $XDG_RUNTIME_DIR/wobpipe"
+	bindsym $up    exec "brightnessctl s +5%;  expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> ${XDG_RUNTIME_DIR}/wobpipe"
+	bindsym $right exec "brightnessctl s 100%; expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> ${XDG_RUNTIME_DIR}/wobpipe"
+	bindsym $down  exec "brightnessctl s 5%-;  expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> ${XDG_RUNTIME_DIR}/wobpipe"
+	bindsym $left  exec "brightnessctl s 0%;   expr 100 '*' $(brightnessctl g) / $(brightnessctl m) >> ${XDG_RUNTIME_DIR}/wobpipe"
 
 	# Return to default mode
 	bindsym Return mode "default"

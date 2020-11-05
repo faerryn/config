@@ -24,7 +24,7 @@ set $term alacritty -e
 # Basics:
 #
 	# Start a terminal
-	bindsym $mod+Return exec $term $SHELL
+	bindsym $mod+Return exec $term ${SHELL}
 
 	# Start your launcher
 	bindsym $mod+p exec pgrep dmenu-wl || $scripts/dmenu_path | $scripts/dmenu | xargs swaymsg exec --
