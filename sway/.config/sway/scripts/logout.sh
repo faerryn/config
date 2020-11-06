@@ -12,17 +12,17 @@ case ${1} in
 		;;
 	suspend)
 		sway output '*' enable
-		sudo zzz
+		doas zzz
 		;;
 	hibernate)
 		sway output '*' enable
-		sudo zzz -Z
+		doas zzz -Z
 		;;
 	shutdown)
-		sudo shutdown -P now
+		doas shutdown -P now
 		;;
 	reboot)
-		sudo shutdown -r now
+		doas shutdown -r now
 		;;
 	*)
 		echo 'lock\nreload\nlogout\nsuspend\nhibernate\nshutdown\nreboot'

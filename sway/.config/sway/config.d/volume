@@ -1,13 +1,13 @@
-bindsym XF86AudioRaiseVolume       exec amixer -M set Master 5%+  | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> ${XDG_RUNTIME_DIR}/wobpipe
-bindsym Shift+XF86AudioRaiseVolume exec amixer -M set Master 100% | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> ${XDG_RUNTIME_DIR}/wobpipe
-bindsym XF86AudioLowerVolume       exec amixer -M set Master 5%-  | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> ${XDG_RUNTIME_DIR}/wobpipe
-bindsym Shift+XF86AudioLowerVolume exec amixer -M set Master 0%   | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> ${XDG_RUNTIME_DIR}/wobpipe
+bindsym XF86AudioRaiseVolume       exec expr 100 '*' $($scripts/sndio.sh master +8)   / 127 >> ${XDG_RUNTIME_DIR}/wobpipe
+bindsym Shift+XF86AudioRaiseVolume exec expr 100 '*' $($scripts/sndio.sh master +127) / 127 >> ${XDG_RUNTIME_DIR}/wobpipe
+bindsym XF86AudioLowerVolume       exec expr 100 '*' $($scripts/sndio.sh master -8)   / 127 >> ${XDG_RUNTIME_DIR}/wobpipe
+bindsym Shift+XF86AudioLowerVolume exec expr 100 '*' $($scripts/sndio.sh master -127) / 127 >> ${XDG_RUNTIME_DIR}/wobpipe
 
 mode "volume" {
-	bindsym $up    exec amixer -M set Master 5%+  | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> ${XDG_RUNTIME_DIR}/wobpipe
-	bindsym $right exec amixer -M set Master 100% | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> ${XDG_RUNTIME_DIR}/wobpipe
-	bindsym $down  exec amixer -M set Master 5%-  | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> ${XDG_RUNTIME_DIR}/wobpipe
-	bindsym $left  exec amixer -M set Master 0%   | sed -n 's/^.*\[\([0-9]\+\)%\].*$/\1/p' >> ${XDG_RUNTIME_DIR}/wobpipe
+	bindsym $up    exec expr 100 '*' $($scripts/sndio.sh master +8)   / 127 >> ${XDG_RUNTIME_DIR}/wobpipe
+	bindsym $right exec expr 100 '*' $($scripts/sndio.sh master +127) / 127 >> ${XDG_RUNTIME_DIR}/wobpipe
+	bindsym $down  exec expr 100 '*' $($scripts/sndio.sh master -8)   / 127 >> ${XDG_RUNTIME_DIR}/wobpipe
+	bindsym $left  exec expr 100 '*' $($scripts/sndio.sh master -127) / 127 >> ${XDG_RUNTIME_DIR}/wobpipe
 
 	# Return to default mode
 	bindsym Return mode "default"
