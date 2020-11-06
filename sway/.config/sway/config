@@ -137,7 +137,7 @@ include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
 
 # do local config
-exec ~/.config/local/sway.sh
-include ~/.config/local/sway
+exec ~/loc/sway.sh
+include ~/loc/sway
 
 # vim: ft=conf
