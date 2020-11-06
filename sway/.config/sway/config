@@ -1,4 +1,4 @@
-#~/.config/sway/~/.config/sway/ Default config for sway
+# Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
@@ -27,10 +27,7 @@ set $term alacritty -e
 	bindsym $mod+Return exec $term ${SHELL}
 
 	# Start your launcher
-	bindsym $mod+p exec pgrep dmenu-wl || $scripts/dmenu_path | $scripts/dmenu | xargs swaymsg exec --
-
-	# Start your term launcher
-	bindsym $mod+o exec pgrep dmenu-wl || $scripts/dmenu_path | $scripts/dmenu | xargs swaymsg exec -- $term
+	bindsym $mod+p exec pgrep dmenu-wl || $scripts/dmenu_path | $scripts/dmenu | xargs swaymsg exec -- $term
 
 	# Drag floating windows by holding down $mod and left mouse button.
 	# Resize them with right mouse button + $mod.
@@ -41,9 +38,6 @@ set $term alacritty -e
 
 	# Kill focused window
 	bindsym $mod+Shift+c kill
-
-	# Reload the configuration file
-	bindsym $mod+Shift+r reload
 
 	# Exit sway (logs you out of your Wayland session)
 	bindsym $mod+Shift+q    exec pgrep dmenu-wl || $scripts/logout | $scripts/dmenu | xargs swaymsg exec -- $scripts/logout

@@ -4,8 +4,11 @@ case ${1} in
 	lock)
 		swaylock -f -c 000000
 		;;
+	reload)
+		sway reload
+		;;
 	logout)
-		sway exit
+		loginctl terminate-session $XDG_SESSION_ID
 		;;
 	suspend)
 		sway output '*' enable
@@ -22,5 +25,5 @@ case ${1} in
 		sudo shutdown -r now
 		;;
 	*)
-		echo 'lock\nlogout\nsuspend\nhibernate\nshutdown\nreboot'
+		echo 'lock\nreload\nlogout\nsuspend\nhibernate\nshutdown\nreboot'
 esac

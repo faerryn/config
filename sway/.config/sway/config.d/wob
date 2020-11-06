@@ -1,3 +1,4 @@
-exec "test -p ${XDG_RUNTIME_DIR}/wobpipe || mkfifo ${XDG_RUNTIME_DIR}/wobpipe; tail -f ${XDG_RUNTIME_DIR}/wobpipe | wob --background-color '#00000000'"
+exec test -p ${XDG_RUNTIME_DIR}/wobpipe || mkfifo ${XDG_RUNTIME_DIR}/wobpipe
+exec tail -f ${XDG_RUNTIME_DIR}/wobpipe | wob --background-color '#00000000'
 
 # vim: ft=conf
