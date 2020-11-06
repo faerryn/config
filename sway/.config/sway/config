@@ -134,14 +134,9 @@ font pango:monospace 12
 exec ~/.wallpaper
 
 #
-# Wob
+# Daemons
 #
-exec "$scripts/wob.sh"
-
-#
-# Idle
-#
-exec "$scripts/idle.sh"
+exec $scripts/daemon.sh
 
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
