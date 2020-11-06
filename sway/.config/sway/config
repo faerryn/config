@@ -27,7 +27,7 @@ set $term alacritty -e
 	bindsym $mod+Return exec $term ${SHELL}
 
 	# Start your launcher
-	bindsym $mod+p exec pgrep dmenu-wl || $scripts/dmenu_path | $scripts/dmenu | xargs swaymsg exec -- $term
+	bindsym $mod+p exec pgrep -x dmenu-wl || $scripts/dmenu_path.sh | $scripts/dmenu.sh | xargs swaymsg exec -- $term
 
 	# Drag floating windows by holding down $mod and left mouse button.
 	# Resize them with right mouse button + $mod.
@@ -40,8 +40,8 @@ set $term alacritty -e
 	bindsym $mod+Shift+c kill
 
 	# Exit sway (logs you out of your Wayland session)
-	bindsym $mod+Shift+q    exec pgrep dmenu-wl || $scripts/logout | $scripts/dmenu | xargs swaymsg exec -- $scripts/logout
-	bindsym Ctrl+Alt+Delete exec pgrep dmenu-wl || $scripts/logout | $scripts/dmenu | xargs swaymsg exec -- $scripts/logout
+	bindsym $mod+Shift+q    exec pgrep -x dmenu-wl || $scripts/logout.sh | $scripts/dmenu.sh | xargs swaymsg exec -- $scripts/logout.sh
+	bindsym Ctrl+Alt+Delete exec pgrep -x dmenu-wl || $scripts/logout.sh | $scripts/dmenu.sh | xargs swaymsg exec -- $scripts/logout.sh
 
 #
 # Moving around:
@@ -124,14 +124,24 @@ set $term alacritty -e
 	bindsym $mod+0 scratchpad show
 
 #
+# Font
+#
+font pango:monospace 12
+
+#
 # Wallpaper
 #
 exec ~/.wallpaper
 
 #
-# Font
+# Wob
 #
-font pango:monospace 12
+exec "$scripts/wob.sh"
+
+#
+# Idle
+#
+exec "$scripts/idle.sh"
 
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*

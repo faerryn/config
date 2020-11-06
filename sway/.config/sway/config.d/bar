@@ -15,7 +15,7 @@ bar {
 		inactive_workspace #00000000 #00000000 #888888
 	}
 
-	status_command while true; do $scripts/status; sleep 1; done
+	status_command while true; do $scripts/status.sh; sleep 1; done
 
 	gaps 4 8 0 8
 }
