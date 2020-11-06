@@ -4,11 +4,8 @@ case ${1} in
 	lock)
 		swaylock -f -c 000000
 		;;
-	reload)
-		sway reload
-		;;
 	exit)
-		loginctl terminate-session $XDG_SESSION_ID
+		loginctl terminate-session ${XDG_SESSION_ID}
 		;;
 	shutdown)
 		doas shutdown -P now
@@ -25,5 +22,5 @@ case ${1} in
 		doas zzz -Z
 		;;
 	*)
-		echo 'lock\nreload\nexit\nshutdown\nreboot\nsuspend\nhibernate'
+		echo 'lock\nexit\nshutdown\nreboot\nsuspend\nhibernate'
 esac

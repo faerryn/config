@@ -37,10 +37,10 @@ set $term alacritty -e
 	floating_modifier $mod normal
 
 	# Kill focused window
-	bindsym $mod+Shift+c kill
+	bindsym $mod+q kill
 
 	# Exit sway (logs you out of your Wayland session)
-	bindsym $mod+Shift+q    exec pgrep -x dmenu-wl || $scripts/logout.sh | $scripts/dmenu.sh | xargs swaymsg exec -- $scripts/logout.sh
+	bindsym $mod+Shift+q    exec $scripts/logout.sh exit
 	bindsym Ctrl+Alt+Delete exec pgrep -x dmenu-wl || $scripts/logout.sh | $scripts/dmenu.sh | xargs swaymsg exec -- $scripts/logout.sh
 
 #
@@ -94,9 +94,8 @@ set $term alacritty -e
 	bindsym $mod+d splitv
 
 	# Switch the current container between different layout styles
-	bindsym $mod+q layout toggle split
+	bindsym $mod+e layout toggle split
 	bindsym $mod+w layout tabbed
-	bindsym $mod+e layout stacking
 
 	# Make the current focus fullscreen
 	bindsym $mod+f fullscreen
