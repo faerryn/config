@@ -7,8 +7,14 @@ case ${1} in
 	reload)
 		sway reload
 		;;
-	logout)
+	exit)
 		loginctl terminate-session $XDG_SESSION_ID
+		;;
+	shutdown)
+		doas shutdown -P now
+		;;
+	reboot)
+		doas shutdown -r now
 		;;
 	suspend)
 		sway output '*' enable
@@ -18,12 +24,6 @@ case ${1} in
 		sway output '*' enable
 		doas zzz -Z
 		;;
-	shutdown)
-		doas shutdown -P now
-		;;
-	reboot)
-		doas shutdown -r now
-		;;
 	*)
-		echo 'lock\nreload\nlogout\nsuspend\nhibernate\nshutdown\nreboot'
+		echo 'lock\nreload\nexit\nshutdown\nreboot\nsuspend\nhibernate'
 esac

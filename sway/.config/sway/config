@@ -129,16 +129,15 @@ set $term alacritty -e
 font pango:monospace 12
 
 #
-# Wallpaper
-#
-exec ~/.wallpaper
-
-#
 # Daemons
 #
 exec $scripts/daemon.sh
 
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
+
+# do local config
+exec ~/.config/local/sway.sh
+include ~/.config/local/sway
 
 # vim: ft=conf
