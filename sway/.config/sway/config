@@ -136,7 +136,7 @@ include /etc/sway/config.d/*
 include ${XDG_CONFIG_HOME}/sway/config.d/*
 
 # do local config
-exec ~/loc/sway.sh
-include ~/loc/sway
+exec ~/local/sway.sh
+include ~/local/sway
 
 # vim: ft=conf
