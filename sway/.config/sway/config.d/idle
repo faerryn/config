@@ -1,0 +1,4 @@
+exec swayidle -w\
+	timeout 120 '$scripts/logout.sh lock'\
+	timeout 300 '$scripts/logout.sh suspend'
+# vim: ft=conf
