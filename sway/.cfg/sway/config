@@ -15,7 +15,7 @@ set $down  j
 set $up    k
 set $right l
 
-set $scripts ~/.config/sway/scripts
+set $scripts ${XDG_CONFIG_HOME}/sway/scripts
 
 set $term alacritty -e
 
@@ -133,7 +133,7 @@ font pango:monospace 12
 exec $scripts/daemon.sh
 
 include /etc/sway/config.d/*
-include ~/.config/sway/config.d/*
+include ${XDG_CONFIG_HOME}/sway/config.d/*
 
 # do local config
 exec ~/loc/sway.sh

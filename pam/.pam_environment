@@ -1,10 +1,10 @@
 # Path
-PATH OVERRIDE=@{HOME}/.local/bin:${PATH}
+PATH OVERRIDE=@{HOME}/loc/bin:${PATH}
 
 # XDG base directories
 XDG_CACHE_HOME  DEFAULT=@{HOME}/.cache
 XDG_CONFIG_DIRS DEFAULT=/etc/xdg
-XDG_CONFIG_HOME DEFAULT=@{HOME}/.config
+XDG_CONFIG_HOME DEFAULT=@{HOME}/.cfg
 XDG_DATA_HOME   DEFAULT=@{HOME}/.local/share
 XDG_DATA_DIRS   DEFAULT=/usr/local/share:/usr/share
 

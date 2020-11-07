@@ -10,4 +10,4 @@
 [core]
 	autocrlf = false
 	eol = lf
-	excludesfile = ~/.config/git/ignore
+	excludesfile = ~/.cfg/git/ignore
