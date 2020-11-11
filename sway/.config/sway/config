@@ -4,8 +4,6 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-xwayland off
-
 output * adaptive_sync on
 
 set $mod Mod4
@@ -132,6 +130,6 @@ include /etc/sway/config.d/*
 include ${XDG_CONFIG_HOME}/sway/config.d/*
 
 # do local config
-include ~/local/sway
+include ~/loc/sway
 
 # vim: ft=conf
