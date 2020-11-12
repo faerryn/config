@@ -1,13 +1,17 @@
-if test -z "$DISPLAY" && test -z "$WAYLAND_DISPLAY" && test $(tty) = /dev/tty1; then
-	while true; do
-		read wm
-		case $wm in
-			sway)
-				MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland-egl exec dbus-run-session sway
-				;;
-			dwm)
-				whence dwm | xargs exec XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority dbus-run-session startx
-				;;
-		esac
-	done
+wayland_run () {
+	if ! command -v "${1}"; then
+		return 1
+	fi
+	MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland-egl exec dbus-run-session ${1}
+}
+
+x11_run () {
+	if ! command -v "${1}"; then
+		return 1
+	fi
+	exec dbus-run-session ${1}
+}
+
+if test -z "${DISPLAY}${WAYLAND_DISPLAY}" && test $(tty) = /dev/tty1; then
+	wayland_run sway
 fi

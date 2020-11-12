@@ -1,8 +1,8 @@
 # Copyright (c) 2020 Jiang Meng Liao (Faerryn) <alexandre.liao@gmail.com>
-PERSONAL_GITPROMPT_AWK="$(dirname ${0})/git.awk"
+personal_gitprompt_awk="$(dirname ${0})/git.awk"
 
 function personal_prompt_async () {
-	2>&1 git -C "${1}" --no-optional-locks status --branch --porcelain=v2 | awk -f "${PERSONAL_GITPROMPT_AWK}"
+	2>&1 git -C "${1}" --no-optional-locks status --branch --porcelain=v2 | awk -f "${personal_gitprompt_awk}"
 }
 function personal_prompt_callback () {
 	[[ -n "${5}" ]] && return
