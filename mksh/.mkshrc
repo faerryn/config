@@ -20,7 +20,7 @@ alias ls='ls -hvxCFX --color=auto --group-directories-first'
 alias ll='ls -g'
 alias la='ls -gA'
 alias grep='grep --color=auto'
-alias fd="fd --hidden --ignore-file ${XDG_CONFIG_HOME}/git/ignore"
-alias rg="rg --hidden --ignore-file ${XDG_CONFIG_HOME}/git/ignore"
+alias fd='fd --hidden --ignore-file "${XDG_CONFIG_HOME}"/git/ignore'
+alias rg='rg --hidden --ignore-file "${XDG_CONFIG_HOME}"/git/ignore'
 
 # vim: ft=sh
