@@ -1,6 +1,11 @@
 PS1=' [35m${USER}[37m@[35m${HOSTNAME:=$(hostname)}[37m [34m${PWD/#${HOME}/\~}[37m $ '
 
-function dc() {
+HISTFILE=${XDG_DATA_HOME}/mksh/history
+mkdir -p $(dirname ${HISTFILE})
+
+HISTSIZE=65535
+
+dc() {
 	dirs_back="${1:-1}"
 	case ${dirs_back} in
 		+([0-9]))
