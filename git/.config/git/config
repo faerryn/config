@@ -10,4 +10,6 @@
 [core]
 	autocrlf = false
 	eol = lf
-	excludesfile = ~/.cfg/git/ignore
+	excludesfile = ~/.config/git/ignore
+[merge]
+	tool = nvimdiff

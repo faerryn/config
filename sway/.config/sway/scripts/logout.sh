@@ -5,7 +5,7 @@ case ${1} in
 		swaylock -f -c 000000
 		;;
 	exit)
-		loginctl terminate-session ${XDG_SESSION_ID}
+		sway exit
 		;;
 	shutdown)
 		doas shutdown -P now
