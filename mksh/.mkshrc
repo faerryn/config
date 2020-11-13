@@ -1,4 +1,4 @@
-PS1=' [35m${USER}[37m@[35m${HOSTNAME:=$(hostname)}[37m [34m${PWD/#${HOME}/\~}[37m $ '
+PS1=' [35m${USER}[37m@[35m${HOSTNAME:=$(hostname)}[37m [34m${PWD/#${HOME}/\~}[37m \$ '
 
 HISTFILE=${XDG_DATA_HOME}/mksh/history
 mkdir -p $(dirname ${HISTFILE})
@@ -24,7 +24,9 @@ alias ..=dc
 alias ls='ls -hvxCFX --color=auto --group-directories-first'
 alias ll='ls -g'
 alias la='ls -gA'
+
 alias grep='grep --color=auto'
+
 alias fd='fd --hidden --ignore-file "${XDG_CONFIG_HOME}"/git/ignore'
 alias rg='rg --hidden --ignore-file "${XDG_CONFIG_HOME}"/git/ignore'
 

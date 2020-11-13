@@ -24,10 +24,10 @@ set $term alacritty -e
 # Basics:
 #
 	# Start a terminal
-	bindsym $mod+Return exec $term ${SHELL}
+	bindsym $mod+Return exec $term ${SHELL} &
 
 	# Start your launcher
-	bindsym $mod+p exec pgrep -x dmenu-wl || $scripts/dmenu_path.sh | $scripts/dmenu.sh | xargs swaymsg exec -- $term
+	bindsym $mod+p exec pgrep -x dmenu-wl || $term $($scripts/dmenu_path.sh | $scripts/dmenu.sh) &
 
 	# Drag floating windows by holding down $mod and left mouse button.
 	# Resize them with right mouse button + $mod.
@@ -41,7 +41,7 @@ set $term alacritty -e
 
 	# Exit sway (logs you out of your Wayland session)
 	bindsym $mod+Shift+q    exec $scripts/logout.sh exit
-	bindsym Ctrl+Alt+Delete exec pgrep -x dmenu-wl || $scripts/logout.sh | $scripts/dmenu.sh | xargs swaymsg exec -- $scripts/logout.sh
+	bindsym Ctrl+Alt+Delete exec pgrep -x dmenu-wl || $scripts/logout.sh | $scripts/dmenu.sh | xargs $scripts/logout.sh &
 
 #
 # Moving around:
@@ -126,6 +126,11 @@ set $term alacritty -e
 # Font
 #
 font pango:monospace 12
+
+#
+# Idle
+#
+exec $scripts/idle.sh &
 
 # the other configs
 include /etc/sway/config.d/*
