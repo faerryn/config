@@ -1,0 +1,26 @@
+PS1=' [35m${USER}[37m@[35m${HOSTNAME:=$(hostname)}[37m [34m${PWD/#${HOME}/\~}[37m $ '
+
+function dc() {
+	dirs_back="${1:-1}"
+	case ${dirs_back} in
+		+([0-9]))
+			if [ ${PWD} != / ] && [[ ${dirs_back} -gt 0 ]]; then
+				cd ..
+				dc $((${dirs_back}-1))
+			fi
+			;;
+		*)
+			return 1
+			;;
+	esac
+}
+alias ..=dc
+
+alias ls='ls -hvxCFX --color=auto --group-directories-first'
+alias ll='ls -g'
+alias la='ls -gA'
+alias grep='grep --color=auto'
+alias fd="fd --hidden --ignore-file ${XDG_CONFIG_HOME}/git/ignore"
+alias rg="rg --hidden --ignore-file ${XDG_CONFIG_HOME}/git/ignore"
+
+# vim: ft=sh
