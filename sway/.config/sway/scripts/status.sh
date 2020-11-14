@@ -1,2 +1,0 @@
-#!/bin/sh
-echo "$(date +%r) $(cat /sys/class/power_supply/BAT1/capacity)%"
