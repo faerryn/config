@@ -1,7 +1,9 @@
+. ~/loc/profile
 gui() {
 	if ! command -v "${2}"; then
 		return 1
 	fi
+	export XCURSOR_SIZE=24
 	case "${1}" in
 		x11)
 			export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
@@ -26,8 +28,11 @@ if test -z "${DISPLAY}${WAYLAND_DISPLAY}" && test $(tty) = /dev/tty1; then
 			break
 		fi
 		case "${wm}" in
+			hikari)
+				gui wayland hikari
+				;;
 			dwm)
-				gui x11 "${HOME}"/.config/dwm.sh
+				gui x11 "${XDG_CONFIG_HOME}"/dwm.sh
 				;;
 		esac
 	done
