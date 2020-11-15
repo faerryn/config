@@ -1,5 +1,5 @@
 #!/bin/sh
+xdg-user-dirs-update
 sxhkd &
-picom &
 . ~/loc/dwm.sh
 exec dwm
