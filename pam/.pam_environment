@@ -1,5 +1,6 @@
 # Path
-PATH OVERRIDE=@{HOME}/.local/bin:${PATH}
+PATH    OVERRIDE=@{HOME}/.local/bin:${PATH}
+MANPATH OVERRIDE=@{HOME}/.local/share/man:${MANPATH}
 
 # XDG base directories
 XDG_CACHE_HOME  DEFAULT=@{HOME}/.cache	

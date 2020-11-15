@@ -4,9 +4,8 @@
 [pull]
 	rebase = false
 [alias]
+	all = add .
 	amend = commit --amend
-	root = rev-parse --show-toplevel
-	abbrev = rev-parse --short
 [core]
 	autocrlf = false
 	eol = lf
