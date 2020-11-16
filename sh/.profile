@@ -10,13 +10,13 @@ gui() {
 	case "${protocol}" in
 		x11)
 			export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
-			exec startx $(which dbus-run-session) $@
+			startx $(which dbus-run-session) $@
 			;;
 		wayland)
 			export MOZ_ENABLE_WAYLAND=
 			export QT_QPA_PLATFORM=wayland-egl
 			export SDL_VIDEODRIVER=wayland
-			exec dbus-run-session $@
+			dbus-run-session $@
 			;;
 		*)
 			return 1
