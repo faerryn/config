@@ -6,7 +6,7 @@ gui() {
 	fi
 	. ~/loc/gui.sh
 	export XCURSOR_SIZE=24
-	export TERMINAL=st
+	export XDG_TERMINAL=st
 	case "${protocol}" in
 		x11)
 			export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
