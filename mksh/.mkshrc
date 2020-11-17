@@ -1,4 +1,4 @@
-PS1=' [35m${USER}[37m@[35m${HOSTNAME:=$(hostname)}[37m [34m${PWD/#${HOME}/\~}[37m \$ ]0;${PWD/#${HOME}/\~} ${_title:=$(xdotool getactivewindow getwindowname)}'
+PS1=' [35m${USER}[37m@[35m${HOSTNAME:=$(hostname)}[37m [34m${PWD/#${HOME}/\~}[37m \$ ]0;${PWD/#${HOME}/\~} ${TERM}'
 
 HISTFILE=${XDG_DATA_HOME}/mksh/history
 mkdir -p $(dirname ${HISTFILE})
