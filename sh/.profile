@@ -1,42 +1,39 @@
 gui() {
-	protocol=${1}
-	shift
-	if ! command -v "${1}"; then
-		return 1
-	fi
-	. ~/loc/gui.sh
+	wm="${1}"
+	case "${wm}" in
+		dwm)
+			protocol=x11
+			cmd=dwm
+			;;
+		river)
+			protocol=wayland
+			cmd='river -c '"${XDG_CONFIG_HOME}"/river.sh
+			;;
+		*)
+			return 1
+	esac
+
 	export XCURSOR_SIZE=24
 	export XKB_DEFAULT_OPTIONS="caps:escape"
 	case "${protocol}" in
 		x11)
 			export XDG_TERMINAL=st
 			export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
-			exec startx $(which dbus-run-session) $@
+			exec startx $(which dbus-run-session) ${cmd}
 			;;
 		wayland)
 			export XDG_TERMINAL=st
 			export MOZ_ENABLE_WAYLAND=
 			export QT_QPA_PLATFORM=wayland-egl
 			export SDL_VIDEODRIVER=wayland
-			exec dbus-run-session $@
-			;;
-		*)
-			return 1
+			exec dbus-run-session ${cmd}
 			;;
 	esac
 }
 if test -z "${DISPLAY}${WAYLAND_DISPLAY}" && test $(tty) = /dev/tty1; then
-	while true; do
+	wm=0
+	while test -n "${wm}"; do
 		read wm
-		if test -z "${wm}"; then
-			break
-		fi
-		case "${wm}" in
-			dwm)
-				gui x11 dwm
-				;;
-			river)
-				gui wayland river -c ${XDG_CONFIG_HOME}/river.sh
-		esac
+		gui ${wm}
 	done
 fi
