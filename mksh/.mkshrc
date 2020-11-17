@@ -7,9 +7,9 @@ HISTSIZE=65535
 
 dc() {
 	dirs_back="${1:-1}"
-	case ${dirs_back} in
+	case "${dirs_back}" in
 		+([0-9]))
-			if [ ${PWD} != / ] && [[ ${dirs_back} -gt 0 ]]; then
+			if [ "${PWD}" != / ] && [[ ${dirs_back} -gt 0 ]]; then
 				cd ..
 				dc $((${dirs_back}-1))
 			fi
