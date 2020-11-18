@@ -1,13 +1,8 @@
 gui() {
-	wm="${1}"
-	case "${wm}" in
+	case "${1}" in
 		dwm)
 			protocol=x11
 			cmd=dwm
-			;;
-		river)
-			protocol=wayland
-			cmd='river -c '"${XDG_CONFIG_HOME}"/river.sh
 			;;
 		*)
 			return 1
