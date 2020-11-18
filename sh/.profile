@@ -19,14 +19,14 @@ gui() {
 		x11)
 			export XDG_TERMINAL=st
 			export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
-			exec startx $(which dbus-run-session) ${cmd}
+			startx $(which dbus-run-session) ${cmd}
 			;;
 		wayland)
 			export XDG_TERMINAL=st
 			export MOZ_ENABLE_WAYLAND=
 			export QT_QPA_PLATFORM=wayland-egl
 			export SDL_VIDEODRIVER=wayland
-			exec dbus-run-session ${cmd}
+			dbus-run-session ${cmd}
 			;;
 	esac
 }
@@ -34,6 +34,6 @@ if test -z "${DISPLAY}${WAYLAND_DISPLAY}" && test $(tty) = /dev/tty1; then
 	wm=0
 	while test -n "${wm}"; do
 		read wm
-		gui ${wm}
+		exec gui ${wm}
 	done
 fi
