@@ -30,5 +30,6 @@ alias fd='fd --hidden --ignore-file '"${XDG_CONFIG_HOME}"/git/ignore
 alias rg='rg --hidden --ignore-file '"${XDG_CONFIG_HOME}"/git/ignore
 
 alias nq='nq -c'
+alias xargs='xargs --no-run-if-empty -I{}'
 
 # vim: ft=sh
