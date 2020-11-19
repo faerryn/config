@@ -1,17 +1,22 @@
-PS1=' [35m${USER}[37m@[35m${HOSTNAME:=$(hostname)}[37m [34m${PWD/#${HOME}/\~}[37m \$ ]0;${PWD/#${HOME}/\~} ${TERM}'
+PS1=' ${|
+	builtin typeset e=${?}
+	test ${e} -ne 0 && REPLY="[31m${e}[37m | "
+	return ${e}
+}[35m${USER}[37m@[35m${HOSTNAME:=$(hostname)}[37m [34m${PWD/#${HOME}/\~}[37m
+ $ ]0;${PWD/#${HOME}/\~} ${TERM}'
 
 HISTFILE=${XDG_DATA_HOME}/mksh/history
 mkdir -p $(dirname ${HISTFILE})
 
 HISTSIZE=65535
 
-dc() {
+_dc() {
 	dirs_back="${1:-1}"
 	case "${dirs_back}" in
 		+([0-9]))
 			if [ "${PWD}" != / ] && [[ ${dirs_back} -gt 0 ]]; then
 				cd ..
-				dc $((${dirs_back}-1))
+				_dc $((${dirs_back}-1))
 			fi
 			;;
 		*)
@@ -19,7 +24,7 @@ dc() {
 			;;
 	esac
 }
-alias ..=dc
+alias ..=_dc
 
 alias ls='ls -hvxCFX --color=auto --group-directories-first'
 alias ll='ls -g' la='ls -gA'

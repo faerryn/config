@@ -8,13 +8,13 @@ gui() {
 		x11)
 			export MOZ_X11_EGL=1
 			export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
-			startx $(which dbus-run-session) ${@}
+			which dbus-run-session | xargs -I{} startx {} ${@} # if dbus doesn't exist, just start x (xargs -r would prevent this)
 			;;
 		wayland)
 			export MOZ_ENABLE_WAYLAND=
 			export QT_QPA_PLATFORM=wayland-egl
 			export SDL_VIDEODRIVER=wayland
-			dbus-run-session ${@}
+			dbus-run-session ${@} || ${@} # if dbus doesn't exist, just run the wayland
 			;;
 	esac
 }
