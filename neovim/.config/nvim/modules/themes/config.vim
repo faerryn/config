@@ -1,3 +1,4 @@
 packadd onehalf
+packadd gruvbox
 
-colorscheme onehalfdark
+colorscheme gruvbox
