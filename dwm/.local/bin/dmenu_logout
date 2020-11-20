@@ -1,0 +1,2 @@
+#!/bin/sh
+printf "%s\n" poweroff reboot zzz ZZZ | dmenu "${@}" | xargs -r doas

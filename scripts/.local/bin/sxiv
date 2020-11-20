@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/bin/sxiv -bo ${@}
+/usr/bin/sxiv -bo "${@}"

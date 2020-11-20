@@ -2,4 +2,4 @@
 if ! test -f ${XDG_CONFIG_HOME}/emacs/bin/doom; then
 	git clone --depth 1 https://github.com/hlissner/doom-emacs.git ${XDG_CONFIG_HOME}/emacs
 fi
-${XDG_CONFIG_HOME}/emacs/bin/doom ${@}
+${XDG_CONFIG_HOME}/emacs/bin/doom "${@}"

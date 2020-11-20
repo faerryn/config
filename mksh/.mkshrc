@@ -6,7 +6,7 @@ PS1='${|
 $ ]0;${PWD/#${HOME}/\~} ${TERM}'
 
 HISTFILE=${XDG_DATA_HOME}/mksh/history
-mkdir -p $(dirname ${HISTFILE})
+dirname ${HISTFILE} | xargs mkdir -p
 
 HISTSIZE=65535
 
