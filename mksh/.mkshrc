@@ -1,8 +1,8 @@
 PS1='${|
 	builtin typeset e=${?}
-	test ${e} -ne 0 && REPLY="[31m${e}[37m | "
+	test ${e} -ne 0 && REPLY="[91m${e}[97m | "
 	return ${e}
-}[32m${USER}[37m@[32m${HOSTNAME:=$(hostname)}[37m [34m${PWD/#${HOME}/\~}[37m
+}[92m${USER}[97m@[92m${HOSTNAME:=$(hostname)}[97m [94m${PWD/#${HOME}/\~}[97m
 $ ]0;${PWD/#${HOME}/\~} ${TERM}'
 
 HISTFILE=${XDG_DATA_HOME}/mksh/history
