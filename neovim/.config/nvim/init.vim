@@ -99,7 +99,7 @@ function s:load_modules_config() abort
 	endfor
 endfunction
 
-command! -bar LoadPackages call s:load_modules_packages() | call minpac#clean() | call minpac#update()
+command! -bar LoadPackages call s:load_modules_packages()
 command! -bar LoadConfig   call s:load_modules_config()
 
 call s:load_modules_config()
