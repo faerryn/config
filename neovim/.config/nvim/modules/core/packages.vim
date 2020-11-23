@@ -1,6 +1,6 @@
 call minpac#add('antoinemadec/FixCursorHold.nvim', {'type': 'opt'})
 
-call minpac#add('faerryn/vim-symlink', {'type': 'opt'})
+call minpac#add('aymericbeaumet/vim-symlink', {'type': 'opt'})
 call minpac#add('moll/vim-bbye', {'type': 'opt'})
 
 call minpac#add('pbrisbin/vim-mkdir', {'type': 'opt'})

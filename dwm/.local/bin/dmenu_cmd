@@ -1,2 +1,0 @@
-#!/bin/sh
-dmenu_path | dmenu -H "${XDG_CACHE_HOME}"/dmenu_run.hist "${@}" | xargs -r st -e &
