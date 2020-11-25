@@ -19,3 +19,6 @@ INPUTRC          OVERRIDE=${XDG_CONFIG_HOME}/readline/inputrc
 LESSHISTFILE     OVERRIDE=-
 TERMINFO         OVERRIDE=${XDG_DATA_HOME}/terminfo
 TERMINFO_DIRS    OVERRIDE=${XDG_DATA_HOME}/terminfo:/usr/share/terminfo
+
+# Nix stuff
+NIX_SHELL_PRESERVE_PROMPT OVERRIDE=1
