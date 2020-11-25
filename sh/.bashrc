@@ -5,7 +5,7 @@ test ${e} -ne 0 && echo "[91m${e}[97m | "
 $(basename ${0}) $ ]0;${PWD/#${HOME}/\~} ${TERM}'
 
 HISTFILE="$XDG_DATA_HOME"/bash/history
-dirname ${HISTFILE} | xargs mkdir -p
+dirname "${HISTFILE}" | xargs mkdir -p
 
 HISTSIZE=65535
 
