@@ -1,3 +1,5 @@
+shopt -s extglob
+
 PS1='$(
 builtin typeset e=${?}
 test ${e} -ne 0 && echo "[91m${e}[97m | "
@@ -8,8 +10,6 @@ HISTFILE="$XDG_DATA_HOME"/bash/history
 dirname "${HISTFILE}" | xargs mkdir -p
 
 HISTSIZE=65535
-
-shopt -s extglob
 
 _dc() {
 	dirs_back="${1:-1}"
