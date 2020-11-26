@@ -9,10 +9,12 @@ dirname "${HISTFILE}" | xargs mkdir -p
 
 HISTSIZE=65535
 
+shopt -s extglob
+
 _dc() {
 	dirs_back="${1:-1}"
 	case "${dirs_back}" in
-		[0-9]\+)
+		+([0-9]))
 			if [ "${PWD}" != / ] && [[ ${dirs_back} -gt 0 ]]; then
 				cd ..
 				_dc $((${dirs_back}-1))
