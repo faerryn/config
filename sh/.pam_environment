@@ -19,5 +19,5 @@ TERMINFO         OVERRIDE=${XDG_DATA_HOME}/terminfo
 TERMINFO_DIRS    OVERRIDE=${XDG_DATA_HOME}/terminfo:/usr/share/terminfo
 
 # Stuff for CLI
-EDITOR OVERRIDE=vim
-VISUAL OVERRIDE=vim
+EDITOR OVERRIDE=nvim
+VISUAL OVERRIDE=nvim
