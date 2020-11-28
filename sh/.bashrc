@@ -16,7 +16,7 @@ _dc() {
 	case "${dirs_back}" in
 		+([0-9]))
 			if [ "${PWD}" != / ] && [[ ${dirs_back} -gt 0 ]]; then
-				cd ..
+				builtin cd ..
 				_dc $((${dirs_back}-1))
 			fi
 			;;
@@ -34,3 +34,8 @@ alias grep='grep --color=auto' diff='diff --color=auto'
 
 alias fd='fd --hidden --ignore-file '"${XDG_CONFIG_HOME}"/git/ignore
 alias rg='rg --hidden --ignore-file '"${XDG_CONFIG_HOME}"/git/ignore
+
+cd() {
+	builtin cd "${@}"
+	ls
+}
