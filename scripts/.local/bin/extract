@@ -1,0 +1,34 @@
+#!/bin/sh
+
+oldpwd="${PWD:=$(pwd)}"
+
+while test ${#} -gt 0; do
+	f="$(readlink -f "${1}")"
+	if ! test -r "${f}"; then
+		echo "Unreadable file: ${1}" >&2
+	fi
+	case "${f}" in
+		*.tar.gz)
+			o="${f%.tar.gz}"
+			c='tar -xvf'
+			;;
+		*.rar)
+			o="${f%.rar}"
+			c='unrar x'
+			;;
+		*.zip)
+			o="${f%.zip}"
+			c='unzip'
+			;;
+		*)
+			echo "Unsupported file format: ${1}" >&2
+			shift
+			continue
+			;;
+	esac
+	mkdir -p "${o}"
+	cd "${o}"
+	${c} "${f}"
+	cd "${oldpwd}"
+	shift
+done
