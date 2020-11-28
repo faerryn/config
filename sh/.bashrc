@@ -4,7 +4,7 @@ PS1='$(
 builtin typeset e=${?}
 test ${e} -ne 0 && echo "[91m${e}[97m | "
 )[92m${USER}[97m@[92m${HOSTNAME:=$(hostname)}[97m [94m${PWD/#${HOME}/\~}[97m
-$(basename ${0}) $ ]0;${PWD/#${HOME}/\~} ${TERM}'
+$(basename ${0}) $ ]0;$(basename ${0}) ${PWD/#${HOME}/\~} ${TERM}'
 
 HISTFILE="$XDG_DATA_HOME"/bash/history
 dirname "${HISTFILE}" | xargs mkdir -p
