@@ -9,7 +9,7 @@ _dc() {
 	dirs_back="${1:-1}"
 	case "${dirs_back}" in
 		+([0-9]))
-			if [ "${PWD}" != / ] && [[ ${dirs_back} -gt 0 ]]; then
+			if [[ "${PWD}" != / ]] && [[ ${dirs_back} -gt 0 ]]; then
 				builtin cd ..
 				_dc $((${dirs_back}-1))
 			fi
