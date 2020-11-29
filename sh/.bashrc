@@ -26,7 +26,7 @@ alias ll='ls -g' la='ls -gA'
 
 alias grep='grep --color=auto' diff='diff --color=auto'
 
-alias fd='fd --hidden --ignore-file '"${XDG_CONFIG_HOME}"/git/ignore
-alias rg='rg --hidden --ignore-file '"${XDG_CONFIG_HOME}"/git/ignore
+alias fd='fd --hidden --ignore-file "${XDG_CONFIG_HOME}"'/git/ignore
+alias rg='rg --hidden --ignore-file "${XDG_CONFIG_HOME}"'/git/ignore
 
 eval "$(starship init ${0})"
