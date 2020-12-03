@@ -81,7 +81,7 @@ function s:SID()
 endfun
 let s:sid = s:SID()
 
-function s:reload_configs(...) abort
+function s:reload_configs() abort
 	call s:load_modules_config()
 	tabdo windo edit
 endfunction
