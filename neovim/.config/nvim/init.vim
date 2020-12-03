@@ -81,22 +81,23 @@ function s:SID()
 endfun
 let s:sid = s:SID()
 
-function s:update_hook(...) abort
+function s:reload_configs(...) abort
 	call s:load_modules_config()
-	call minpac#clean()
 	tabdo windo edit
 endfunction
 
-function s:reload() abort
+function s:reload_packages() abort
 	call s:load_modules_packages()
-	call minpac#update('', {'do': function('<SNR>'.s:sid.'_update_hook')})
+	call minpac#clean()
+	call minpac#update('', {'do': 'call <SNR>'.s:sid.'_reload_configs'})
 endfunction
 
-command! -bar Reload call s:reload()
+command! -bar ReloadConfigs call s:reload_packages()
+command! -bar ReloadPackages call s:reload_packages()
 
 if !isdirectory(stdpath('data').'/site/pack/minpac')
 	call system('git clone --depth 1 https://github.com/k-takata/minpac.git '.stdpath('data').'/site/pack/minpac/opt/minpac')
-	autocmd Personal VimEnter * call s:reload()
+	autocmd Personal VimEnter * call s:reload_packages()
 else
 	call s:load_modules_config()
 endif
