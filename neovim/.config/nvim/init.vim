@@ -42,29 +42,6 @@ let g:loaded_netrwPlugin = 1
 
 nnoremap Y y$
 
-nnoremap <silent> ]a <cmd>next<CR>
-nnoremap <silent> [a <cmd>previous<CR>
-nnoremap <silent> ]A <cmd>last<CR>
-nnoremap <silent> [A <cmd>first<CR>
-
-nnoremap <silent> ]b <cmd>bnext<CR>
-nnoremap <silent> [b <cmd>bprevious<CR>
-nnoremap <silent> ]B <cmd>blast<CR>
-nnoremap <silent> [B <cmd>bfirst<CR>
-
-nnoremap <silent> <Leader>l <cmd>lopen<CR>
-nnoremap <silent> <Leader>q <cmd>copen<CR>
-
-nnoremap <silent> ]q <cmd>cnext<CR>
-nnoremap <silent> [q <cmd>cprevious<CR>
-nnoremap <silent> ]Q <cmd>clast<CR>
-nnoremap <silent> [Q <cmd>cfirst<CR>
-
-nnoremap <silent> ]l <cmd>lnext<CR>
-nnoremap <silent> [l <cmd>lprevious<CR>
-nnoremap <silent> ]L <cmd>llast<CR>
-nnoremap <silent> [L <cmd>lfirst<CR>
-
 augroup Personal
 	autocmd!
 augroup END
@@ -77,12 +54,6 @@ let s:config_d = expand('<sfile>:p:h')
 
 function s:load_modules_packages() abort
 	if !exists('g:loaded_minpac')
-		if !isdirectory(stdpath('data').'/site/pack/minpac')
-			if !executable('git')
-				finish
-			end
-			call system('git clone https://github.com/k-takata/minpac.git '.stdpath('data').'/site/pack/minpac/opt/minpac')
-		endif
 		packadd minpac
 		call minpac#init({'dir': stdpath('data').'/site'})
 		call minpac#add('k-takata/minpac', {'type': 'opt'})
@@ -99,7 +70,16 @@ function s:load_modules_config() abort
 	endfor
 endfunction
 
-command! -bar LoadPackages call s:load_modules_packages()
-command! -bar LoadConfig   call s:load_modules_config()
+function s:SID()
+	return matchstr(expand('<sfile>'), '<SNR>\zs\d\+\ze_SID$')
+endfun
+let s:sid = s:SID()
 
-call s:load_modules_config()
+command! -bar Reload call s:load_modules_packages() | call minpac#update('', {'do': 'quit | call <SNR>'.s:sid.'_load_modules_config() | bufdo edit'})
+
+if !isdirectory(stdpath('data').'/site/pack/minpac')
+	call system('git clone https://github.com/k-takata/minpac.git '.stdpath('data').'/site/pack/minpac/opt/minpac')
+	Reload
+else
+	call s:load_modules_config()
+endif
