@@ -1,10 +1,14 @@
 shopt -s extglob
 
-PS1='$(
+PROMPT_COMMAND='
 builtin typeset e=${?}
-test ${e} -ne 0 && echo "[91m${e}[97m | "
-)[92m${USER}[97m@[92m${HOSTNAME:=$(hostname)}[97m [94m${PWD/#${HOME}/\~}
-[97m${0} $ '
+if [[ ${e} -eq 0 ]]; then
+	_e=
+else
+	_e="[91m${e}[97m | "
+fi
+'
+PS1='$_e[92m${USER}[97m@[92m${HOSTNAME:=$(hostname)}[94m ${PWD/#${HOME}/\~}[97m $ '
 
 HISTFILE="$XDG_DATA_HOME"/bash/history
 dirname "${HISTFILE}" | xargs mkdir -p
