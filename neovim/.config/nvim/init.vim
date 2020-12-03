@@ -55,7 +55,13 @@ let s:config_d = expand('<sfile>:p:h')
 function s:load_modules_packages() abort
 	if !exists('g:loaded_minpac')
 		packadd minpac
-		call minpac#init({'dir': stdpath('data').'/site'})
+		call minpac#init({
+					\'dir': stdpath('data').'/site',
+					\'progress_open': 'none',
+					\'status_open': 'none',
+					\'status_auto': v:false,
+					\'confirm': v:false,
+					\})
 		call minpac#add('k-takata/minpac', {'type': 'opt'})
 	endif
 
@@ -75,11 +81,22 @@ function s:SID()
 endfun
 let s:sid = s:SID()
 
-command! -bar Reload call s:load_modules_packages() | call minpac#update('', {'do': 'quit | call <SNR>'.s:sid.'_load_modules_config() | bufdo edit'})
+function s:update_hook() abort
+	call load_modules_config()
+	tabdo windo edit
+	call minpac#clean()
+endfunction
+
+function s:reload() abort
+	call s:load_modules_packages()
+	call minpac#update('', {'do': function('<SNR>'.s:sid.'_update_hook')})
+endfunction
+
+command! -bar Reload 
 
 if !isdirectory(stdpath('data').'/site/pack/minpac')
 	call system('git clone https://github.com/k-takata/minpac.git '.stdpath('data').'/site/pack/minpac/opt/minpac')
-	Reload
+	autocmd Personal VimEnter * Reload
 else
 	call s:load_modules_config()
 endif
