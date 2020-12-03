@@ -95,7 +95,7 @@ endfunction
 command! -bar Reload call s:reload()
 
 if !isdirectory(stdpath('data').'/site/pack/minpac')
-	call system('git clone https://github.com/k-takata/minpac.git '.stdpath('data').'/site/pack/minpac/opt/minpac')
+	call system('git clone --depth 1 https://github.com/k-takata/minpac.git '.stdpath('data').'/site/pack/minpac/opt/minpac')
 	autocmd Personal VimEnter * call s:reload()
 else
 	call s:load_modules_config()
