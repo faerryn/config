@@ -21,6 +21,3 @@ TERMINFO_DIRS    OVERRIDE=${XDG_DATA_HOME}/terminfo:/usr/share/terminfo
 # Stuff for CLI
 EDITOR OVERRIDE=nvim
 VISUAL OVERRIDE=nvim
-
-# Wine
-DXVK_LOG_LEVEL OVERRIDE=none
