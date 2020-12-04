@@ -107,10 +107,6 @@
 
        :os
        (:if IS-MAC macos)  ; improve compatibility with macOS
-       (exwm              ; another doomed window manager
-        +xim
-        +status
-        +firefox)
        ;;tty               ; improve the terminal Emacs experience
 
        :lang
