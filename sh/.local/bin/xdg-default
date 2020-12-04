@@ -1,0 +1,5 @@
+#!/bin/sh
+while test "${#}" -gt 0; do
+	sed -n 's/\(MimeType=\|;\)/\n/gp' "${1}" | xargs xdg-mime default sxiv.desktop 
+	shift
+done
