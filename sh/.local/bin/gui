@@ -8,13 +8,16 @@ case "${protocol}" in
 	x11)
 		export MOZ_X11_EGL=1
 		export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
-		exec startx $(which dbus-run-session) "${@}"
+		exec xinit $(which dbus-run-session) sh -c "~/loc/x11.sh & exec ${@}"
 		;;
 	wayland)
 		export MOZ_ENABLE_WAYLAND=
 		export QT_QPA_PLATFORM=wayland-egl
 		export SDL_VIDEODRIVER=wayland
 		export XKB_DEFAULT_OPTIONS="caps:escape"
-		exec $(which dbus-run-session) "${@}"
+		exec $(which dbus-run-session) sh -c "~/loc/wayland.sh & exec ${@}"
+		;;
+	*)
+		return 1
 		;;
 esac
