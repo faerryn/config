@@ -53,9 +53,4 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(add-to-list 'command-switch-alist '("--exwm" . (lambda (switch)
-                                                  (require 'exwm)
-                                                  (require 'exwm-config)
-                                                  (exwm-config-example)
-                                                  (require 'exwm-systemtray)
-                                                  (exwm-systemtray-enable))))
+(map! :g "s-SPC" #'exwm-input-toggle-keyboard)
