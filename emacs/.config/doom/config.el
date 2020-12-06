@@ -70,7 +70,7 @@
                           ;; 's-w': Switch workspace.
                           ([?\s-w] . exwm-workspace-switch)
                           ;; 's-&': Launch application.
-                          ([?\s-&] . (lambda (command)
+                         ([?\s-&] . (lambda (command)
                                        (interactive (list (read-shell-command "$ ")))
                                        (start-process-shell-command command nil command)))));; Line-editing shortcuts
                   (setq exwm-input-simulation-keys
@@ -85,5 +85,4 @@
                           ([?\C-d] . [delete])
                           ([?\C-k] . [S-end delete])));; Enable EXWM
                   (exwm-enable)
-                  (start-process "xrdb" nil "xrdb" "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
-                  (start-process "x11.sh" nil (expand-file-name "loc/x11.sh" (getenv "HOME")))))))
+                  (start-process "xrdb" nil "xrdb" "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))))))
