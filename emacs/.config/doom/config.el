@@ -70,7 +70,7 @@
                   ;; Enable EXWM
                   (exwm-enable)
                   (start-process "xrdb" nil "xrdb" "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
-                  (start-process "redshift" nil "redshift" "-r")
+                  (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r")
                   (start-process "picom" nil "picom"
                                  "--experimental-backends"
                                  "--backend=glx" "--glx-no-stencil" "--glx-no-rebind-pixmap"
