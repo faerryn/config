@@ -1,14 +1,5 @@
 [user]
 	name = Jiang Meng Liao (Faerryn)
 	email = alexandre.liao@gmail.com
-[pull]
-	rebase = false
-[alias]
-	all = add .
-	amend = commit --amend
 [core]
-	autocrlf = false
-	eol = lf
 	excludesfile = ~/.config/git/ignore
-[merge]
-	tool = nvimdiff
