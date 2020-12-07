@@ -2,7 +2,6 @@
 protocol="${1}"
 shift
 export XCURSOR_SIZE=24
-export XDG_TERMINAL=st
 export _JAVA_AWT_WM_NONREPARENTING=1
 case "${protocol}" in
 	x11)
