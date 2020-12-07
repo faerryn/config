@@ -56,22 +56,22 @@
 (add-to-list
  'command-switch-alist
  '("--exwm" . (lambda (switch)
-                (use-package exwm
-                  :config
-                  ;; Make class name the buffer name
-                  (add-hook 'exwm-update-class-hook
-                            (lambda ()
-                              (exwm-workspace-rename-buffer exwm-class-name)))
-                  ;; Global keybindings.
-                  (setq exwm-input-global-keys
-                        `(([?\s-&] . (lambda (command)
-                                       (interactive (list (read-shell-command "$ ")))
-                                       (start-process-shell-command command nil command)))));; Line-editing shortcuts
-                  ;; Enable EXWM
-                  (exwm-enable)
-                  (start-process "xrdb" nil "xrdb" "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
-                  (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r")
-                  (start-process "picom" nil "picom"
-                                 "--experimental-backends"
-                                 "--backend=glx" "--glx-no-stencil" "--glx-no-rebind-pixmap"
-                                 "--vsync" "--unredir-if-possible")))))
+                (require 'exwm)
+
+                ;; Make class name the buffer name
+                (add-hook 'exwm-update-class-hook
+                          (lambda ()
+                            (exwm-workspace-rename-buffer exwm-class-name)))
+
+                ;; Global keybindings.
+                (setq exwm-input-global-keys
+                      `(([?\s-&] . (lambda (command)
+                                     (interactive (list (read-shell-command "$ ")))
+                                     (start-process-shell-command command nil command))))) ;; Line-editing shortcuts
+
+                ;; Enable EXWM
+                (exwm-enable)
+
+                ;; Start X11 processes
+                (start-process "xrdb" nil "xrdb" "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
+                (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r"))))
