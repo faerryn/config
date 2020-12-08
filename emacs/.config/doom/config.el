@@ -53,25 +53,22 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(load! "openwith.el")
+(openwith-mode 1)
+(setq openwith-associations
+      '(("\\.*\\'" "xdg-open" (file))
+        ("\\.\\(?:jp?g\\|png\\)\\'" "xdg-open" (file))))
+
 (add-to-list
  'command-switch-alist
  '("--exwm" . (lambda (switch)
                 (require 'exwm)
-
-                ;; Make class name the buffer name
                 (add-hook 'exwm-update-class-hook
-                          (lambda ()
-                            (exwm-workspace-rename-buffer exwm-class-name)))
-
-                ;; Global keybindings.
+                          (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
                 (setq exwm-input-global-keys
                       `(([?\s-&] . (lambda (command)
                                      (interactive (list (read-shell-command "$ ")))
-                                     (start-process-shell-command command nil command))))) ;; Line-editing shortcuts
-
-                ;; Enable EXWM
+                                     (start-process-shell-command command nil command)))))
                 (exwm-enable)
-
-                ;; Start X11 processes
                 (start-process "xrdb" nil "xrdb" "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
                 (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r"))))
