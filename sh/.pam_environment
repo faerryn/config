@@ -5,10 +5,6 @@ XDG_CONFIG_HOME DEFAULT=@{HOME}/.config             OVERRIDE=${XDG_CONFIG_HOME}
 XDG_DATA_HOME   DEFAULT=@{HOME}/.local/share        OVERRIDE=${XDG_DATA_HOME}
 XDG_DATA_DIRS   DEFAULT=/usr/local/share:/usr/share OVERRIDE=${XDG_DATA_DIRS}
 
-# Path
-PATH    OVERRIDE=@{HOME}/.local/bin:${XDG_DATA_HOME}/cargo/bin:${PATH}
-MANPATH OVERRIDE=@{HOME}/.local/share/man:${MANPATH}
-
 # Make apps behave with XDG
 CARGO_HOME       OVERRIDE=${XDG_DATA_HOME}/cargo
 GRADLE_USER_HOME OVERRIDE=${XDG_DATA_HOME}/gradle
@@ -17,3 +13,7 @@ LESSHISTFILE     OVERRIDE=-
 RUSTUP_HOME      OVERRIDE=${XDG_DATA_HOME}/rustup
 TERMINFO         OVERRIDE=${XDG_DATA_HOME}/terminfo
 TERMINFO_DIRS    OVERRIDE=${XDG_DATA_HOME}/terminfo:/usr/share/terminfo
+
+# Path
+PATH    OVERRIDE=@{HOME}/.local/bin:${CARGO_HOME}/bin:${PATH}
+MANPATH OVERRIDE=@{HOME}/.local/share/man:${MANPATH}
