@@ -3,3 +3,5 @@
 	email = alexandre.liao@gmail.com
 [core]
 	excludesfile = ~/.config/git/ignore
+[pull]
+	rebase = false
