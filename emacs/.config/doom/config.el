@@ -55,9 +55,7 @@
 
 (load! "openwith.el")
 (openwith-mode 1)
-(setq openwith-associations
-      '(("\\.*\\'" "xdg-open" (file))
-        ("\\.\\(?:jp?g\\|png\\)\\'" "xdg-open" (file))))
+(setq openwith-associations '(("\\.*\\'" "xdg-open" (file))))
 
 (add-to-list
  'command-switch-alist

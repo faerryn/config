@@ -1,2 +1,3 @@
 **/.git/
 **/tags
+**/flycheck_init.el
