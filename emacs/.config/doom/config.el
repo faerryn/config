@@ -53,10 +53,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(load! "openwith.el")
-(openwith-mode 1)
-(setq openwith-associations '(("\\.*\\'" "xdg-open" (file))))
-
 (add-to-list
  'command-switch-alist
  '("--exwm" . (lambda (switch)
@@ -70,3 +66,16 @@
                 (exwm-enable)
                 (start-process "xrdb" nil "xrdb" "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
                 (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r"))))
+
+(require 'lsp)
+(add-hook 'zig-mode-hook #'lsp)
+(add-to-list 'lsp-language-id-configuration '(zig-mode . "zig"))
+(lsp-register-client
+  (make-lsp-client
+    :new-connection (lsp-stdio-connection "zls")
+    :major-modes '(zig-mode)
+    :server-id 'zls))
+
+(load! "openwith.el")
+(openwith-mode 1)
+(setq openwith-associations '(("\\.*\\'" "xdg-open" (file))))
