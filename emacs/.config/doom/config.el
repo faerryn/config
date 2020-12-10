@@ -78,3 +78,5 @@
                             (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
                   (map! :map 'exwm-mode-map doom-leader-alt-key #'doom/leader)
                   (exwm-enable)))))
+
+(server-start)

@@ -14,6 +14,10 @@ RUSTUP_HOME      OVERRIDE=${XDG_DATA_HOME}/rustup
 TERMINFO         OVERRIDE=${XDG_DATA_HOME}/terminfo
 TERMINFO_DIRS    OVERRIDE=${XDG_DATA_HOME}/terminfo:/usr/share/terminfo
 
-# Path
+# Paths
 PATH    OVERRIDE=@{HOME}/.local/bin:${CARGO_HOME}/bin:${PATH}
 MANPATH OVERRIDE=@{HOME}/.local/share/man:${MANPATH}
+
+# CLI
+EDITOR OVERRIDE="emacsclient -a emacs"
+VISUAL OVERRIDE="emacsclient -a emacs"
