@@ -58,27 +58,23 @@
 (openwith-mode 1)
 
 (after! rustic
-  (setq rustic-lsp-server 'rust-analyzer))
+  (setq rustic-lsp-server 'rust-analyzer)
+  (add-hook! 'rustic-mode-hook 'eglot-ensure))
 
 (after! zig-mode
-  (add-hook! 'zig-mode-hook #'lsp))
+  (add-hook! 'zig-mode-hook 'eglot-ensure))
 
-(after! lsp-mode
-  (add-to-list 'lsp-language-id-configuration '(zig-mode . "zig"))
-  (lsp-register-client
-   (make-lsp-client
-    :new-connection (lsp-stdio-connection "zls")
-    :major-modes '(zig-mode)
-    :server-id 'zls)))
+(after! eglot
+  (add-to-list 'eglot-server-programs '(zig-mode "zls")))
 
 (add-to-list
  'command-switch-alist
  '("--exwm" . (lambda (switch)
                 (use-package exwm
                   :config
+                  (start-process "xrdb" nil "xrdb" "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
+                  (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r")
                   (add-hook 'exwm-update-class-hook
                             (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
                   (map! :map 'exwm-mode-map doom-leader-alt-key #'doom/leader)
-                  (exwm-enable)
-                  (start-process "xrdb" nil "xrdb" "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
-                  (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r")))))
+                  (exwm-enable)))))

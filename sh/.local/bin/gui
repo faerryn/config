@@ -8,14 +8,14 @@ case "${protocol}" in
 		export MOZ_X11_EGL=1
 		export SDL_VIDEODRIVER=x11
 		export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
-		exec xinit $(which dbus-run-session) "${@}"
+		exec xinit "$(which dbus-run-session)" "${@}"
 		;;
 	wayland)
 		export MOZ_ENABLE_WAYLAND=1
 		export QT_QPA_PLATFORM=wayland-egl
 		export SDL_VIDEODRIVER=wayland
 		export XKB_DEFAULT_OPTIONS=caps:escape
-		exec $(which dbus-run-session) "${@}"
+		exec "$(which dbus-run-session)" "${@}"
 		;;
 	*)
 		return 1
