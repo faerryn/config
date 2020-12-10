@@ -54,7 +54,7 @@
 ;; they are implemented.
 
 (load! "openwith.el")
-(setq openwith-associations '(("\\.*\\'" "xdg-open" (file))))
+(setq openwith-associations '(("\\.(?!el)\\'" "xdg-open" (file))))
 (openwith-mode 1)
 
 (after! rustic
@@ -64,19 +64,19 @@
 (after! zig-mode
   (add-hook! 'zig-mode-hook 'eglot-ensure))
 
-(after! eglot
+(after! (zig-mode eglot)
   (add-to-list 'eglot-server-programs '(zig-mode "zls")))
 
-(add-to-list
- 'command-switch-alist
- '("--exwm" . (lambda (switch)
-                (use-package exwm
-                  :config
-                  (start-process "xrdb" nil "xrdb" "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
-                  (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r")
-                  (add-hook 'exwm-update-class-hook
-                            (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
-                  (map! :map 'exwm-mode-map doom-leader-alt-key #'doom/leader)
-                  (exwm-enable)))))
+(use-package! exwm
+  :commands exwm-init
+  :config
+  (add-hook 'exwm-update-class-hook (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
+  (map! :map 'exwm-mode-map doom-leader-alt-key #'doom/leader)
+  (add-hook 'exwm-init-hook
+            (lambda ()
+              (start-process "xrdb" nil "xrdb" "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
+              (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r"))))
+
+(add-to-list 'command-switch-alist '("--exwm" . (lambda (switch) (exwm-init))))
 
 (server-start)
