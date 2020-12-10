@@ -53,29 +53,36 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(load! "openwith.el")
+(setq openwith-associations '(("\\.*\\'" "xdg-open" (file))))
+(openwith-mode 1)
+
+(add-hook
+ 'zig-mode-hook
+ (defun zig-lsp-hook ()
+   (require 'lsp)
+   (add-to-list 'lsp-language-id-configuration '(zig-mode . "zig"))
+   (lsp-register-client
+    (make-lsp-client
+     :new-connection (lsp-stdio-connection "zls")
+     :major-modes '(zig-mode)
+     :server-id 'zls))
+   (remove-hook 'zig-mode-hook #'zig-lsp-hook)))
+
 (add-to-list
  'command-switch-alist
  '("--exwm" . (lambda (switch)
                 (require 'exwm)
                 (add-hook 'exwm-update-class-hook
-                          (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
-                (setq exwm-input-global-keys
-                      `(([?\s-&] . (lambda (command)
-                                     (interactive (list (read-shell-command "$ ")))
-                                     (start-process-shell-command command nil command)))))
+                          (defun exwm-rename-buffer-by-class () (exwm-workspace-rename-buffer exwm-class-name)))
+                (defun exwm-prompt (command)
+                  (interactive (list (read-shell-command "$ ")))
+                  (start-process-shell-command command nil command))
+                (map!
+                 "M-&" #'exwm-prompt
+                 (:map 'exwm-mode-map
+                  "M-&" #'exwm-prompt
+                  doom-leader-alt-key #'doom/leader))
                 (exwm-enable)
                 (start-process "xrdb" nil "xrdb" "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
                 (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r"))))
-
-(require 'lsp)
-(add-hook 'zig-mode-hook #'lsp)
-(add-to-list 'lsp-language-id-configuration '(zig-mode . "zig"))
-(lsp-register-client
-  (make-lsp-client
-    :new-connection (lsp-stdio-connection "zls")
-    :major-modes '(zig-mode)
-    :server-id 'zls))
-
-(load! "openwith.el")
-(openwith-mode 1)
-(setq openwith-associations '(("\\.*\\'" "xdg-open" (file))))
