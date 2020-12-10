@@ -75,14 +75,7 @@
                 (require 'exwm)
                 (add-hook 'exwm-update-class-hook
                           (defun exwm-rename-buffer-by-class () (exwm-workspace-rename-buffer exwm-class-name)))
-                (defun exwm-prompt (command)
-                  (interactive (list (read-shell-command "$ ")))
-                  (start-process-shell-command command nil command))
-                (map!
-                 "M-&" #'exwm-prompt
-                 (:map 'exwm-mode-map
-                  "M-&" #'exwm-prompt
-                  doom-leader-alt-key #'doom/leader))
+                (map! :map 'exwm-mode-map doom-leader-alt-key #'doom/leader)
                 (exwm-enable)
                 (start-process "xrdb" nil "xrdb" "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
                 (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r"))))
