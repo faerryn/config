@@ -59,6 +59,9 @@
   :config
   (openwith-mode 1))
 
+(setq async-shell-command-buffer 'new-buffer)
+(add-to-list 'display-buffer-alist '("^\\*Async Shell Command\\*" (display-buffer-no-window)))
+
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer)
   (add-hook! 'rustic-mode-hook #'eglot-ensure))
