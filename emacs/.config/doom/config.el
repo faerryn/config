@@ -53,8 +53,10 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(setq auth-source-save-behavior nil
-      async-shell-command-buffer 'new-buffer)
+(setq
+ async-shell-command-buffer 'new-buffer
+ auth-source-save-behavior nil
+ confirm-kill-processes nil)
 
 (add-to-list '+popup--display-buffer-alist '("^\\*Async Shell Command\\*" (display-buffer-no-window)))
 
