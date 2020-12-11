@@ -56,6 +56,8 @@
 (setq auth-source-save-behavior nil
       async-shell-command-buffer 'new-buffer)
 
+(add-to-list '+popup--display-buffer-alist '("^\\*Async Shell Command\\*" (display-buffer-no-window)))
+
 (after! openwith
   :init
   (setq openwith-associations '(("\\.(?!el)\\'" "xdg-open" (file))))
