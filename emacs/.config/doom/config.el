@@ -53,14 +53,14 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(use-package! openwith
+(setq auth-source-save-behavior nil
+      async-shell-command-buffer 'new-buffer)
+
+(after! openwith
   :init
   (setq openwith-associations '(("\\.(?!el)\\'" "xdg-open" (file))))
   :config
   (openwith-mode 1))
-
-(setq async-shell-command-buffer 'new-buffer)
-(add-to-list 'display-buffer-alist '("^\\*Async Shell Command\\*" (display-buffer-no-window)))
 
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer)
@@ -73,17 +73,19 @@
   (add-to-list 'eglot-server-programs '(zig-mode "zls")))
 
 (use-package! exwm
-  :commands exwm-init
+  :commands exwm-enable
   :config
-  (add-hook 'exwm-update-class-hook (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
+  (add-hook
+   'exwm-update-class-hook
+   (lambda ()
+     (exwm-workspace-rename-buffer exwm-class-name)))
   (map! :map 'exwm-mode-map
         doom-leader-alt-key #'doom/leader
         "M-!" #'shell-command)
-  (add-hook 'exwm-init-hook
-            (lambda ()
-              (call-process "xrdb" nil nil nil "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
-              (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r"))))
+  (add-hook
+   'exwm-init-hook
+   (lambda ()
+     (call-process "xrdb" nil nil nil "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
+     (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r"))))
 
-(add-to-list 'command-switch-alist '("--exwm" . (lambda (switch) (exwm-init))))
-
-(server-start)
+(add-to-list 'command-switch-alist '("--exwm" . (lambda (switch) (exwm-enable))))
