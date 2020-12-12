@@ -55,12 +55,11 @@
 
 (setq
  async-shell-command-buffer 'new-buffer
- auth-source-save-behavior nil
- confirm-kill-processes nil)
+ auth-source-save-behavior nil)
 
 (add-to-list '+popup--display-buffer-alist '("^\\*Async Shell Command\\*" (display-buffer-no-window)))
 
-(after! openwith
+(use-package! openwith
   :init
   (setq openwith-associations '(("\\.(?!el)\\'" "xdg-open" (file))))
   :config
@@ -79,17 +78,14 @@
 (use-package! exwm
   :commands exwm-enable
   :config
-  (add-hook
-   'exwm-update-class-hook
-   (lambda ()
-     (exwm-workspace-rename-buffer exwm-class-name)))
+  (add-hook! 'exwm-update-class-hook (exwm-workspace-rename-buffer exwm-class-name))
   (map! :map 'exwm-mode-map
         doom-leader-alt-key #'doom/leader
         "M-!" #'shell-command)
-  (add-hook
+  (add-hook!
    'exwm-init-hook
-   (lambda ()
-     (call-process "xrdb" nil nil nil "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
-     (start-process "redshift" nil "redshift" "-l40.7:-73.9" "-r"))))
+   (call-process "xrdb" nil nil nil "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))
+   (make-process :name "redshift" :command '("redshift" "-l40.7:-73.9" "-r") :noquery t))
+  (add-hook! 'exwm-exit-hook (interrupt-process "redshift")))
 
 (add-to-list 'command-switch-alist '("--exwm" . (lambda (switch) (exwm-enable))))
