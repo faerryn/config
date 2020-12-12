@@ -5,19 +5,22 @@ XDG_CONFIG_HOME DEFAULT=@{HOME}/.config             OVERRIDE=${XDG_CONFIG_HOME}
 XDG_DATA_HOME   DEFAULT=@{HOME}/.local/share        OVERRIDE=${XDG_DATA_HOME}
 XDG_DATA_DIRS   DEFAULT=/usr/local/share:/usr/share OVERRIDE=${XDG_DATA_DIRS}
 
-# Make apps behave with XDG
+# Rust
 CARGO_HOME       OVERRIDE=${XDG_DATA_HOME}/cargo
-GRADLE_USER_HOME OVERRIDE=${XDG_DATA_HOME}/gradle
-INPUTRC          OVERRIDE=${XDG_CONFIG_HOME}/readline/inputrc
-LESSHISTFILE     OVERRIDE=-
 RUSTUP_HOME      OVERRIDE=${XDG_DATA_HOME}/rustup
+
+# Terminfo
 TERMINFO         OVERRIDE=${XDG_DATA_HOME}/terminfo
 TERMINFO_DIRS    OVERRIDE=${XDG_DATA_HOME}/terminfo:/usr/share/terminfo
+
+# Emacs
+EDITOR OVERRIDE="emacsclient --alternate-editor emacs"
+VISUAL OVERRIDE=${EDITOR}
+
+# Misc
+INPUTRC          OVERRIDE=${XDG_CONFIG_HOME}/readline/inputrc
+LESSHISTFILE     OVERRIDE=-
 
 # Paths
 PATH    OVERRIDE=@{HOME}/.local/bin:${CARGO_HOME}/bin:${PATH}
 MANPATH OVERRIDE=@{HOME}/.local/share/man:${MANPATH}
-
-# CLI
-EDITOR OVERRIDE="emacsclient -a emacs"
-VISUAL OVERRIDE="emacsclient -a emacs"
