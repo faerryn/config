@@ -57,10 +57,13 @@
  async-shell-command-buffer 'new-buffer
  auth-source-save-behavior nil)
 
-;; This is kinda hacky but it works the best
-(add-to-list '+popup--display-buffer-alist '("^\\*Async Shell Command\\*" (display-buffer-no-window)))
+;; This is kinda hacky but it works
+(add-to-list
+ '+popup--display-buffer-alist
+ '("^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$"
+   (display-buffer-no-window)))
 
-(after! ivy (setq ivy-ignore-buffers (append ivy-ignore-buffers '("^\\*"))))
+(add-to-list 'ivy-ignore-buffers "^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$")
 
 (use-package! openwith
   :init
