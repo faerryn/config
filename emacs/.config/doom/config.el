@@ -81,8 +81,8 @@
 (after! eglot
   (setq eglot-server-programs nil)
   (set-eglot-client! 'zig-mode '("zls"))
-  (set-eglot-client! 'c-mode '("clangd" "-j=3" "--clang-tidy"))
-  (set-eglot-client! 'c++-mode '("clangd" "-j=3" "--clang-tidy")))
+  (set-eglot-client! 'c-mode '("clangd" "--clang-tidy"))
+  (set-eglot-client! 'c++-mode '("clangd" "--clang-tidy")))
 
 (use-package! exwm
   :commands exwm-enable
