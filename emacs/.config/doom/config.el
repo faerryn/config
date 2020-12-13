@@ -63,7 +63,14 @@
  '("^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$"
    (display-buffer-no-window)))
 
-(add-to-list 'ivy-ignore-buffers "^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$")
+(after! ivy
+  (setq
+   ivy-ignore-buffers
+   (append ivy-ignore-buffers
+           '("^\\*Messages\\*$"
+             "^\\*scratch\\*$"
+             "^magit.*: .*$"
+             "^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$"))))
 
 (use-package! openwith
   :init
