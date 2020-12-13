@@ -13,13 +13,13 @@ RUSTUP_HOME      OVERRIDE=${XDG_DATA_HOME}/rustup
 TERMINFO         OVERRIDE=${XDG_DATA_HOME}/terminfo
 TERMINFO_DIRS    OVERRIDE=${XDG_DATA_HOME}/terminfo:/usr/share/terminfo
 
-# Emacs
-EDITOR OVERRIDE="emacsclient --alternate-editor emacs"
-VISUAL OVERRIDE=${EDITOR}
-
 # Misc
 INPUTRC          OVERRIDE=${XDG_CONFIG_HOME}/readline/inputrc
 LESSHISTFILE     OVERRIDE=-
+
+# Emacs
+EDITOR OVERRIDE="emacsclient --alternate-editor emacs"
+VISUAL OVERRIDE=${EDITOR}
 
 # Paths
 PATH    OVERRIDE=@{HOME}/.local/bin:${CARGO_HOME}/bin:${PATH}
