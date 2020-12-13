@@ -57,7 +57,7 @@
  async-shell-command-buffer 'new-buffer
  auth-source-save-behavior nil)
 
-(add-to-list '+popup--display-buffer-alist '("^\\*Async Shell Command\\*" (display-buffer-no-window)))
+(set-popup-rule! "^\\*Async Shell Command\\*" :actions '(display-buffer-no-window))
 
 (use-package! openwith
   :init
@@ -65,15 +65,11 @@
   :config
   (openwith-mode 1))
 
-(after! rustic
-  (setq rustic-lsp-server 'rust-analyzer)
-  (add-hook! 'rustic-mode-hook #'eglot-ensure))
-
-(after! zig-mode
-  (add-hook! 'zig-mode-hook #'eglot-ensure))
-
 (after! eglot
-  (add-to-list 'eglot-server-programs '(zig-mode "zls")))
+  (setq eglot-server-programs nil)
+  (set-eglot-client! 'zig-mode '("zls"))
+  (set-eglot-client! 'c-mode '("clangd" "-j=3" "--clang-tidy"))
+  (set-eglot-client! 'c++-mode '("clangd" "-j=3" "--clang-tidy")))
 
 (use-package! exwm
   :commands exwm-enable
