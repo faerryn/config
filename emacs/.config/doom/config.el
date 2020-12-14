@@ -99,6 +99,9 @@
    (make-process :name "redshift" :command '("redshift" "-l40.7:-73.9" "-r") :noquery t)
    (make-process :name "pulseaudio" :command '("pulseaudio" "--start" "--daemonize=no") :noquery t)
    (call-process "xrdb" nil nil nil "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME"))))
-  (add-hook! 'exwm-exit-hook (interrupt-process "redshift")))
+  (add-hook!
+   'exwm-exit-hook
+   (interrupt-process "redshift")
+   (interrupt-process "pulseaudio")))
 
 (add-to-list 'command-switch-alist '("--exwm" . (lambda (switch) (exwm-enable))))
