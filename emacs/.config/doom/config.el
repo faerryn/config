@@ -72,6 +72,9 @@
              "^magit.*: .*$"
              "^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$"))))
 
+(let ((startup-directory default-directory))
+  (add-hook! 'doom-switch-buffer-hook (if (string= (buffer-name) "*doom*") (cd startup-directory))))
+
 (use-package! openwith
   :init
   (setq openwith-associations '(("\\.(?!el)\\'" "xdg-open" (file))))
