@@ -1,0 +1,3 @@
+/.config/pulse/*
+!/.config/pulse/*.conf
+!/.config/pulse/*.pa
