@@ -7,3 +7,7 @@ alias grep grep --color=auto $*
 alias ls ls -hvxCFX --color=auto --group-directories-first $*
 alias la ls -gA $*
 alias ll ls -g $*
+
+alias rm /bin/rm $*
+alias mv /bin/mv $*
+alias cp /bin/cp $*

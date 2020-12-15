@@ -13,8 +13,8 @@ TERMINFO_DIRS    OVERRIDE=${XDG_DATA_HOME}/terminfo:/usr/share/terminfo
 INPUTRC          OVERRIDE=${XDG_CONFIG_HOME}/readline/inputrc
 LESSHISTFILE     OVERRIDE=-
 
-# Emacs
-EDITOR OVERRIDE="emacsclient --alternate-editor emacs"
+# Neovim
+EDITOR OVERRIDE="nvim"
 VISUAL OVERRIDE=${EDITOR}
 
 # Paths

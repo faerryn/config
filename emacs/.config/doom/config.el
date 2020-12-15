@@ -53,6 +53,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(setenv "EDITOR" "emacsclient")
+(setenv "VISUAL" "emacsclient")
+
 (setq
  async-shell-command-buffer 'new-buffer
  auth-source-save-behavior nil)
@@ -87,7 +90,7 @@
 (use-package! exwm
   :commands exwm-enable
   :config
-  (add-hook! 'exwm-update-title-hook (exwm-workspace-rename-buffer exwm-title))
+  (add-hook! 'exwm-update-class-hook (exwm-workspace-rename-buffer exwm-class-name))
   (map! :map 'exwm-mode-map
         doom-leader-alt-key #'doom/leader
         "M-!" #'shell-command)

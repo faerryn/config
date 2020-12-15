@@ -1,2 +1,2 @@
 . ~/.profile
-. ~/.bashrc
+[[ "${-}" == *i* ]] && . ~/.bashrc
