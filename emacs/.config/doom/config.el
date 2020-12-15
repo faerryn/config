@@ -75,6 +75,11 @@
              "^magit.*: .*$"
              "^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$"))))
 
+(let ((startup-directory default-directory))
+  (add-hook! 'doom-switch-buffer-hook
+    (when (string= (buffer-name) "*doom*")
+      (cd startup-directory))))
+
 (after! eglot
   (setq eglot-server-programs nil)
   (set-eglot-client! 'zig-mode '("zls"))
