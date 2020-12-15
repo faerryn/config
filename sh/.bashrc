@@ -1,4 +1,7 @@
-PS1='${PWD/#${HOME}/\~} $ '
+PS1='$(
+e=${?}
+test ${e} -ne 0 && echo "[31m${e}[37m | "
+)[34m${PWD/#${HOME}/\~}[37m $ '
 
 HISTFILE="${XDG_CACHE_HOME}"/bash/history
 mkdir -p "$(dirname "${HISTFILE}")"
