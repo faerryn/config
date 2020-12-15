@@ -72,9 +72,6 @@
              "^magit.*: .*$"
              "^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$"))))
 
-(let ((startup-directory default-directory))
-  (add-hook! 'doom-switch-buffer-hook (if (string= (buffer-name) "*doom*") (cd startup-directory))))
-
 (use-package! openwith
   :init
   (setq openwith-associations '(("\\.(?!el)\\'" "xdg-open" (file))))
@@ -90,18 +87,25 @@
 (use-package! exwm
   :commands exwm-enable
   :config
-  (add-hook! 'exwm-update-class-hook (exwm-workspace-rename-buffer exwm-class-name))
+  (add-hook! 'exwm-update-title-hook (exwm-workspace-rename-buffer exwm-title))
   (map! :map 'exwm-mode-map
         doom-leader-alt-key #'doom/leader
         "M-!" #'shell-command)
   (add-hook!
    'exwm-init-hook
    (make-process :name "redshift" :command '("redshift" "-l40.7:-73.9" "-r") :noquery t)
-   (make-process :name "pulseaudio" :command '("pulseaudio" "--start" "--daemonize=no") :noquery t)
+   (make-process :name "picom" :command
+                 '("picom"
+                   "--experimental-backends"
+                   "--backend=glx" "--glx-no-stencil" "--glx-no-rebind-pixmap"
+                   "--vsync" "--unredir-if-possible")
+                 :noquery t)
+   (call-process "pulseaudio" nil nil nil "--start")
    (call-process "xrdb" nil nil nil "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME"))))
   (add-hook!
    'exwm-exit-hook
    (interrupt-process "redshift")
-   (interrupt-process "pulseaudio")))
+   (interrupt-process "picom")
+   (call-process "pulseaudio" nil nil nil "--kill")))
 
 (add-to-list 'command-switch-alist '("--exwm" . (lambda (switch) (exwm-enable))))
