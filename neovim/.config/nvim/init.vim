@@ -46,10 +46,6 @@ augroup Personal
 	autocmd!
 augroup END
 
-autocmd Personal FileType minpacprgs,qf nnoremap <silent> <buffer> <Esc> <C-W>c
-
-autocmd Personal BufReadPost * call cursor(line("'\""), col("'\""))
-
 let s:config_d = expand('<sfile>:p:h')
 
 function s:load_modules_packages() abort
@@ -74,6 +70,7 @@ function s:load_modules_config() abort
 	for s:config_f in split(glob(s:config_d.'/modules/*/config.vim'), '\n')
 		execute 'source' s:config_f
 	endfor
+	tabdo windo edit
 endfunction
 
 function s:SID()
@@ -81,15 +78,10 @@ function s:SID()
 endfun
 let s:sid = s:SID()
 
-function s:reload_configs() abort
-	call s:load_modules_config()
-	tabdo windo edit
-endfunction
-
 function s:reload_packages() abort
 	call s:load_modules_packages()
 	call minpac#clean()
-	call minpac#update('', {'do': 'call <SNR>'.s:sid.'_reload_configs'})
+	call minpac#update('', {'do': 'source $MYVIMRC'})
 endfunction
 
 command! -bar ReloadConfigs call s:reload_packages()
