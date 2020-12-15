@@ -70,7 +70,6 @@ function s:load_modules_config() abort
 	for s:config_f in split(glob(s:config_d.'/modules/*/config.vim'), '\n')
 		execute 'source' s:config_f
 	endfor
-	tabdo windo edit
 endfunction
 
 function s:SID()
@@ -81,7 +80,7 @@ let s:sid = s:SID()
 function s:reload_packages() abort
 	call s:load_modules_packages()
 	call minpac#clean()
-	call minpac#update('', {'do': 'source $MYVIMRC'})
+	call minpac#update('', {'do': 'quit'})
 endfunction
 
 command! -bar ReloadConfigs call s:reload_packages()
