@@ -1,7 +1,6 @@
 #!/bin/sh
 protocol="${1}"
 shift
-export TERMINAL=foot
 export XCURSOR_SIZE=24
 export _JAVA_AWT_WM_NONREPARENTING=1
 case "${protocol}" in
