@@ -75,12 +75,6 @@
              "^magit.*: .*$"
              "^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$"))))
 
-(use-package! openwith
-  :init
-  (setq openwith-associations '(("\\.(?!el)\\'" "xdg-open" (file))))
-  :config
-  (openwith-mode 1))
-
 (after! eglot
   (setq eglot-server-programs nil)
   (set-eglot-client! 'zig-mode '("zls"))
