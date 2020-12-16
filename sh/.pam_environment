@@ -6,12 +6,12 @@ XDG_DATA_HOME   DEFAULT=@{HOME}/.local/share        OVERRIDE=${XDG_DATA_HOME}
 XDG_DATA_DIRS   DEFAULT=/usr/local/share:/usr/share OVERRIDE=${XDG_DATA_DIRS}
 
 # Terminfo
-TERMINFO         OVERRIDE=${XDG_DATA_HOME}/terminfo
-TERMINFO_DIRS    OVERRIDE=${XDG_DATA_HOME}/terminfo:/usr/share/terminfo
+TERMINFO       OVERRIDE=${XDG_DATA_HOME}/terminfo
+TERMINFO_DIRS  OVERRIDE=${XDG_DATA_HOME}/terminfo:/usr/share/terminfo
 
 # Misc
-INPUTRC          OVERRIDE=${XDG_CONFIG_HOME}/readline/inputrc
-LESSHISTFILE     OVERRIDE=-
+INPUTRC       OVERRIDE=${XDG_CONFIG_HOME}/readline/inputrc
+LESSHISTFILE  OVERRIDE=-
 
 # Neovim
 EDITOR OVERRIDE="nvim"

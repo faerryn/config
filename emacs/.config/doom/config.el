@@ -113,10 +113,6 @@
                    "--vsync" "--unredir-if-possible")
                  :noquery t)
    (call-process "pulseaudio" nil nil nil "--start")
-   (call-process "xrdb" nil nil nil "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME"))))
-  (add-hook!
-   'exwm-exit-hook
-   (interrupt-process "picom")
-   (call-process "pulseaudio" nil nil nil "--kill")))
+   (call-process "xrdb" nil nil nil "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))))
 
 (add-to-list 'command-switch-alist '("--exwm" . (lambda (switch) (exwm-enable))))

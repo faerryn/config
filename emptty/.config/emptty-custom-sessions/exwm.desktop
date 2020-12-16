@@ -1,3 +1,0 @@
-[Desktop]
-Name=EXWM
-Exec=emacs --fullscreen --exwm
