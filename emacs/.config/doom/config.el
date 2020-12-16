@@ -76,5 +76,5 @@
   (setq eglot-server-programs nil)
   (set-eglot-client! 'zig-mode '("zls"))
   (set-eglot-client! 'rustic-mode '("rust-analyzer"))
-  (set-eglot-client! 'c-mode '("clangd" "--clang-tidy"))
-  (set-eglot-client! 'c++-mode '("clangd" "--clang-tidy")))
+  (set-eglot-client! 'c-mode '("clangd" "--background-index" "--clang-tidy"))
+  (set-eglot-client! 'c++-mode '("clangd" "--background-index" "--clang-tidy")))
