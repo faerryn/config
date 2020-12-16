@@ -67,21 +67,6 @@
  async-shell-command-buffer 'new-buffer
  auth-source-save-behavior nil)
 
-;; This is kinda hacky but it works
-(add-to-list
- '+popup--display-buffer-alist
- '("^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$"
-   (display-buffer-no-window)))
-
-(after! ivy
-  (setq
-   ivy-ignore-buffers
-   (append ivy-ignore-buffers
-           '("^\\*Messages\\*$"
-             "^\\*scratch\\*$"
-             "^magit.*: .*$"
-             "^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$"))))
-
 (let ((startup-directory default-directory))
   (add-hook! 'doom-switch-buffer-hook
     (when (string= (buffer-name) "*doom*")
@@ -93,26 +78,3 @@
   (set-eglot-client! 'rustic-mode '("rust-analyzer"))
   (set-eglot-client! 'c-mode '("clangd" "--clang-tidy"))
   (set-eglot-client! 'c++-mode '("clangd" "--clang-tidy")))
-
-(use-package! exwm
-  :commands exwm-enable
-  :config
-  (add-hook! 'exwm-update-class-hook (exwm-workspace-rename-buffer exwm-class-name))
-  (map! :map 'exwm-mode-map
-        doom-leader-alt-key #'doom/leader
-        "M-!" #'shell-command)
-  (add-hook!
-   'exwm-init-hook
-   (setenv "_JAVA_AWT_WM_NONREPARENTING" "1")
-   (setenv "MOZ_X11_EGL" "1")
-   (setenv "SDL_VIDEODRIVER" "x11")
-   (make-process :name "picom" :command
-                 '("picom"
-                   "--experimental-backends"
-                   "--backend=glx" "--glx-no-stencil" "--glx-no-rebind-pixmap"
-                   "--vsync" "--unredir-if-possible")
-                 :noquery t)
-   (call-process "pulseaudio" nil nil nil "--start")
-   (call-process "xrdb" nil nil nil "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))))
-
-(add-to-list 'command-switch-alist '("--exwm" . (lambda (switch) (exwm-enable))))
