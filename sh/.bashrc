@@ -6,6 +6,25 @@ test ${e} -ne 0 && echo "${e} | "
 HISTFILE="${XDG_CACHE_HOME}"/bash/history
 mkdir -p "$(dirname "${HISTFILE}")"
 
+dc () {
+	case "${1}" in
+		*[!0-9]*)
+			return 1
+			;;
+		'')
+			cd ..
+			;;
+		*)
+			if test ${1} -gt 0 && test "${PWD}" != /; then
+				cd ..
+				dc $((${1}-1))
+			fi
+			;;
+	esac
+}
+
+alias ..=dc
+
 alias fd='fd --hidden --ignore-file "${XDG_CONFIG_HOME}"/git/ignore'
 alias rg='rg --hidden --ignore-file "${XDG_CONFIG_HOME}"/git/ignore'
 
