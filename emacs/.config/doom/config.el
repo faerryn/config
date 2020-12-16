@@ -96,6 +96,9 @@
         "M-!" #'shell-command)
   (add-hook!
    'exwm-init-hook
+   (setenv "_JAVA_AWT_WM_NONREPARENTING" "1")
+   (setenv "MOZ_X11_EGL" "1")
+   (setenv "SDL_VIDEODRIVER" "x11")
    (make-process :name "redshift" :command '("redshift" "-l40.7:-73.9" "-r") :noquery t)
    (make-process :name "picom" :command
                  '("picom"
