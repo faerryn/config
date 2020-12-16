@@ -1,47 +1,3 @@
-set hidden
-set clipboard+=unnamedplus
-set mouse=ar
-
-set timeoutlen=500
-set updatetime=500
-
-set undofile
-
-let g:mapleader=' '
-
-set number relativenumber
-set signcolumn=yes
-
-set spell spellcapcheck=
-
-set laststatus=2 showtabline=2
-set noshowmode noshowcmd
-
-set noequalalways
-set splitbelow splitright
-
-set linebreak wrap
-
-set confirm
-set fileformats=unix
-set foldlevelstart=99
-set inccommand=nosplit
-set iskeyword=a-z,A-Z,48-57,_,-
-set lazyredraw
-set nrformats=alpha,octal,hex,bin
-
-set termguicolors
-
-if executable('rg')
-	let &grepprg = 'rg --hidden --vimgrep'
-	set grepformat=%f:%l:%c:%m
-endif
-
-let g:loaded_netrw       = 1
-let g:loaded_netrwPlugin = 1
-
-nnoremap Y y$
-
 augroup Personal
 	autocmd!
 augroup END
@@ -64,6 +20,9 @@ function s:load_modules_packages() abort
 	for s:packages_f in split(glob(s:config_d.'/modules/*/packages.vim'), '\n')
 		execute 'source' s:packages_f
 	endfor
+
+	call minpac#clean()
+	call minpac#update('', {'do': 'ReloadConfigs'})
 endfunction
 
 function s:load_modules_config() abort
@@ -77,18 +36,12 @@ function s:SID()
 endfun
 let s:sid = s:SID()
 
-function s:reload_packages() abort
-	call s:load_modules_packages()
-	call minpac#clean()
-	call minpac#update('', {'do': 'quit'})
-endfunction
-
-command! -bar ReloadConfigs call s:reload_packages()
-command! -bar ReloadPackages call s:reload_packages()
+command! -bar ReloadConfigs call s:load_modules_config()
+command! -bar ReloadPackages call s:load_modules_packages()
 
 if !isdirectory(stdpath('data').'/site/pack/minpac')
 	call system('git clone --depth 1 https://github.com/k-takata/minpac.git '.stdpath('data').'/site/pack/minpac/opt/minpac')
-	autocmd Personal VimEnter * call s:reload_packages()
+	call s:load_modules_packages()
 else
 	call s:load_modules_config()
 endif
