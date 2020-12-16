@@ -53,6 +53,13 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(after! evil (global-evil-surround-mode -1))
+(map!
+ :no "s" nil :nv "S" nil
+ :nv "s a" #'evil-surround-edit
+ :n "s d" #'evil-surround-delete
+ :n "s r" #'evil-surround-change)
+
 (setenv "EDITOR" "emacsclient")
 (setenv "VISUAL" "emacsclient")
 
@@ -99,7 +106,6 @@
    (setenv "_JAVA_AWT_WM_NONREPARENTING" "1")
    (setenv "MOZ_X11_EGL" "1")
    (setenv "SDL_VIDEODRIVER" "x11")
-   (make-process :name "redshift" :command '("redshift" "-l40.7:-73.9" "-r") :noquery t)
    (make-process :name "picom" :command
                  '("picom"
                    "--experimental-backends"
@@ -110,7 +116,6 @@
    (call-process "xrdb" nil nil nil "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME"))))
   (add-hook!
    'exwm-exit-hook
-   (interrupt-process "redshift")
    (interrupt-process "picom")
    (call-process "pulseaudio" nil nil nil "--kill")))
 
