@@ -82,11 +82,6 @@
              "^magit.*: .*$"
              "^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$"))))
 
-(let ((startup-directory default-directory))
-  (add-hook! 'doom-switch-buffer-hook
-    (when (string= (buffer-name) "*doom*")
-      (cd startup-directory))))
-
 (after! eglot
   (setq eglot-server-programs nil)
   (set-eglot-client! 'zig-mode '("zls"))
@@ -106,6 +101,7 @@
    (setenv "_JAVA_AWT_WM_NONREPARENTING" "1")
    (setenv "MOZ_X11_EGL" "1")
    (setenv "SDL_VIDEODRIVER" "x11")
+   (make-process :name "redshift" :command '("redshift" "-r") :noquery t)
    (make-process :name "picom" :command
                  '("picom"
                    "--experimental-backends"
@@ -113,6 +109,9 @@
                    "--vsync" "--unredir-if-possible")
                  :noquery t)
    (call-process "pulseaudio" nil nil nil "--start")
-   (call-process "xrdb" nil nil nil "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME")))))
+   (call-process "xrdb" nil nil nil "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME"))))
+  (add-hook! 'exwm-exit-hook
+    (interrupt-process "redshift")
+    (interrupt-process "picom")))
 
 (add-to-list 'command-switch-alist '("--exwm" . (lambda (switch) (exwm-enable))))
