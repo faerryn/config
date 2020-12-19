@@ -63,55 +63,9 @@
 (setenv "EDITOR" "emacsclient")
 (setenv "VISUAL" "emacsclient")
 
-(setq
- async-shell-command-buffer 'new-buffer
- auth-source-save-behavior nil)
-
-;; This is kinda hacky but it works
-(add-to-list
- '+popup--display-buffer-alist
- '("^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$"
-   (display-buffer-no-window)))
-
-(after! ivy
-  (setq
-   ivy-ignore-buffers
-   (append ivy-ignore-buffers
-           '("^\\*Messages\\*$"
-             "^\\*scratch\\*$"
-             "^magit.*: .*$"
-             "^\\*Async Shell Command\\*\\(<[0-9]+>\\)?$"))))
-
 (after! eglot
   (setq eglot-server-programs nil)
   (set-eglot-client! 'zig-mode '("zls"))
   (set-eglot-client! 'rustic-mode '("rust-analyzer"))
   (set-eglot-client! 'c-mode '("clangd" "--background-index" "--clang-tidy"))
   (set-eglot-client! 'c++-mode '("clangd" "--background-index" "--clang-tidy")))
-
-(use-package! exwm
-  :commands exwm-enable
-  :config
-  (add-hook! 'exwm-update-class-hook (exwm-workspace-rename-buffer exwm-class-name))
-  (map! :map 'exwm-mode-map
-        doom-leader-alt-key #'doom/leader
-        "M-!" #'shell-command)
-  (add-hook!
-   'exwm-init-hook
-   (setenv "_JAVA_AWT_WM_NONREPARENTING" "1")
-   (setenv "MOZ_X11_EGL" "1")
-   (setenv "SDL_VIDEODRIVER" "x11")
-   (make-process :name "redshift" :command '("redshift" "-r") :noquery t)
-   (make-process :name "picom" :command
-                 '("picom"
-                   "--experimental-backends"
-                   "--backend=glx" "--glx-no-stencil" "--glx-no-rebind-pixmap"
-                   "--vsync" "--unredir-if-possible")
-                 :noquery t)
-   (call-process "pulseaudio" nil nil nil "--start")
-   (call-process "xrdb" nil nil nil "-merge" (expand-file-name "Xresources" (getenv "XDG_CONFIG_HOME"))))
-  (add-hook! 'exwm-exit-hook
-    (interrupt-process "redshift")
-    (interrupt-process "picom")))
-
-(add-to-list 'command-switch-alist '("--exwm" . (lambda (switch) (exwm-enable))))
