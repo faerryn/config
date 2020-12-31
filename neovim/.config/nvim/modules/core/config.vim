@@ -37,6 +37,10 @@ if executable('rg')
 	set grepformat=%f:%l:%c:%m
 endif
 
+if has('win32')
+	set shell=cmd.exe
+endif
+
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
 
