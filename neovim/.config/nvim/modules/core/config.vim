@@ -23,7 +23,6 @@ set splitbelow splitright
 set linebreak wrap
 
 set confirm
-set fileformats=unix
 set foldlevelstart=99
 set inccommand=nosplit
 set iskeyword=a-z,A-Z,48-57,_,-
