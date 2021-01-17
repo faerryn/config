@@ -1,5 +1,0 @@
-#!/bin/sh
-while test "${#}" -gt 0; do
-	sed -n 's/\(MimeType=\|;\)/\n/gp' "${1}" | xargs xdg-mime default "$(basename "${1}")"
-	shift
-done
