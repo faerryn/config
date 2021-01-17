@@ -51,7 +51,6 @@ autocmd Personal BufReadPost * call cursor(line("'\""), col("'\""))
 
 packadd FixCursorHold.nvim
 
-packadd vim-bbye
 packadd vim-mkdir
 
 packadd vim-repeat
