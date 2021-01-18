@@ -29,5 +29,5 @@ export PATH="${HOME}"/.local/bin:"${CARGO_HOME}"/bin:"${PATH}"
 export MANPATH="${HOME}"/.local/share/man:"${MANPATH}"
 
 if >/dev/null command -v startx && [ /dev/tty1 == "$(tty)" ]; then
-	startx "$(which dbus-run-session)" dwm
+	exec startx "$(which dbus-run-session)" dwm
 fi

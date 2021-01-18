@@ -1,7 +1,7 @@
 PS1='$(
 e=${?}
-test ${e} -ne 0 && echo "[91m${e}[97m | "
-)[94m\w[97m $ '
+test ${e} -ne 0 && echo "${e} | "
+)\w $ '
 
 HISTFILE="${XDG_CACHE_HOME}"/bash/history
 mkdir -p "$(dirname "${HISTFILE}")"
