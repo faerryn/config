@@ -1,6 +1,2 @@
-[[ -f ~/.profile ]] && . ~/.profile
-case "${-}" in
-	*i*)
-		. ~/.bashrc
-		;;
-esac
+shopt -q login_shell && . ~/.profile
+[[ "${-}" == *i* ]] && . ~/.bashrc
