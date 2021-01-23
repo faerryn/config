@@ -48,6 +48,16 @@ nnoremap Y y$
 autocmd Personal FileType minpacprgs,qf nnoremap <silent> <buffer> <Esc> <C-W>c
 autocmd Personal BufReadPost * call cursor(line("'\""), col("'\""))
 
+autocmd Personal BufRead * call s:follow_symlink(expand('<afile>'))
+function! s:follow_symlink(path) abort
+	let l:resolved = resolve(a:path)
+	if l:resolved == a:path
+		return
+	endif
+	execute 'file' l:resolved
+	doautocmd BufReadPost
+endfunction
+
 packadd FixCursorHold.nvim
 
 packadd vim-mkdir

@@ -1,10 +1,10 @@
 #!/bin/sh
 
-MIME="$(file -ib "${1}")"
+MIME="$(file -ib "$(realpath "${1}")")"
 
 case "${MIME}" in
-	inode/symlink\;*)
-		${0} $(realpath "${@}")
+	inode/directory\;*)
+		st nnn "${@}"
 		;;
 	text/*)
 		st nvim "${@}"
