@@ -1,0 +1,21 @@
+#!/bin/sh
+
+MIME="$(file -ib "${1}")"
+
+case "${MIME}" in
+	inode/symlink\;*)
+		${0} $(realpath "${@}")
+		;;
+	text/*)
+		st nvim "${@}"
+		;;
+	image/*)
+		meh "${@}"
+		;;
+	application/pdf\;*)
+		katarakt "${@}"
+		;;
+	*)
+		echo "I don't know how to open ${@}"
+		;;
+esac

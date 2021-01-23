@@ -28,6 +28,10 @@ export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
 export PATH="${HOME}"/.local/bin:"${CARGO_HOME}"/bin:"${PATH}"
 export MANPATH="${HOME}"/.local/share/man:"${MANPATH}"
 
+# NNN
+export NNN_OPTS="H"
+export NNN_OPENER=plumb
+
 if >/dev/null command -v startx && [ /dev/tty1 == "$(tty)" ]; then
 	exec startx "$(which dbus-run-session)" dwm
 fi
