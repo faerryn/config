@@ -30,8 +30,8 @@ export MANPATH="${HOME}"/.local/share/man:"${MANPATH}"
 
 # NNN
 export NNN_OPTS="H"
-export NNN_OPENER=plumb
 
 if >/dev/null command -v startx && [ /dev/tty1 == "$(tty)" ]; then
+	export XDG_TERMINAL='st -e'
 	exec startx "$(which dbus-run-session)" dwm
 fi
