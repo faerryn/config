@@ -25,7 +25,7 @@ export RUSTUP_HOME="${XDG_DATA_HOME}"/rustup
 export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
 
 # Paths
-export PATH="${HOME}"/.local/bin:"${CARGO_HOME}"/bin:/var/lib/flatpak/exports/bin:"${PATH}"
+export PATH="${HOME}"/.local/bin:"${CARGO_HOME}"/bin:"${PATH}"
 export MANPATH="${HOME}"/.local/share/man:"${MANPATH}"
 
 if >/dev/null command -v startx && [ /dev/tty1 == "$(tty)" ]; then
