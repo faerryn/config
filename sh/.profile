@@ -29,6 +29,5 @@ export PATH="${HOME}"/.local/bin:"${CARGO_HOME}"/bin:/var/lib/flatpak/exports/bi
 export MANPATH="${HOME}"/.local/share/man:"${MANPATH}"
 
 if >/dev/null command -v startx && [ /dev/tty1 == "$(tty)" ]; then
-	export XDG_TERMINAL='st -e'
 	exec startx "$(which dbus-run-session)" dwm
 fi
