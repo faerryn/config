@@ -24,6 +24,16 @@ export RUSTUP_HOME="${XDG_DATA_HOME}"/rustup
 # X11
 export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
 
+# Java
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME}"/java
+
+# Gradle
+export GRADLE_USER_HOME="${XDG_DATA_HOME}"/gradle
+
+# NodeJS
+export NODE_REPL_HISTORY="${XDG_CACHE_HOME}"/node_repl_history
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}"/npm/npmrc
+
 # Paths
 export PATH="${HOME}"/.local/bin:"${CARGO_HOME}"/bin:"${PATH}"
 export MANPATH="${HOME}"/.local/share/man:"${MANPATH}"

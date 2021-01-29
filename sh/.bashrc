@@ -3,7 +3,7 @@ e=${?}
 test ${e} -ne 0 && echo "${e} | "
 )\w $ '
 
-HISTFILE="${XDG_CACHE_HOME}"/bash/history
+HISTFILE="${XDG_CACHE_HOME}"/bash_history
 mkdir -p "$(dirname "${HISTFILE}")"
 
 dc () {
