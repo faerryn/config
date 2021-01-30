@@ -1,1 +1,1 @@
-external-downloader=aria2c
+--external-downloader=aria2c
