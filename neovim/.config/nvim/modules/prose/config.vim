@@ -8,6 +8,7 @@ function! s:prose() abort
 		noremap <silent> $ g$
 		noremap <silent> _ g_
 		noremap <silent> ^ g^
+		set spell
 		let s:prose_mode = v:false
 	else
 		unmap j
@@ -16,6 +17,7 @@ function! s:prose() abort
 		unmap $
 		unmap _
 		unmap ^
+		set nospell
 		let s:prose_mode = v:true
 	endif
 endfunction

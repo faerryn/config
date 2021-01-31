@@ -12,7 +12,7 @@ let g:mapleader=' '
 set number relativenumber
 set signcolumn=yes
 
-set spell spellcapcheck=
+set spellcapcheck=
 
 set laststatus=2 showtabline=2
 set noshowmode noshowcmd
