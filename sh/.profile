@@ -34,6 +34,9 @@ export GRADLE_USER_HOME="${XDG_DATA_HOME}"/gradle
 export NODE_REPL_HISTORY="${XDG_CACHE_HOME}"/node_repl_history
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}"/npm/npmrc
 
+# Mplayer
+export MPLAYER_HOME="${XDG_CONFIG_HOME}"/mplayer
+
 # Paths
 export PATH="${HOME}"/.local/bin:"${CARGO_HOME}"/bin:"${PATH}"
 export MANPATH="${HOME}"/.local/share/man:"${MANPATH}"
