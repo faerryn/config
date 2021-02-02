@@ -5,7 +5,7 @@ PASSDIR="${HOME}"/pass
 [ -d "${PASSDIR}" ] || return 1
 cd "${PASSDIR}"
 
-FILE="$(ls | dmenu "${@}")"
+FILE="$(ls | dmenu ${DMENU_OPTS} ${@})"
 
 [ -f "${FILE}" ] || return 1
-cat "${FILE}" | dmenu "${@}" | xclip -selection clipboard -r -i
+cat "${FILE}" | dmenu ${DMENU_OPTS} ${@} | xclip -selection clipboard -r -i
