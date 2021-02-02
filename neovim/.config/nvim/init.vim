@@ -31,11 +31,6 @@ function s:load_modules_config() abort
 	endfor
 endfunction
 
-function s:SID()
-	return matchstr(expand('<sfile>'), '<SNR>\zs\d\+\ze_SID$')
-endfun
-let s:sid = s:SID()
-
 command! -bar ReloadConfigs call s:load_modules_config()
 command! -bar ReloadPackages call s:load_modules_packages()
 
