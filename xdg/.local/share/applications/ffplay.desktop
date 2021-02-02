@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=ffplay
-Exec=ffplay
-Terminal=false
-MimeType=video/mp4;video/webm;video/x-matroska;
