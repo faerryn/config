@@ -1,0 +1,11 @@
+#!/bin/sh
+
+PASSDIR="${HOME}"/pass
+
+[ -d "${PASSDIR}" ] || return 1
+cd "${PASSDIR}"
+
+FILE="$(ls | dmenu "${@}")"
+
+[ -f "${FILE}" ] || return 1
+cat "${FILE}" | dmenu "${@}" | xclip -selection clipboard -r -i
