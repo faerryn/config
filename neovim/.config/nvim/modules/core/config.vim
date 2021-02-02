@@ -2,7 +2,6 @@ set hidden
 set clipboard+=unnamedplus
 set mouse=ar
 
-set nottimeout
 set timeoutlen=500
 set updatetime=500
 
