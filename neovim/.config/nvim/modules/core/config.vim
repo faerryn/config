@@ -50,7 +50,7 @@ vmap S <Nop>
 nmap <Space> <Nop>
 nnoremap Y y$
 
-autocmd Personal FileType minpacprgs,qf nnoremap <silent> <buffer> <Esc> <C-W>c
+autocmd Personal FileType help,minpacprgs,qf nnoremap <silent> <buffer> <Esc> <C-W>c
 autocmd Personal FileType * call cursor(line("'\""), col("'\""))
 
 packadd FixCursorHold.nvim
