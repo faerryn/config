@@ -37,7 +37,3 @@ export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}"/npm/npmrc
 # Paths
 export PATH="${HOME}"/.local/bin:"${CARGO_HOME}"/bin:"${PATH}"
 export MANPATH="${HOME}"/.local/share/man:"${MANPATH}"
-
-if >/dev/null command -v startx && [ /dev/tty1 == "$(tty)" ]; then
-	exec startx "$(which dbus-run-session)" dwm
-fi

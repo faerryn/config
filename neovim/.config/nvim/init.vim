@@ -3,12 +3,13 @@ augroup Personal
 augroup END
 
 let s:config_d = expand('<sfile>:p:h')
+let s:data_d = stdpath('data')
 
 function s:load_modules_packages() abort
 	if !exists('g:loaded_minpac')
 		packadd minpac
 		call minpac#init({
-					\'dir': stdpath('data').'/site',
+					\'dir': s:data_d.'/site',
 					\'progress_open': 'none',
 					\'status_open': 'none',
 					\'status_auto': v:false,
@@ -34,8 +35,8 @@ endfunction
 command! -bar ReloadConfigs call s:load_modules_config()
 command! -bar ReloadPackages call s:load_modules_packages()
 
-if !isdirectory(stdpath('data').'/site/pack/minpac')
-	call system('git clone --depth 1 https://github.com/k-takata/minpac.git '.stdpath('data').'/site/pack/minpac/opt/minpac')
+if !isdirectory(s:data_d.'/site/pack/minpac')
+	call system('git clone --depth 1 https://github.com/k-takata/minpac.git '.s:data_d.'/site/pack/minpac/opt/minpac')
 	call s:load_modules_packages()
 else
 	call s:load_modules_config()
