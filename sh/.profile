@@ -24,9 +24,6 @@ export RUSTUP_HOME="${XDG_DATA_HOME}"/rustup
 # X11
 export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
 
-# Java
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME}"/java
-
 # Gradle
 export GRADLE_USER_HOME="${XDG_DATA_HOME}"/gradle
 
