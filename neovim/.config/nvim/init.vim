@@ -5,7 +5,7 @@ augroup END
 let s:config_d = expand('<sfile>:p:h')
 let s:data_d = stdpath('data')
 
-function s:load_modules_packages() abort
+function s:load_modules_packages(also_load_config) abort
 	if !exists('g:loaded_minpac')
 		packadd minpac
 		call minpac#init({
@@ -23,7 +23,11 @@ function s:load_modules_packages() abort
 	endfor
 
 	call minpac#clean()
-	call minpac#update('', {'do': 'ReloadConfigs'})
+	if a:also_load_config
+		call minpac#update('', {'do': 'ReloadConfigs'})
+	else
+		call minpac#update()
+	endif
 endfunction
 
 function s:load_modules_config() abort
@@ -33,11 +37,11 @@ function s:load_modules_config() abort
 endfunction
 
 command! -bar ReloadConfigs call s:load_modules_config()
-command! -bar ReloadPackages call s:load_modules_packages()
+command! -bar ReloadPackages call s:load_modules_packages(v:false)
 
 if !isdirectory(s:data_d.'/site/pack/minpac')
 	call system('git clone --depth 1 https://github.com/k-takata/minpac.git '.s:data_d.'/site/pack/minpac/opt/minpac')
-	call s:load_modules_packages()
+	call s:load_modules_packages(v:true)
 else
 	call s:load_modules_config()
 endif
