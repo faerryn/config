@@ -5,6 +5,7 @@ set mouse=ar
 set timeoutlen=500
 set updatetime=500
 
+set noswapfile
 set undofile
 
 let g:mapleader=' '
