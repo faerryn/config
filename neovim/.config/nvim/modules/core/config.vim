@@ -29,6 +29,8 @@ set iskeyword=a-z,A-Z,48-57,_,-
 set lazyredraw
 set nrformats=alpha,octal,hex,bin
 
+set exrc
+
 if executable('rg')
 	let &grepprg = 'rg --hidden --vimgrep'
 	set grepformat=%f:%l:%c:%m
