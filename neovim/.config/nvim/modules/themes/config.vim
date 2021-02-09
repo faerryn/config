@@ -1,3 +1,5 @@
+set termguicolors
+
 packadd onehalf
 packadd gruvbox
 
