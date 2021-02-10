@@ -1,17 +1,7 @@
 local nvim_lsp = require'lspconfig'
 local configs = require'lspconfig/configs'
 
-nvim_lsp.clangd.setup{ cmd = { "clangd", "--background-index", "--clang-tidy" } }
-nvim_lsp.rust_analyzer.setup{}
-configs.zls = {
-	default_config = {
-		cmd = { "zls" };
-		filetype = { "zig" };
-		root_dir = nvim_lsp.util.root_pattern("build.zig");
-		settings = {};
-	};
-}
-nvim_lsp.zls.setup{}
+local servers = { "rust_analyzer" }
 
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -61,7 +51,8 @@ end
 
 -- Use a loop to conveniently both setup defined servers 
 -- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "rust_analyzer", "tsserver" }
 for _, lsp in ipairs(servers) do
-	nvim_lsp[lsp].setup { on_attach = on_attach }
+	if nvim_lsp[lsp].setup then
+		nvim_lsp[lsp].setup { on_attach = on_attach }
+	end
 end
