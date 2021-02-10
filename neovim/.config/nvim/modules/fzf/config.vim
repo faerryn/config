@@ -1,5 +1,3 @@
-if !executable('fzf')
-	packadd fzf
-endif
+packadd fzf
 
 nnoremap <Leader>f <cmd>FZF<CR>
