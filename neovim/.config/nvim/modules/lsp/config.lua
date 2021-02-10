@@ -1,14 +1,14 @@
 local nvim_lsp = require'lspconfig'
 local configs = require'lspconfig/configs'
 
-local servers = { 'clangd', 'zls' }
+local servers = { 'clangd', 'rust_analyzer', 'zls' }
 nvim_lsp.clangd.cmd = { 'clangd', '--background-index', '--clang-tidy' }
 if not configs.zls then
 	configs.zls = {
 		default_config = {
 			cmd = { 'zls' };
 			filetypes = { 'zig' };
-			root_dir = lspconfig.util.root_pattern('build.zig')
+			root_dir = nvim_lsp.util.root_pattern('build.zig');
 			settings = {};
 		};
 	}
