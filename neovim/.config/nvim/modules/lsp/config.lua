@@ -1,7 +1,7 @@
 local nvim_lsp = require'lspconfig'
 local configs = require'lspconfig/configs'
 
-local servers = { "rust_analyzer" }
+local servers = {}
 
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
