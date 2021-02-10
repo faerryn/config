@@ -1,6 +1,5 @@
 set termguicolors
 
-packadd onehalf
 packadd gruvbox
 
 let g:gruvbox_bold      = 1
