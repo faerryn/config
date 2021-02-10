@@ -18,7 +18,6 @@ export CARGO_HOME="${XDG_DATA_HOME}"/cargo
 export RUSTUP_HOME="${XDG_DATA_HOME}"/rustup
 
 # Misc
-export FZF_DEFAULT_COMMAND="fd --hidden --ignore-file ${XDG_CONFIG_HOME}"
 export GRADLE_USER_HOME="${XDG_DATA_HOME}"/gradle
 export INPUTRC="${XDG_CONFIG_HOME}"/readline/inputrc
 export LESSHISTFILE=-
