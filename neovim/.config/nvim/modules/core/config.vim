@@ -33,7 +33,7 @@ set nrformats=alpha,octal,hex,bin
 set exrc
 
 if executable('rg')
-	let &grepprg = 'rg --hidden --vimgrep'
+	let &grepprg = 'rg --hidden --ignore-file "'.getenv('XDG_CONFIG_HOME').'"/git/ignore --vimgrep'
 	set grepformat=%f:%l:%c:%m
 endif
 
