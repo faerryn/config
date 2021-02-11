@@ -9,27 +9,24 @@ require'packer'.startup{
 
 		use 'antoinemadec/FixCursorHold.nvim'
 
-		use 'tpope/vim-abolish'
+		use {
+			'nvim-treesitter/nvim-treesitter',
+			run = ':TSUpdate',
+			config = function() require'nvim-treesitter.configs'.setup{highlights={enable=true}} end,
+		}
 
 		use {
-			'morhetz/gruvbox',
+			'sainnhe/gruvbox-material',
 			config = function()
 				vim.o.termguicolors = true
-				vim.g.gruvbox_bold = 1
-				vim.g.gruvbox_italic = 1
-				vim.g.gruvbox_underline = 1
-				vim.g.gruvbox_undercurl = 1
-				vim.g.gruvbox_hls_cursor = 'orange'
-				vim.g.gruvbox_guisp_fallback = 'fg'
-				vim.g.gruvbox_invert_selection = 0
-				vim.g.gruvbox_invert_signs = 0
-				vim.g.gruvbox_invert_indent_guides = 0
-				vim.g.gruvbox_invert_tabline = 0
-				vim.g.gruvbox_italicize_comments = 1
-				vim.g.gruvbox_italicize_strings = 1
-				vim.g.gruvbox_improved_strings = 1
-				vim.g.gruvbox_improved_warnings = 1
-				vim.cmd [[colorscheme gruvbox]]
+				vim.g.gruvbox_material_better_performance = 1
+				vim.g.gruvbox_material_palette = 'original'
+				vim.g.gruvbox_material_statusline_style = 'original'
+				vim.g.gruvbox_material_enable_bold = 1
+				vim.g.gruvbox_material_enable_italic = 1
+				vim.g.gruvbox_material_transparent_background = 1
+				vim.g.gruvbox_material_diagnostic_text_highlight = 1
+				vim.cmd [[colorscheme gruvbox-material]]
 			end,
 		}
 
