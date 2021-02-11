@@ -45,7 +45,7 @@ function use_packages(use)
 		keys = '<Leader>f',
 		config = function()
 			local actions = require('telescope.actions')
-			require('telescope').setup{}
+			require('telescope').setup{defaults = {mappings = {i = {["<C-W>c"] = actions.close}}}}
 			vim.fn.nvim_set_keymap('n', '<Leader>f', "<Cmd>lua require'telescope.builtin'.find_files{ find_command = { 'fd', '--type', 'file', '--hidden', '--ignore-file', os.getenv'XDG_CONFIG_HOME'..'/git/ignore' } }<CR>", { noremap=true, silent=true })
 		end,
 	}
