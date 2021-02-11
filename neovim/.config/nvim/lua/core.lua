@@ -3,8 +3,7 @@ vim.o.hidden = true
 vim.o.clipboard = 'unnamedplus'
 vim.o.mouse = 'ar'
 
-vim.o.timeoutlen = 500
-vim.o.updatetime = 500
+vim.o.timeoutlen = 300
 
 vim.bo.swapfile = false
 vim.bo.undofile = true
@@ -77,3 +76,10 @@ vim.api.nvim_set_keymap('v', 's', '', keymap_opts)
 vim.api.nvim_set_keymap('n', 'S', '', keymap_opts)
 vim.api.nvim_set_keymap('v', 'S', '', keymap_opts)
 vim.api.nvim_set_keymap('n', '<Leader>', '', keymap_opts)
+
+vim.api.nvim_exec([[
+augroup personal
+autocmd!
+autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup = "Search", timeout = 300}
+augroup END
+]], false)
