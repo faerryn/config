@@ -5,8 +5,8 @@ vim.o.mouse = 'ar'
 
 vim.o.timeoutlen = 300
 
-vim.bo.swapfile = false
-vim.bo.undofile = true
+vim.o.swapfile = false
+vim.o.undofile = true
 
 vim.g.mapleader = ' '
 
