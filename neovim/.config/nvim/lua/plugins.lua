@@ -11,7 +11,10 @@ function use_packages(use)
 		end,
 	}
 
-	use 'antoinemadec/FixCursorHold.nvim'
+	use {
+		'antoinemadec/FixCursorHold.nvim',
+		config = function() vim.g.cursorhold_updatetime = 100 end,
+	}
 
 	use 'tommcdo/vim-lion'
 
