@@ -4,8 +4,10 @@ function use_packages()
 	use 'antoinemadec/FixCursorHold.nvim'
 
 	use 'tommcdo/vim-lion'
-	use 'tpope/vim-eunuch'
+
 	use 'tpope/vim-abolish'
+
+	use 'tpope/vim-eunuch'
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
@@ -36,9 +38,11 @@ function use_packages()
 	use {
 		'nvim-telescope/telescope.nvim',
 		requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'},
+		cmd = 'Telescope',
+		keys = '<Leader>f',
 		config = function()
 			local actions = require('telescope.actions')
-			require('telescope').setup{defaults = {mappings = {i = {["<esc>"] = actions.close}}}}
+			require('telescope').setup{}
 			vim.fn.nvim_set_keymap('n', '<Leader>f', "<Cmd>lua require'telescope.builtin'.find_files{ find_command = { 'fd', '--type', 'file', '--hidden', '--ignore-file', os.getenv'XDG_CONFIG_HOME'..'/git/ignore' } }<CR>", { noremap=true, silent=true })
 		end,
 	}
@@ -125,11 +129,12 @@ function use_packages()
 
 	use {
 		'TimUntersberger/neogit',
+		cmd = 'Neogit',
+		keys = '<Leader>g',
 		config = function()
 			vim.api.nvim_exec([[
 			augroup neogit_keybindings
 			autocmd!
-			autocmd FileType NeogitStatus nnoremap <silent> <buffer> <Esc> <C-W>c
 			autocmd FileType NeogitStatus execute 'lcd' system('2>/dev/null git rev-parse --show-toplevel')
 			augroup END
 			]], false)
@@ -153,14 +158,11 @@ function use_packages()
 
 	use {
 		'mbbill/undotree',
+		cmd = { 'UndotreeFocus', 'UndotreeHide', 'UndotreeShow', 'UndotreeToggle' },
+		keys = '<Leader>u',
 		config = function()
 			vim.g.undotree_WindowLayout = 4
-			vim.api.nvim_exec([[
-			function! g:Undotree_CustomMap() abort
-			nnoremap <silent> <buffer> <Esc> <cmd>UndotreeHide<CR>
-			endfunction
-			]], false)
-			vim.api.nvim_set_keymap('n', '<Leader>u', '<cmd>UndotreeToggle|UndotreeFocus<CR>', {noremap = true, silent = true})
+			vim.api.nvim_set_keymap('n', '<Leader>u', '<cmd>UndotreeShow|UndotreeFocus<CR>', {noremap = true, silent = true})
 		end,
 	}
 end
