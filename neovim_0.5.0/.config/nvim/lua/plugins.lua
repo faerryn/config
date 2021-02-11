@@ -129,6 +129,13 @@ function use_packages()
 	use {
 		'TimUntersberger/neogit',
 		config = function()
+			vim.api.nvim_exec([[
+			augroup neogit_keybindings
+			autocmd!
+			autocmd FileType NeogitStatus nnoremap <silent> <buffer> <Esc> <C-W>c
+			autocmd FileType NeogitStatus execute 'lcd' system('git rev-parse --show-toplevel')
+			augroup END
+			]], false)
 			vim.api.nvim_set_keymap('n', '<Leader>g', '<cmd>lua require"neogit".status.create"split"<CR>', {noremap = true, silent = true})
 		end,
 	}
