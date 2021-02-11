@@ -1,4 +1,4 @@
-return function()
+function use_packages()
 	use 'wbthomason/packer.nvim'
 
 	use 'antoinemadec/FixCursorHold.nvim'
@@ -46,8 +46,8 @@ return function()
 			local nvim_lsp = require'lspconfig'
 			local configs = require'lspconfig/configs'
 
-			local servers = { 'clangd', 'rust_analyzer', 'zls' }
-			nvim_lsp.clangd.cmd = { 'clangd', '--background-index', '--clang-tidy' }
+			local servers = {'clangd', 'rust_analyzer', 'zls'}
+			nvim_lsp.clangd.cmd = {'clangd', '--background-index', '--clang-tidy'}
 			if not configs.zls then
 				configs.zls = {
 					default_config = {
@@ -62,7 +62,7 @@ return function()
 			local on_attach = function(client, bufnr)
 				vim.api.nvim_buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-				local keymap_opts = { noremap = true, silent = true }
+				local keymap_opts = {noremap = true, silent = true}
 
 				-- Mappings.
 				vim.api.nvim_buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', keymap_opts)
@@ -109,7 +109,7 @@ return function()
 			-- Use a loop to conveniently both setup defined servers 
 			-- and map buffer local keybindings when the language server attaches
 			for _, lsp in ipairs(servers) do
-				nvim_lsp[lsp].setup { on_attach = on_attach }
+				nvim_lsp[lsp].setup {on_attach = on_attach}
 			end
 		end,
 	}
@@ -129,7 +129,7 @@ return function()
 	use {
 		'TimUntersberger/neogit',
 		config = function()
-			vim.api.nvim_set_keymap( 'n', '<Leader>g', '<cmd>lua require"neogit".status.create"split"<CR>', { noremap = true, silent = true })
+			vim.api.nvim_set_keymap('n', '<Leader>g', '<cmd>lua require"neogit".status.create"split"<CR>', {noremap = true, silent = true})
 		end,
 	}
 
@@ -150,7 +150,29 @@ return function()
 	use {
 		'mbbill/undotree',
 		config = function()
-
+			vim.g.undotree_WindowLayout = 4
+			vim.api.nvim_exec([[
+			function! g:Undotree_CustomMap() abort
+				nnoremap <silent> <buffer> <Esc> <cmd>UndotreeHide<CR>
+			endfunction
+			]], false)
+			vim.api.nvim_set_keymap('n', '<Leader>u', '<cmd>UndotreeToggle|UndotreeFocus<CR>', {noremap = true, silent = true})
 		end,
 	}
 end
+
+local install_path = vim.fn.stdpath'data'..'/site/pack/packer/start/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) == 1 then
+	vim.fn.system('git clone --depth 1 https://github.com/wbthomason/packer.nvim.git '..install_path)
+	vim.api.nvim_exec([[
+	augroup personal_packer
+	autocmd!
+	autocmd VimEnter * PackerSync
+	augroup END
+	]], false)
+end
+
+require'packer'.startup{
+	use_packages,
+	config = {compile_path = vim.fn.stdpath('data')..'/site/plugin/packer_compiled.vim'},
+}
