@@ -154,7 +154,5 @@ require'packer'.startup{
 			end,
 		}
 	end,
-	config = {
-		compile_path = vim.fn.stdpath('data')..'/packer_compiled.vim',
-	},
+	config = { compile_path = vim.fn.stdpath('data')..'/site/plugin/packer_compiled.vim' },
 }
