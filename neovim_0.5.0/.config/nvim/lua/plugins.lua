@@ -3,6 +3,10 @@ function use_packages()
 
 	use 'antoinemadec/FixCursorHold.nvim'
 
+	use 'tommcdo/vim-lion'
+	use 'tpope/vim-eunuch'
+	use 'tpope/vim-abolish'
+
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate',
@@ -45,7 +49,6 @@ function use_packages()
 		config = function()
 			local nvim_lsp = require'lspconfig'
 			local configs = require'lspconfig/configs'
-
 			local servers = {'clangd', 'rust_analyzer', 'zls'}
 			nvim_lsp.clangd.cmd = {'clangd', '--background-index', '--clang-tidy'}
 			if not configs.zls then
@@ -58,29 +61,25 @@ function use_packages()
 					};
 				}
 			end
-
 			local on_attach = function(client, bufnr)
 				vim.api.nvim_buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
 				local keymap_opts = {noremap = true, silent = true}
-
 				-- Mappings.
-				vim.api.nvim_buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', 'gD',        '<cmd>lua vim.lsp.buf.declaration()<CR>',                                keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', 'gd',        '<cmd>lua vim.lsp.buf.definition()<CR>',                                 keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', 'K',         '<cmd>lua vim.lsp.buf.hover()<CR>',                                      keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', 'gi',        '<cmd>lua vim.lsp.buf.implementation()<CR>',                             keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<C-k>',     '<cmd>lua vim.lsp.buf.signature_help()<CR>',                             keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>',                       keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>',                    keymap_opts)
 				vim.api.nvim_buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', keymap_opts)
-
+				vim.api.nvim_buf_set_keymap('n', '<space>D',  '<cmd>lua vim.lsp.buf.type_definition()<CR>',                            keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>',                                     keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', 'gr',        '<cmd>lua vim.lsp.buf.references()<CR>',                                 keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<space>e',  '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',               keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '[d',        '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>',                           keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', ']d',        '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>',                           keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<space>q',  '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',                         keymap_opts)
 				-- Set some keybinds conditional on server capabilities
 				if client.resolved_capabilities.document_formatting then
 					vim.api.nvim_exec([[
@@ -90,7 +89,6 @@ function use_packages()
 					augroup END
 					]], false)
 				end
-
 				-- Set autocommands conditional on server_capabilities
 				if client.resolved_capabilities.document_highlight then
 					vim.api.nvim_exec([[
@@ -105,7 +103,6 @@ function use_packages()
 					]], false)
 				end
 			end
-
 			-- Use a loop to conveniently both setup defined servers 
 			-- and map buffer local keybindings when the language server attaches
 			for _, lsp in ipairs(servers) do
@@ -133,7 +130,7 @@ function use_packages()
 			augroup neogit_keybindings
 			autocmd!
 			autocmd FileType NeogitStatus nnoremap <silent> <buffer> <Esc> <C-W>c
-			autocmd FileType NeogitStatus execute 'lcd' system('git rev-parse --show-toplevel')
+			autocmd FileType NeogitStatus execute 'lcd' system('2>/dev/null git rev-parse --show-toplevel')
 			augroup END
 			]], false)
 			vim.api.nvim_set_keymap('n', '<Leader>g', '<cmd>lua require"neogit".status.create"split"<CR>', {noremap = true, silent = true})
@@ -160,7 +157,7 @@ function use_packages()
 			vim.g.undotree_WindowLayout = 4
 			vim.api.nvim_exec([[
 			function! g:Undotree_CustomMap() abort
-				nnoremap <silent> <buffer> <Esc> <cmd>UndotreeHide<CR>
+			nnoremap <silent> <buffer> <Esc> <cmd>UndotreeHide<CR>
 			endfunction
 			]], false)
 			vim.api.nvim_set_keymap('n', '<Leader>u', '<cmd>UndotreeToggle|UndotreeFocus<CR>', {noremap = true, silent = true})
