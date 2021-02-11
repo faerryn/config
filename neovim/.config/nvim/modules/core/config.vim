@@ -21,7 +21,7 @@ set noshowmode noshowcmd
 set noequalalways
 set splitbelow splitright
 
-set linebreak wrap
+set linebreak nowrap
 
 set confirm
 set foldlevelstart=99
