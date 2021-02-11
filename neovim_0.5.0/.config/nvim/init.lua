@@ -6,8 +6,8 @@ vim.o.mouse = 'ar'
 vim.o.timeoutlen = 500
 vim.o.updatetime = 500
 
-vim.o.swapfile = false
-vim.o.undofile = true
+vim.bo.swapfile = false
+vim.bo.undofile = true
 
 vim.g.mapleader = ' '
 
@@ -133,6 +133,7 @@ require'packer'.startup{function()
 
 	use {
 		'neovim/nvim-lspconfig',
+		ft = { 'c', 'cpp', 'rust', 'zig' },
 		config = function()
 			local nvim_lsp = require'lspconfig'
 			local configs = require'lspconfig/configs'
@@ -151,29 +152,26 @@ require'packer'.startup{function()
 			end
 
 			local on_attach = function(client, bufnr)
-				local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-				local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-				buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+				vim.api.nvim_buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 				local keymap_opts = { noremap = true, silent = true }
 
 				-- Mappings.
-				buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', keymap_opts)
-				buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', keymap_opts)
-				buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
-				buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', keymap_opts)
-				buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', keymap_opts)
-				buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', keymap_opts)
-				buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', keymap_opts)
-				buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', keymap_opts)
-				buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', keymap_opts)
-				buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', keymap_opts)
-				buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', keymap_opts)
-				buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', keymap_opts)
-				buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', keymap_opts)
-				buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', keymap_opts)
-				buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', keymap_opts)
 
 				-- Set some keybinds conditional on server capabilities
 				if client.resolved_capabilities.document_formatting then
@@ -228,5 +226,14 @@ require'packer'.startup{function()
 	use {
 		'lewis6991/gitsigns.nvim',
 		requires = 'nvim-lua/plenary.nvim',
+		config = function()
+			require('gitsigns').setup{signs = {
+				add          = {hl = 'GitGutterAdd'   , text = '+'},
+				change       = {hl = 'GitGutterChange', text = '~'},
+				delete       = {hl = 'GitGutterDelete', text = '_'},
+				topdelete    = {hl = 'GitGutterDelete', text = '‾'},
+				changedelete = {hl = 'GitGutterChange', text = '~'},
+			}}
+		end,
 	}
 end}

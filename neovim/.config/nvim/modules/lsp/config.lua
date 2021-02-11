@@ -43,7 +43,7 @@ local on_attach = function(client, bufnr)
 		vim.api.nvim_exec([[
 		augroup lsp_document_autoformat
 		autocmd!
-		autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
+		autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
 		augroup END
 		]], false)
 	end
