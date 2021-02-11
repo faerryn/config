@@ -1,4 +1,4 @@
-function use_packages()
+function use_packages(use)
 	use 'wbthomason/packer.nvim'
 
 	use 'antoinemadec/FixCursorHold.nvim'
@@ -35,7 +35,7 @@ function use_packages()
 		config = function() require'lualine'.status() end,
 	}
 
-	--[[ use {
+	use {
 		'nvim-telescope/telescope.nvim',
 		requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'},
 		cmd = 'Telescope',
@@ -45,7 +45,7 @@ function use_packages()
 			require('telescope').setup{}
 			vim.fn.nvim_set_keymap('n', '<Leader>f', "<Cmd>lua require'telescope.builtin'.find_files{ find_command = { 'fd', '--type', 'file', '--hidden', '--ignore-file', os.getenv'XDG_CONFIG_HOME'..'/git/ignore' } }<CR>", { noremap=true, silent=true })
 		end,
-	} ]]
+	}
 
 	use {
 		'neovim/nvim-lspconfig',
@@ -142,19 +142,21 @@ function use_packages()
 		end,
 	}
 
-	--[[ use {
+	use {
 		'lewis6991/gitsigns.nvim',
 		requires = 'nvim-lua/plenary.nvim',
 		config = function()
-			require('gitsigns').setup{signs = {
-				add          = {hl = 'GitGutterAdd'   , text = '+'},
-				change       = {hl = 'GitGutterChange', text = '~'},
-				delete       = {hl = 'GitGutterDelete', text = '_'},
-				topdelete    = {hl = 'GitGutterDelete', text = '‾'},
-				changedelete = {hl = 'GitGutterChange', text = '~'},
-			}}
+			require('gitsigns').setup {
+				signs = {
+					add          = {hl = 'GitGutterAdd'   , text = '+'},
+					change       = {hl = 'GitGutterChange', text = '~'},
+					delete       = {hl = 'GitGutterDelete', text = '_'},
+					topdelete    = {hl = 'GitGutterDelete', text = '‾'},
+					changedelete = {hl = 'GitGutterChange', text = '~'},
+				}
+			}
 		end,
-	} ]]
+	}
 
 	use {
 		'mbbill/undotree',
@@ -167,18 +169,28 @@ function use_packages()
 	}
 end
 
-local install_path = vim.fn.stdpath'data'..'/site/pack/packer/start/packer.nvim'
+local first_time = false
+local install_path = vim.fn.stdpath'data'..'/site/pack/packer/opt/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) == 1 then
 	vim.fn.system('git clone --depth 1 https://github.com/wbthomason/packer.nvim.git '..install_path)
-	vim.api.nvim_exec([[
-	augroup personal_packer
-	autocmd!
-	autocmd VimEnter * PackerSync
-	augroup END
-	]], false)
+	first_time = true
 end
 
-require'packer'.startup{
-	use_packages,
-	config = {compile_path = vim.fn.stdpath('data')..'/site/plugin/packer_compiled.vim'},
-}
+vim.cmd [[packadd packer.nvim]]
+local packer = require'packer'
+local compile_path = vim.fn.stdpath('data')..'/packer_load.vim'
+
+packer.init{compile_path = compile_path}
+packer.reset()
+
+use_packages(packer.use)
+
+if first_time then
+	packer.install()
+end
+
+if vim.fn.empty(vim.fn.glob(compile_path)) == 1 then
+	packer.compile()
+end
+
+vim.cmd('source '..compile_path)
