@@ -42,9 +42,6 @@ if vim.fn.executable('rg') == 1 then
 	vim.o.grepformat = '%f:%l:%c:%m'
 end
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 local keymap_opts = { noremap = true, silent = true }
 
 vim.api.nvim_set_keymap('n', 'Y', 'y$', keymap_opts)
@@ -84,3 +81,5 @@ autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup = "Search", ti
 autocmd BufWritePre * call mkdir(expand('%:p:h'), 'p')
 augroup END
 ]], false)
+
+vim.g.netrw_dirhistmax = 0

@@ -1,7 +1,7 @@
 function use_packages(use)
 	use {
 		'wbthomason/packer.nvim',
-		cmd = { 'PackerClean', 'PackerCompile', 'PackerInstall', 'PackerSync', 'PackerUpdate' },
+		cmd = {'PackerClean', 'PackerCompile', 'PackerInstall', 'PackerSync', 'PackerUpdate'},
 		config = function()
 			local packer = require'packer'
 			local compile_path = vim.fn.stdpath('data')..'/packer_load.vim'
@@ -21,6 +21,19 @@ function use_packages(use)
 	use 'tpope/vim-abolish'
 
 	use 'tpope/vim-eunuch'
+
+	use 'tpope/vim-vinegar'
+
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate',
+		config = function()
+			require'nvim-treesitter.configs'.setup {
+				ensure_installed = "all",
+				highlight = {enable = true},
+			}
+		end,
+	}
 
 	use {
 		'morhetz/gruvbox',
@@ -179,6 +192,17 @@ function use_packages(use)
 			vim.api.nvim_set_keymap('n', '<Leader>u', '<cmd>UndotreeShow|UndotreeFocus<CR>', {noremap = true, silent = true})
 		end,
 	}
+
+	--[[ use {
+		'oberblastmeister/neuron.nvim',
+		requires = {'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim'},
+		config = function()
+			require'neuron'.setup{
+				neuron_dir = "~/doc/notes",
+				leader = "<Leader>n",
+			}
+		end,
+	} ]]
 end
 
 local install_path = vim.fn.stdpath'data'..'/site/pack/packer/opt/packer.nvim'
@@ -190,21 +214,30 @@ if vim.fn.empty(vim.fn.glob(install_path)) == 1 then
 	first_time = true
 end
 
-if first_time then
+local packer_already_run = false
+function packer_run()
+	if packer_already_run then return require'packer' end
+	packer_already_run = true
+
 	vim.cmd [[packadd packer.nvim]]
 	local packer = require'packer'
-
 	packer.init{compile_path = compile_path}
 	packer.reset()
 	use_packages(packer.use)
-	packer.install()
+
+	return packer
+end
+
+if first_time then
+	packer_run().install()
 end
 
 if vim.fn.empty(vim.fn.glob(compile_path)) == 1 then
-	vim.cmd [[packadd packer.nvim]]
-	local packer = require'packer'
-
-	packer.compile()
+	packer_run().compile()
 end
 
-vim.cmd('source '..compile_path)
+vim.api.nvim_command('silent! source '..compile_path)
+
+if packer_plugins == nil then
+	packer_run().compile()
+end
