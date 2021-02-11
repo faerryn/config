@@ -35,7 +35,7 @@ function use_packages()
 		config = function() require'lualine'.status() end,
 	}
 
-	use {
+	--[[ use {
 		'nvim-telescope/telescope.nvim',
 		requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'},
 		cmd = 'Telescope',
@@ -45,7 +45,7 @@ function use_packages()
 			require('telescope').setup{}
 			vim.fn.nvim_set_keymap('n', '<Leader>f', "<Cmd>lua require'telescope.builtin'.find_files{ find_command = { 'fd', '--type', 'file', '--hidden', '--ignore-file', os.getenv'XDG_CONFIG_HOME'..'/git/ignore' } }<CR>", { noremap=true, silent=true })
 		end,
-	}
+	} ]]
 
 	use {
 		'neovim/nvim-lspconfig',
@@ -142,7 +142,7 @@ function use_packages()
 		end,
 	}
 
-	use {
+	--[[ use {
 		'lewis6991/gitsigns.nvim',
 		requires = 'nvim-lua/plenary.nvim',
 		config = function()
@@ -154,7 +154,7 @@ function use_packages()
 				changedelete = {hl = 'GitGutterChange', text = '~'},
 			}}
 		end,
-	}
+	} ]]
 
 	use {
 		'mbbill/undotree',
