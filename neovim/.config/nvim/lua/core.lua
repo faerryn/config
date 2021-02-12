@@ -7,6 +7,8 @@ vim.o.timeoutlen = 300
 
 vim.o.swapfile = false
 vim.o.undofile = true
+vim.bo.swapfile = false
+vim.bo.undofile = true
 
 vim.g.mapleader = ' '
 
@@ -14,6 +16,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.signcolumn = 'number'
 
+vim.o.spellcapcheck = ''
 vim.bo.spellcapcheck = ''
 
 vim.o.laststatus = 2
