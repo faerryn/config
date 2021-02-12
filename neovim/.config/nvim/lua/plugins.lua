@@ -24,7 +24,7 @@ function use_packages()
 
 	use 'ryvnf/readline.vim'
 
-	use 'romainl/vim-qf'
+	use 'kevinhwang91/nvim-bqf'
 
 	use 'chaoren/vim-wordmotion'
 
