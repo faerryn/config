@@ -1,4 +1,5 @@
-function use_packages(use)
+function use_packages()
+	local use = require'packer'.use
 
 	use {
 		'wbthomason/packer.nvim',
@@ -214,7 +215,7 @@ function packer_run()
 	local packer = require'packer'
 	packer.init{compile_path = compile_path}
 	packer.reset()
-	use_packages(packer.use)
+	use_packages()
 
 	return packer
 end
