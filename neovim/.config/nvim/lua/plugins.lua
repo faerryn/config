@@ -18,7 +18,20 @@ function use_packages()
 		config = function() vim.g.cursorhold_updatetime = 100 end,
 	}
 
-	use 'tommcdo/vim-lion'
+	use 'tpope/vim-repeat'
+
+	use 'inkarkat/vim-visualrepeat'
+
+	use 'ryvnf/readline.vim'
+
+	use 'romainl/vim-qf'
+
+	use 'chaoren/vim-wordmotion'
+
+	use {
+		'tommcdo/vim-lion',
+		config = function() vim.g.lion_squeeze_spaces = 1 end,
+	}
 
 	use 'tpope/vim-abolish'
 
@@ -31,7 +44,7 @@ function use_packages()
 		run = ':TSUpdate',
 		config = function()
 			require'nvim-treesitter.configs'.setup {
-				ensure_installed = "all",
+				ensure_installed = "maintained",
 				highlight = {enable = true},
 			}
 		end,
@@ -64,8 +77,13 @@ function use_packages()
 	}
 
 	use {
-		'hoob3rt/lualine.nvim',
-		config = function() require'lualine'.status() end,
+		'itchyny/lightline.vim',
+		config = function()
+			vim.g.lightline = {
+				colorscheme = 'gruvbox',
+				tabline = {right = {}},
+			}
+		end
 	}
 
 	use {
@@ -102,40 +120,20 @@ function use_packages()
 				vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 				local keymap_opts = {noremap = true, silent = true}
 				-- Mappings.
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD',        '<cmd>lua vim.lsp.buf.declaration()<CR>',                                keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd',        '<cmd>lua vim.lsp.buf.definition()<CR>',                                 keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K',         '<cmd>lua vim.lsp.buf.hover()<CR>',                                      keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi',        '<cmd>lua vim.lsp.buf.implementation()<CR>',                             keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>',     '<cmd>lua vim.lsp.buf.signature_help()<CR>',                             keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>',                       keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>',                    keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D',  '<cmd>lua vim.lsp.buf.type_definition()<CR>',                            keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>',                                     keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr',        '<cmd>lua vim.lsp.buf.references()<CR>',                                 keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>e',  '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',               keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d',        '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>',                           keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d',        '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>',                           keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>q',  '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',                         keymap_opts)
+				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD',    '<cmd>lua vim.lsp.buf.declaration()<CR>',      keymap_opts)
+				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd',    '<cmd>lua vim.lsp.buf.definition()<CR>',       keymap_opts)
+				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K',     '<cmd>lua vim.lsp.buf.hover()<CR>',            keymap_opts)
+				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi',    '<cmd>lua vim.lsp.buf.implementation()<CR>',   keymap_opts)
+				vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>',   keymap_opts)
+				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr',    '<cmd>lua vim.lsp.buf.references()<CR>',       keymap_opts)
+				vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d',    '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d',    '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', keymap_opts)
 				-- Set some keybinds conditional on server capabilities
 				if client.resolved_capabilities.document_formatting then
 					vim.api.nvim_exec([[
 					augroup lsp_document_autoformat
 					autocmd!
 					autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-					augroup END
-					]], false)
-				end
-				-- Set autocommands conditional on server_capabilities
-				if client.resolved_capabilities.document_highlight then
-					vim.api.nvim_exec([[
-					hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-					hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-					hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-					augroup lsp_document_highlight
-					autocmd!
-					autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-					autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
 					augroup END
 					]], false)
 				end
@@ -200,12 +198,6 @@ end
 local install_path = vim.fn.stdpath'data'..'/site/pack/packer/opt/packer.nvim'
 local compile_path = vim.fn.stdpath('data')..'/packer_load.vim'
 
-local first_time = false
-if vim.fn.empty(vim.fn.glob(install_path)) == 1 then
-	vim.fn.system('git clone --depth 1 https://github.com/wbthomason/packer.nvim.git '..install_path)
-	first_time = true
-end
-
 local packer_already_run = false
 function packer_run()
 	if packer_already_run then return require'packer' end
@@ -220,12 +212,9 @@ function packer_run()
 	return packer
 end
 
-if first_time then
+if vim.fn.empty(vim.fn.glob(install_path)) == 1 then
+	vim.fn.system('git clone --depth 1 https://github.com/wbthomason/packer.nvim.git '..install_path)
 	packer_run().install()
-end
-
-if vim.fn.empty(vim.fn.glob(compile_path)) == 1 then
-	packer_run().compile()
 end
 
 vim.api.nvim_command('silent! source '..compile_path)
