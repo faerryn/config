@@ -51,6 +51,7 @@ local function setup()
 	use {
 		'stsewd/gx-extended.vim',
 		keys = {'gx', {'v', 'gx'}},
+		config = function() vim.g['gxext#handler'] = {global = {'global#urls'}} end,
 	}
 
 	use {
@@ -134,7 +135,7 @@ local function setup()
 		keys = {'<Leader>ff', '<Leader>fb', '<Leader>fl'},
 		config = function()
 			local actions = require('telescope.actions')
-			require('telescope').setup{defaults = {mappings = {i = {["<C-W>c"] = actions.close}}}}
+			require('telescope').setup{defaults = {mappings = {i = {["<C-w>c"] = actions.close}}}}
 			local keymap_opts = {noremap = true, silent = true}
 			vim.fn.nvim_set_keymap('n', '<Leader>ff', "<Cmd>lua require'telescope.builtin'.find_files{hidden = true}<CR>", keymap_opts)
 			vim.fn.nvim_set_keymap('n', '<Leader>fb', "<Cmd>lua require'telescope.builtin'.buffers()<CR>", keymap_opts)
@@ -176,6 +177,20 @@ local function setup()
 			vim.api.nvim_set_keymap('v', 'sa', '<Plug>(operator-sandwich-add)', keymap_opts)
 			vim.api.nvim_set_keymap('n', 'sd', '<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)', keymap_opts)
 			vim.api.nvim_set_keymap('n', 'sr', '<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)', keymap_opts)
+		end,
+	}
+
+	use {
+		'monaqa/dial.nvim',
+		keys = {'<C-a>', '<C-x>', {'v', '<C-a>'}, {'v', '<C-x>'}, {'v', 'g<C-a>'}, {'v', 'g<C-x>'}},
+		config = function()
+			local keymap_opts = {silent = true}
+			vim.api.nvim_set_keymap('n', '<C-a>', '<Plug>(dial-increment)', keymap_opts)
+			vim.api.nvim_set_keymap('n', '<C-x>', '<Plug>(dial-decrement)', keymap_opts)
+			vim.api.nvim_set_keymap('v', '<C-a>', '<Plug>(dial-increment)', keymap_opts)
+			vim.api.nvim_set_keymap('v', '<C-x>', '<Plug>(dial-decrement)', keymap_opts)
+			vim.api.nvim_set_keymap('v', 'g<C-a>', '<Plug>(dial-increment-additional)', keymap_opts)
+			vim.api.nvim_set_keymap('v', 'g<C-x>', '<Plug>(dial-decrement-additional)', keymap_opts)
 		end,
 	}
 
