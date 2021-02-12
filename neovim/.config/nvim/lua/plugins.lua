@@ -92,7 +92,7 @@ local function setup()
 			vim.g.gruvbox_improved_strings     = 1
 			vim.g.gruvbox_improved_warnings    = 1
 			vim.g.gruvbox_guisp_fallback       = 1
-			vim.cmd [[colorscheme gruvbox]]
+			vim.api.nvim_command'colorscheme gruvbox'
 		end,
 	}
 

@@ -9,7 +9,7 @@ end
 vim.api.nvim_command('silent! source '..plugins.compile_path)
 
 if packer_plugins == nil then
-	vim.cmd[[packadd packer.nvim]]
+	vim.api.nvim_command'packadd packer.nvim'
 	plugins.setup()
 	local packer = require'packer'
 	packer.install()
