@@ -3,7 +3,7 @@ local compile_path = vim.fn.stdpath'data'..'/packer_load.vim'
 
 local function setup()
 	local packer = require'packer'
-	packer.init({compile_path = compile_path})
+	packer.init{compile_path = compile_path}
 	packer.reset()
 	local use = require'packer'.use
 
@@ -18,26 +18,46 @@ local function setup()
 		config = function() vim.g.cursorhold_updatetime = 100 end,
 	}
 
-	use 'tpope/vim-repeat'
+	use {
+		'tpope/vim-repeat',
+		keys = '.',
+	}
 
-	use 'inkarkat/vim-visualrepeat'
+	use {
+		'inkarkat/vim-visualrepeat',
+		keys = {{'v', '.'}},
+	}
 
-	use 'ryvnf/readline.vim'
+	use {
+		'ryvnf/readline.vim',
+		event = 'CmdlineEnter *',
+	}
 
-	use 'kevinhwang91/nvim-bqf'
+	use {
+		'kevinhwang91/nvim-bqf',
+		ft = 'qf',
+	}
 
 	use 'chaoren/vim-wordmotion'
 
 	use {
 		'tommcdo/vim-lion',
+		keys = {'gl', 'gL', {'v', 'gl'}, {'v', 'gL'}},
 		config = function() vim.g.lion_squeeze_spaces = 1 end,
 	}
 
-	use 'tpope/vim-abolish'
+	use {
+		'tpope/vim-abolish',
+		cmd = {'Abolish', 'Subvert', 'S'},
+		keys = 'cr',
+	}
 
 	use 'tpope/vim-eunuch'
 
-	use 'tpope/vim-vinegar'
+	use {
+		'stsewd/gx-extended.vim',
+		keys = {'gx', {'v', 'gx'}},
+	}
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
@@ -129,11 +149,16 @@ local function setup()
 		end,
 	}
 
-	use 'rust-lang/rust.vim'
+	use {
+		'rust-lang/rust.vim',
+		ft = 'rust',
+	}
 
 	use {
 		'ziglang/zig.vim',
-		config = function() vim.g.zig_fmt_autosave = 0 end,
+		config = function()
+			vim.g.zig_fmt_autosave = 0
+		end,
 	}
 
 	use {
@@ -141,7 +166,25 @@ local function setup()
 		config = function() require'surround'.setup({}) end,
 	}
 
-	use 'b3nj5m1n/kommentary'
+	use {
+		'b3nj5m1n/kommentary',
+		keys = {'gc', 'gcc', {'v', 'gc'}},
+	}
+
+	use {
+		'kevinhwang91/nvim-hlslens',
+		keys = {'n', 'N', '*', '#', 'g*', 'g#'},
+		config = function()
+			require'hlslens'.setup{auto_enable = false}
+			local keymap_opts = {noremap = true, silent = true}
+			vim.api.nvim_set_keymap('n', 'n',  "<Cmd>execute 'normal!' v:count1.'n'<Bar>lua require'hlslens'.start()<CR>", keymap_opts)
+			vim.api.nvim_set_keymap('n', 'N',  "<Cmd>execute 'normal!' v:count1.'N'<Bar>lua require'hlslens'.start()<CR>", keymap_opts)
+			vim.api.nvim_set_keymap('n', '*',  "*<Cmd> lua require'hlslens'.start()<CR>",                                  keymap_opts)
+			vim.api.nvim_set_keymap('n', '#',  "#<Cmd> lua require'hlslens'.start()<CR>",                                  keymap_opts)
+			vim.api.nvim_set_keymap('n', 'g*', "g*<Cmd>lua require'hlslens'.start()<CR>",                                  keymap_opts)
+			vim.api.nvim_set_keymap('n', 'g#', "g#<Cmd>lua require'hlslens'.start()<CR>",                                  keymap_opts)
+		end,
+	}
 
 	use {
 		'norcalli/nvim-colorizer.lua',
@@ -160,7 +203,7 @@ local function setup()
 		cmd = 'Neogit',
 		keys = '<Leader>g',
 		config = function()
-			vim.api.nvim_set_keymap('n', '<Leader>g', '<cmd>lua require"neogit".status.create"split"<CR>', {noremap = true, silent = true})
+			vim.api.nvim_set_keymap('n', '<Leader>g', '<Cmd>lua require"neogit".status.create"split"<CR>', {noremap = true, silent = true})
 		end,
 	}
 
@@ -186,7 +229,7 @@ local function setup()
 		keys = '<Leader>u',
 		config = function()
 			vim.g.undotree_WindowLayout = 4
-			vim.api.nvim_set_keymap('n', '<Leader>u', '<cmd>UndotreeShow | UndotreeFocus<CR>', {noremap = true, silent = true})
+			vim.api.nvim_set_keymap('n', '<Leader>u', '<Cmd>UndotreeShow | UndotreeFocus<CR>', {noremap = true, silent = true})
 		end,
 	}
 

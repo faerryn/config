@@ -56,28 +56,28 @@ return {setup = function()
 	local keymap_opts = { noremap = true, silent = true }
 
 	vim.api.nvim_set_keymap('n', 'Y', 'y$', keymap_opts)
-	vim.api.nvim_set_keymap('n', ']a', '<cmd>next<CR>', keymap_opts)
-	vim.api.nvim_set_keymap('n', '[a', '<cmd>previous<CR>', keymap_opts)
-	vim.api.nvim_set_keymap('n', ']A', '<cmd>last<CR>', keymap_opts)
-	vim.api.nvim_set_keymap('n', '[A', '<cmd>first<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', ']a', '<Cmd>next<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', '[a', '<Cmd>previous<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', ']A', '<Cmd>last<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', '[A', '<Cmd>first<CR>', keymap_opts)
 
-	vim.api.nvim_set_keymap('n', ']b', '<cmd>bnext<CR>', keymap_opts)
-	vim.api.nvim_set_keymap('n', '[b', '<cmd>bprevious<CR>', keymap_opts)
-	vim.api.nvim_set_keymap('n', ']B', '<cmd>blast<CR>', keymap_opts)
-	vim.api.nvim_set_keymap('n', '[B', '<cmd>bfirst<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', ']b', '<Cmd>bnext<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', '[b', '<Cmd>bprevious<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', ']B', '<Cmd>blast<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', '[B', '<Cmd>bfirst<CR>', keymap_opts)
 
-	vim.api.nvim_set_keymap('n', '<Leader>l', '<cmd>lopen<CR>', keymap_opts)
-	vim.api.nvim_set_keymap('n', '<Leader>q', '<cmd>copen<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', '<Leader>l', '<Cmd>lopen<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', '<Leader>q', '<Cmd>copen<CR>', keymap_opts)
 
-	vim.api.nvim_set_keymap('n', ']q', '<cmd>cnext<CR>', keymap_opts)
-	vim.api.nvim_set_keymap('n', '[q', '<cmd>cprevious<CR>', keymap_opts)
-	vim.api.nvim_set_keymap('n', ']Q', '<cmd>clast<CR>', keymap_opts)
-	vim.api.nvim_set_keymap('n', '[Q', '<cmd>cfirst<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', ']q', '<Cmd>cnext<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', '[q', '<Cmd>cprevious<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', ']Q', '<Cmd>clast<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', '[Q', '<Cmd>cfirst<CR>', keymap_opts)
 
-	vim.api.nvim_set_keymap('n', ']l', '<cmd>lnext<CR>', keymap_opts)
-	vim.api.nvim_set_keymap('n', '[l', '<cmd>lprevious<CR>', keymap_opts)
-	vim.api.nvim_set_keymap('n', ']L', '<cmd>llast<CR>', keymap_opts)
-	vim.api.nvim_set_keymap('n', '[L', '<cmd>lfirst<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', ']l', '<Cmd>lnext<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', '[l', '<Cmd>lprevious<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', ']L', '<Cmd>llast<CR>', keymap_opts)
+	vim.api.nvim_set_keymap('n', '[L', '<Cmd>lfirst<CR>', keymap_opts)
 
 	vim.api.nvim_set_keymap('n', 's', '', keymap_opts)
 	vim.api.nvim_set_keymap('v', 's', '', keymap_opts)
@@ -93,5 +93,6 @@ return {setup = function()
 	augroup END
 	]], false)
 
-	vim.g.netrw_dirhistmax = 0
+	vim.g.loaded_netrw       = 1
+	vim.g.loaded_netrwPlugin = 1
 end}
