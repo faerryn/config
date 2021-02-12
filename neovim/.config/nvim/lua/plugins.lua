@@ -1,16 +1,13 @@
-function use_packages()
+local use_packages = function()
+	local packer = require'packer'
+	packer.init{compile_path = vim.fn.stdpath('data')..'/packer_load.vim'}
+	packer.reset()
 	local use = require'packer'.use
 
 	use {
 		'wbthomason/packer.nvim',
 		cmd = {'PackerClean', 'PackerCompile', 'PackerInstall', 'PackerSync', 'PackerUpdate'},
-		config = function()
-			local packer = require'packer'
-			local compile_path = vim.fn.stdpath('data')..'/packer_load.vim'
-			packer.init{compile_path = compile_path}
-			packer.reset()
-			use_packages(packer.use)
-		end,
+		config = use_packages,
 	}
 
 	use {
@@ -94,7 +91,7 @@ function use_packages()
 		config = function()
 			local actions = require('telescope.actions')
 			require('telescope').setup{defaults = {mappings = {i = {["<C-W>c"] = actions.close}}}}
-			vim.fn.nvim_set_keymap('n', '<Leader>f', "<Cmd>lua require'telescope.builtin'.find_files{ find_command = { 'fd', '--type', 'file', '--hidden', '--ignore-file', os.getenv'XDG_CONFIG_HOME'..'/git/ignore' } }<CR>", { noremap=true, silent=true })
+			vim.fn.nvim_set_keymap('n', '<Leader>f', "<Cmd>lua require'telescope.builtin'.find_files{ hidden = true }<CR>", { noremap=true, silent=true })
 		end,
 	}
 
@@ -199,26 +196,22 @@ local install_path = vim.fn.stdpath'data'..'/site/pack/packer/opt/packer.nvim'
 local compile_path = vim.fn.stdpath('data')..'/packer_load.vim'
 
 local packer_already_run = false
-function packer_run()
-	if packer_already_run then return require'packer' end
+local packer_run = function()
+	if packer_already_run then return end
 	packer_already_run = true
-
 	vim.cmd [[packadd packer.nvim]]
-	local packer = require'packer'
-	packer.init{compile_path = compile_path}
-	packer.reset()
 	use_packages()
-
-	return packer
 end
 
 if vim.fn.empty(vim.fn.glob(install_path)) == 1 then
 	vim.fn.system('git clone --depth 1 https://github.com/wbthomason/packer.nvim.git '..install_path)
-	packer_run().install()
+	packer_run()
+	require'packer'.install()
 end
 
 vim.api.nvim_command('silent! source '..compile_path)
 
 if packer_plugins == nil then
-	packer_run().compile()
+	packer_run()
+	require'packer'.compile()
 end

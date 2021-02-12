@@ -31,6 +31,13 @@ vim.o.splitright = true
 vim.wo.linebreak = true
 vim.wo.wrap = false
 
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = false
+vim.bo.tabstop = 2
+vim.bo.shiftwidth = 2
+vim.bo.expandtab = false
+
 vim.o.confirm = true
 vim.o.foldlevelstart = 99
 vim.o.inccommand = 'nosplit'
@@ -41,7 +48,7 @@ vim.o.nrformats = 'alpha,octal,hex,bin'
 vim.o.exrc = true
 
 if vim.fn.executable('rg') == 1 then
-	vim.o.grepprg = 'rg --hidden --ignore-file "'..vim.fn.getenv'XDG_CONFIG_HOME'..'"/git/ignore --vimgrep'
+	vim.o.grepprg = 'rg --hidden --vimgrep'
 	vim.o.grepformat = '%f:%l:%c:%m'
 end
 

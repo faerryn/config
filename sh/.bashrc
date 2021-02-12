@@ -25,8 +25,8 @@ dc () {
 
 alias ..=dc
 
-alias fd='fd --hidden --ignore-file '"${XDG_CONFIG_HOME}"'/git/ignore'
-alias rg='rg --hidden --ignore-file '"${XDG_CONFIG_HOME}"'/git/ignore'
+alias fd='fd --hidden'
+alias rg='rg --hidden'
 
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
