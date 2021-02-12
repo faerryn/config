@@ -32,11 +32,6 @@ local function setup()
 		event = 'CmdlineEnter *',
 	}
 
-	use {
-		'kevinhwang91/nvim-bqf',
-		ft = 'qf',
-	}
-
 	use 'chaoren/vim-wordmotion'
 
 	use {
@@ -171,8 +166,8 @@ local function setup()
 				{buns = {'[', ']'}, nesting = -1, linewise = 0, input = {'(', ')'}},
 				{buns = {'<', '>'}, nesting = -1, linewise = 0, input = {'<', '>'}},
 				{buns = 'sandwich#magicchar#t#tag()', listexpr = 1, kind = {'add', 'replace'}, action = {'add'}, input = {'t'}},
-				{external = {plug.."(textobj-sandwich-tag-i)", plug.."(textobj-sandwich-tag-a)"}, noremap = 0, kind = {'replace', 'query'}, expr_filter = {'operator#sandwich#kind() ==# "replace"'}, synchro = 1, input = {'t'}},
-				{external = {plug.."(textobj-sandwich-tag-i)", plug.."(textobj-sandwich-tag-a)"}, noremap = 0, kind = {'delete', 'textobj'}, expr_filter = {'operator#sandwich#kind() !=# "replace"'}, synchro = 1, linewise = 1, input = {'t'}},
+				{external = {plug..'(textobj-sandwich-tag-i)', plug..'(textobj-sandwich-tag-a)'}, noremap = 0, kind = {'replace', 'query'}, expr_filter = {'operator#sandwich#kind() ==# "replace"'}, synchro = 1, input = {'t'}},
+				{external = {plug..'(textobj-sandwich-tag-i)', plug..'(textobj-sandwich-tag-a)'}, noremap = 0, kind = {'delete', 'textobj'}, expr_filter = {'operator#sandwich#kind() !=# "replace"'}, synchro = 1, linewise = 1, input = {'t'}},
 			}
 			vim.g.sandwich_no_default_key_mappings          = 1
 			vim.g.operator_sandwich_no_default_key_mappings = 1
@@ -186,23 +181,13 @@ local function setup()
 	}
 
 	use {
-		'b3nj5m1n/kommentary',
-		keys = {'gc', 'gcc', {'v', 'gc'}},
+		'windwp/nvim-autopairs',
+		config = function() require'nvim-autopairs'.setup() end
 	}
 
 	use {
-		'kevinhwang91/nvim-hlslens',
-		keys = {'n', 'N', '*', '#', 'g*', 'g#'},
-		config = function()
-			require'hlslens'.setup{auto_enable = false}
-			local keymap_opts = {noremap = true, silent = true}
-			vim.api.nvim_set_keymap('n', 'n',  "<Cmd>execute 'normal!' v:count1.'n'<Bar>lua require'hlslens'.start()<CR>", keymap_opts)
-			vim.api.nvim_set_keymap('n', 'N',  "<Cmd>execute 'normal!' v:count1.'N'<Bar>lua require'hlslens'.start()<CR>", keymap_opts)
-			vim.api.nvim_set_keymap('n', '*',  "*<Cmd> lua require'hlslens'.start()<CR>", keymap_opts)
-			vim.api.nvim_set_keymap('n', '#',  "#<Cmd> lua require'hlslens'.start()<CR>", keymap_opts)
-			vim.api.nvim_set_keymap('n', 'g*', "g*<Cmd>lua require'hlslens'.start()<CR>", keymap_opts)
-			vim.api.nvim_set_keymap('n', 'g#', "g#<Cmd>lua require'hlslens'.start()<CR>", keymap_opts)
-		end,
+		'b3nj5m1n/kommentary',
+		keys = {'gc', 'gcc', {'v', 'gc'}},
 	}
 
 	use {
