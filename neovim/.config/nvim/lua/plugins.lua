@@ -1,4 +1,5 @@
 function use_packages(use)
+
 	use {
 		'wbthomason/packer.nvim',
 		cmd = {'PackerClean', 'PackerCompile', 'PackerInstall', 'PackerSync', 'PackerUpdate'},
@@ -193,16 +194,6 @@ function use_packages(use)
 		end,
 	}
 
-	--[[ use {
-		'oberblastmeister/neuron.nvim',
-		requires = {'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim'},
-		config = function()
-			require'neuron'.setup{
-				neuron_dir = "~/doc/notes",
-				leader = "<Leader>n",
-			}
-		end,
-	} ]]
 end
 
 local install_path = vim.fn.stdpath'data'..'/site/pack/packer/opt/packer.nvim'
