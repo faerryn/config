@@ -1,5 +1,5 @@
 local install_path = vim.fn.stdpath'data'..'/site/pack/packer/opt/packer.nvim'
-local compile_path = vim.fn.stdpath'data'..'/packer_load.vim'
+local compile_path = vim.fn.stdpath'data'..'/packer_compiled.vim'
 
 local function setup()
 	local packer = require'packer'
