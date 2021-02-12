@@ -14,19 +14,18 @@ local function setup()
 	}
 
 	use {
+		'dstein64/vim-startuptime',
+		cmd = 'StartupTime',
+	}
+
+	use {
 		'antoinemadec/FixCursorHold.nvim',
 		config = function() vim.g.cursorhold_updatetime = 100 end,
 	}
 
-	use {
-		'tpope/vim-repeat',
-		keys = '.',
-	}
+	use 'tpope/vim-repeat'
 
-	use {
-		'inkarkat/vim-visualrepeat',
-		keys = {{'v', '.'}},
-	}
+	use 'inkarkat/vim-visualrepeat'
 
 	use {
 		'ryvnf/readline.vim',
@@ -73,8 +72,8 @@ local function setup()
 	use {
 		'morhetz/gruvbox',
 		config = function()
-			vim.o.background                   = 'dark'
-			vim.o.termguicolors                = true
+			vim.o.background    = 'dark'
+			vim.o.termguicolors = true
 			vim.g.gruvbox_bold                 = 1
 			vim.g.gruvbox_italic               = 1
 			vim.g.gruvbox_transparent_bg       = 1
@@ -141,7 +140,7 @@ local function setup()
 		config = function()
 			local actions = require('telescope.actions')
 			require('telescope').setup{defaults = {mappings = {i = {["<C-W>c"] = actions.close}}}}
-			local keymap_opts = {noremap=true, silent=true}
+			local keymap_opts = {noremap = true, silent = true}
 			vim.fn.nvim_set_keymap('n', '<Leader>ff', "<Cmd>lua require'telescope.builtin'.fd{hidden = true}<CR>", keymap_opts)
 			vim.fn.nvim_set_keymap('n', '<Leader>fb', "<Cmd>lua require'telescope.builtin'.buffers()<CR>",         keymap_opts)
 			vim.fn.nvim_set_keymap('n', '<Leader>fg', "<Cmd>lua require'telescope.builtin'.treesitter()<CR>",      keymap_opts)
@@ -162,8 +161,28 @@ local function setup()
 	}
 
 	use {
-		'blackCauldron7/surround.nvim',
-		config = function() require'surround'.setup({}) end,
+		'machakann/vim-sandwich',
+		keys = {'sa', 'sd', 'sr', {'v', 'sa'}},
+		config = function()
+			local plug = vim.api.nvim_eval[["\<Plug>"]]
+			vim.g['sandwich#recipes'] = {
+				{buns = {'(', ')'}, nesting = -1, linewise = 0, input = {'(', ')', 'b'}},
+				{buns = {'{', '}'}, nesting = -1, linewise = 0, input = {'{', '}', 'B'}},
+				{buns = {'[', ']'}, nesting = -1, linewise = 0, input = {'(', ')'}},
+				{buns = {'<', '>'}, nesting = -1, linewise = 0, input = {'<', '>'}},
+				{buns = 'sandwich#magicchar#t#tag()', listexpr = 1, kind = {'add', 'replace'}, action = {'add'}, input = {'t'}},
+				{external = {plug.."(textobj-sandwich-tag-i)", plug.."(textobj-sandwich-tag-a)"}, noremap = 0, kind = {'replace', 'query'}, expr_filter = {'operator#sandwich#kind() ==# "replace"'}, synchro = 1, input = {'t'}},
+				{external = {plug.."(textobj-sandwich-tag-i)", plug.."(textobj-sandwich-tag-a)"}, noremap = 0, kind = {'delete', 'textobj'}, expr_filter = {'operator#sandwich#kind() !=# "replace"'}, synchro = 1, linewise = 1, input = {'t'}},
+			}
+			vim.g.sandwich_no_default_key_mappings          = 1
+			vim.g.operator_sandwich_no_default_key_mappings = 1
+			vim.g.textobj_sandwich_no_default_key_mappings  = 1
+			local keymap_opts = {silent = true}
+			vim.api.nvim_set_keymap('n', 'sa', '<Plug>(operator-sandwich-add)', keymap_opts)
+			vim.api.nvim_set_keymap('v', 'sa', '<Plug>(operator-sandwich-add)', keymap_opts)
+			vim.api.nvim_set_keymap('n', 'sd', '<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)', keymap_opts)
+			vim.api.nvim_set_keymap('n', 'sr', '<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)', keymap_opts)
+		end,
 	}
 
 	use {
@@ -179,10 +198,10 @@ local function setup()
 			local keymap_opts = {noremap = true, silent = true}
 			vim.api.nvim_set_keymap('n', 'n',  "<Cmd>execute 'normal!' v:count1.'n'<Bar>lua require'hlslens'.start()<CR>", keymap_opts)
 			vim.api.nvim_set_keymap('n', 'N',  "<Cmd>execute 'normal!' v:count1.'N'<Bar>lua require'hlslens'.start()<CR>", keymap_opts)
-			vim.api.nvim_set_keymap('n', '*',  "*<Cmd> lua require'hlslens'.start()<CR>",                                  keymap_opts)
-			vim.api.nvim_set_keymap('n', '#',  "#<Cmd> lua require'hlslens'.start()<CR>",                                  keymap_opts)
-			vim.api.nvim_set_keymap('n', 'g*', "g*<Cmd>lua require'hlslens'.start()<CR>",                                  keymap_opts)
-			vim.api.nvim_set_keymap('n', 'g#', "g#<Cmd>lua require'hlslens'.start()<CR>",                                  keymap_opts)
+			vim.api.nvim_set_keymap('n', '*',  "*<Cmd> lua require'hlslens'.start()<CR>", keymap_opts)
+			vim.api.nvim_set_keymap('n', '#',  "#<Cmd> lua require'hlslens'.start()<CR>", keymap_opts)
+			vim.api.nvim_set_keymap('n', 'g*', "g*<Cmd>lua require'hlslens'.start()<CR>", keymap_opts)
+			vim.api.nvim_set_keymap('n', 'g#', "g#<Cmd>lua require'hlslens'.start()<CR>", keymap_opts)
 		end,
 	}
 
