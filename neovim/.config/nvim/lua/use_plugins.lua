@@ -1,4 +1,4 @@
-local use_packages = function()
+return {setup = function()
 	local packer = require'packer'
 	packer.init{compile_path = vim.fn.stdpath('data')..'/packer_load.vim'}
 	packer.reset()
@@ -7,7 +7,7 @@ local use_packages = function()
 	use {
 		'wbthomason/packer.nvim',
 		cmd = {'PackerClean', 'PackerCompile', 'PackerInstall', 'PackerSync', 'PackerUpdate'},
-		config = use_packages,
+		config = function() require'use_plugins'.setup() end,
 	}
 
 	use {
@@ -77,9 +77,15 @@ local use_packages = function()
 		'itchyny/lightline.vim',
 		config = function()
 			vim.g.lightline = {
-				colorscheme = 'gruvbox',
-				tabline = {right = {}},
+				colorscheme = vim.g.colors_name,
+				tabline = {right = {}}
 			}
+			vim.api.nvim_exec([[
+			augroup lightline_colorscheme_sync
+			autocmd!
+			autocmd ColorScheme * let g:lightline.colorscheme = g:colors_name | call lightline#enable()
+			augroup END
+			]], false)
 		end
 	}
 
@@ -95,53 +101,7 @@ local use_packages = function()
 		end,
 	}
 
-	use {
-		'neovim/nvim-lspconfig',
-		ft = { 'c', 'cpp', 'rust', 'zig' },
-		config = function()
-			local nvim_lsp = require'lspconfig'
-			local configs = require'lspconfig/configs'
-			local servers = {'clangd', 'rust_analyzer', 'zls'}
-			nvim_lsp.clangd.cmd = {'clangd', '--background-index', '--clang-tidy'}
-			if not configs.zls then
-				configs.zls = {
-					default_config = {
-						cmd = { 'zls' };
-						filetypes = { 'zig' };
-						root_dir = nvim_lsp.util.root_pattern('build.zig');
-						settings = {};
-					};
-				}
-			end
-			local on_attach = function(client, bufnr)
-				vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-				local keymap_opts = {noremap = true, silent = true}
-				-- Mappings.
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD',    '<cmd>lua vim.lsp.buf.declaration()<CR>',      keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd',    '<cmd>lua vim.lsp.buf.definition()<CR>',       keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K',     '<cmd>lua vim.lsp.buf.hover()<CR>',            keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi',    '<cmd>lua vim.lsp.buf.implementation()<CR>',   keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>',   keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr',    '<cmd>lua vim.lsp.buf.references()<CR>',       keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d',    '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d',    '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', keymap_opts)
-				-- Set some keybinds conditional on server capabilities
-				if client.resolved_capabilities.document_formatting then
-					vim.api.nvim_exec([[
-					augroup lsp_document_autoformat
-					autocmd!
-					autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-					augroup END
-					]], false)
-				end
-			end
-			-- Use a loop to conveniently both setup defined servers 
-			-- and map buffer local keybindings when the language server attaches
-			for _, lsp in ipairs(servers) do
-				nvim_lsp[lsp].setup {on_attach = on_attach}
-			end
-		end,
-	}
+	use 'rust-lang/rust.vim'
 
 	use {
 		'ziglang/zig.vim',
@@ -190,28 +150,4 @@ local use_packages = function()
 		end,
 	}
 
-end
-
-local install_path = vim.fn.stdpath'data'..'/site/pack/packer/opt/packer.nvim'
-local compile_path = vim.fn.stdpath('data')..'/packer_load.vim'
-
-local packer_already_run = false
-local packer_run = function()
-	if packer_already_run then return end
-	packer_already_run = true
-	vim.cmd [[packadd packer.nvim]]
-	use_packages()
-end
-
-if vim.fn.empty(vim.fn.glob(install_path)) == 1 then
-	vim.fn.system('git clone --depth 1 https://github.com/wbthomason/packer.nvim.git '..install_path)
-	packer_run()
-	require'packer'.install()
-end
-
-vim.api.nvim_command('silent! source '..compile_path)
-
-if packer_plugins == nil then
-	packer_run()
-	require'packer'.compile()
-end
+end}
