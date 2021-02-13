@@ -10,7 +10,6 @@ local function plugins()
 	packer.reset()
 
 	local use = packer.use
-	local function always() return true end
 
 	use {
 		'wbthomason/packer.nvim',
@@ -18,11 +17,11 @@ local function plugins()
 		cmd = { 'PackerClean', 'PackerCompile', 'PackerInstall', 'PackerSync', 'PackerUpdate' },
 		config = function()
 			vim.api.nvim_exec([[
-			command! PackerInstall  lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').install()
-			command! PackerUpdate   lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').update()
-			command! PackerSync     lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').sync()
-			command! PackerClean    lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').clean()
-			command! PackerCompile  lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').compile()
+			command! PackerInstall lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').install()
+			command! PackerUpdate  lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').update()
+			command! PackerSync    lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').sync()
+			command! PackerClean   lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').clean()
+			command! PackerCompile lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').compile()
 			]], false)
 		end,
 	}
@@ -90,8 +89,8 @@ local function plugins()
 				vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 				local keymap_opts = { noremap = true, silent = true }
 				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', keymap_opts)
-				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>',  keymap_opts)
+				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K',  '<Cmd>lua vim.lsp.buf.hover()<CR>',       keymap_opts)
 			end
 
 			for _, server in ipairs(servers) do
@@ -102,8 +101,7 @@ local function plugins()
 
 	use {
 		'morhetz/gruvbox',
-		cond = always,
-		setup = function()
+		config = function()
 			vim.o.background    = 'dark'
 			vim.o.termguicolors = true
 
@@ -124,16 +122,14 @@ local function plugins()
 			vim.g.gruvbox_improved_strings     = 1
 			vim.g.gruvbox_improved_warnings    = 1
 			vim.g.gruvbox_guisp_fallback       = 1
-		end,
-		config = function()
+
 			vim.api.nvim_command'colorscheme gruvbox'
 		end,
 	}
 
 	use {
 		'itchyny/lightline.vim',
-		cond = always,
-		setup = function()
+		config = function()
 			vim.g.lightline = {
 				active = {
 					left = {
@@ -158,8 +154,7 @@ local function plugins()
 					right = { },
 				},
 			}
-		end,
-		config = function()
+
 			vim.api.nvim_exec([[
 			augroup lightline_colorscheme_sync
 			autocmd!
