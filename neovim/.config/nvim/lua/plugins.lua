@@ -83,14 +83,6 @@ local function plugins()
 		ft = { 'c', 'cpp', 'rust', 'zig' },
 		config = function()
 			local lspconfig = require'lspconfig'
-			if lspconfig.zls == nil then
-				lspconfig.configs.zls = { default_config = {
-					cmd = { 'zls' },
-					filetypes = { 'zig' },
-					root_dir = lspconfig.util.root_pattern'build.zig',
-					settings = {},
-				} }
-			end
 
 			local servers = { 'clangd', 'rust_analyzer', 'zls' }
 
