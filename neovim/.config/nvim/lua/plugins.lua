@@ -3,25 +3,25 @@ local compile_path = vim.fn.stdpath'data'..'/packer_compiled.vim'
 
 local function setup()
 	local packer = require'packer'
-	packer.init{compile_path = compile_path}
+	packer.init{ compile_path = compile_path }
 	packer.reset()
 	local use = require'packer'.use
 
 	use {
 		'wbthomason/packer.nvim',
-		cmd = {'PackerClean', 'PackerCompile', 'PackerInstall', 'PackerSync', 'PackerUpdate'},
+		cmd = { 'PackerClean', 'PackerCompile', 'PackerInstall', 'PackerSync', 'PackerUpdate' },
 		config = function() require'plugins'.setup() end,
-	}
+	 }
 
 	use {
 		'dstein64/vim-startuptime',
 		cmd = 'StartupTime',
-	}
+	 }
 
 	use {
 		'antoinemadec/FixCursorHold.nvim',
 		config = function() vim.g.cursorhold_updatetime = 100 end,
-	}
+	 }
 
 	use 'tpope/vim-repeat'
 
@@ -30,29 +30,29 @@ local function setup()
 	use {
 		'ryvnf/readline.vim',
 		event = 'CmdlineEnter *',
-	}
+	 }
 
 	use 'chaoren/vim-wordmotion'
 
 	use {
 		'tommcdo/vim-lion',
-		keys = {'gl', 'gL', {'v', 'gl'}, {'v', 'gL'}},
+		keys = { 'gl', 'gL', { 'v', 'gl' }, { 'v', 'gL' } },
 		config = function() vim.g.lion_squeeze_spaces = 1 end,
-	}
+	 }
 
 	use {
 		'tpope/vim-abolish',
-		cmd = {'Abolish', 'Subvert', 'S'},
+		cmd = { 'Abolish', 'Subvert', 'S' },
 		keys = 'cr',
-	}
+	 }
 
 	use 'tpope/vim-eunuch'
 
 	use {
 		'stsewd/gx-extended.vim',
-		keys = {'gx', {'v', 'gx'}},
-		config = function() vim.g['gxext#handler'] = {global = {'global#urls'}} end,
-	}
+		keys = { 'gx', { 'v', 'gx' } },
+		config = function() vim.g['gxext#handler'] = { global = { 'global#urls' } } end,
+	 }
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
@@ -60,10 +60,10 @@ local function setup()
 		config = function()
 			require'nvim-treesitter.configs'.setup{
 				ensure_installed = "maintained",
-				highlight = {enable = true},
-			}
+				highlight = { enable = true },
+			 }
 		end,
-	}
+	 }
 
 	use {
 		'morhetz/gruvbox',
@@ -89,7 +89,7 @@ local function setup()
 			vim.g.gruvbox_guisp_fallback       = 1
 			vim.api.nvim_command'colorscheme gruvbox'
 		end,
-	}
+	 }
 
 	use {
 		'itchyny/lightline.vim',
@@ -98,27 +98,27 @@ local function setup()
 				colorscheme = vim.g.colors_name,
 				active = {
 					left = {
-						{'mode', 'paste'},
-						{'readonly', 'filename', 'modified'},
-					},
+						{ 'mode', 'paste' },
+						{ 'readonly', 'filename', 'modified' },
+					 },
 					right = {
-						{'lineinfo'},
-						{'percent'},
-						{'fileformat', 'fileencoding', 'filetype'},
-					},
-				},
+						{ 'lineinfo' },
+						{ 'percent' },
+						{ 'fileformat', 'fileencoding', 'filetype' },
+					 },
+				 },
 				inactive = {
-					left = {{'filename'}},
+					left = { {'filename' } },
 					right = {
-						{'lineinfo'},
-						{'percent'},
-					},
-				},
+						{ 'lineinfo' },
+						{ 'percent' },
+					 },
+				 },
 				tabline = {
-					left = {{'tabs'}},
-					right = {},
-				},
-			}
+					left = { {'tabs' } },
+					right = { },
+				 },
+			 }
 			vim.api.nvim_exec([[
 			augroup lightline_colorscheme_sync
 			autocmd!
@@ -126,65 +126,65 @@ local function setup()
 			augroup END
 			]], false)
 		end
-	}
+	 }
 
 	use {
 		'nvim-telescope/telescope.nvim',
-		requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'},
+		requires = { 'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim' },
 		cmd = 'Telescope',
-		keys = {'<Leader>ff', '<Leader>fb', '<Leader>fl'},
+		keys = { '<Leader>ff', '<Leader>fb', '<Leader>fl' },
 		config = function()
 			local actions = require('telescope.actions')
-			require('telescope').setup{defaults = {mappings = {i = {["<C-w>c"] = actions.close}}}}
-			local keymap_opts = {noremap = true, silent = true}
-			vim.fn.nvim_set_keymap('n', '<Leader>ff', "<Cmd>lua require'telescope.builtin'.find_files{hidden = true}<CR>", keymap_opts)
+			require('telescope').setup{ defaults = { mappings = { i = { ["<C-w>c"] = actions.close } } } }
+			local keymap_opts = { noremap = true, silent = true }
+			vim.fn.nvim_set_keymap('n', '<Leader>ff', "<Cmd>lua require'telescope.builtin'.find_files{ hidden = true }<CR>", keymap_opts)
 			vim.fn.nvim_set_keymap('n', '<Leader>fb', "<Cmd>lua require'telescope.builtin'.buffers()<CR>", keymap_opts)
 			vim.fn.nvim_set_keymap('n', '<Leader>fl', "<Cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find()<CR>", keymap_opts)
 		end,
-	}
+	 }
 
 	use {
 		'rust-lang/rust.vim',
 		ft = 'rust',
-	}
+	 }
 
 	use {
 		'ziglang/zig.vim',
 		config = function()
 			vim.g.zig_fmt_autosave = 0
 		end,
-	}
+	 }
 
 	use {
 		'machakann/vim-sandwich',
-		keys = {'sa', 'sd', 'sr', {'v', 'sa'}},
+		keys = { 'sa', 'sd', 'sr', { 'v', 'sa' } },
 		config = function()
 			local plug = vim.api.nvim_eval[["\<Plug>"]]
 			vim.g['sandwich#recipes'] = {
-				{buns = {'(', ')'}, nesting = -1, linewise = 0, input = {'(', ')', 'b'}},
-				{buns = {'{', '}'}, nesting = -1, linewise = 0, input = {'{', '}', 'B'}},
-				{buns = {'[', ']'}, nesting = -1, linewise = 0, input = {'(', ')'}},
-				{buns = {'<', '>'}, nesting = -1, linewise = 0, input = {'<', '>'}},
-				{buns = 'sandwich#magicchar#t#tag()', listexpr = 1, kind = {'add', 'replace'}, action = {'add'}, input = {'t'}},
-				{external = {plug..'(textobj-sandwich-tag-i)', plug..'(textobj-sandwich-tag-a)'}, noremap = 0, kind = {'replace', 'query'}, expr_filter = {'operator#sandwich#kind() ==# "replace"'}, synchro = 1, input = {'t'}},
-				{external = {plug..'(textobj-sandwich-tag-i)', plug..'(textobj-sandwich-tag-a)'}, noremap = 0, kind = {'delete', 'textobj'}, expr_filter = {'operator#sandwich#kind() !=# "replace"'}, synchro = 1, linewise = 1, input = {'t'}},
-			}
+				{ buns = { '(', ')' }, nesting = -1, linewise = 0, input = { '(', ')', 'b' } },
+				{ buns = { '{ ', ' }' }, nesting = -1, linewise = 0, input = { '{ ', ' }', 'B' } },
+				{ buns = { '[', ']' }, nesting = -1, linewise = 0, input = { '(', ')' } },
+				{ buns = { '<', '>' }, nesting = -1, linewise = 0, input = { '<', '>' } },
+				{ buns = 'sandwich#magicchar#t#tag()', listexpr = 1, kind = { 'add', 'replace' }, action = { 'add' }, input = { 't' } },
+				{ external = { plug..'(textobj-sandwich-tag-i)', plug..'(textobj-sandwich-tag-a)' }, noremap = 0, kind = { 'replace', 'query' }, expr_filter = { 'operator#sandwich#kind() ==# "replace"' }, synchro = 1, input = { 't' } },
+				{ external = { plug..'(textobj-sandwich-tag-i)', plug..'(textobj-sandwich-tag-a)' }, noremap = 0, kind = { 'delete', 'textobj' }, expr_filter = { 'operator#sandwich#kind() !=# "replace"' }, synchro = 1, linewise = 1, input = { 't' } },
+			 }
 			vim.g.sandwich_no_default_key_mappings          = 1
 			vim.g.operator_sandwich_no_default_key_mappings = 1
 			vim.g.textobj_sandwich_no_default_key_mappings  = 1
-			local keymap_opts = {silent = true}
+			local keymap_opts = { silent = true }
 			vim.api.nvim_set_keymap('n', 'sa', '<Plug>(operator-sandwich-add)', keymap_opts)
 			vim.api.nvim_set_keymap('v', 'sa', '<Plug>(operator-sandwich-add)', keymap_opts)
 			vim.api.nvim_set_keymap('n', 'sd', '<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)', keymap_opts)
 			vim.api.nvim_set_keymap('n', 'sr', '<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)', keymap_opts)
 		end,
-	}
+	 }
 
 	use {
 		'monaqa/dial.nvim',
-		keys = {'<C-a>', '<C-x>', {'v', '<C-a>'}, {'v', '<C-x>'}, {'v', 'g<C-a>'}, {'v', 'g<C-x>'}},
+		keys = { '<C-a>', '<C-x>', { 'v', '<C-a>' }, { 'v', '<C-x>' }, { 'v', 'g<C-a>' }, { 'v', 'g<C-x>' } },
 		config = function()
-			local keymap_opts = {silent = true}
+			local keymap_opts = { silent = true }
 			vim.api.nvim_set_keymap('n', '<C-a>', '<Plug>(dial-increment)', keymap_opts)
 			vim.api.nvim_set_keymap('n', '<C-x>', '<Plug>(dial-decrement)', keymap_opts)
 			vim.api.nvim_set_keymap('v', '<C-a>', '<Plug>(dial-increment)', keymap_opts)
@@ -192,17 +192,17 @@ local function setup()
 			vim.api.nvim_set_keymap('v', 'g<C-a>', '<Plug>(dial-increment-additional)', keymap_opts)
 			vim.api.nvim_set_keymap('v', 'g<C-x>', '<Plug>(dial-decrement-additional)', keymap_opts)
 		end,
-	}
+	 }
 
 	use {
 		'windwp/nvim-autopairs',
 		config = function() require'nvim-autopairs'.setup() end
-	}
+	 }
 
 	use {
 		'b3nj5m1n/kommentary',
-		keys = {'gc', 'gcc', {'v', 'gc'}},
-	}
+		keys = { 'gc', 'gcc', { 'v', 'gc' } },
+	 }
 
 	use {
 		'norcalli/nvim-colorizer.lua',
@@ -214,16 +214,16 @@ local function setup()
 			augroup END
 			]], false)
 		end,
-	}
+	 }
 
 	use {
 		'TimUntersberger/neogit',
 		cmd = 'Neogit',
 		keys = '<Leader>g',
 		config = function()
-			vim.api.nvim_set_keymap('n', '<Leader>g', '<Cmd>lua require"neogit".status.create"split"<CR>', {noremap = true, silent = true})
+			vim.api.nvim_set_keymap('n', '<Leader>g', '<Cmd>lua require"neogit".status.create"split"<CR>', { noremap = true, silent = true })
 		end,
-	}
+	 }
 
 	use {
 		'lewis6991/gitsigns.nvim',
@@ -231,15 +231,15 @@ local function setup()
 		config = function()
 			require('gitsigns').setup{
 				signs = {
-					add          = {hl = 'GitGutterAdd',    text = '+'},
-					change       = {hl = 'GitGutterChange', text = '~'},
-					delete       = {hl = 'GitGutterDelete', text = '_'},
-					topdelete    = {hl = 'GitGutterDelete', text = '‾'},
-					changedelete = {hl = 'GitGutterChange', text = '~'},
-				}
-			}
+					add          = { hl = 'GitGutterAdd',    text = '+' },
+					change       = { hl = 'GitGutterChange', text = '~' },
+					delete       = { hl = 'GitGutterDelete', text = '_' },
+					topdelete    = { hl = 'GitGutterDelete', text = '‾' },
+					changedelete = { hl = 'GitGutterChange', text = '~' },
+				 }
+			 }
 		end,
-	}
+	 }
 
 	use {
 		'mbbill/undotree',
@@ -247,9 +247,9 @@ local function setup()
 		keys = '<Leader>u',
 		config = function()
 			vim.g.undotree_WindowLayout = 4
-			vim.api.nvim_set_keymap('n', '<Leader>u', '<Cmd>UndotreeShow | UndotreeFocus<CR>', {noremap = true, silent = true})
+			vim.api.nvim_set_keymap('n', '<Leader>u', '<Cmd>UndotreeShow | UndotreeFocus<CR>', { noremap = true, silent = true })
 		end,
-	}
+	 }
 
 end
 

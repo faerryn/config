@@ -1,4 +1,4 @@
-return {setup = function()
+return { setup = function()
 	vim.o.hidden = true
 
 	vim.o.clipboard = 'unnamedplus'
@@ -55,7 +55,7 @@ return {setup = function()
 		vim.o.shell = '/bin/sh'
 	end
 
-	local keymap_opts = {noremap = true, silent = true}
+	local keymap_opts = { noremap = true, silent = true }
 
 	vim.api.nvim_set_keymap('n', 'Y', 'y$', keymap_opts)
 	vim.api.nvim_set_keymap('n', ']a', '<Cmd>next<CR>', keymap_opts)
@@ -90,11 +90,11 @@ return {setup = function()
 	vim.api.nvim_exec([[
 	augroup personal
 	autocmd!
-	autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup = "Search", timeout = 300}
+	autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup = "Search", timeout = 300 }
 	autocmd BufWritePre * call mkdir(expand('%:p:h'), 'p')
 	augroup END
 	]], false)
 
 	vim.g.loaded_netrw       = 1
 	vim.g.loaded_netrwPlugin = 1
-end}
+end }
