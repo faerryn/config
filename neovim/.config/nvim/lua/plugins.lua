@@ -73,7 +73,6 @@ local function plugins()
 		run = ':TSUpdate',
 		config = function()
 			require'nvim-treesitter.configs'.setup{
-				ensure_installed = 'maintained',
 				highlight = { enable = true },
 			}
 		end,
@@ -92,10 +91,18 @@ local function plugins()
 					settings = {},
 				} }
 			end
+
 			local servers = { 'clangd', 'rust_analyzer', 'zls' }
-			local function on_attach(client, bufnr)
+
+			local on_attach = function(client, bufnr)
+				vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+				local keymap_opts = { noremap = true, silent = true }
+				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', keymap_opts)
+				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
 			end
-			for _, server in ipair(servers) do
+
+			for _, server in ipairs(servers) do
 				lspconfig[server].setup{ on_attach = on_attach }
 			end
 		end,
@@ -177,7 +184,10 @@ local function plugins()
 		cmd = 'Telescope',
 		keys = { '<Leader>ff', '<Leader>fb', '<Leader>fl' },
 		config = function()
-			require'telescope'.setup{ defaults = { mappings = { i = { ['<C-w>c'] = require'telescope.actions'.close } } } }
+			require'telescope'.setup{ defaults = {
+				mappings = { i = { ['<C-w>c'] = require'telescope.actions'.close } },
+				file_previewer = require'telescope.previewers'.vim_buffer_cat.new
+			} }
 			local keymap_opts = { noremap = true, silent = true }
 			vim.fn.nvim_set_keymap('n', '<Leader>ff', [[<Cmd>lua require'telescope.builtin'.find_files{ hidden = true }<CR>]], keymap_opts)
 			vim.fn.nvim_set_keymap('n', '<Leader>fb', [[<Cmd>lua require'telescope.builtin'.buffers()<CR>]], keymap_opts)
