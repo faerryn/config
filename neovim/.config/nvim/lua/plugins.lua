@@ -1,17 +1,18 @@
-local install_path = vim.fn.stdpath'data'..'/site/pack/packer/opt/packer.nvim'
-local compile_path = vim.fn.stdpath'data'..'/packer_compiled.vim'
-local packer_repo = 'wbthomason/packer.nvim'
+local packer_config = {
+	compile_path = vim.fn.stdpath'data'..'/packer_compiled.vim',
+	auto_clean = false,
+}
 
 local function plugins()
 	local packer = require'packer'
-	packer.init{ compile_path = compile_path }
+	packer.init(packer_config)
 	packer.reset()
 
 	local use = packer.use
 	local function always() return true end
 
 	use {
-		packer_repo,
+		'wbthomason/packer.nvim',
 		require = 'nvim-lua/plenary.nvim',
 		cmd = { 'PackerClean', 'PackerCompile', 'PackerInstall', 'PackerSync', 'PackerUpdate' },
 		config = function()
@@ -310,13 +311,9 @@ local function plugins()
 end
 
 local function bootstrap()
+	local install_path = vim.fn.stdpath'data'..'/site/pack/packer/opt/packer.nvim'
 	if vim.fn.empty(vim.fn.glob(install_path)) == 1 then
-		vim.fn.system(
-		'git clone '
-		..'--depth 1 '
-		..'https://github.com/'..packer_repo..'.git '
-		..install_path
-		)
+		vim.fn.system('git clone --depth 1 https://github.com/wbthomason/packer.nvim.git '..install_path)
 	end
 	vim.api.nvim_command'packadd packer.nvim'
 
@@ -328,7 +325,7 @@ local function bootstrap()
 end
 
 local function setup()
-	vim.api.nvim_command('silent! source '..compile_path)
+	vim.api.nvim_command('silent! source '..packer_config.compile_path)
 	if packer_plugins == nil then bootstrap() end
 end
 
