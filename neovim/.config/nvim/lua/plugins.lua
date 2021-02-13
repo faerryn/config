@@ -1,27 +1,34 @@
 local install_path = vim.fn.stdpath'data'..'/site/pack/packer/opt/packer.nvim'
 local compile_path = vim.fn.stdpath'data'..'/packer_compiled.vim'
+local packer_repo = 'wbthomason/packer.nvim'
 
-local function setup()
+local function plugins()
 	local packer = require'packer'
 	packer.init{ compile_path = compile_path }
 	packer.reset()
-	local use = require'packer'.use
+
+	local use = packer.use
+	local function always() return true end
 
 	use {
-		'wbthomason/packer.nvim',
+		packer_repo,
+		require = 'nvim-lua/plenary.nvim',
 		cmd = { 'PackerClean', 'PackerCompile', 'PackerInstall', 'PackerSync', 'PackerUpdate' },
-		config = function() require'plugins'.setup() end,
-	 }
+		config = function()
+			require'plenary.reload'.reload_module'plugins'
+			require'plugins'.plugins()
+		end,
+	}
 
 	use {
 		'dstein64/vim-startuptime',
 		cmd = 'StartupTime',
-	 }
+	}
 
 	use {
 		'antoinemadec/FixCursorHold.nvim',
 		config = function() vim.g.cursorhold_updatetime = 100 end,
-	 }
+	}
 
 	use 'tpope/vim-repeat'
 
@@ -30,7 +37,7 @@ local function setup()
 	use {
 		'ryvnf/readline.vim',
 		event = 'CmdlineEnter *',
-	 }
+	}
 
 	use 'chaoren/vim-wordmotion'
 
@@ -38,13 +45,13 @@ local function setup()
 		'tommcdo/vim-lion',
 		keys = { 'gl', 'gL', { 'v', 'gl' }, { 'v', 'gL' } },
 		config = function() vim.g.lion_squeeze_spaces = 1 end,
-	 }
+	}
 
 	use {
 		'tpope/vim-abolish',
 		cmd = { 'Abolish', 'Subvert', 'S' },
 		keys = 'cr',
-	 }
+	}
 
 	use 'tpope/vim-eunuch'
 
@@ -52,24 +59,48 @@ local function setup()
 		'stsewd/gx-extended.vim',
 		keys = { 'gx', { 'v', 'gx' } },
 		config = function() vim.g['gxext#handler'] = { global = { 'global#urls' } } end,
-	 }
+	}
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate',
 		config = function()
 			require'nvim-treesitter.configs'.setup{
-				ensure_installed = "maintained",
+				ensure_installed = 'maintained',
 				highlight = { enable = true },
-			 }
+			}
 		end,
-	 }
+	}
+
+	use {
+		'neovim/nvim-lspconfig',
+		ft = { 'c', 'cpp', 'rust', 'zig' },
+		config = function()
+			local lspconfig = require'lspconfig'
+			if lspconfig.zls == nil then
+				lspconfig.configs.zls = { default_config = {
+					cmd = { 'zls' },
+					filetypes = { 'zig' },
+					root_dir = lspconfig.util.root_pattern'build.zig',
+					settings = {},
+				} }
+			end
+			local servers = { 'clangd', 'rust_analyzer', 'zls' }
+			local function on_attach(client, bufnr)
+			end
+			for _, server in ipair(servers) do
+				lspconfig[server].setup{ on_attach = on_attach }
+			end
+		end,
+	}
 
 	use {
 		'morhetz/gruvbox',
-		config = function()
+		cond = always,
+		setup = function()
 			vim.o.background    = 'dark'
 			vim.o.termguicolors = true
+
 			vim.g.gruvbox_bold                 = 1
 			vim.g.gruvbox_italic               = 1
 			vim.g.gruvbox_transparent_bg       = 1
@@ -87,38 +118,43 @@ local function setup()
 			vim.g.gruvbox_improved_strings     = 1
 			vim.g.gruvbox_improved_warnings    = 1
 			vim.g.gruvbox_guisp_fallback       = 1
+		end,
+		config = function()
 			vim.api.nvim_command'colorscheme gruvbox'
 		end,
-	 }
+	}
 
 	use {
 		'itchyny/lightline.vim',
-		config = function()
+		cond = always,
+		setup = function()
 			vim.g.lightline = {
 				colorscheme = vim.g.colors_name,
 				active = {
 					left = {
 						{ 'mode', 'paste' },
 						{ 'readonly', 'filename', 'modified' },
-					 },
+					},
 					right = {
 						{ 'lineinfo' },
 						{ 'percent' },
 						{ 'fileformat', 'fileencoding', 'filetype' },
-					 },
-				 },
+					},
+				},
 				inactive = {
 					left = { {'filename' } },
 					right = {
 						{ 'lineinfo' },
 						{ 'percent' },
-					 },
-				 },
+					},
+				},
 				tabline = {
 					left = { {'tabs' } },
 					right = { },
-				 },
-			 }
+				},
+			}
+		end,
+		config = function()
 			vim.api.nvim_exec([[
 			augroup lightline_colorscheme_sync
 			autocmd!
@@ -126,7 +162,7 @@ local function setup()
 			augroup END
 			]], false)
 		end
-	 }
+	}
 
 	use {
 		'nvim-telescope/telescope.nvim',
@@ -134,51 +170,71 @@ local function setup()
 		cmd = 'Telescope',
 		keys = { '<Leader>ff', '<Leader>fb', '<Leader>fl' },
 		config = function()
-			local actions = require('telescope.actions')
-			require('telescope').setup{ defaults = { mappings = { i = { ["<C-w>c"] = actions.close } } } }
+			require('telescope').setup{ defaults = { mappings = { i = { ['<C-w>c'] = require('telescope.actions').close } } } }
 			local keymap_opts = { noremap = true, silent = true }
-			vim.fn.nvim_set_keymap('n', '<Leader>ff', "<Cmd>lua require'telescope.builtin'.find_files{ hidden = true }<CR>", keymap_opts)
-			vim.fn.nvim_set_keymap('n', '<Leader>fb', "<Cmd>lua require'telescope.builtin'.buffers()<CR>", keymap_opts)
-			vim.fn.nvim_set_keymap('n', '<Leader>fl', "<Cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find()<CR>", keymap_opts)
+			vim.fn.nvim_set_keymap('n', '<Leader>ff', [[<Cmd>lua require'telescope.builtin'.find_files{ hidden = true }<CR>]], keymap_opts)
+			vim.fn.nvim_set_keymap('n', '<Leader>fb', [[<Cmd>lua require'telescope.builtin'.buffers()<CR>]], keymap_opts)
+			vim.fn.nvim_set_keymap('n', '<Leader>fl', [[<Cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find()<CR>]], keymap_opts)
 		end,
-	 }
+	}
 
 	use {
 		'rust-lang/rust.vim',
 		ft = 'rust',
-	 }
+	}
 
 	use {
 		'ziglang/zig.vim',
 		config = function()
 			vim.g.zig_fmt_autosave = 0
 		end,
-	 }
+	}
 
 	use {
 		'machakann/vim-sandwich',
 		keys = { 'sa', 'sd', 'sr', { 'v', 'sa' } },
-		config = function()
+		setup = function()
 			local plug = vim.api.nvim_eval[["\<Plug>"]]
 			vim.g['sandwich#recipes'] = {
 				{ buns = { '(', ')' }, nesting = -1, linewise = 0, input = { '(', ')', 'b' } },
 				{ buns = { '{ ', ' }' }, nesting = -1, linewise = 0, input = { '{ ', ' }', 'B' } },
-				{ buns = { '[', ']' }, nesting = -1, linewise = 0, input = { '(', ')' } },
+				{ buns = { '[', ']' }, nesting = -1, linewise = 0, input = { '[', ']' } },
 				{ buns = { '<', '>' }, nesting = -1, linewise = 0, input = { '<', '>' } },
 				{ buns = 'sandwich#magicchar#t#tag()', listexpr = 1, kind = { 'add', 'replace' }, action = { 'add' }, input = { 't' } },
-				{ external = { plug..'(textobj-sandwich-tag-i)', plug..'(textobj-sandwich-tag-a)' }, noremap = 0, kind = { 'replace', 'query' }, expr_filter = { 'operator#sandwich#kind() ==# "replace"' }, synchro = 1, input = { 't' } },
-				{ external = { plug..'(textobj-sandwich-tag-i)', plug..'(textobj-sandwich-tag-a)' }, noremap = 0, kind = { 'delete', 'textobj' }, expr_filter = { 'operator#sandwich#kind() !=# "replace"' }, synchro = 1, linewise = 1, input = { 't' } },
-			 }
-			vim.g.sandwich_no_default_key_mappings          = 1
+				{
+					external = { plug..'(textobj-sandwich-tag-i)',
+					plug..'(textobj-sandwich-tag-a)' },
+					noremap = 0,
+					kind = { 'replace', 'query' },
+					expr_filter = { [[operator#sandwich#kind() ==# 'replace']] },
+					synchro = 1,
+					input = { 't' }
+				},
+				{
+					external = { plug..'(textobj-sandwich-tag-i)',
+					plug..'(textobj-sandwich-tag-a)' },
+					noremap = 0,
+					kind = { 'delete', 'textobj' },
+					expr_filter = { [[operator#sandwich#kind() !=# 'replace']] },
+					synchro = 1,
+					linewise = 1,
+					input = { 't' }
+				},
+				{ buns = 'sandwich#magicchar#i#input("operator")', kind = { 'add', 'replace' }, action = { 'add' }, listexpr = 1, input = { 'i' } },
+				{ buns = 'sandwich#magicchar#i#input("textobj", 1)', kind = { 'delete', 'replace', 'query' }, listexpr = 1, regex = 1, input = { 'i' } },
+			}
 			vim.g.operator_sandwich_no_default_key_mappings = 1
 			vim.g.textobj_sandwich_no_default_key_mappings  = 1
+			vim.g.sandwich_no_default_key_mappings          = 1
+		end,
+		config = function()
 			local keymap_opts = { silent = true }
 			vim.api.nvim_set_keymap('n', 'sa', '<Plug>(operator-sandwich-add)', keymap_opts)
 			vim.api.nvim_set_keymap('v', 'sa', '<Plug>(operator-sandwich-add)', keymap_opts)
 			vim.api.nvim_set_keymap('n', 'sd', '<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)', keymap_opts)
 			vim.api.nvim_set_keymap('n', 'sr', '<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)', keymap_opts)
 		end,
-	 }
+	}
 
 	use {
 		'monaqa/dial.nvim',
@@ -192,17 +248,17 @@ local function setup()
 			vim.api.nvim_set_keymap('v', 'g<C-a>', '<Plug>(dial-increment-additional)', keymap_opts)
 			vim.api.nvim_set_keymap('v', 'g<C-x>', '<Plug>(dial-decrement-additional)', keymap_opts)
 		end,
-	 }
+	}
 
 	use {
 		'windwp/nvim-autopairs',
 		config = function() require'nvim-autopairs'.setup() end
-	 }
+	}
 
 	use {
 		'b3nj5m1n/kommentary',
 		keys = { 'gc', 'gcc', { 'v', 'gc' } },
-	 }
+	}
 
 	use {
 		'norcalli/nvim-colorizer.lua',
@@ -214,16 +270,16 @@ local function setup()
 			augroup END
 			]], false)
 		end,
-	 }
+	}
 
 	use {
 		'TimUntersberger/neogit',
 		cmd = 'Neogit',
 		keys = '<Leader>g',
 		config = function()
-			vim.api.nvim_set_keymap('n', '<Leader>g', '<Cmd>lua require"neogit".status.create"split"<CR>', { noremap = true, silent = true })
+			vim.api.nvim_set_keymap('n', '<Leader>g', [[<Cmd>lua require'neogit'.status.create'split'<CR>]], { noremap = true, silent = true })
 		end,
-	 }
+	}
 
 	use {
 		'lewis6991/gitsigns.nvim',
@@ -236,10 +292,10 @@ local function setup()
 					delete       = { hl = 'GitGutterDelete', text = '_' },
 					topdelete    = { hl = 'GitGutterDelete', text = '‾' },
 					changedelete = { hl = 'GitGutterChange', text = '~' },
-				 }
-			 }
+				}
+			}
 		end,
-	 }
+	}
 
 	use {
 		'mbbill/undotree',
@@ -249,12 +305,31 @@ local function setup()
 			vim.g.undotree_WindowLayout = 4
 			vim.api.nvim_set_keymap('n', '<Leader>u', '<Cmd>UndotreeShow | UndotreeFocus<CR>', { noremap = true, silent = true })
 		end,
-	 }
+	}
 
 end
 
-return {
-	setup = setup,
-	install_path = install_path,
-	compile_path = compile_path,
-}
+local function bootstrap()
+	if vim.fn.empty(vim.fn.glob(install_path)) == 1 then
+		vim.fn.system(
+		'git clone '
+		..'--depth 1 '
+		..'https://github.com/'..packer_repo..'.git '
+		..install_path
+		)
+	end
+	vim.api.nvim_command'packadd packer.nvim'
+
+	plugins()
+
+	local packer = require'packer'
+	packer.install()
+	packer.compile()
+end
+
+local function setup()
+	vim.api.nvim_command('silent! source '..compile_path)
+	if packer_plugins == nil then bootstrap() end
+end
+
+return { setup = setup }
