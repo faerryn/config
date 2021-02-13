@@ -6,8 +6,8 @@ export XDG_DATA_HOME="${HOME}"/.local/share
 export XDG_DATA_DIRS=/usr/local/share:/usr/share:"${XDG_DATA_DIRS}"
 
 # Terminfo
-export TERMINFO="${XDG_DATA_HOME}"/terminfo
-export TERMINFO_DIRS="${XDG_DATA_HOME}"/terminfo:/usr/share/terminfo
+export TERMINFO=/usr/local/share/terminfo
+export TERMINFO_DIRS="${TERMINFO}":/usr/share/terminfo
 
 # Neovim
 export EDITOR=nvim

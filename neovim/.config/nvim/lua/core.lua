@@ -46,14 +46,16 @@ return {setup = function()
 	vim.o.lazyredraw = true
 	vim.o.nrformats = 'alpha,octal,hex,bin'
 
-	vim.o.exrc = true
-
 	if vim.fn.executable('rg') == 1 then
 		vim.o.grepprg = 'rg --hidden --vimgrep'
 		vim.o.grepformat = '%f:%l:%c:%m'
 	end
 
-	local keymap_opts = { noremap = true, silent = true }
+	if vim.fn.executable('/bin/sh') == 1 then
+		vim.o.shell = '/bin/sh'
+	end
+
+	local keymap_opts = {noremap = true, silent = true}
 
 	vim.api.nvim_set_keymap('n', 'Y', 'y$', keymap_opts)
 	vim.api.nvim_set_keymap('n', ']a', '<Cmd>next<CR>', keymap_opts)
