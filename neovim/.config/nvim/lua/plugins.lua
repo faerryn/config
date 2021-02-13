@@ -1,6 +1,7 @@
 local packer_config = {
 	compile_path = vim.fn.stdpath'data'..'/packer_compiled.vim',
 	auto_clean = false,
+	disable_commands = true,
 }
 
 local function plugins()
@@ -16,8 +17,13 @@ local function plugins()
 		require = 'nvim-lua/plenary.nvim',
 		cmd = { 'PackerClean', 'PackerCompile', 'PackerInstall', 'PackerSync', 'PackerUpdate' },
 		config = function()
-			require'plenary.reload'.reload_module'plugins'
-			require'plugins'.plugins()
+			vim.api.nvim_exec([[
+			command! PackerInstall  lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').install()
+			command! PackerUpdate   lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').update()
+			command! PackerSync     lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').sync()
+			command! PackerClean    lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').clean()
+			command! PackerCompile  lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').compile()
+			]], false)
 		end,
 	}
 
@@ -130,7 +136,6 @@ local function plugins()
 		cond = always,
 		setup = function()
 			vim.g.lightline = {
-				colorscheme = vim.g.colors_name,
 				active = {
 					left = {
 						{ 'mode', 'paste' },
@@ -159,7 +164,8 @@ local function plugins()
 			vim.api.nvim_exec([[
 			augroup lightline_colorscheme_sync
 			autocmd!
-			autocmd ColorScheme * let g:lightline.colorscheme = g:colors_name | call lightline#enable()
+			autocmd ColorScheme * lua local tmp = vim.g.lightline; tmp.colorscheme = vim.g.colors_name; vim.g.lightline = tmp; vim.fn['lightline#enable']()
+			"autocmd ColorScheme * lua vim.g.lightline.colorscheme = vim.g.colors_name; vim.fn['lightline#enable']()
 			augroup END
 			]], false)
 		end
@@ -329,4 +335,7 @@ local function setup()
 	if packer_plugins == nil then bootstrap() end
 end
 
-return { setup = setup }
+return {
+	setup = setup,
+	plugins = plugins,
+}
