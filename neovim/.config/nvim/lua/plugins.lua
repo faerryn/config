@@ -258,11 +258,6 @@ local function plugins()
 	}
 
 	use {
-		'windwp/nvim-autopairs',
-		config = function() require'nvim-autopairs'.setup() end
-	}
-
-	use {
 		'b3nj5m1n/kommentary',
 		keys = { 'gc', 'gcc', { 'v', 'gc' } },
 	}
@@ -311,6 +306,12 @@ local function plugins()
 		config = function()
 			vim.g.undotree_WindowLayout = 4
 			vim.api.nvim_set_keymap('n', '<Leader>u', '<Cmd>UndotreeShow | UndotreeFocus<CR>', { noremap = true, silent = true })
+			vim.api.nvim_exec([[
+			augroup undotree_remap
+			autocmd!
+			autocmd FileType undotree nnoremap <silent> <buffer> <C-w>c <cmd>UndotreeHide<CR>
+			augroup END
+			]], false)
 		end,
 	}
 

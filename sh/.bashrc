@@ -5,6 +5,9 @@ test ${e} -ne 0 && echo "${e} | "
 
 HISTFILE="${XDG_CACHE_HOME}"/bash_history
 mkdir -p "$(dirname "${HISTFILE}")"
+export HISTCONTROL=ignoreboth:erasedups
+
+shopt -s dotglob extglob globstar
 
 dc () {
 	case "${1}" in
@@ -36,5 +39,3 @@ alias ll='ls -g'
 alias la='ls -gA'
 
 alias rm='rm -i'
-
-shopt -s dotglob extglob globstar
