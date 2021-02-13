@@ -177,7 +177,7 @@ local function plugins()
 		cmd = 'Telescope',
 		keys = { '<Leader>ff', '<Leader>fb', '<Leader>fl' },
 		config = function()
-			require('telescope').setup{ defaults = { mappings = { i = { ['<C-w>c'] = require('telescope.actions').close } } } }
+			require'telescope'.setup{ defaults = { mappings = { i = { ['<C-w>c'] = require'telescope.actions'.close } } } }
 			local keymap_opts = { noremap = true, silent = true }
 			vim.fn.nvim_set_keymap('n', '<Leader>ff', [[<Cmd>lua require'telescope.builtin'.find_files{ hidden = true }<CR>]], keymap_opts)
 			vim.fn.nvim_set_keymap('n', '<Leader>fb', [[<Cmd>lua require'telescope.builtin'.buffers()<CR>]], keymap_opts)
