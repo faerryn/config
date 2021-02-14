@@ -200,7 +200,7 @@ local function plugins()
 			local plug = vim.api.nvim_eval[["\<Plug>"]]
 			vim.g['sandwich#recipes'] = {
 				{ buns = { '(', ')' }, nesting = -1, linewise = 0, input = { '(', ')', 'b' } },
-				{ buns = { '{ ', ' }' }, nesting = -1, linewise = 0, input = { '{ ', ' }', 'B' } },
+				{ buns = { '{', '}' }, nesting = -1, linewise = 0, input = { '{', '}', 'B' } },
 				{ buns = { '[', ']' }, nesting = -1, linewise = 0, input = { '[', ']' } },
 				{ buns = { '<', '>' }, nesting = -1, linewise = 0, input = { '<', '>' } },
 				{ buns = 'sandwich#magicchar#t#tag()', listexpr = 1, kind = { 'add', 'replace' }, action = { 'add' }, input = { 't' } },
