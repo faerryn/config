@@ -1,0 +1,2 @@
+#!/bin/sh
+WINEPREFIX="${HOME}"/.wine32 WINEARCH=win32 exec wine "${@}"
