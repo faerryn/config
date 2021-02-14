@@ -36,30 +36,26 @@ local function plugins()
 		config = function() vim.g.cursorhold_updatetime = 100 end,
 	}
 
-	use 'tpope/vim-repeat'
-
-	use 'inkarkat/vim-visualrepeat'
+	use {
+		'tpope/vim-repeat',
+		keys = '.',
+	}
 
 	use {
 		'ryvnf/readline.vim',
 		event = 'CmdlineEnter *',
 	}
 
-	use 'chaoren/vim-wordmotion'
-
 	use {
-		'tommcdo/vim-lion',
-		keys = { 'gl', 'gL', { 'v', 'gl' }, { 'v', 'gL' } },
-		config = function() vim.g.lion_squeeze_spaces = 1 end,
+		'junegunn/vim-easy-align',
+		cmd = 'EasyAlign',
+		keys = { 'gl', { 'x', 'gl' } },
+		config = function()
+			local keymap_opts = { silent = true }
+			vim.api.nvim_set_keymap('x', 'gl', '<Plug>(EasyAlign)', keymap_opts)
+			vim.api.nvim_set_keymap('n', 'gl', '<Plug>(EasyAlign)', keymap_opts)
+		end,
 	}
-
-	use {
-		'tpope/vim-abolish',
-		cmd = { 'Abolish', 'Subvert', 'S' },
-		keys = 'cr',
-	}
-
-	use 'tpope/vim-eunuch'
 
 	use {
 		'stsewd/gx-extended.vim',
@@ -79,11 +75,10 @@ local function plugins()
 
 	use {
 		'neovim/nvim-lspconfig',
-		ft = { 'c', 'cpp', 'rust', 'zig' },
 		config = function()
 			local lspconfig = require'lspconfig'
 
-			local servers = { 'clangd', 'rust_analyzer', 'zls' }
+			local servers = { 'clangd' }
 
 			local on_attach = function(client, bufnr)
 				vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -92,6 +87,8 @@ local function plugins()
 				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>',  keymap_opts)
 				vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K',  '<Cmd>lua vim.lsp.buf.hover()<CR>',       keymap_opts)
 			end
+
+			vim.api.nvim_command'command! LspRename lua vim.lsp.buf.rename()'
 
 			for _, server in ipairs(servers) do
 				lspconfig[server].setup{ on_attach = on_attach }
@@ -182,11 +179,6 @@ local function plugins()
 	}
 
 	use {
-		'rust-lang/rust.vim',
-		ft = 'rust',
-	}
-
-	use {
 		'ziglang/zig.vim',
 		config = function()
 			vim.g.zig_fmt_autosave = 0
@@ -196,7 +188,7 @@ local function plugins()
 	use {
 		'machakann/vim-sandwich',
 		keys = { 'sa', 'sd', 'sr', { 'v', 'sa' } },
-		setup = function()
+		config = function()
 			local plug = vim.api.nvim_eval[["\<Plug>"]]
 			vim.g['sandwich#recipes'] = {
 				{ buns = { '(', ')' }, nesting = -1, linewise = 0, input = { '(', ')', 'b' } },
@@ -205,8 +197,7 @@ local function plugins()
 				{ buns = { '<', '>' }, nesting = -1, linewise = 0, input = { '<', '>' } },
 				{ buns = 'sandwich#magicchar#t#tag()', listexpr = 1, kind = { 'add', 'replace' }, action = { 'add' }, input = { 't' } },
 				{
-					external = { plug..'(textobj-sandwich-tag-i)',
-					plug..'(textobj-sandwich-tag-a)' },
+					external = { plug..'(textobj-sandwich-tag-i)', plug..'(textobj-sandwich-tag-a)' },
 					noremap = 0,
 					kind = { 'replace', 'query' },
 					expr_filter = { [[operator#sandwich#kind() ==# 'replace']] },
@@ -214,8 +205,7 @@ local function plugins()
 					input = { 't' }
 				},
 				{
-					external = { plug..'(textobj-sandwich-tag-i)',
-					plug..'(textobj-sandwich-tag-a)' },
+					external = { plug..'(textobj-sandwich-tag-i)', plug..'(textobj-sandwich-tag-a)' },
 					noremap = 0,
 					kind = { 'delete', 'textobj' },
 					expr_filter = { [[operator#sandwich#kind() !=# 'replace']] },
@@ -228,28 +218,6 @@ local function plugins()
 			}
 			vim.g.operator_sandwich_no_default_key_mappings = 1
 			vim.g.textobj_sandwich_no_default_key_mappings  = 1
-			vim.g.sandwich_no_default_key_mappings          = 1
-		end,
-		config = function()
-			local keymap_opts = { silent = true }
-			vim.api.nvim_set_keymap('n', 'sa', '<Plug>(operator-sandwich-add)', keymap_opts)
-			vim.api.nvim_set_keymap('v', 'sa', '<Plug>(operator-sandwich-add)', keymap_opts)
-			vim.api.nvim_set_keymap('n', 'sd', '<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)', keymap_opts)
-			vim.api.nvim_set_keymap('n', 'sr', '<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)', keymap_opts)
-		end,
-	}
-
-	use {
-		'monaqa/dial.nvim',
-		keys = { '<C-a>', '<C-x>', { 'v', '<C-a>' }, { 'v', '<C-x>' }, { 'v', 'g<C-a>' }, { 'v', 'g<C-x>' } },
-		config = function()
-			local keymap_opts = { silent = true }
-			vim.api.nvim_set_keymap('n', '<C-a>', '<Plug>(dial-increment)', keymap_opts)
-			vim.api.nvim_set_keymap('n', '<C-x>', '<Plug>(dial-decrement)', keymap_opts)
-			vim.api.nvim_set_keymap('v', '<C-a>', '<Plug>(dial-increment)', keymap_opts)
-			vim.api.nvim_set_keymap('v', '<C-x>', '<Plug>(dial-decrement)', keymap_opts)
-			vim.api.nvim_set_keymap('v', 'g<C-a>', '<Plug>(dial-increment-additional)', keymap_opts)
-			vim.api.nvim_set_keymap('v', 'g<C-x>', '<Plug>(dial-decrement-additional)', keymap_opts)
 		end,
 	}
 
@@ -282,6 +250,7 @@ local function plugins()
 	use {
 		'lewis6991/gitsigns.nvim',
 		requires = 'nvim-lua/plenary.nvim',
+		event = 'BufRead *',
 		config = function()
 			require('gitsigns').setup{
 				signs = {

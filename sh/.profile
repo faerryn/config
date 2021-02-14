@@ -15,7 +15,7 @@ export VISUAL="${EDITOR}"
 
 # Rust
 export CARGO_HOME="${HOME}"/local/share/cargo
-export RUSTUP_HOME="${HOME}"/local/rustup
+export RUSTUP_HOME="${HOME}"/local/share/rustup
 
 # Misc
 export GRADLE_USER_HOME="${XDG_DATA_HOME}"/gradle
