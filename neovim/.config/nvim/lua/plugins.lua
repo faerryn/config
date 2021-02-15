@@ -100,7 +100,6 @@ local function plugins()
 		'morhetz/gruvbox',
 		config = function()
 			vim.o.background    = 'dark'
-			vim.o.termguicolors = true
 
 			vim.g.gruvbox_bold                 = 1
 			vim.g.gruvbox_italic               = 1
