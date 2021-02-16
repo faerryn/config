@@ -1,6 +1,7 @@
 local packer_config = {
 	compile_path = vim.fn.stdpath'data'..'/packer_compiled.vim',
 	disable_commands = true,
+	display = { non_interactive = true },
 }
 
 local function plugins()
