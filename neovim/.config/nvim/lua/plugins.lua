@@ -28,7 +28,7 @@ local function plugins()
 
 	use {
 		'antoinemadec/FixCursorHold.nvim',
-		config = function() vim.g.cursorhold_updatetime = 100 end,
+		config = function() vim.g.cursorhold_updatetime = 1000 end,
 	}
 
 	use {
@@ -73,7 +73,7 @@ local function plugins()
 		config = function()
 			local lspconfig = require'lspconfig'
 
-			local servers = { 'clangd' }
+			local servers = { 'clangd', 'rust_analyzer', 'zls' }
 
 			local on_attach = function(client, bufnr)
 				vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')

@@ -4,7 +4,7 @@ return { setup = function()
 	vim.o.clipboard = 'unnamedplus'
 	vim.o.mouse = 'ar'
 
-	vim.o.timeoutlen = 300
+	vim.o.timeoutlen = 500
 
 	vim.o.swapfile = false
 	vim.o.undofile = true
