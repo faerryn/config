@@ -39,6 +39,10 @@ return { setup = function()
 	vim.bo.shiftwidth = 2
 	vim.bo.expandtab = false
 
+	vim.o.list = true
+	vim.o.listchars = 'eol:↲,tab:» ,trail:⋅,extends:…,precedes:…,nbsp:⎵'
+	vim.wo.list = true
+
 	vim.o.confirm = true
 	vim.o.foldlevelstart = 99
 	vim.o.inccommand = 'nosplit'
