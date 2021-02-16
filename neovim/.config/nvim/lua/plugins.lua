@@ -1,6 +1,5 @@
 local packer_config = {
 	compile_path = vim.fn.stdpath'data'..'/packer_compiled.vim',
-	auto_clean = false,
 	disable_commands = true,
 }
 
@@ -24,11 +23,6 @@ local function plugins()
 			command! PackerCompile lua require'plenary.reload'.reload_module'plugins'; require'plugins'.plugins(); require('packer').compile()
 			]], false)
 		end,
-	}
-
-	use {
-		'dstein64/vim-startuptime',
-		cmd = 'StartupTime',
 	}
 
 	use {
