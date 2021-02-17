@@ -19,13 +19,13 @@ local modules = {
 	require'config.modules.startuptime',
 }
 
-local function config()
+local function load_config()
 	for _, module in ipairs(modules) do
 		module.config()
 	end
 end
 
-local function packages()
+local function load_packages()
 	vim.api.nvim_command'packadd paq-nvim'
 	local paq = require'paq-nvim'
 	paq.paq{ 'savq/paq-nvim', opt = true }
@@ -34,7 +34,6 @@ local function packages()
 	end
 	paq.clean()
 	paq.install()
-	config()
 end
 
 local function setup()
@@ -42,14 +41,14 @@ local function setup()
 	local install_path = vim.fn.stdpath'data'..'/site/pack/paqs/opt/paq-nvim'
 	if vim.fn.empty(vim.fn.glob(install_path)) == 1 then
 		vim.fn.system('git clone --depth 1 https://github.com/savq/paq-nvim.git '..install_path)
-		packages()
+		load_packages()
+	else
+		load_config()
 	end
-	vim.api.nvim_command[[command! Reload lua require'config'.packages()]]
-	config()
+	vim.api.nvim_command[[command! Reload lua require'config'.load_packages()]]
 end
 
 return {
 	setup = setup,
-	packages = packages,
-	config = config,
+	load_packages = load_packages,
 }
