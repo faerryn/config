@@ -2,6 +2,7 @@ return { setup = function()
 	vim.api.nvim_command'packadd gruvbox'
 
 	vim.o.background = 'dark'
+	vim.o.termguicolors = true
 
 	vim.g.gruvbox_bold                 = 1
 	vim.g.gruvbox_italic               = 1

@@ -50,8 +50,6 @@ return { setup = function()
 	vim.o.lazyredraw = true
 	vim.o.nrformats = 'alpha,octal,hex,bin'
 
-	vim.o.termguicolors = true
-
 	if vim.fn.executable('rg') == 1 then
 		vim.o.grepprg = 'rg --hidden --vimgrep'
 		vim.o.grepformat = '%f:%l:%c:%m'
