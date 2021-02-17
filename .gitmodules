@@ -1,0 +1,80 @@
+[submodule "neovim/.config/nvim/pack/pack/opt/gruvbox"]
+	path = neovim/.config/nvim/pack/pack/opt/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/neogit"]
+	path = neovim/.config/nvim/pack/pack/opt/neogit
+	url = https://github.com/TimUntersberger/neogit.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/FixCursorHold.nvim"]
+	path = neovim/.config/nvim/pack/pack/opt/FixCursorHold.nvim
+	url = https://github.com/antoinemadec/FixCursorHold.nvim.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/lightline.vim"]
+	path = neovim/.config/nvim/pack/pack/opt/lightline.vim
+	url = https://github.com/itchyny/lightline.vim.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/vim-easy-align"]
+	path = neovim/.config/nvim/pack/pack/opt/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/nvim-colorizer.lua"]
+	path = neovim/.config/nvim/pack/pack/opt/nvim-colorizer.lua
+	url = https://github.com/norcalli/nvim-colorizer.lua.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/plenary.nvim"]
+	path = neovim/.config/nvim/pack/pack/opt/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/popup.nvim"]
+	path = neovim/.config/nvim/pack/pack/opt/popup.nvim
+	url = https://github.com/nvim-lua/popup.nvim.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/telescope.nvim"]
+	path = neovim/.config/nvim/pack/pack/opt/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/nvim-treesitter"]
+	path = neovim/.config/nvim/pack/pack/opt/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/readline.vim"]
+	path = neovim/.config/nvim/pack/pack/opt/readline.vim
+	url = https://github.com/ryvnf/readline.vim.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/gx-extended.vim"]
+	path = neovim/.config/nvim/pack/pack/opt/gx-extended.vim
+	url = https://github.com/stsewd/gx-extended.vim.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/vim-repeat"]
+	path = neovim/.config/nvim/pack/pack/opt/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/zig.vim"]
+	path = neovim/.config/nvim/pack/pack/opt/zig.vim
+	url = https://github.com/ziglang/zig.vim.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/gitsigns.nvim"]
+	path = neovim/.config/nvim/pack/pack/opt/gitsigns.nvim
+	url = https://github.com/lewis6991/gitsigns.nvim.git
+	branch = main
+[submodule "neovim/.config/nvim/pack/pack/opt/kommentary"]
+	path = neovim/.config/nvim/pack/pack/opt/kommentary
+	url = https://github.com/b3nj5m1n/kommentary.git
+	branch = main
+[submodule "neovim/.config/nvim/pack/pack/opt/undotree"]
+	path = neovim/.config/nvim/pack/pack/opt/undotree
+	url = https://github.com/mbbill/undotree.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/nvim-lspconfig"]
+	path = neovim/.config/nvim/pack/pack/opt/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/vim-sandwich"]
+	path = neovim/.config/nvim/pack/pack/opt/vim-sandwich
+	url = https://github.com/machakann/vim-sandwich.git
+	branch = master
+[submodule "neovim/.config/nvim/pack/pack/opt/vim-startuptime"]
+	path = neovim/.config/nvim/pack/pack/opt/vim-startuptime
+	url = https://github.com/dstein64/vim-startuptime.git
+	branch = master
