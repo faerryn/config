@@ -16,7 +16,14 @@ local modules = {
 	require'config.modules.git',
 	require'config.modules.telescope',
 	require'config.modules.undotree',
+	require'config.modules.startuptime',
 }
+
+local function config()
+	for _, module in ipairs(modules) do
+		module.config()
+	end
+end
 
 local function packages()
 	vim.api.nvim_command'packadd paq-nvim'
@@ -27,12 +34,7 @@ local function packages()
 	end
 	paq.clean()
 	paq.install()
-end
-
-local function config()
-	for _, module in ipairs(modules) do
-		module.config()
-	end
+	config()
 end
 
 local function setup()
@@ -42,10 +44,7 @@ local function setup()
 		vim.fn.system('git clone --depth 1 https://github.com/savq/paq-nvim.git '..install_path)
 		packages()
 	end
-	vim.api.nvim_exec([[
-	command! LoadPackages lua require'config'.packages()
-	command! LoadConfig lua require'config'.config()
-	]], false)
+	vim.api.nvim_command[[command! Reload lua require'config'.packages()]]
 	config()
 end
 
