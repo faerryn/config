@@ -1,1 +1,1 @@
-require'config'.setup()
+require'modules'.setup()
