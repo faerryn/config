@@ -1,9 +1,6 @@
 [submodule "neovim/.config/nvim/pack/pack/opt/gruvbox"]
 	path = neovim/.config/nvim/pack/pack/opt/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
-[submodule "neovim/.config/nvim/pack/pack/opt/neogit"]
-	path = neovim/.config/nvim/pack/pack/opt/neogit
-	url = https://github.com/TimUntersberger/neogit.git
 [submodule "neovim/.config/nvim/pack/pack/opt/FixCursorHold.nvim"]
 	path = neovim/.config/nvim/pack/pack/opt/FixCursorHold.nvim
 	url = https://github.com/antoinemadec/FixCursorHold.nvim.git
@@ -58,3 +55,6 @@
 [submodule "neovim/.config/nvim/pack/pack/opt/vim-startuptime"]
 	path = neovim/.config/nvim/pack/pack/opt/vim-startuptime
 	url = https://github.com/dstein64/vim-startuptime.git
+[submodule "neovim/.config/nvim/pack/pack/opt/vim-fugitive"]
+	path = neovim/.config/nvim/pack/pack/opt/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
