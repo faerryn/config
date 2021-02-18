@@ -13,6 +13,7 @@
 [submodule "neovim/.config/nvim/pack/pack/opt/nvim-colorizer.lua"]
 	path = neovim/.config/nvim/pack/pack/opt/nvim-colorizer.lua
 	url = https://github.com/norcalli/nvim-colorizer.lua.git
+	ignore = dirty
 [submodule "neovim/.config/nvim/pack/pack/opt/plenary.nvim"]
 	path = neovim/.config/nvim/pack/pack/opt/plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim.git
@@ -31,6 +32,7 @@
 [submodule "neovim/.config/nvim/pack/pack/opt/gx-extended.vim"]
 	path = neovim/.config/nvim/pack/pack/opt/gx-extended.vim
 	url = https://github.com/stsewd/gx-extended.vim.git
+	ignore = dirty
 [submodule "neovim/.config/nvim/pack/pack/opt/vim-repeat"]
 	path = neovim/.config/nvim/pack/pack/opt/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
