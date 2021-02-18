@@ -55,10 +55,6 @@ return { setup = function()
 		vim.o.grepformat = '%f:%l:%c:%m'
 	end
 
-	if vim.fn.executable('/bin/sh') == 1 then
-		vim.o.shell = '/bin/sh'
-	end
-
 	local keymap_opts = { noremap = true, silent = true }
 
 	vim.api.nvim_set_keymap('n', 'Y', 'y$', keymap_opts)
