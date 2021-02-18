@@ -5,7 +5,7 @@ local modules = {
 
 	'colorscheme',
 	'statusline',
-	'colors',
+	'colorizer',
 
 	'treesitter',
 	'lsp',
