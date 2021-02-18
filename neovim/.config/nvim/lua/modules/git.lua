@@ -7,6 +7,8 @@ return { setup = function()
 	vim.api.nvim_command'packadd vim-fugitive'
 	vim.api.nvim_set_keymap('n', '<Leader>g', '<Cmd>Git<CR>', { noremap = true, silent = true })
 
+	vim.api.nvim_command[[autocmd! fugitive BufReadPost * call FugitiveDetect(resolve(expand('<amatch>:p')))]]
+
 	-- gitsigns.nvim
 	vim.api.nvim_command'packadd gitsigns.nvim'
 	vim.api.nvim_command'packadd plenary.nvim'
