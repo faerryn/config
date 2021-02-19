@@ -60,3 +60,6 @@
 [submodule "neovim/.config/nvim/pack/pack/opt/vim-fugitive"]
 	path = neovim/.config/nvim/pack/pack/opt/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "neovim/.config/nvim/pack/pack/opt/completion-nvim"]
+	path = neovim/.config/nvim/pack/pack/opt/completion-nvim
+	url = https://github.com/nvim-lua/completion-nvim.git

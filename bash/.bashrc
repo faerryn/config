@@ -1,7 +1,8 @@
 PS1='$(
 e=${?}
 test ${e} -ne 0 && echo "${e} | "
-)\w $ '
+)\w
+$ '
 
 HISTFILE="${XDG_CACHE_HOME}"/bash_history
 mkdir -p "$(dirname "${HISTFILE}")"
