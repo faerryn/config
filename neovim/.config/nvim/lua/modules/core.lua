@@ -58,7 +58,14 @@ return { setup = function()
 
 	local keymap_opts = { noremap = true, silent = true }
 
+	vim.api.nvim_set_keymap('n', 's', '', keymap_opts)
+	vim.api.nvim_set_keymap('v', 's', '', keymap_opts)
+	vim.api.nvim_set_keymap('n', 'S', '', keymap_opts)
+	vim.api.nvim_set_keymap('v', 'S', '', keymap_opts)
+	vim.api.nvim_set_keymap('n', '<Leader>', '', keymap_opts)
+
 	vim.api.nvim_set_keymap('n', 'Y', 'y$', keymap_opts)
+
 	vim.api.nvim_set_keymap('n', ']a', '<Cmd>next<CR>', keymap_opts)
 	vim.api.nvim_set_keymap('n', '[a', '<Cmd>previous<CR>', keymap_opts)
 	vim.api.nvim_set_keymap('n', ']A', '<Cmd>last<CR>', keymap_opts)
@@ -81,12 +88,6 @@ return { setup = function()
 	vim.api.nvim_set_keymap('n', '[l', '<Cmd>lprevious<CR>', keymap_opts)
 	vim.api.nvim_set_keymap('n', ']L', '<Cmd>llast<CR>', keymap_opts)
 	vim.api.nvim_set_keymap('n', '[L', '<Cmd>lfirst<CR>', keymap_opts)
-
-	vim.api.nvim_set_keymap('n', 's', '', keymap_opts)
-	vim.api.nvim_set_keymap('v', 's', '', keymap_opts)
-	vim.api.nvim_set_keymap('n', 'S', '', keymap_opts)
-	vim.api.nvim_set_keymap('v', 'S', '', keymap_opts)
-	vim.api.nvim_set_keymap('n', '<Leader>', '', keymap_opts)
 
 	vim.api.nvim_exec([[
 	augroup personal
