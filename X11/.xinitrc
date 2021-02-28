@@ -1,9 +1,9 @@
 #!/bin/sh
-export _JAVA_AWT_WM_NONREPARENTING="1"
-export MOZ_X11_EGL="1"
-export SDL_VIDEODRIVER="x11"
-export XDG_TERMINAL="st -e"
-export DMENU_OPTS="-x 4 -y 4"
+export _JAVA_AWT_WM_NONREPARENTING=1
+export MOZ_X11_EGL=1
+export SDL_VIDEODRIVER=x11
+export XDG_TERMINAL='st -e'
+export DMENU_OPTS='-x 4 -y 4'
 
 slstatus &
 picom &
