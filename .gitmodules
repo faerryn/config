@@ -63,3 +63,6 @@
 [submodule "neovim/.config/nvim/pack/pack/opt/completion-nvim"]
 	path = neovim/.config/nvim/pack/pack/opt/completion-nvim
 	url = https://github.com/nvim-lua/completion-nvim.git
+[submodule "neovim/.config/nvim/pack/pack/opt/onehalf"]
+	path = neovim/.config/nvim/pack/pack/opt/onehalf
+	url = https://github.com/sonph/onehalf.git
