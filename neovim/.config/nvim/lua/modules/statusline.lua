@@ -27,8 +27,12 @@ return { setup = function()
 		},
 	}
 
-	vim.api.nvim_command[[autocmd lightline ColorScheme * lua local tmp = vim.g.lightline; tmp.colorscheme = vim.g.colors_name; vim.g.lightline = tmp; vim.fn['lightline#enable']()]]
-	-- vim.api.nvim_command[[autocmd lightline ColorScheme * lua vim.g.lightline.colorscheme = vim.g.colors_name; vim.fn['lightline#enable']()]]
+	vim.api.nvim_exec([[
+	augroup lightline_autoupdate
+	autocmd!
+	autocmd ColorScheme * let g:lightline.colorscheme = g:colors_name | call lightline#enable()
+	augroup END
+	]], false)
 
 	vim.fn['lightline#enable']()
 end }
