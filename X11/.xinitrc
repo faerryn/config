@@ -8,7 +8,7 @@ export DMENU_OPTS='-x 4 -y 4'
 slstatus &
 picom &
 redshift &
-hsetroot -solid '#282c34'
+hsetroot -solid '#282828'
 xrdb -merge "${XDG_CONFIG_HOME}"/Xresources
 
 exec dwm

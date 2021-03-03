@@ -21,7 +21,5 @@ return { setup = function()
 	vim.g.gruvbox_improved_warnings    = 1
 	vim.g.gruvbox_guisp_fallback       = 1 ]]
 
-	vim.api.nvim_command'packadd onehalf.vim'
-
-	vim.api.nvim_command'colorscheme onehalfdark'
+	vim.api.nvim_command'colorscheme gruvbox'
 end }

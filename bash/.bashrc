@@ -5,7 +5,25 @@ mkdir -p "$(dirname "${HISTFILE}")"
 export HISTCONTROL=ignoreboth:erasedups
 
 shopt -s dotglob extglob globstar
-shopt -s autocd
+
+dc () {
+	case "${1}" in
+		*[!0-9]*)
+			return 1
+			;;
+		'')
+			cd ..
+			;;
+		*)
+			if test ${1} -gt 0 && test "${PWD}" != /; then
+				cd ..
+				dc $((${1}-1))
+			fi
+			;;
+	esac
+}
+
+alias ..=dc
 
 alias fd='fd --hidden'
 alias rg='rg --hidden'
