@@ -7,12 +7,6 @@ return { setup = function()
 	require'telescope'.setup{ defaults = {
 		mappings = { i = { ['<C-w>c'] = require'telescope.actions'.close } },
 		file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-		extensions = {
-			fzy_native = {
-				override_generic_sorter = true,
-				override_file_sorter = true,
-			}
-		}
 	} }
 
 	require('telescope').load_extension('fzy_native')
