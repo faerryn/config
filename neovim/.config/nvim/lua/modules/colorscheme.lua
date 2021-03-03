@@ -2,7 +2,7 @@ return { setup = function()
 	vim.o.background = 'dark'
 	vim.o.termguicolors = true
 
-	--[[ vim.api.nvim_command'packadd gruvbox'
+	vim.api.nvim_command'packadd gruvbox'
 	vim.g.gruvbox_bold                 = 1
 	vim.g.gruvbox_italic               = 1
 	vim.g.gruvbox_transparent_bg       = 1
@@ -19,7 +19,7 @@ return { setup = function()
 	vim.g.gruvbox_invert_tabline       = 0
 	vim.g.gruvbox_improved_strings     = 1
 	vim.g.gruvbox_improved_warnings    = 1
-	vim.g.gruvbox_guisp_fallback       = 1 ]]
+	vim.g.gruvbox_guisp_fallback       = 1
 
 	vim.api.nvim_command'colorscheme gruvbox'
 end }

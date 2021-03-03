@@ -7,7 +7,7 @@ local modules = {
 	'statusline',
 	'colorizer',
 
-	'treesitter',
+	-- 'treesitter',
 	'lsp',
 
 	'align',
