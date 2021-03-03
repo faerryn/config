@@ -4,7 +4,7 @@ return { setup = function()
 
 	local lspconfig = require'lspconfig'
 
-	local servers = { 'clangd', 'rust_analyzer', 'zls' }
+	local servers = { 'rust_analyzer' }
 
 	local on_attach = function(client, bufnr)
 		vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')

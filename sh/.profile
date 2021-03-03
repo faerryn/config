@@ -9,6 +9,10 @@ export XDG_DATA_DIRS=/usr/local/share:/usr/share:"${XDG_DATA_DIRS}"
 export EDITOR=nvim
 export VISUAL="${EDITOR}"
 
+# Rustup
+export RUSTUP_HOME="${XDG_DATA_HOME}"/rustup
+export CARGO_HOME="${XDG_DATA_HOME}"/cargo
+
 # Misc
 export GRADLE_USER_HOME="${XDG_DATA_HOME}"/gradle
 export INPUTRC="${XDG_CONFIG_HOME}"/readline/inputrc
@@ -17,4 +21,4 @@ export NODE_REPL_HISTORY="${XDG_CACHE_HOME}"/node_repl_history
 export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
 
 # Paths
-export PATH="${HOME}"/.local/bin:"${PATH}"
+export PATH="${HOME}"/.local/bin:"${CARGO_HOME}"/bin:"${PATH}"
