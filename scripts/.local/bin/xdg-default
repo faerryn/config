@@ -1,0 +1,5 @@
+#!/bin/sh
+while test "${#}" -gt 0; do
+	mimetypes "${1}" | xargs xdg-mime default "${1}"
+	shift
+done
