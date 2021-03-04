@@ -21,7 +21,7 @@ setopt AUTO_CD
 bindkey -e
 
 # Aliases
-alias fd='fd --hidden'
+alias fd='fd -H'
 alias rg='rg --hidden'
 
 alias grep='grep --color=auto'

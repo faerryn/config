@@ -10,7 +10,7 @@ export HISTCONTROL=ignoreboth:erasedups
 shopt -s autocd
 
 # Aliases
-alias fd='fd --hidden'
+alias fd='fd -H'
 alias rg='rg --hidden'
 
 alias grep='grep --color=auto'
