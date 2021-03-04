@@ -1,16 +1,26 @@
-autoload -Uz compinit promptinit
-compinit
+# Prompt
+autoload -Uz promptinit
 promptinit
-
 prompt fade blue
 
+# Completion
 autoload -Uz compinit
-compinit
-
+compinit -d "${XDG_CACHE_HOME}"/zcompdump
 setopt COMPLETE_ALIASES
 
+# History
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE="${XDG_CACHE_HOME}"/zhistory
+setopt INC_APPEND_HISTORY HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_NO_STORE HIST_NO_FUNCTIONS
+
+# Navigation
+setopt AUTO_CD
+
+# Bindings
 bindkey -e
 
+# Aliases
 alias fd='fd --hidden'
 alias rg='rg --hidden'
 

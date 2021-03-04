@@ -1,12 +1,15 @@
+# Prompt
 PS1='\w\n\$ '
 
+# History
 HISTFILE="${XDG_CACHE_HOME}"/bash_history
 mkdir -p "$(dirname "${HISTFILE}")"
 export HISTCONTROL=ignoreboth:erasedups
 
-shopt -s dotglob extglob globstar
+# Navigation
 shopt -s autocd
 
+# Aliases
 alias fd='fd --hidden'
 alias rg='rg --hidden'
 
