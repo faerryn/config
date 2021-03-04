@@ -2,7 +2,7 @@ autoload -Uz compinit promptinit
 compinit
 promptinit
 
-prompt adam2 yellow blue white
+prompt fade blue
 
 autoload -Uz compinit
 compinit
