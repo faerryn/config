@@ -54,9 +54,6 @@
 [submodule "neovim/.config/nvim/pack/pack/opt/vim-sandwich"]
 	path = neovim/.config/nvim/pack/pack/opt/vim-sandwich
 	url = https://github.com/machakann/vim-sandwich.git
-[submodule "neovim/.config/nvim/pack/pack/opt/vim-startuptime"]
-	path = neovim/.config/nvim/pack/pack/opt/vim-startuptime
-	url = https://github.com/dstein64/vim-startuptime.git
 [submodule "neovim/.config/nvim/pack/pack/opt/vim-fugitive"]
 	path = neovim/.config/nvim/pack/pack/opt/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
