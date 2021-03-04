@@ -1,11 +1,15 @@
-PS1='\w\n\$ '
+autoload -Uz compinit promptinit
+compinit
+promptinit
 
-HISTFILE="${XDG_CACHE_HOME}"/bash_history
-mkdir -p "$(dirname "${HISTFILE}")"
-export HISTCONTROL=ignoreboth:erasedups
+prompt adam2 yellow blue white
 
-shopt -s dotglob extglob globstar
-shopt -s autocd
+autoload -Uz compinit
+compinit
+
+setopt COMPLETE_ALIASES
+
+bindkey -e
 
 alias fd='fd --hidden'
 alias rg='rg --hidden'
