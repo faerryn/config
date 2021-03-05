@@ -1,7 +1,7 @@
 # Prompt
 autoload -Uz promptinit
 promptinit
-prompt fade blue
+prompt redhat
 
 # Completion
 autoload -Uz compinit
