@@ -14,7 +14,7 @@ return { setup = function()
 		vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K',  '<Cmd>lua vim.lsp.buf.hover()<CR>',       keymap_opts)
 
 		vim.api.nvim_command'command! -buffer Format lua vim.lsp.buf.formatting_sync()'
-		vim.api.nvim_command'command! -buffer Rename lua vim.lsp.buf.rename()'
+		vim.api.nvim_command'command! -buffer -nargs=? Rename lua vim.lsp.buf.rename("<args>")'
 
 		require'completion'.on_attach(client, bufnr)
 	end
