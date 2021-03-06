@@ -6,7 +6,6 @@ prompt redhat
 # Completion
 autoload -Uz compinit
 compinit -d "${XDG_CACHE_HOME}"/zcompdump
-setopt COMPLETE_ALIASES
 
 # History
 HISTSIZE=1000
@@ -34,3 +33,9 @@ alias la='ls -gA'
 alias rm='rm -i'
 
 alias xclip='xclip -selection clipboard'
+
+alias g=git
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gl='git log'
