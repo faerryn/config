@@ -169,7 +169,11 @@ input type:touchpad {
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
+
 		gaps 4 4 0 4
+		height 23
+		status_edge_padding 0
+		status_padding 0
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
@@ -183,6 +187,19 @@ bar {
         inactive_workspace #282828 #282828 #fbf1c7
     }
 }
+
+#
+# Bindings:
+#
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ 100%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ 0%
+
+bindsym XF86MonBrightnessUp exec xbacklight +5
+bindsym Shift+XF86MonBrightnessUp exec xbacklight 100
+bindsym XF86MonBrightnessDown exec xbacklight -5
+bindsym Shift+XF86MonBrightnessDown exec xbacklight 0
 
 #
 # Colors:

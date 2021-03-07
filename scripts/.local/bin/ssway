@@ -2,6 +2,6 @@
 export _JAVA_AWT_WM_NONREPARENTING=1
 export MOZ_ENABLE_WAYLAND=1
 export SDL_VIDEODRIVER=wayland
-export DMENU_OPTS='-x 4 -y 4 -h 28'
+export DMENU_OPTS='-x 4 -y 4'
 
 exec sway

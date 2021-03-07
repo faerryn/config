@@ -6,3 +6,4 @@ suppress_default_binds = true
 q = quit
 n = next
 p = prev
+a = upscaling next
