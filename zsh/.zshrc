@@ -30,6 +30,4 @@ alias ls='ls -hvxCFX --color=auto --group-directories-first'
 alias ll='ls -g'
 alias la='ls -gA'
 
-alias rm='rm -i'
-
 alias xclip='xclip -selection clipboard'
