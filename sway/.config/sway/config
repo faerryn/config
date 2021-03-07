@@ -18,7 +18,8 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu -x 4 -y 4 -h 28 | xargs swaymsg exec --
+set $DMENU_OPTS -x 4 -y 4 -h 28 
+set $menu dmenu_path | dmenu $DMENU_OPTS -F | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -65,6 +66,8 @@ input type:pointer {
 }
 input type:touchpad {
 	natural_scroll enabled
+	tap enabled
+	drag enabled
 }
 
 ### Key bindings
@@ -78,7 +81,7 @@ input type:touchpad {
     bindsym $mod+Shift+c kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+p exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -146,14 +149,11 @@ input type:touchpad {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
+    bindsym $mod+s splith
     bindsym $mod+v splitv
 
-    # Switch the current container between different layout styles
-    bindsym $mod+e layout toggle split
-
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    bindsym $mod+Shift+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
@@ -181,7 +181,7 @@ bar {
         background #282828
         focused_workspace #fabd2f #fabd2f #282828
         active_workspace #b8bb26 #b8bb26 #282828
-        inactive_workspace #282828 #282828 #928374
+        inactive_workspace #282828 #282828 #fbf1c7
     }
 }
 
@@ -211,6 +211,7 @@ font pango:monospace 12
 #
 # Daemons:
 #
-exec gammastep &
+exec gammastep
+exec xrdb -merge "${XDG_CONFIG_HOME}"/Xresources
 
 include /etc/sway/config.d/*
