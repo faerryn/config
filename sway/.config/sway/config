@@ -18,7 +18,6 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $DMENU_OPTS -x 4 -y 4 -h 28 
 set $menu dmenu_path | dmenu $DMENU_OPTS -F | xargs swaymsg exec --
 
 ### Output configuration
@@ -149,8 +148,8 @@ input type:touchpad {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+s splith
-    bindsym $mod+v splitv
+    bindsym $mod+s splitv
+    bindsym $mod+v splith
 
     # Make the current focus fullscreen
     bindsym $mod+Shift+f fullscreen
