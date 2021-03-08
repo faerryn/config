@@ -8,4 +8,4 @@ cd "${PASSDIR}"
 FILE="$(ls | dmenu ${DMENU_OPTS} ${@})"
 
 [ -f "${FILE}" ] || return 1
-cat "${FILE}" | dmenu ${DMENU_OPTS} ${@} | xclip -selection clipboard -r -i
+cat "${FILE}" | dmenu ${DMENU_OPTS} ${@} | ccopy

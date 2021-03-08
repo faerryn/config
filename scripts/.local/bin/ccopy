@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ -n "${WAYLAND_DISPLAY}" ]; then
+	if [ -n "${@}" ]; then
+		cat "${@}" | exec wl-copy -n
+	else
+		exec wl-copy -n
+	fi
+elif [ -n "${DISPLAY}" ]; then
+	exec xclip -selection clipboard -r -i ${@}
+else
+	return 1
+fi
