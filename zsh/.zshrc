@@ -31,5 +31,3 @@ alias ll='ls -g'
 alias la='ls -gA'
 
 alias xclip='xclip -selection clipboard'
-
-alias emacs='emacsclient -a "" -c'
