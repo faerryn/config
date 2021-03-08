@@ -212,7 +212,7 @@ gaps inner 4
 #
 # Font:
 #
-font pango:monospace 12
+font monospace 12
 
 #
 # Daemons:
