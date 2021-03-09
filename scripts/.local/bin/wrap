@@ -1,0 +1,2 @@
+#!/bin/sh
+exec ${SHELL:-"/bin/sh"} -c "${ARGS:=${@}}"
