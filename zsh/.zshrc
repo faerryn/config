@@ -20,14 +20,14 @@ setopt AUTO_CD
 bindkey -e
 
 # Aliases
-alias fd='fd -H'
-alias rg='rg --hidden'
+alias fd='\fd -H'
+alias rg='\rg --hidden'
 
-alias grep='grep --color=auto'
-alias diff='diff --color=auto'
+alias grep='\grep --color=auto'
+alias diff='\diff --color=auto'
 
-alias ls='ls -hvxCFX --color=auto --group-directories-first'
+alias ls='\ls -hvxCFX --color=auto --group-directories-first'
 alias ll='ls -g'
 alias la='ls -gA'
 
-alias xclip='xclip -selection clipboard'
+alias xclip='\xclip -selection clipboard'

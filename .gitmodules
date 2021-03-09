@@ -42,9 +42,6 @@
 [submodule "neovim/.config/nvim/pack/pack/opt/gitsigns.nvim"]
 	path = neovim/.config/nvim/pack/pack/opt/gitsigns.nvim
 	url = https://github.com/lewis6991/gitsigns.nvim.git
-[submodule "neovim/.config/nvim/pack/pack/opt/kommentary"]
-	path = neovim/.config/nvim/pack/pack/opt/kommentary
-	url = https://github.com/b3nj5m1n/kommentary.git
 [submodule "neovim/.config/nvim/pack/pack/opt/undotree"]
 	path = neovim/.config/nvim/pack/pack/opt/undotree
 	url = https://github.com/mbbill/undotree.git
@@ -54,9 +51,6 @@
 [submodule "neovim/.config/nvim/pack/pack/opt/vim-sandwich"]
 	path = neovim/.config/nvim/pack/pack/opt/vim-sandwich
 	url = https://github.com/machakann/vim-sandwich.git
-[submodule "neovim/.config/nvim/pack/pack/opt/vim-fugitive"]
-	path = neovim/.config/nvim/pack/pack/opt/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
 [submodule "neovim/.config/nvim/pack/pack/opt/completion-nvim"]
 	path = neovim/.config/nvim/pack/pack/opt/completion-nvim
 	url = https://github.com/nvim-lua/completion-nvim.git
@@ -64,3 +58,6 @@
 	path = neovim/.config/nvim/pack/pack/opt/telescope-fzy-native.nvim
 	url = https://github.com/nvim-telescope/telescope-fzy-native.nvim.git
 	ignore = dirty
+[submodule "neovim/.config/nvim/pack/pack/opt/tcomment_vim"]
+	path = neovim/.config/nvim/pack/pack/opt/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim.git
