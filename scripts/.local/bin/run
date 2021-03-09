@@ -1,10 +1,17 @@
 #!/bin/sh
 
+if ! >/dev/null command -V "${1}"; then
+	return 1
+fi
+
 TERMINAL=st
 
 if [ -z "${TERM}" ]; then
 	case "${1}" in
-		htop | less | nvi | nvim | vi | vim)
+		bash | dash | fish | sh | zsh |\
+			htop |\
+			less |\
+			nvi | nvim | vi | vim)
 			exec $TERMINAL "${@}"
 			;;
 	esac
