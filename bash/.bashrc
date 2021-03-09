@@ -17,8 +17,7 @@ alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 
 alias ls='ls -hvxCFX --color=auto --group-directories-first'
-alias l='ls -1'
-alias ll='ls -g'
+alias ll='ls -l'
 alias la='ls -gA'
 
 alias xclip='xclip -selection clipboard'
