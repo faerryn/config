@@ -17,6 +17,7 @@ alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 
 alias ls='ls -hvxCFX --color=auto --group-directories-first'
+alias l='ls -1'
 alias ll='ls -g'
 alias la='ls -gA'
 
