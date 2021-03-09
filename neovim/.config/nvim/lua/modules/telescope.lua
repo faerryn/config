@@ -4,9 +4,15 @@ return { setup = function()
 	vim.api.nvim_command'packadd popup.nvim'
 
 	require'telescope'.setup{ defaults = {
-		mappings = { i = { ['<C-w>c'] = require'telescope.actions'.close } },
+		mappings = { i = {
+			['<C-w>c'] = require'telescope.actions'.close,
+			['<esc>'] = require'telescope.actions'.close,
+		} },
 		file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
 	} }
+
+	vim.api.nvim_command'packadd telescope-fzy-native.nvim'
+	require('telescope').load_extension('fzy_native')
 
 	local keymap_opts = { noremap = true, silent = true }
 	vim.fn.nvim_set_keymap('n', '<Leader>ff', [[<Cmd>lua require'telescope.builtin'.find_files{ hidden = true }<CR>]], keymap_opts)
