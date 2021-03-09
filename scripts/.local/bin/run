@@ -1,0 +1,13 @@
+#!/bin/sh
+
+TERMINAL=st
+
+if [ -z "${TERM}" ]; then
+	case "${1}" in
+		htop | less | nvi | nvim | vi | vim)
+			exec $TERMINAL "${@}"
+			;;
+	esac
+fi
+
+exec "${@}"
