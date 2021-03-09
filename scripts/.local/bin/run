@@ -1,17 +1,7 @@
 #!/bin/sh
 
 TERMINAL=st
-TUI_PROGRAMS="
-bash dash fish sh zsh
-git
-htop
-iwctl
-less
-man
-nvi nvim vi vim
-pulsemixer
-yes
-"
+TUI_PROGRAMS_FILE="${XDG_DATA_HOME}"/tui_programs
 
 CMD="$(command -v "${1}")"
 
@@ -19,8 +9,9 @@ if [ -z "${CMD}" ]; then
 	return 1
 fi
 
-if [ -z "${TERM}" ] && { for PROGRAM in $(echo "${TUI_PROGRAMS}"); do command -v $PROGRAM; done } | grep -qx "${CMD}"; then
-	exec $TERMINAL "${@}"
-fi
+[ -z "${TERM}" -a -r "${TUI_PROGRAMS_FILE}" ] &&
+	{ for PROGRAM in $(cat "${TUI_PROGRAMS_FILE}"); do command -v $PROGRAM; done } |
+		grep -qx "${CMD}" &&
+		exec $TERMINAL "${@}"
 
 exec "${@}"
