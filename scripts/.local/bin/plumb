@@ -1,0 +1,27 @@
+#!/bin/sh
+
+MIMETYPE="$(file -bL --mime-type "${1}")"
+
+TERMINAL=st
+TUI=0
+PROGRAM=
+
+case "${MIMETYPE}" in
+	text/*)
+		TUI=1
+		PROGRAM=nvim
+		;;
+	image/*)
+		PROGRAM=sxiv
+		;;
+	*)
+		>&2 echo "no program associated with mimetype ${MIMETYPE}"
+		return 1
+		;;
+esac
+
+if [ -z "${TERM}" ] && [ "${TUI}" = 1 ]; then
+	exec $TERMINAL $PROGRAM "${@}"
+else
+	exec $PROGRAM "${@}"
+fi
