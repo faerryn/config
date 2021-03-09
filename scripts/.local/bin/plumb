@@ -15,6 +15,9 @@ case "${MIMETYPE}" in
 	audio/* | video/*)
 		PROGRAM=mpv
 		;;
+	image/svg+xml)
+		PROGRAM=inkview
+		;;
 	image/*)
 		PROGRAM=sxiv
 		;;
