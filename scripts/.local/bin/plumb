@@ -1,29 +1,44 @@
 #!/bin/sh
 
+EDITOR=${EDITOR:-nvim}
+
 if [ ! -r "${1}" ]; then
 	return 1
 fi
 
 MIMETYPE="$(file -bL --mime-type "${1}")"
+ENCODING="$(file -bL --mime-encoding "${1}")"
 
 PROGRAM=
 
 case "${MIMETYPE}" in
-	application/pdf)
-		PROGRAM=firefox
-		;;
-	application/* | audio/* | video/*)
+	audio/* | video/*)
 		PROGRAM=mpv
 		;;
 	image/*)
 		PROGRAM=sxiv
 		;;
+	text/*)
+		PROGRAM="${EDITOR}"
+		;;
+
+	application/json)
+		PROGRAM="${EDITOR}"
+		;;
+	application/pdf)
+		PROGRAM=firefox
+		;;
+	application/*)
+		PROGRAM=mpv
+		;;
+
 	inode/directory)
 		PROGRAM=pcmanfm
 		;;
-	text/*)
-		PROGRAM=nvim
+	inode/x-empty)
+		PROGRAM="${EDITOR}"
 		;;
+
 	*)
 		>&2 echo "no program associated with mimetype ${MIMETYPE}"
 		return 1
