@@ -7,6 +7,7 @@ export SDL_VIDEODRIVER=x11
 slstatus &
 picom &
 redshift &
+xrdb -merge "${XDG_CONFIG_HOME}"/Xresources
 hsetroot -solid '#282828'
 
 exec dwm
