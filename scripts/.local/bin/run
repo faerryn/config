@@ -1,20 +1,26 @@
 #!/bin/sh
 
-if ! >/dev/null command -V "${1}"; then
+TERMINAL=st
+TUI_PROGRAMS="
+bash dash fish sh zsh
+git
+htop
+iwctl
+less
+man
+nvi nvim vi vim
+pulsemixer
+yes
+"
+
+CMD="$(command -v "${1}")"
+
+if [ -z "${CMD}" ]; then
 	return 1
 fi
 
-TERMINAL=st
-
-if [ -z "${TERM}" ]; then
-	case "${1}" in
-		bash | dash | fish | sh | zsh |\
-			htop |\
-			less |\
-			nvi | nvim | vi | vim)
-			exec $TERMINAL "${@}"
-			;;
-	esac
+if [ -z "${TERM}" ] && { for PROGRAM in $(echo "${TUI_PROGRAMS}"); do command -v $PROGRAM; done } | grep -qx "${CMD}"; then
+	exec $TERMINAL "${@}"
 fi
 
 exec "${@}"
