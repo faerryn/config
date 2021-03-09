@@ -1,0 +1,9 @@
+#!/bin/sh
+MIME_DIR=/usr/share/mime
+{
+	if >/dev/null command -v fd; then
+		fd -tf --exact-depth 2 '^.*\.xml$' "${MIME_DIR}"
+	else
+		find "${MIME_DIR}" -mindepth 2 -maxdepth 2 -type f -regex '^.*\.xml$'
+	fi
+} | sed -e 's/^.*\/\([^/]\+\/[^/]\+\)\.xml$/\1/'

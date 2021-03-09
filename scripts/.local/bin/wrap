@@ -1,2 +1,3 @@
 #!/bin/sh
-exec ${SHELL:-"/bin/sh"} -c "${ARGS:=${@}}"
+ARGS="$(echo "${@}" | tr '\n' ' ')"
+exec ${SHELL:-"/bin/sh"} -c "${ARGS}"
