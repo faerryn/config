@@ -28,7 +28,7 @@ return { setup = function()
 	}
 
 	vim.api.nvim_exec([[
-	augroup lightline_autoupdate
+	augroup custom_lightline
 	autocmd!
 	autocmd ColorScheme * let g:lightline.colorscheme = g:colors_name | call lightline#enable()
 	augroup END
