@@ -61,3 +61,6 @@
 [submodule "neovim/.config/nvim/pack/pack/opt/tcomment_vim"]
 	path = neovim/.config/nvim/pack/pack/opt/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim.git
+[submodule "neovim/.config/nvim/pack/pack/opt/neogit"]
+	path = neovim/.config/nvim/pack/pack/opt/neogit
+	url = https://github.com/TimUntersberger/neogit.git
