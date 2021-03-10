@@ -19,7 +19,7 @@ local modules = {
 	'undotree',
 }
 
-local function setup()
+return { setup = function()
 	for _, name in ipairs(modules) do
 		local module = require('modules.'..name)
 		local status, err = pcall(module.setup)
@@ -27,6 +27,4 @@ local function setup()
 			print(string.format("error in module %s:\n%s", name, err))
 		end
 	end
-end
-
-return { setup = setup }
+end }
