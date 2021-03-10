@@ -1,6 +1,4 @@
 #!/bin/sh
 set -eu
-ARGS=
 
-ARGS="$(echo "${@}" | tr '\n' ' ')"
-exec ${SHELL:-"/bin/sh"} -c "${ARGS}"
+exec ${SHELL:-"/bin/sh"} -c "$(echo ${@})"
