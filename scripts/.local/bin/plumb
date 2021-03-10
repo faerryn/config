@@ -35,7 +35,7 @@ case "${MIMETYPE}" in
 		;;
 
 	inode/directory)
-		PROGRAM=pcmanfm
+		PROGRAM=Thunar
 		;;
 	inode/x-empty)
 		PROGRAM="${EDITOR}"
