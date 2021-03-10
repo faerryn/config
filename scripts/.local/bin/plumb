@@ -29,7 +29,7 @@ case "${MIMETYPE}" in
 		PROGRAM="${EDITOR}"
 		;;
 	application/pdf)
-		PROGRAM=firefox
+		PROGRAM=katarakt
 		;;
 	application/*)
 		PROGRAM=mpv
