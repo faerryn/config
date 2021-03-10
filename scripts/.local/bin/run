@@ -13,15 +13,11 @@ pulsemixer
 yes
 "
 
-CMD="$(command -v "${1}")"
+>/dev/null command -v "${1}" || return 1
 
-if [ -z "${CMD}" ]; then
-	return 1
-fi
+CMD="$(basename "${1}")"
 
-[ -z "${TERM}" ] &&
-	{ for PROGRAM in $(echo "${TUI_PROGRAMS}"); do command -v $PROGRAM; done } |
-		grep -qx "${CMD}" &&
+[ -z "${TERM}" ] && printf "%s\n" ${TUI_PROGRAMS} | grep -qx "${CMD}" &&
 		exec $TERMINAL "${@}"
 
 exec "${@}"
