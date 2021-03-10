@@ -8,7 +8,7 @@ local modules = {
 	'colorizer',
 
 	'treesitter',
-	-- 'lsp',
+	'lsp',
 
 	'align',
 	'comments',
