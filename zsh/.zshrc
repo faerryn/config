@@ -29,5 +29,3 @@ alias diff='\diff --color=auto'
 alias ls='\ls -hvxCFX --color=auto --group-directories-first'
 alias ll='ls -1'
 alias la='ls -gA'
-
-alias xclip='\xclip -selection clipboard'
