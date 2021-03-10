@@ -23,9 +23,6 @@
 [submodule "neovim/.config/nvim/pack/pack/opt/telescope.nvim"]
 	path = neovim/.config/nvim/pack/plugins/opt/telescope.nvim
 	url = https://github.com/nvim-telescope/telescope.nvim.git
-[submodule "neovim/.config/nvim/pack/pack/opt/nvim-treesitter"]
-	path = neovim/.config/nvim/pack/plugins/opt/nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter.git
 [submodule "neovim/.config/nvim/pack/pack/opt/readline.vim"]
 	path = neovim/.config/nvim/pack/plugins/opt/readline.vim
 	url = https://github.com/ryvnf/readline.vim.git
@@ -63,6 +60,4 @@
 	url = https://github.com/tomtom/tcomment_vim.git
 [submodule "neovim/.config/nvim/pack/plugins/opt/nlua.nvim"]
 	path = neovim/.config/nvim/pack/plugins/opt/nlua.nvim
-	url = https://github.com/tjdevries/nlua.nvim.git
-[submodule "nvim-treesitter"]
-	branch = update-lockfile-pr
+	url = https://github.com/faerryn/nlua.nvim.git
