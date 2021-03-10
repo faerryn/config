@@ -1,6 +1,6 @@
 return { setup = function()
 	vim.o.background = 'dark'
-	vim.o.termguicolors = true
+	vim.o.termguicolors = (os.getenv'COLORTERM' == 'truecolor')
 
 	vim.api.nvim_command'packadd gruvbox'
 	vim.g.gruvbox_bold                 = 1
