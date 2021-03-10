@@ -64,3 +64,5 @@
 [submodule "neovim/.config/nvim/pack/plugins/opt/nlua.nvim"]
 	path = neovim/.config/nvim/pack/plugins/opt/nlua.nvim
 	url = https://github.com/tjdevries/nlua.nvim.git
+[submodule "nvim-treesitter"]
+	branch = update-lockfile-pr
