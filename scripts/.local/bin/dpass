@@ -1,11 +1,13 @@
 #!/bin/sh
+set -eu
 
 PASSDIR="${HOME}"/pass
+FILE=
 
 [ -d "${PASSDIR}" ] || return 1
 cd "${PASSDIR}"
 
-FILE="$(ls | dmenu ${DMENU_OPTS} ${@})"
+FILE="$(ls | dmenu ${@})"
 
 [ -f "${FILE}" ] || return 1
-cat "${FILE}" | dmenu ${DMENU_OPTS} ${@} | ccopy
+cat "${FILE}" | dmenu ${@} | ccopy

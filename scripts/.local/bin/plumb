@@ -1,14 +1,14 @@
 #!/bin/sh
-
+set -eu
 EDITOR=${EDITOR:-nvim}
+MIMETYPE=
+PROGRAM=
 
 if [ ! -r "${1}" ]; then
 	return 1
 fi
 
 MIMETYPE="$(file -bL --mime-type "${1}")"
-
-PROGRAM=
 
 case "${MIMETYPE}" in
 	audio/* | video/*)
