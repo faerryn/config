@@ -7,7 +7,6 @@ if [ ! -r "${1}" ]; then
 fi
 
 MIMETYPE="$(file -bL --mime-type "${1}")"
-ENCODING="$(file -bL --mime-encoding "${1}")"
 
 PROGRAM=
 
