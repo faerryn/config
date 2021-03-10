@@ -61,3 +61,6 @@
 [submodule "neovim/.config/nvim/pack/pack/opt/tcomment_vim"]
 	path = neovim/.config/nvim/pack/plugins/opt/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim.git
+[submodule "neovim/.config/nvim/pack/plugins/opt/nlua.nvim"]
+	path = neovim/.config/nvim/pack/plugins/opt/nlua.nvim
+	url = https://github.com/tjdevries/nlua.nvim.git
