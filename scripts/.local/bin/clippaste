@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eu
+set -e
 
 if [ -n "${WAYLAND_DISPLAY}" ]; then
 	exec wl-paste -n
