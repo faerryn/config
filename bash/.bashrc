@@ -2,7 +2,7 @@
 PS1='\w\n\$ '
 
 # History
-HISTFILE="${XDG_CACHE_HOME}"/bash_history
+HISTFILE="${XDG_DATA_HOME}"/bash_history
 mkdir -p "$(dirname "${HISTFILE}")"
 export HISTCONTROL=ignoreboth:erasedups
 
@@ -19,3 +19,6 @@ alias diff='diff --color=auto'
 alias ls='ls -hvxCFX --color=auto --group-directories-first'
 alias ll='ls -l'
 alias la='ls -gA'
+
+# Direnv
+>/dev/null command -v direnv && eval "$(direnv hook bash)"

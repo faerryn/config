@@ -30,6 +30,9 @@ case "${MIMETYPE}" in
 	application/pdf)
 		PROGRAM=katarakt
 		;;
+	application/x-shockwave-flash)
+		PROGRAM=lightspark
+		;;
 	application/*)
 		PROGRAM=mpv
 		;;

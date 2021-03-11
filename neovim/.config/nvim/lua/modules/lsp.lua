@@ -11,7 +11,7 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_command'command! -buffer          Format     lua vim.lsp.buf.formatting_sync()'
 	vim.api.nvim_command'command! -buffer -nargs=? Rename     lua vim.lsp.buf.rename("<args>")'
 
-	require'completion'.on_attach(client, bufnr)
+	require'completion'.on_attach()
 end
 
 return { setup = function()
@@ -22,10 +22,23 @@ return { setup = function()
 		require'lspconfig'[server].setup{ on_attach = on_attach }
 	end
 
-	vim.api.nvim_command'packadd nlua.nvim'
-
-	require('nlua.lsp.nvim').setup(require('lspconfig'), {
+	require'lspconfig'.sumneko_lua.setup{
 		on_attach = on_attach,
-		globals = {},
-	} )
+		cmd = { 'lua-language-server' },
+		settings = {
+			Lua = {
+				runtime = {
+					-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+					version = 'LuaJIT',
+					-- Setup your lua path
+					path = vim.split(package.path, ';'),
+				},
+				diagnostics = {
+					-- Get the language server to recognize the `vim` global
+					globals = {'vim'},
+				},
+			},
+		},
+	}
+
 end }
