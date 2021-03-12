@@ -4,8 +4,6 @@ promptinit
 prompt redhat
 
 # Completion
-source "${XDG_CONFIG_HOME}"/zsh/nix-zsh-completions/nix-zsh-completions.plugin.zsh
-fpath=("${XDG_CONFIG_HOME}"/zsh/nix-zsh-completions $fpath)
 autoload -Uz compinit
 compinit -d "${XDG_CACHE_HOME}"/zcompdump
 
