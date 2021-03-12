@@ -6,7 +6,7 @@ TERMINAL=st
 TUI_PROGRAMS="
 bash dash fish sh zsh
 bluetoothctl iwctl pulsemixer
-git
+dvtm screen tmux
 htop top
 less
 man
