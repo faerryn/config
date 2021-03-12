@@ -8,6 +8,6 @@ slstatus &
 picom &
 redshift &
 xrdb -merge "${XDG_CONFIG_HOME}"/Xresources
-hsetroot -solid '#282828'
+hsetroot -solid '#282828' -cover "${XDG_CONFIG_HOME}"/wallpaper
 
 exec dwm

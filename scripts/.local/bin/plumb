@@ -31,7 +31,7 @@ case "${MIMETYPE}" in
 		PROGRAM=katarakt
 		;;
 	application/x-shockwave-flash)
-		PROGRAM=lightspark
+		PROGRAM=ruffle
 		;;
 	application/*)
 		PROGRAM=mpv
