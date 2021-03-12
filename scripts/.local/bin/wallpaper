@@ -4,4 +4,11 @@ set -euf
 WALLPAPER="${XDG_CONFIG_HOME}"/wallpaper
 
 [ -n "${1:-}" ] && ln -srf "${1}" "${WALLPAPER}"
-hsetroot -cover "${WALLPAPER}" || exec hsetroot -solid '#282828'
+
+if [ -n "${WAYLAND_DISPLAY:-}" ]; then
+	swaybg -i "${WALLPAPER}" -m stretch || exec swaybg -c 282828
+elif [ -n "${DISPLAY:-}" ]; then
+	hsetroot -cover "${WALLPAPER}" || exec hsetroot -solid '#282828'
+else
+	return 1
+fi
