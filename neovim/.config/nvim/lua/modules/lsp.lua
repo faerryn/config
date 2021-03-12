@@ -1,7 +1,6 @@
 local servers = { 'clangd', 'rust_analyzer', 'zls' }
 
 local on_attach = function(client, bufnr)
-	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	local keymap_opts = { noremap = true, silent = true }
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', keymap_opts)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>',  keymap_opts)
@@ -14,6 +13,21 @@ local on_attach = function(client, bufnr)
 	require'completion'.on_attach()
 end
 
+local function get_lua_runtime()
+	local result = {};
+	for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
+		local lua_path = path .. '/lua/';
+		if vim.fn.isdirectory(lua_path) then
+			result[lua_path] = true
+		end
+	end
+
+	-- This loads the `lua` files from nvim into the runtime.
+	result[vim.fn.expand'$VIMRUNTIME/lua'] = true
+
+	return result;
+end
+
 return { setup = function()
 	vim.api.nvim_command'packadd nvim-lspconfig'
 	vim.api.nvim_command'packadd completion-nvim'
@@ -22,11 +36,35 @@ return { setup = function()
 		require'lspconfig'[server].setup{ on_attach = on_attach }
 	end
 
-	vim.api.nvim_command'packadd nlua.nvim'
-
-	require'nlua.lsp.nvim'.setup(require'lspconfig', {
+	require'lspconfig'.sumneko_lua.setup{
 		cmd = { 'lua-language-server' },
+
+		-- Lua LSP configuration
+		settings = {
+			Lua = {
+				runtime = {
+					version = "LuaJIT",
+					path = vim.split(package.path, ';'),
+				},
+
+				completion = { keywordSnippet = "Disable" },
+
+				diagnostics = {
+					enable = true,
+					disable =  { "trailing-space" },
+					globals = { "vim" },
+				},
+
+				workspace = {
+					library = get_lua_runtime(),
+					maxPreload = 1000,
+					preloadFileSize = 1000,
+				},
+			}
+		},
+
 		on_attach = on_attach,
-	})
+
+	}
 
 end }
