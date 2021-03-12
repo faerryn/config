@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -euf
+WALLPAPER="${XDG_CONFIG_HOME}"/wallpaper
+
+ln -srf "${1}" "${WALLPAPER}"
+exec hsetroot -cover "${1}"

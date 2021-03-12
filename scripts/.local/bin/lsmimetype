@@ -1,5 +1,6 @@
 #!/bin/sh
-set -eu
+
+set -euf
 MIME_DIR=/usr/share/mime
 
-find "${MIME_DIR}" -mindepth 2 -maxdepth 2 -type f -regex '^.*\.xml$' | sed -e 's/^.*\/\([^/]\+\/[^/]\+\)\.xml$/\1/'
+find "${MIME_DIR}" -mindepth 2 -maxdepth 2 -type f -regex '^.*\.xml$' | exec sed -e 's/^.*\/\([^/]\+\/[^/]\+\)\.xml$/\1/'

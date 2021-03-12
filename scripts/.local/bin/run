@@ -1,23 +1,22 @@
 #!/bin/sh
 
+set -euf
+
 TERMINAL=st
 TUI_PROGRAMS="
 bash dash fish sh zsh
+bluetoothctl iwctl pulsemixer
 git
-htop
-iwctl
+htop top
 less
 man
 nvi nvim vi vim
-pulsemixer
 yes
 "
 
->/dev/null command -v "${1}" || return 1
-
-CMD="$(basename "${1}")"
-
-[ -z "${TERM}" ] && printf "%s\n" ${TUI_PROGRAMS} | grep -qx "${CMD}" &&
-		exec $TERMINAL "${@}"
+[ -z "${TERM:-}" ] &&
+	printf "%s\n" ${TUI_PROGRAMS} |
+	grep -qx "$(basename $(readlink -f "$(command -v "${1}")"))" &&
+	exec ${TERMINAL} "${@}"
 
 exec "${@}"

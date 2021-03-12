@@ -1,26 +1,23 @@
 #!/bin/sh
-set -eu
-EDITOR=${EDITOR:-nvim}
-MIMETYPE=
-PROGRAM=
 
-if [ ! -r "${1}" ]; then
-	return 1
-fi
+set -euf
+EDITOR="${EDITOR:-nvim}"
 
-MIMETYPE="$(file -bL --mime-type "${1}")"
-
-case "${MIMETYPE}" in
+case "$(file -bL --mime-type "${1}")" in
 	audio/* | video/*)
 		PROGRAM=mpv
-		;;
-	image/svg+xml)
-		PROGRAM=inkview
 		;;
 	image/*)
 		PROGRAM=sxiv
 		;;
 	text/*)
+		PROGRAM="${EDITOR}"
+		;;
+
+	inode/directory)
+		PROGRAM=thunar
+		;;
+	inode/x-empty)
 		PROGRAM="${EDITOR}"
 		;;
 
@@ -33,21 +30,10 @@ case "${MIMETYPE}" in
 	application/x-shockwave-flash)
 		PROGRAM=ruffle
 		;;
-	application/*)
-		PROGRAM=mpv
-		;;
-
-	inode/directory)
-		PROGRAM=Thunar
-		;;
-	inode/x-empty)
-		PROGRAM="${EDITOR}"
-		;;
 
 	*)
-		>&2 echo "no program associated with mimetype ${MIMETYPE}"
 		return 1
 		;;
 esac
 
-exec run $PROGRAM "$@"
+exec run ${PROGRAM} "${@}"

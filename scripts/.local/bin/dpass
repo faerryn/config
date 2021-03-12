@@ -1,13 +1,8 @@
 #!/bin/sh
-set -eu
 
+set -euf
 PASSDIR="${HOME}"/pass
-FILE=
 
-[ -d "${PASSDIR}" ] || return 1
 cd "${PASSDIR}"
-
 FILE="$(ls | dmenu ${@})"
-
-[ -f "${FILE}" ] || return 1
-cat "${FILE}" | dmenu ${@} | clipcopy
+cat "${FILE}" | dmenu ${@} | exec clipcopy

@@ -1,4 +1,5 @@
 #!/bin/sh
-set -eu
+
+set -euf
 
 exec ${SHELL:-"/bin/sh"} -c "$(echo ${@})"

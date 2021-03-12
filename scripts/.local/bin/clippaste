@@ -1,9 +1,10 @@
 #!/bin/sh
-set -e
 
-if [ -n "${WAYLAND_DISPLAY}" ]; then
+set -euf
+
+if [ -n "${WAYLAND_DISPLAY:-}" ]; then
 	exec wl-paste -n
-elif [ -n "${DISPLAY}" ]; then
+elif [ -n "${DISPLAY:-}" ]; then
 	exec xclip -selection clipboard -r -o
 else
 	return 1
