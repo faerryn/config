@@ -3,5 +3,5 @@
 set -euf
 WALLPAPER="${XDG_CONFIG_HOME}"/wallpaper
 
-ln -srf "${1}" "${WALLPAPER}"
-exec hsetroot -cover "${1}"
+[ -n "${1:-}" ] && ln -srf "${1}" "${WALLPAPER}"
+hsetroot -cover "${WALLPAPER}" || exec hsetroot -solid '#282828'
