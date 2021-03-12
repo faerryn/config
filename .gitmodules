@@ -65,3 +65,6 @@
 [submodule "zsh/.config/zsh/nix-zsh-completions"]
 	path = zsh/.config/zsh/nix-zsh-completions
 	url = https://github.com/spwhitt/nix-zsh-completions.git
+[submodule "neovim/.config/nvim/pack/plugins/opt/lspsaga.nvim"]
+	path = neovim/.config/nvim/pack/plugins/opt/lspsaga.nvim
+	url = https://github.com/glepnir/lspsaga.nvim.git
