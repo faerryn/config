@@ -1,0 +1,91 @@
+#+title: Emacs Literate Config
+#+author: Faerryn
+#+email: alexandre.liao@gmail.com
+#+startup: content
+
+* Vanilla Config
+stuff that don't need packages
+** Disable Emacs features
+emacs enables some extra stuff by default
+#+begin_src emacs-lisp
+  (setq-default
+   make-backup-files nil
+   package-enable-at-startup nil)
+  (auto-save-mode -1)
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+#+end_src
+** Font
+#+begin_src emacs-lisp
+  (add-to-list 'default-frame-alist '(font . "Monospace-12"))
+#+end_src
+** Line Numbers
+#+begin_src emacs-lisp
+  (setq-default display-line-numbers-type 'relative)
+  (display-line-numbers-mode +1)
+#+end_src
+** Org Mode
+#+begin_src emacs-lisp
+  (setq-default org-src-tab-acts-natively t)
+  (add-hook 'org-mode-hook (lambda () (org-indent-mode +1)))
+#+end_src
+* Boostrap Packaging System
+** straight.el
+#+begin_src emacs-lisp
+  (defvar bootstrap-version)
+  (setq-default straight-use-package-by-default t)
+  (let ((bootstrap-file
+         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+        (bootstrap-version 5))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+          (url-retrieve-synchronously
+           "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+           'silent 'inhibit-cookies)
+        (goto-char (point-max))
+        (eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage))
+#+end_src
+** use-package
+#+begin_src emacs-lisp
+  (straight-use-package 'use-package)
+#+end_src
+* Packages Config
+** gruvbox
+#+begin_src emacs-lisp
+  (use-package doom-themes
+    :config
+    (setq-default
+     doom-themes-enable-bold t
+     doom-themes-enable-italic t)
+    (load-theme 'doom-gruvbox t)
+    (doom-themes-visual-bell-config)
+    (doom-themes-org-config))
+#+end_src
+** evil
+#+begin_src emacs-lisp
+  (use-package evil
+    :init
+    (setq-default
+     evil-want-integration t
+     evil-want-keybinding nil
+     evil-want-Y-to-eol t)
+    :config
+    (evil-mode +1))
+#+end_src
+** evil-collection
+#+begin_src emacs-lisp
+  (use-package evil-collection
+    :after evil
+    :config
+    (evil-collection-init))
+#+end_src
+** evil-org
+#+begin_src emacs-lisp
+  (use-package evil-org
+    :after evil
+    :hook (org-mode . (lambda () (evil-org-mode +1)))
+    :config
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys))
+#+end_src
