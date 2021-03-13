@@ -3,7 +3,17 @@
 set -euf
 WALLPAPER="${XDG_CONFIG_HOME}"/wallpaper
 
-[ -n "${1:-}" ] && ln -srf "${1}" "${WALLPAPER}"
+case "${#}" in
+	0)
+		;;
+	1)
+		ln -srf "${1}" "${WALLPAPER}"
+		;;
+	*)
+		# TODO: something with sxiv??
+		return 1
+		;;
+esac
 
 if [ -n "${WAYLAND_DISPLAY:-}" ]; then
 	swaybg -i "${WALLPAPER}" -m fill || exec swaybg -c 282828
