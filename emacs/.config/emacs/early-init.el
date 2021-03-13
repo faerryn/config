@@ -5,7 +5,9 @@
 (auto-save-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(scoll-bar-mode -1)
+
+;; Disable Garbage Collection
+(setq-default gc-cons-threshold most-positive-fixnum)
 
 ;; Tangle init.org
 (let ((init.org (expand-file-name "init.org" user-emacs-directory))

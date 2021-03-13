@@ -23,7 +23,8 @@ set $menu dmenu_run -i -F
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-exec wallpaper
+set $wallpaper "${XDG_CONFIG_HOME}"/wallpaper 
+exec echo $wallpaper | entr -n swaybg -i $wallpaper -m stretch
 #
 # Example configuration:
 #

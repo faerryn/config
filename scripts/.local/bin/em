@@ -1,5 +1,0 @@
-#!/bin/sh
-
-set -euf
-
-emacsclient -a '' -c

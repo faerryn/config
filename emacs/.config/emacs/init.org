@@ -5,6 +5,10 @@
 
 * Vanilla Config
 stuff that don't need packages
+** Disable Scrollbar
+#+begin_src emacs-lisp
+  (scroll-bar-mode -1)
+#+end_src
 ** Font
 #+begin_src emacs-lisp
   (add-to-list 'default-frame-alist '(font . "Monospace-12"))
@@ -41,6 +45,12 @@ stuff that don't need packages
   (straight-use-package 'use-package)
 #+end_src
 * Packages Config
+** gcmh
+#+begin_src emacs-lisp
+  (use-package gcmh
+    :config
+    (add-hook 'emacs-startup-hook (lambda () (gcmh-mode +1))))
+#+end_src
 ** gruvbox
 #+begin_src emacs-lisp
   (use-package doom-themes
@@ -85,7 +95,6 @@ stuff that don't need packages
 ** ivy
 #+begin_src emacs-lisp
   (use-package ivy
-    :init
     :config
     (ivy-mode +1))
 #+end_src
