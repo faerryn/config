@@ -10,6 +10,7 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_command'command! -buffer          Format     lua vim.lsp.buf.formatting_sync()'
 	vim.api.nvim_command'command! -buffer -nargs=? Rename     lua vim.lsp.buf.rename("<args>")'
 
+	vim.api.nvim_command'packadd completion-nvim'
 	require'completion'.on_attach()
 end
 
@@ -30,7 +31,6 @@ end
 
 return { setup = function()
 	vim.api.nvim_command'packadd nvim-lspconfig'
-	vim.api.nvim_command'packadd completion-nvim'
 
 	for _, server in ipairs(servers) do
 		require'lspconfig'[server].setup{ on_attach = on_attach }
