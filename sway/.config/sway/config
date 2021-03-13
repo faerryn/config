@@ -14,16 +14,16 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term st
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu $DMENU_OPTS -F | xargs swaymsg exec --
+set $menu dmenu_run -i -F
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg "#282828" solid_color
+exec wallpaper
 #
 # Example configuration:
 #
@@ -160,7 +160,7 @@ input type:touchpad {
 bar {
     position top
 
-		gaps 4 4 0 4
+		gaps 8 8 0 8
 		height 23
 		status_edge_padding 0
 		status_padding 0
@@ -171,10 +171,10 @@ bar {
 
     colors {
         statusline #fbf1c7
-        background #282828
-        focused_workspace  #fabd2f #fabd2f #282828
-        active_workspace   #b8bb26 #b8bb26 #282828
-        inactive_workspace #282828 #282828 #fbf1c7
+        background #00000000
+        focused_workspace  #fabd2f   #fabd2f   #282828
+        active_workspace   #b8bb26   #b8bb26   #282828
+        inactive_workspace #00000000 #00000000 #fbf1c7
     }
 }
 
@@ -194,8 +194,8 @@ bindsym Shift+XF86MonBrightnessDown exec xbacklight 0
 #
 # Colors:
 #
-client.focused          #fabd2f #282828 #ebdbb2 #fabd2f #fabd2f
-client.focused_inactive #b8bb26 #282828 #928374 #b8bb26 #b8bb26
+client.focused          #fabd2f #282828 #ebdbb2 #83a598 #fabd2f
+client.focused_inactive #b8bb26 #282828 #928374 #83a598 #b8bb26
 client.unfocused        #282828 #282828 #928374 #282828 #282828
 
 #
@@ -207,7 +207,7 @@ default_floating_border pixel 1
 #
 # Gaps:
 #
-gaps inner 4
+gaps inner 8
 
 #
 # Font:
@@ -218,6 +218,5 @@ font monospace 12
 # Daemons:
 #
 exec gammastep
-exec xrdb -merge "${XDG_CONFIG_HOME}"/Xresources
 
 include /etc/sway/config.d/*
