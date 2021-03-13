@@ -20,5 +20,4 @@ return { setup = function()
 	for _, server in ipairs(servers) do
 		require'lspconfig'[server].setup{ on_attach = on_attach }
 	end
-
 end }
