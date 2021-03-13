@@ -1,7 +1,6 @@
 #!/bin/sh
 
 set -euf
-EDITOR="${EDITOR:-st nvim}"
 
 case "$(file -bL --mime-type "${1}")" in
 	audio/* | video/*)
@@ -11,18 +10,18 @@ case "$(file -bL --mime-type "${1}")" in
 		PROGRAM=sxiv
 		;;
 	text/*)
-		PROGRAM="${EDITOR}"
+		PROGRAM='st nvim'
 		;;
 
 	inode/directory)
 		PROGRAM=thunar
 		;;
 	inode/x-empty)
-		PROGRAM="${EDITOR}"
+		PROGRAM='st nvim'
 		;;
 
 	application/json)
-		PROGRAM="${EDITOR}"
+		PROGRAM='st nvim'
 		;;
 	application/pdf)
 		PROGRAM=katarakt
