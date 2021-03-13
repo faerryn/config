@@ -1,5 +1,0 @@
-#!/bin/sh
-
-set -euf
-
-exec ${SHELL:-"/bin/sh"} -c "$(echo ${@})"
