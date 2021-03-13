@@ -16,4 +16,5 @@ return { setup = function()
 
 	local keymap_opts = { noremap = true, silent = true }
 	vim.api.nvim_set_keymap('n', '<Leader>f', [[<Cmd>lua require'telescope.builtin'.find_files{ hidden = true }<CR>]], keymap_opts)
+	vim.api.nvim_set_keymap('n', '<Leader>b', [[<Cmd>lua require'telescope.builtin'.buffers()<CR>]], keymap_opts)
 end }

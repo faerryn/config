@@ -5,15 +5,6 @@
 
 * Vanilla Config
 stuff that don't need packages
-** Disable Emacs features
-#+begin_src emacs-lisp
-  (setq-default
-   make-backup-files nil
-   package-enable-at-startup nil)
-  (auto-save-mode -1)
-  (tool-bar-mode -1)
-  (menu-bar-mode -1)
-#+end_src
 ** Font
 #+begin_src emacs-lisp
   (add-to-list 'default-frame-alist '(font . "Monospace-12"))
@@ -21,7 +12,7 @@ stuff that don't need packages
 ** Line Numbers
 #+begin_src emacs-lisp
   (setq-default display-line-numbers-type 'relative)
-  (display-line-numbers-mode +1)
+  (global-display-line-numbers-mode +1)
 #+end_src
 ** Org Mode
 #+begin_src emacs-lisp
@@ -31,11 +22,18 @@ stuff that don't need packages
 * Boostrap Packaging System
 ** straight.el
 #+begin_src emacs-lisp
-  (defvar bootstrap-version)
   (setq-default straight-use-package-by-default t)
+  (defvar bootstrap-version)
   (let ((bootstrap-file
          (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
         (bootstrap-version 5))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+          (url-retrieve-synchronously
+           "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+           'silent 'inhibit-cookies)
+        (goto-char (point-max))
+        (eval-print-last-sexp)))
     (load bootstrap-file nil 'nomessage))
 #+end_src
 ** use-package
@@ -64,10 +62,13 @@ stuff that don't need packages
      evil-want-Y-to-eol t)
     :config
     (evil-mode +1)
-    (evil-define-key '(normal visual) 'global (kbd "s") nil)
-    (evil-define-key '(normal visual) 'global (kbd "S") nil)
-    (evil-define-key 'normal 'global (kbd "]b") 'evil-next-buffer)
-    (evil-define-key 'normal 'global (kbd "[b") 'evil-prev-buffer))
+    (evil-define-key '(normal visual) 'global
+      (kbd "s") nil
+      (kbd "S") nil)
+    (evil-define-key 'normal 'global
+      (kbd "]b") 'evil-next-buffer
+      (kbd "[b") 'evil-prev-buffer)
+    (define-key evil-motion-state-map (kbd "SPC") nil))
 #+end_src
 ** evil-collection
 #+begin_src emacs-lisp
@@ -90,5 +91,16 @@ stuff that don't need packages
   (use-package ivy
     :init
     :config
-    (ivy-mode +1))
+    (ivy-mode +1)
+    (let ((ivy-evil-hook
+           (lambda ()
+             (evil-define-key 'normal 'global
+               (kbd "SPC f") 'find-file
+               (kbd "SPC b") 'ido-switch-buffer))))
+      (add-hook 'evil-mode-hook ivy-evil-hook)
+      (if evil-mode (funcall ivy-evil-hook))))
+#+end_src
+** magit
+#+begin_src emacs-lisp
+  (use-package magit)
 #+end_src

@@ -1,6 +1,3 @@
 /.config/emacs/init.el
 /.config/emacs/auto-save-list/
-/.config/emacs/straight/*
-!/.config/emacs/straight/repos/
-/.config/emacs/straight/repos/*
-!/.config/emacs/straight/repos/straight.el
+/.config/emacs/straight/

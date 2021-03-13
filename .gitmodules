@@ -65,6 +65,3 @@
 [submodule "zsh/.config/zsh/nix-zsh-completions"]
 	path = zsh/.config/zsh/nix-zsh-completions
 	url = https://github.com/spwhitt/nix-zsh-completions.git
-[submodule "emacs/.config/emacs/straight/repos/straight.el"]
-	path = emacs/.config/emacs/straight/repos/straight.el
-	url = https://github.com/raxod502/straight.el.git
