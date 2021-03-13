@@ -64,11 +64,7 @@ stuff that don't need packages
     (evil-mode +1)
     (evil-define-key '(normal visual) 'global
       (kbd "s") nil
-      (kbd "S") nil)
-    (evil-define-key 'normal 'global
-      (kbd "]b") 'evil-next-buffer
-      (kbd "[b") 'evil-prev-buffer)
-    (define-key evil-motion-state-map (kbd "SPC") nil))
+      (kbd "S") nil))
 #+end_src
 ** evil-collection
 #+begin_src emacs-lisp
@@ -91,14 +87,7 @@ stuff that don't need packages
   (use-package ivy
     :init
     :config
-    (ivy-mode +1)
-    (let ((ivy-evil-hook
-           (lambda ()
-             (evil-define-key 'normal 'global
-               (kbd "SPC f") 'find-file
-               (kbd "SPC b") 'ido-switch-buffer))))
-      (add-hook 'evil-mode-hook ivy-evil-hook)
-      (if evil-mode (funcall ivy-evil-hook))))
+    (ivy-mode +1))
 #+end_src
 ** magit
 #+begin_src emacs-lisp

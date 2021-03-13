@@ -14,7 +14,7 @@
 	<icon>preferences-desktop-wallpaper</icon>
 	<name>Set As Wallpaper</name>
 	<unique-id>1615526102894400-1</unique-id>
-	<command>wallpaper %f</command>
+	<command>ln -srf %f &quot;${XDG_CONFIG_HOME}&quot;/wallpaper</command>
 	<description></description>
 	<patterns>*</patterns>
 	<image-files/>
