@@ -6,7 +6,6 @@
 * Vanilla Config
 stuff that don't need packages
 ** Disable Emacs features
-emacs enables some extra stuff by default
 #+begin_src emacs-lisp
   (setq-default
    make-backup-files nil
@@ -37,13 +36,6 @@ emacs enables some extra stuff by default
   (let ((bootstrap-file
          (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
         (bootstrap-version 5))
-    (unless (file-exists-p bootstrap-file)
-      (with-current-buffer
-          (url-retrieve-synchronously
-           "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-           'silent 'inhibit-cookies)
-        (goto-char (point-max))
-        (eval-print-last-sexp)))
     (load bootstrap-file nil 'nomessage))
 #+end_src
 ** use-package
@@ -71,7 +63,11 @@ emacs enables some extra stuff by default
      evil-want-keybinding nil
      evil-want-Y-to-eol t)
     :config
-    (evil-mode +1))
+    (evil-mode +1)
+    (evil-define-key '(normal visual) 'global (kbd "s") nil)
+    (evil-define-key '(normal visual) 'global (kbd "S") nil)
+    (evil-define-key 'normal 'global (kbd "]b") 'evil-next-buffer)
+    (evil-define-key 'normal 'global (kbd "[b") 'evil-prev-buffer))
 #+end_src
 ** evil-collection
 #+begin_src emacs-lisp
@@ -88,4 +84,11 @@ emacs enables some extra stuff by default
     :config
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys))
+#+end_src
+** ivy
+#+begin_src emacs-lisp
+  (use-package ivy
+    :init
+    :config
+    (ivy-mode +1))
 #+end_src

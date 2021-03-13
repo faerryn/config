@@ -2,6 +2,5 @@
       (init_el (expand-file-name "init.el" user-emacs-directory)))
   (if (file-newer-than-file-p init_org init_el)
       (progn
-	(require 'org)
 	(require 'ob-tangle)
 	(org-babel-tangle-file init_org init_el "emacs-lisp"))))
