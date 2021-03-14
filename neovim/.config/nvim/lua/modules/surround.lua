@@ -33,7 +33,11 @@ return { setup = function()
 	vim.g.textobj_sandwich_no_default_key_mappings = 1
 	vim.g.operator_sandwich_no_default_key_mappings = 1
 
+	-- disable s as to not conflict with sandwich bindings
 	local keymap_opts = { silent = true }
+	vim.api.nvim_set_keymap('n', 's', '', keymap_opts)
+	vim.api.nvim_set_keymap('v', 's', '', keymap_opts)
+
 	vim.api.nvim_set_keymap('n', 'sa', '<Plug>(operator-sandwich-add)', keymap_opts)
 	vim.api.nvim_set_keymap('x', 'sa', '<Plug>(operator-sandwich-add)', keymap_opts)
 	vim.api.nvim_set_keymap('o', 'sa', '<Plug>(operator-sandwich-g@)', keymap_opts)

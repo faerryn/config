@@ -12,6 +12,7 @@ return { setup = function()
 	vim.bo.undofile = true
 
 	vim.g.mapleader = ' '
+	vim.api.nvim_set_keymap('n', '<Leader>', '', { noremap = true })
 
 	vim.wo.number = true
 	vim.wo.relativenumber = true
@@ -55,14 +56,6 @@ return { setup = function()
 		vim.o.grepprg = 'rg --hidden --vimgrep'
 		vim.o.grepformat = '%f:%l:%c:%m'
 	end
-
-	local keymap_opts = { noremap = true, silent = true }
-
-	vim.api.nvim_set_keymap('n', 's', '', keymap_opts)
-	vim.api.nvim_set_keymap('v', 's', '', keymap_opts)
-	vim.api.nvim_set_keymap('n', 'S', '', keymap_opts)
-	vim.api.nvim_set_keymap('v', 'S', '', keymap_opts)
-	vim.api.nvim_set_keymap('n', '<Leader>', '', keymap_opts)
 
 	vim.api.nvim_exec([[
 	augroup custom_core
