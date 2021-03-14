@@ -1,3 +1,3 @@
-/.config/emacs/init.el
-/.config/emacs/auto-save-list/
-/.config/emacs/straight/
+/.config/emacs/*
+!/.config/emacs/early-init.el
+!/.config/emacs/init.org

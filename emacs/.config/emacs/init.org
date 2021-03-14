@@ -73,6 +73,7 @@ stuff that don't need packages
     :config
     (evil-mode +1)
     (evil-define-key '(normal visual) 'global
+      (kbd "SPC") nil
       (kbd "s") nil
       (kbd "S") nil))
 #+end_src
@@ -101,4 +102,23 @@ stuff that don't need packages
 ** magit
 #+begin_src emacs-lisp
   (use-package magit)
+#+end_src
+** general
+#+begin_src emacs-lisp
+  (use-package general
+    :after evil
+    :after ivy
+    :init
+    (setq-default
+     general-override-states
+     '(insert emacs hybrid normal visual motion operator replace))
+    :config
+    (general-define-key
+     :states '(normal)
+     :keymaps 'override
+     "]b" #'evil-next-buffer
+     "[b" #'evil-prev-buffer
+     "SPC f" #'find-file
+     "SPC b" #'ido-switch-buffer
+     "SPC g" #'magit-status))
 #+end_src
