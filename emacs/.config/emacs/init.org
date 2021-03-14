@@ -37,10 +37,6 @@
     (doom-themes-visual-bell-config)
     (doom-themes-org-config))
 #+end_src
-** Disable Scrollbar
-#+begin_src emacs-lisp
-  (scroll-bar-mode -1)
-#+end_src
 ** Default Font
 #+begin_src emacs-lisp
   (add-to-list 'default-frame-alist '(font . "Monospace-12"))
