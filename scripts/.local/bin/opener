@@ -7,7 +7,9 @@ case "$(file -bL --mime-type "${1}")" in
 		PROGRAM=mpv
 		;;
 	image/*)
-		PROGRAM=sxiv
+		[ -n "${WAYLAND_DISPLAY:-}" ] &&
+			PROGRAM=imv ||
+			PROGRAM=sxiv
 		;;
 	text/*)
 		PROGRAM='st nvim'
