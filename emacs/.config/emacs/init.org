@@ -4,7 +4,6 @@
 #+startup: content
 
 * Vanilla Config
-stuff that don't need packages
 ** Disable Scrollbar
 #+begin_src emacs-lisp
   (scroll-bar-mode -1)
@@ -83,15 +82,6 @@ stuff that don't need packages
     :after evil
     :config
     (evil-collection-init))
-#+end_src
-** evil-org
-#+begin_src emacs-lisp
-  (use-package evil-org
-    :after evil
-    :hook (org-mode . (lambda () (evil-org-mode +1)))
-    :config
-    (require 'evil-org-agenda)
-    (evil-org-agenda-set-keys))
 #+end_src
 ** ivy
 #+begin_src emacs-lisp
