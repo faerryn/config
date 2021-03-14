@@ -23,19 +23,19 @@
 #+end_src
 ** use-package
 #+begin_src emacs-lisp
-  (eval-when-compile (straight-use-package 'use-package))
+  (eval-and-compile (straight-use-package 'use-package))
 #+end_src
 * Aesthetic
 ** doom-themes
 #+begin_src emacs-lisp
   (use-package doom-themes
-               :config
-               (setq-default
-                doom-themes-enable-bold t
-                doom-themes-enable-italic t)
-               (load-theme 'doom-gruvbox t)
-               (doom-themes-visual-bell-config)
-               (doom-themes-org-config))
+    :config
+    (setq-default
+     doom-themes-enable-bold t
+     doom-themes-enable-italic t)
+    (load-theme 'doom-gruvbox t)
+    (doom-themes-visual-bell-config)
+    (doom-themes-org-config))
 #+end_src
 ** Default Font
 #+begin_src emacs-lisp
@@ -46,61 +46,65 @@
   (setq-default display-line-numbers-type 'relative)
   (global-display-line-numbers-mode +1)
 #+end_src
+** Show Paren
+#+begin_src emacs-lisp
+  (show-paren-mode +1)
+#+end_src
 * Keybindings
 ** evil
 #+begin_src emacs-lisp
   (use-package evil
-               :init
-               (setq-default
-                evil-want-integration t
-                evil-want-keybinding nil
-                evil-want-Y-to-eol t)
-               :config
-               (evil-mode +1))
+    :init
+    (setq-default
+     evil-want-integration t
+     evil-want-keybinding nil
+     evil-want-Y-to-eol t)
+    :config
+    (evil-mode +1))
 #+end_src
 ** evil-collection
 #+begin_src emacs-lisp
   (use-package evil-collection
-               :after evil
-               :config
-               (evil-collection-init))
+    :after evil
+    :config
+    (evil-collection-init))
 #+end_src
 ** general
 #+begin_src emacs-lisp
   (use-package general
-               :after evil
-               :after ivy
-               :after magit
-               :init
-               (setq-default
-                general-override-states
-                '(insert emacs hybrid normal visual motion operator replace))
-               :config
-               (general-define-key
-                :states '(normal visual)
-                :keymaps 'global
-                "SPC" nil
-                "s" nil
-                "S" nil
-                :states '(normal)
-                :keymaps 'override
-                "]b" #'evil-next-buffer
-                "[b" #'evil-prev-buffer
-                "SPC f" #'find-file
-                "SPC b" #'ido-switch-buffer
-                "SPC g" #'magit-status))
+    :after (evil ivy magit)
+    :config
+    (general-define-key
+     :states '(normal visual)
+     :keymaps 'global
+     "SPC" nil
+     "s" nil
+     "S" nil
+     :states '(normal)
+     :keymaps 'override
+     "-" (lambda () (interactive) (dired default-directory))
+     "]b" #'evil-next-buffer
+     "[b" #'evil-prev-buffer
+     "SPC f" #'find-file
+     "SPC b" #'ido-switch-buffer
+     "SPC g" #'magit-status))
 #+end_src
 * Packages
+** dired
+#+begin_src emacs-lisp
+  (require 'dired-x)
+  (add-hook 'dired-mode-hook #'dired-omit-mode +1)
+#+end_src
 ** orgmode
 #+begin_src emacs-lisp
   (setq-default org-src-tab-acts-natively t)
-  (add-hook 'org-mode-hook (lambda () (org-indent-mode +1)))
+  (add-hook 'org-mode-hook #'org-indent-mode +1)
 #+end_src
 ** ivy
 #+begin_src emacs-lisp
   (use-package ivy
-               :config
-               (ivy-mode +1))
+    :config
+    (ivy-mode +1))
 #+end_src
 ** magit
 #+begin_src emacs-lisp
@@ -109,6 +113,6 @@
 ** gcmh
 #+begin_src emacs-lisp
   (use-package gcmh
-               :config
-               (add-hook 'emacs-startup-hook (lambda () (gcmh-mode +1))))
+    :config
+    (add-hook 'emacs-startup-hook #'gcmh-mode +1))
 #+end_src

@@ -1,6 +1,6 @@
 local modules = {
 	'core',
-	'vanilla',
+	'unimpaired',
 	'filetypes',
 
 	'colorscheme',
