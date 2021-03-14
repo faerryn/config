@@ -6,7 +6,7 @@
 * Boostrap
 ** straight.el
 #+begin_src emacs-lisp
-  (eval-when-compile
+  (eval-and-compile
     (setq-default straight-use-package-by-default t)
     (defvar bootstrap-version)
     (let ((bootstrap-file
