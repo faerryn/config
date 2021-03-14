@@ -108,7 +108,9 @@
 #+end_src
 ** magit
 #+begin_src emacs-lisp
-  (use-package magit)
+  (use-package magit
+    :init
+    (setq-default transient-save-history nil))
 #+end_src
 ** gcmh
 #+begin_src emacs-lisp
