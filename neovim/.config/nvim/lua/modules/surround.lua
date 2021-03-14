@@ -11,18 +11,9 @@ return { setup = function()
 		{
 			external = { plug..'(textobj-sandwich-tag-i)', plug..'(textobj-sandwich-tag-a)' },
 			noremap = 0,
-			kind = { 'replace', 'query' },
+			kind = { 'replace', 'query', 'delete', 'textobj'  },
 			expr_filter = { [[operator#sandwich#kind() ==# 'replace']] },
 			synchro = 1,
-			input = { 't' }
-		},
-		{
-			external = { plug..'(textobj-sandwich-tag-i)', plug..'(textobj-sandwich-tag-a)' },
-			noremap = 0,
-			kind = { 'delete', 'textobj' },
-			expr_filter = { [[operator#sandwich#kind() !=# 'replace']] },
-			synchro = 1,
-			linewise = 1,
 			input = { 't' }
 		},
 		{ buns = 'sandwich#magicchar#i#input("operator")', kind = { 'add', 'replace' }, action = { 'add' }, listexpr = 1, input = { 'i' } },

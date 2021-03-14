@@ -60,7 +60,7 @@ return { setup = function()
 	vim.api.nvim_exec([[
 	augroup custom_core
 	autocmd!
-	autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup = "Search", timeout = 300 }
+	autocmd TextYankPost * silent! lua vim.highlight.on_yank{ higroup = "Search", timeout = 300 }
 	autocmd BufWritePre * call mkdir(expand('%:p:h'), 'p')
 	augroup END
 	]], false)
