@@ -1,3 +1,0 @@
-/.config/emacs/*
-!/.config/emacs/early-init.el
-!/.config/emacs/init.org
