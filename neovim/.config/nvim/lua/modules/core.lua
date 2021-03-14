@@ -72,10 +72,6 @@ return { setup = function()
 	augroup END
 	]], false)
 
-	-- Disable netrw
-	vim.g.loaded_netrw       = 1
-	vim.g.loaded_netrwPlugin = 1
-
 	-- FixCursorHold.nvim
 	vim.api.nvim_command'packadd FixCursorHold.nvim'
 	vim.g.cursorhold_updatetime = 1000
@@ -85,7 +81,4 @@ return { setup = function()
 
 	-- readline.vim
 	vim.api.nvim_command'packadd readline.vim'
-
-	-- vim-dirvish
-	vim.api.nvim_command'packadd vim-dirvish'
 end }

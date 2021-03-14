@@ -58,9 +58,6 @@
 	path = neovim/.config/nvim/pack/plugins/opt/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
 	branch = update-lockfile-pr
-[submodule "neovim/.config/nvim/pack/plugins/opt/vim-dirvish"]
-	path = neovim/.config/nvim/pack/plugins/opt/vim-dirvish
-	url = https://github.com/justinmk/vim-dirvish
 [submodule "neovim/.config/nvim/pack/plugins/opt/nvim-treesitter-textobjects"]
 	path = neovim/.config/nvim/pack/plugins/opt/nvim-treesitter-textobjects
 	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
