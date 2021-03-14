@@ -3,54 +3,30 @@
 #+email: alexandre.liao@gmail.com
 #+startup: content
 
-* Vanilla Config
-** Disable Scrollbar
-#+begin_src emacs-lisp
-  (scroll-bar-mode -1)
-#+end_src
-** Font
-#+begin_src emacs-lisp
-  (add-to-list 'default-frame-alist '(font . "Monospace-12"))
-#+end_src
-** Line Numbers
-#+begin_src emacs-lisp
-  (setq-default display-line-numbers-type 'relative)
-  (global-display-line-numbers-mode +1)
-#+end_src
-** Org Mode
-#+begin_src emacs-lisp
-  (setq-default org-src-tab-acts-natively t)
-  (add-hook 'org-mode-hook (lambda () (org-indent-mode +1)))
-#+end_src
-* Boostrap Packaging System
+* Boostrap
 ** straight.el
 #+begin_src emacs-lisp
-  (setq-default straight-use-package-by-default t)
-  (defvar bootstrap-version)
-  (let ((bootstrap-file
-         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-        (bootstrap-version 5))
-    (unless (file-exists-p bootstrap-file)
-      (with-current-buffer
-          (url-retrieve-synchronously
-           "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-           'silent 'inhibit-cookies)
-        (goto-char (point-max))
-        (eval-print-last-sexp)))
-    (load bootstrap-file nil 'nomessage))
+  (eval-when-compile
+    (setq-default straight-use-package-by-default t)
+    (defvar bootstrap-version)
+    (let ((bootstrap-file
+           (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+          (bootstrap-version 5))
+      (unless (file-exists-p bootstrap-file)
+        (with-current-buffer
+            (url-retrieve-synchronously
+             "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+             'silent 'inhibit-cookies)
+          (goto-char (point-max))
+          (eval-print-last-sexp)))
+      (load bootstrap-file nil 'nomessage)))
 #+end_src
 ** use-package
 #+begin_src emacs-lisp
-  (straight-use-package 'use-package)
+  (eval-when-compile (straight-use-package 'use-package))
 #+end_src
-* Packages Config
-** gcmh
-#+begin_src emacs-lisp
-  (use-package gcmh
-    :config
-    (add-hook 'emacs-startup-hook (lambda () (gcmh-mode +1))))
-#+end_src
-** gruvbox
+* Aesthetic
+** doom-themes
 #+begin_src emacs-lisp
   (use-package doom-themes
     :config
@@ -61,6 +37,20 @@
     (doom-themes-visual-bell-config)
     (doom-themes-org-config))
 #+end_src
+** Disable Scrollbar
+#+begin_src emacs-lisp
+  (scroll-bar-mode -1)
+#+end_src
+** Default Font
+#+begin_src emacs-lisp
+  (add-to-list 'default-frame-alist '(font . "Monospace-12"))
+#+end_src
+** Line Numbers
+#+begin_src emacs-lisp
+  (setq-default display-line-numbers-type 'relative)
+  (global-display-line-numbers-mode +1)
+#+end_src
+* Keybindings
 ** evil
 #+begin_src emacs-lisp
   (use-package evil
@@ -70,11 +60,7 @@
      evil-want-keybinding nil
      evil-want-Y-to-eol t)
     :config
-    (evil-mode +1)
-    (evil-define-key '(normal visual) 'global
-      (kbd "SPC") nil
-      (kbd "s") nil
-      (kbd "S") nil))
+    (evil-mode +1))
 #+end_src
 ** evil-collection
 #+begin_src emacs-lisp
@@ -82,6 +68,37 @@
     :after evil
     :config
     (evil-collection-init))
+#+end_src
+** general
+#+begin_src emacs-lisp
+  (use-package general
+    :after evil
+    :after ivy
+    :after magit
+    :init
+    (setq-default
+     general-override-states
+     '(insert emacs hybrid normal visual motion operator replace))
+    :config
+    (general-define-key
+     :states '(normal visual)
+     :keymaps 'global
+     "SPC" nil
+     "s" nil
+     "S" nil
+     :states '(normal)
+     :keymaps 'override
+     "]b" #'evil-next-buffer
+     "[b" #'evil-prev-buffer
+     "SPC f" #'find-file
+     "SPC b" #'ido-switch-buffer
+     "SPC g" #'magit-status))
+#+end_src
+* Packages
+** orgmode
+#+begin_src emacs-lisp
+  (setq-default org-src-tab-acts-natively t)
+  (add-hook 'org-mode-hook (lambda () (org-indent-mode +1)))
 #+end_src
 ** ivy
 #+begin_src emacs-lisp
@@ -93,22 +110,9 @@
 #+begin_src emacs-lisp
   (use-package magit)
 #+end_src
-** general
+** gcmh
 #+begin_src emacs-lisp
-  (use-package general
-    :after evil
-    :after ivy
-    :init
-    (setq-default
-     general-override-states
-     '(insert emacs hybrid normal visual motion operator replace))
+  (use-package gcmh
     :config
-    (general-define-key
-     :states '(normal)
-     :keymaps 'override
-     "]b" #'evil-next-buffer
-     "[b" #'evil-prev-buffer
-     "SPC f" #'find-file
-     "SPC b" #'ido-switch-buffer
-     "SPC g" #'magit-status))
+    (add-hook 'emacs-startup-hook (lambda () (gcmh-mode +1))))
 #+end_src
