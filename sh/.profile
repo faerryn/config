@@ -13,13 +13,12 @@ export VISUAL="${EDITOR}"
 # Clang
 export CC=clang
 export CXX=clang++
-export CFLAGS=-fuse-ld=lld
-export CXXFLAGS=-fuse-ld=lld
+export LDFLAGS=-fuse-ld=lld
 
 # Rust
 export RUSTUP_HOME="${XDG_DATA_HOME}"/rustup
 export CARGO_HOME="${XDG_DATA_HOME}"/cargo
-export RUSTFLAGS="-C linker=${CC} -C link-arg=${CFLAGS}"
+export RUSTFLAGS="-C linker=${CC} -C link-arg=${LDFLAGS}"
 
 # Misc
 export GRADLE_USER_HOME="${XDG_DATA_HOME}"/gradle
