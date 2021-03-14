@@ -26,10 +26,6 @@
 [submodule "neovim/.config/nvim/pack/pack/opt/readline.vim"]
 	path = neovim/.config/nvim/pack/plugins/opt/readline.vim
 	url = https://github.com/ryvnf/readline.vim.git
-[submodule "neovim/.config/nvim/pack/pack/opt/gx-extended.vim"]
-	path = neovim/.config/nvim/pack/plugins/opt/gx-extended.vim
-	url = https://github.com/stsewd/gx-extended.vim.git
-	ignore = dirty
 [submodule "neovim/.config/nvim/pack/pack/opt/vim-repeat"]
 	path = neovim/.config/nvim/pack/plugins/opt/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git

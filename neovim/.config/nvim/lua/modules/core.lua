@@ -86,10 +86,6 @@ return { setup = function()
 	-- readline.vim
 	vim.api.nvim_command'packadd readline.vim'
 
-	-- gx-extended.nvim
-	vim.api.nvim_command'packadd gx-extended.vim'
-	vim.g['gxext#handler'] = { global = { 'global#urls' } }
-
 	-- vim-dirvish
 	vim.api.nvim_command'packadd vim-dirvish'
 end }
