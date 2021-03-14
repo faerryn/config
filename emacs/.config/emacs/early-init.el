@@ -14,20 +14,12 @@
 ;; Disable Garbage Collection
 (setq-default gc-cons-threshold most-positive-fixnum)
 
-;; Compile early-init.el
-(let ((early-init.el  (expand-file-name "early-init.el"  user-emacs-directory))
-      (early-init.elc (expand-file-name "early-init.elc" user-emacs-directory)))
-  (unless (file-newer-than-file-p early-init.elc early-init.el)
-    (require 'bytecomp)
-    (byte-compile-file early-init.el)))
-
-;; Tangle and compile init.org
+;; Tangle init.org
 (let ((init.org (expand-file-name "init.org" user-emacs-directory))
-      (init.el  (expand-file-name "init.el"  user-emacs-directory))
-      (init.elc (expand-file-name "init.elc" user-emacs-directory)))
+      (init.el  (expand-file-name "init.el"  user-emacs-directory)))
   (unless (file-newer-than-file-p init.el init.org)
     (require 'ob-tangle)
-    (org-babel-tangle-file init.org init.el "emacs-lisp"))
-  (unless (file-newer-than-file-p init.elc init.el)
-    (require 'bytecomp)
-    (byte-compile-file init.el)))
+    (org-babel-tangle-file init.org init.el "emacs-lisp")))
+
+;; Put everything in $XDG_DATA_HOME
+(setq-default user-emacs-directory (expand-file-name "emacs" (getenv "XDG_DATA_HOME")))
