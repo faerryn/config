@@ -6,6 +6,9 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+;; Follow Symlinks
+(setq-default vc-follow-symlinks t)
+
 ;; Disable Garbage Collection
 (setq-default gc-cons-threshold most-positive-fixnum)
 
