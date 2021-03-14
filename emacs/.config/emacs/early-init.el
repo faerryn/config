@@ -14,7 +14,14 @@
 ;; Disable Garbage Collection
 (setq-default gc-cons-threshold most-positive-fixnum)
 
-;; Tangle init.org
+;; Compile early-init.el
+(let ((early-init.el  (expand-file-name "early-init.el"  user-emacs-directory))
+      (early-init.elc (expand-file-name "early-init.elc" user-emacs-directory)))
+  (unless (file-newer-than-file-p early-init.elc early-init.el)
+    (require 'bytecomp)
+    (byte-compile-file early-init.el)))
+
+;; Tangle and compile init.org
 (let ((init.org (expand-file-name "init.org" user-emacs-directory))
       (init.el  (expand-file-name "init.el"  user-emacs-directory))
       (init.elc (expand-file-name "init.elc" user-emacs-directory)))

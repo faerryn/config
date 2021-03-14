@@ -29,13 +29,13 @@
 ** doom-themes
 #+begin_src emacs-lisp
   (use-package doom-themes
-    :config
-    (setq-default
-     doom-themes-enable-bold t
-     doom-themes-enable-italic t)
-    (load-theme 'doom-gruvbox t)
-    (doom-themes-visual-bell-config)
-    (doom-themes-org-config))
+               :config
+               (setq-default
+                doom-themes-enable-bold t
+                doom-themes-enable-italic t)
+               (load-theme 'doom-gruvbox t)
+               (doom-themes-visual-bell-config)
+               (doom-themes-org-config))
 #+end_src
 ** Default Font
 #+begin_src emacs-lisp
@@ -50,45 +50,45 @@
 ** evil
 #+begin_src emacs-lisp
   (use-package evil
-    :init
-    (setq-default
-     evil-want-integration t
-     evil-want-keybinding nil
-     evil-want-Y-to-eol t)
-    :config
-    (evil-mode +1))
+               :init
+               (setq-default
+                evil-want-integration t
+                evil-want-keybinding nil
+                evil-want-Y-to-eol t)
+               :config
+               (evil-mode +1))
 #+end_src
 ** evil-collection
 #+begin_src emacs-lisp
   (use-package evil-collection
-    :after evil
-    :config
-    (evil-collection-init))
+               :after evil
+               :config
+               (evil-collection-init))
 #+end_src
 ** general
 #+begin_src emacs-lisp
   (use-package general
-    :after evil
-    :after ivy
-    :after magit
-    :init
-    (setq-default
-     general-override-states
-     '(insert emacs hybrid normal visual motion operator replace))
-    :config
-    (general-define-key
-     :states '(normal visual)
-     :keymaps 'global
-     "SPC" nil
-     "s" nil
-     "S" nil
-     :states '(normal)
-     :keymaps 'override
-     "]b" #'evil-next-buffer
-     "[b" #'evil-prev-buffer
-     "SPC f" #'find-file
-     "SPC b" #'ido-switch-buffer
-     "SPC g" #'magit-status))
+               :after evil
+               :after ivy
+               :after magit
+               :init
+               (setq-default
+                general-override-states
+                '(insert emacs hybrid normal visual motion operator replace))
+               :config
+               (general-define-key
+                :states '(normal visual)
+                :keymaps 'global
+                "SPC" nil
+                "s" nil
+                "S" nil
+                :states '(normal)
+                :keymaps 'override
+                "]b" #'evil-next-buffer
+                "[b" #'evil-prev-buffer
+                "SPC f" #'find-file
+                "SPC b" #'ido-switch-buffer
+                "SPC g" #'magit-status))
 #+end_src
 * Packages
 ** orgmode
@@ -99,8 +99,8 @@
 ** ivy
 #+begin_src emacs-lisp
   (use-package ivy
-    :config
-    (ivy-mode +1))
+               :config
+               (ivy-mode +1))
 #+end_src
 ** magit
 #+begin_src emacs-lisp
@@ -109,6 +109,6 @@
 ** gcmh
 #+begin_src emacs-lisp
   (use-package gcmh
-    :config
-    (add-hook 'emacs-startup-hook (lambda () (gcmh-mode +1))))
+               :config
+               (add-hook 'emacs-startup-hook (lambda () (gcmh-mode +1))))
 #+end_src
