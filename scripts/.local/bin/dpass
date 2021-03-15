@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -euf
+
 PASSDIR="${HOME}"/pass
 
 cd "${PASSDIR}"

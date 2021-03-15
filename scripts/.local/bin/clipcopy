@@ -9,7 +9,7 @@ if [ -n "${WAYLAND_DISPLAY:-}" ]; then
 		exec wl-copy -n
 	fi
 elif [ -n "${DISPLAY:-}" ]; then
-	exec xclip -selection clipboard -r -i ${@}
+	exec xclip -selection clipboard -r -i "${@}"
 else
 	return 1
 fi
