@@ -1,7 +1,5 @@
 # Prompt
-autoload -Uz promptinit
-promptinit
-prompt redhat
+PS1='[%n@%m %1~]%(#.#.$) '
 
 # Bindings
 bindkey -e
