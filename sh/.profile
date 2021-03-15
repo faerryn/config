@@ -1,5 +1,5 @@
 # XDG base directories
-export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/"${UID}"}"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/${UID}}"
 export XDG_CACHE_HOME="${XDG_RUNTIME_DIR}"/cache
 export XDG_CONFIG_DIRS=/etc/xdg
 export XDG_CONFIG_HOME="${HOME}"/.config
