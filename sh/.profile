@@ -27,5 +27,16 @@ export LESSHISTFILE=-
 export NODE_REPL_HISTORY="${XDG_CACHE_HOME}"/node_repl_history
 export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
 
-# Paths
-export PATH="${HOME}"/.local/bin:"${CARGO_HOME}"/bin:"${PATH}"
+# Path
+appendpath () {
+    case ":$PATH:" in
+        *:"$1":*)
+            ;;
+        *)
+            PATH="${PATH:+$PATH:}$1"
+    esac
+}
+appendpath "${HOME}"/.local/bin
+appendpath "${CARGO_HOME}"/bin
+unset appendpath
+export PATH
