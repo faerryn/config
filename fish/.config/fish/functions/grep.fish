@@ -1,3 +1,3 @@
 function grep
-	command grep --color=auto
+	command grep --color=auto $argv
 end
