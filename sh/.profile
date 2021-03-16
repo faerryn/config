@@ -10,7 +10,7 @@ export XDG_DATA_DIRS=/usr/local/share:/usr/share:"${XDG_DATA_DIRS}"
 export EDITOR=nvim
 export VISUAL="${EDITOR}"
 
-# Clang
+# C/C++
 export CC=clang
 export CFLAGS=
 export CXX=clang++
