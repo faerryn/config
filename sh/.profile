@@ -12,13 +12,19 @@ export VISUAL="${EDITOR}"
 
 # Clang
 export CC=clang
+export CFLAGS=
 export CXX=clang++
-export LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt -stdlib=libc++ -lunwind'
+export CXXFLAGS='-stdlib=libc++'
+export LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt -lunwind'
 
 # Rust
 export RUSTUP_HOME="${XDG_DATA_HOME}"/rustup
 export CARGO_HOME="${XDG_DATA_HOME}"/cargo
-export RUSTFLAGS="-C linker=clang -C link-arg=-fuse-ld=lld -C link-arg=-rtlib=compiler-rt"
+RUSTFLAGS='-C linker=clang'
+for ldflag in ${LDFLAGS}; do
+	RUSTFLAGS="${RUSTFLAGS} -C ${ldflag}"
+done
+export RUSTFLAGS
 
 # Misc
 export GRADLE_USER_HOME="${XDG_DATA_HOME}"/gradle
@@ -29,11 +35,11 @@ export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
 
 # Path
 prependpath () {
-	case ":$PATH:" in
-		*:"$1":*)
+	case ":${PATH}:" in
+		*:"${1}":*)
 			;;
 		*)
-			PATH="$1${PATH:+:$PATH}"
+			PATH="${1}${PATH:+:${PATH}}"
 	esac
 }
 prependpath "${HOME}"/.local/bin
