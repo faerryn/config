@@ -13,7 +13,7 @@ export VISUAL="${EDITOR}"
 # Clang
 export CC=clang
 export CXX=clang++
-export LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt'
+export LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt -stdlib=libc++ -lunwind'
 
 # Rust
 export RUSTUP_HOME="${XDG_DATA_HOME}"/rustup
