@@ -2,7 +2,7 @@ local modules = {
 	'core',
 	'unimpaired',
 	'netrw',
-	'terminal',
+	'shell',
 	'filetypes',
 
 	'colorscheme',
