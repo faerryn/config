@@ -6,6 +6,6 @@
 [merge]
 	tool = nvimdiff
 [core]
-	autocrlf = false
+	autocrlf = input
 [clean]
 	requireForce = false

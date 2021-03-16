@@ -15,7 +15,7 @@ export CC=clang
 export CFLAGS=
 export CXX=clang++
 export CXXFLAGS='-stdlib=libc++'
-export LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt -lunwind'
+export LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt'
 
 # Rust
 export RUSTUP_HOME="${XDG_DATA_HOME}"/rustup

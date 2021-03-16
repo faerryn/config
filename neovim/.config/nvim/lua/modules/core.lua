@@ -2,7 +2,6 @@ return { setup = function()
 	vim.o.hidden = true
 
 	vim.o.clipboard = 'unnamedplus'
-	vim.o.mouse = 'ar'
 
 	vim.o.timeoutlen = 500
 
