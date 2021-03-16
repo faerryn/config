@@ -26,7 +26,7 @@ case "$(file -bL --mime-type "${1}")" in
 		;;
 
 	application/json)
-		PROGRAM='st nvim'
+		PROGRAM=firefox
 		;;
 	application/pdf)
 		PROGRAM=katarakt

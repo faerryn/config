@@ -11,13 +11,14 @@
 	<directories/>
 </action>
 <action>
-	<icon>preferences-desktop-wallpaper</icon>
-	<name>Set As Wallpaper</name>
-	<unique-id>1615526102894400-1</unique-id>
-	<command>ln -srf %f &quot;${XDG_CONFIG_HOME}&quot;/wallpaper</command>
+	<icon>nvim</icon>
+	<name>Edit In Neovim</name>
+	<unique-id>1615872629122121-1</unique-id>
+	<command>st nvim %F</command>
 	<description></description>
 	<patterns>*</patterns>
-	<image-files/>
+	<other-files/>
+	<text-files/>
 </action>
 <action>
 	<icon>run-build</icon>
@@ -28,5 +29,14 @@
 	<patterns>*</patterns>
 	<other-files/>
 	<text-files/>
+</action>
+<action>
+	<icon>preferences-desktop-wallpaper</icon>
+	<name>Set As Wallpaper</name>
+	<unique-id>1615526102894400-1</unique-id>
+	<command>ln -srf %f &quot;${XDG_CONFIG_HOME}&quot;/wallpaper</command>
+	<description></description>
+	<patterns>*</patterns>
+	<image-files/>
 </action>
 </actions>
