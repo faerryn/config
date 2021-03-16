@@ -18,7 +18,7 @@ export LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt'
 # Rust
 export RUSTUP_HOME="${XDG_DATA_HOME}"/rustup
 export CARGO_HOME="${XDG_DATA_HOME}"/cargo
-export RUSTFLAGS="-C linker=${CC} -C link-arg=${LDFLAGS}"
+export RUSTFLAGS="-C linker=clang -C link-arg=-fuse-ld=lld -C link-arg=-rtlib=compiler-rt"
 
 # Misc
 export GRADLE_USER_HOME="${XDG_DATA_HOME}"/gradle
@@ -29,12 +29,12 @@ export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
 
 # Path
 prependpath () {
-    case ":$PATH:" in
-        *:"$1":*)
-            ;;
-        *)
-            PATH="$1${PATH:+:$PATH}"
-    esac
+	case ":$PATH:" in
+		*:"$1":*)
+			;;
+		*)
+			PATH="$1${PATH:+:$PATH}"
+	esac
 }
 prependpath "${HOME}"/.local/bin
 prependpath "${CARGO_HOME}"/bin
