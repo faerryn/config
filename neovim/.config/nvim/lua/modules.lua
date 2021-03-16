@@ -1,6 +1,8 @@
 local modules = {
 	'core',
 	'unimpaired',
+	'netrw',
+	'terminal',
 	'filetypes',
 
 	'colorscheme',
