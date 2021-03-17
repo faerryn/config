@@ -14,9 +14,6 @@ local on_attach = function(client, bufnr)
 
 	vim.api.nvim_command[[autocmd CursorHold  <buffer> lua vim.lsp.buf.signature_help()]]
 	vim.api.nvim_command[[autocmd CursorHoldI <buffer> lua vim.lsp.buf.signature_help()]]
-
-	vim.api.nvim_command'packadd completion-nvim'
-	require'completion'.on_attach()
 end
 
 return { setup = function()

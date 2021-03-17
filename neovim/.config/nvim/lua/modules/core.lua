@@ -43,6 +43,11 @@ return { setup = function()
 	vim.o.listchars = 'eol:↲,tab:» ,trail:⋅,extends:…,precedes:…,nbsp:⎵'
 	vim.wo.list = true
 
+	vim.o.scrolloff = 4
+	vim.o.sidescrolloff = 4
+	vim.wo.scrolloff = 4
+	vim.wo.sidescrolloff = 4
+
 	vim.o.completeopt = 'menuone,noinsert,noselect'
 	vim.o.confirm = true
 	vim.o.foldlevelstart = 99
